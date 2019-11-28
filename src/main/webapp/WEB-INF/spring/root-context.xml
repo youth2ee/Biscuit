@@ -3,17 +3,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<context:property-placeholder file-encoding="UTF-8" location="classpath:/properties/**/*.properties"/>
 		
-<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
-	<property name="username" value="biscuit" />
-	<property name="password" value="biscuit" />
-	<property name="url" value="jdbc:oracle:thin:@211.238.142.38:1521:xe" />
-			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+			<property name="username" value="${oracle.user}" />
+			<property name="password" value="${oracle.password}" />
+			<property name="url" value="${oracle.url}" />
+			<property name="driverClassName" value="${oracle.driver}" />
 		</bean>
 			
 		<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
