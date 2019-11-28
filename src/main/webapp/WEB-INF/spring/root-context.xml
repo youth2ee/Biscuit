@@ -13,39 +13,35 @@
 	
 	<context:property-placeholder file-encoding="UTF-8" location="classpath:/properties/**/*.properties"/>
 		
-		<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
-			<property name="username" value="${oracle.user}" />
-			<property name="password" value="${oracle.password}" />
-			<property name="url" value="${oracle.url}" />
-			<property name="driverClassName" value="${oracle.driver}" />
-		</bean>
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+		<property name="username" value="${oracle.user}" />
+		<property name="password" value="${oracle.password}" />
+		<property name="url" value="${oracle.url}" />
+		<property name="driverClassName" value="${oracle.driver}" />
+	</bean>
+		
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:/mybatis/mappers/*Mapper.xml" />
+		<property name="configLocation" value="classpath:/mybatis/config/mybatisConfig.xml" />
+	</bean>
 			
-		<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
-			<property name="dataSource" ref="dataSource" />
-			<property name="mapperLocations" value="classpath:/mybatis/mappers/*Mapper.xml" />
-			<property name="configLocation" value="classpath:/mybatis/config/mybatisConfig.xml" />
-		</bean>
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
+	</bean> 
 				
-		<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
-			<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
-		</bean> 
-				
-		
-		<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
-		<property name="defaultEncoding" value="UTF-8"/>
-		<property name="maxUploadSize" value="10485760" />
-		<property name="maxUploadSizePerFile" value="10475760" />	
-		</bean>
-		
-		<!-- transaction Manager 설정 -->
-		<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager">
-			<property name="dataSource" ref="dataSource" />
-		</bean>
-		
-		
-		<!-- annotation 연결  -->
-		<tx:annotation-driven/>
-			
-
+	<bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+	<property name="defaultEncoding" value="UTF-8"/>
+	<property name="maxUploadSize" value="10485760" />
+	<property name="maxUploadSizePerFile" value="10475760" />	
+	</bean>
+	
+	<!-- transaction Manager 설정 -->
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- annotation 연결  -->
+	<tx:annotation-driven/>
 		
 </beans>
