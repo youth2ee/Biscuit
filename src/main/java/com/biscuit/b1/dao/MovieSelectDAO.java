@@ -31,6 +31,13 @@ public class MovieSelectDAO {
 		return sqlSession.selectList(NAMESPACE+"movieCinemaSelect", cinemaVO);
 	}
 	
+	public int timeInfoInsert(CinemaVO cinemaVO) {
+		return sqlSession.insert(NAMESPACE+"timeInfoInsert", cinemaVO);
+	}
+	
+	public int timeSelect(int num) {
+		return sqlSession.selectOne(NAMESPACE+"timeSelect", num);
+	}
 	
 	
 }

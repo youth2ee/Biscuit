@@ -12,14 +12,26 @@
   
   
   	<select id="movieLocSelect" resultType="CinemaVO">
-  		select DISTINCT cinema_loc
+  		select DISTINCT cinema_loc, cinema_locnum
   		from cinema
+		order by cinema_locnum asc
   	</select>
   	
   	<select id="movieCinemaSelect" parameterType="CinemaVO" resultType="CinemaVO">
   	    select cinema_num, cinema_name
         from cinema
         where cinema_loc = #{cinema_loc}
+  	</select>
+  	
+  	<insert id="timeInfoInsert" parameterType="TimeInfoVO">
+  		INSERT INTO timeinfo 
+  		VALUES (timeinfo_seq.nextval, #{theater_num}, #{movieInfo_num}, #{timeInfo_date}, #{timeInfo_start}, #{timeInfo_end});
+  	</insert>
+  
+  	<select id="timeSelect" parameterType="Integer" resultType="Integer">
+  		select movieinfo_time
+		from movieinfo
+		where movieinfo_num = #{num}
   	</select>
   	
   	

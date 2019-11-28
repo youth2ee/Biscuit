@@ -8,6 +8,7 @@
   		<typeAlias type="java.lang.Integer" alias="Integer"/>
 		<typeAlias type="java.lang.String" alias="String"/>
   		<typeAlias type="com.biscuit.b1.model.MovieInfoVO" alias="MovieInfoVO"/>
+  		<typeAlias type="com.biscuit.b1.model.TimeInfoVO" alias="TimeInfoVO"/>
   		<typeAlias type="com.biscuit.b1.model.CinemaVO" alias="CinemaVO"/>
   	</typeAliases>
   </configuration>

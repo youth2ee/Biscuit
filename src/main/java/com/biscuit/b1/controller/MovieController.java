@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.CinemaVO;
@@ -35,7 +36,23 @@ public class MovieController {
 		mv.setViewName("movie/movieSelect");
 		
 		return mv;
+	}
+	
+	@GetMapping("locSelect")
+	public ModelAndView locSelect(CinemaVO cinemaVO) throws Exception {
+		System.out.println(cinemaVO.getCinema_loc());
+		List<CinemaVO> ar = movieSelectService.movieCinemaSelect(cinemaVO);
 		
+		
+		for(CinemaVO a : ar) {
+			System.out.println(a.getCinema_name());
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("common/cineme_result");
+		mv.addObject("result", ar);
+		
+		return mv;
 	}
 	
 
