@@ -51,6 +51,9 @@
 	#officeCont li {
 		margin: 10px 0;
 	}
+	#officeCont span {
+		margin-right: 10px;
+	}
 </style>
 </head>
 <body>
@@ -85,7 +88,7 @@
 					</ol>
 				</div>
 			</div>
-			<!-- ------------------------------------------ -->
+			<!-- ----------------boxOffice--------------- -->
 			<!-- carousel -->
 			<div class="owl-carousel">
 			  <div> Your Content </div>
@@ -131,7 +134,7 @@ $(document).ready(function(){
 		},
 		success: function(data) {
 			$.each(data.boxOfficeResult.dailyBoxOfficeList, function(i, m) {
-				$('#Rank_'+i+' a').html("<h3>"+(i+1)+". "+m.movieNm+"</h3>");
+				$('#Rank_'+i+' a').append("<span class=\"office_cell\">"+m.rank+"</span><span class=\"office_cell\">"+m.rankOldAndNew+"</span><span class=\"office_cell\">"+m.rankInten+"</span><span class=\"office_cell\">"+m.movieNm+"</span>");
 			});
 		}
 	});
