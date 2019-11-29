@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	결제 실패
 </body>
 </html>

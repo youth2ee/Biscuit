@@ -1,15 +1,15 @@
 package com.biscuit.b1.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.PayInfoVO;
 import com.biscuit.b1.service.PayService;
 
 @Controller
@@ -22,25 +22,23 @@ public class PayController {
 	public void kakaoLogin() throws Exception {
 	}
 
-	@GetMapping(value = "payTest")
-	public void payTest3() throws Exception {
-	}
-	@PostMapping(value = "payTest")
-	@ResponseBody
-	public void payTest4() throws Exception {
-	}
-	@GetMapping(value = "payTest2")
+	@GetMapping(value = "kakaoPay")
 	public void payTest() throws Exception {
 	}
 
-	@PostMapping(value = "payTest2")
-	public void payTest2() throws Exception {
-		payService.KakaoPayTest();
-		//return "redirect:" + payService.kakaoPayTest();
+	@PostMapping(value = "kakaoPay")
+	public String payTest2() throws Exception {
+		return "redirect:" + payService.KakaoPayReady();
 	}
+
 	@GetMapping("/kakaoPaySuccess")
-    public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) throws Exception {
-		payService.KakaoPayTest2(pg_token);
-    }
-    
+	public ModelAndView kakaoPaySuccess(HttpServletRequest request) throws Exception {
+		String pg_token = request.getParameter("pg_token");
+		PayInfoVO payInfoVO = new PayInfoVO();
+		ModelAndView mv = new ModelAndView();
+		payInfoVO = payService.KakaoPayApprove(pg_token);
+		mv.addObject("pay", payInfoVO);
+		return mv;
+	}
+
 }
