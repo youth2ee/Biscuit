@@ -5,56 +5,14 @@
 <head>
 	<title>Home</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 	
-
+<!-- 
 <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
 <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
 <script src="jquery.min.js"></script>
 <script src="owlcarousel/owl.carousel.min.js"></script>
-
-<style type="text/css">
-	*{
-		margin: 0;
-		padding: 0;
-	}
-	ol, ul, li {
-		list-style: none;
-	}
-	a{
-		color: black;
-		text-decoration: none;
-	}
-	#cgvwrap{
-		background-color: #fdfcf0;
-		width: 100%;
-		height: 2000px;
-	}
-	#boxOffice{
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 315px;
-		/* height: 645px; */
-		overflow: hidden;
-		background-color: #fff;
-	}
-	#officeTop{
-		height: 153px;
-   	 	text-align: center;
-    	background: #2a2e33;
-	}
-	#officeTop h2 {
-		padding: 50px 0 27px;
-	}
-	#officeCont {
-		padding: 20px 30px;
-	}
-	#officeCont li {
-		margin: 10px 0;
-	}
-	#officeCont span {
-		margin-right: 10px;
-	}
-</style>
+ -->
+<link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
 </head>
 <body>
 	<div id="cgvWrap">
@@ -90,7 +48,7 @@
 			</div>
 			<!-- ----------------boxOffice--------------- -->
 			<!-- carousel -->
-			<div class="owl-carousel">
+			<!-- <div class="owl-carousel">
 			  <div> Your Content </div>
 			  <div> Your Content </div>
 			  <div> Your Content </div>
@@ -98,7 +56,7 @@
 			  <div> Your Content </div>
 			  <div> Your Content </div>
 			  <div> Your Content </div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
@@ -129,7 +87,7 @@ $(document).ready(function(){
 		url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
 		async: false,
 		data: {
-			key: "ff19a9e93f90f4687f3c084727cb65bc",
+			key: "${key}",
 			targetDt: yesterDate
 		},
 		success: function(data) {

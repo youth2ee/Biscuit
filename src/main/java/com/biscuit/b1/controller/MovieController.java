@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,9 @@ public class MovieController {
 	
 	@Inject
 	private MovieSelectService movieSelectService;
+	
+	@Value("${movie.key}")
+	private String key;
 	
 	@GetMapping("movieSelect")
 	public ModelAndView movieSelect(CinemaVO cinemaVO) throws Exception {
