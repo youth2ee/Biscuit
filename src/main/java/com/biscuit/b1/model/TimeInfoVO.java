@@ -9,6 +9,16 @@ public class TimeInfoVO {
 	private String timeInfo_start;
 	private String timeInfo_end;
 	
+	private int cinema_num;
+	
+	
+	
+	public int getCinema_num() {
+		return cinema_num;
+	}
+	public void setCinema_num(int cinema_num) {
+		this.cinema_num = cinema_num;
+	}
 	public int getTimeInfo_num() {
 		return timeInfo_num;
 	}

@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:forEach items="${result}" var="cinema"> 
-<li class="cinemaSelect" title="${cinema.cinema_num}" >${cinema.cinema_name}</li>
+<c:forEach items="${result}" var="date"> 
+<li class="dateSelect">${date.timeInfo_date}</li>
 </c:forEach>
-
-

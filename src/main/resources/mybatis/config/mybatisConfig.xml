@@ -10,5 +10,6 @@
   		<typeAlias type="com.biscuit.b1.model.MovieInfoVO" alias="MovieInfoVO"/>
   		<typeAlias type="com.biscuit.b1.model.TimeInfoVO" alias="TimeInfoVO"/>
   		<typeAlias type="com.biscuit.b1.model.CinemaVO" alias="CinemaVO"/>
+  		<typeAlias type="com.biscuit.b1.model.TheaterVO" alias="TheaterVO"/>
   	</typeAliases>
   </configuration>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
+import com.biscuit.b1.model.TheaterVO;
 import com.biscuit.b1.model.TimeInfoVO;
 
 @Repository
@@ -32,6 +33,21 @@ public class MovieSelectDAO {
 		return sqlSession.selectList(NAMESPACE+"movieCinemaSelect", cinemaVO);
 	}
 	
+	//날짜
+	public List<TimeInfoVO> dateSelect(TheaterVO theaterVO) {
+		return sqlSession.selectList(NAMESPACE+"dateSelect", theaterVO);
+	}
+	
+	public List<TimeInfoVO> movieDateSelect(TheaterVO theaterVO) {
+		return sqlSession.selectList(NAMESPACE+"movieDateSelect",theaterVO);
+	}
+	
+	public List<TimeInfoVO> movieTimeSelect(TheaterVO theaterVO) {
+		return sqlSession.selectList(NAMESPACE+"movieTimeSelect", theaterVO);
+	}
+	
+	
+	//db에 영화관 넣기
 	public int timeInfoInsert(TimeInfoVO timeInfoVO) {
 		return sqlSession.insert(NAMESPACE+"timeInfoInsert", timeInfoVO);
 	}

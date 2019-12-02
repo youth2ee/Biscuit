@@ -12,6 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
+import com.biscuit.b1.model.TheaterVO;
+import com.biscuit.b1.model.TimeInfoVO;
 import com.biscuit.b1.service.MovieSelectService;
 
 @Controller
@@ -22,12 +24,13 @@ public class MovieController {
 	private MovieSelectService movieSelectService;
 	
 	@GetMapping("movieSelect")
-	public ModelAndView movieSelect(CinemaVO cinemaVO) throws Exception {
+	public ModelAndView movieSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO) throws Exception {
 		List<MovieInfoVO> movieTitle = movieSelectService.movieTitleSelect();
 		List<CinemaVO> movieLoc = movieSelectService.movieLocSelect();
 		cinemaVO.setCinema_loc("서울");
 		List<CinemaVO> movieCinema = movieSelectService.movieCinemaSelect(cinemaVO);
-	
+		
+
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("movieTitle", movieTitle);
 		mv.addObject("movieLoc", movieLoc);
@@ -39,21 +42,67 @@ public class MovieController {
 	}
 	
 	@GetMapping("locSelect")
-	public ModelAndView locSelect(CinemaVO cinemaVO) throws Exception {
+	@ResponseBody
+	public ModelAndView locSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO) throws Exception {
+		//영화선택
 		System.out.println(cinemaVO.getCinema_loc());
 		List<CinemaVO> ar = movieSelectService.movieCinemaSelect(cinemaVO);
-		
 		
 		for(CinemaVO a : ar) {
 			System.out.println(a.getCinema_name());
 		}
 		
-		ModelAndView mv = new ModelAndView();
+		ModelAndView mv = new ModelAndView(); 
 		mv.setViewName("common/cineme_result");
 		mv.addObject("result", ar);
 		
 		return mv;
 	}
 	
+	
+	@GetMapping("dateSelect")
+	public ModelAndView dateSelect(TheaterVO theaterVO) throws Exception {
+		//날짜선택
+		System.out.println(theaterVO.getCinema_num());
+		
+		List<TimeInfoVO> movieDateSelect = movieSelectService.movieDateSelect(theaterVO);
+		
+		for(TimeInfoVO a : movieDateSelect){
+			System.out.println(a.getTimeInfo_date().substring(0, 10));
+			a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
+		}
+		
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("common/date_result");
+		mv.addObject("result", movieDateSelect);
+		
+		return mv;
+	}
+	
+	@GetMapping("timeSelect")
+	public ModelAndView timeSelect(TheaterVO theaterVO) throws Exception {
+		//시간선택
+		System.out.println(theaterVO.getCinema_num());
+		System.out.println(theaterVO.getMovieInfo_num());
+		System.out.println(theaterVO.getTheater_num());
+		
+		
+		List<TimeInfoVO> dateSelect =  movieSelectService.movieTimeSelect(theaterVO);
+		
+		for(TimeInfoVO a : dateSelect){
+			System.out.println("수정"+a.getTimeInfo_date());
+			System.out.println("수정"+a.getTimeInfo_start());
+			
+			
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("common/time_result");
+		mv.addObject("result", dateSelect);
+		
+		return mv;
+		
+	}
 
 }

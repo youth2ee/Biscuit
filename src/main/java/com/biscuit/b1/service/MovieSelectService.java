@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.biscuit.b1.dao.MovieSelectDAO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
+import com.biscuit.b1.model.TheaterVO;
+import com.biscuit.b1.model.TimeInfoVO;
 
 @Service
 public class MovieSelectService {
@@ -30,4 +32,19 @@ public class MovieSelectService {
 		return movieSelectDAO.movieCinemaSelect(cinemaVO);
 	}
 	
+	
+	//날짜
+	public List<TimeInfoVO> dateSelect(TheaterVO theaterVO) {
+		return movieSelectDAO.dateSelect(theaterVO);
+	}
+	
+	
+	public List<TimeInfoVO> movieDateSelect(TheaterVO theaterVO) {
+		return movieSelectDAO.movieDateSelect(theaterVO);
+	}
+	
+	
+	public List<TimeInfoVO> movieTimeSelect(TheaterVO theaterVO) {
+		return movieSelectDAO.movieTimeSelect(theaterVO);
+	}
 }
