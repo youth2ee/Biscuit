@@ -6,6 +6,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../layout/bootStrap.jsp" />
+<style type="text/css">
+
+a{
+color: black;
+text-decoration: none;
+}
+
+
+a:hover{
+color: red;
+text-decoration: none;
+}
+
+
+
+
+
+</style>
+
+
 </head>
 <body>
 
@@ -13,16 +33,16 @@
 
 <!-- 영화제목 선택 -->
 <div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none;">
+<ul style="list-style: none; cursor: pointer;">
 <c:forEach items="${movieTitle}" var="title">
-<li class="movietitle" title="${title.movieInfo_num}">${title.movieInfo_title}</li>
+<li class="movietitle" title="${title.movieInfo_num}"><a class="amt">${title.movieInfo_title}</a></li>
 </c:forEach>
 </ul>
 </div>
 
 <!-- 영화 지역선택 -->
 <div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none;">
+<ul style="list-style: none; cursor: pointer;">
 <c:forEach items="${movieLoc}" var="loc">
 <li class="loc">${loc.cinema_loc}</li>
 </c:forEach>
@@ -31,18 +51,18 @@
 
 <!-- 영화 지역에 따른 영화관 선택 -->
 <div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none;" id="cinemaNameSelect">
+<ul style="list-style: none; cursor: pointer;" id="cinemaNameSelect">
 </ul>
 </div> 
 
 <!-- 날짜선택  -->
 <div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none;" id="movieDateSelect"></ul>
+<ul style="list-style: none; cursor: pointer;" id="movieDateSelect"></ul>
 </div> 
 
 <!-- 시간선택  -->
 <div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none;" id="movieTimeSelect"></ul>
+<ul style="list-style: none; cursor: pointer;" id="movieTimeSelect"></ul>
 </div> 
 
 
@@ -62,12 +82,17 @@
  
  	/* 클릭한 영화명 기억하기 */
  	$(document).on("click", ".movietitle", function() {
-		mnum = $(this).attr("title");
+ 		$(this).attr("color","yellow");
+ 		
+ 		mnum = $(this).attr("title");
 		mnum = mnum.trim();
 		
 		mname = $(this).text();
 		mname = mname.trim();
 	});
+ 	
+ 	
+ 	
  
  	/* 영화 지역을 클릭하면 영화관선택하기 */
  	$(document).on("click",".loc",function(){
