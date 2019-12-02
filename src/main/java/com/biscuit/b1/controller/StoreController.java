@@ -15,6 +15,11 @@ public class StoreController {
 	@Inject
 	private StoreService storeService;
 	
+	@GetMapping("storeWrite")
+	public void storeWrite() throws Exception {
+		
+	}
+	
 	@GetMapping("storeList")
 	public void storeList() throws Exception {
 		

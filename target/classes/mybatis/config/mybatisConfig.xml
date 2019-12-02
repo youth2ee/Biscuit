@@ -9,5 +9,6 @@
 		<typeAlias type="java.lang.String" alias="String"/>
   		<typeAlias type="com.biscuit.b1.model.MovieInfoVO" alias="MovieInfoVO"/>
   		<typeAlias type="com.biscuit.b1.model.CinemaVO" alias="CinemaVO"/>
+  		<typeAlias type="com.biscuit.b1.model.StoreVO" alias="StoreVO"/>
   	</typeAliases>
   </configuration>

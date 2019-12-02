@@ -43,7 +43,25 @@
 					</div>
 					<div class="bg_white"></div>
 					<!-- 품목 -->
-					<div class="tab_content"></div>
+					<div class="tab_content">
+						<div id="cgv_tab1" class="con menuTab menuTab2" style="display:block;">
+							<ul class="product_molist">
+								<li>
+									<span class="molthum">
+										<a><img alt="" src=""></a>
+									</span>
+									<dl class="listinfo">
+										<dt>일반 관람권</dt>
+										<dd>
+											<strong>10,000
+												<span>원</span>
+											</strong>
+										</dd>
+									</dl>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
