@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="payTest2" method="post">
+	<form action="kakaoPay" method="post">
 		<button>결제</button>
 	</form>
 </body>
