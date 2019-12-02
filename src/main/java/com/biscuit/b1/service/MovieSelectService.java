@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.biscuit.b1.dao.MovieSelectDAO;
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TheaterVO;
@@ -32,6 +33,10 @@ public class MovieSelectService {
 		return movieSelectDAO.movieCinemaSelect(cinemaVO);
 	}
 	
+	//영화에 따른 관선택
+	public List<ChoiceVO> movieChoice(MovieInfoVO movieInfoVO) {
+		return movieSelectDAO.movieChoice(movieInfoVO);
+	}
 	
 	//날짜
 	public List<TimeInfoVO> dateSelect(TheaterVO theaterVO) {

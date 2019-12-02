@@ -1,5 +1,6 @@
 package com.biscuit.b1.dao;
 
+import java.awt.Choice;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -7,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TheaterVO;
@@ -33,6 +35,12 @@ public class MovieSelectDAO {
 		return sqlSession.selectList(NAMESPACE+"movieCinemaSelect", cinemaVO);
 	}
 	
+	//선택한 영화에 따른 영화관
+	public List<ChoiceVO> movieChoice(MovieInfoVO movieInfoVO) {
+		return sqlSession.selectList(NAMESPACE, movieInfoVO);
+	}
+	
+	
 	//날짜
 	public List<TimeInfoVO> dateSelect(TheaterVO theaterVO) {
 		return sqlSession.selectList(NAMESPACE+"dateSelect", theaterVO);
@@ -45,6 +53,7 @@ public class MovieSelectDAO {
 	public List<TimeInfoVO> movieTimeSelect(TheaterVO theaterVO) {
 		return sqlSession.selectList(NAMESPACE+"movieTimeSelect", theaterVO);
 	}
+	
 	
 	
 	//db에 영화관 넣기

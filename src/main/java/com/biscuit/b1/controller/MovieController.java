@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TheaterVO;
@@ -42,8 +43,8 @@ public class MovieController {
 	}
 	
 	@GetMapping("locSelect")
-	@ResponseBody
-	public ModelAndView locSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO) throws Exception {
+	//@ResponseBody
+	public ModelAndView locSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO, MovieInfoVO movieInfoVO) throws Exception {
 		//영화선택
 		System.out.println(cinemaVO.getCinema_loc());
 		List<CinemaVO> ar = movieSelectService.movieCinemaSelect(cinemaVO);
@@ -52,9 +53,21 @@ public class MovieController {
 			System.out.println(a.getCinema_name());
 		}
 		
+		//선택한 영화에 따른 영화관
+		movieInfoVO.setMovieInfo_num(1);
+		List<ChoiceVO> cr = movieSelectService.movieChoice(movieInfoVO);
+		
+		for(ChoiceVO c : cr) {
+			System.out.println(c.getMovieInfo_num());
+			System.out.println(c.getCinema_num());
+			System.out.println(c.getTheater_num());			
+		}
+		
+		
 		ModelAndView mv = new ModelAndView(); 
 		mv.setViewName("common/cineme_result");
 		mv.addObject("result", ar);
+		mv.addObject("selectResult", cr);
 		
 		return mv;
 	}
