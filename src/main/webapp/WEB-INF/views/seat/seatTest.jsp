@@ -89,7 +89,7 @@
 			
 			peopleCount = adultCount + kidCount; // 관객 수 계산
 			
-			for (var i = 1; i < 51; i++) {
+			for (var i = 1; i < $("input:checkbox[name='seat']").length + 1; i++) {
 				if ($("input:checkbox[id=seat"+i+"]").is(":checked") == true) {  
 					seatNum[seatCount] = i; // 선택된 좌석의 번호를 넣음  
 					seatCount++;// 좌석이 선택 되어 있을 경우 seatCount 수 증가
