@@ -7,9 +7,18 @@ public class TheaterVO {
 	private String theater_name;
 	
 	private int movieInfo_num;
+	private String timeInfo_date;
 	
 	
 	
+	
+	
+	public String getTimeInfo_date() {
+		return timeInfo_date;
+	}
+	public void setTimeInfo_date(String timeInfo_date) {
+		this.timeInfo_date = timeInfo_date;
+	}
 	public int getMovieInfo_num() {
 		return movieInfo_num;
 	}

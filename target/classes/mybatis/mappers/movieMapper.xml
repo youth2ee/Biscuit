@@ -47,16 +47,13 @@
 	from theater A full outer Join timeinfo B
 	on A.theater_num = B.theater_num
 	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} 
+	order by B.timeinfo_start asc
   	</select>
   	
   	
   	
   	
-  	
-  	
-  	
-  	
-  	
+
   	
   	
   	<!-- DATABASE에 값 넣기 -->

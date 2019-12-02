@@ -91,13 +91,9 @@
  	$(document).on("click",".cinemaSelect",function(){
   		cnum = $(this).attr("title");
   		cname = $(this).text();
- 		
   		cnum = cnum.trim();
  		cname = cname.trim();
  		
- 		alert(cnum);
- 		alert(cname);
-
  		$.ajax({
 			data : {
 				cinema_num:cnum,
@@ -117,12 +113,6 @@
   		var cdate = $(this).text();
  		cdate = cdate.trim();
  		
- 		alert(cdate);
-		alert(cnum);
-		alert(cname);
-		alert(mname);
- 		
- 		
   		$.ajax({
 			data : {
 				timeInfo_date:cdate,
@@ -137,7 +127,6 @@
 				$('#movieTimeSelect').html(data);
 			}
 		}); 
- 		
  		});
  	
  	
