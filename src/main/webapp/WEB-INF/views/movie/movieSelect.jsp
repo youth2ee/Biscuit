@@ -7,39 +7,29 @@
 <title>Insert title here</title>
 <c:import url="../layout/bootStrap.jsp" />
 <style type="text/css">
-
-
 /* a{
 color: black;
 text-decoration: none;
 } 
-
 a:link{
 text-decoration: none;
 }
-
 a:visited{
 font-size: 20px;
 text-decoration: none;
 }
-
 a:hover{
 color: red;
 font-size:20px;
 text-decoration: none;
 }
-
 a:active {
 color: red;
 text-decoration: none;
 } */
-
 .act{
 font-size: 30px;
 }
-
-
-
 </style>
 
 
@@ -124,11 +114,9 @@ font-size: 30px;
 		console.log(mname);
 	});
  	
-
  	/* 영화 지역을 클릭하면 영화관선택하기 */
  	$(document).on("click",".loc",function(){
  		$(this).addClass('act').siblings().removeClass('act');
-
  		if(time.html().trim() != ""){
  			date.empty();
  			time.empty();
@@ -136,7 +124,6 @@ font-size: 30px;
  	
  		loc = $(this).text();
  		loc = loc.trim();
-
  		$.ajax({
 			data : {
 				cinema_loc:loc,
@@ -151,12 +138,10 @@ font-size: 30px;
 		});
  		});
  	
-
  	
  	/* 영화관을 선택하면 날짜가 뜹니다. */
  	$(document).on("click",".cinemaSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
-
  		if(time.html().trim() != ""){
  			date.empty();
  			time.empty();

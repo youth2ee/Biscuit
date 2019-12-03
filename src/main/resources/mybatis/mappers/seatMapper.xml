@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="seatMapper">
+  
+  <select id="selectCinema" resultType="java.lang.String">
+  	select cinema_loc from cinema where cinema_num = 1
+  </select>
+  
+  
+  
+  </mapper>
