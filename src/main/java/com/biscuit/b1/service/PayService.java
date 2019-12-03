@@ -55,7 +55,7 @@ public class PayService {
 		return null;
 	}
 
-	public String KakaoPayReady() {
+	public String KakaoPayReady(String total_amount) {
 
 		RestTemplate restTemplate = new RestTemplate();
 
@@ -74,7 +74,7 @@ public class PayService {
 		map.add("partner_user_id", partner_user_id);
 		map.add("item_name", "테스트"); // 상품명
 		map.add("quantity", "1"); // 수량
-		map.add("total_amount", "300"); // 금액
+		map.add("total_amount", total_amount); // 금액
 		map.add("tax_free_amount", "0"); // 세금
 		map.add("approval_url", "http://localhost/b1/pay/kakaoPaySuccess");
 		map.add("cancel_url", "http://localhost/b1/pay/kakaoPayCancel");

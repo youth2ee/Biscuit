@@ -27,8 +27,9 @@ public class PayController {
 	}
 
 	@PostMapping(value = "kakaoPay")
-	public String payTest2() throws Exception {
-		return "redirect:" + payService.KakaoPayReady();
+	public String payTest2(HttpServletRequest request) throws Exception {
+		String total_amount = request.getParameter("price");
+		return "redirect:" + payService.KakaoPayReady(total_amount);
 	}
 
 	@GetMapping("/kakaoPaySuccess")

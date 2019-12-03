@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
+ input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -19,26 +19,24 @@ input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 	clip: rect(0, 0, 0, 0);
 	border: 0
 }
+td {
+	width: 20px;
+	height: 20px;
+}
 
 .bookable { /*예매가능*/
-	width: 25px;
-	height: 25px;
 	text-align: center;
 	background-color: salmon;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .booking { /*선택한자리*/
-	width: 25px;
-	height: 25px;
 	text-align: center;
 	background-color: yellow;
 	font-size: 14px;
 }
 
-.booked { /*예매불가*/
-	width: 25px;
-	height: 25px;
+.booked { /*좌석 선택 완료*/
 	text-align: center;
 	background-color: aqua;
 	font-size: 14px;
@@ -47,51 +45,79 @@ input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 .over {
 	background: blue;
 }
+
+#screen {
+	display: block;
+	text-align: center;
+	margin-left: 24px;
+	background-color: silver;
+}
+#seatSelect{
+	display: inline-block; 
+
+}
 </style>
 </head>
 <body>
+<form action="../pay/kakaoPay" method="get">
 	<h2>Test</h2>
 	<div id="Select">
 		<h3>성인 관람객 수 선택</h3>
-		<c:forEach begin="1" end="5" var="i">
+		<c:forEach begin="0" end="5" var="i">
 			<label for="adult${i}"><input type="radio" name="adult"
 				id="adult${i}" onchange="setDisplay()" value="${i}">${i}</label>
 		</c:forEach>
 		<h3>미성년자 관람객 수 선택</h3>
-		<c:forEach begin="1" end="5" var="i">
+		<c:forEach begin="0" end="5" var="i">
 			<label for="kid${i}"><input type="radio" name="kid"
 				id="kid${i}" onchange="setDisplay()" value="${i}">${i}</label>
 		</c:forEach>
 	</div>
 	<input type="text" id="count" name="peopleCount">
 	<input type="text" id="seatCount">
+	<input type="text" id="price" name="price">
 	<div id="seatSelect">
 		<h3>좌석 선택</h3>
-		<table style="border: 1px;">
-			<c:forEach begin="1" end="6" var="i">
+		<strong id = "screen">Screen</strong>
+		<table>
+			<c:forEach begin="1" end="13" var="i">
 				<tr>
 					<td><c:if test="${i eq 1}">
-							<c:set value="A" var="test"></c:set>
+							<c:set value="A" var="seatInit"></c:set>
 						</c:if> <c:if test="${i eq 2}">
-							<c:set value="B" var="test"></c:set>
+							<c:set value="B" var="seatInit"></c:set>
 						</c:if> <c:if test="${i eq 3}">
-							<c:set value="C" var="test"></c:set>
+							<c:set value="C" var="seatInit"></c:set>
 						</c:if> <c:if test="${i eq 4}">
-							<c:set value="D" var="test"></c:set>
+							<c:set value="D" var="seatInit"></c:set>
 						</c:if> <c:if test="${i eq 5}">
-							<c:set value="E" var="test"></c:set>
+							<c:set value="E" var="seatInit"></c:set>
 						</c:if> <c:if test="${i eq 6}">
-							<c:set value="F" var="test"></c:set>
-						</c:if> ${test}</td>
+							<c:set value="F" var="seatInit"></c:set>
+						</c:if><c:if test="${i eq 7}">
+							<c:set value="G" var="seatInit"></c:set>
+						</c:if><c:if test="${i eq 8}">
+							<c:set value="H" var="seatInit"></c:set>
+						</c:if><c:if test="${i eq 9}">
+							<c:set value="I" var="seatInit"></c:set>
+						</c:if><c:if test="${i eq 10}">
+							<c:set value="J" var="seatInit"></c:set>
+						</c:if><c:if test="${i eq 11}">
+							<c:set value="K" var="seatInit"></c:set>
+						</c:if><c:if test="${i eq 12}">
+							<c:set value="L" var="seatInit"></c:set>
+						</c:if><c:if test="${i eq 13}">
+							<c:set value="M" var="seatInit"></c:set>
+						</c:if>${seatInit}</td>
 					<c:forEach begin="1" end="15" var="j">
 						<td class="bookable"><label for="seat${(i-1)*15 + j}"><input
-								type="checkBox" class="seat" name="${test}${j}"
-								id="seat${(i-1)*15 + j}" value="${test}${j}">${j}</label></td>
-						<c:if test="${j eq 5}">
-							<td><p>test</p></td>
+								type="checkBox" class="seat" name="${seatInit}${j}"
+								id="seat${(i-1)*15 + j}" value="${seatInit}${j}">${j}</label></td>
+						 <c:if test="${j eq 5}">
+							<td> </td>
 						</c:if>
 						<c:if test="${j eq 10}">
-							<td><p>test</p></td>
+							<td> </td>
 						</c:if>
 					</c:forEach>
 				</tr>
@@ -99,9 +125,12 @@ input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 		</table>
 	</div>
 	<button id="btn">check</button>
+	</form>
 	<script type="text/javascript">
 		var seatCount = 0; // 선택 좌석 수
 		$("#seatSelect").hide();
+		
+		
 		$(function() { // 구매가능한 좌석만 호버
 			$('td').mouseover(function() {
 				if (this.className == 'bookable')
@@ -135,27 +164,28 @@ input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 							} else { // 체크했을경우
 								$(this).parents("td").attr('class', 'booking');
 							}
-							if ($("input:checkbox[class='seat']:checked").length == countAdult
-									+ countKid) {
-								$("input:checkbox[class='seat']").not(
-										":checked").parents("td").attr('class',
-										'booked');
+							if ($("input:checkbox[class='seat']:checked").length == countAdult+countKid) {
+								$("input:checkbox[class='seat']").not(":checked").parents("td").attr('class','booked');
 							} else if ($("input:checkbox[class='seat']:checked").length < countAdult
 									+ countKid) {
 								$("input:checkbox[class='seat']").not(
 										":checked").parents("td").attr('class',
 										'bookable');
-							} else if ($("input:checkbox[class='seat']:checked").length > countAdult
+							} else if (countAdult+countKid != 0 && $("input:checkbox[class='seat']:checked").length > countAdult
 									+ countKid) {
 								// 인원수 보다 많은 좌석 선택시 좌석 취소 요청
 								alert('이미 선택하신 좌석을 취소하고 선택해주십시오.');
 								$(this).parents("td").attr('class', 'booked');
 								this.checked = false;
+							} else if (countAdult+countKid == 0){
+								alert('관객 수를 선택 하세요.');
+								$(this).parents("td").attr('class', 'bookable');
+								this.checked = false;
 							}
 							$("#seatCount").val($("input:checkbox[class='seat']:checked").length);
 						});
 
-		function setDisplay() {
+		function setDisplay() { // 인원 수 변경시
 			if ($('input:radio[name=adult]').is(':checked')
 					|| $('input:radio[name=kid]').is(':checked')) {
 				$("#seatSelect").show();
@@ -169,11 +199,14 @@ input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 				countKid = 0;
 			countKid = Number(countKid);
 			$("#count").val(countAdult + countKid);
-		}
+			if($("input:checkbox[class='seat']:checked").is(":checked") == true){ // 체크한 좌석 모두 해제
+				$("input:checkbox[class='seat']:checked").parents("td").attr('class','bookable');
+				$(".booked").attr('class','bookable');
+				$("input:checkbox[class='seat']:checked").prop("checked",false);
+			}
+		}	
 
-		$("#btn")
-				.click(
-						function() {
+		$("#btn").click(function() {
 							var adultCount = 0; // 성인 관객 수
 							var kidCount = 0; // 아이 관객 수
 							var peopleCount = 0 // 성인 + 아이 관객 수
@@ -213,6 +246,7 @@ input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 											'disabled', true);
 								}
 								var pay = kidCount * 8000 + adultCount * 10000;
+								$("#price").val(pay);
 								alert("금액 : " + pay + "원");
 								alert("좌석 선택 완료");
 
