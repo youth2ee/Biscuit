@@ -5,41 +5,36 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../layout/bootStrap.jsp" />
-<style type="text/css">
-/* a{
-color: black;
-text-decoration: none;
-} 
-a:link{
-text-decoration: none;
-}
-a:visited{
-font-size: 20px;
-text-decoration: none;
-}
-a:hover{
-color: red;
-font-size:20px;
-text-decoration: none;
-}
-a:active {
-color: red;
-text-decoration: none;
-} */
-.act{
-font-size: 30px;
-}
-</style>
+<c:import url="../layout/jquery.jsp" />
 
-
+<link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/movie/movieSelect.css" rel="stylesheet">
 </head>
 <body>
+<div id="total">
 
+<!-- HEADER -->
+<header>
+<div id="head1"><img alt="" src="../resources/images/header/CGV_BI4.png"></div>
+<div id="head2">
+<img alt="" src="../resources/images/home/1_2.png">
+<img alt="" src="../resources/images/home/2_2.png">
+<img alt="" src="../resources/images/home/3_2.png">
+<img alt="" src="../resources/images/home/4_2.png">
+</div>
+
+</header>
+
+<!-- SECTION -->
+<section>
+<div id="sec">
+
+<div id="secTitle">
 <h1>Movie Select</h1>
+</div>
 
-<!-- 영화제목 선택 -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
+ <!-- 영화제목 선택 -->
+<div class="s">
 <ul style="list-style: none; cursor: pointer;">
 <c:forEach items="${movieTitle}" var="title">
 <li class="movietitle" title="${title.movieInfo_num}">${title.movieInfo_title}</li>
@@ -48,39 +43,50 @@ font-size: 30px;
 </div>
 
 <!-- 영화 지역선택 -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;" id="theaterNameSelect">
+<div class="s">
+<ul class="sul" id="theaterNameSelect">
 <c:forEach items="${movieLoc}" var="loc">
-<li class="loc">${loc.cinema_loc}</li>
+<li class="loc" title="${loc.cinema_num}">${loc.cinema_loc}</li>
 </c:forEach>
 </ul>
 </div> 
 
 <!-- 영화 지역에 따른 영화관 선택 -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;" id="cinemaNameSelect">
+<div class="s">
+<ul class="sul" id="cinemaNameSelect">
 </ul>
 </div> 
 
 <!-- 날짜선택  -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;" id="movieDateSelect"></ul>
+<div class="s">
+<ul class="sul" id="movieDateSelect"></ul>
 </div> 
 
 <!-- 시간선택  -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;" id="movieTimeSelect"></ul>
+<div class="s">
+<ul class="sul" id="movieTimeSelect"></ul>
 </div> 
 
 
-<button>다음 (좌석선택하러가기^_^ ~)</button>
+
+
+
+
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer></footer>
+
+
+<!-- <button>다음 (좌석선택하러가기^_^ ~)</button> -->
 
 
 
 
 
 
- <script type="text/javascript">
+  <script type="text/javascript">
  	var mnum = ""; //영화번호	
  	var mname = ""; //영화이름
  	var loc = ""; //영화지역
@@ -124,6 +130,11 @@ font-size: 30px;
  	
  		loc = $(this).text();
  		loc = loc.trim();
+ 		
+ 		cnum = $(this).attr("title");
+		cnum = cnum.trim();
+ 		
+ 		
  		$.ajax({
 			data : {
 				cinema_loc:loc,
@@ -149,6 +160,7 @@ font-size: 30px;
  		
   		cnum = $(this).attr("title");
   		cname = $(this).text();
+  		
   		cnum = cnum.trim();
  		cname = cname.trim();
  		
@@ -196,6 +208,6 @@ font-size: 30px;
  	
 </script> 
 
-
+ </div><!-- total -->
 </body>
 </html>

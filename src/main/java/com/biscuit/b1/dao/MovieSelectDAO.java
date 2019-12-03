@@ -31,13 +31,13 @@ public class MovieSelectDAO {
 		return sqlSession.selectList(NAMESPACE+"movieLocSelect");
 	}
 	
-	public List<CinemaVO> movieCinemaSelect(CinemaVO cinemaVO) {
-		return sqlSession.selectList(NAMESPACE+"movieCinemaSelect", cinemaVO);
+	public List<CinemaVO> movieCinemaSelect(ChoiceVO choiceVO) {
+		return sqlSession.selectList(NAMESPACE+"movieCinemaSelect", choiceVO);
 	}
 	
 	//선택한 영화에 따른 영화관
-	public List<ChoiceVO> movieChoice(MovieInfoVO movieInfoVO) {
-		return sqlSession.selectList(NAMESPACE+"movieChoice", movieInfoVO);
+	public List<ChoiceVO> movieChoice(ChoiceVO choiceVO) {
+		return sqlSession.selectList(NAMESPACE+"movieChoice", choiceVO);
 	}
 	
 	

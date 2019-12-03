@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+#total{
+	background-color: #fcfcf0;
+}
+
+#head1 {
+	margin: 0 auto;
+	padding-top: 20px;
+	text-align:center;
+}
+
+#head2{
+	padding-top: 20px;
+	text-align: center;
+}
+
+
+
+/* section */
+#sec{
+	width: 70%;
+	height: 1000px;
+	background-color: olive;
+	margin: 0 auto;
+}
+
+#secTitle{
+	width: 300px;
+	height: 100px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.act{
+font-size: 30px;
+}
+
+.s{
+	width: 20%;
+	height: 400px;
+	overflow: auto;
+	float: left;
+}
+
+.sul{
+	cursor: pointer;
+}

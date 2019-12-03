@@ -44,10 +44,10 @@ public class MovieController {
 	
 	@GetMapping("locSelect")
 	//@ResponseBody
-	public ModelAndView locSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO, int movieInfo_num) throws Exception {
+	public ModelAndView locSelect(ChoiceVO choiceVO) throws Exception {
 		//영화선택후 지역선택값 받아서 영화관선택
-		System.out.println(cinemaVO.getCinema_loc());
-		List<CinemaVO> ar = movieSelectService.movieCinemaSelect(cinemaVO);
+		System.out.println(choiceVO.getCinema_loc());
+		List<CinemaVO> ar = movieSelectService.movieCinemaSelect(choiceVO);
 		
 		for(CinemaVO a : ar) {
 			System.out.println(a.getCinema_name());
@@ -57,13 +57,15 @@ public class MovieController {
 		
 		
 		//선택한 영화에 따른 영화관
-		MovieInfoVO movieInfoVO = new MovieInfoVO();
-		movieInfoVO.setMovieInfo_num(movieInfo_num);
-		System.out.println(movieInfo_num);
+		System.out.println("시네마넘"+choiceVO.getCinema_num());
+		System.out.println("무비인포넘"+choiceVO.getMovieInfo_num());
 		
-		List<ChoiceVO> cr = movieSelectService.movieChoice(movieInfoVO);
+		List<ChoiceVO> cr = movieSelectService.movieChoice(choiceVO);
 
- 
+		for(ChoiceVO c : cr) {
+			System.out.println(c.getCinema_num());
+		}
+		
 		ModelAndView mv = new ModelAndView(); 
 		mv.setViewName("common/cineme_result");
 		mv.addObject("result", ar);

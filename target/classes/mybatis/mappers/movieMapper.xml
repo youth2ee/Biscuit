@@ -20,18 +20,20 @@
   	
   	
   	<!-- 선택한 영화 지역 보여주기  -->
-  	<select id="movieChoice" parameterType="MovieInfoVO" resultType="ChoiceVO">
-  	select *
-	from theater A full outer join timeinfo B
- 	on A.theater_num = B.theater_num
- 	where B.movieinfo_num = #{movieInfo_num}
- 	order by A.theater_num asc, B.timeinfo_start asc
+  	<select id="movieChoice" parameterType="ChoiceVO" resultType="ChoiceVO">
+    select distinct cinema_name
+    from cinema A full outer join (
+    select * from theater B full outer join timeinfo C 
+    on B.theater_num = C.theater_num) D
+    on A.cinema_num = D.cinema_num
+    where A.cinema_loc = #{cinema_loc} and D.movieinfo_num  = #{movieinfo_num}
+    order by cinema_name asc
   	</select>
 
 
   	
   	<!-- 영화지역에 따른 관 선택 -->
-  	<select id="movieCinemaSelect" parameterType="CinemaVO" resultType="CinemaVO">
+  	<select id="movieCinemaSelect" parameterType="ChoiceVO" resultType="CinemaVO">
   	select cinema_num, cinema_name
     from cinema
     where cinema_loc = #{cinema_loc} 
