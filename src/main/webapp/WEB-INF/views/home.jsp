@@ -4,45 +4,9 @@
 <html>
 <head>
 	<title>Home</title>
-<c:import url="./layout/bootStrap.jsp" />
-<style type="text/css">
-	*{
-		margin: 0;
-		padding: 0;
-	}
-	ol, ul, li {
-		list-style: none;
-	}
-	a{
-		color: black;
-		text-decoration: none;
-	}
-	#cgvwrap{
-		background-color: #fdfcf0;
-		width: 100%;
-		height: 2000px;
-	}
-	#boxOffice{
-		/* position: absolute; */
-		top: 0;
-		left: 0;
-		width: 315px;
-		height: 645px;
-		overflow: hidden;
-		background-color: #fff;
-	}
-	#officeTop{
-		height: 153px;
-   	 	text-align: center;
-    	background: #2a2e33;
-	}
-	#officeTop h2 {
-		padding: 50px 0 27px;
-	}
-	#officeCont {
-		padding-top: 20px;
-	}
-</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 	
+<link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
 </head>
 <body>
 	<div id="cgvWrap">
@@ -56,6 +20,7 @@
 		
 		<!-- Container -->
 		<div id="container">
+			<!-- boxOffice -->
 			<div id="boxOffice">
 				<div id="officeTop">
 					<h2>
@@ -70,62 +35,65 @@
 						</li>
 					</ul>
 				</div>
+				
 				<div id="officeCont">
 					<ol class="officeRank">
-						<li class="active" id="Rank_0">
-							<a href="#"></a>
-						</li>
-						<li class="active" id="Rank_1">
-							<a href="#"></a>
-						</li>
-						<li class="active" id="Rank_2">
-							<a href="#"></a>
-						</li>
-						<li class="active" id="Rank_3">
-							<a href="#"></a>
-						</li>
-						<li class="active" id="Rank_4">
-							<a href="#"></a>
-						</li>
-						<li class="active" id="Rank_5">
-							<a href="#"></a>
-						</li>
-						<li class="active" id="Rank_6">
-							<a href="#"></a>
-						</li>
-						<li class="active" id="Rank_7">
-							<a href="#"></a>
-						</li>
-						<li class="active" id="Rank_8">
-							<a href="#"></a>
-						</li>
-						<li class="active" id="Rank_9">
-							<a href="#"></a>
-						</li>
+						<c:forEach begin="0" end="9" var="i">
+							<li class="active" id="Rank_${i}">
+								<a href="#"></a>
+							</li>
+						</c:forEach>
 					</ol>
 				</div>
 			</div>
+			<!-- ----------------boxOffice--------------- -->
+			<!-- carousel -->
+			<!-- <div class="owl-carousel">
+			  <div> Your Content </div>
+			  <div> Your Content </div>
+			  <div> Your Content </div>
+			  <div> Your Content </div>
+			  <div> Your Content </div>
+			  <div> Your Content </div>
+			  <div> Your Content </div>
+			</div> -->
 		</div>
 	</div>
 
 
 <script type="text/javascript">
-	var today = new Date().toISOString().substr(0, 10).replace('T', '');
-	today = today.replace('-', '');
-	today = today.replace('-', '');
-	//alert(today);
-	today = today.trim();
+$(document).ready(function(){
+	 $(".owl-carousel").owlCarousel();
+});
+
+	//어제 날짜 구하기
+	var nowDate = new Date();
+	var yesterDate = nowDate.getTime() - (1*24*60*60*1000);
+	nowDate.setTime(yesterDate);
+	
+	var yesterYear = nowDate.getFullYear();
+	var yesterMonth = nowDate.getMonth() +1;
+	var yesterDay = nowDate.getDate();
+	
+	if(yesterMonth < 10){ yesterMonth = "0"+ yesterMonth; }
+	if(yesterDay < 10){ yesterDay = "0" + yesterDay; }
+	
+	var yesterDate = yesterYear + "" + yesterMonth + "" + yesterDay;
+	yesterDate = yesterDate.trim();
+	//alert(yesterDate);
+	////////////////////////////////////////////////////////////////
 	
 	$.ajax({
 		type: "GET",
 		url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
+		async: false,
 		data: {
-			key: "ff19a9e93f90f4687f3c084727cb65bc",
-			targetDt: "20191126"
+			key: "${key}",
+			targetDt: yesterDate
 		},
 		success: function(data) {
 			$.each(data.boxOfficeResult.dailyBoxOfficeList, function(i, m) {
-				$('#Rank_'+i+' a').html("<h3>"+(i+1)+". "+m.movieNm+"</h3>");
+				$('#Rank_'+i+' a').append("<span class=\"office_cell\">"+m.rank+"</span><span class=\"office_cell\">"+m.rankOldAndNew+"</span><span class=\"office_cell\">"+m.rankInten+"</span><span class=\"office_cell\">"+m.movieNm+"</span>");
 			});
 		}
 	});
