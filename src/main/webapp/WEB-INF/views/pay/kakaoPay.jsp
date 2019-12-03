@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="kakaoPay" method="post">
-		<button>결제</button>
+		<button>카카오페이결제</button>
 	</form>
 </body>
 </html>

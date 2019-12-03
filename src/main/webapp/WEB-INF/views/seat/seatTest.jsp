@@ -59,7 +59,7 @@ td {
 </style>
 </head>
 <body>
-<form action="../pay/kakaoPay" method="get">
+<form action="../pay/kakaoPay" method="get" id="frm">
 	<h2>Test</h2>
 	<div id="Select">
 		<h3>성인 관람객 수 선택</h3>
@@ -124,7 +124,7 @@ td {
 			</c:forEach>
 		</table>
 	</div>
-	<button id="btn">check</button>
+	<input type="button" id="btn" value="check">
 	</form>
 	<script type="text/javascript">
 		var seatCount = 0; // 선택 좌석 수
@@ -249,6 +249,7 @@ td {
 								$("#price").val(pay);
 								alert("금액 : " + pay + "원");
 								alert("좌석 선택 완료");
+								$("#frm").submit();
 
 							} else if (seatLength > peopleCount) { // 선택 좌석 수가 관객 수 보다 많을 경우
 								alert("인원 수 보다 좌석 수가 더 많습니다.");
