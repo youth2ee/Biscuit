@@ -19,11 +19,17 @@
 	clip: rect(0, 0, 0, 0);
 	border: 0
 }
+#screen{
+	margin-bottom: 30px;
+}
 td {
 	width: 20px;
 	height: 20px;
+	box-sizing: content-box;
 }
-
+label{
+cursor:pointer;
+}
 .bookable { /*예매가능*/
 	text-align: center;
 	background-color: salmon;
@@ -33,13 +39,13 @@ td {
 .booking { /*선택한자리*/
 	text-align: center;
 	background-color: yellow;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .booked { /*좌석 선택 완료*/
 	text-align: center;
 	background-color: aqua;
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .over {
@@ -62,7 +68,8 @@ td {
 <form action="../pay/kakaoPay" method="get" id="frm">
 	<h2>Test</h2>
 	<div id="Select">
-		<h3>성인 관람객 수 선택</h3>
+		<h3>${cinema_loc} ${cinema_name}</h3>
+		<h3>성인 관람객 수 선택 </h3>
 		<c:forEach begin="0" end="5" var="i">
 			<label for="adult${i}"><input type="radio" name="adult"
 				id="adult${i}" onchange="setDisplay()" value="${i}">${i}</label>
@@ -73,6 +80,9 @@ td {
 				id="kid${i}" onchange="setDisplay()" value="${i}">${i}</label>
 		</c:forEach>
 	</div>
+	<input type="text" id="cinema_loc" name="cinema_loc" value="${cinema_loc}시">
+	<input type="text" id="cinema_name" name="cinema_name" value="${cinema_name}점">
+	<input type="text" id="seatName" name="seatName" >
 	<input type="text" id="count" name="peopleCount">
 	<input type="text" id="seatCount">
 	<input type="text" id="price" name="price">
@@ -112,11 +122,11 @@ td {
 					<c:forEach begin="1" end="15" var="j">
 						<td class="bookable"><label for="seat${(i-1)*15 + j}"><input
 								type="checkBox" class="seat" name="${seatInit}${j}"
-								id="seat${(i-1)*15 + j}" value="${seatInit}${j}">${j}</label></td>
-						 <c:if test="${j eq 5}">
+								id="seat${(i-1)*15 + j}" value="${seatInit}${j}">&nbsp${j}&nbsp</label></td>
+						 <c:if test="${j eq 4}">
 							<td> </td>
 						</c:if>
-						<c:if test="${j eq 10}">
+						<c:if test="${j eq 11}">
 							<td> </td>
 						</c:if>
 					</c:forEach>
@@ -130,7 +140,6 @@ td {
 		var seatCount = 0; // 선택 좌석 수
 		$("#seatSelect").hide();
 		
-		
 		$(function() { // 구매가능한 좌석만 호버
 			$('td').mouseover(function() {
 				if (this.className == 'bookable')
@@ -141,8 +150,13 @@ td {
 			});
 
 		});
-		$("input:checkbox[class='seat']").change(
-						function() { // 선택 좌석 취소 시 경고창
+		$("input:checkbox[class='seat']").change(function() { // 선택 좌석 취소 시 경고창
+							
+						/* 	var seat = $("#seatName").val(this.value);
+							if($("input:checkbox[class='seat']:checked").length == 1)
+								 seat = $("#seatName").val(this.value);
+							else if($("input:checkbox[class='seat']:checked").length > 1)
+								seat = seat + $("#seatName").val(","+this.value); */
 							var countAdult = $('input[name="adult"]:checked')
 									.val();
 							if (countAdult == null)
