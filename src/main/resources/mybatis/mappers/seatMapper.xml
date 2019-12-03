@@ -5,6 +5,9 @@
   
   <mapper namespace="seatMapper">
   
+  <select id="selectCinema" resultType="java.lang.String">
+  	select cinema_loc from cinema where cinema_num = 1
+  </select>
   
   
   
