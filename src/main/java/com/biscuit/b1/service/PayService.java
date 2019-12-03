@@ -58,7 +58,6 @@ public class PayService {
 	public String KakaoPayReady(String total_amount, String quatity) {
 
 		RestTemplate restTemplate = new RestTemplate();
-		System.out.println(total_amount);
 		partner_order_id = "1234";
 		partner_user_id = "test";
 
