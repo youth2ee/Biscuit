@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.StoreVO;
 import com.biscuit.b1.service.StoreService;
@@ -41,8 +42,19 @@ public class StoreController {
 /////////////////////////////////////////////
 	// 상품 등록
 	@PostMapping("storeWrite")
-	public void storeWrite(StoreVO storeVO) throws Exception {
+	public ModelAndView storeWrite(StoreVO storeVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = storeService.storeWrite(storeVO);
+		String msg = "상품 등록 실패";
 		
+		if(result>0) {
+			msg = "상품 등록 성공";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "storeList");
+		mv.setViewName("../common/common_result");
+		
+		return mv;
 	}
 	
 	// 상품 등록 폼

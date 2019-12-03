@@ -11,7 +11,7 @@
 }
 .store_top {
 	overflow: hidden;
-	background: url("../../images/store/store_top.jpg") 50%;
+	background: url("../../images/store/store_top.jpg") 50% no-repeat;
 	position: absolute;
 	width: 100%;
 	height: 420px;
@@ -53,7 +53,8 @@
 	padding: 16px 0;
 	text-align: center;
 	font-size: 14px;
-	color: #231f20;
+	color: #000;
+	/* color: #231f20; */
 	-webkit-box-sizing: border-box;
 }
 li:first-child a::before {
@@ -67,6 +68,32 @@ li a:before {
 	height: 16px;
 	background: #e5e5e5;
 }
+/* 메뉴탭  */
+.menuTab {
+	display: none;
+	background-color: lightblue;
+	color: #000;
+}
+.ul.tab_mallmenu li.current {
+	background-color: lightgreen;
+	color: #ff8080;
+}
+.menuTab.current {
+	display: block;
+}
+/************************************/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -10,6 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class FileSaver {
 
+	static final int THUMB_WIDTH = 310;
+	static final int ThUMB_HEIGHT = 250;
+	
 	public String save(String realPath, MultipartFile multipartFile) throws Exception {
 		File file = new File(realPath);
 		if(!file.exists()) {

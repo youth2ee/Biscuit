@@ -51,20 +51,22 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="store_img">상품이미지:</label>
 				<div class="col-sm-10">
-					<input type="file" class="form-control select_img" id="store_img" name="store_img">
-					
-					<script type="text/javascript">
-						$('#store_img').change(function() {
-							if(this.files && this.files[0]){
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$('.select_img img').attr("src", data.target.result).width(500);
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-					</script>
+					<input type="file" class="form-control" id="store_img" name="store_img">
 				</div>
+				<div class="select_img"><img alt="" src=""></div>	
+				
+				<script>
+					$('#store_img').change(function() {
+						if(this.files && this.files[0]){
+							var reader = new FileReader;
+							reader.onload = function(data) {
+								$('.select_img img').attr("src", data.target.result).width(500);
+							}
+							reader.readAsDataURL(this.files[0]);
+						}
+					});
+				</script>
+				
 			</div>
 			
 			<div class="form-group">
