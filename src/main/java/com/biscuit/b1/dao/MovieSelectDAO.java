@@ -37,7 +37,7 @@ public class MovieSelectDAO {
 	
 	//선택한 영화에 따른 영화관
 	public List<ChoiceVO> movieChoice(MovieInfoVO movieInfoVO) {
-		return sqlSession.selectList(NAMESPACE, movieInfoVO);
+		return sqlSession.selectList(NAMESPACE+"movieChoice", movieInfoVO);
 	}
 	
 	

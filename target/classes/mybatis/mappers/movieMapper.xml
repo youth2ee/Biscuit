@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="movieMapper">
+<mapper namespace="movieMapper">
   
   	<!-- 영화선택 -->
   	<select id="movieTitleSelect" resultType="MovieInfoVO">
@@ -18,15 +18,15 @@
 	order by cinema_locnum asc
   	</select>
   	
+  	
   	<!-- 선택한 영화 지역 보여주기  -->
   	<select id="movieChoice" parameterType="MovieInfoVO" resultType="ChoiceVO">
-  	select * 
+  	select *
 	from theater A full outer join timeinfo B
  	on A.theater_num = B.theater_num
- 	where movieinfo_num = #{movieInfo_num}
- 	order by A.theater_num asc, timeinfo_start asc
+ 	where B.movieinfo_num = #{movieInfo_num}
+ 	order by A.theater_num asc, B.timeinfo_start asc
   	</select>
-
 
 
   	
@@ -38,6 +38,7 @@
   	</select>
   	
   	<!-- 선택한 지역에 따른 관 -->
+  	
   	
   	
   	<!-- 날짜 선택하기 -->	

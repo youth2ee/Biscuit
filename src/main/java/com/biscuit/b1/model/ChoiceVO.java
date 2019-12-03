@@ -1,6 +1,6 @@
 package com.biscuit.b1.model;
 
-public class ChoiceVO{
+public class ChoiceVO {
 
 	private int theater_num;
 	private int cinema_num;
@@ -13,8 +13,12 @@ public class ChoiceVO{
 	private String timeInfo_end;
 	
 	
-	
-	
+	public int getTheater_num() {
+		return theater_num;
+	}
+	public void setTheater_num(int theater_num) {
+		this.theater_num = theater_num;
+	}
 	public int getCinema_num() {
 		return cinema_num;
 	}
@@ -32,12 +36,6 @@ public class ChoiceVO{
 	}
 	public void setTimeInfo_num(int timeInfo_num) {
 		this.timeInfo_num = timeInfo_num;
-	}
-	public int getTheater_num() {
-		return theater_num;
-	}
-	public void setTheater_num(int theater_num) {
-		this.theater_num = theater_num;
 	}
 	public int getMovieInfo_num() {
 		return movieInfo_num;
@@ -63,8 +61,6 @@ public class ChoiceVO{
 	public void setTimeInfo_end(String timeInfo_end) {
 		this.timeInfo_end = timeInfo_end;
 	}
-	
-	
 	
 	
 	

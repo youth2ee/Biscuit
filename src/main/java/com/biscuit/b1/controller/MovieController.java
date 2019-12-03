@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.ChoiceVO;
@@ -44,7 +43,7 @@ public class MovieController {
 	
 	@GetMapping("locSelect")
 	//@ResponseBody
-	public ModelAndView locSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO, MovieInfoVO movieInfoVO) throws Exception {
+	public ModelAndView locSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO, int movieInfo_num) throws Exception {
 		//영화선택
 		System.out.println(cinemaVO.getCinema_loc());
 		List<CinemaVO> ar = movieSelectService.movieCinemaSelect(cinemaVO);
@@ -53,16 +52,29 @@ public class MovieController {
 			System.out.println(a.getCinema_name());
 		}
 		
+		System.out.println("왜 안뜨지");
+		
 		//선택한 영화에 따른 영화관
-		movieInfoVO.setMovieInfo_num(1);
+		MovieInfoVO movieInfoVO = new MovieInfoVO();
+		movieInfoVO.setMovieInfo_num(movieInfo_num);
+		System.out.println(movieInfo_num);
+		
 		List<ChoiceVO> cr = movieSelectService.movieChoice(movieInfoVO);
+		System.out.println(cr.size());
+		 
 		
-		for(ChoiceVO c : cr) {
-			System.out.println(c.getMovieInfo_num());
-			System.out.println(c.getCinema_num());
-			System.out.println(c.getTheater_num());			
-		}
-		
+		 if(cr.size() != 0) {
+			 System.out.println("모야");
+			 
+			 for(ChoiceVO c : cr) { 
+				 System.out.println("c:"+c.getMovieInfo_num());
+				 System.out.println("c:"+c.getCinema_num());
+				 System.out.println("c:"+c.getTheater_num()); 
+			 }
+			 
+		 } else {
+			 System.out.println("값이 없당.");
+		 }
 		
 		ModelAndView mv = new ModelAndView(); 
 		mv.setViewName("common/cineme_result");
