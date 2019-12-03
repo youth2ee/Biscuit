@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.naver</groupId>
-	<artifactId>s4</artifactId>
-	<name>Spring_4</name>
+	<groupId>com.biscuit</groupId>
+	<artifactId>b1</artifactId>
+	<name>Biscuit</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
