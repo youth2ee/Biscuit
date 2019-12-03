@@ -7,6 +7,8 @@ public class CinemaVO {
 	private String cinema_name;
 	private String cinema_add;
 	private String cinema_tel;
+	private int cinema_locNum;
+	
 	public int getCinema_num() {
 		return cinema_num;
 	}
@@ -37,6 +39,14 @@ public class CinemaVO {
 	public void setCinema_tel(String cinema_tel) {
 		this.cinema_tel = cinema_tel;
 	}
+	public int getCinema_locNum() {
+		return cinema_locNum;
+	}
+	public void setCinema_locNum(int cinema_locNum) {
+		this.cinema_locNum = cinema_locNum;
+	}
+	
+	
 	
 	
 

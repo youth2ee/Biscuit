@@ -28,6 +28,4 @@ target/m2e-wtp/web-resources/META-INF/maven/com.biscuit/b1/pom.properties
 
 src/main/resources/properties/DataSource.properties
 target/classes/properties/DataSource.properties
-
-
 target/m2e-wtp/web-resources/META-INF/maven/com.biscuit/b1/pom.properties

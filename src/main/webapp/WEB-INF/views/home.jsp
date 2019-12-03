@@ -5,19 +5,19 @@
 <head>
 	<title>Home</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 	
-<!-- 
-<link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
-<script src="jquery.min.js"></script>
-<script src="owlcarousel/owl.carousel.min.js"></script>
- -->
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
 </head>
 <body>
 	<div id="cgvWrap">
 		<!-- Header -->
-		<header></header>
+		<header>
+
+		<c:import url="./layout/header_home.jsp" />
+
+		</header>
+		
+		
 		<!-- Container -->
 		<div id="container">
 			<!-- boxOffice -->
@@ -59,6 +59,7 @@
 			</div> -->
 		</div>
 	</div>
+
 
 <script type="text/javascript">
 $(document).ready(function(){
