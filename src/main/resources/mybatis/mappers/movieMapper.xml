@@ -37,9 +37,6 @@
     where cinema_loc = #{cinema_loc} 
   	</select>
   	
-  	<!-- 선택한 지역에 따른 관 -->
-  	
-  	
   	
   	<!-- 날짜 선택하기 -->	
 	<select id="dateSelect" parameterType="TheaterVO" resultType="TimeInfoVO">
@@ -57,7 +54,7 @@
   	</select>
   	
   	<select id="movieTimeSelect" parameterType="TheaterVO" resultType="TimeInfoVO">
-	select B.timeinfo_start
+	select B.timeinfo_start, B.timeinfo_date
 	from theater A full outer Join timeinfo B
 	on A.theater_num = B.theater_num
 	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} 

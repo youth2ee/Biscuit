@@ -11,6 +11,7 @@ import org.junit.Test;
 import com.biscuit.b1.TestAbstractCase;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.MovieInfoVO;
+import com.biscuit.b1.model.TheaterVO;
 import com.biscuit.b1.model.TimeInfoVO;
 
 public class MovieChoiceTest extends TestAbstractCase {
@@ -18,7 +19,7 @@ public class MovieChoiceTest extends TestAbstractCase {
 	@Inject
 	private MovieSelectDAO movieSelectDAO;
 
-	@Test
+	//@Test
 	public void test() {
 		MovieInfoVO movieInfoVO = new MovieInfoVO();
 		movieInfoVO.setMovieInfo_num(1);
@@ -29,7 +30,17 @@ public class MovieChoiceTest extends TestAbstractCase {
 			System.out.println(c.getTheater_num());
 			System.out.println(c.getTimeInfo_start());
 		}
+			
+		assertNotEquals(ar.size(), 0);
+	}
+	
+	@Test
+	public void test2() {
+		TheaterVO theaterVO = new TheaterVO();
+		theaterVO.setMovieInfo_num(1);
+		theaterVO.setCinema_num(1);
 		
+		List<TimeInfoVO> ar = movieSelectDAO.movieTimeSelect(theaterVO);
 		
 		assertNotEquals(ar.size(), 0);
 	}

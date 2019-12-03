@@ -23,7 +23,7 @@
 		height: 2000px;
 	}
 	#boxOffice{
-		position: absolute;
+		/* position: absolute; */
 		top: 0;
 		left: 0;
 		width: 315px;
@@ -47,7 +47,13 @@
 <body>
 	<div id="cgvWrap">
 		<!-- Header -->
-		<header></header>
+		<header>
+
+		<c:import url="./layout/header_home.jsp" />
+
+		</header>
+		
+		
 		<!-- Container -->
 		<div id="container">
 			<div id="boxOffice">
@@ -101,6 +107,7 @@
 			</div>
 		</div>
 	</div>
+
 
 <script type="text/javascript">
 	var today = new Date().toISOString().substr(0, 10).replace('T', '');

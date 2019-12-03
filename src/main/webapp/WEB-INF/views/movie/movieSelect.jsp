@@ -59,7 +59,7 @@ font-size: 30px;
 
 <!-- 영화 지역선택 -->
 <div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;">
+<ul style="list-style: none; cursor: pointer;" id="theaterNameSelect">
 <c:forEach items="${movieLoc}" var="loc">
 <li class="loc">${loc.cinema_loc}</li>
 </c:forEach>
@@ -90,13 +90,15 @@ font-size: 30px;
 
 
 
-
  <script type="text/javascript">
  	var mnum = ""; //영화번호	
  	var mname = ""; //영화이름
  	var loc = ""; //영화지역
  	var cnum = ""; //영화관번호
  	var cname = ""; //영화관이름 
+ 	
+ 	var theater = $("#theaterNameSelect");
+ 	var cinema = $("#cinemaNameSelect");
 	var date = $("#movieDateSelect");
  	var time = $("#movieTimeSelect");
  	
@@ -105,11 +107,21 @@ font-size: 30px;
  	$(document).on("click", ".movietitle", function() {
  		$(this).addClass('act').siblings().removeClass('act');
  		
+ 		if(cinema.html().trim() != ""){
+ 			theater.removeClass('act');
+ 			cinema.removeClass('act');
+ 			cinema.empty();
+ 			date.empty();
+ 			time.empty();
+ 		}
+ 		
  		mnum = $(this).attr("title");
 		mnum = mnum.trim();
 		
 		mname = $(this).text();
 		mname = mname.trim();
+		
+		console.log(mname);
 	});
  	
 
@@ -155,9 +167,13 @@ font-size: 30px;
   		cnum = cnum.trim();
  		cname = cname.trim();
  		
+ 		console.log(cnum);
+ 		console.log(cname);
+ 		
  		$.ajax({
 			data : {
 				cinema_num:cnum,
+				cinema_name:cname,
 				movieInfo_num:mnum
 				},
 			type : "GET",

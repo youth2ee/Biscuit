@@ -27,14 +27,11 @@ public class MovieController {
 	public ModelAndView movieSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO) throws Exception {
 		List<MovieInfoVO> movieTitle = movieSelectService.movieTitleSelect();
 		List<CinemaVO> movieLoc = movieSelectService.movieLocSelect();
-		cinemaVO.setCinema_loc("서울");
-		List<CinemaVO> movieCinema = movieSelectService.movieCinemaSelect(cinemaVO);
 		
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("movieTitle", movieTitle);
 		mv.addObject("movieLoc", movieLoc);
-		mv.addObject("movieCinema", movieCinema);
 		
 		mv.setViewName("movie/movieSelect");
 		
@@ -44,7 +41,7 @@ public class MovieController {
 	@GetMapping("locSelect")
 	//@ResponseBody
 	public ModelAndView locSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO, int movieInfo_num) throws Exception {
-		//영화선택
+		//영화선택후 지역선택값 받아서 영화관선택
 		System.out.println(cinemaVO.getCinema_loc());
 		List<CinemaVO> ar = movieSelectService.movieCinemaSelect(cinemaVO);
 		
@@ -54,28 +51,15 @@ public class MovieController {
 		
 		System.out.println("왜 안뜨지");
 		
+		
 		//선택한 영화에 따른 영화관
 		MovieInfoVO movieInfoVO = new MovieInfoVO();
 		movieInfoVO.setMovieInfo_num(movieInfo_num);
 		System.out.println(movieInfo_num);
 		
 		List<ChoiceVO> cr = movieSelectService.movieChoice(movieInfoVO);
-		System.out.println(cr.size());
-		 
-		
-		 if(cr.size() != 0) {
-			 System.out.println("모야");
-			 
-			 for(ChoiceVO c : cr) { 
-				 System.out.println("c:"+c.getMovieInfo_num());
-				 System.out.println("c:"+c.getCinema_num());
-				 System.out.println("c:"+c.getTheater_num()); 
-			 }
-			 
-		 } else {
-			 System.out.println("값이 없당.");
-		 }
-		
+
+ 
 		ModelAndView mv = new ModelAndView(); 
 		mv.setViewName("common/cineme_result");
 		mv.addObject("result", ar);
@@ -89,6 +73,7 @@ public class MovieController {
 	public ModelAndView dateSelect(TheaterVO theaterVO) throws Exception {
 		//날짜선택
 		System.out.println(theaterVO.getCinema_num());
+		System.out.println(theaterVO.getMovieInfo_num());
 		
 		List<TimeInfoVO> movieDateSelect = movieSelectService.movieDateSelect(theaterVO);
 		
@@ -118,8 +103,6 @@ public class MovieController {
 		for(TimeInfoVO a : dateSelect){
 			System.out.println("수정"+a.getTimeInfo_date());
 			System.out.println("수정"+a.getTimeInfo_start());
-			
-			
 		}
 		
 		ModelAndView mv = new ModelAndView();
