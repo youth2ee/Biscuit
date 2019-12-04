@@ -30,7 +30,7 @@
 
 <div id="secMain"> 
  <!-- 영화제목 선택 -->
-<div class="s">
+<div class="sname">
 <ul class="sul">
 <c:forEach items="${movieTitle}" var="title">
 <li class="movietitle" title="${title.movieInfo_num}">${title.movieInfo_title}</li>

@@ -39,10 +39,23 @@ font-weight: bolder;
 }
 
 .s{
+	font-size: 13px;
 	padding-top: 20px;
 	padding-left: 30px;
 	margin: 6px;
-	width: 16%;
+	width: 15%;
+	height: 600px;
+	overflow: auto;
+	float: left;
+	border: 1px solid #e71a0f;
+}
+
+.sname{
+	font-size: 13px;
+	padding-top: 20px;
+	padding-left: 30px;
+	margin: 6px;
+	width: 20%;
 	height: 600px;
 	overflow: auto;
 	float: left;
