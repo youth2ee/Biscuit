@@ -5,9 +5,12 @@
 
 <mapper namespace="seatMapper">
 	<insert id="seatBooking" parameterType="SeatVO">
-		insert into seat values (seat_seq.nextval,#{theater_num},#{cinema_num},#{seat_check},#{seat_num})
+		insert into seat values (seat_seq.nextval,#{theater_num},#{cinema_num},#{seat_name})
 	</insert>
 	<select id="getTheaterNum" resultType="CinemaVO">
 		select cinema_loc,cinema_name from cinema where cinema_num = 1
+	</select>
+	<select id="bookCheck" resultType="SeatVO">
+		select seat_name from seat
 	</select>
 </mapper>
