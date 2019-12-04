@@ -14,7 +14,7 @@
   	</update>
   	
   	<insert id="storeWrite" parameterType="StoreVO">
-  		insert into store values(store_seq.nextval, #{store_name}, #{store_price}, 0, #{store_note}, #{store_package}, #{store_img}, #{store_thumimg})
+  		insert into store values(store_seq.nextval, #{store_name}, #{store_price}, 0, #{store_note}, #{store_package}, #{store_img}, #{store_thumbimg})
   	</insert>
   	
   	<select id="storeSelect" resultType="StoreVO" parameterType="StoreVO">
