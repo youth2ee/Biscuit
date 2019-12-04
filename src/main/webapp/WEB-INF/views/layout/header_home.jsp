@@ -10,7 +10,7 @@
 		</a>
 		
 
-		<img alt="" src="./resources/images/home/1_2.png">
+		<a href="./movie/movieSelect"><img alt="" src="./resources/images/home/1_2.png"></a>
 		<img alt="" src="./resources/images/home/2_2.png">
 		<img alt="" src="./resources/images/home/3_2.png">
 		<img alt="" src="./resources/images/home/4_2.png">

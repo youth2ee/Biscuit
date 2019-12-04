@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import com.biscuit.b1.TestAbstractCase;
 import com.biscuit.b1.model.ChoiceVO;
+import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TheaterVO;
 import com.biscuit.b1.model.TimeInfoVO;
@@ -21,9 +22,9 @@ public class MovieChoiceTest extends TestAbstractCase {
 
 	//@Test
 	public void test() {
-		MovieInfoVO movieInfoVO = new MovieInfoVO();
-		movieInfoVO.setMovieInfo_num(1);
-		List<ChoiceVO> ar =  movieSelectDAO.movieChoice(movieInfoVO);
+		ChoiceVO choiceVO = new ChoiceVO();
+		choiceVO.setMovieInfo_num(1);
+		List<ChoiceVO> ar =  movieSelectDAO.movieChoice(choiceVO);
 		
 		for(ChoiceVO c : ar) {
 			System.out.println(c.getCinema_num());
@@ -34,13 +35,43 @@ public class MovieChoiceTest extends TestAbstractCase {
 		assertNotEquals(ar.size(), 0);
 	}
 	
-	@Test
+	//@Test
 	public void test2() {
 		TheaterVO theaterVO = new TheaterVO();
 		theaterVO.setMovieInfo_num(1);
 		theaterVO.setCinema_num(1);
 		
 		List<TimeInfoVO> ar = movieSelectDAO.movieTimeSelect(theaterVO);
+		
+		assertNotEquals(ar.size(), 0);
+	}
+	
+	//@Test
+	public void test3() {
+		TheaterVO theaterVO = new TheaterVO();
+		theaterVO.setCinema_num(1);
+		List<TimeInfoVO> ar = movieSelectDAO.dateSelect(theaterVO);
+		
+		assertNotEquals(ar.size(), 0);
+	}
+	
+	//@Test
+	public void movieChoice() {
+		ChoiceVO choiceVO = new ChoiceVO();
+		choiceVO.setCinema_loc("서울");
+		choiceVO.setMovieInfo_num(1);
+		
+		List<ChoiceVO> ar = movieSelectDAO.movieChoice(choiceVO);
+		
+		assertNotEquals(ar.size(), 0);
+	}
+	
+	@Test
+	public void movieCinemaSelect() {
+		ChoiceVO choiceVO =  new ChoiceVO();
+		choiceVO.setCinema_loc("서울");
+		
+		List<CinemaVO> ar =  movieSelectDAO.movieCinemaSelect(choiceVO);
 		
 		assertNotEquals(ar.size(), 0);
 	}

@@ -8,21 +8,16 @@
 <c:import url="../layout/jquery.jsp" />
 
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movie/movieSelect.css" rel="stylesheet">
+
 </head>
 <body>
 <div id="total">
 
 <!-- HEADER -->
 <header>
-<div id="head1"><img alt="" src="../resources/images/header/CGV_BI4.png"></div>
-<div id="head2">
-<img alt="" src="../resources/images/home/1_2.png">
-<img alt="" src="../resources/images/home/2_2.png">
-<img alt="" src="../resources/images/home/3_2.png">
-<img alt="" src="../resources/images/home/4_2.png">
-</div>
-
+<c:import url="../layout/header.jsp"></c:import>
 </header>
 
 <!-- SECTION -->
@@ -33,9 +28,10 @@
 <h1>Movie Select</h1>
 </div>
 
+<div id="secMain"> 
  <!-- 영화제목 선택 -->
 <div class="s">
-<ul style="list-style: none; cursor: pointer;">
+<ul class="sul">
 <c:forEach items="${movieTitle}" var="title">
 <li class="movietitle" title="${title.movieInfo_num}">${title.movieInfo_title}</li>
 </c:forEach>
@@ -66,10 +62,7 @@
 <div class="s">
 <ul class="sul" id="movieTimeSelect"></ul>
 </div> 
-
-
-
-
+</div>
 
 
 </div>
@@ -79,9 +72,7 @@
 <footer></footer>
 
 
-<!-- <button>다음 (좌석선택하러가기^_^ ~)</button> -->
-
-
+ <button id="btn">다음 (좌석선택하러가기^_^ ~)</button>
 
 
 
@@ -92,6 +83,8 @@
  	var loc = ""; //영화지역
  	var cnum = ""; //영화관번호
  	var cname = ""; //영화관이름 
+ 	var cdate = ""; //날짜
+ 	var ctime = ""; //시간
  	
  	var theater = $("#theaterNameSelect");
  	var cinema = $("#cinemaNameSelect");
@@ -103,8 +96,8 @@
  	$(document).on("click", ".movietitle", function() {
  		$(this).addClass('act').siblings().removeClass('act');
  		
- 		if(cinema.html().trim() != ""){
- 			theater.removeClass('act');
+ 		if(theater.html().trim() != ""){
+ 			theater.children().removeClass('act');
  			cinema.removeClass('act');
  			cinema.empty();
  			date.empty();
@@ -123,7 +116,10 @@
  	/* 영화 지역을 클릭하면 영화관선택하기 */
  	$(document).on("click",".loc",function(){
  		$(this).addClass('act').siblings().removeClass('act');
- 		if(time.html().trim() != ""){
+ 		
+ 		if(date.html().trim() != ""){
+ 			theater.children().removeClass('act');
+ 			cinema.empty();
  			date.empty();
  			time.empty();
  		}
@@ -153,6 +149,7 @@
  	/* 영화관을 선택하면 날짜가 뜹니다. */
  	$(document).on("click",".cinemaSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
+ 		
  		if(time.html().trim() != ""){
  			date.empty();
  			time.empty();
@@ -169,6 +166,7 @@
  		
  		$.ajax({
 			data : {
+				cinema_loc:loc,
 				cinema_num:cnum,
 				cinema_name:cname,
 				movieInfo_num:mnum
@@ -187,7 +185,7 @@
  		$(this).addClass('act').siblings().removeClass('act');
  		
  		 
-  		var cdate = $(this).text();
+  		cdate = $(this).text();
  		cdate = cdate.trim();
  		
   		$.ajax({
@@ -204,6 +202,49 @@
 			}
 		}); 
  		});
+ 	
+ 	/* 시간을 선택해 볼까요 */
+ 	 	$(document).on("click",".timeSelect",function(){
+ 		$(this).addClass('act').siblings().removeClass('act');
+ 		
+ 		 
+  		ctime = $(this).text();
+ 		ctime = ctime.trim();
+ 		 
+ 		});
+ 	
+ 	
+ 	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */
+ 	 	 $(document).on("click","#btn",function(){
+
+ 	 	console.log(mnum);	 
+ 		console.log(mname);	 
+ 		console.log(loc);	 
+ 		console.log(cnum);	 
+ 		console.log(cname);	 
+ 		console.log(cdate);	 
+ 		console.log(ctime);	 
+ 		
+ 		
+   		$.ajax({
+			data : {
+				movieInfo_num:mnum,
+				movieInfo_name:mname,
+				cinema_loc:loc,
+				cinema_num:cnum,
+				cinema_name:cname,
+				timeInfo_date:cdate,
+				timeInfo_start:ctime
+			},
+			type : "GET",
+			url : "../seat/seatTest",
+			success : function(data) {
+				data = data.trim();
+				alert("good");
+			}
+		});  
+ 		});
+ 	
  	
  	
 </script> 

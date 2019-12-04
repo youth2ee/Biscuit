@@ -14,9 +14,34 @@ public class ChoiceVO {
 	private String timeInfo_start;
 	private String timeInfo_end;
 	
+	private String cinema_name;
+	
+	private String movieInfo_name;
 	
 	
 	
+	
+	
+	
+	
+	public String getMovieInfo_name() {
+		return movieInfo_name;
+	}
+	public void setMovieInfo_name(String movieInfo_name) {
+		this.movieInfo_name = movieInfo_name;
+	}
+	public String getCinema_name() {
+		return cinema_name;
+	}
+	public void setCinema_name(String cinema_name) {
+		this.cinema_name = cinema_name;
+	}
+	public int getMovieInfo_num() {
+		return movieInfo_num;
+	}
+	public void setMovieInfo_num(int movieInfo_num) {
+		this.movieInfo_num = movieInfo_num;
+	}
 	public String getCinema_loc() {
 		return cinema_loc;
 	}
@@ -47,12 +72,7 @@ public class ChoiceVO {
 	public void setTimeInfo_num(int timeInfo_num) {
 		this.timeInfo_num = timeInfo_num;
 	}
-	public int getMovieInfo_num() {
-		return movieInfo_num;
-	}
-	public void setMovieInfo_num(int movieInfo_num) {
-		this.movieInfo_num = movieInfo_num;
-	}
+
 	public String getTimeInfo_date() {
 		return timeInfo_date;
 	}

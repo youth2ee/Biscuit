@@ -44,12 +44,12 @@ public class MovieSelectService {
 	}
 	
 	
-	public List<TimeInfoVO> movieDateSelect(TheaterVO theaterVO) {
-		return movieSelectDAO.movieDateSelect(theaterVO);
+	public List<TimeInfoVO> movieDateSelect(ChoiceVO choiceVO) {
+		return movieSelectDAO.movieDateSelect(choiceVO);
 	}
 	
 	
-	public List<TimeInfoVO> movieTimeSelect(TheaterVO theaterVO) {
-		return movieSelectDAO.movieTimeSelect(theaterVO);
+	public List<TimeInfoVO> movieTimeSelect(ChoiceVO choiceVO) {
+		return movieSelectDAO.movieTimeSelect(choiceVO);
 	}
 }

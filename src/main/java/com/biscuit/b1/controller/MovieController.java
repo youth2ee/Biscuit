@@ -57,7 +57,7 @@ public class MovieController {
 		
 		
 		//선택한 영화에 따른 영화관
-		System.out.println("시네마넘"+choiceVO.getCinema_num());
+		System.out.println("시네마넘"+choiceVO.getCinema_loc());
 		System.out.println("무비인포넘"+choiceVO.getMovieInfo_num());
 		
 		List<ChoiceVO> cr = movieSelectService.movieChoice(choiceVO);
@@ -65,6 +65,8 @@ public class MovieController {
 		for(ChoiceVO c : cr) {
 			System.out.println(c.getCinema_num());
 		}
+		
+		
 		
 		ModelAndView mv = new ModelAndView(); 
 		mv.setViewName("common/cineme_result");
@@ -76,39 +78,48 @@ public class MovieController {
 	
 	
 	@GetMapping("dateSelect")
-	public ModelAndView dateSelect(TheaterVO theaterVO) throws Exception {
+	public ModelAndView dateSelect(ChoiceVO choiceVO) throws Exception {
 		//날짜선택
-		System.out.println(theaterVO.getCinema_num());
-		System.out.println(theaterVO.getMovieInfo_num());
+		System.out.println(choiceVO.getCinema_num());
+		System.out.println(choiceVO.getMovieInfo_num());
 		
-		List<TimeInfoVO> movieDateSelect = movieSelectService.movieDateSelect(theaterVO);
+		List<TimeInfoVO> movieDateSelect = movieSelectService.movieDateSelect(choiceVO);
 		
 		for(TimeInfoVO a : movieDateSelect){
 			System.out.println(a.getTimeInfo_date().substring(0, 10));
 			a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
 		}
 		
+		//movieTimeSelect
+		List<TimeInfoVO> br = movieSelectService.movieTimeSelect(choiceVO);
+
+		
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/date_result");
 		mv.addObject("result", movieDateSelect);
+		mv.addObject("movieResult", br);
 		
 		return mv;
 	}
 	
 	@GetMapping("timeSelect")
-	public ModelAndView timeSelect(TheaterVO theaterVO) throws Exception {
+	public ModelAndView timeSelect(ChoiceVO choiceVO) throws Exception {
 		//시간선택
-		System.out.println(theaterVO.getCinema_num());
-		System.out.println(theaterVO.getMovieInfo_num());
-		System.out.println(theaterVO.getTheater_num());
+		/*
+		 * System.out.println(theaterVO.getCinema_num());
+		 * System.out.println(theaterVO.getMovieInfo_num());
+		 * System.out.println(theaterVO.getTheater_num());
+		 */
 		
 		
-		List<TimeInfoVO> dateSelect =  movieSelectService.movieTimeSelect(theaterVO);
+		List<TimeInfoVO> dateSelect =  movieSelectService.movieTimeSelect(choiceVO);
 		
 		for(TimeInfoVO a : dateSelect){
-			System.out.println("수정"+a.getTimeInfo_date());
-			System.out.println("수정"+a.getTimeInfo_start());
+			System.out.println("수정"+a.getTimeInfo_date().substring(0, 10));
+			a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
+			System.out.println("수정"+a.getTimeInfo_start().substring(11, 16));
+			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
 		}
 		
 		ModelAndView mv = new ModelAndView();
@@ -116,7 +127,16 @@ public class MovieController {
 		mv.addObject("result", dateSelect);
 		
 		return mv;
+	}
+	
+	//관리자
+	@GetMapping("movieSelect_admin")
+	public void movieSelect_admin() {
 		
 	}
+	
+	
+	
+	
 
 }
