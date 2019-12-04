@@ -22,6 +22,6 @@
   	</select>
   	
   	<select id="storeList" resultType="StoreVO" parameterType="StoreVO">
-  		select * from store where store_package=#{store_package}
+  		select * from store where store_package=#{store_package} order by store_num
   	</select>
 </mapper>

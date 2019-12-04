@@ -72,14 +72,13 @@
 			
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button class="btn btn-info">등록</button>
+					<input type="submit" class="btn btn-info" value="등록">
 				</div>
 			</div>
 		</form>
 	</div>
 	
 <script type="text/javascript">
-	
 </script>	
 </body>
 </html>

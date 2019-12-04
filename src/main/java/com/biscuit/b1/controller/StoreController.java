@@ -82,6 +82,10 @@ public class StoreController {
 	// 상품 목록
 	@GetMapping("storeList")
 	public void storeList(StoreVO storeVO, Model model) throws Exception {
+		if(storeVO.getStore_package() == 0) {
+			storeVO.setStore_package(1);
+		}
+		
 		List<StoreVO> list = storeService.storeList(storeVO);
 		
 		model.addAttribute("list", list);
