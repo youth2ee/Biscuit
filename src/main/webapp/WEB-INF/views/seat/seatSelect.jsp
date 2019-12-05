@@ -114,10 +114,10 @@
 	<input type="hidden" id="cinema_loc" name="cinema_loc" value="${cinema_loc}시"><br>
 	<input type="hidden" id="cinema_name" name="cinema_name" value="${cinema_name}점"><br>
 	<input type="hidden" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}"><br>
-	<input type="hidden" id="seat_name" name="seat_name" ><br>
-	<input type="hidden" id="count"><br>
-	<input type="hidden" id="seatCount"><br>
-	<input type="hidden" id="price"><br>
+	<input type="hidden" id="seat_name" name="seat_name"><br>
+	<input type="hidden" id="count" name="count"><br>
+	<input type="hidden" id="seatCount" name="seatCount"><br>
+	<input type="hidden" id="price" name="price"><br>
 	
 
 	</div>
