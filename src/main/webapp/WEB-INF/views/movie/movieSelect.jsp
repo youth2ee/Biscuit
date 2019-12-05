@@ -31,6 +31,7 @@
 <div id="secMain"> 
 
 <!-- 영화제목 선택 -->
+<div>a</div>
 <div class="sname">
 <table class="sul">
 <c:forEach items="${movieTitle}" var="title">
@@ -46,6 +47,7 @@
 </div>
 
 <!-- 영화 지역선택 -->
+<div>a</div>
 <div class="s">
 <table class="sul" id="theaterNameSelect">
 <c:forEach items="${movieLoc}" var="loc">
@@ -64,20 +66,26 @@
 
 
 <!-- 영화 지역에 따른 영화관 선택 -->
+<div>a</div>
 <div class="s">
-<table class="sul" id="cinemaNameSelect"></table>
+<table class="sul" id="cinemaNameSelect">
+</table>
 <!-- <ul class="sul" id="cinemaNameSelect"></ul> -->
 </div> 
 
 <!-- 날짜선택  -->
+<div>a</div>
 <div class="s">
-<table class="sul" id="movieDateSelect"> </table>
+<table class="sul" id="movieDateSelect">
+</table>
 <!-- <ul class="sul" id="movieDateSelect"></ul> -->
 </div> 
 
 <!-- 시간선택  -->
+<div>a</div>
 <div class="s">
-<table class="sul" id="movieTimeSelect"></table>
+<table class="sul" id="movieTimeSelect">
+</table>
 <!-- <ul class="sul" id="movieTimeSelect"></ul> -->
 </div> 
 
