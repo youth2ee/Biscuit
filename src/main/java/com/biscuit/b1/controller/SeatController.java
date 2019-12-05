@@ -12,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.biscuit.b1.model.ChoiceVO;
+import com.biscuit.b1.model.CountPriceVO;
 import com.biscuit.b1.model.Movie_TicketingVO;
 import com.biscuit.b1.model.SeatVO;
 import com.biscuit.b1.service.SeatService;
@@ -23,9 +25,11 @@ import com.biscuit.b1.service.SeatService;
 public class SeatController {
 	@Inject
 	private SeatService seatService;
-
 	@RequestMapping(value = "seatSelect")
-	public ModelAndView seatSelect(ChoiceVO choiceVO) throws Exception {
+	public ModelAndView seatSelect(ChoiceVO choiceVO,HttpServletRequest request) throws Exception {
+		
+		
+		
 		ModelAndView mv = new ModelAndView();
 		/*
 		 * System.out.println("시네마 지역 : " + choiceVO.getCinema_loc());
@@ -45,7 +49,7 @@ public class SeatController {
 	}
 
 	@PostMapping(value = "seatSelect")
-	public ModelAndView seatSelect(HttpServletRequest request, SeatVO seatVO, ChoiceVO choiceVO,
+	public ModelAndView seatSelect(HttpServletRequest request, SeatVO seatVO, ChoiceVO choiceVO,CountPriceVO countPriceVO,
 			Movie_TicketingVO movie_TicketingVO) throws Exception {
 		int result1 = 0;
 		int result2 = 0;
@@ -69,10 +73,12 @@ public class SeatController {
 			Date now = new Date();
 			String str1 = String.format("%04d%n", seatVO.getCinema_num()).replace("\r\n", "");
 			String str2 = String.format("%04d%n", seatService.searchMovieNum(seatVO)).replace("\r\n", "");
-			String str3 = today.format(now);
-			String str4 = String.format("%-4s", seat_names[i]).replace(" ", "0").replace("\r\n", "");
+			String[] str3s = seatVO.getTimeInfo_start().split(":");// 상영 시간
+			String str3 = str3s[0] + str3s[1];
+			String str4 = today.format(now);
+			String str5 = String.format("%-4s", seat_names[i]).replace(" ", "0").replace("\r\n", "");
 			
-			String bookCode = str1 + "-" + str2 + "-" + str3 + "-" + str4;
+			String bookCode = str1 + "-" + str2 + "-" + str3 + "-" + str4+"-"+str5;
 			System.out.println("예매번호 : " + bookCode);
 
 			movie_TicketingVO.setMovie_t_num(bookCode);
@@ -81,12 +87,13 @@ public class SeatController {
 			movie_TicketingVO.setCinema_num(choiceVO.getCinema_num());
 			movie_TicketingVO.setTheater_num(1); // 임시
 			movie_TicketingVO.setSeat_name(seat_names[i]);
-			result2 = seatService.insertTicket(movie_TicketingVO);
+			result2 = seatService.insertTicket(movie_TicketingVO); // 예매정보 테이블에 입력
 
 		}
 		String msg = "예매 실패";
 		if (result1 + result2 > 1) {
 			msg = "예매 성공";
+			return new ModelAndView(new RedirectView("../pay/kakaoPay?price="+request.getParameter("price")+"&count="+request.getParameter("count")),"countPriceVO",countPriceVO);
 		}
 		mv.addObject("msg", msg);
 		mv.addObject("path", "../");

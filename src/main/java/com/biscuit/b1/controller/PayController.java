@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.CountPriceVO;
 import com.biscuit.b1.model.PayInfoVO;
 import com.biscuit.b1.model.SeatVO;
 import com.biscuit.b1.service.PayService;
@@ -30,7 +31,9 @@ public class PayController {
 	@GetMapping(value = "kakaoPay")
 	public void kakaoPayGet(HttpServletRequest request) throws Exception {
 		total_amount = request.getParameter("price");
-		quantity = request.getParameter("peopleCount");
+		System.out.println(total_amount);
+		quantity = request.getParameter("count");
+		System.out.println(quantity);
 	}
 
 	@PostMapping(value = "kakaoPay")
