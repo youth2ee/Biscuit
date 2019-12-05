@@ -1,4 +1,7 @@
 @charset "UTF-8";
+body {
+	background: #f9f6ec;
+}
 #container {
 	border-top: 1px solid #e9e4d2;
 	position: relative;
@@ -12,7 +15,6 @@
 .detailtop_wrap {
 	width: 100%;
 	height: 1000px;
-    background: #f9f6ec;
 }
 .detail_inner {
 	width: 980px;
@@ -20,6 +22,7 @@
     padding: 30px 0;
 }
 .product_box {
+	height: 1000px;
 	background: #fff;
     border-top: 2px solid #23333b;
     border-bottom: 2px solid #23333b;;

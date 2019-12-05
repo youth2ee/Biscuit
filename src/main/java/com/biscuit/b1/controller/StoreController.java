@@ -86,11 +86,14 @@ public class StoreController {
 	// 상품 목록
 	@GetMapping("storeList")
 	public void storeList(StoreVO storeVO, Model model) throws Exception {
+		System.out.println(storeVO.getStore_package());
 		if(storeVO.getStore_package() == 0) {
 			storeVO.setStore_package(1);
 		}
-		
+		System.out.println(storeVO.getStore_package());
 		List<StoreVO> list = storeService.storeList(storeVO);
+		
+		System.out.println(list.get(0).getStore_name());
 		
 		model.addAttribute("list", list);
 	}

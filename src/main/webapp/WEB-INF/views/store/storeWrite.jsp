@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<c:import url="../layout/jquery.jsp" />
 <c:import url="../layout/bootStrap.jsp" />
 </head>
 <body>
