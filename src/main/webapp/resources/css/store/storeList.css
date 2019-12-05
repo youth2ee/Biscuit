@@ -1,4 +1,7 @@
 @charset "UTF-8";
+body {
+	background-color: #fdfcf0;
+}
 #container {
 	width: 100%;
 	min-width: 980px;
