@@ -4,13 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="seatMapper">
+
+	<select id="bookCheck" resultType="SeatVO"
+		parameterType="ChoiceVO">
+		select seat_name from seat where cinema_num =
+		#{cinema_num} and movieInfo_name = #{movieInfo_name} and timeInfo_start = #{timeInfo_start}
+	</select>
 	<insert id="seatBooking" parameterType="SeatVO">
-		insert into seat values (seat_seq.nextval,#{theater_num},#{cinema_num},#{seat_name})
+		insert into seat
+		(seat_num,movieInfo_name,cinema_num,seat_name,timeInfo_start) values
+		(seat_seq.nextval,#{movieInfo_name},#{cinema_num},#{seat_name},#{timeInfo_start})
 	</insert>
-	<select id="getTheaterNum" resultType="CinemaVO">
-		select cinema_loc,cinema_name from cinema where cinema_num = 1
+	<select id="searchMovieNum" parameterType="SeatVO" resultType="Integer">
+		select movieInfo_num from movieInfo where
+		movieInfo_title = (select movieInfo_name from seat where
+		cinema_num = #{cinema_num} and movieInfo_name = #{movieInfo_name} and seat_name=#{seat_name} and timeInfo_start = #{timeInfo_start})
 	</select>
-	<select id="bookCheck" resultType="SeatVO">
-		select seat_name from seat
-	</select>
+	<insert id="insertTicket" parameterType="Movie_TicketingVO">
+		insert into movie_ticketing values (#{movie_t_num},#{id},#{movieInfo_num},#{cinema_num},#{theater_num},#{seat_name})
+	</insert>
 </mapper>

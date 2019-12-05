@@ -12,3 +12,15 @@ a {
 	color: black;
 	text-decoration: none;
 }
+
+::-webkit-scrollbar {
+width: 12px;
+}
+::-webkit-scrollbar-track {
+background-color: #fcfcf0;
+border-radius: 9px;
+}
+::-webkit-scrollbar-thumb {
+background-color: #ee3224;
+border-radius: 9px;
+}

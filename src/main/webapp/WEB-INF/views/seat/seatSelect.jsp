@@ -29,7 +29,7 @@ td {
 	box-sizing: content-box;
 }
 label{
-cursor:pointer;
+	cursor:pointer;
 }
 .bookable { /*예매가능*/
 	text-align: center;
@@ -72,8 +72,8 @@ cursor:pointer;
 <body>
 <form action="./seatSelect" method="post" id="frm">
 	<h2>Test</h2>
-	<c:forEach items="${bookedSeat}" var="dto">
-		${dto.seat_name}
+	<c:forEach items="${seats}" var="seats">
+		${seats.seat_name}
 	</c:forEach>
 	<div id="Select">
 		<h3>${cinema_loc} ${cinema_name}</h3>
@@ -88,8 +88,11 @@ cursor:pointer;
 				id="kid${i}" onchange="setDisplay()" value="${i}">${i}</label>
 		</c:forEach>
 	</div>
-	<input type="text" id="cinema_loc" value="${cinema_loc}시">
-	<input type="text" id="cinema_name" value="${cinema_name}점">
+	<input type="text" id="movieInfo_name" name="movieInfo_name" value="${movieInfo_name}">
+	<input type="text" id="cinema_num" name="cinema_num" value="${cinema_num}">
+	<input type="text" id="cinema_loc" name="cinema_loc" value="${cinema_loc}시">
+	<input type="text" id="cinema_name" name="cinema_name" value="${cinema_name}점">
+	<input type="text" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}">
 	<input type="text" id="seat_name" name="seat_name" >
 	<input type="text" id="count">
 	<input type="text" id="seatCount">
@@ -151,8 +154,8 @@ cursor:pointer;
 		$("#seatSelect").hide();
 		
 		var list = new Array();
-		<c:forEach items="${bookedSeat}" var="dto">
-		list.push("${dto.seat_name}");
+		<c:forEach items="${seats}" var="seats">
+		list.push("${seats.seat_name}");
 		</c:forEach>
 		
 		for(var i = 0; i < list.length; i++){ // 이미 예매된 좌석 선택 불가
