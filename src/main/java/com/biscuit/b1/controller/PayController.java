@@ -20,9 +20,7 @@ public class PayController {
 	@Inject
 	private PayService payService;
 
-	@GetMapping(value = "KakaoLogin")
-	public void kakaoLogin() throws Exception {
-	}
+	
 
 	@GetMapping(value = "naverPay")
 	public void naverPayGet(HttpServletRequest request) throws Exception {
