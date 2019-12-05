@@ -71,8 +71,10 @@
 <!-- FOOTER -->
 <footer></footer>
 
+<form action="../seat/seatSelect" id="frm">
 
  <button id="btn">다음 (좌석선택하러가기^_^ ~)</button>
+ </form>
 
 
 
@@ -207,44 +209,41 @@
  	 	$(document).on("click",".timeSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
  		
- 		 
   		ctime = $(this).text();
  		ctime = ctime.trim();
  		 
  		});
  	
  	
+ 	
  	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */
  	 	 $(document).on("click","#btn",function(){
-
- 	 	console.log(mnum);	 
- 		console.log(mname);	 
- 		console.log(loc);	 
- 		console.log(cnum);	 
- 		console.log(cname);	 
- 		console.log(cdate);	 
- 		console.log(ctime);	 
+ 	 		 
+ 		if (mnum != "" && mname != "" && loc != "" && cnum != "" && cname != "" && cdate != "" && ctime != "") {
+   
+	 	 	console.log("check");
+	 	 	console.log(mnum);	 
+	 		console.log(mname);	 
+	 		console.log(loc);	 
+	 		console.log(cnum);	 
+	 		console.log(cname);	 
+	 		console.log(cdate);	 
+	 		console.log(ctime);	 
  		
+ 	 		$("#frm").append('<input type="hidden" name="movieInfo_num" value="'+mnum+'">');
+ 	 		$("#frm").append('<input type="hidden" name="movieInfo_name" value="'+mname+'">');
+ 	 		$("#frm").append('<input type="hidden" name="cinema_loc" value="'+loc+'">');
+ 	 		$("#frm").append('<input type="hidden" name="cinema_num" value="'+cnum+'">');
+ 	 		$("#frm").append('<input type="hidden" name="cinema_name" value="'+cname+'">');
+ 	 		$("#frm").append('<input type="hidden" name="timeInfo_date" value="'+cdate+'">');
+ 	 		$("#frm").append('<input type="hidden" name="timeInfo_start" value="'+ctime+'">');
+			
+ 	 		$("#frm").submit();
+		} else {
+			alert("영화를 바르게 선택해주세요");
+		}
  		
-   		$.ajax({
-			data : {
-				movieInfo_num:mnum,
-				movieInfo_name:mname,
-				cinema_loc:loc,
-				cinema_num:cnum,
-				cinema_name:cname,
-				timeInfo_date:cdate,
-				timeInfo_start:ctime
-			},
-			type : "GET",
-			url : "../seat/seatTest",
-			success : function(data) {
-				data = data.trim();
-				alert("good");
-			}
-		});  
  		});
- 	
  	
  	
 </script> 

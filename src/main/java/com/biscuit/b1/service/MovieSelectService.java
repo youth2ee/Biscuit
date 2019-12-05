@@ -19,8 +19,6 @@ public class MovieSelectService {
 	@Inject
 	private MovieSelectDAO movieSelectDAO;
 	
-
-	
 	public List<MovieInfoVO> movieTitleSelect() {
 		return movieSelectDAO.movieTitleSelect();
 	}

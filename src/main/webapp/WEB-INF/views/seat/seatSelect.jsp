@@ -29,7 +29,7 @@ td {
 	box-sizing: content-box;
 }
 label{
-cursor:pointer;
+	cursor:pointer;
 }
 .bookable { /*예매가능*/
 	text-align: center;
@@ -72,8 +72,8 @@ cursor:pointer;
 <body>
 <form action="./seatSelect" method="post" id="frm">
 	<h2>Test</h2>
-	<c:forEach items="${bookedSeat}" var="dto">
-		${dto.seat_name}
+	<c:forEach items="${seats}" var="seats">
+		${seats.seat_name}
 	</c:forEach>
 	<div id="Select">
 		<h3>${cinema_loc} ${cinema_name}</h3>
