@@ -37,8 +37,9 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@GetMapping(value = "/kakaologin")
+	@RequestMapping(value = "/kakaologin")
 	public String login(@RequestParam("code") String code) {
+		System.out.println("머지");
 		System.out.println("code : " + code);
 		return "index";
 	}

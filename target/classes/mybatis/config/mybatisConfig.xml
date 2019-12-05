@@ -14,5 +14,6 @@
   		<typeAlias type="com.biscuit.b1.model.Movie_TicketingVO" alias="Movie_TicketingVO"/>
   		<typeAlias type="com.biscuit.b1.model.ChoiceVO" alias="ChoiceVO"/>
   		<typeAlias type="com.biscuit.b1.model.StoreVO" alias="StoreVO"/>
+  		<typeAlias type="com.biscuit.b1.model.SeatVO" alias="SeatVO"/>
   	</typeAliases>
   </configuration>
