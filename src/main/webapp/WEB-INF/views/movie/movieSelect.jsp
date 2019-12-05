@@ -29,42 +29,66 @@
 </div>
 
 <div id="secMain"> 
- <!-- 영화제목 선택 -->
+
+<!-- 영화제목 선택 -->
 <div class="sname">
-<ul class="sul">
+<table class="sul">
+<c:forEach items="${movieTitle}" var="title">
+<tr class="movietitle"><td title="${title.movieInfo_num}">${title.movieInfo_title}</td></tr>
+</c:forEach>
+</table>
+
+<%-- <ul class="sul">
 <c:forEach items="${movieTitle}" var="title">
 <li class="movietitle" title="${title.movieInfo_num}">${title.movieInfo_title}</li>
 </c:forEach>
-</ul>
+</ul> --%>
 </div>
 
 <!-- 영화 지역선택 -->
 <div class="s">
-<ul class="sul" id="theaterNameSelect">
+<table class="sul" id="theaterNameSelect">
+<c:forEach items="${movieLoc}" var="loc">
+<tr class="loc"><td>${loc.cinema_loc}</td><tr>
+</c:forEach>
+</table>
+
+
+<%-- <ul class="sul" id="theaterNameSelect">
 <c:forEach items="${movieLoc}" var="loc">
 <li class="loc" title="${loc.cinema_num}">${loc.cinema_loc}</li>
 </c:forEach>
-</ul>
+</ul> --%>
 </div> 
+
+
 
 <!-- 영화 지역에 따른 영화관 선택 -->
 <div class="s">
-<ul class="sul" id="cinemaNameSelect">
-</ul>
+<table class="sul" id="cinemaNameSelect"></table>
+<!-- <ul class="sul" id="cinemaNameSelect"></ul> -->
 </div> 
 
 <!-- 날짜선택  -->
 <div class="s">
-<ul class="sul" id="movieDateSelect"></ul>
+<table class="sul" id="movieDateSelect"> </table>
+<!-- <ul class="sul" id="movieDateSelect"></ul> -->
 </div> 
 
 <!-- 시간선택  -->
 <div class="s">
-<ul class="sul" id="movieTimeSelect"></ul>
+<table class="sul" id="movieTimeSelect"></table>
+<!-- <ul class="sul" id="movieTimeSelect"></ul> -->
 </div> 
+
+
+ 
+<form action="../seat/seatSelect" id="frm">
+<div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div>
+</form>
+ 
+ 
 </div>
-
-
 </div>
 </section>
 
@@ -72,7 +96,9 @@
 <footer></footer>
 
 
- <button id="btn">다음 (좌석선택하러가기^_^ ~)</button>
+ 
+
+
 
 
 
@@ -104,10 +130,10 @@
  			time.empty();
  		}
  		
- 		mnum = $(this).attr("title");
+ 		mnum = $(this).children().attr("title");
 		mnum = mnum.trim();
 		
-		mname = $(this).text();
+		mname = $(this).children().text();
 		mname = mname.trim();
 		
 		console.log(mname);
@@ -124,11 +150,11 @@
  			time.empty();
  		}
  	
- 		loc = $(this).text();
+ 		loc = $(this).children().text();
  		loc = loc.trim();
  		
- 		cnum = $(this).attr("title");
-		cnum = cnum.trim();
+/*  		cnum = $(this).children().attr("title");
+		cnum = cnum.trim(); */
  		
  		
  		$.ajax({
@@ -155,8 +181,8 @@
  			time.empty();
  		}
  		
-  		cnum = $(this).attr("title");
-  		cname = $(this).text();
+  		cnum = $(this).children().attr("title");
+  		cname = $(this).children().text();
   		
   		cnum = cnum.trim();
  		cname = cname.trim();
@@ -185,7 +211,7 @@
  		$(this).addClass('act').siblings().removeClass('act');
  		
  		 
-  		cdate = $(this).text();
+  		cdate = $(this).children().text();
  		cdate = cdate.trim();
  		
   		$.ajax({
@@ -207,7 +233,7 @@
  	 	$(document).on("click",".timeSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
  		
-  		ctime = $(this).text();
+  		ctime = $(this).children().text();
  		ctime = ctime.trim();
  		 
  		});
@@ -215,43 +241,33 @@
  	
  	
  	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */
- 	 	 $(document).on("click","#btn",function(){
-
- 	 	console.log("check");
- 	 	console.log(mnum);	 
- 		console.log(mname);	 
- 		console.log(loc);	 
- 		console.log(cnum);	 
- 		console.log(cname);	 
- 		console.log(cdate);	 
- 		console.log(ctime);	 
- 		
- 		
- 		if (mnum != "" && mname != "" && loc != "" && cnum != "" && cname != "" && cdate != "" && ctime != "") {
-   		$.ajax({
-			data : {
-				movieInfo_num:mnum,
-				movieInfo_name:mname,
-				cinema_loc:loc,
-				cinema_num:cnum,
-				cinema_name:cname,
-				timeInfo_date:cdate,
-				timeInfo_start:ctime
-			},
-			type : "GET",
-			url : "../seat/seatSelect",
-			success : function(data) {
-				data = data.trim();
-				alert("good");
-			}
-		});  
-
-		} else {
-			alert("영화를 바르게 선택해주세요");
-		}
- 		
- 		});
- 	
+ 	$(document).on("click","#btn",function(){
+            
+       if (mnum != "" && mname != "" && loc != "" && cnum != "" && cname != "" && cdate != "" && ctime != "") {
+   
+          console.log("check");
+          console.log(mnum);    
+          console.log(mname);    
+          console.log(loc);    
+          console.log(cnum);    
+          console.log(cname);    
+          console.log(cdate);    
+          console.log(ctime);    
+       
+           $("#frm").append('<input type="hidden" name="movieInfo_num" value="'+mnum+'">');
+           $("#frm").append('<input type="hidden" name="movieInfo_name" value="'+mname+'">');
+           $("#frm").append('<input type="hidden" name="cinema_loc" value="'+loc+'">');
+           $("#frm").append('<input type="hidden" name="cinema_num" value="'+cnum+'">');
+           $("#frm").append('<input type="hidden" name="cinema_name" value="'+cname+'">');
+           $("#frm").append('<input type="hidden" name="timeInfo_date" value="'+cdate+'">');
+           $("#frm").append('<input type="hidden" name="timeInfo_start" value="'+ctime+'">');
+         
+           $("#frm").submit();
+      } else {
+         alert("영화를 바르게 선택해주세요");
+      }
+       
+       });
  	
  	
 </script> 

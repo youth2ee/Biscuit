@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class SeatController {
 	
 	
 	@GetMapping(value = "seatSelect")
-	public ModelAndView seatSelect(CinemaVO cinemaVO, ChoiceVO choiceVO) throws Exception {
+	public ModelAndView seatSelect(CinemaVO cinemaVO, ChoiceVO choiceVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		cinemaVO = seatService.selectCinema(cinemaVO);
 		String cinema_loc = cinemaVO.getCinema_loc();
@@ -35,12 +36,10 @@ public class SeatController {
 		List<SeatVO> bookedSeat = seatService.bookCheck();
 		mv.addObject("bookedSeat",bookedSeat);
 		
+		System.out.println("aa"+session.getAttribute("dto"));
 		
 		//
 		System.out.println(choiceVO.getCinema_loc());
-		
-		
-		
 		
 		return mv;
 	}
