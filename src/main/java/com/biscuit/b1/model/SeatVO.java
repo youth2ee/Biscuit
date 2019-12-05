@@ -4,8 +4,17 @@ public class SeatVO {
 	private int seat_num;
 	private int theater_num;
 	private int cinema_num;
-	private int seat_check;
+	private String timeInfo_start;
 	private String seat_name;
+	
+
+	public String getTimeInfo_start() {
+		return timeInfo_start;
+	}
+
+	public void setTimeInfo_start(String timeInfo_start) {
+		this.timeInfo_start = timeInfo_start;
+	}
 
 	public int getSeat_num() {
 		return seat_num;
@@ -29,14 +38,6 @@ public class SeatVO {
 
 	public void setCinema_num(int cinema_num) {
 		this.cinema_num = cinema_num;
-	}
-
-	public int getSeat_check() {
-		return seat_check;
-	}
-
-	public void setSeat_check(int seat_check) {
-		this.seat_check = seat_check;
 	}
 
 	public String getSeat_name() {
