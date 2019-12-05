@@ -4,8 +4,6 @@ body{
 	background-color: #fcfcf0;
 }
 
-
-
  input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 	position: absolute;
 	width: 1px;

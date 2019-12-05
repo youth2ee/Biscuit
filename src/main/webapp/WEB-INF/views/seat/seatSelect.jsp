@@ -50,9 +50,9 @@
 	<input type="text" id="cinema_name" name="cinema_name" value="${cinema_name}점">
 	<input type="text" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}">
 	<input type="text" id="seat_name" name="seat_name" >
-	<input type="text" id="count">
-	<input type="text" id="seatCount">
-	<input type="text" id="price">
+	<input type="text" id="count" name ="count">
+	<input type="text" id="seatCount" name="seatCount">
+	<input type="text" id="price" name="price">
 	<div id="seatSelect">
 		<h3>좌석 선택</h3>
 		<strong id = "screen">Screen</strong>
