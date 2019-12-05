@@ -39,8 +39,10 @@ public class StoreController {
 	
 	// 상품 수정 폼
 	@GetMapping("storeUpdate")
-	public void storeUpdate() throws Exception {
+	public void storeUpdate(StoreVO storeVO, Model model) throws Exception {
+		storeVO = storeService.storeSelect(storeVO);
 		
+		model.addAttribute("update", storeVO);
 	}
 /////////////////////////////////////////////
 	// 상품 등록
@@ -75,8 +77,10 @@ public class StoreController {
 /////////////////////////////////////////////
 	// 상품 상세 페이지
 	@GetMapping("storeSelect")
-	public void storeSelect() throws Exception {
+	public void storeSelect(StoreVO storeVO, Model model) throws Exception {
+		storeVO = storeService.storeSelect(storeVO);
 		
+		model.addAttribute("select", storeVO);
 	}
 /////////////////////////////////////////////
 	// 상품 목록

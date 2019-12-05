@@ -5,71 +5,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<c:import url="../layout/jquery.jsp" />
+
+<link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/seat/seatSelect.css" rel="stylesheet">
+
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
- input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0
-}
-#screen{
-	margin-bottom: 30px;
-}
-td {
-	width: 20px;
-	height: 20px;
-	box-sizing: content-box;
-}
-label{
-	cursor:pointer;
-}
-.bookable { /*예매가능*/
-	text-align: center;
-	background-color: salmon;
-	font-size: 12px;
-}
 
-.booking { /*선택한자리*/
-	text-align: center;
-	background-color: yellow;
-	font-size: 12px;
-}
-
-.bookend { /*좌석 선택 완료*/
-	text-align: center;
-	background-color: aqua;
-	font-size: 12px;
-}
-.booked{  /*이미 예매된 자리*/
-	text-align: center;
-	background-color: #af463a;
-	font-size: 12px;
-}
-.over { /*마우스 오버*/
-	background: blue;
-}
-
-#screen {
-	display: block;
-	text-align: center;
-	margin-left: 24px;
-	background-color: silver;
-}
-#seatSelect{
-	display: inline-block; 
-
-}
-</style>
 </head>
 <body>
+
+<header>
+<c:import url="../layout/header.jsp"></c:import>
+</header>
+
+<section> 
+
+
 <form action="./seatSelect" method="post" id="frm">
 	<h2>Test</h2>
 	<c:forEach items="${seats}" var="seats">
@@ -146,6 +102,12 @@ label{
 	</div>
 	<input type="button" id="btn" value="check">
 	</form>
+</section>
+
+
+<!-- footer -->
+<footer></footer>
+	
 	
 	
 	
