@@ -48,54 +48,55 @@
 					<!-- 품목 -->
 					<div class="tab_content">
 						<!-- 패키지 -->
-						<div id="cgv_tab1" class="con menuTab menuTab1 current">
-							<h3>패키지</h3>
-							
-								<ul class="product_molist">
-									<c:forEach begin="0" end="2" items="${list}" var="list">
-										<li>
-											<a href="./storeSelect?store_num=${list.store_num}">
-												<span class="molthum">
-													<img alt="" src="../resources/upload/store/th/${list.store_thumbimg}">
+						<div id="cgv_tab1" class="menuTab menuTab1 current">
+							<ul class="product_molist">
+								<c:forEach items="${list}" var="list" varStatus="loop">
+									<c:if test="${loop.index%3==0 and !loop.isFirst() and !loop.isLast()}">
+										</ul>
+										<ul class="product_molist topline">
+									</c:if>
+									<li>
+										<a href="./storeSelect?store_num=${list.store_num}&store_package=${list.store_package}" class="product_btn">
+											<span class="molthum">
+												<img alt="" src="../resources/upload/store/th/${list.store_thumbimg}">
+											</span>
+											<span class="listinfo">
+												<span class="tit">${list.store_name}</span>
+												<span class="desc">
+													<strong class="price">
+														<fmt:formatNumber value="${list.store_price}" pattern="###,###,###" />
+														<span class="won">원</span>
+													</strong>
 												</span>
-												<span class="listinfo">
-													<span class="tit">${list.store_name}</span>
-													<span class="desc">
-														<strong class="price">
-															<fmt:formatNumber value="${list.store_price}" pattern="###,###,###" />
-															<span class="won">원</span>
-														</strong>
-													</span>
-												</span>
-											</a>
-										</li>
-									</c:forEach>
-								</ul>
-							
+											</span>
+										</a>
+									</li>
+								</c:forEach>
+							</ul>
 						</div>
 <!-- --------------------------------------------- -->
 						<!-- 영화관람권 -->
-						<div id="cgv_tab2" class="con menuTab menuTab2">
+						<div id="cgv_tab2" class="menuTab menuTab2">
 							<h3>영화관람권</h3>
 						</div>
 <!-- --------------------------------------------- -->
 						<!-- 콤보 -->
-						<div id="cgv_tab3" class="con menuTab menuTab3">
+						<div id="cgv_tab3" class="menuTab menuTab3">
 							<h3>콤보</h3>
 						</div>
 <!-- --------------------------------------------- -->
 						<!-- 팝콘 -->
-						<div id="cgv_tab4" class="con menuTab menuTab4">
+						<div id="cgv_tab4" class="menuTab menuTab4">
 							<h3>팝콘</h3>
 						</div>
 <!-- --------------------------------------------- -->
 						<!-- 음료 -->
-						<div id="cgv_tab5" class="con menuTab menuTab5">
+						<div id="cgv_tab5" class="menuTab menuTab5">
 							<h3>음료</h3>
 						</div>
 <!-- --------------------------------------------- -->
 						<!-- 스낵 -->
-						<div id="cgv_tab6" class="con menuTab menuTab6">
+						<div id="cgv_tab6" class="menuTab menuTab6">
 							<h3>스낵</h3>
 						</div>
 <!-- --------------------------------------------- -->
@@ -118,15 +119,18 @@
 		/* 클릭하면 해당 메뉴의 내용 불러오기 */
 		var store_package = $('ul.tab_mallmenu li.current').attr('id');
 		//alert(store_package);
+		var tempScrollTop = $(window).scrollTop();
 		
 		$.ajax({
 			type: "GET",
 			url: "storeList",
+			/* async: false, */
 			data: {
 				store_package:store_package
 			},
 			success: function(data) {
 				//console.log(data);
+				$(window).scrollTop(tempScrollTop);
 			}
 		});
 		/****************************************************************/
