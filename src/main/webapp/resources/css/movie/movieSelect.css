@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+#total{
+	background-color: #fcfcf0;
+	padding-bottom: 30px;
+}
+
+
+/* section */
+#sec{
+	width: 70%;
+	height: 1000px;
+	background-color: #fef8dc;
+	margin: 0 auto;
+	border: 5px;
+	border-style: solid;
+	border-color: #e71a0f;
+	border-radius: 3px;
+	margin-top: 10px;
+}
+
+#secTitle{
+	width: 300px;
+	height: 100px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 20px;
+}
+
+#secMain{
+	width: 88%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.act{
+color: #e71a0f;
+font-weight: bolder;
+}
+
+.s{
+	font-size: 13px;
+	padding-top: 20px;
+	padding-left: 30px;
+	margin: 6px;
+	width: 15%;
+	height: 600px;
+	overflow: auto;
+	float: left;
+	border: 1px solid #e71a0f;
+}
+
+.sname{
+	font-size: 13px;
+	padding-top: 20px;
+	padding-left: 30px;
+	margin: 6px;
+	width: 20%;
+	height: 600px;
+	overflow: auto;
+	float: left;
+	border: 1px solid #e71a0f;
+}
+
+
+
+.sul{
+	cursor: pointer;
+}
+
+.sul > li{
+	height: 40px;
+	vertical-align: middle;
+}
+
+.sch{
+	color: red;
+}

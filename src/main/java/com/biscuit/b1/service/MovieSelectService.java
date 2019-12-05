@@ -29,13 +29,13 @@ public class MovieSelectService {
 		return movieSelectDAO.movieLocSelect();
 	}
 	
-	public List<CinemaVO> movieCinemaSelect(CinemaVO cinemaVO) {
-		return movieSelectDAO.movieCinemaSelect(cinemaVO);
+	public List<CinemaVO> movieCinemaSelect(ChoiceVO choiceVO) {
+		return movieSelectDAO.movieCinemaSelect(choiceVO);
 	}
 	
 	//영화에 따른 관선택
-	public List<ChoiceVO> movieChoice(MovieInfoVO movieInfoVO) {
-		return movieSelectDAO.movieChoice(movieInfoVO);
+	public List<ChoiceVO> movieChoice(ChoiceVO choiceVO) {
+		return movieSelectDAO.movieChoice(choiceVO);
 	}
 	
 	//날짜
@@ -44,12 +44,12 @@ public class MovieSelectService {
 	}
 	
 	
-	public List<TimeInfoVO> movieDateSelect(TheaterVO theaterVO) {
-		return movieSelectDAO.movieDateSelect(theaterVO);
+	public List<TimeInfoVO> movieDateSelect(ChoiceVO choiceVO) {
+		return movieSelectDAO.movieDateSelect(choiceVO);
 	}
 	
 	
-	public List<TimeInfoVO> movieTimeSelect(TheaterVO theaterVO) {
-		return movieSelectDAO.movieTimeSelect(theaterVO);
+	public List<TimeInfoVO> movieTimeSelect(ChoiceVO choiceVO) {
+		return movieSelectDAO.movieTimeSelect(choiceVO);
 	}
 }

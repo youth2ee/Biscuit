@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+
+#total{
+	background-color: #fcfcf0;
+}
+
+#sec{
+	width: 70%;
+	margin-left: 100px;
+}
+
+#secTitle{
+	margin: 0 auto;
+	text-align: left;
+	padding-bottom: 30px;
+}
+
+
+#sec1{
+	float: left;
+}
+
+#sec2{
+	float: left;
+}
+
+.list{
+	width: 300px;
+	text-align: left;
+}
+
+.placeholder{
+	text-align: left;
+}
+
+.wrapper{
+	width: 300px;
+	text-align: left;
+}

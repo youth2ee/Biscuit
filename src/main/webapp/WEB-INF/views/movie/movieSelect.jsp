@@ -5,42 +5,33 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../layout/bootStrap.jsp" />
-<style type="text/css">
-/* a{
-color: black;
-text-decoration: none;
-} 
-a:link{
-text-decoration: none;
-}
-a:visited{
-font-size: 20px;
-text-decoration: none;
-}
-a:hover{
-color: red;
-font-size:20px;
-text-decoration: none;
-}
-a:active {
-color: red;
-text-decoration: none;
-} */
-.act{
-font-size: 30px;
-}
-</style>
+<c:import url="../layout/jquery.jsp" />
 
+<link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/movie/movieSelect.css" rel="stylesheet">
 
 </head>
 <body>
+<div id="total">
 
+<!-- HEADER -->
+<header>
+<c:import url="../layout/header.jsp"></c:import>
+</header>
+
+<!-- SECTION -->
+<section>
+<div id="sec">
+
+<div id="secTitle">
 <h1>Movie Select</h1>
+</div>
 
-<!-- 영화제목 선택 -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;">
+<div id="secMain"> 
+ <!-- 영화제목 선택 -->
+<div class="sname">
+<ul class="sul">
 <c:forEach items="${movieTitle}" var="title">
 <li class="movietitle" title="${title.movieInfo_num}">${title.movieInfo_title}</li>
 </c:forEach>
@@ -48,44 +39,52 @@ font-size: 30px;
 </div>
 
 <!-- 영화 지역선택 -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;" id="theaterNameSelect">
+<div class="s">
+<ul class="sul" id="theaterNameSelect">
 <c:forEach items="${movieLoc}" var="loc">
-<li class="loc">${loc.cinema_loc}</li>
+<li class="loc" title="${loc.cinema_num}">${loc.cinema_loc}</li>
 </c:forEach>
 </ul>
 </div> 
 
 <!-- 영화 지역에 따른 영화관 선택 -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;" id="cinemaNameSelect">
+<div class="s">
+<ul class="sul" id="cinemaNameSelect">
 </ul>
 </div> 
 
 <!-- 날짜선택  -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;" id="movieDateSelect"></ul>
+<div class="s">
+<ul class="sul" id="movieDateSelect"></ul>
 </div> 
 
 <!-- 시간선택  -->
-<div style="height: 500px; width: 300px; overflow: scroll; float: left;">
-<ul style="list-style: none; cursor: pointer;" id="movieTimeSelect"></ul>
+<div class="s">
+<ul class="sul" id="movieTimeSelect"></ul>
 </div> 
+</div>
 
 
-<button>다음 (좌석선택하러가기^_^ ~)</button>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer></footer>
+
+
+ <button id="btn">다음 (좌석선택하러가기^_^ ~)</button>
 
 
 
 
-
-
- <script type="text/javascript">
+  <script type="text/javascript">
  	var mnum = ""; //영화번호	
  	var mname = ""; //영화이름
  	var loc = ""; //영화지역
  	var cnum = ""; //영화관번호
  	var cname = ""; //영화관이름 
+ 	var cdate = ""; //날짜
+ 	var ctime = ""; //시간
  	
  	var theater = $("#theaterNameSelect");
  	var cinema = $("#cinemaNameSelect");
@@ -97,8 +96,8 @@ font-size: 30px;
  	$(document).on("click", ".movietitle", function() {
  		$(this).addClass('act').siblings().removeClass('act');
  		
- 		if(cinema.html().trim() != ""){
- 			theater.removeClass('act');
+ 		if(theater.html().trim() != ""){
+ 			theater.children().removeClass('act');
  			cinema.removeClass('act');
  			cinema.empty();
  			date.empty();
@@ -117,13 +116,21 @@ font-size: 30px;
  	/* 영화 지역을 클릭하면 영화관선택하기 */
  	$(document).on("click",".loc",function(){
  		$(this).addClass('act').siblings().removeClass('act');
- 		if(time.html().trim() != ""){
+ 		
+ 		if(date.html().trim() != ""){
+ 			theater.children().removeClass('act');
+ 			cinema.empty();
  			date.empty();
  			time.empty();
  		}
  	
  		loc = $(this).text();
  		loc = loc.trim();
+ 		
+ 		cnum = $(this).attr("title");
+		cnum = cnum.trim();
+ 		
+ 		
  		$.ajax({
 			data : {
 				cinema_loc:loc,
@@ -142,6 +149,7 @@ font-size: 30px;
  	/* 영화관을 선택하면 날짜가 뜹니다. */
  	$(document).on("click",".cinemaSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
+ 		
  		if(time.html().trim() != ""){
  			date.empty();
  			time.empty();
@@ -149,6 +157,7 @@ font-size: 30px;
  		
   		cnum = $(this).attr("title");
   		cname = $(this).text();
+  		
   		cnum = cnum.trim();
  		cname = cname.trim();
  		
@@ -157,6 +166,7 @@ font-size: 30px;
  		
  		$.ajax({
 			data : {
+				cinema_loc:loc,
 				cinema_num:cnum,
 				cinema_name:cname,
 				movieInfo_num:mnum
@@ -175,7 +185,7 @@ font-size: 30px;
  		$(this).addClass('act').siblings().removeClass('act');
  		
  		 
-  		var cdate = $(this).text();
+  		cdate = $(this).text();
  		cdate = cdate.trim();
  		
   		$.ajax({
@@ -193,9 +203,52 @@ font-size: 30px;
 		}); 
  		});
  	
+ 	/* 시간을 선택해 볼까요 */
+ 	 	$(document).on("click",".timeSelect",function(){
+ 		$(this).addClass('act').siblings().removeClass('act');
+ 		
+ 		 
+  		ctime = $(this).text();
+ 		ctime = ctime.trim();
+ 		 
+ 		});
+ 	
+ 	
+ 	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */
+ 	 	 $(document).on("click","#btn",function(){
+
+ 	 	console.log(mnum);	 
+ 		console.log(mname);	 
+ 		console.log(loc);	 
+ 		console.log(cnum);	 
+ 		console.log(cname);	 
+ 		console.log(cdate);	 
+ 		console.log(ctime);	 
+ 		
+ 		
+   		$.ajax({
+			data : {
+				movieInfo_num:mnum,
+				movieInfo_name:mname,
+				cinema_loc:loc,
+				cinema_num:cnum,
+				cinema_name:cname,
+				timeInfo_date:cdate,
+				timeInfo_start:ctime
+			},
+			type : "GET",
+			url : "../seat/seatTest",
+			success : function(data) {
+				data = data.trim();
+				alert("good");
+			}
+		});  
+ 		});
+ 	
+ 	
  	
 </script> 
 
-
+ </div><!-- total -->
 </body>
 </html>
