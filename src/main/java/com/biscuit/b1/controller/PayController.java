@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.PayInfoVO;
+import com.biscuit.b1.model.SeatVO;
 import com.biscuit.b1.service.PayService;
 
 @Controller
