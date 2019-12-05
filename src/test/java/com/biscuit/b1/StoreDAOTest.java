@@ -34,7 +34,7 @@ public class StoreDAOTest extends TestAbstractCase {
 		storeVO.setStore_note("나쵸얌");
 		storeVO.setStore_package(2);
 		storeVO.setStore_img("store_img2");
-		storeVO.setStore_thumimg("store_thumimg2");
+		storeVO.setStore_thumbimg("store_thumimg2");
 		storeVO.setStore_num(20);
 		
 		int result = storeDAO.storeUpdate(storeVO);
@@ -50,7 +50,7 @@ public class StoreDAOTest extends TestAbstractCase {
 		storeVO.setStore_note("치즈얌");
 		storeVO.setStore_package(1);
 		storeVO.setStore_img("store_img");
-		storeVO.setStore_thumimg("store_thumimg");
+		storeVO.setStore_thumbimg("store_thumimg");
 		
 		int result = storeDAO.storeWrite(storeVO);
 		

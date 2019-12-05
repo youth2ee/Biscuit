@@ -11,10 +11,10 @@
 }
 .store_top {
 	overflow: hidden;
-	background: url("../../images/store/store_top.jpg") 50%;
+	background: url("../../images/store/store_top.jpg") 50% no-repeat;
 	position: absolute;
 	width: 100%;
-	height: 420px;
+	height: 400px;
 }
 .product_wrap{
 	width: 100%;
@@ -56,10 +56,16 @@
 	color: #231f20;
 	-webkit-box-sizing: border-box;
 }
-li:first-child a::before {
+.tab_mallmenu li.current a {
+	color: #fff;
+	background-color: #231f20;
+	border-color: #231f20;
+	z-index: 1;
+}
+.tab_mallmenu li:first-child a::before {
 	background: none;
 }
-li a:before {
+.tab_mallmenu li a:before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -67,6 +73,104 @@ li a:before {
 	height: 16px;
 	background: #e5e5e5;
 }
+.tab_mallmenu li.current a:before {
+	background-color: #231f20;
+}
+
+/* 메뉴탭  */
+.menuTab {
+	display: none;
+	background-color: lightblue;
+	color: #000;
+}
+.menuTab.current {
+	display: block;
+}
+/************************************/
+/*품목*/
+.product_molist {
+	overflow: hidden;
+	margin: 0 0 15px 0;
+}
+.product_molist li {
+	position: relative;
+    float: left;
+    width: 326px;
+    padding: 0 14px 0 14px;
+    background: lightgreen;
+    /* box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; */
+}
+.molthum {
+	display: block;
+    overflow: hidden;
+    width: 300px;
+    height: 250px;
+    padding-top: 40px;
+    background-color: black;
+}
+img {
+	border: 0;
+    /* vertical-align: middle; */
+}
+.listinfo {
+	display: block;
+	height: 120px;
+    padding: 16px 15px 20px;
+    color: #231f20;
+    text-align: center;
+    background: lightgray;
+   /*  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box; */
+}
+.listinfo .tit {
+	display: block;
+	padding-bottom: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 26px;
+    background-color: pink;
+}
+.listinfo .desc {
+	display: block;
+    vertical-align: middle;
+    color: #231f20;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 15px;
+    word-break: break-all;
+}
+.listinfo .desc .price {
+	padding: 0 5px;
+    font-size: 20px;
+}
+.listinfo .desc .price .won {
+	padding-left: 3px;
+    font-size: 13px;
+    vertical-align: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

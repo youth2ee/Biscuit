@@ -9,7 +9,7 @@ public class StoreVO {
 	private String store_note;
 	private int store_package;
 	private String store_img;
-	private String store_thumimg;
+	private String store_thumbimg;
 	
 	public int getStore_num() {
 		return store_num;
@@ -53,10 +53,10 @@ public class StoreVO {
 	public void setStore_img(String store_img) {
 		this.store_img = store_img;
 	}
-	public String getStore_thumimg() {
-		return store_thumimg;
+	public String getStore_thumbimg() {
+		return store_thumbimg;
 	}
-	public void setStore_thumimg(String store_thumimg) {
-		this.store_thumimg = store_thumimg;
+	public void setStore_thumbimg(String store_thumbimg) {
+		this.store_thumbimg = store_thumbimg;
 	}
 }

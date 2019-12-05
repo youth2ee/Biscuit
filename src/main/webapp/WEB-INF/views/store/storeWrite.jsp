@@ -12,7 +12,7 @@
 
 	<div class="container">
 		<h2>Store Write Form</h2>
-		<form class="form-horizontal" method="post" enctype="multipart/form-data">
+		<form class="form-horizontal" action="storeWrite" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="store_name">상품명:</label>
 				<div class="col-sm-10">
@@ -38,12 +38,12 @@
 				<label class="control-label col-sm-2" for="store_package">패키지번호:</label>
 				<div class="col-sm-10">
 					<select class="form-control" id="store_package" name="store_package">
-						<option>1.패키지</option>
-						<option>2.영화관람권</option>
-						<option>3.콤보</option>
-						<option>4.팝콘</option>
-						<option>5.음료</option>
-						<option>6.스낵</option>
+						<option value="1">1.패키지</option>
+						<option value="2">2.영화관람권</option>
+						<option value="3">3.콤보</option>
+						<option value="4">4.팝콘</option>
+						<option value="5">5.음료</option>
+						<option value="6">6.스낵</option>
 					</select>
 				</div>
 			</div>
@@ -51,28 +51,34 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="store_img">상품이미지:</label>
 				<div class="col-sm-10">
-					<input type="file" class="form-control select_img" id="store_img" name="store_img">
-					
-					<script type="text/javascript">
-						$('#store_img').change(function() {
-							if(this.files && this.files[0]){
-								var reader = new FileReader;
-								reader.onload = function(data) {
-									$('.select_img img').attr("src", data.target.result).width(500);
-								}
-								reader.readAsDataURL(this.files[0]);
-							}
-						});
-					</script>
+					<input type="file" class="form-control" id="store_img" name="file"> <!-- controller에서 MultipartFile file로 받으니까 name도 file로 해줘야함 -->
 				</div>
+				
+				<div class="select_img"><img alt="" src=""></div>	
+				
+				<script type="text/javascript">
+				$('#store_img').change(function() {
+						if(this.files && this.files[0]){
+							var reader = new FileReader;
+							reader.onload = function(data) {
+								$('.select_img img').attr("src", data.target.result).width(300);
+							}
+							reader.readAsDataURL(this.files[0]);
+						}
+					});
+				</script>
+				
 			</div>
 			
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-info">등록</button>
+					<input type="submit" class="btn btn-info" value="등록">
 				</div>
 			</div>
 		</form>
 	</div>
+	
+<script type="text/javascript">
+</script>	
 </body>
 </html>
