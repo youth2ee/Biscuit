@@ -56,7 +56,7 @@
 										<ul class="product_molist topline">
 									</c:if>
 									<li>
-										<a href="./storeSelect?store_num=${list.store_num}" class="product_btn">
+										<a href="./storeSelect?store_num=${list.store_num}&store_package=${list.store_package}" class="product_btn">
 											<span class="molthum">
 												<img alt="" src="../resources/upload/store/th/${list.store_thumbimg}">
 											</span>
