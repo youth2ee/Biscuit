@@ -41,9 +41,9 @@ public class MovieChoiceTest extends TestAbstractCase {
 		theaterVO.setMovieInfo_num(1);
 		theaterVO.setCinema_num(1);
 		
-		List<TimeInfoVO> ar = movieSelectDAO.movieTimeSelect(theaterVO);
+		//List<TimeInfoVO> ar = movieSelectDAO.movieTimeSelect(theaterVO);
 		
-		assertNotEquals(ar.size(), 0);
+		//assertNotEquals(ar.size(), 0);
 	}
 	
 	//@Test

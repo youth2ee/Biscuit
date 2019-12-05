@@ -22,9 +22,7 @@
 	margin-top: 420px;
 }
 .product_inner{
-	/* background-color: black; */
 	height:2000px;
-	
 	width: 980px;
 	margin: 0 auto;
 	padding: 30px 0 10px;
@@ -80,7 +78,7 @@
 /* 메뉴탭  */
 .menuTab {
 	display: none;
-	background-color: lightblue;
+	/* background-color: lightblue; */
 	color: #000;
 }
 .menuTab.current {
@@ -90,40 +88,49 @@
 /*품목*/
 .product_molist {
 	overflow: hidden;
-	margin: 0 0 15px 0;
+	margin: 0 0 30px 0;
+	text-align: center;
+}
+.product_molist.topline {
+	border-top: 1px solid #dfdfdf;
 }
 .product_molist li {
+	display: inline-block;
 	position: relative;
-    float: left;
-    width: 326px;
-    padding: 0 14px 0 14px;
-    background: lightgreen;
-    /* box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box; */
+    width: 250px;
+    padding: 0 30px;
 }
 .molthum {
 	display: block;
     overflow: hidden;
-    width: 300px;
-    height: 250px;
+    /* width: 300px; */
+    /* height: 250px; */
     padding-top: 40px;
-    background-color: black;
 }
-img {
-	border: 0;
-    /* vertical-align: middle; */
+.product_molist li
+.product_btn {
+	display: block;
+}
+.product_molist li:hover
+a.product_btn .molthum:before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 250px;
+	height: 250px;
+	background-color: #000;
+	opacity: .2;
+	z-index: 3;
+}
+.molthum img {
+	
 }
 .listinfo {
 	display: block;
-	height: 120px;
-    padding: 16px 15px 20px;
+	/* height: 120px; */
+    padding: 20px 15px 20px;
     color: #231f20;
     text-align: center;
-    background: lightgray;
-   /*  box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box; */
 }
 .listinfo .tit {
 	display: block;
@@ -131,7 +138,6 @@ img {
     font-size: 17px;
     font-weight: bold;
     line-height: 26px;
-    background-color: pink;
 }
 .listinfo .desc {
 	display: block;
