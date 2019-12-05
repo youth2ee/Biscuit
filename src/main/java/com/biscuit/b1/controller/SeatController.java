@@ -27,8 +27,8 @@ public class SeatController {
 		
 	}
 	
-	@GetMapping(value = "seatTest")
-	public ModelAndView seatTest(CinemaVO cinemaVO) throws Exception {
+	@GetMapping(value = "seatSelect")
+	public ModelAndView seatSelect(CinemaVO cinemaVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		cinemaVO = seatService.selectCinema(cinemaVO);
 		String cinema_loc = cinemaVO.getCinema_loc();
@@ -40,8 +40,8 @@ public class SeatController {
 		return mv;
 		
 	}
-	@PostMapping(value="seatTest")
-	public void seatTest2(HttpServletRequest request,SeatVO seatVO) throws Exception{
+	@PostMapping(value="seatSelect")
+	public void seatSelect(HttpServletRequest request,SeatVO seatVO) throws Exception{
 		String seat_name = request.getParameter("seat_name");
 		String[] seat_names = seat_name.split(",");
 		for(int i=0; i < seat_names.length; i++) { // 표 장수에 따라서 db에 넣는 횟수
