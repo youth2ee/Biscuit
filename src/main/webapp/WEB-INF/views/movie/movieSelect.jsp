@@ -24,37 +24,53 @@
 <section>
 <div id="sec">
 
-<div id="secTitle">
+<!-- <div id="secTitle">
 <h1>Movie Select</h1>
+</div> -->
+
+<div id="secMidTitle">
+<div class="dname"><img alt="" src="../resources/images/movieSelect/ms1.png"></div>
+<div class="divc"><img alt="" src="../resources/images/movieSelect/ms2.png"></div>
+<div class="divT"><img alt="" src="../resources/images/movieSelect/ms3.png"></div>
+<div class="divT"><img alt="" src="../resources/images/movieSelect/ms4.png"></div>
 </div>
+
 
 <div id="secMain"> 
 
 <!-- 영화제목 선택 -->
-<div>a</div>
-<div class="sname">
+<div class="sname s">
 <table class="sul">
 <c:forEach items="${movieTitle}" var="title">
-<tr class="movietitle"><td title="${title.movieInfo_num}">${title.movieInfo_title}</td></tr>
+<tr class="movietitle">
+<td class="mtd1">  
+<c:choose>
+<c:when test="${title.movieInfo_grade eq '전체 관람가'}">
+<img class="age" alt="" src="../resources/images/movieSelect/m1.png"></c:when>
+<c:when test="${title.movieInfo_grade eq '12세 관람가'}">
+<img  class="age" alt="" src="../resources/images/movieSelect/m2.png"></c:when>
+<c:when test="${title.movieInfo_grade eq '15세 관람가'}">
+<img  class="age" alt="" src="../resources/images/movieSelect/m3.png"></c:when>
+<c:when test="${title.movieInfo_grade eq '청소년 관람불가'}">
+<img  class="age" alt="" src="../resources/images/movieSelect/m4.png"></c:when>
+</c:choose>
+
+</td>
+
+<td class="mtitle mtd" title="${title.movieInfo_num}">${title.movieInfo_title}</td>
+</tr>
 </c:forEach>
 </table>
-
-<%-- <ul class="sul">
-<c:forEach items="${movieTitle}" var="title">
-<li class="movietitle" title="${title.movieInfo_num}">${title.movieInfo_title}</li>
-</c:forEach>
-</ul> --%>
 </div>
 
+
 <!-- 영화 지역선택 -->
-<div>a</div>
-<div class="s">
+<div class="s s1">
 <table class="sul" id="theaterNameSelect">
 <c:forEach items="${movieLoc}" var="loc">
-<tr class="loc"><td>${loc.cinema_loc}</td><tr>
+<tr class="loc"><td class="mtd">${loc.cinema_loc}</td><tr>
 </c:forEach>
 </table>
-
 
 <%-- <ul class="sul" id="theaterNameSelect">
 <c:forEach items="${movieLoc}" var="loc">
@@ -66,24 +82,23 @@
 
 
 <!-- 영화 지역에 따른 영화관 선택 -->
-<div>a</div>
-<div class="s">
+<div class="s3 s2">
 <table class="sul" id="cinemaNameSelect">
 </table>
 <!-- <ul class="sul" id="cinemaNameSelect"></ul> -->
 </div> 
 
+
 <!-- 날짜선택  -->
-<div>a</div>
-<div class="s">
+<div class="s s4">
 <table class="sul" id="movieDateSelect">
 </table>
 <!-- <ul class="sul" id="movieDateSelect"></ul> -->
 </div> 
 
+
 <!-- 시간선택  -->
-<div>a</div>
-<div class="s">
+<div class="s s5">
 <table class="sul" id="movieTimeSelect">
 </table>
 <!-- <ul class="sul" id="movieTimeSelect"></ul> -->
@@ -131,18 +146,19 @@
  		$(this).addClass('act').siblings().removeClass('act');
  		
  		if(theater.html().trim() != ""){
- 			theater.children().removeClass('act');
- 			cinema.removeClass('act');
+ 			theater.find(".act").removeClass('act');
  			cinema.empty();
  			date.empty();
  			time.empty();
  		}
  		
- 		mnum = $(this).children().attr("title");
+		
+		mnum = $(this).find(".mtitle").attr("title");
 		mnum = mnum.trim();
 		
-		mname = $(this).children().text();
+		mname = $(this).find(".mtitle").text();
 		mname = mname.trim();
+		
 		
 		console.log(mname);
 	});
@@ -152,7 +168,7 @@
  		$(this).addClass('act').siblings().removeClass('act');
  		
  		if(date.html().trim() != ""){
- 			theater.children().removeClass('act');
+ 			theater.siblings().removeClass('act');
  			cinema.empty();
  			date.empty();
  			time.empty();
@@ -189,8 +205,8 @@
  			time.empty();
  		}
  		
-  		cnum = $(this).children().attr("title");
-  		cname = $(this).children().text();
+  		cnum = $(this).find(".mcinema").attr("title");
+  		cname = $(this).find(".mcinema").text();
   		
   		cnum = cnum.trim();
  		cname = cname.trim();

@@ -7,5 +7,5 @@
 </c:forEach> --%>
 
 <c:forEach items="${result}" var="time"> 
-<tr class="timeSelect"><td>${time.timeInfo_start}</td></tr>
+<tr class="timeSelect mtd"><td>${time.timeInfo_start}</td></tr>
 </c:forEach> 

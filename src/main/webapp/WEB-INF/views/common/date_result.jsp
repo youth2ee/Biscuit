@@ -8,7 +8,7 @@
 </c:forEach>  --%>
 
  <c:forEach items="${result}" var="date" varStatus="status"> 
-<tr class="dateSelect"><td>${date.timeInfo_date}</td></tr>
+<tr class="dateSelect"><td class="mtd">${date.timeInfo_date}</td></tr>
 
 </c:forEach> 
 
