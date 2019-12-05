@@ -24,37 +24,40 @@
 </header>
 
 <section> 
-
+<div id="sec"> 
 
 <form action="./seatSelect" method="post" id="frm">
-	<h2>Test</h2>
-	<c:forEach items="${seats}" var="seats">
+	
+	<div id="title">
+<%-- 	<c:forEach items="${seats}" var="seats">
 		${seats.seat_name}
-	</c:forEach>
+	</c:forEach> --%>
+	
+		<h3>영화제목 : ${movieInfo_name} </h3>
+		<h3>영화관 : ${cinema_loc} ${cinema_name} </h3>
+		<h3>시작 시간 : ${timeInfo_start}</h3>
+		
+	</div>
+	
+	<div>
 	<div id="Select">
-		<h3>${cinema_loc} ${cinema_name}</h3>
+		<div id="st1"><img alt="" src="../resources/images/seat/ss1.png"></div>
+		
 		<h3>성인 관람객 수 선택</h3>
 		<c:forEach begin="0" end="5" var="i">
-			<label for="adult${i}"><input type="radio" name="adult"
-				id="adult${i}" onchange="setDisplay()" value="${i}">${i}</label>
+			<label for="adult${i}">
+			<input type="radio" name="adult" id="adult${i}" onchange="setDisplay()" value="${i}">${i}</label>
 		</c:forEach>
+		<br>
 		<h3>미성년자 관람객 수 선택</h3>
 		<c:forEach begin="0" end="5" var="i">
-			<label for="kid${i}"><input type="radio" name="kid"
-				id="kid${i}" onchange="setDisplay()" value="${i}">${i}</label>
+			<label for="kid${i}">
+			<input type="radio" name="kid" id="kid${i}" onchange="setDisplay()" value="${i}">${i}</label>
 		</c:forEach>
 	</div>
-	<input type="text" id="movieInfo_name" name="movieInfo_name" value="${movieInfo_name}">
-	<input type="text" id="cinema_num" name="cinema_num" value="${cinema_num}">
-	<input type="text" id="cinema_loc" name="cinema_loc" value="${cinema_loc}시">
-	<input type="text" id="cinema_name" name="cinema_name" value="${cinema_name}점">
-	<input type="text" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}">
-	<input type="text" id="seat_name" name="seat_name" >
-	<input type="text" id="count">
-	<input type="text" id="seatCount">
-	<input type="text" id="price">
+
 	<div id="seatSelect">
-		<h3>좌석 선택</h3>
+		<div id="st2"><img alt="" src="../resources/images/seat/ss2.png"></div>
 		<strong id = "screen">Screen</strong>
 		<table>
 			<c:forEach begin="1" end="13" var="i">
@@ -100,8 +103,29 @@
 			</c:forEach>
 		</table>
 	</div>
-	<input type="button" id="btn" value="check">
+	
+	<div id="btnSelect">
+	<!-- <input type="button" id="btn" value="check"> -->
+	<a href="#"><img id="btn" alt="" src="../resources/images/seat/seatm.png"></a>
+	</div>
+	
+	<input type="hidden" id="movieInfo_name" name="movieInfo_name" value="${movieInfo_name}"><br>
+	<input type="hidden" id="cinema_num" name="cinema_num" value="${cinema_num}"><br>
+	<input type="hidden" id="cinema_loc" name="cinema_loc" value="${cinema_loc}시"><br>
+	<input type="hidden" id="cinema_name" name="cinema_name" value="${cinema_name}점"><br>
+	<input type="hidden" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}"><br>
+	<input type="hidden" id="seat_name" name="seat_name" ><br>
+	<input type="hidden" id="count"><br>
+	<input type="hidden" id="seatCount"><br>
+	<input type="hidden" id="price"><br>
+	
+
+	</div>
+	
 	</form>
+	
+	
+</div>
 </section>
 
 
@@ -113,7 +137,7 @@
 	
 	<script type="text/javascript">
 		var seatCount = 0; // 선택 좌석 수
-		$("#seatSelect").hide();
+		/* $("#seatSelect").hide(); */
 		
 		var list = new Array();
 		<c:forEach items="${seats}" var="seats">

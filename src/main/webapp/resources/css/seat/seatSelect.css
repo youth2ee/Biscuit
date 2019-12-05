@@ -5,8 +5,7 @@ body{
 }
 
 
-
- input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
+input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -16,9 +15,7 @@ body{
 	clip: rect(0, 0, 0, 0);
 	border: 0
 }
-#screen{
-	margin-bottom: 30px;
-}
+
 td {
 	width: 20px;
 	height: 20px;
@@ -29,37 +26,89 @@ label{
 }
 .bookable { /*예매가능*/
 	text-align: center;
-	background-color: salmon;
+	background-color: #eeefea;
 	font-size: 12px;
 }
 
 .booking { /*선택한자리*/
 	text-align: center;
-	background-color: yellow;
+	background-color: #e42313;
 	font-size: 12px;
 }
 
 .bookend { /*좌석 선택 완료*/
 	text-align: center;
-	background-color: aqua;
+	background-color: #ffc952;
 	font-size: 12px;
 }
 .booked{  /*이미 예매된 자리*/
 	text-align: center;
-	background-color: #af463a;
+	background-color: #666666;
 	font-size: 12px;
 }
 .over { /*마우스 오버*/
-	background: blue;
+	background: #e42313;
 }
 
 #screen {
 	display: block;
 	text-align: center;
-	margin-left: 24px;
+	margin-left: 0px;
 	background-color: silver;
+	margin-bottom: 30px;
 }
+
 #seatSelect{
 	display: inline-block; 
+	float: left;
+	width:32%;
+	margin-left: 150px;
+}
 
+#Select{
+	float: left;
+	margin-left: 200px;
+}
+
+#btnSelect{
+	clear: both;
+}
+
+section{
+	width: 100%;
+}
+
+#sec{
+	width: 70%;
+	margin: 0 auto;
+	height: 600px;
+	background-color: #fef8dc;
+	border: 5px;
+	border-style: solid;
+	border-color: #e71a0f;
+	border-radius: 3px;
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+#st1{
+width: 300px;
+height: 45px;
+background-color: black;
+text-align: center;	
+}
+
+#st2{
+width: 300px;
+height: 45px;
+background-color: black;
+text-align: center;	
+margin-left: 60px;
+}
+
+#title{
+	width: 70%;
+	height: 20%;
+	background-color: yellow;
+	margin: 0 auto;
 }
