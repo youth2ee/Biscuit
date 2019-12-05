@@ -13,7 +13,6 @@
 </c:if>
 </c:forEach>
 
-<li class="cinemaSelect" title="${cinema.cinema_num}">${cinema.cinema_name}</li>
 
  
 </c:forEach>

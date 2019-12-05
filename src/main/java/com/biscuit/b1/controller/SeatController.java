@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.SeatVO;
 import com.biscuit.b1.service.SeatService;
@@ -24,7 +25,7 @@ public class SeatController {
 	
 	
 	@GetMapping(value = "seatSelect")
-	public ModelAndView seatSelect(CinemaVO cinemaVO) throws Exception {
+	public ModelAndView seatSelect(CinemaVO cinemaVO, ChoiceVO choiceVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		cinemaVO = seatService.selectCinema(cinemaVO);
 		String cinema_loc = cinemaVO.getCinema_loc();
@@ -33,9 +34,17 @@ public class SeatController {
 		mv.addObject("cinema_name", cinema_name);
 		List<SeatVO> bookedSeat = seatService.bookCheck();
 		mv.addObject("bookedSeat",bookedSeat);
-		return mv;
 		
+		
+		//
+		System.out.println(choiceVO.getCinema_loc());
+		
+		
+		
+		
+		return mv;
 	}
+	
 	@PostMapping(value="seatSelect")
 	public void seatSelect(HttpServletRequest request,SeatVO seatVO) throws Exception{
 		String seat_name = request.getParameter("seat_name");

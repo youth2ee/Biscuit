@@ -207,16 +207,17 @@
  	 	$(document).on("click",".timeSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
  		
- 		 
   		ctime = $(this).text();
  		ctime = ctime.trim();
  		 
  		});
  	
  	
+ 	
  	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */
  	 	 $(document).on("click","#btn",function(){
 
+ 	 	console.log("check");
  	 	console.log(mnum);	 
  		console.log(mname);	 
  		console.log(loc);	 
@@ -226,6 +227,7 @@
  		console.log(ctime);	 
  		
  		
+ 		if (mnum != "" && mname != "" && loc != "" && cnum != "" && cname != "" && cdate != "" && ctime != "") {
    		$.ajax({
 			data : {
 				movieInfo_num:mnum,
@@ -237,12 +239,17 @@
 				timeInfo_start:ctime
 			},
 			type : "GET",
-			url : "../seat/seatTest",
+			url : "../seat/seatSelect",
 			success : function(data) {
 				data = data.trim();
 				alert("good");
 			}
 		});  
+
+		} else {
+			alert("영화를 바르게 선택해주세요");
+		}
+ 		
  		});
  	
  	
