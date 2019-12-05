@@ -9,9 +9,14 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 	
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/store/storeList.css" rel="stylesheet">
 </head>
 <body>
+<header>
+	<c:import url="../layout/header.jsp" />
+</header>
+<section>
 	<div id="container">
 		<div id="content">
 			<!-- 상단이미지 -->
@@ -105,7 +110,12 @@
 			</div>
 		</div>
 	</div>
-	
+</section>
+
+<footer>
+
+</footer>
+
 <script type="text/javascript">
 	/* 클릭하면 메뉴 탭 및 내용 전환 */
 	$('ul.tab_mallmenu li').click(function() {
