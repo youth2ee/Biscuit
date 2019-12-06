@@ -24,6 +24,7 @@
 
 <section> 
 <div id="sec"> 
+	<div id="hole"></div>
 	<form action="./seatSelect" method="post" id="frm">
 	
 	<div id="title">
@@ -31,12 +32,12 @@
 		${seats.seat_name}
 	</c:forEach> --%>
 	
-		<p>인원/좌석 선택</p>
+		인원/좌석 선택
 		
 	</div>
 	<div id="Select_wrap">
 		<div id="Select">
-		<div id="st1"><img alt="" src="../resources/images/seat/ss1.png"></div>
+		<div id="st1"></div>
 			<div class="selectInnerWrap">
 				<div class="selecter1">
 					<h3>성인</h3>
@@ -57,7 +58,7 @@
 					</div>
 				</div>
 				
-				<div class="selecter3">
+<%-- 				<div class="selecter3">
 					<h3>어린이(미구현)</h3>
 					<div class="radio-group">
 					<c:forEach begin="0" end="5" var="i">
@@ -74,7 +75,7 @@
 					</c:forEach>
 				</div>
 			</div>
-		</div>
+ --%>		</div>
 	</div>
 	<div id="seatSelect">
 		<div id="st2"><img alt="" src="../resources/images/seat/ss2.png"></div>
@@ -124,19 +125,20 @@
 		</table>
 	</div>
 	<div id="right-wrap">
-		<br><br><br>포스터이미지<br><br><br><br>
-		<br><br><br><br>
-		<br><br><br>
+		<img alt="" id="poster" src="../resources/images/seat/frozen.jpg">
 		<h4>영화제목 : ${movieInfo_name} </h4>
 		<h4>영화관 : ${cinema_loc} ${cinema_name} </h4>
 		<h4>시작 시간 : ${timeInfo_start}</h4>
-		<div>
+		<div class="price_wrap"> 
 			<input type="text" id="price" name="price" readonly="readonly">원
 		</div>
 		<div id="btnSelect">
 	</div>
+	<div id="next_button">
 	<!-- <input type="button" id="btn" value="check"> -->
-	<a href="#"><img id="btn" alt="" src="../resources/images/seat/seatm.png"></a>
+		<a href="#" style="color: white" id="btn">결제하기<!-- <img id="btn" alt="" src="../resources/images/seat/seatm.png"> -->
+		</a>
+	</div>
 	</div>
 	<input type="hidden" id="movieInfo_name" name="movieInfo_name" value="${movieInfo_name}">
 	<input type="hidden" id="cinema_num" name="cinema_num" value="${cinema_num}">
