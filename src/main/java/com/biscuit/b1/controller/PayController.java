@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.biscuit.b1.model.CountPriceVO;
 import com.biscuit.b1.model.PayInfoVO;
-import com.biscuit.b1.model.SeatVO;
 import com.biscuit.b1.service.PayService;
 
 @Controller
@@ -21,15 +19,10 @@ public class PayController {
 	private String quantity = null;
 	@Inject
 	private PayService payService;
-
-	
-
-	@GetMapping(value = "naverPay")
-	public void naverPayGet(HttpServletRequest request) throws Exception {
-	}
 	
 	@GetMapping(value = "kakaoPay")
 	public void kakaoPayGet(HttpServletRequest request) throws Exception {
+		String seats = request.getParameter("seats");
 		total_amount = request.getParameter("price");
 		System.out.println(total_amount);
 		quantity = request.getParameter("count");

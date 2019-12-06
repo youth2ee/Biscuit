@@ -15,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.biscuit.b1.model.ChoiceVO;
-import com.biscuit.b1.model.CountPriceVO;
 import com.biscuit.b1.model.Movie_TicketingVO;
 import com.biscuit.b1.model.SeatVO;
 import com.biscuit.b1.service.SeatService;
@@ -49,7 +48,7 @@ public class SeatController {
 	}
 
 	@PostMapping(value = "seatSelect")
-	public ModelAndView seatSelect(HttpServletRequest request, SeatVO seatVO, ChoiceVO choiceVO,CountPriceVO countPriceVO,
+	public ModelAndView seatSelect(HttpServletRequest request, SeatVO seatVO, ChoiceVO choiceVO,
 			Movie_TicketingVO movie_TicketingVO) throws Exception {
 		int result1 = 0;
 		int result2 = 0;
@@ -93,7 +92,7 @@ public class SeatController {
 		String msg = "예매 실패";
 		if (result1 + result2 > 1) {
 			msg = "예매 성공";
-			return new ModelAndView(new RedirectView("../pay/kakaoPay?price="+request.getParameter("price")+"&count="+request.getParameter("count")),"countPriceVO",countPriceVO);
+			return new ModelAndView(new RedirectView("../pay/kakaoPay?price="+request.getParameter("price")+"&count="+request.getParameter("count")));
 		}
 		mv.addObject("msg", msg);
 		mv.addObject("path", "../");
