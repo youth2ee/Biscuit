@@ -51,6 +51,8 @@
 						</c:forEach>
 					</ol>
 				</div>
+						
+				
 			</div>
 			<!-- ----------------boxOffice--------------- -->
 			<!-- carousel -->
@@ -63,6 +65,15 @@
 			  <div> Your Content </div>
 			  <div> Your Content </div>
 			</div> -->
+		
+			<!-- text -->
+			<div id="txtbox">
+			<div class="txtimg"><img alt="" src="./resources/images/home/mt1.png"></div>
+			<div class="txtimg"><img alt="" src="./resources/images/home/mt2.png"></div>
+			<div class="txtimg"><img alt="" src="./resources/images/home/mt3.png"></div>
+			</div>
+			
+			
 		</div>
 		
 		<!-- image -->
@@ -174,9 +185,13 @@ $(document).ready(function(){
 //# sourceMappingURL=swiper.min.js.map
 
   var swiper = new Swiper('.swiper-container', {
+	  loop : true,
       slidesPerView: 5,
       spaceBetween: 80,
       freeMode: true,
+      autoplay: {
+    	    delay: 900,
+    	  },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
