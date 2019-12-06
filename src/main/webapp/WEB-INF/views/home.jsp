@@ -150,7 +150,8 @@ $(document).ready(function(){
 		},
 		success: function(data) {
 			$.each(data.boxOfficeResult.dailyBoxOfficeList, function(i, m) {
-				$('#Rank_'+i+' a').append("<span class=\"office_cell\">"+m.rank+"</span><span class=\"office_cell\">"+m.rankOldAndNew+"</span><span class=\"office_cell\">"+m.rankInten+"</span><span class=\"office_cell\">"+m.movieNm+"</span>");
+				//$('#Rank_'+i+' a').append("<span class=\"office_cell\">"+m.rank+"</span><span class=\"office_cell\">"+m.rankOldAndNew+"</span><span class=\"office_cell\">"+m.rankInten+"</span><span class=\"office_cell\">"+m.movieNm+"</span>");
+				$('#Rank_'+i+' a').append("<span class=\"office_cell\">"+m.movieNm+"</span>");
 			});
 		}
 	});
@@ -181,7 +182,6 @@ $(document).ready(function(){
         clickable: true,
       },
     });
-	
 	
 	
 </script>
