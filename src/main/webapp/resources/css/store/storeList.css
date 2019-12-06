@@ -106,7 +106,7 @@ header {
     width: 250px;
     padding: 0 30px;
 }
-.product_molist.topline:last-child {
+.product_molist:last-child {
 	text-align: left;
 	margin-left: 13px;
 }
@@ -169,7 +169,19 @@ a.product_btn .molthum:before {
 }
 
 
-
+/* 버튼 그룹 */
+#btn_register {
+	background-color: pink;
+	border-radius: 3px;
+}
+#btn_update {
+	background-color: lightgreen;
+	border-radius: 3px;
+}
+#btn_delete {
+	background-color: orange;
+	border-radius: 3px;
+}
 
 
 

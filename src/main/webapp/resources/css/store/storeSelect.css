@@ -22,7 +22,7 @@ body {
     padding: 30px 0;
 }
 .product_box {
-	height: 1000px;
+	height: 550px;;
 	background: #fff;
     border-top: 2px solid #23333b;
     border-bottom: 2px solid #23333b;;
@@ -31,7 +31,8 @@ body {
 }
 .product_left {
 	float: left;
-    width: 518px;
+    width: 460px;
+    /* height: 100%; */
     padding-bottom: 50px;
     border-right: 2px solid #f9f6ec;
     font-size: 14px;
@@ -40,8 +41,8 @@ body {
 .product_img {
 	position: absolute;
     margin: 40px 20px 0 20px;
-    width: 476px;
-    height: 397px;
+    /* width: 476px;
+    height: 397px; */
 }
 .product_right {
 	float: right;

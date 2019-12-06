@@ -84,7 +84,9 @@
 						</div>
 <!-- --------------------------------------------- -->
 					</div>
-					<a href="storeWrite">등록</a>
+					<a href="storeWrite" id="btn_register">등록</a>
+					<a href="storeUpdate" id="btn_update">수정</a>
+					<a href="storeDelete" id="btn_delete">삭제</a>
 				</div>
 			</div>
 		</div>
