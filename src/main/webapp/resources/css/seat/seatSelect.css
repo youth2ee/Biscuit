@@ -66,12 +66,13 @@ label {
 	display: inline-block;
 	float: left;
 	width: 50%;
-	background-color: purple;
+	/* background-color: purple; */
 	padding: 0px 50px 20px 50px;
 }
 
 #Select {
-	background-color: blue;
+/* 	background-color: blue; */
+	color:black;
 	float: left;
     width: 25%;
 }
@@ -97,7 +98,7 @@ section {
 }
 
 #frm {
-	background-color: salmon;
+/* 	background-color: salmon; */
 	height: 100%;
 }
 
@@ -118,11 +119,11 @@ section {
 #title {
 	width: 100%;
 	height: 8%;
-	background-color: yellow;
+/* 	background-color: yellow; */
 }
 
 #right-wrap {
-	background-color: red;
+/* 	background-color: red; */
 	height: 100%;
 	float: left;
     width: 25%;
@@ -135,7 +136,8 @@ section {
 }
 
 .radio-group label {
-	color: #fcfcf0;
+	/* color: #fcfcf0; */
+	color:black;
 	display: inline-block;
 	cursor: pointer;
 	font-weight: bold;
