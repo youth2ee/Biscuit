@@ -22,7 +22,6 @@ public class PayController {
 	
 	@GetMapping(value = "kakaoPay")
 	public void kakaoPayGet(HttpServletRequest request) throws Exception {
-		String seats = request.getParameter("seats");
 		total_amount = request.getParameter("price");
 		System.out.println(total_amount);
 		quantity = request.getParameter("count");
