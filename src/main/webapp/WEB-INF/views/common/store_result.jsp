@@ -5,7 +5,6 @@
 
 <c:forEach items="${list}" var="list" varStatus="loop">
 	<c:if test="${loop.index%3==0 and !loop.isFirst() and !loop.isLast()}">
-		<h3>hi</h3>
 		</ul>
 		<ul class="product_molist topline">
 	</c:if>
