@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -8,10 +9,14 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 	
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/store/storeSelect.css" rel="stylesheet">
 </head>
 <body>
-
+<header>
+	<c:import url="../layout/header.jsp"></c:import>
+</header>
+<section>
 	<div id="container">
 		<div id="content">
 			<div class="detailtop_wrap">
@@ -66,6 +71,10 @@
 			</div>
 		</div>
 	</div>
+</section>
+
+<footer>
+</footer>
 
 </body>
 </html>
