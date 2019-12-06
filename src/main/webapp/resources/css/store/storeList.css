@@ -1,8 +1,4 @@
 @charset "UTF-8";
-header {
-	background-color: #fdfcf0;
-	padding-bottom: 10px;
-}
 #container {
 	border-top: 1px solid #e9e4d2;
 	width: 100%;

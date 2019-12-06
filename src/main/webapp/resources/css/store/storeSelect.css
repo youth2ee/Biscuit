@@ -2,6 +2,9 @@
 body {
 	background: #f9f6ec;
 }
+img {
+	vertical-align: middle;
+}
 #container {
 	border-top: 1px solid #e9e4d2;
 	position: relative;
@@ -14,7 +17,6 @@ body {
 }
 .detailtop_wrap {
 	width: 100%;
-	height: 1000px;
 }
 .detail_inner {
 	width: 980px;
@@ -22,31 +24,26 @@ body {
     padding: 30px 0;
 }
 .product_box {
-	height: 550px;;
 	background: #fff;
     border-top: 2px solid #23333b;
     border-bottom: 2px solid #23333b;;
     position: relative;
-    background-color: lightgreen;
+    float: left;
 }
 .product_left {
 	float: left;
     width: 460px;
-    /* height: 100%; */
-    padding-bottom: 50px;
+    padding: 60px 0;
     border-right: 2px solid #f9f6ec;
     font-size: 14px;
     color: #231f20;
 }
 .product_img {
-	position: absolute;
-    margin: 40px 20px 0 20px;
-    /* width: 476px;
-    height: 397px; */
+	text-align: center;
 }
 .product_right {
 	float: right;
-    width: 460px;
+    width: 450px;
     padding: 40px 30px;
     font-size: 14px;
     color: #231f20;
@@ -119,20 +116,82 @@ body {
     background: #dedede;
 }
 
+.product_right .quantity {
+	padding: 8px 0;
+    text-align: center;
+    background: #f5f5f5;
+}
+.product_right .quantity a {
+	display: inline-block;
+}
+.product_right .quantity input[type=text] {
+    width: 90px;
+    height: auto;
+    padding: 6px 10px 10px 10px;
+    border: 0;
+    color: #242021;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    background: #f5f5f5;
+    -webkit-box-sizing: border-box;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.product_right .total {
+	margin: 15px 0;
+    padding-bottom: 15px;
+    font-size: 20px;
+    color: #231f20;
+    line-height: 28px;
+}
+.product_right .total strong {
+    float: left;
+    color: #231f20;
+}
+.product_right .total em {
+    float: right;
+    font-weight: bold;
+    color: #fb4357;
+    font-size: 24px;
+    font-style: normal;
+}
+.product_right .total:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.btn_wrap {
+	overflow: hidden;
+}
+.btn_wrap a:first-child {
+	margin-left: 0;
+}
+.btn_wrap a {
+    display: block;
+    float: left;
+    width: 310px;
+    height: 60px;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #fff;
+    line-height: 60px;
+    text-align: center;
+    background-color: #373e46;
+}
+.btn_wrap a.btn_cart {
+	width: 60px;
+    font-size: 0;
+    background: #fb4357 url("../../images/store/shopping-bag-line.png") center center no-repeat;
+    background-size: 30px;
+}
+.btn_wrap a.btn_star {
+	width: 60px;
+    font-size: 0;
+    background: #fb4357 url("../../images/store/magic-line.png") center center no-repeat;
+    background-size: 30px;
+}
 
 
 

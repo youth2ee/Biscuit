@@ -61,12 +61,49 @@
 									</tr>
 								</tbody>
 							</table>
-							<div class="quantity"></div>
-							<div class="total"></div>
-							<div class="btn_wrap"></div>
+							<div class="quantity">
+								<a href="javascript:void(0)" class="aMinus"><img alt="수량감소" src="../resources/images/store/btn_quantity_minus.jpg"></a>
+								<input type="text" class="numCount" value="1" readonly="readonly">
+								<a href="javascript:void(0)" class="aPlus"><img alt="수량증가" src="../resources/images/store/btn_quantity_plus.jpg"></a>
+							</div>
+							<div class="total">
+								<strong>총 상품 금액</strong>
+								<em>
+									<span class="totalPrice">
+										<fmt:formatNumber value="${select.store_price}" pattern="###,###,###" />
+									</span>
+									원
+								</em>
+							</div>
+							
+							<script type="text/javascript">
+								$('.aMinus').click(function() {
+									var num = $('.numCount').val();
+									var minusNum = num - 1;
+									if(minusNum <= 0){
+										$('.numCount').val(num);
+									}else {
+										$('.numCount').val(minusNum);
+									}
+								});
+							
+								$('.aPlus').click(function() {
+									var num = $('.numCount').val();
+									num++;
+									$('.numCount').val(num);
+								});
+							</script>
+							
+							<div class="btn_wrap">
+								<a href="#" class="btn_cart">장바구니</a>
+								<a href="#" class="btn_star">찜하기</a>
+								<a href="#" class="btn_buy">구매하기</a>
+							</div>
 						</div>
 <!-- ------------------------------------------ -->
 					</div>
+					<a href="storeUpdate" id="btn_update">수정</a>
+					<a href="storeDelete" id="btn_delete">삭제</a>
 				</div>
 			</div>
 		</div>
