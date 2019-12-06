@@ -86,15 +86,31 @@ public class StoreController {
 	// 상품 목록
 	@GetMapping("storeList")
 	public void storeList(StoreVO storeVO, Model model) throws Exception {
-		System.out.println(storeVO.getStore_package());
-		if(storeVO.getStore_package() == 0) {
-			storeVO.setStore_package(1);
-		}
-		System.out.println(storeVO.getStore_package());
+		storeVO.setStore_package(1);
+		
 		List<StoreVO> list = storeService.storeList(storeVO);
 		
-		System.out.println(list.get(0).getStore_name());
-		
 		model.addAttribute("list", list);
+	}
+	
+	//상품 탭 변경시 목록
+	@GetMapping("storeList2")
+	public ModelAndView storeList2(StoreVO storeVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		//System.out.println(storeVO.getStore_package());
+		//if(storeVO.getStore_package() == 0) {
+		//	storeVO.setStore_package(1);
+		//}
+		//System.out.println(storeVO.getStore_package());
+		
+		List<StoreVO> list = storeService.storeList(storeVO);
+		
+		//System.out.println(list.get(0).getStore_name());
+		
+		mv.addObject("list", list);
+		mv.setViewName("common/store_result");
+		
+		return mv;
 	}
 }

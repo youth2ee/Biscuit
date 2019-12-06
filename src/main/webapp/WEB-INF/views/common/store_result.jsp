@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:forEach items="${list}" var="list" varStatus="loop">
 	<c:if test="${loop.index%3==0 and !loop.isFirst() and !loop.isLast()}">
+		<h3>hi</h3>
 		</ul>
 		<ul class="product_molist topline">
 	</c:if>

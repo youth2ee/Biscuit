@@ -16,7 +16,6 @@
 <header>
 	<c:import url="../layout/header.jsp"></c:import>
 </header>
-
 <section>
 	<div id="container">
 		<div id="content">

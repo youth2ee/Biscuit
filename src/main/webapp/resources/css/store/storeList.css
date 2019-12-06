@@ -50,7 +50,7 @@ header {
 	border-left: 0;
 	border-right: 0;
 }
-.tab_mallmenu li a {
+.tab_mallmenu li span {
 	position: relative;
 	display: block;
 	padding: 16px 0;
@@ -58,17 +58,18 @@ header {
 	font-size: 14px;
 	color: #231f20;
 	-webkit-box-sizing: border-box;
+	cursor: pointer;
 }
-.tab_mallmenu li.current a {
+.tab_mallmenu li.current span {
 	color: #fff;
 	background-color: #231f20;
 	border-color: #231f20;
 	z-index: 1;
 }
-.tab_mallmenu li:first-child a::before {
+.tab_mallmenu li:first-child span::before {
 	background: none;
 }
-.tab_mallmenu li a:before {
+.tab_mallmenu li span:before {
 	content: '';
 	display: block;
 	position: absolute;
@@ -76,7 +77,7 @@ header {
 	height: 16px;
 	background: #e5e5e5;
 }
-.tab_mallmenu li.current a:before {
+.tab_mallmenu li.current span:before {
 	background-color: #231f20;
 }
 
@@ -104,6 +105,10 @@ header {
 	position: relative;
     width: 250px;
     padding: 0 30px;
+}
+.product_molist.topline:last-child {
+	text-align: left;
+	margin-left: 13px;
 }
 .molthum {
 	display: block;
