@@ -71,12 +71,6 @@
 <tr class="loc"><td class="mtd">${loc.cinema_loc}</td><tr>
 </c:forEach>
 </table>
-
-<%-- <ul class="sul" id="theaterNameSelect">
-<c:forEach items="${movieLoc}" var="loc">
-<li class="loc" title="${loc.cinema_num}">${loc.cinema_loc}</li>
-</c:forEach>
-</ul> --%>
 </div> 
 
 
@@ -85,7 +79,6 @@
 <div class="s3 s2">
 <table class="sul" id="cinemaNameSelect">
 </table>
-<!-- <ul class="sul" id="cinemaNameSelect"></ul> -->
 </div> 
 
 
@@ -93,7 +86,6 @@
 <div class="s s4">
 <table class="sul" id="movieDateSelect">
 </table>
-<!-- <ul class="sul" id="movieDateSelect"></ul> -->
 </div> 
 
 
@@ -101,7 +93,6 @@
 <div class="s s5">
 <table class="sul" id="movieTimeSelect">
 </table>
-<!-- <ul class="sul" id="movieTimeSelect"></ul> -->
 </div> 
 
 
@@ -120,10 +111,6 @@
 
 
  
-
-
-
-
 
 
   <script type="text/javascript">
@@ -151,14 +138,12 @@
  			date.empty();
  			time.empty();
  		}
- 		
 		
 		mnum = $(this).find(".mtitle").attr("title");
 		mnum = mnum.trim();
 		
 		mname = $(this).find(".mtitle").text();
 		mname = mname.trim();
-		
 		
 		console.log(mname);
 	});
@@ -177,9 +162,7 @@
  		loc = $(this).children().text();
  		loc = loc.trim();
  		
-/*  		cnum = $(this).children().attr("title");
-		cnum = cnum.trim(); */
- 		
+ 		console.log(loc);
  		
  		$.ajax({
 			data : {
@@ -234,7 +217,6 @@
  	 $(document).on("click",".dateSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
  		
- 		 
   		cdate = $(this).children().text();
  		cdate = cdate.trim();
  		
