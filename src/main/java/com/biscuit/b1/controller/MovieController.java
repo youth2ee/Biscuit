@@ -37,6 +37,7 @@ public class MovieController {
 		mv.addObject("movieTitle", movieTitle);
 		mv.addObject("movieLoc", movieLoc);
 		
+		
 		mv.setViewName("movie/movieSelect");
 		
 		return mv;

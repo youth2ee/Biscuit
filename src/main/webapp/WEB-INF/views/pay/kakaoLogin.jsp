@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 
 <body>
+
 <a href="https://kauth.kakao.com/oauth/authorize?client_id=347369e2dc4b384e957f716bb12eef19&redirect_uri=http://localhost.com/kakaologin&response_type=code">test</a>
 <button id="btn">로그인</button>
 
@@ -15,7 +16,7 @@
 	$("#btn").click(function() {
 		$.ajax({
 			type: "GET",
-			url: "https://kauth.kakao.com/oauth/authorize?client_id=347369e2dc4b384e957f716bb12eef19&redirect_uri=http://localhost.com/kakaologin&response_type=code",
+			url: "https://kauth.kakao.com/oauth/authorize?client_id=347369e2dc4b384e957f716bb12eef19&redirect_uri=http://localhost/b1/pay/kakaoLogin&response_type=code",
 			success: function(data) {
 				console.log(data.Location);
 			}

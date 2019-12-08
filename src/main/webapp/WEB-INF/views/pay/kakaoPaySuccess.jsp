@@ -15,5 +15,7 @@
 	<p>상품수량 : ${pay.quantity}</p>
 	<p>결제금액 : ${pay.amount.total}</p>
 	<p>결제방법 : ${pay.payment_method_type}</p> 
+	<!-- <p>예매번호 : ${ticket.movie_t_num}</p> -->
+	<a href="../">메인으로</a>
 </body>
 </html>

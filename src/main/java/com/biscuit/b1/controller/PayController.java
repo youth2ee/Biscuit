@@ -19,19 +19,14 @@ public class PayController {
 	private String quantity = null;
 	@Inject
 	private PayService payService;
-
-	@GetMapping(value = "KakaoLogin")
-	public void kakaoLogin() throws Exception {
-	}
-
-	@GetMapping(value = "naverPay")
-	public void naverPayGet(HttpServletRequest request) throws Exception {
-	}
 	
 	@GetMapping(value = "kakaoPay")
 	public void kakaoPayGet(HttpServletRequest request) throws Exception {
+		String seats = request.getParameter("seats");
 		total_amount = request.getParameter("price");
-		quantity = request.getParameter("peopleCount");
+		System.out.println(total_amount);
+		quantity = request.getParameter("count");
+		System.out.println(quantity);
 	}
 
 	@PostMapping(value = "kakaoPay")

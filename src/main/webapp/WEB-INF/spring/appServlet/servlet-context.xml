@@ -26,6 +26,14 @@
 	
 	<context:component-scan base-package="com.biscuit.b1" />
 	
+	<!-- 일반 파일 업로드 경로 -->
+	<resources location="/resources/imgUpload" mapping="/imgUpload/**"></resources>
 	
+	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+		<!-- Encoding 설정 -->
+		<beans:property name="defaultEncoding" value="UTF-8" />
+		<!-- 파일 전체 최대 허용 크기 -->
+		<beans:property name="maxUploadSize" value="104857600" />
+	</beans:bean>
 	
 </beans:beans>

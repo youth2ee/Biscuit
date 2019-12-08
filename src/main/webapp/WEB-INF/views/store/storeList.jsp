@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +8,14 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 	
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/store/storeList.css" rel="stylesheet">
 </head>
 <body>
+<header>
+	<c:import url="../layout/header.jsp" />
+</header>
+<section>
 	<div id="container">
 		<div id="content">
 			<!-- 상단이미지 -->
@@ -22,58 +26,109 @@
 					<div class="product_index">
 						<div class="bg_fixedIndex">
 							<ul class="tab_mallmenu">
-								<li data-menuid="1" value="1" class>
-									<a href="#">패키지</a>
+								<li class="current" data-menuid="cgv_tab1" id="1">
+									<span>패키지</span>
 								</li>
-								<li data-menuid="2" value="2" class>
-									<a href="#">영화관람권</a>
+								<li data-menuid="cgv_tab2" id="2">
+									<span>영화관람권</span>
 								</li>
-								<li data-menuid="3" value="3" class>
-									<a href="#">콤보</a>
+								<li data-menuid="cgv_tab3" id="3">
+									<span>콤보</span>
 								</li>
-								<li data-menuid="4" value="4" class>
-									<a href="#">팝콘</a>
+								<li data-menuid="cgv_tab4" id="4">
+									<span>팝콘</span>
 								</li>
-								<li data-menuid="5" value="5" class>
-									<a href="#">음료</a>
+								<li data-menuid="cgv_tab5" id="5">
+									<span>음료</span>
 								</li>
-								<li data-menuid="6" value="6" class>
-									<a href="#">스낵</a>
+								<li data-menuid="cgv_tab6" id="6">
+									<span>스낵</span>
 								</li>
 							</ul>
 						</div>
 					</div>
-<!-- --------------------------------------------- -->
+<!-- ------------------------------------------------------------------ -->
 					<div class="bg_white"></div>
 					<!-- 품목 -->
 					<div class="tab_content">
-						<div id="cgv_tab1" class="con menuTab menuTab2" style="display:block;">
+						<!-- 패키지 -->
+						<div id="cgv_tab1" class="menuTab current">
 							<ul class="product_molist">
-								<c:forEach items="${list}" var="list">
-									<li>
-										<a href="./storeSelect?store_num=${list.store_num}">
-											<span class="molthum">
-												<img alt="${list.store_name}" src="">
-											</span>
-											<span class="listinfo">
-												<span>${list.store_name}</span>
-												<span>
-													<strong>
-														<fmt:formatNumber value="${list.store_price}" pattern="###,###,###" />
-														<span>원</span>
-													</strong>
-												</span>
-											</span>
-										</a>
-									</li>
-								</c:forEach>
+								<c:import url="../common/store_result.jsp"></c:import>
 							</ul>
 						</div>
+<!-- --------------------------------------------- -->
+						<!-- 영화관람권 -->
+						<div id="cgv_tab2" class="menuTab">
+							<ul class="product_molist product_molist2"></ul>
+						</div>
+<!-- --------------------------------------------- -->
+						<!-- 콤보 -->
+						<div id="cgv_tab3" class="menuTab">
+							<ul class="product_molist product_molist3"></ul>
+						</div>
+<!-- --------------------------------------------- -->
+						<!-- 팝콘 -->
+						<div id="cgv_tab4" class="menuTab">
+							<ul class="product_molist product_molist4"></ul>
+						</div>
+<!-- --------------------------------------------- -->
+						<!-- 음료 -->
+						<div id="cgv_tab5" class="menuTab">
+							<ul class="product_molist product_molist5"></ul>
+						</div>
+<!-- --------------------------------------------- -->
+						<!-- 스낵 -->
+						<div id="cgv_tab6" class="menuTab">
+							<ul class="product_molist product_molist6"></ul>
+						</div>
+<!-- --------------------------------------------- -->
 					</div>
+					<a href="storeWrite" id="btn_register">등록</a>
+					<a href="storeUpdate" id="btn_update">수정</a>
+					<a href="storeDelete" id="btn_delete">삭제</a>
 				</div>
 			</div>
 		</div>
 	</div>
+</section>
 
+<footer>
+
+</footer>
+
+<script type="text/javascript">
+	/* 클릭하면 메뉴 탭 및 내용 전환 */
+	$('ul.tab_mallmenu li').click(function() {
+		var activeTab = $(this).attr('data-menuid');
+		
+		$('ul.tab_mallmenu li').removeClass('current');
+		$('.menuTab').removeClass('current');
+		$(this).addClass('current');
+		$('#'+activeTab).addClass('current');
+		
+		/* 클릭하면 해당 메뉴의 내용 불러오기 */
+		var store_package = $('ul.tab_mallmenu li.current').attr('id');
+		//alert(store_package);
+		//var tempScrollTop = $(window).scrollTop();
+		
+		$.ajax({
+			type: "GET",
+			url: "storeList2",
+			async: false,
+			data: {
+				store_package:store_package
+			},
+			success: function(data) {
+				//console.log(data);
+				//$(window).scrollTop(tempScrollTop);
+				//alert('.product_molist'+activeTab);
+				$('.product_molist'+store_package).html(data);
+			}
+		});
+		/****************************************************************/
+	});
+	
+</script>
 </body>
 </html>

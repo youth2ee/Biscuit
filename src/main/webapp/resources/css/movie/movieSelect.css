@@ -1,9 +1,15 @@
 @charset "UTF-8";
 
-#total{
+body{
 	background-color: #fcfcf0;
-	padding-bottom: 30px;
 }
+
+
+/* #total{
+	background-color: #fcfcf0;
+	height: 1400px;
+	padding-bottom: 30px;
+} */
 
 
 /* section */
@@ -24,7 +30,17 @@
 	height: 100px;
 	margin: 0 auto;
 	text-align: center;
-	padding-top: 20px;
+	line-height: 100px;
+}
+
+#secMidTitle{
+	width: 88%;
+	margin: 0 auto;
+	padding-top: 60px;
+/* 	float: left;
+	background-color: red;
+	text-align: center;
+	margin-left:85px;  */
 }
 
 #secMain{
@@ -38,41 +54,119 @@ color: #e71a0f;
 font-weight: bolder;
 }
 
+.sname{
+	width: 22%;
+}
+
+
 .s{
 	font-size: 13px;
 	padding-top: 20px;
-	padding-left: 30px;
+	padding-left: 20px;
 	margin: 6px;
+	height: 600px;
+	overflow: auto;
+	float: left;
+	border: 1px solid #e71a0f;
+	border-radius: 3px;
+}
+
+.s1{
 	width: 15%;
-	height: 600px;
-	overflow: auto;
-	float: left;
-	border: 1px solid #e71a0f;
 }
 
-.sname{
+.s2{
+	width: 16.5%;
+}
+
+.s3{
 	font-size: 13px;
-	padding-top: 20px;
-	padding-left: 30px;
+	padding-top: 13px;
+	padding-left: 20px;
 	margin: 6px;
-	width: 20%;
 	height: 600px;
 	overflow: auto;
 	float: left;
 	border: 1px solid #e71a0f;
+	padding-bottom: 6px;
+	border-radius: 3px;
 }
 
+.s4{
+	width: 16%;
+}
 
+.s5{
+	width: 15.7%;
+	padding-left: 22px;
+}
 
 .sul{
 	cursor: pointer;
 }
 
-.sul > li{
-	height: 40px;
-	vertical-align: middle;
-}
 
 .sch{
 	color: red;
 }
+
+.dname{
+	margin: 6px;
+	width: 23.7%;
+	height: 40px;
+	float: left;
+	border: 1px solid #282828;
+	background-color: #282828;
+	text-align: center;
+}
+
+.divc{
+	margin: 6px;
+	width:36.3%;
+	height: 40px;
+	float: left;
+	border: 1px solid #282828;
+	background-color: #282828;
+	text-align: center;
+}
+
+.divT{
+	margin: 6px;
+	width: 17.6%;
+	height: 40px;
+	float: left;
+	border: 1px solid #282828;
+	background-color: #282828;
+	text-align: center;
+}
+
+#btn{
+	margin-top: 30px;
+	float: right;
+}
+
+.age{
+	border-radius: 10px;
+}
+
+td{
+	height: 25px;
+	font-weight: bold;
+}
+
+.mtd{
+	width: 300px;
+	padding-top: 8px;
+	padding-left: 10px;
+}
+
+.mtd1{
+	vertical-align: middle;
+}
+
+.mtd2{
+	width:78%;
+	padding-top: 15px;
+}
+
+

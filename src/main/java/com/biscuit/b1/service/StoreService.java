@@ -3,8 +3,10 @@ package com.biscuit.b1.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.biscuit.b1.dao.StoreDAO;
 import com.biscuit.b1.model.StoreVO;
@@ -27,7 +29,15 @@ public class StoreService {
 		return storeDAO.storeUpdate(storeVO);
 	}
 	
-	public int storeWrite(StoreVO storeVO) throws Exception {
+	public int storeWrite(StoreVO storeVO, MultipartFile file, HttpSession session) throws Exception {
+		String realPath = session.getServletContext().getRealPath("resources/upload/store");
+
+		if(file != null) {
+			String fileName = fileSaver.save(realPath, file);
+			storeVO.setStore_img(fileName);
+			storeVO.setStore_thumbimg("th_"+fileName);
+		}
+		
 		return storeDAO.storeWrite(storeVO);
 	}
 	

@@ -1,14 +1,32 @@
 @charset "UTF-8";
+
 * {
 	margin: 0;
 	padding: 0;
 	border: 0;
-    vertical-align: baseline;
 }
+
 ol, ul, li {
-	list-style: none;	
+	list-style: none;
 }
+
 a {
 	color: black;
 	text-decoration: none;
+}
+
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+
+}
+
+::-webkit-scrollbar-track {
+	background-color: #fcfcf0;
+	border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #ee3224;
+	border-radius: 9px;
 }

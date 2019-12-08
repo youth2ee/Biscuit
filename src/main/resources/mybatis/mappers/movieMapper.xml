@@ -7,7 +7,7 @@
   
   	<!-- 영화선택 -->
   	<select id="movieTitleSelect" resultType="MovieInfoVO">
-  	select movieinfo_num, movieinfo_title
+  	select movieinfo_num, movieinfo_title, movieinfo_grade
     from movieinfo
   	</select>
   
