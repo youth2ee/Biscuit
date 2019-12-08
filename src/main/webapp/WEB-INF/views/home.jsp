@@ -8,7 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 	
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/resources/css/header_home.css" rel="stylesheet">
 
 </head>
 <body>
