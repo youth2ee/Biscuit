@@ -127,7 +127,7 @@ body .nomargin-bottom {
 	margin-left: -1px;
 	width: 2px;
 	height: 100%;
-	background: #dbdbdb;
+	/* background: #dbdbdb; */
 	content: '';
 	-webkit-transform: rotate3d(0,0,1,22.5deg);
 	transform: rotate3d(0,0,1,22.5deg);

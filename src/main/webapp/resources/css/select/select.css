@@ -18,7 +18,8 @@
 }
 
 .cs-select:focus {
-	outline: none; /* For better accessibility add a style for this in your skin */
+	outline: none; 
+	/* For better accessibility add a style for this in your skin */
 }
 
 .cs-select select {

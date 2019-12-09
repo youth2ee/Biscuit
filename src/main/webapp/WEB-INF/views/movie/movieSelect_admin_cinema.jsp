@@ -15,18 +15,13 @@
 <link href="${pageContext.request.contextPath}/resources/css/design/set2.css" rel="stylesheet" >
 <link href="${pageContext.request.contextPath}/resources/css/design/demo.css" rel="stylesheet" >
 
-<%-- <link href="${pageContext.request.contextPath}/resources/css/select/demo.css" rel="stylesheet" >
-<link href="${pageContext.request.contextPath}/resources/css/select/select.css" rel="stylesheet" >
-<link href="${pageContext.request.contextPath}/resources/css/select/skinborder.css" rel="stylesheet" >
-
-<link href="${pageContext.request.contextPath}/resources/css/select/selectList.css" rel="stylesheet" > --%>
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,900,700,600,200" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/select/selectList.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,900,700,600,200" rel="stylesheet">
   
-  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,900,700,600,200'>
-<!-- <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'> -->
+<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,900,700,600,200'>
 <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'>
 
-      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/select/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/select/style.css">
 
 <style>
 	body #cdawrap {
@@ -49,12 +44,27 @@
 <section>
 <div id="sec">
 
-<div id = "secTitle">
-<h1>관리자 모드 (새로 개관한 극장을 추가하기)</h1>
-</div>
 
 <!--  -->
-		
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="./movieSelect_admin_cinema">Cinema 추가</a>
+  <a href="./movieSelect_admin_time">Time 추가</a>
+  <a href="#">Clients</a>
+  <a href="#">Contact</a>
+</div>
+
+<div id="menubar">
+<!-- <h2>Animated Sidenav Example</h2>
+<p>Click on the element below to open the side navigation menu.</p> -->
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
+</div>
+
+<div id = "secTitle">
+<br>
+<h1>관리자 모드 (새로 개관한 극장을 추가하기)</h1>
+</div>
+	
 
 <!--  -->
 <div id="sec1">
@@ -78,8 +88,6 @@
 
 
 <!--  -->
-
-
 <div id="sec2">
 <div>
 <span class="input input--yoshiko" style="width: 300px;">
@@ -118,11 +126,19 @@
 </section>
 
 <footer>
-d
 </footer>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 
     <script>
+    function openNav() {
+    	  document.getElementById("mySidenav").style.width = "250px";
+    	}
+
+    	function closeNav() {
+    	  document.getElementById("mySidenav").style.width = "0";
+    	}
+    
+    
     console.clear();
 
     var el = {};

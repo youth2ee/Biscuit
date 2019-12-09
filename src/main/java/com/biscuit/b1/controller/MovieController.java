@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
-import com.biscuit.b1.model.TheaterVO;
 import com.biscuit.b1.model.TimeInfoVO;
 import com.biscuit.b1.service.MovieSelectService;
 
@@ -90,7 +89,14 @@ public class MovieController {
 		return mv;
 	}
 	
+	@GetMapping("movieSelect_admin_cinema")
+	public void movieSelect_admin_cinema() {
+	}
 	
+	@GetMapping("movieSelect_admin_time")
+	public void movieSelect_admin_time() {
+		
+	}
 	
 	
 	

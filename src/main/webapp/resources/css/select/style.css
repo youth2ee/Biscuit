@@ -1,5 +1,5 @@
 .typo, .list a {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 700;
   font-family: 'Source Sans Pro', sans-serif;
   color: #585858;
@@ -18,11 +18,6 @@ body {
   text-align: center;
 }
 
-.wrapper {
- padding-top: 10px; 
-  height: 100vh;
-  font-size: 30px;
-}
 
 .list {
   display: inline-block;
@@ -47,8 +42,7 @@ body {
   color: #ec6707;
 
   
-  
-  
+
 }
 .list a {
   -webkit-transition: all .4s;
@@ -101,10 +95,3 @@ select option {
   -moz-appearance: none;
 }
 
-.placeholder {
-  border-bottom: 4px solid;
-  cursor: pointer;
-}
-.placeholder:hover {
-  color: #888888;
-}

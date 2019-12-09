@@ -170,9 +170,9 @@
 		var seatCount = 0; // 선택 좌석 수
 		/* $("#seatSelect").hide(); */
 		
-		var list = new Array();
-		<c:forEach items="${seats}" var="seats">
-		list.push("${seats.seat_name}");
+		var list = [];
+		<c:forEach items="${seats}" var="seat">
+		list.push("${seat.seat_name}");
 		</c:forEach>
 		
 		for(var i = 0; i < list.length; i++){ // 이미 예매된 좌석 선택 불가

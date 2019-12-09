@@ -18,7 +18,7 @@
 	width: 60%;
 	border: none;
 	border-radius: 0;
-	background: #f0f0f0;
+	/* background: #f0f0f0; */
 	color: #aaa;
 	font-weight: 400;
 	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -112,7 +112,7 @@
 
 .input__label--manami::after {
 	height: 2px;
-	background: #A8A8A8;
+	/* background: #A8A8A8; */
 	top: 100%;
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
@@ -355,7 +355,7 @@
 /* Yoshiko */
 .input__field--yoshiko {
 	width: 100%;
-	background-color: #d0d1d0;
+	/* background-color: #d0d1d0; */
 	border: 2px solid transparent;
 	-webkit-transition: background-color 0.25s, border-color 0.25s;
 	transition: background-color 0.25s, border-color 0.25s;
@@ -635,7 +635,7 @@
 /* Makiko */
 .input--makiko {
 	overflow: hidden;
-	background: #CBCBCB;
+	/* background: #CBCBCB; */
 }
 
 .input__field--makiko {
