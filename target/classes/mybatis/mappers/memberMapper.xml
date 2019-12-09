@@ -24,7 +24,6 @@
  	</select>
  	
  	<delete id="memberDelete" parameterType="MemberVO">
- 		delete member where id=#{id}
+ 		delete member where id = #{id}
  	</delete> 
- 	
 </mapper>

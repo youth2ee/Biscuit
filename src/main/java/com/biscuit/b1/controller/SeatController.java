@@ -27,8 +27,6 @@ public class SeatController {
 	@RequestMapping(value = "seatSelect")
 	public ModelAndView seatSelect(ChoiceVO choiceVO,HttpServletRequest request) throws Exception {
 		
-		
-		
 		ModelAndView mv = new ModelAndView();
 		/*
 		 * System.out.println("시네마 지역 : " + choiceVO.getCinema_loc());

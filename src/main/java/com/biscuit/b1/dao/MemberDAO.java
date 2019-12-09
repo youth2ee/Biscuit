@@ -12,11 +12,24 @@ public class MemberDAO {
 	private static final String NAMESPACE = "memberMapper.";
 	@Inject
 	private SqlSession sqlSession;
-	
-	public int memberJoin(MemberVO memberVO) throws Exception{
-		return sqlSession.insert(NAMESPACE+"memberJoin",memberVO);
+
+	public int memberJoin(MemberVO memberVO) throws Exception {
+		return sqlSession.insert(NAMESPACE + "memberJoin", memberVO);
 	}
-	public MemberVO idCheck(String id) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"idCheck",id);
+
+	public MemberVO idCheck(String id) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "idCheck", id);
+	}
+
+	public MemberVO memberLogin(MemberVO memberVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "memberLogin", memberVO);
+	}
+
+	public int memberUpdate(MemberVO memberVO) throws Exception {
+		return sqlSession.update(NAMESPACE + "memberUpdate", memberVO);
+	}
+
+	public int memberDelete(MemberVO memberVO) throws Exception {
+		return sqlSession.delete(NAMESPACE + "memberDelete", memberVO);
 	}
 }
