@@ -1,8 +1,10 @@
 package com.biscuit.b1.service;
 
+import java.io.File;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
@@ -21,22 +23,57 @@ public class StoreService {
 	@Inject
 	private FileSaver fileSaver;
 	
-	public int storeDelete(StoreVO storeVO) throws Exception {
+	public int storeDelete(StoreVO storeVO, HttpServletRequest request) throws Exception {
+		String realPath = request.getSession().getServletContext().getRealPath("resources/upload/store");
+		StoreVO storeVO2 = storeDAO.storeSelect(storeVO);
+		
+		fileSaver.fileDelete(realPath, storeVO2.getStore_img());
+		//fileSaver.fileDelete(realPath, storeVO2.getStore_thumbimg());
+
 		return storeDAO.storeDelete(storeVO);
 	}
 	
-	public int storeUpdate(StoreVO storeVO) throws Exception {
+	public int storeUpdate(StoreVO storeVO, MultipartFile file, HttpServletRequest request) throws Exception {
+		String realPath = request.getSession().getServletContext().getRealPath("resources/upload/store");
+		
+		//System.out.println(request.getParameter("store_img"));
+		
+		//새로운 파일이 등록되었는지 확인
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			
+			//기존 파일을 삭제
+			fileSaver.fileDelete(realPath, request.getParameter("store_img"));
+			//fileSaver.fileDelete(realPath, request.getParameter("store_thumbimg"));
+			
+			//new File(realPath + request.getParameter("store_img")).delete();
+			//new File(realPath + request.getParameter("store_thumbimg")).delete();
+		
+			//새로 첨부한 파일을 등록
+			String fileName = fileSaver.save(realPath, file);
+			
+			storeVO.setStore_img(fileName);
+			storeVO.setStore_thumbimg("th_"+fileName);
+		}else { //새로운 파일이 등록되지 않았다면
+			//기존 이미지를 그대로 사용
+			//System.out.println(request.getParameter("store_img"));
+			storeVO.setStore_img(request.getParameter("store_img"));
+			storeVO.setStore_thumbimg(request.getParameter("store_thumbimg"));
+		}
+		
 		return storeDAO.storeUpdate(storeVO);
 	}
 	
 	public int storeWrite(StoreVO storeVO, MultipartFile file, HttpSession session) throws Exception {
 		String realPath = session.getServletContext().getRealPath("resources/upload/store");
-
-		if(file != null) {
-			String fileName = fileSaver.save(realPath, file);
-			storeVO.setStore_img(fileName);
-			storeVO.setStore_thumbimg("th_"+fileName);
+		String fileName = null;
+		
+		if(file.getOriginalFilename() != null && file.getOriginalFilename() != "") {
+			fileName = fileSaver.save(realPath, file);
+		} else {
+			fileName = realPath + File.separator + "images" + File.separator + "none.png";
 		}
+		storeVO.setStore_img(fileName);
+		storeVO.setStore_thumbimg("th_"+fileName);
 		
 		return storeDAO.storeWrite(storeVO);
 	}

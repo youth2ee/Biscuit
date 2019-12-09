@@ -9,7 +9,7 @@
 	</delete>
 
   	<update id="storeUpdate" parameterType="StoreVO">
-  		update store set store_name=#{store_name}, store_price=#{store_price}, store_note=#{store_note}, store_package=#{store_package}, store_img=#{store_img}, store_thumimg=#{store_thumimg}
+  		update store set store_name=#{store_name}, store_price=#{store_price}, store_note=#{store_note}, store_package=#{store_package}, store_img=#{store_img}, store_thumbimg=#{store_thumbimg}
   		where store_num=#{store_num}
   	</update>
   	

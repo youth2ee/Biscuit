@@ -1,5 +1,6 @@
 package com.biscuit.b1.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -25,16 +26,44 @@ public class StoreController {
 	private StoreService storeService;
 	
 	// 상품 삭제
-	@PostMapping("storeDelete")
-	public void storeDelete() throws Exception {
+	@GetMapping("storeDelete")
+	public ModelAndView storeDelete(StoreVO storeVO, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		
+		int result = storeService.storeDelete(storeVO, request);
+		
+		String msg = "상품 삭제 실패";
+		
+		if(result>0) {
+			msg = "상품 삭제 성공";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "storeList");
+		mv.setViewName("common/common_result");
+		
+		return mv;
 	}
 	
 /////////////////////////////////////////////
 	// 상품 수정
 	@PostMapping("storeUpdate")
-	public void storeUpdate(StoreVO storeVO) throws Exception {
+	public ModelAndView storeUpdate(StoreVO storeVO, MultipartFile file, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		//System.out.println(request.getParameter("store_img"));
+		//System.out.println(storeVO.getStore_img());
+
+		int result = storeService.storeUpdate(storeVO, file, request);
 		
+		String msg = "상품 업데이트 실패";
+		
+		if(result>0) {
+			msg = "상품 업데이트 성공";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "storeList");
+		mv.setViewName("common/common_result");
+		
+		return mv;
 	}
 	
 	// 상품 수정 폼
@@ -42,7 +71,7 @@ public class StoreController {
 	public void storeUpdate(StoreVO storeVO, Model model) throws Exception {
 		storeVO = storeService.storeSelect(storeVO);
 		
-		model.addAttribute("select", storeVO);
+		model.addAttribute("update", storeVO);
 	}
 /////////////////////////////////////////////
 	// 상품 등록
@@ -63,7 +92,7 @@ public class StoreController {
 			msg = "상품 등록 성공";
 		}
 		mv.addObject("msg", msg);
-		mv.addObject("path", "storeWrite");
+		mv.addObject("path", "storeList");
 		mv.setViewName("common/common_result");
 		
 		return mv;
