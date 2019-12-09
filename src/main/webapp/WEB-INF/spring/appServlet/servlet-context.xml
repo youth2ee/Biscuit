@@ -36,4 +36,7 @@
 		<beans:property name="maxUploadSize" value="104857600" />
 	</beans:bean>
 	
+	<!-- properties -->
+	<context:property-placeholder file-encoding="UTF-8" location="classpath:/properties/**/*.properties"/>
+	
 </beans:beans>

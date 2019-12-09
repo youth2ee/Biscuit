@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+
 <!-- <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +92,7 @@ marker.setMap(map);
 
 
 <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=${mapApi.key}&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c385975a519fabb671122b6c7f825767&libraries=services,clusterer,drawing"></script>
 <script>
 
 /* 어디 영화관 선택할건지 값 보내주기 */
