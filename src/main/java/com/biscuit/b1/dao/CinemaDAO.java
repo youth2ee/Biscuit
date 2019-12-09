@@ -1,5 +1,7 @@
 package com.biscuit.b1.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,5 +20,14 @@ public class CinemaDAO {
 		return sqlSession.selectOne(NAMESPACE+"cinema_loc", cinemaVO);
 		
 	}
+	
+	public List<CinemaVO> cinemaList_loc() {
+		return sqlSession.selectList(NAMESPACE+"cinemaList_loc");
+	}
+	
+	public List<CinemaVO> cinemaList_cinema() {
+		return sqlSession.selectList(NAMESPACE+"cinemaList_cinema");
+	}
+	
 	
 }
