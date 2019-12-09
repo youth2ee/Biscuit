@@ -42,7 +42,7 @@ public class StoreController {
 	public void storeUpdate(StoreVO storeVO, Model model) throws Exception {
 		storeVO = storeService.storeSelect(storeVO);
 		
-		model.addAttribute("update", storeVO);
+		model.addAttribute("select", storeVO);
 	}
 /////////////////////////////////////////////
 	// 상품 등록

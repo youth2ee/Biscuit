@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,8 +86,6 @@
 <!-- --------------------------------------------- -->
 					</div>
 					<a href="storeWrite" id="btn_register">등록</a>
-					<a href="storeUpdate" id="btn_update">수정</a>
-					<a href="storeDelete" id="btn_delete">삭제</a>
 				</div>
 			</div>
 		</div>
@@ -123,6 +122,7 @@
 				//console.log(data);
 				//$(window).scrollTop(tempScrollTop);
 				//alert('.product_molist'+activeTab);
+				//$('.product_molist'+store_package).empty();
 				$('.product_molist'+store_package).html(data);
 			}
 		});
