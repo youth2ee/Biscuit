@@ -37,12 +37,6 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/kakaologin")
-	public String login(@RequestParam("code") String code) {
-		System.out.println("머지");
-		System.out.println("code : " + code);
-		return "index";
-	}
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
