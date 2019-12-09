@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.loctd{
+	width: 50px;
+	height: 30px;
+	background-color:orange;
+	text-align: center;
+}
+
+#cinematable{
+	width:70%;
+	margin: 0 auto;
+}
+
+.cinematd{
+	width: 30px;
+	height: 30px;
+	background-color:green;
+	text-align: center;
+}
+
+#map{
+	width: 70%;
+	height: 400px;
+	margin: 0 auto;
+}

@@ -20,7 +20,7 @@
 		<div id="h3">
 		<div class="himg2"><a href="./movie/movieSelect"><img alt="" src="./resources/images/home/1_2.png"></a></div>
 		<div class="himg2"><img alt="" src="./resources/images/home/2_2.png"></div>
-		<div class="himg2"><img alt="" src="./resources/images/home/3_2.png"></div>
+		<div class="himg2"><a href="./cinema/cinemaList"><img alt="" src="./resources/images/home/3_2.png"></a></div>
 		<div class="himg2"><a href="./store/storeList"><img alt="" src="./resources/images/home/4_2.png"></a></div>
 		</div>
 		</div>

@@ -12,7 +12,9 @@
 		<img alt="" src="${pageContext.request.contextPath}/resources/images/home/1_2.png">
 	</a>
 	<img alt="" src="${pageContext.request.contextPath}/resources/images/home/2_2.png">
+	<a href="${pageContext.request.contextPath}/cinema/cinemaList">
 	<img alt="" src="${pageContext.request.contextPath}/resources/images/home/3_2.png">
+	</a>
 	<a href="${pageContext.request.contextPath}/store/storeList">
 		<img alt="" src="${pageContext.request.contextPath}/resources/images/home/4_2.png">
 	</a>

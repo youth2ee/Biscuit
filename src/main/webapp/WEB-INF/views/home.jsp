@@ -12,8 +12,6 @@
 
 
 
-
-
 </head>
 <body>
 	<div id="cgvWrap">
