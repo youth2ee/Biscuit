@@ -1,5 +1,7 @@
 package com.biscuit.b1.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -102,10 +104,12 @@ public class MemberController {
 	public void memberLogin() {
 
 	}
+
 	@GetMapping("memberJoin2")
 	public void memberJoin2() {
 
 	}
+
 	@PostMapping("memberLogin")
 	public ModelAndView memberLogin(MemberVO memberVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -124,9 +128,57 @@ public class MemberController {
 		return mv;
 	}
 
+	@PostMapping("memberManagementAdd")
+	public ModelAndView memberManagementAdd(MemberVO memberVO) throws Exception{
+		System.out.println(memberVO.getId());
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.memberJoin(memberVO);
+		String msg = "멤버추가 실패";
+		if (result > 0)
+			msg = "멤버추가 완료";
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./memberManagement");
+		mv.setViewName("common/common_result");
+		return mv;
+	}
+	
 	@GetMapping("memberManagement")
-	public void memberManagement() throws Exception {
+	public ModelAndView memberManagement(MemberVO memberVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<MemberVO> memberVOs = memberService.memberManagement();
+		for (MemberVO memberVO2 : memberVOs) {
+			memberVO2.setBirth(memberVO2.getBirth().substring(0, 10));
+			memberVO2.setSignIn_date(memberVO2.getSignIn_date().substring(0, 10));
+		}
+		mv.addObject("members", memberVOs);
+		return mv;
+	}
 
+	@PostMapping("memberManagement")
+	public ModelAndView memberManagement2(MemberVO memberVO, String rowNum) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.memberManagementUpdate(memberVO);
+		String msg = "업데이트 실패";
+		if (result > 0) {
+			msg = "업데이트 완료";
+		}
+		mv.addObject("msg", msg);
+		mv.setViewName("common/common_result");
+		return mv;
+	}
+
+	@GetMapping("memberManagementDelete")
+	public ModelAndView memberManagementDelete(String id, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.memberManagementDelete(id);
+		String msg = "탈퇴에 실패했습니다.";
+		if (result > 0) {
+			msg = "정상적으로 탈퇴하였습니다.";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./memberManagement");
+		mv.setViewName("common/common_result");
+		return mv;
 	}
 
 	@GetMapping("memberMyPage")

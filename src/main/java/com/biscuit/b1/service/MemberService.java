@@ -1,5 +1,7 @@
 package com.biscuit.b1.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -28,7 +30,20 @@ public class MemberService {
 		return memberDAO.memberUpdate(memberVO);
 	}
 
+	public int memberManagementUpdate(MemberVO memberVO) throws Exception {
+		return memberDAO.memberManagementUpdate(memberVO);
+	}
+
 	public int memberDelete(MemberVO memberVO) throws Exception {
 		return memberDAO.memberDelete(memberVO);
 	}
+	
+	public int memberManagementDelete(String id) throws Exception {
+		return memberDAO.memberManagementDelete(id);
+	}
+
+	public List<MemberVO> memberManagement() throws Exception {
+		return memberDAO.memberManagement();
+	}
+
 }

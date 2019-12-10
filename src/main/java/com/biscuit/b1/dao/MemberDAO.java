@@ -1,5 +1,7 @@
 package com.biscuit.b1.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -29,7 +31,19 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE + "memberUpdate", memberVO);
 	}
 
+	public int memberManagementUpdate(MemberVO memberVO) throws Exception {
+		return sqlSession.update(NAMESPACE + "memberManagementUpdate", memberVO);
+	}
+
 	public int memberDelete(MemberVO memberVO) throws Exception {
 		return sqlSession.delete(NAMESPACE + "memberDelete", memberVO);
+	}
+
+	public int memberManagementDelete(String id) throws Exception {
+		return sqlSession.delete(NAMESPACE + "memberDelete", id);
+	}
+
+	public List<MemberVO> memberManagement() throws Exception {
+		return sqlSession.selectList(NAMESPACE + "memberManagement");
 	}
 }

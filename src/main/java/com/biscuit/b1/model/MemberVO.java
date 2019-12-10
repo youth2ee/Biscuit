@@ -12,6 +12,7 @@ public class MemberVO {
 	private String birth;
 	private String gender;
 	private int grade;
+	private int grade_point;
 	private String signIn_date;
 
 	public String getId() {
@@ -92,6 +93,14 @@ public class MemberVO {
 
 	public void setGrade(int grade) {
 		this.grade = grade;
+	}
+
+	public int getGrade_point() {
+		return grade_point;
+	}
+
+	public void setGrade_point(int grade_point) {
+		this.grade_point = grade_point;
 	}
 
 	public String getSignIn_date() {

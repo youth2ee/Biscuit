@@ -4,34 +4,59 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="../layout/jquery.jsp" />
 </head>
 <body>
-	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script
+		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<form id="frm" action="./memberJoin" method="post">
-		<label for="id">아이디 <input type="text" name="id" id="id"></label><br>
-		<div id="idCheck"></div>
-		<label for="pw">비밀번호 <input type="text" name="pw" id="pw"></label><br>
-		<label for="pwCheck">비밀번호 확인<input type="text" id="pwCheck"></label><br>
-		<label for="name">이름<input type="text" name="name" id="name"></label><br>
-		<label for="email">이메일 <input type="text" name="email"
-			id="email"></label><br>
-		<div id="addressSearch">
-			<label for="post">우편번호<input type="text" name="post"
-				id="post" readonly="readonly"></label><br> <label for="address">주소<input
-				type="text" name="address" id="address" readonly="readonly"></label><br>
-		</div>
-		<label for="birth">생일 <input type="date" name="birth"
-			id="birth"></label><br> <label for="gender">남<input
-			type="radio" name="gender" id="gender" value="M"> 여<input
-			type="radio" name="gender" id="gender" value="F">
-		</label><br> <label for="phone">전화번호 <input type="text"
-			name="phone" id="phone"></label><br> <input type="button"
-			id="signIn" value="회원가입">
+		<div class="container">
+  			<h2>Vertical (basic) form</h2>
+   			 <div class="form-group">
+     		 <label for="id">아이디</label>
+     		 <input type="text" class="form-control" id="id" placeholder="Enter id" name="id">
+     		 <div id="idCheck"> </div>
+    	</div>
+	    <div class="form-group">
+	      <label for="pw">비밀번호</label>
+	      <input type="password" class="form-control" id="pw" placeholder="Enter password" name="pw">
+	    </div>
+	    <div class="form-group">
+	      <label for="name">이름</label>
+	      <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+	    </div>
+	      <div class="form-group">
+	      <label for="email">이메일</label>
+	      <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+	    </div>
+    	<div id="addressSearch" >
+   			 <div class="form-group">
+				<label for="post">우편번호</label> 
+				<input type="text" class="form-control" id="post" name="post" readonly="readonly">
+				<label for="address">주소</label> 
+				<input type="text" class="form-control" id="address" readonly="readonly" name="address">
+			</div>
+   		</div>
+	     <div class="form-group">
+	      <label for="id">생일</label>
+	      <input type="date" class="form-control" id="birth" name="birth">
+	    </div>
+   		<div class="form-group">
+   			 남<input type="radio" name="gender" id="gender" value="M"> 
+   			 여<input type="radio" name="gender" id="gender" value="F">
+    	</div>
+   		<div class="form-group">
+     		 <label for="phone">전화번호</label>
+     		 <input type="text" class="form-control" id="phone" name="phone">
+   		</div>
+	    <button type="submit" class="btn btn-default">Submit</button>
+	</div>
+	
 	</form>
-
 	<script type="text/javascript">
 		var isIdCheck = false;
 		$("#id").blur(function() {
@@ -39,9 +64,12 @@
 			$.get("./idCheck?id=" + id, function(data) {
 				data = data.trim();
 				if (data == 1) {
-					$("idCheck").empty();
-					$("#idCheck").html("사용가능한 아이디입니다." );
-					isIdCheck = true;
+					if (id == "") {
+						alert("아이디를 입력하세요")
+					} else {
+						$("#idCheck").html("사용가능한 아이디입니다.");
+						idCheck = true;
+					}
 				} else {
 					$("idCheck").empty();
 					/* $("#checkId").css("color","red"); */

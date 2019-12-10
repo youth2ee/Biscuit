@@ -26,4 +26,16 @@
  	<delete id="memberDelete" parameterType="MemberVO">
  		delete member where id = #{id}
  	</delete> 
+ 	
+ 	<select id="memberManagement" resultType="MemberVO">
+ 		select * from member
+ 	</select>
+ 	<select id="memberManagementDelete" parameterType="String">
+ 		delete member where id = #{id}
+ 	</select>
+ 	<update id="memberManagementUpdate" parameterType="MemberVO">
+		update member set id = #{id}, pw = #{pw},name = #{name}, email = #{email},address = #{address},
+		post = #{post}, phone = #{phone},gender=#{gender},grade=#{grade},grade_point=#{grade_point}
+		where id = #{id}
+</update>
 </mapper>
