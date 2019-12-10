@@ -13,9 +13,11 @@
 <link href="${pageContext.request.contextPath}/resources/css/store/storeList.css" rel="stylesheet">
 </head>
 <body>
+<!-- header -->
 <header>
 	<c:import url="../layout/header.jsp" />
 </header>
+<!-- section -->
 <section>
 	<div id="container">
 		<div id="content">
@@ -91,7 +93,7 @@
 		</div>
 	</div>
 </section>
-
+<!-- footer -->
 <footer>
 
 </footer>

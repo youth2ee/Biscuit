@@ -1,6 +1,5 @@
 package com.biscuit.b1.controller;
 
-import java.io.File;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,9 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.CartListVO;
+import com.biscuit.b1.model.CartVO;
+import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.model.StoreVO;
 import com.biscuit.b1.service.StoreService;
 
@@ -25,6 +28,39 @@ public class StoreController {
 	@Inject
 	private StoreService storeService;
 	
+	//카트 리스트
+	@GetMapping("cartList")
+	public void cartList(CartListVO cartListVO, HttpSession session, Model model) throws Exception {
+		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		//cartListVO.setMember_id(memberVO.getId());
+		cartListVO.setMember_id("a");
+		
+		List<CartListVO> cartList = storeService.cartList(cartListVO);
+		
+		model.addAttribute("cartList", cartList);
+	}
+	
+/////////////////////////////////////////////		
+	//카트 담기 
+	@ResponseBody
+	@PostMapping("cartInsert")
+	public void cartInsert(CartVO cartVO, HttpSession session, Model model) throws Exception {
+		//System.out.println(1);
+		int result = 0;
+		/*MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+		if(memberVO != null) {
+			cartVO.setMember_id(memberVO.getId());
+			result = storeService.cartInsert(cartVO);
+		}
+		*/
+		cartVO.setMember_id("a");
+		result = storeService.cartInsert(cartVO);
+		
+		model.addAttribute("result", result);
+	}
+	
+/////////////////////////////////////////////	
 	// 상품 삭제
 	@GetMapping("storeDelete")
 	public ModelAndView storeDelete(StoreVO storeVO, HttpServletRequest request) throws Exception {

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.biscuit.b1.dao.StoreDAO;
+import com.biscuit.b1.model.CartListVO;
+import com.biscuit.b1.model.CartVO;
 import com.biscuit.b1.model.StoreVO;
 import com.biscuit.b1.util.FileSaver;
 
@@ -23,6 +25,17 @@ public class StoreService {
 	@Inject
 	private FileSaver fileSaver;
 	
+	/* 카트 리스트 */
+	public List<CartListVO> cartList(CartListVO cartListVO) throws Exception {
+		return storeDAO.cartList(cartListVO);
+	}
+	
+	/* 카트 담기 */
+	public int cartInsert(CartVO cartVO) throws Exception {
+		return storeDAO.cartInsert(cartVO);
+	}
+	
+	/* 스토어 */
 	public int storeDelete(StoreVO storeVO, HttpServletRequest request) throws Exception {
 		String realPath = request.getSession().getServletContext().getRealPath("resources/upload/store");
 		StoreVO storeVO2 = storeDAO.storeSelect(storeVO);
