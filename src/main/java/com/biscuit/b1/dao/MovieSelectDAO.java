@@ -39,6 +39,10 @@ public class MovieSelectDAO {
 		return sqlSession.selectList(NAMESPACE+"movieChoice", choiceVO);
 	}
 	
+	//theater num
+	public ChoiceVO theaterSelect(ChoiceVO choiceVO) {
+		return sqlSession.selectOne(NAMESPACE+"theaterSelect", choiceVO);
+	}
 	
 	//날짜
 	public List<TimeInfoVO> dateSelect(TheaterVO theaterVO) {

@@ -48,8 +48,8 @@
 <!--  -->
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="./movieSelect_admin_cinema">Cinema 추가</a>
-  <a href="./movieSelect_admin_time">movieInfo 추가</a>
+  <a href="./admin_cinema">Cinema 추가</a>
+  <a href="./admin_time">movieInfo 추가</a>
   <a href="#">Clients</a>
   <a href="#">Contact</a>
 </div>
@@ -110,14 +110,7 @@
 
 <!--  -->
 <div id="sec2">
-<div class="wrapper typo">영화관명
-  <div class="list">
-  <span class="placeholder2">select</span>
-    <ul class="list__ul2">
-
-    </ul>
-  </div>
-</div>
+<ul id="aa"></ul>
 </div>
 
 
@@ -135,14 +128,19 @@
 </div>
 </div>
 
-
 <!--  -->
-
-
-
-
 </div>
 
+<div id="sec6">
+<input type="text" id="t1" readonly="readonly">
+<input type="text" id="t2" readonly="readonly">
+<input type="text" id="t3" readonly="readonly">
+<input type="text" id="t4" readonly="readonly">
+<input type="text" id="t5" readonly="readonly">
+
+
+<button id="btn">추가</button>
+</div>
 
 
 </div><!-- sec -->
@@ -176,11 +174,11 @@
      $('.list__ul a').on('click', function (ev) {
        ev.preventDefault();
        var index = $(this).parent().index();
-       
        $('.placeholder').text( $(this).text() ).css('opacity', '1');
        console.log($('.list__ul').find('a').eq(index).html());
        
        loc = $('.list__ul').find('a').eq(index).html();
+       $('#t1').val(loc);
        
        $('.list__ul').find('li').eq(index).prependTo('.list__ul');
        $('.list__ul').toggle();   
@@ -195,61 +193,29 @@
 			success : function(data) {
 				data = data.trim();
 				
-				$('.list__ul2').html(data);
-				
-				$('select').on('change', function (e) {
-					 
-				      // Set text on placeholder hidden element
-				      $('.placeholder').text(this.value);
-						console.log($('.placeholder').text(this.value));
-						
-				      // Animate select width as placeholder
-				      $(this).animate({width: $('.placeholder').width() + 'px' });
-				    });
-				    
-				    
-				    
-				    
-				    /* 2 cinema */
-				    
-				    
-				     $('.placeholder2').on('click', function (ev) {
-				      $('.placeholder2').css('opacity', '0');
-				      $('.list__ul2').toggle();
-				     });
+				$('#aa').html(data);
 
-				     $('.list__ul2 a').on('click', function (ev) {
-				       ev.preventDefault();
-				       var index = $(this).parent().index();
-				       
-				       $('.placeholder2').text( $(this).text() ).css('opacity', '1');
-				       console.log($('.list__ul2').find('a').eq(index).html());
-				       
-				       cinema = $('.list__ul2').find('a').eq(index).html();
-				       
-				       $('.list__ul2').find('li').eq(index).prependTo('.list__ul2');
-				       $('.list__ul2').toggle();   
-				     });
-
-
-				 /*    $('select').on('change', function (e) {
-				      // Set text on placeholder hidden element
-				      $('.placeholder2').text(this.value);
-				      // Animate select width as placeholder
-				      $(this).animate({width: $('.placeholder2').width() + 'px' });
-				    }); */
-				    
-				    
-				    
-				    
-				 
-				
 			}
 		});
        
-  
      });
+     
 
+/* 
+		$('select').on('change', function (e) {
+		      $('.placeholder').text(this.value);
+		      $(this).animate({width: $('.placeholder').width() + 'px' });
+		    });  */
+     
+		
+		$('.aa').on('click', function() {
+			var a = $(this).find('li').text();
+			console.log(a);
+		});
+		
+		
+		
+     
 	    /* 3 */
 	    $('.placeholder3').on('click', function (ev) {
 	     $('.placeholder3').css('opacity', '0');
@@ -264,6 +230,7 @@
 	      console.log($('.list__ul3').find('a').eq(index).html());
 	      
 	      theater = $('.list__ul3').find('a').eq(index).html();
+	      $('#t3').val(theater);
 	      
 	      $('.list__ul3').find('li').eq(index).prependTo('.list__ul3');
 	      $('.list__ul3').toggle();   

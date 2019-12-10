@@ -121,6 +121,7 @@
  	var cname = ""; //영화관이름 
  	var cdate = ""; //날짜
  	var ctime = ""; //시간
+ 	var tnum = ""; //상영관번호
  	
  	var theater = $("#theaterNameSelect");
  	var cinema = $("#cinemaNameSelect");
@@ -219,6 +220,11 @@
  		
   		cdate = $(this).children().text();
  		cdate = cdate.trim();
+ 		
+ 	/* 	tnum = $(this).find('.tnum').text();
+ 		tnum = tnum.trim();
+ 		
+ 		alert(tnum); */
  		
   		$.ajax({
 			data : {

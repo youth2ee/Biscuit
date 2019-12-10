@@ -6,7 +6,7 @@
 
 
 <c:forEach items="${cinemaList}" var="cinema">
-<li><a href="">${cinema.cinema_name}</a></li>
+<li class="bb">${cinema.cinema_name}</li>
 </c:forEach>
 
     

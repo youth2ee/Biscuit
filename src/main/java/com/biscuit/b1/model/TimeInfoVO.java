@@ -1,5 +1,7 @@
 package com.biscuit.b1.model;
 
+import java.util.Date;
+
 public class TimeInfoVO {
 
 	private int timeInfo_num;
@@ -10,9 +12,9 @@ public class TimeInfoVO {
 	private String timeInfo_end;
 	
 	private int cinema_num;
+
 	
-	
-	
+
 	public int getCinema_num() {
 		return cinema_num;
 	}

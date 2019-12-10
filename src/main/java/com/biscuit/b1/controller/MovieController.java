@@ -48,8 +48,9 @@ public class MovieController {
 		//선택한 영화에 따른 영화관
 		List<ChoiceVO> cr = movieSelectService.movieChoice(choiceVO);
 		
+		
 		ModelAndView mv = new ModelAndView(); 
-		mv.setViewName("common/cineme_result");
+		mv.setViewName("common/cinema_result");
 		mv.addObject("result", ar);
 		mv.addObject("selectResult", cr);
 		
@@ -66,9 +67,13 @@ public class MovieController {
 			a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
 		}
 		
+		//theater num
+		choiceVO = movieSelectService.theaterSelect(choiceVO);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/date_result");
 		mv.addObject("result", movieDateSelect);
+		mv.addObject("theater_num", choiceVO.getTheater_num());
 		
 		return mv;
 	}

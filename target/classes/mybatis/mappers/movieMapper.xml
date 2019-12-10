@@ -19,6 +19,14 @@
   	</select>
   	
   	
+  	<!-- 영화지역에 따른 관 선택 -->
+  	<select id="movieCinemaSelect" parameterType="ChoiceVO" resultType="CinemaVO">
+  	select distinct cinema_name, cinema_num
+    from cinema
+    where cinema_loc = #{cinema_loc}
+    order by cinema_num asc
+  	</select>
+  	
   	<!-- 선택한 영화 지역 보여주기  -->
   	<select id="movieChoice" parameterType="ChoiceVO" resultType="ChoiceVO">
     select  distinct cinema_name, count(cinema_name) cinema_num
@@ -31,30 +39,28 @@
     order by cinema_name asc
   	</select>
 
-  	
-  	<!-- 영화지역에 따른 관 선택 -->
-  	<select id="movieCinemaSelect" parameterType="ChoiceVO" resultType="CinemaVO">
-  	select distinct cinema_name, cinema_num
-    from cinema
-    where cinema_loc = #{cinema_loc}
-    order by cinema_num asc
+  	<!-- theater num 받기 -->
+  	<select id="theaterSelect" parameterType="ChoiceVO" resultType="ChoiceVO">
+  	select distinct theater_num 
+    from timeinfo
+    where movieinfo_num = #{movieInfo_num} and cinema_num = #{cinema_num}
   	</select>
   	
   	
   	<!-- 날짜 선택하기 -->	
-
   	<select id="movieDateSelect" parameterType="ChoiceVO" resultType="TimeInfoVO">
   	select distinct B.timeinfo_date, A.theater_num
 	from theater A full outer Join timeinfo B
 	on A.theater_num = B.theater_num
 	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} 
+	order by B.timeinfo_date asc
   	</select>
   	
   	<select id="movieTimeSelect" parameterType="ChoiceVO" resultType="TimeInfoVO">
 	select B.timeinfo_start, B.timeinfo_date
 	from theater A full outer Join timeinfo B
 	on A.theater_num = B.theater_num
-	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} 
+	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} and B.timeinfo_date = #{timeInfo_date}
 	order by B.timeinfo_start asc
   	</select>
   	

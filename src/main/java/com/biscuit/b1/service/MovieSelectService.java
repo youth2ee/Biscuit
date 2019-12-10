@@ -36,6 +36,11 @@ public class MovieSelectService {
 		return movieSelectDAO.movieChoice(choiceVO);
 	}
 	
+	//theater num
+	public ChoiceVO theaterSelect(ChoiceVO choiceVO) {
+		return movieSelectDAO.theaterSelect(choiceVO);
+	}
+	
 	//날짜
 	public List<TimeInfoVO> dateSelect(TheaterVO theaterVO) {
 		return movieSelectDAO.dateSelect(theaterVO);

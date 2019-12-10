@@ -24,6 +24,8 @@ body {
   position: relative;
   margin-left: 6px;
 }
+
+
 .list ul {
   text-align: left;
   position: absolute;
@@ -68,6 +70,62 @@ body {
  width: 100%; 
   width: 200px;
 }
+
+/*  */
+.list2 {
+  display: inline-block;
+  position: relative;
+  margin-left: 6px;
+}
+
+
+.list2 ul {
+  text-align: left;
+  position: absolute;
+  padding: 0;
+  top: 0;
+  left: 0;
+/*   display: none; */
+}
+.list2 ul .active {
+/*   display: block; */
+}
+.list2 li {
+  list-style: none;
+}
+.list2 li:first-child a {
+  color: #ec6707;
+}
+.list2 a {
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  color: #ec6707;
+  position: relative;
+}
+.list2 a:after {
+  position: absolute;
+  content: '';
+  height: 3px;
+  width: 0;
+  left: 0;
+  background: #e42313;
+  bottom: 0;
+  -webkit-transition: all .4s ease-out;
+  transition: all .4s ease-out;
+}
+
+.list2 a:hover {
+  cursor: pointer;
+  color: #e42313;
+}
+
+.list2 a:hover:after {
+ width: 100%; 
+  width: 200px;
+}
+
+
+
 
 select {
   display: inline;

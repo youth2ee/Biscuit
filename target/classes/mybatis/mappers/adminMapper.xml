@@ -19,8 +19,8 @@
 		#{theater_num}, 
 		#{movieInfo_num},
 		to_date(#{timeInfo_date}, 'yy-mm-dd'),
-		to_date('19-12-02 08:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-02 08:00', 'yy-mm-dd hh24:mi') +
+		to_date((select concat(#{timeInfo_date},' 08:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 08:00') from dual), 'yy-mm-dd hh24:mi') +
 		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
 		= #{movieInfo_num})
 		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
@@ -29,9 +29,9 @@
 		values (timeinfo_seq.nextval +1 ,
 		#{theater_num}, 
 		#{movieInfo_num},
-		to_date(#{movieInfo_date}, 'yy-mm-dd'),
-		to_date('19-12-02 11:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-02 11:00', 'yy-mm-dd hh24:mi') +
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 11:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 11:00') from dual), 'yy-mm-dd hh24:mi') +
 		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
 		= #{movieInfo_num})
 		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
@@ -40,9 +40,9 @@
 		values (timeinfo_seq.nextval +2,
 		#{theater_num}, 
 		#{movieInfo_num},
-		to_date(#{movieInfo_date}, 'yy-mm-dd'),
-		to_date('19-12-02 14:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-02 14:00', 'yy-mm-dd hh24:mi') +
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 14:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 14:00') from dual), 'yy-mm-dd hh24:mi') +
 		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
 		= #{movieInfo_num})
 		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
@@ -51,9 +51,9 @@
 		values (timeinfo_seq.nextval +3,
 		#{theater_num}, 
 		#{movieInfo_num},
-		to_date(#{movieInfo_date}, 'yy-mm-dd'),
-		to_date('19-12-02 17:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-02 17:00', 'yy-mm-dd hh24:mi') +
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 17:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 17:00') from dual), 'yy-mm-dd hh24:mi') +
 		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
 		= #{movieInfo_num})
 		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
@@ -62,9 +62,9 @@
 		values (timeinfo_seq.nextval +4,
 		#{theater_num}, 
 		#{movieInfo_num},
-		to_date(#{movieInfo_date}, 'yy-mm-dd'),
-		to_date('19-12-02 20:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-02 20:00', 'yy-mm-dd hh24:mi') +
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 20:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 20:00') from dual), 'yy-mm-dd hh24:mi') +
 		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
 		= #{movieInfo_num}
 		),'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
