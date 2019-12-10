@@ -21,7 +21,8 @@ body{
 
 
 #sec1{
-	float: left;
+	clear: both;
+ 	float: left; 
 }
 
 #sec2{
@@ -33,7 +34,18 @@ body{
 }
 
 #sec4{
+	width: 100%;
 	float: left;
+	padding-top: 0;
+	padding-bottom: 40px;
+}
+
+#sec41, #sec42{
+	float: left;
+}
+
+#sec5{
+	padding-left: 15px;
 }
 
 .list{

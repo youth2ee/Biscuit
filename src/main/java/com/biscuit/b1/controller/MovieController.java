@@ -89,14 +89,6 @@ public class MovieController {
 		return mv;
 	}
 	
-	@GetMapping("movieSelect_admin_cinema")
-	public void movieSelect_admin_cinema() {
-	}
-	
-	@GetMapping("movieSelect_admin_time")
-	public void movieSelect_admin_time() {
-		
-	}
 	
 	
 	

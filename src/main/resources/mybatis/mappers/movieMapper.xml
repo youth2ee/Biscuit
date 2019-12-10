@@ -42,12 +42,6 @@
   	
   	
   	<!-- 날짜 선택하기 -->	
-	<select id="dateSelect" parameterType="TheaterVO" resultType="TimeInfoVO">
-	select *
-	from theater A full outer Join timeinfo B
-	on A.theater_num = B.theater_num
-	where cinema_num= #{cinema_num}
-	</select>
 
   	<select id="movieDateSelect" parameterType="ChoiceVO" resultType="TimeInfoVO">
   	select distinct B.timeinfo_date, A.theater_num
@@ -64,13 +58,7 @@
 	order by B.timeinfo_start asc
   	</select>
   	
-  	
-  	<!-- db 관리자모드 -->
-	<!-- TIME : 지역에 따른 영화관 뿌리기 -->  	
-	<select id="">
-	</select>
 
-  	
   	
   	<!-- DATABASE에 값 넣기 -->
   	<!-- A -->

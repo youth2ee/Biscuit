@@ -40,9 +40,6 @@ body {
 }
 .list li:first-child a {
   color: #ec6707;
-
-  
-
 }
 .list a {
   -webkit-transition: all .4s;
@@ -61,10 +58,12 @@ body {
   -webkit-transition: all .4s ease-out;
   transition: all .4s ease-out;
 }
+
 .list a:hover {
   cursor: pointer;
   color: #e42313;
 }
+
 .list a:hover:after {
  width: 100%; 
   width: 200px;
@@ -84,9 +83,11 @@ select {
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
 }
+
 select:hover {
   cursor: pointer;
 }
+
 select option {
   border: 0;
   border-bottom: 1px solid #555;
