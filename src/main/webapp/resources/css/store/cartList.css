@@ -172,6 +172,83 @@ strong.checkbox_select {
 .cart_list_style {
 	border-bottom: 1px solid #000;
 }
+.cart_list_style li {
+	overflow: hidden;
+    position: relative;
+    padding: 20px 0 0;
+    border-top: 1px solid #d6d6d6;
+}
+input[type="checkbox"].cart_checkbox {
+	overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+input[type="checkbox"].cart_checkbox + label {
+	float: left;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 15px;
+    font-size: 0;
+    cursor: pointer;
+}
+input[type="checkbox"].cart_checkbox + label:before {
+	content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    font-size: 0;
+    background: transparent url(../../images/store/checkbox_gray.png) -1px -1px scroll no-repeat;
+    background-size: 30px 30px;
+    background-position: -3px;
+}
+input[type="checkbox"].cart_checkbox:checked + label:before {
+	background: transparent url(../../images/store/checkbox_red.png) -1px -1px scroll no-repeat;
+	background-size: 30px 30px;
+	background-position: -3px;
+}
+.cart_list_style li .product_info_img img {
+	position: static;
+    left: auto;
+    float: left;
+    width: 90px;
+    margin-right: 17px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

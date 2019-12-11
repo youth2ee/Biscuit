@@ -51,7 +51,19 @@
 					<strong class="checkbox_select">선택</strong>
 				</p>
 				<ul class="cart_list_style">
-					<li id="cart_item_idx_">
+					<c:forEach items="${cartList}" var="cartList">
+						<li id="cart_item_idx_${cartList.cart_num}">
+							<input type="checkbox" class="cart_checkbox" value="${cartList.cart_num}" checked="checked">
+							<label for="checkbox${cartList.cart_num}"></label>
+							<a href="storeSelect?store_num=${cartList.store_num}" class="product_info_img">
+								<img alt="${cartList.store_name}" src="../resources/upload/store/th/${cartList.store_thumbimg}">
+							</a>
+							<div></div>
+							<div></div>
+							<span></span>
+							<div></div>
+						</li>
+					</c:forEach>
 				</ul>
 				<a href="#none" class="btn_del_selected">
 				</a>
