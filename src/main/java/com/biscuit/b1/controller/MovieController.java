@@ -87,9 +87,19 @@ public class MovieController {
 			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
 		}
 		
+		//여기서 좌석수를 보내조야 해
+		List<ChoiceVO> seatList =  movieSelectService.seatCount(choiceVO);
+		
+		for(ChoiceVO b : seatList) {
+			System.out.println(b.getTimeInfo_start());
+			System.out.println(b.getSeatCount());
+		}
+		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/time_result");
 		mv.addObject("result", dateSelect);
+		mv.addObject("seatList", seatList);
 		
 		return mv;
 	}

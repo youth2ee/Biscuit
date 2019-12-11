@@ -110,8 +110,12 @@
 
 <!--  -->
 <div id="sec2">
+<div class="wrapper typo">영화관명
 <ul id="aa"></ul>
 </div>
+</div>
+
+
 
 
 <!--  -->
@@ -132,14 +136,18 @@
 </div>
 
 <div id="sec6">
-<input type="text" id="t1" readonly="readonly">
-<input type="text" id="t2" readonly="readonly">
-<input type="text" id="t3" readonly="readonly">
-<input type="text" id="t4" readonly="readonly">
-<input type="text" id="t5" readonly="readonly">
 
+<form action="./adminTimeInsert" id="frm" method="post">
+<input type="search">
+<input type="text" id="t1" readonly="readonly" name="timeInfo_date"><br>
+<input type="text" id="t2" readonly="readonly" name="movieInfo_name"><br>
+<input type="text" id="t3" readonly="readonly"><br>
+<input type="text" id="t4" readonly="readonly" name="cinema_name"><br>
+<input type="text" id="t5" readonly="readonly" name="theater_name"><br>
+<input type="hidden" id="t6" name="cinema_num">
 
-<button id="btn">추가</button>
+<input type="button" id="btn" value="추가">
+</form>
 </div>
 
 
@@ -154,7 +162,6 @@
   		function openNav() {
     	  document.getElementById("mySidenav").style.width = "250px";
     	}
-
     	function closeNav() {
     	  document.getElementById("mySidenav").style.width = "0";
     	}
@@ -163,8 +170,41 @@
     	var cinema = "";
     	var theater = "";
     	var mname = "";
-    	 
+    	var cnum = "";
+
     console.clear();
+    
+    /* 1 상영일 불러오기 */
+    $('#input-14').blur(function() {
+ 		console.log($(this).val());
+ 		mdate = $(this).val().trim();
+ 		$('#t1').val(mdate);
+ 		$('#t2').val("");
+ 		$('#input-13').val("");
+ 		$('#t3').val("");
+ 		$('.placeholder').text("select");
+ 		$('#t4').val("");
+ 		$('#aa').empty();
+ 	    $('#t5').val("");
+ 	   $('.placeholder3').text("select");
+ 		
+    });
+    
+    /* 2 영화명 불러오기 */
+    $('#input-13').blur(function() {
+ 		console.log($(this).val());
+ 		mname = $(this).val().trim();
+ 		$('#t2').val(mname);
+ 		$('#t3').val("");
+ 		$('.placeholder').text("select");
+ 		$('#t4').val("");
+ 		$('#aa').empty();
+ 	    $('#t5').val("");
+ 	   $('.placeholder3').text("select");
+    });
+    
+
+    
     var el = {};
       $('.placeholder').on('click', function (ev) {
       $('.placeholder').css('opacity', '0');
@@ -178,9 +218,13 @@
        console.log($('.list__ul').find('a').eq(index).html());
        
        loc = $('.list__ul').find('a').eq(index).html();
-       $('#t1').val(loc);
+       $('#t3').val(loc);
+       $('#t4').val("");
+       $('#aa').empty();
+       $('#t5').val("");
+       $('.placeholder3').text("select");
        
-       $('.list__ul').find('li').eq(index).prependTo('.list__ul');
+  /*      $('.list__ul').find('li').eq(index).prependTo('.list__ul'); */
        $('.list__ul').toggle();   
        
        
@@ -193,14 +237,25 @@
 			success : function(data) {
 				data = data.trim();
 				
-				$('#aa').html(data);
-
+ 				$('#aa').html(data);
+				$('#aa li').on('click', function() {
+					$(this).addClass('act').siblings().removeClass('act');
+					cinema = $(this).find('.cname').text();
+					console.log(cinema);
+					
+					$('#t4').val(cinema); 
+					
+					cnum = $(this).find('.cnum').text();
+					$('#t6').val(cnum);
+					
+					$('#t5').val("");
+					$('.placeholder3').text("select");
+					
+				});
 			}
 		});
-       
      });
      
-
 /* 
 		$('select').on('change', function (e) {
 		      $('.placeholder').text(this.value);
@@ -208,13 +263,7 @@
 		    });  */
      
 		
-		$('.aa').on('click', function() {
-			var a = $(this).find('li').text();
-			console.log(a);
-		});
-		
-		
-		
+
      
 	    /* 3 */
 	    $('.placeholder3').on('click', function (ev) {
@@ -230,37 +279,30 @@
 	      console.log($('.list__ul3').find('a').eq(index).html());
 	      
 	      theater = $('.list__ul3').find('a').eq(index).html();
-	      $('#t3').val(theater);
+	      $('#t5').val(theater);
 	      
-	      $('.list__ul3').find('li').eq(index).prependTo('.list__ul3');
+	     /*  $('.list__ul3').find('li').eq(index).prependTo('.list__ul3'); */
 	      $('.list__ul3').toggle();   
 	    });
 
 
 	   $('select').on('change', function (e) {
-	     // Set text on placeholder hidden element
 	     $('.placeholder3').text(this.value);
-	     // Animate select width as placeholder
 	     $(this).animate({width: $('.placeholder3').width() + 'px' });
 	   });
 	
     
-    
-   
-   /* 4 상영일 불러오기 */
-   $('#input-14').blur(function() {
-		console.log($(this).val());
-		mdate = $(this).val().trim();
-   });
-   
-   /* 5 영화명 불러오기 */
-   $('#input-13').blur(function() {
-		console.log($(this).val());
-		mname = $(this).val().trim();
-   });
-   
-   
-   
+	   $('#btn').on('click', function() {
+		   
+		   if($('#t1').val() != "" && $('#t2').val() != "" &&  $('#t3').val() != "" && $('#t4').val() != "" && $('#t5').val() != ""){
+		   $('#frm').submit();			   
+		   } else {
+			alert("정확한 값을 입력하세요.")
+		   }
+		   
+	  	}); 
+	   
+
     
     </script>
 

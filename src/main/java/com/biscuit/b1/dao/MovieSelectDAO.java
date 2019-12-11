@@ -45,9 +45,7 @@ public class MovieSelectDAO {
 	}
 	
 	//날짜
-	public List<TimeInfoVO> dateSelect(TheaterVO theaterVO) {
-		return sqlSession.selectList(NAMESPACE+"dateSelect", theaterVO);
-	}
+
 	
 	public List<TimeInfoVO> movieDateSelect(ChoiceVO choiceVO) {
 		return sqlSession.selectList(NAMESPACE+"movieDateSelect",choiceVO);
@@ -55,6 +53,11 @@ public class MovieSelectDAO {
 	
 	public List<TimeInfoVO> movieTimeSelect(ChoiceVO choiceVO) {
 		return sqlSession.selectList(NAMESPACE+"movieTimeSelect", choiceVO);
+	}
+	
+	//seat
+	public List<ChoiceVO> seatCount(ChoiceVO choiceVO) {
+		return sqlSession.selectList(NAMESPACE+"seatCount", choiceVO);
 	}
 	
 	

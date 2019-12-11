@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import javax.inject.Inject;
 import org.junit.Test;
 import com.biscuit.b1.TestAbstractCase;
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.TimeInfoVO;
 
 public class AdminTest extends TestAbstractCase {
@@ -15,10 +16,10 @@ public class AdminTest extends TestAbstractCase {
 
 	@Test
 	public void test() throws Exception {
-		TimeInfoVO timeInfoVO = new TimeInfoVO();
-		timeInfoVO.setTheater_num(1);
-		timeInfoVO.setMovieInfo_num(1);
-		
+		/*
+		 * TimeInfoVO timeInfoVO = new TimeInfoVO(); timeInfoVO.setTheater_num(1);
+		 * timeInfoVO.setMovieInfo_num(1);
+		 */
 		
 		/*
 		 * String from = "19-12-02"; SimpleDateFormat transFormat = new
@@ -26,9 +27,15 @@ public class AdminTest extends TestAbstractCase {
 		 * timeInfoVO.setDate(to);
 		 */
 		
-		timeInfoVO.setTimeInfo_date("19-12-02");
+		/* timeInfoVO.setTimeInfo_date("19-12-02"); */
 		
-		int result = adminDAO.timeInfoInsertA(timeInfoVO);
+		ChoiceVO choiceVO = new ChoiceVO();
+		choiceVO.setTheater_num(1);
+		choiceVO.setMovieInfo_num(1);
+		choiceVO.setTimeInfo_date("19-12-03");
+		
+		
+		int result = adminDAO.timeInfoInsertA(choiceVO);
 		
 		assertNotEquals(result, 0);
 	}

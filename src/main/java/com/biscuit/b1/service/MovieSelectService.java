@@ -42,17 +42,18 @@ public class MovieSelectService {
 	}
 	
 	//날짜
-	public List<TimeInfoVO> dateSelect(TheaterVO theaterVO) {
-		return movieSelectDAO.dateSelect(theaterVO);
-	}
-	
-	
 	public List<TimeInfoVO> movieDateSelect(ChoiceVO choiceVO) {
 		return movieSelectDAO.movieDateSelect(choiceVO);
 	}
 	
-	
 	public List<TimeInfoVO> movieTimeSelect(ChoiceVO choiceVO) {
 		return movieSelectDAO.movieTimeSelect(choiceVO);
 	}
+
+	//seat
+	public List<ChoiceVO> seatCount(ChoiceVO choiceVO) {
+		return movieSelectDAO.seatCount(choiceVO);
+	}
+	
+
 }

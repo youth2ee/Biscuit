@@ -18,12 +18,19 @@ public class ChoiceVO {
 	
 	private String movieInfo_name;
 	
+	private int seatCount;
 	
 	
 	
+
 	
 	
-	
+	public int getSeatCount() {
+		return seatCount;
+	}
+	public void setSeatCount(int seatCount) {
+		this.seatCount = seatCount;
+	}
 	public String getMovieInfo_name() {
 		return movieInfo_name;
 	}

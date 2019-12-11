@@ -218,25 +218,45 @@
  	 $(document).on("click",".dateSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
  		
-  		cdate = $(this).children().text();
+  		cdate = $(this).find('.mtd').attr("title");
  		cdate = cdate.trim();
  		
- 	/* 	tnum = $(this).find('.tnum').text();
- 		tnum = tnum.trim();
+ 	 	tnum = $(this).children().find('.tnum').text();
+ 	 	tnum = tnum.trim(); 
  		
- 		alert(tnum); */
+ 	 	console.log("aa");
+ 	 	console.log(cdate);
+ 		console.log(mnum);
+ 		console.log(cnum);
+ 		console.log(tnum);
  		
   		$.ajax({
 			data : {
 				timeInfo_date:cdate,
 				movieInfo_num:mnum,
-				cinema_num:cnum
+				cinema_num:cnum,
+				theater_num:tnum
 			},
 			type : "GET",
 			url : "./timeSelect",
 			success : function(data) {
 				data = data.trim();
-				$('#movieTimeSelect').html(data);
+				$('#movieTimeSelect').html(data);	
+				
+				/* alert($('.seattd').text()); */
+				
+				for (var i = 0; i < $('.seattd').length; i++) {
+					console.log($('.seattd').find('#td'+i).text());
+					var seatE = $('.seattd').find('#td'+i).text();
+					
+					if(seatE == ""){
+						alert("hi");
+						$('.seattd').find('#td'+i).text("aa");
+						alert( $('.seattd').find('#td'+i).text());
+						
+					}
+					
+				}
 			}
 		}); 
  		});
