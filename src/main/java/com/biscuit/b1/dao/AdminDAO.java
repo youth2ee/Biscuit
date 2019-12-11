@@ -36,6 +36,8 @@ public class AdminDAO {
 		return sqlSession.insert(NAMESPACE+"timeInfoInsertA", choiceVO);
 	}
 
-	
+	public List<MovieInfoVO> movieList() {
+		return sqlSession.selectList(NAMESPACE+"movieList");
+	}
 	
 }

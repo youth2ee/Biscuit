@@ -11,15 +11,16 @@
 <td style="width: 50px;">${time.timeInfo_start}</td>
 
 <!-- 여기에 좌석 수를 넣어야 한다. -->
-<td class="seattd">
+
 <c:forEach items="${seatList}" var="seat" varStatus="status">
 
 <c:if test="${time.timeInfo_start eq seat.timeInfo_start}">
-<div id="td${status.index}">${seat.seatCount} / 195</div>
+<td>${seat.seatCount} / 195</td>
 </c:if>
 
+
 </c:forEach>
-</td>
+
 
 
 </tr>

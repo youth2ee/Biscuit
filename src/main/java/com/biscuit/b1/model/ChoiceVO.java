@@ -19,12 +19,17 @@ public class ChoiceVO {
 	private String movieInfo_name;
 	
 	private int seatCount;
-	
+	private String seatTime;
 	
 	
 
 	
-	
+	public String getSeatTime() {
+		return seatTime;
+	}
+	public void setSeatTime(String seatTime) {
+		this.seatTime = seatTime;
+	}
 	public int getSeatCount() {
 		return seatCount;
 	}

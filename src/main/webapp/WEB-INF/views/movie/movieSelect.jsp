@@ -84,6 +84,10 @@
 
 <!-- 날짜선택  -->
 <div class="s s4">
+<div id="year" style="display: none;">
+<p>2019</p>
+<p>12</p>
+</div>
 <table class="sul" id="movieDateSelect">
 </table>
 </div> 
@@ -138,6 +142,7 @@
  			cinema.empty();
  			date.empty();
  			time.empty();
+ 			$('#year').css("display", "none");
  		}
 		
 		mnum = $(this).find(".mtitle").attr("title");
@@ -158,6 +163,7 @@
  			cinema.empty();
  			date.empty();
  			time.empty();
+ 			$('#year').css("display", "none");
  		}
  	
  		loc = $(this).children().text();
@@ -183,10 +189,12 @@
  	/* 영화관을 선택하면 날짜가 뜹니다. */
  	$(document).on("click",".cinemaSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
+ 		$('#year').css("display", "inline");
  		
- 		if(time.html().trim() != ""){
+ 		if(time.html().trim() != "" || date.html().trim() != ""){
  			date.empty();
  			time.empty();
+ 			$('#year').css("display", "none");
  		}
  		
   		cnum = $(this).find(".mcinema").attr("title");
@@ -242,21 +250,6 @@
 			success : function(data) {
 				data = data.trim();
 				$('#movieTimeSelect').html(data);	
-				
-				/* alert($('.seattd').text()); */
-				
-				for (var i = 0; i < $('.seattd').length; i++) {
-					console.log($('.seattd').find('#td'+i).text());
-					var seatE = $('.seattd').find('#td'+i).text();
-					
-					if(seatE == ""){
-						alert("hi");
-						$('.seattd').find('#td'+i).text("aa");
-						alert( $('.seattd').find('#td'+i).text());
-						
-					}
-					
-				}
 			}
 		}); 
  		});

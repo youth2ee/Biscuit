@@ -35,14 +35,6 @@
     where A.cinema_loc = #{cinema_loc} and B.movieinfo_num = #{movieInfo_num}
     group by cinema_name
     order by cinema_name asc
-<!-- select  distinct cinema_name, count(cinema_name) cinema_num
-    from cinema A full outer join (
-    select * from theater B full outer join timeinfo C 
-    on B.theater_num = C.theater_num) D
-    on A.cinema_num = D.cinema_num
-    where A.cinema_loc = #{cinema_loc} and D.movieinfo_num  = #{movieInfo_num}
-    group by cinema_name
-    order by cinema_name asc -->
   	</select>
 
   	<!-- theater num 받기 -->
@@ -51,6 +43,7 @@
     from timeinfo
     where movieinfo_num = #{movieInfo_num} and cinema_num = #{cinema_num}
   	</select>
+  	
   	
   	
   	<!-- 날짜 선택하기 -->	
@@ -71,14 +64,39 @@
   	</select>
   	
   	<!-- 좌석 -->
-  	<select id="seatCount" parameterType="ChoiceVO" resultType="ChoiceVO">
+<!--   	<select id="seatCount" parameterType="ChoiceVO" resultType="ChoiceVO">
   	select timeinfo_start, count(*) seatCount
     from seat
     where movieinfo_num = #{movieInfo_num} and cinema_num = #{cinema_num}
     group by timeinfo_start
     order by timeinfo_start asc
-  	</select>
+  	</select> -->
 
+<!--   	<select id="">
+  	select B.timeinfo_start, A.timeinfo_start seatTime, A.seatCount
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    group by timeinfo_start
+    order by timeinfo_start asc) A 
+    full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI' ))
+    where B.movieinfo_num = #{movieInfo_num} and B.cinema_num = #{cinema_num}
+    order by A.timeinfo_start asc
+  	</select> -->
+  	
+  	<select id="seatCount" parameterType="ChoiceVO" resultType="ChoiceVO">    
+    select B.timeinfo_start timeinfo_start, A.timeinfo_start seatTime, nvl(A.seatcount,0) seatcount
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    where movieinfo_num = #{movieInfo_num} and theater_num = #{theater_num} and timeinfo_date = #{timeInfo_date}
+    group by timeinfo_start
+    order by timeinfo_start asc) A 
+    full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI'))
+    where B.movieinfo_num = #{movieInfo_num} and B.theater_num = #{theater_num} and B.timeinfo_date = #{timeInfo_date}
+    order by B.timeinfo_start asc
+  	</select>
+  	
   	
   	<!-- DATABASE에 값 넣기 -->
   	<!-- A -->

@@ -16,6 +16,8 @@ import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TimeInfoVO;
 import com.biscuit.b1.service.MovieSelectService;
 
+import oracle.net.aso.d;
+
 @Controller
 @RequestMapping("/movie/**")
 public class MovieController {
@@ -62,10 +64,24 @@ public class MovieController {
 	public ModelAndView dateSelect(ChoiceVO choiceVO) throws Exception {
 		//날짜선택
 		List<TimeInfoVO> movieDateSelect = movieSelectService.movieDateSelect(choiceVO);
+
 		
 		for(TimeInfoVO a : movieDateSelect){
 			a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
+			
+			System.out.println(a.getTimeInfo_date());
+			
+			a.setYear(a.getTimeInfo_date().substring(0, 4));
+			a.setMonth(a.getTimeInfo_date().substring(5, 7));
+			a.setDay(a.getTimeInfo_date().substring(8));
+			
+			System.out.println(a.getYear());
+			System.out.println(a.getMonth());
+			System.out.println(a.getDay());
+			
 		}
+		
+		
 		
 		//theater num
 		choiceVO = movieSelectService.theaterSelect(choiceVO);
@@ -74,6 +90,7 @@ public class MovieController {
 		mv.setViewName("common/date_result");
 		mv.addObject("result", movieDateSelect);
 		mv.addObject("theater_num", choiceVO.getTheater_num());
+
 		
 		return mv;
 	}
@@ -87,12 +104,18 @@ public class MovieController {
 			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
 		}
 		
+
+		choiceVO.setTimeInfo_date(choiceVO.getTimeInfo_date().substring(2));
 		//여기서 좌석수를 보내조야 해
 		List<ChoiceVO> seatList =  movieSelectService.seatCount(choiceVO);
 		
 		for(ChoiceVO b : seatList) {
-			System.out.println(b.getTimeInfo_start());
 			System.out.println(b.getSeatCount());
+			
+			b.setTimeInfo_start(b.getTimeInfo_start().substring(11, 16));
+			System.out.println(b.getTimeInfo_start());
+			
+		
 		}
 		
 		

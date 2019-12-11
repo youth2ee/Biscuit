@@ -24,6 +24,12 @@
     where cinema_num = #{cinema_num} and theater_name = #{theater_name}
 	</select>
 	
+	<!-- 검색할 영화 -->
+	<select id="movieList" resultType="MovieInfoVO">
+	select movieinfo_title
+    from movieinfo
+    order by movieinfo_title asc
+	</select>
 	
 	<insert id="timeInfoInsertA" parameterType="ChoiceVO">
     insert all

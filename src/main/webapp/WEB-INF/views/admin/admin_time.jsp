@@ -79,12 +79,22 @@
 <!-- 상영할 영화명 -->
 <div id="sec42">
 <span class="input input--chisato">
-		<input class="input__field input__field--chisato" type="text" id="input-13" />
+		<input class="input__field input__field--chisato input-13" type="text" id="myInput" placeholder="Search.." />
 		<label class="input__label input__label--chisato" for="input-13">
 			<span class="input__label-content input__label-content--chisato2" data-content="상영할 영화명">상영할 영화명</span>
 		</label>
 </span>
 </div>	
+
+<!-- 영화검색 -->
+<table id="myTable" class="tab">
+  <c:forEach items="${movieList}" var="mlist"> 
+  <tr><td>${mlist.movieInfo_title}</td></tr>
+  </c:forEach>
+</table>
+<!-- 영화검색끝 -->
+
+
 </div>	
 	
 <div id="sec5">
@@ -180,7 +190,7 @@
  		mdate = $(this).val().trim();
  		$('#t1').val(mdate);
  		$('#t2').val("");
- 		$('#input-13').val("");
+ 		$('.input-13').val("");
  		$('#t3').val("");
  		$('.placeholder').text("select");
  		$('#t4').val("");
@@ -191,7 +201,7 @@
     });
     
     /* 2 영화명 불러오기 */
-    $('#input-13').blur(function() {
+    $('.input-13').blur(function() {
  		console.log($(this).val());
  		mname = $(this).val().trim();
  		$('#t2').val(mname);
@@ -203,8 +213,22 @@
  	   $('.placeholder3').text("select");
     });
     
+    /* 영화검색 */
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".tab").css("display", "inline");
+    
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+    
+  });
+});
+    /* 영화검색끝 */
 
     
+    /*  */
     var el = {};
       $('.placeholder').on('click', function (ev) {
       $('.placeholder').css('opacity', '0');
@@ -303,6 +327,7 @@
 	  	}); 
 	   
 
+	   
     
     </script>
 

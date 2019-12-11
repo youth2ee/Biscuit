@@ -36,7 +36,19 @@ public class AdminController {
 	}
 	
 	@GetMapping("admin_time")
-	public void movieSelect_admin_time() {
+	public Model movieSelect_admin_time(Model model) {
+		
+		List<MovieInfoVO> movieList = adminService.movieList();
+		
+		for(MovieInfoVO a : movieList) {
+			System.out.println(a.getMovieInfo_title());
+		}
+		
+		
+		model.addAttribute("movieList", movieList);
+		
+		return model;
+		
 	}
 	
 	@GetMapping("adminLocSelect")

@@ -34,4 +34,9 @@ public class AdminService {
 	public int timeInfoInsertA(ChoiceVO choiceVO) {
 		return adminDAO.timeInfoInsertA(choiceVO);
 	}
+
+	public List<MovieInfoVO> movieList() {
+		return adminDAO.movieList();
+	}
+	
 }
