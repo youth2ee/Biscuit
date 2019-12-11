@@ -44,13 +44,14 @@
 					<label for="checkbox_all">
 						전체선택
 					</label>
-					<strong class="custom_checkbox_name">상품명</strong>
-					<strong class="custom_checkbox_price">판매금액</strong>
-					<strong class="custom_checkbox_amount">수량</strong>
-					<strong class="custom_checkbox_total">구매금액</strong>
-					<strong class="custom_checkbox_select">선택</strong>
+					<strong class="checkbox_name">상품명</strong>
+					<strong class="checkbox_price">판매금액</strong>
+					<strong class="checkbox_amount">수량</strong>
+					<strong class="checkbox_total">구매금액</strong>
+					<strong class="checkbox_select">선택</strong>
 				</p>
 				<ul class="cart_list_style">
+					<li id="cart_item_idx_">
 				</ul>
 				<a href="#none" class="btn_del_selected">
 				</a>

@@ -133,20 +133,45 @@ input[type="checkbox"].custom_checkbox_all + label:before {
     height: 24px;
     font-size: 0;
     background: transparent url(../../images/store/checkbox_gray.png) -1px -1px scroll no-repeat;
-    background-size: 28px 28px;
-    background-position: -1px;
+    background-size: 30px 30px;
+    background-position: -3px;
 }
 input[type="checkbox"].custom_checkbox_all:checked + label:before {
 	background: transparent url(../../images/store/checkbox_red.png) -1px -1px scroll no-repeat;
-	background-size: 28px 28px;
-	background-position: -2px;
+	background-size: 30px 30px;
+	background-position: -3px;
 }
 
-
-
-
-
-
+.cart_all_wrap strong {
+	float: left;
+    position: relative;
+    top: 1px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #000;
+    line-height: 24px;
+    text-align: center;
+}
+strong.checkbox_name {
+	width: 360px;
+    text-align: left;
+    text-indent: 86px;
+}
+strong.checkbox_price {
+	width: 115px;
+}
+strong.checkbox_amount {
+	width: 166px;
+}
+strong.checkbox_total {
+	width: 108px;
+}
+strong.checkbox_select {
+	width: 127px;
+}
+.cart_list_style {
+	border-bottom: 1px solid #000;
+}
 
 
 

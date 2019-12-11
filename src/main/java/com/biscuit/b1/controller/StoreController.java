@@ -44,7 +44,7 @@ public class StoreController {
 	//카트 담기 
 	@ResponseBody
 	@PostMapping("cartInsert")
-	public void cartInsert(CartVO cartVO, HttpSession session, Model model) throws Exception {
+	public int cartInsert(CartVO cartVO, HttpSession session, Model model) throws Exception {
 		//System.out.println(1);
 		int result = 0;
 		/*MemberVO memberVO = (MemberVO)session.getAttribute("member");
@@ -57,7 +57,8 @@ public class StoreController {
 		cartVO.setMember_id("a");
 		result = storeService.cartInsert(cartVO);
 		
-		model.addAttribute("result", result);
+		//model.addAttribute("result", result);
+		return result;
 	}
 	
 /////////////////////////////////////////////	
