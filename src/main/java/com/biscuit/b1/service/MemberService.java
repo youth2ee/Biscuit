@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.biscuit.b1.dao.MemberDAO;
 import com.biscuit.b1.model.MemberVO;
+import com.biscuit.b1.util.Pager;
 
 @Service
 public class MemberService {
@@ -42,8 +43,15 @@ public class MemberService {
 		return memberDAO.memberManagementDelete(id);
 	}
 
-	public List<MemberVO> memberManagement() throws Exception {
-		return memberDAO.memberManagement();
+	public List<MemberVO> memberManagement(Pager pager) throws Exception {
+		pager.makeRow();
+		pager.makePager(memberDAO.memberCount(pager));
+		
+		return memberDAO.memberManagement(pager);
+	}
+	
+	public int memberCount(Pager pager) throws Exception {
+		return memberDAO.memberCount(pager);
 	}
 
 }

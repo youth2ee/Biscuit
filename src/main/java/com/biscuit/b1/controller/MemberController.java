@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.service.MemberService;
+import com.biscuit.b1.util.Pager;
 
 @Controller
 @RequestMapping("member/**")
@@ -143,19 +144,21 @@ public class MemberController {
 	}
 	
 	@GetMapping("memberManagement")
-	public ModelAndView memberManagement(MemberVO memberVO) throws Exception {
+	public ModelAndView memberManagement(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		List<MemberVO> memberVOs = memberService.memberManagement();
+		List<MemberVO> memberVOs = memberService.memberManagement(pager);
 		for (MemberVO memberVO2 : memberVOs) {
 			memberVO2.setBirth(memberVO2.getBirth().substring(0, 10));
 			memberVO2.setSignIn_date(memberVO2.getSignIn_date().substring(0, 10));
 		}
+		System.out.println(pager.getSearch());
 		mv.addObject("members", memberVOs);
+		mv.addObject("pager", pager);
 		return mv;
 	}
 
-	@PostMapping("memberManagement")
-	public ModelAndView memberManagement2(MemberVO memberVO, String rowNum) throws Exception {
+	@PostMapping("memberManagementUpdate")
+	public ModelAndView memberManagementUpdate(MemberVO memberVO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.memberManagementUpdate(memberVO);
 		String msg = "업데이트 실패";
@@ -163,9 +166,12 @@ public class MemberController {
 			msg = "업데이트 완료";
 		}
 		mv.addObject("msg", msg);
+		mv.addObject("path", "./memberManagement");
 		mv.setViewName("common/common_result");
 		return mv;
 	}
+	
+	
 
 	@GetMapping("memberManagementDelete")
 	public ModelAndView memberManagementDelete(String id, HttpSession session) throws Exception {
@@ -173,7 +179,7 @@ public class MemberController {
 		int result = memberService.memberManagementDelete(id);
 		String msg = "탈퇴에 실패했습니다.";
 		if (result > 0) {
-			msg = "정상적으로 탈퇴하였습니다.";
+			msg = "정상적으로 탈퇴 처리 되었습니다.";
 		}
 		mv.addObject("msg", msg);
 		mv.addObject("path", "./memberManagement");

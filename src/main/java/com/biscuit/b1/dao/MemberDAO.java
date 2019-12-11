@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.biscuit.b1.model.MemberVO;
+import com.biscuit.b1.util.Pager;
 
 @Repository
 public class MemberDAO {
@@ -43,7 +44,11 @@ public class MemberDAO {
 		return sqlSession.delete(NAMESPACE + "memberDelete", id);
 	}
 
-	public List<MemberVO> memberManagement() throws Exception {
-		return sqlSession.selectList(NAMESPACE + "memberManagement");
+	public List<MemberVO> memberManagement(Pager pager) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "memberManagement",pager);
+	}
+	
+	public int memberCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberCount", pager);
 	}
 }
