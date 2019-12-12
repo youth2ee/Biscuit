@@ -18,10 +18,10 @@
 	width: 60%;
 	border: none;
 	border-radius: 0;
-	background: #f0f0f0;
-	color: #aaa;
-	font-weight: 400;
-	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	/* background: #f0f0f0; */
+/* 	color: #aaa; */
+/* 	font-weight: 400; */
+/* 	font-family: "Avenir Next", "Helvetica Neue", Helvetica, Arial, sans-serif; */
 	-webkit-appearance: none; /* for box shadows to show on iOS */
 }
 
@@ -112,7 +112,7 @@
 
 .input__label--manami::after {
 	height: 2px;
-	background: #A8A8A8;
+	/* background: #A8A8A8; */
 	top: 100%;
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
@@ -355,7 +355,7 @@
 /* Yoshiko */
 .input__field--yoshiko {
 	width: 100%;
-	background-color: #d0d1d0;
+	/* background-color: #d0d1d0; */
 	border: 2px solid transparent;
 	-webkit-transition: background-color 0.25s, border-color 0.25s;
 	transition: background-color 0.25s, border-color 0.25s;
@@ -420,17 +420,16 @@
 }
 
 /* Chisato */
-
 .input--chisato {
 	padding-top: 1em;
 }
 
 .input__field--chisato {
-	width: 100%;
+	width: 300px;
 	padding: 0.8em 0.5em;
 	background: transparent;
 	border: 2px solid;
-	color: #b5b5b5;
+	color: #585858;
 	-webkit-transition: border-color 0.25s;
 	transition: border-color 0.25s;
 }
@@ -448,23 +447,42 @@
 }
 
 .input__label-content--chisato {
-	padding: 0 1em;
+/* 	padding: 0 1em; */
 	font-weight: 400;
-	color: #b5b5b5;
+	color: #585858;
+	font-weight: 800;
+}
+
+.input__label-content--chisato2 {
+/* 	padding: 0 1em; */
+	font-weight: 400;
+	color: #585858;
+	font-weight: 800;
 }
 
 .input__label-content--chisato::after {
 	content: attr(data-content);
 	position: absolute;
-	top: -200%;
+	top: -208%;
 	left: 0;
-	color: #da6484;
+	color: #ee3224;
 	font-weight: 800;
 }
 
+.input__label-content--chisato2::after {
+	content: attr(data-content);
+	position: absolute;
+	top: -200%;
+	left: 0;
+	color: #ee3224;
+	font-weight: 800;
+}
+
+
+
 .input__field--chisato:focus,
 .input--filled .input__field--chisato {
-	border-color: #da6484;
+	border-color: #ee3224;
 }
 
 .input__field--chisato:focus + .input__label--chisato,
@@ -475,6 +493,12 @@
 
 .input__field--chisato:focus + .input__label--chisato .input__label-content--chisato,
 .input--filled .input__label-content--chisato {
+	-webkit-animation: anim-chisato-2 0.25s forwards ease-in;
+	animation: anim-chisato-2 0.25s forwards ease-in;
+}
+
+.input__field--chisato:focus + .input__label--chisato .input__label-content--chisato2,
+.input--filled .input__label-content--chisato2 {
 	-webkit-animation: anim-chisato-2 0.25s forwards ease-in;
 	animation: anim-chisato-2 0.25s forwards ease-in;
 }
@@ -635,7 +659,7 @@
 /* Makiko */
 .input--makiko {
 	overflow: hidden;
-	background: #CBCBCB;
+	/* background: #CBCBCB; */
 }
 
 .input__field--makiko {

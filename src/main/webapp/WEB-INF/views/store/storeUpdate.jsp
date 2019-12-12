@@ -15,26 +15,26 @@
 		<h2>Store Update Form</h2>
 		<form class="form-horizontal" action="storeUpdate" method="post" enctype="multipart/form-data">
 			
-			<input type="hidden" value="${update.store_num}" class="form-control" id="store_name" name="store_name">
+			<input type="hidden" value="${update.store_num}" class="form-control" id="store_num" name="store_num">
 			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="store_name">상품명:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="store_name" value="${select.store_name}" name="store_name">
+					<input type="text" class="form-control" id="store_name" value="${update.store_name}" name="store_name">
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="store_price">상품가격:</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" id="store_price" value="${select.store_price}" name="store_price">
+					<input type="number" class="form-control" id="store_price" value="${update.store_price}" name="store_price">
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="store_note">상품구성:</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="store_note" value="${select.store_note}" name="store_note">
+					<input type="text" class="form-control" id="store_note" value="${update.store_note}" name="store_note">
 				</div>
 			</div>
 			
@@ -52,18 +52,20 @@
 				</div>
 			</div>
 			<script type="text/javascript">
-				$('#store_package').val(${select.store_package});
+				$('#store_package').val(${update.store_package});
 			</script>
 			
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="store_img">상품이미지:</label>
 				<div class="col-sm-10">
-					<input type="file" class="form-control" id="store_img" value="${select.store_package} name="file">
-					<input type="hidden" name="store_img" value="${select.store_package}">
-					<input type="hidden" name="store_thumbimg" value="${select.store_thumbimg}">
+					<input type="file" class="form-control" id="store_img" name="file">
 				</div>
 				
-				<div class="select_img"><img alt="" src="../resources/upload/store/${select.store_img}"></div>	
+				<div class="select_img">
+					<img alt="" src="../resources/upload/store/${update.store_img}">
+					<input type="hidden" name="store_img" value="${update.store_img}">
+					<input type="hidden" name="store_thumbimg" value="${update.store_thumbimg}">
+				</div>	
 				
 				<script type="text/javascript">
 					$('#store_img').change(function() {
@@ -81,13 +83,13 @@
 			
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button class="btn btn-danger">취소</button>
+					<button type="button" id="btn_back" class="btn btn-danger">취소</button>
 					<input type="submit" class="btn btn-info" value="등록">
 					
 					<script type="text/javascript">
-						$('.btn-danger').click(function() {
-							//history.back();
-							location.href="storeSelect";
+						$('#btn_back').click(function() {
+							history.back();
+							//location.href = "storeSelect?store_num=" + ${update.store_num} + "&&store_package=" + ${update.store_package};
 						});
 					</script>
 				</div>

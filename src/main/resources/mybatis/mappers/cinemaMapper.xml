@@ -20,6 +20,8 @@
 	from cinema
 	order by cinema_num asc
 	</select>
+	
+	
 
 
   </mapper>

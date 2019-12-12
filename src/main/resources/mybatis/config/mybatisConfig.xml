@@ -16,5 +16,7 @@
   		<typeAlias type="com.biscuit.b1.model.StoreVO" alias="StoreVO"/>
   		<typeAlias type="com.biscuit.b1.model.SeatVO" alias="SeatVO"/>
   		<typeAlias type="com.biscuit.b1.model.MemberVO" alias="MemberVO"/>
+  		<typeAlias type="com.biscuit.b1.model.CartVO" alias="CartVO"/>
+  		<typeAlias type="com.biscuit.b1.model.CartListVO" alias="CartListVO"/>
   	</typeAliases>
   </configuration>

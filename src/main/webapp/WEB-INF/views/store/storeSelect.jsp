@@ -37,7 +37,7 @@
 									<span class="won">원</span>
 								</strong>
 							</div>
-							
+<!-- ------------------------------------------ -->							
 							<table border="1" class="table_info">
 								<tbody>
 									<tr id="store_note">
@@ -62,22 +62,11 @@
 									</tr>
 								</tbody>
 							</table>
-							
+<!-- ------------------------------------------ -->							
 							<div class="quantity">
 								<a href="javascript:void(0)" class="aMinus"><img alt="수량감소" src="../resources/images/store/btn_quantity_minus.jpg"></a>
 								<input type="text" class="numCount" value="1" readonly="readonly">
 								<a href="javascript:void(0)" class="aPlus"><img alt="수량증가" src="../resources/images/store/btn_quantity_plus.jpg"></a>
-							</div>
-							
-							<div class="total">
-								<strong>총 상품 금액</strong>
-								<em>
-									<span class="totalPrice">
-										<fmt:formatNumber value="${select.store_price}" pattern="###,###,###" />
-										<%-- ${select.store_price} --%>
-									</span>
-									원
-								</em>
 							</div>
 							
 							<script type="text/javascript">
@@ -96,9 +85,7 @@
 									}else {
 										$('.numCount').val(minusNum);
 										//$('.totalPrice').html(${select.store_price}*parseInt($('.numCount').val()));
-									
 									}
-									
 								});
 								
 							
@@ -111,11 +98,26 @@
 									alert(num);
 								});
 							</script>
-							
+<!-- ------------------------------------------ -->							
+							<div class="total">
+								<strong>총 상품 금액</strong>
+								<em>
+									<span class="totalPrice">
+										<fmt:formatNumber value="${select.store_price}" pattern="###,###,###" />
+										<%-- ${select.store_price} --%>
+									</span>
+									원
+								</em>
+							</div>
+<!-- ------------------------------------------ -->							
 							<div class="btn_wrap">
 								<a href="#" class="btn_cart">장바구니</a>
+								
+								
+								
+								
 								<a href="#" class="btn_star">찜하기</a>
-								<a href="#" class="btn_buy">구매하기</a>
+								<a href="cartList" class="btn_buy">구매하기</a>
 							</div>
 						</div>
 <!-- ------------------------------------------ -->
@@ -126,7 +128,71 @@
 			</div>
 		</div>
 	</div>
+<!-- ------------------------------------------ -->
+<!-- modal -->
+	<div class="confirmLayer">
+		<div class="confirm_wrap">
+			<div class="header">
+				<h3>장바구니 담기</h3>
+				<div class="close">
+					<img alt="닫기" src="../resources/images/store/close-line_white.png">
+				</div>
+			</div>
+			<div class="content">
+				<p>장바구니에 상품이 정상적으로 담겼습니다.</p>
+			</div>
+			<div class="footer">
+				<a href="cartList" class="btn_cartList">장바구니 이동</a>
+				<button class="btn_remove">쇼핑 계속하기</button>
+			</div>
+		</div>
+	</div>
 </section>
+
+<script type="text/javascript">
+	function modal() {
+		$('.confirmLayer').css("display", "block");
+		
+		$('.close').click(function() {
+			$('.confirmLayer').css("display", "none");
+		});
+		
+		$('.btn_remove').click(function() {
+			$('.confirmLayer').css("display", "none");
+		});
+		
+		$(document).click(function(event) {
+			$('.confirmLayer').css("display", "none");
+		});
+	}
+	
+	$('.btn_cart').click(function() {
+		var store_num = ${select.store_num}
+		//alert(store_num);
+		var cart_amount = $('.numCount').val();
+		//alert(cart_amount);
+		
+		$.ajax({
+			url: "cartInsert",
+			type: "POST",
+			data: {
+				store_num : store_num,
+				cart_amount : cart_amount
+			},
+			success: function(result) {
+				if(result == 1){
+					modal();
+				}else{
+					alert("회원만 사용할 수 있습니다.")
+				}
+				$('.numCount').val("1");
+			},
+			error: function() {
+				alert("카트 담기 실패");
+			}
+		});
+	});
+</script>
 
 <footer>
 </footer>

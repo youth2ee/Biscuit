@@ -13,10 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
-import com.biscuit.b1.model.TheaterVO;
 import com.biscuit.b1.model.TimeInfoVO;
 import com.biscuit.b1.service.MovieSelectService;
 import com.biscuit.b1.service.MovieService;
+
+import oracle.net.aso.d;
 
 @Controller
 @RequestMapping("/movie/**")
@@ -57,8 +58,9 @@ public class MovieController {
 		//선택한 영화에 따른 영화관
 		List<ChoiceVO> cr = movieSelectService.movieChoice(choiceVO);
 		
+		
 		ModelAndView mv = new ModelAndView(); 
-		mv.setViewName("common/cineme_result");
+		mv.setViewName("common/cinema_result");
 		mv.addObject("result", ar);
 		mv.addObject("selectResult", cr);
 		
@@ -70,14 +72,33 @@ public class MovieController {
 	public ModelAndView dateSelect(ChoiceVO choiceVO) throws Exception {
 		//날짜선택
 		List<TimeInfoVO> movieDateSelect = movieSelectService.movieDateSelect(choiceVO);
+
 		
 		for(TimeInfoVO a : movieDateSelect){
 			a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
+			
+			System.out.println(a.getTimeInfo_date());
+			
+			a.setYear(a.getTimeInfo_date().substring(0, 4));
+			a.setMonth(a.getTimeInfo_date().substring(5, 7));
+			a.setDay(a.getTimeInfo_date().substring(8));
+			
+			System.out.println(a.getYear());
+			System.out.println(a.getMonth());
+			System.out.println(a.getDay());
+			
 		}
+		
+		
+		
+		//theater num
+		choiceVO = movieSelectService.theaterSelect(choiceVO);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/date_result");
 		mv.addObject("result", movieDateSelect);
+		mv.addObject("theater_num", choiceVO.getTheater_num());
+
 		
 		return mv;
 	}
@@ -91,13 +112,28 @@ public class MovieController {
 			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
 		}
 		
+
+		choiceVO.setTimeInfo_date(choiceVO.getTimeInfo_date().substring(2));
+		//여기서 좌석수를 보내조야 해
+		List<ChoiceVO> seatList =  movieSelectService.seatCount(choiceVO);
+		
+		for(ChoiceVO b : seatList) {
+			System.out.println(b.getSeatCount());
+			
+			b.setTimeInfo_start(b.getTimeInfo_start().substring(11, 16));
+			System.out.println(b.getTimeInfo_start());
+			
+		
+		}
+		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/time_result");
 		mv.addObject("result", dateSelect);
+		mv.addObject("seatList", seatList);
 		
 		return mv;
 	}
-	
 	
 	
 	

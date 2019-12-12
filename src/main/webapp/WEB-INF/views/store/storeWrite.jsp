@@ -24,7 +24,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="store_price">상품가격:</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" id="store_price" placeholder="상품가격을 입력하세요" name="store_price">
+					<input type="number" class="form-control" id="store_price" style="IME-MODE:disabled;" placeholder="상품가격을 입력하세요" name="store_price">
 				</div>
 			</div>
 			

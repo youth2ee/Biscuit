@@ -84,6 +84,10 @@
 
 <!-- 날짜선택  -->
 <div class="s s4">
+<div id="year" style="display: none;">
+<p>2019</p>
+<p>12</p>
+</div>
 <table class="sul" id="movieDateSelect">
 </table>
 </div> 
@@ -121,6 +125,7 @@
  	var cname = ""; //영화관이름 
  	var cdate = ""; //날짜
  	var ctime = ""; //시간
+ 	var tnum = ""; //상영관번호
  	
  	var theater = $("#theaterNameSelect");
  	var cinema = $("#cinemaNameSelect");
@@ -137,6 +142,7 @@
  			cinema.empty();
  			date.empty();
  			time.empty();
+ 			$('#year').css("display", "none");
  		}
 		
 		mnum = $(this).find(".mtitle").attr("title");
@@ -157,6 +163,7 @@
  			cinema.empty();
  			date.empty();
  			time.empty();
+ 			$('#year').css("display", "none");
  		}
  	
  		loc = $(this).children().text();
@@ -182,10 +189,12 @@
  	/* 영화관을 선택하면 날짜가 뜹니다. */
  	$(document).on("click",".cinemaSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
+ 		$('#year').css("display", "inline");
  		
- 		if(time.html().trim() != ""){
+ 		if(time.html().trim() != "" || date.html().trim() != ""){
  			date.empty();
  			time.empty();
+ 			$('#year').css("display", "none");
  		}
  		
   		cnum = $(this).find(".mcinema").attr("title");
@@ -217,20 +226,30 @@
  	 $(document).on("click",".dateSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
  		
-  		cdate = $(this).children().text();
+  		cdate = $(this).find('.mtd').attr("title");
  		cdate = cdate.trim();
+ 		
+ 	 	tnum = $(this).children().find('.tnum').text();
+ 	 	tnum = tnum.trim(); 
+ 		
+ 	 	console.log("aa");
+ 	 	console.log(cdate);
+ 		console.log(mnum);
+ 		console.log(cnum);
+ 		console.log(tnum);
  		
   		$.ajax({
 			data : {
 				timeInfo_date:cdate,
 				movieInfo_num:mnum,
-				cinema_num:cnum
+				cinema_num:cnum,
+				theater_num:tnum
 			},
 			type : "GET",
 			url : "./timeSelect",
 			success : function(data) {
 				data = data.trim();
-				$('#movieTimeSelect').html(data);
+				$('#movieTimeSelect').html(data);	
 			}
 		}); 
  		});
@@ -274,7 +293,6 @@
       }
        
        });
- 	
  	
 </script> 
 
