@@ -52,6 +52,7 @@
 				</p>
 				<ul class="cart_list_style">
 					<c:forEach items="${cartList}" var="cartList">
+					
 						<li id="cart_item_idx_${cartList.cart_num}">
 							<input type="checkbox" class="cart_checkbox" value="${cartList.cart_num}" checked="checked">
 							<label for="checkbox${cartList.cart_num}"></label>
