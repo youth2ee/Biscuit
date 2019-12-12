@@ -16,11 +16,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/design/demo.css" rel="stylesheet" >
 
 <link href="${pageContext.request.contextPath}/resources/css/select/selectList.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,900,700,600,200" rel="stylesheet">
-  
-<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,900,700,600,200'>
-<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css'>
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/select/style.css">
 
 <style>
@@ -38,13 +33,12 @@
 <body>
 <div id="total">
 <header>
-<c:import url="../layout/header.jsp"/>
 </header>
 
 <section>
 <div id="sec">
 
-
+<div style="float: left;">
 <!--  -->
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -80,23 +74,29 @@
 <div id="sec42">
 <span class="input input--chisato">
 		<input class="input__field input__field--chisato input-13" type="text" id="myInput" placeholder="Search.." />
-		<label class="input__label input__label--chisato" for="input-13">
+		<label class="input__label input__label--chisato" for="myInput">
 			<span class="input__label-content input__label-content--chisato2" data-content="상영할 영화명">상영할 영화명</span>
 		</label>
 </span>
 </div>	
 
-<!-- 영화검색 -->
-<table id="myTable" class="tab">
-  <c:forEach items="${movieList}" var="mlist"> 
-  <tr><td>${mlist.movieInfo_title}</td></tr>
-  </c:forEach>
-</table>
-<!-- 영화검색끝 -->
+<div id="sec6" >
+<form action="./adminTimeInsert" id="frm" method="post">
+<input type="button" id="btn" value="추가">
+<input type="hidden" id="t1" readonly="readonly" name="timeInfo_date">
+<input type="hidden" id="t2" readonly="readonly" name="movieInfo_name">
+<input type="hidden" id="t3" readonly="readonly">
+<input type="hidden" id="t4" readonly="readonly" name="cinema_name">
+<input type="hidden" id="t5" readonly="readonly" name="theater_name">
+<input type="hidden" id="t6" name="cinema_num">
+</form>
+</div>
+
 
 
 </div>	
-	
+
+
 <div id="sec5">
 <!--  -->
 <div id="sec1">
@@ -144,21 +144,20 @@
 
 <!--  -->
 </div>
-
-<div id="sec6">
-
-<form action="./adminTimeInsert" id="frm" method="post">
-<input type="search">
-<input type="text" id="t1" readonly="readonly" name="timeInfo_date"><br>
-<input type="text" id="t2" readonly="readonly" name="movieInfo_name"><br>
-<input type="text" id="t3" readonly="readonly"><br>
-<input type="text" id="t4" readonly="readonly" name="cinema_name"><br>
-<input type="text" id="t5" readonly="readonly" name="theater_name"><br>
-<input type="hidden" id="t6" name="cinema_num">
-
-<input type="button" id="btn" value="추가">
-</form>
 </div>
+
+
+<!-- 영화검색 -->
+<div id="movieSearch">
+<table id="myTable" class="tab">
+  <c:forEach items="${movieList}" var="mlist"> 
+  <tr><td class="mltd">${mlist.movieInfo_title}</td></tr>
+  </c:forEach>
+</table>
+ </div>
+<!-- 영화검색끝 -->
+
+
 
 
 </div><!-- sec -->
@@ -213,20 +212,66 @@
  	   $('.placeholder3').text("select");
     });
     
+    
     /* 영화검색 */
 $(document).ready(function(){
+	
   $("#myInput").on("keyup", function() {
+	  
     var value = $(this).val().toLowerCase();
-    $(".tab").css("display", "inline");
     
+    if(value == ""){
+    	 $(".tab").css("display", "none");
+    }else{
+    $(".tab").css("display", "inline");
     $("#myTable tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
+    }
     
   });
+  
+/*   var v = "1";
+  var i = 0;
+  
+  $('#total').html('<div id="a'+i+'">'+v+'</div>');
+  i++;
+  
+  for (var j = 0; j < i; j++) {
+  if( $('#a'+j).text() == v){
+	  $('#a'+j).text("");
+  }
+	 */
+}
+  
+  
+  
+  
 });
     /* 영화검색끝 */
 
+
+    $(".tab").css("display", "none");
+    
+    var moviename = "";
+    
+    $('.mltd').on("click", function() {
+    	
+    	if($('#t2').val(moviename) != ""){
+    		$('#t2').val("");
+    	}
+    	
+    	
+    	moviename = $(this).text();
+    	$('#t2').val(moviename);
+    	$('.input-13').val(moviename);
+/*     	alert(moviename); */
+    	$(".tab").css("display", "none");
+	});
+    
+    
+    
+    
     
     /*  */
     var el = {};
@@ -328,7 +373,7 @@ $(document).ready(function(){
 	   
 
 	   
-    
+	 
     </script>
 
 

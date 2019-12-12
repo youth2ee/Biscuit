@@ -31,6 +31,36 @@
     order by movieinfo_title asc
 	</select>
 	
+	<!-- cinema insert -->
+	<insert id="cinemaInsert" parameterType="CinemaVO">
+	insert
+	into cinema values (
+	CINEMA_SEQ.nextval, #{cinema_loc}, #{cinema_name}, #{cinema_add}, #{cinema_tel}, 
+	(select distinct cinema_locnum from cinema where cinema_loc = #{cinema_loc}))
+	</insert>
+	
+	<!-- theater insert -->
+	<insert id="theaterInsert" parameterType="CinemaVO">
+	insert all 
+	into theater 
+	values (theater_seq.nextval, 
+	(select cinema_num from cinema where cinema_name = #{cinema_name})
+	,'A')
+	
+	into theater 
+	values (theater_seq.nextval +1, 
+	(select cinema_num from cinema where cinema_name = #{cinema_name})
+	,'B')
+	
+	into theater 
+	values (theater_seq.nextval +2, 
+	(select cinema_num from cinema where cinema_name = #{cinema_name})
+	,'C')
+	select * from dual
+	</insert>
+	
+	
+	
 	<insert id="timeInfoInsertA" parameterType="ChoiceVO">
     insert all
 		into timeinfo

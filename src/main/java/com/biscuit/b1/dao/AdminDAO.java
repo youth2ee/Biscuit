@@ -40,4 +40,11 @@ public class AdminDAO {
 		return sqlSession.selectList(NAMESPACE+"movieList");
 	}
 	
+	public int cinemaInsert(CinemaVO cinemaVO) {
+		return sqlSession.insert(NAMESPACE+"cinemaInsert", cinemaVO);
+	}
+	
+	public int theaterInsert(CinemaVO cinemaVO) {
+		return sqlSession.insert(NAMESPACE+"theaterInsert", cinemaVO);
+	}
 }

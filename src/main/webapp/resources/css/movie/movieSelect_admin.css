@@ -48,6 +48,18 @@ body{
 	padding-left: 15px;
 }
 
+#sec6{
+	margin-top: 46px;
+	padding-left: 25px;
+	float: left;
+}
+
+#fbtn{
+	text-align: left;
+	padding-left: 23px;
+	padding-top: 60px;
+}
+
 .list{
 	width: 300px;
 	text-align: left;
@@ -101,7 +113,7 @@ body {
   height: 100%;
   width: 0;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
   background-color: #111;
@@ -151,18 +163,49 @@ body {
 
 /* 영화검색 */
 table {
-  font-family: arial, sans-serif;
+/*   font-family: arial, sans-serif; */
   border-collapse: collapse;
-  width: 100%;
+  width: 100%;;
   display: none;
+  font-size: 12px;
+  cursor:pointer;
 }
 
-td, th {
+td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
 
+
+/* 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+ */
+/* #input1, #input2, #sample5_address{
+	margin-left: -46px;
+}
+ */
+ 
+ #movieSearch{
+ float:left;
+ padding-top: 173px;
+ text-align: left;
+ }
+
+#m1{
+	float: left;
+	display: inline;
+	width: 500px;
+	height: 220px;
+	margin-top: 30px;
+	padding-left: 60px;
+}
+
+#map{
+	width: 500px;
+	height:220px;
+	margin-top: 10px;
+	display: none;
 }
