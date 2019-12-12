@@ -122,10 +122,7 @@ public class MovieController {
 			
 			b.setTimeInfo_start(b.getTimeInfo_start().substring(11, 16));
 			System.out.println(b.getTimeInfo_start());
-			
-		
 		}
-		
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/time_result");

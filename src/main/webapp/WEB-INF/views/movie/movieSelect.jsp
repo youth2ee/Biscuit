@@ -281,7 +281,8 @@
           console.log(cnum);    
           console.log(cname);    
           console.log(cdate);    
-          console.log(ctime);    
+          console.log(ctime);  
+          console.log(tnum);
        
            $("#frm").append('<input type="hidden" name="movieInfo_num" value="'+mnum+'">');
            $("#frm").append('<input type="hidden" name="movieInfo_name" value="'+mname+'">');
@@ -290,6 +291,7 @@
            $("#frm").append('<input type="hidden" name="cinema_name" value="'+cname+'">');
            $("#frm").append('<input type="hidden" name="timeInfo_date" value="'+cdate+'">');
            $("#frm").append('<input type="hidden" name="timeInfo_start" value="'+ctime+'">');
+           $("#frm").append('<input type="hidden" name="theater_num" value="'+tnum+'">');
          
            $("#frm").submit();
       } else {
