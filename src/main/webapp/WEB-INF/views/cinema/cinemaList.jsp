@@ -1,47 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>다른 이미지로 마커 생성하기</title>
-    
-</head>
-<body>
-<div id="map" style="width:100%;height:350px;"></div>
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c385975a519fabb671122b6c7f825767"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(37.54699, 127.09598), // 지도의 중심좌표
-        level: 4 // 지도의 확대 레벨
-    };
-
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
-    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-      
-// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-    markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
-
-// 마커를 생성합니다
-var marker = new kakao.maps.Marker({
-    position: markerPosition, 
-    image: markerImage // 마커이미지 설정 
-});
-
-// 마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);  
-</script>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,6 +21,7 @@ marker.setMap(map);
 <!-- section -->
 <section>
 
+<div style="background-image: url('../resources/images/cinema/bricks.jpg');">
 <!-- cinema 리스트 -->
 <div id="cinemaName">
 <table id="cinematable">
@@ -79,12 +39,27 @@ marker.setMap(map);
 
 </table>
 </div>
+</div>
 
-<!-- 그 영화관 정보 -->
-<div></div>
+
+
+
+<div id="mid">
 
 <!-- 지도 -->
-<div id="map"></div>
+<div id="map" style="float: left;"></div>
+
+<!-- 그 영화관 정보 -->
+<div id="minfo" style="float: left;">
+<h1>강남</h1>
+<h2>tel</h2>
+<h3>address</h3>
+</div>
+
+
+</div>
+
+
 
 </section>
 
@@ -100,6 +75,7 @@ marker.setMap(map);
 /* 1. 지역선택해서 보내주기 */
 var cname = ""; //상영관이름
 var cadd = ""; //상영관주소
+var ctel = ""; //상영관번호
 
 var cinematable = $("#cinematable");
 
@@ -121,8 +97,16 @@ var cinematable = $("#cinematable");
 			type : "GET",
 			url : "./cinemaAdd",
 			success : function(data) {
-				cadd = data.trim();
-				console.log(cadd);
+				cadd = data.cinema_add;
+				cname = data.cinema_name;
+				ctel = data.cinema_tel;
+				
+				$('#minfo').html("");
+				$('#minfo').html('<h1>'+cname+'</h1>');
+				$('#minfo').append('<h2>'+ctel+'</h2>');
+				$('#minfo').append('<h3>'+cadd+'</h3>');
+				
+
 				
 				/* 3. 지도 띄우기 */
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -161,8 +145,15 @@ var cinematable = $("#cinematable");
 				    } 
 				}); 
 				
+			},
+			error: function() {
+				alert("실패");
 			}
+		
+			
+			
 		});
+ 		
  		});
 	
 	/* 초기 지도 띄우기 */

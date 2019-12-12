@@ -5,7 +5,8 @@
   
   <mapper namespace="cinemaMapper">
 	<select id="cinema_loc" parameterType="CinemaVO" resultType="CinemaVO">
-	select cinema_name, cinema_add from cinema 
+	select cinema_name, cinema_add, cinema_tel
+	from cinema 
   	where cinema_name = #{cinema_name}
 	</select>
 	
@@ -21,7 +22,11 @@
 	order by cinema_num asc
 	</select>
 	
-	
+	<select id="cineamInfo" parameterType="CinemaVO" resultType="CinemaVO">
+	select * 
+	from cinema
+	where cinema_name = #{cinema_name}
+	</select>
 
 
   </mapper>

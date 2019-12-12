@@ -28,27 +28,59 @@ public class CinemaController {
 		List<CinemaVO> ar =  cinemaService.cinemaList_loc();
 		
 		//cinema 지역에 따른 영화관 받기
-		List<CinemaVO> br = cinemaService.cinemaList_cinema();			
+		List<CinemaVO> br = cinemaService.cinemaList_cinema();	
 		
 		model.addAttribute("locList", ar);
 		model.addAttribute("cinemaList", br);
 	}
 	
+	/*
+	 * @ResponseBody
+	 * 
+	 * @GetMapping(value = "cinemaAdd", produces = "application/text; charset=utf8")
+	 * public String cinemaAdd(CinemaVO cinemaVO) { //cinema 이름 받아서 주소 보내주기
+	 * if(cinemaVO.getCinema_name() == null) { cinemaVO.setCinema_name("강남"); }
+	 * cinemaVO = cinemaService.cinema_loc(cinemaVO);
+	 * 
+	 * System.out.println(cinemaVO.getCinema_name());
+	 * System.out.println(cinemaVO.getCinema_add());
+	 * 
+	 * return cinemaVO.getCinema_add(); }
+	 */
+	
 	@ResponseBody
-	@GetMapping(value = "cinemaAdd", produces = "application/text; charset=utf8")
-	public String cinemaAdd(CinemaVO cinemaVO) {
+	@GetMapping(value = "cinemaAdd")
+	public CinemaVO cinemaAdd(CinemaVO cinemaVO) {
 		//cinema 이름 받아서 주소 보내주기
 		if(cinemaVO.getCinema_name() == null) {
-			cinemaVO.setCinema_name("강남");			
+			cinemaVO.setCinema_name("강남");	
 		}
 		cinemaVO = cinemaService.cinema_loc(cinemaVO);
 		
 		System.out.println(cinemaVO.getCinema_name());
 		System.out.println(cinemaVO.getCinema_add());
 		
-		return cinemaVO.getCinema_add();
+		return cinemaVO;
 	}
 	
+	
+	
+	@GetMapping("cinemaInfo")
+	public ModelAndView cinemaInfo(CinemaVO cinemaVO) {
+		
+		//cinema 영화관에 따른 정보받기 
+		cinemaVO = cinemaService.cineamInfo(cinemaVO);
+		
+		System.out.println(cinemaVO.getCinema_name());
+		System.out.println(cinemaVO.getCinema_add());
+		System.out.println(cinemaVO.getCinema_tel());
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("cinemaInfo", cinemaVO);
+		mv.setViewName("common/cinemaInfo_result");
+
+		return mv;
+	}
 	
 	
 }

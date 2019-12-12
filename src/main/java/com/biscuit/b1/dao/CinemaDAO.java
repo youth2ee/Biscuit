@@ -29,5 +29,10 @@ public class CinemaDAO {
 		return sqlSession.selectList(NAMESPACE+"cinemaList_cinema");
 	}
 	
+	public CinemaVO cineamInfo(CinemaVO cinemaVO) {
+		return sqlSession.selectOne(NAMESPACE+"cineamInfo", cinemaVO);
+	}
+	
+	
 	
 }

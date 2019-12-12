@@ -100,6 +100,16 @@
 </div> 
 
 
+<div>
+<p>JavaScript</p>
+<div class="container">
+  <div class="skills js">65%</div>
+</div>
+
+
+</div>
+
+
  
 <form action="../seat/seatSelect" id="frm">
 <div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div>
@@ -198,9 +208,7 @@
  			$('#year').css("display", "none");
  		}
  		
- 		
- 		
- 		
+
   		cnum = $(this).find(".mcinema").attr("title");
   		cname = $(this).find(".mcinema").text();
   		

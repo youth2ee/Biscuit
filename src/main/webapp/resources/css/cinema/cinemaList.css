@@ -3,24 +3,36 @@
 .loctd{
 	width: 50px;
 	height: 30px;
-	background-color:orange;
+/* 	background-color:orange; */
+	color:red;	
 	text-align: center;
+	font-weight: bolder;
+	border-right: 1px solid white;
 }
 
 #cinematable{
 	width:70%;
 	margin: 0 auto;
+	background-color: black;
+	cursor: pointer;
+	font-size: 13px;
 }
 
 .cinematd{
 	width: 30px;
 	height: 30px;
-	background-color:green;
+/* 	background-color:green; */
 	text-align: center;
+	color: white;
 }
 
 #map{
-	width: 70%;
+	width: 50%;
 	height: 400px;
+	margin: 0 auto;
+}
+
+#mid{
+	width: 70%;
 	margin: 0 auto;
 }
