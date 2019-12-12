@@ -54,7 +54,7 @@
 					<c:forEach items="${cartList}" var="cartList">
 					
 						<li id="cart_item_idx_${cartList.cart_num}">
-							<input type="checkbox" class="cart_checkbox" value="${cartList.cart_num}" checked="checked">
+							<input type="checkbox" class="cart_checkbox" id="checkbox${cartList.cart_num}" value="${cartList.cartList_num}" checked="checked">
 							<label for="checkbox${cartList.cart_num}"></label>
 							<a href="storeSelect?store_num=${cartList.store_num}" class="product_info_img">
 								<img alt="${cartList.store_name}" src="../resources/upload/store/th/${cartList.store_thumbimg}">
@@ -73,11 +73,6 @@
 								<a href="#none" class="btn_amount_change">변경</a>
 							</div>
 							<span class="product_info_price"></span>
-							<script type="text/javascript">
-								$('.btn_amount_plus').click(function() {
-									
-								});
-							</script>
 							
 							<div class="product_info_btn_wrap">
 								<a href="#none">바로구매</a>
@@ -86,6 +81,30 @@
 						</li>
 					</c:forEach>
 				</ul>
+				
+				<script type="text/javascript">
+				//체크박스 모두 선택, 해제
+				$('#checkbox_all').click(function() {
+					if($('#checkbox_all').prop("checked")){
+						$('.cart_checkbox').prop("checked", true);
+					}else {
+						$('.cart_checkbox').prop("checked", false);
+					}
+				});
+				//체크박스 선택, 해제
+				$('.cart_checkbox').click(function() {
+					if($('.cart_checkbox:checked').length == $('.cart_checkbox').length){
+						$('#checkbox_all').prop("checked", true);
+					}else{
+						$('#checkbox_all').prop("checked", false);
+					}
+				});
+				
+				//수량 박스 증가, 감소
+				$('.btn_amount_plus').click(function() {
+					
+				});
+				</script>
 				
 				<a href="#none" class="btn_del_selected">
 					선택 상품 삭제
@@ -104,6 +123,7 @@
 							<th>총 결제 예정 금액</th>
 						</tr>
 					</thead>
+					
 					
 					<tbody>
 						<tr>
