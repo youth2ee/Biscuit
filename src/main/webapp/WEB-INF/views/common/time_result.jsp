@@ -8,7 +8,7 @@
 
 <c:forEach items="${result}" var="time"> 
 <tr class="timeSelect mtd">
-<td style="width: 50px;">${time.timeInfo_start}</td>
+<td class="mtd1" style="width: 50px;">${time.timeInfo_start}</td>
 
 <!-- 여기에 좌석 수를 넣어야 한다. -->
 
