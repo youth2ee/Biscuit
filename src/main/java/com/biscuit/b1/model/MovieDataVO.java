@@ -4,7 +4,7 @@ public class MovieDataVO {
 	private String ratingGrade;
 	private String releaseDate;
 	private String title;
-	private String posters;
+	private String poster;
 	private String runtime;
 	private String genre;
 	private String nation;
@@ -34,12 +34,12 @@ public class MovieDataVO {
 		this.title = title;
 	}
 
-	public String getPosters() {
-		return posters;
+	public String getPoster() {
+		return poster;
 	}
 
-	public void setPosters(String posters) {
-		this.posters = posters;
+	public void setPoster(String posters) {
+		this.poster = posters;
 	}
 
 	public String getRuntime() {
