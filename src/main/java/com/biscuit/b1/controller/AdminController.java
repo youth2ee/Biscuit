@@ -111,6 +111,32 @@ public class AdminController {
 		return mv;
 	}
 	
+	@PostMapping("adminCinemaInsert")
+	public ModelAndView adminCinemaInsert(CinemaVO cinemaVO) {
+		System.out.println(cinemaVO.getCinema_loc());
+		System.out.println(cinemaVO.getCinema_name());
+		System.out.println(cinemaVO.getCinema_add());
+		System.out.println(cinemaVO.getCinema_tel());
+		
+		int result = adminService.cinemaInsert(cinemaVO);
+		int result2 = 0;
+		String msg = "영화관 추가 실패";
+		
+		if(result > 0) {
+		  result2 =	adminService.theaterInsert(cinemaVO);
+		}
+		
+		if(result2 > 0) {
+			msg = "영화관 추가 성공";
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./admin_cinema");
+		mv.setViewName("common/common_result");
+		
+		return mv;
+	}
 	
 
 	
