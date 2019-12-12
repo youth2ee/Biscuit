@@ -35,7 +35,6 @@ public class SeatController {
 		 * System.out.println("상영 시작 : " + choiceVO.getTimeInfo_start());
 		 */
 		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO);
-		System.out.println("시어터번호 : " + choiceVO.getTheater_num());
 		mv.addObject("seats", seatVOs);
 		mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
 		mv.addObject("cinema_num", choiceVO.getCinema_num());
@@ -63,12 +62,6 @@ public class SeatController {
 			seatVO.setTimeInfo_start(timeInfo_start);
 			seatVO.setTheater_num(choiceVO.getTheater_num());
 			seatVO.setMovieInfo_num(choiceVO.getMovieInfo_num());
-			/*
-			 * System.out.println("시네마번호:"+seatVO.getCinema_num());
-			 * System.out.println("영화이름:"+seatVO.getMovieInfo_name());
-			 * System.out.println("좌석이름:"+seatVO.getSeat_name());
-			 * System.out.println("시작시간:"+seatVO.getTimeInfo_start());
-			 */
 			result1 = seatService.seatBooking(seatVO); // 좌석 테이블에 입력
 
 			SimpleDateFormat today = new SimpleDateFormat("MMdd");
@@ -87,7 +80,7 @@ public class SeatController {
 			movie_TicketingVO.setId("admin"); // 임시
 			movie_TicketingVO.setMovieInfo_num(seatService.searchMovieNum(seatVO));
 			movie_TicketingVO.setCinema_num(choiceVO.getCinema_num());
-			movie_TicketingVO.setTheater_num(1); // 임시
+			movie_TicketingVO.setTheater_num(choiceVO.getTheater_num());
 			movie_TicketingVO.setSeat_name(seat_names[i]);
 			result2 = seatService.insertTicket(movie_TicketingVO); // 예매정보 테이블에 입력
 

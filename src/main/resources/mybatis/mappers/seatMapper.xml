@@ -8,12 +8,12 @@
 	<select id="bookCheck" resultType="SeatVO"
 		parameterType="ChoiceVO">
 		select seat_name from seat where cinema_num =
-		#{cinema_num} and movieInfo_name = #{movieInfo_name} and timeInfo_start = #{timeInfo_start}
+		#{cinema_num} and movieInfo_name = #{movieInfo_name} and timeInfo_start = #{timeInfo_start} 
 	</select>
 	<insert id="seatBooking" parameterType="SeatVO">
 		insert into seat
-		(seat_num,movieInfo_name,cinema_num,seat_name,timeInfo_start) values
-		(seat_seq.nextval,#{movieInfo_name},#{cinema_num},#{seat_name},#{timeInfo_start})
+		(seat_num,movieInfo_name,cinema_num,seat_name,timeInfo_start,theater_num,movieInfo_num) values
+		(seat_seq.nextval,#{movieInfo_name},#{cinema_num},#{seat_name},#{timeInfo_start},#{theater_num},#{movieInfo_num})
 	</insert>
 	<select id="searchMovieNum" parameterType="SeatVO" resultType="Integer">
 		select movieInfo_num from movieInfo where
