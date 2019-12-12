@@ -148,7 +148,6 @@
 <div id="sec6">
 
 <form action="./adminTimeInsert" id="frm" method="post">
-<input type="search">
 <input type="text" id="t1" readonly="readonly" name="timeInfo_date"><br>
 <input type="text" id="t2" readonly="readonly" name="movieInfo_name"><br>
 <input type="text" id="t3" readonly="readonly"><br>
@@ -213,11 +212,21 @@
  	   $('.placeholder3').text("select");
     });
     
+    
     /* 영화검색 */
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $(".tab").css("display", "inline");
+    
+    if($("#myInput").val() == ""){
+    	$(".tab").css("display", "inline");
+    }
+    
+    if($("#myInput").val() != ""){
+    	$(".tab").css("display", "none");
+    }
+    
     
     $("#myTable tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
@@ -227,6 +236,9 @@ $(document).ready(function(){
 });
     /* 영화검색끝 */
 
+    
+    
+    
     
     /*  */
     var el = {};

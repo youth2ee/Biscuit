@@ -191,11 +191,15 @@
  		$(this).addClass('act').siblings().removeClass('act');
  		$('#year').css("display", "inline");
  		
+ 		
  		if(time.html().trim() != "" || date.html().trim() != ""){
  			date.empty();
  			time.empty();
  			$('#year').css("display", "none");
  		}
+ 		
+ 		
+ 		
  		
   		cnum = $(this).find(".mcinema").attr("title");
   		cname = $(this).find(".mcinema").text();

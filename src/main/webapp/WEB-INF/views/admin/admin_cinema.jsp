@@ -87,37 +87,64 @@
 </div>
 
 
-<!--  -->
-<div id="sec2">
+<div id="d2" style="float: left;">
+
 <div>
-<span class="input input--yoshiko" style="width: 300px;">
-	<input class="input__field input__field--yoshiko" type="text" id="input-10" style="width: 300px;" />
-	<label class="input__label input__label--yoshiko" for="input-10" style="width: 300px;" >
-		<span class="input__label-content input__label-content--yoshiko" data-content="새로 개관할 극장명" style="width: 300px;" >
-		새로 개관할 극장명</span>
-	</label>
+<span class="input input--chisato">
+		<input class="input__field input__field--chisato" type="text" id="input1" />
+		<label class="input__label input__label--chisato" for="input-14" style="padding-top: 5px;">
+			<span class="input__label-content input__label-content--chisato" data-content="새로 개관할 극장명">새로 개관할 극장명</span>
+		</label>
 </span>
 </div>
 
 <div>
-<span class="input input--yoshiko" style="width: 300px;">
-	<input class="input__field input__field--yoshiko" type="text" id="input-10" style="width: 300px;" />
-	<label class="input__label input__label--yoshiko" for="input-10" style="width: 300px;" >
-		<span class="input__label-content input__label-content--yoshiko" data-content="극장 주소" style="width: 300px;" >
-		극장 주소</span>
-	</label>
+<span class="input input--chisato">
+		<input class="input__field input__field--chisato" type="number" id="input2" value="15441122" />
+		<label class="input__label input__label--chisato" for="input2" style="padding-top: 5px;">
+			<span class="input__label-content input__label-content--chisato" data-content="극장 전화번호">극장 전화번호</span>
+		</label>
 </span>
 </div>
 
-<div>
-<span class="input input--yoshiko" style="width: 300px;">
-	<input class="input__field input__field--yoshiko" type="tel" id="input-10" style="width: 300px;" />
-	<label class="input__label input__label--yoshiko" for="input-10" style="width: 300px;" >
-		<span class="input__label-content input__label-content--yoshiko" data-content="극장 전화번호" style="width: 300px;" >
-		극장 전화번호</span>
-	</label>
+
+<!-- 주소 -->
+<div> 
+<span class="input input--chisato">
+		<input class="input__field input__field--chisato input3" type="text" id="sample5_address" placeholder="주소를 검색하세요" readonly="readonly" />
+		<label class="input__label input__label--chisato" for="sample5_address" style="padding-top: 5px;">
+			<span class="input__label-content input__label-content--chisato" data-content="극장 주소">극장 주소</span>
+		</label>
 </span>
 </div>
+
+</div> <!-- d2 -->
+
+
+<div style="float: left; margin-top: 250px;"> 
+<div>
+<input type="button" onclick="sample5_execDaumPostcode()" value="주소 검색"><br>
+</div>
+</div>
+
+
+<div id="m1" style="float: left; display: inline; width:500px;height:200px;margin-top:10px;" >
+<div id="map" style="width:500px;height:200px;margin-top:10px;display: none;"></div>
+</div>
+
+
+
+
+<div style="float: left;">
+
+<form action="./adminCinemaInsert" id="frm" method="post">
+<input type="hidden" id="t1" readonly="readonly" name="cinema_loc"><br>
+<input type="hidden" id="t2" readonly="readonly" name="cinema_name"><br>
+<input type="hidden" id="t3" readonly="readonly" name="cinema_tel" value="15441122"><br>
+<input type="hidden" id="t4" readonly="readonly" name="cinema_add"><br>
+
+<input type="button" id="btn" value="추가">
+</form>
 </div>
 
 
@@ -129,11 +156,12 @@
 
 <footer>
 </footer>
-
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c385975a519fabb671122b6c7f825767&libraries=services"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 
     <script>
-    function openNav() {
+   		function openNav() {
     	  document.getElementById("mySidenav").style.width = "250px";
     	}
 
@@ -141,8 +169,13 @@
     	  document.getElementById("mySidenav").style.width = "0";
     	}
     
-    
-    console.clear();
+   	var loc = "";
+   	var cname = ""; //영화관명
+   	var cadd = ""; //영화관 주소
+   	var ctel = ""; //영화관 전화번호
+    	
+    	
+   	console.clear();
 
     var el = {};
 
@@ -154,11 +187,18 @@
      $('.list__ul a').on('click', function (ev) {
        ev.preventDefault();
        var index = $(this).parent().index();
-       
        $('.placeholder').text( $(this).text() ).css('opacity', '1');
+       console.log($('.list__ul').find('a').eq(index).html());
        
-       console.log($('.list__ul').find('li').eq(index).html());
-       
+       loc = $('.list__ul').find('a').eq(index).html();
+       $('#t1').val(loc);
+       $('#t2').val("");
+       $('#input1').val("");
+       $('#t3').val("");
+       $('#input2').val("15441122");
+       $('#t4').val("");
+       $('#sample5_address').val("주소를 검색하세요");
+
        $('.list__ul').find('li').eq(index).prependTo('.list__ul');
        $('.list__ul').toggle();   
        
@@ -166,17 +206,97 @@
 
 
     $('select').on('change', function (e) {
-      
       // Set text on placeholder hidden element
       $('.placeholder').text(this.value);
-      
       // Animate select width as placeholder
       $(this).animate({width: $('.placeholder').width() + 'px' });
       
     });
     
+    /* 주소 */
+ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            level: 5 // 지도의 확대 레벨
+        };
+
+    //지도를 미리 생성
+    var map = new daum.maps.Map(mapContainer, mapOption);
+    //주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+    //마커를 미리 생성
+    var marker = new daum.maps.Marker({
+        position: new daum.maps.LatLng(37.537187, 127.005476),
+        map: map
+    });
+
+
+    function sample5_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                var addr = data.address; // 최종 주소 변수
+				console.log(addr);
+				cadd = addr;
+				$('#t4').val(cadd);
+                
+				
+                // 주소 정보를 해당 필드에 넣는다.
+                document.getElementById("sample5_address").value = addr;
+                // 주소로 상세 정보를 검색
+                geocoder.addressSearch(data.address, function(results, status) {
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === daum.maps.services.Status.OK) {
+
+                        var result = results[0]; //첫번째 결과의 값을 활용
+
+                        // 해당 주소에 대한 좌표를 받아서
+                        var coords = new daum.maps.LatLng(result.y, result.x);
+                        // 지도를 보여준다.
+                        mapContainer.style.display = "block";
+                        map.relayout();
+                        // 지도 중심을 변경한다.
+                        map.setCenter(coords);
+                        // 마커를 결과값으로 받은 위치로 옮긴다.
+                        marker.setPosition(coords)
+                    }
+                });
+            }
+        }).open();
+    }
+    /* 주소끝  */
+
     
+        $('#input1').blur(function() {
+ 		console.log($(this).val());
+ 		cname = $(this).val().trim();
+ 		
+ 		$('#t2').val(cname); 		
+ 		 $('#t3').val("");
+ 	       $('#input2').val("15441122");
+ 	       $('#t4').val("");
+ 	       $('#sample5_address').val("주소를 검색하세요");
+
+        });
     
+        $('#input2').blur(function() {
+     		console.log($(this).val());
+     		ctel = $(this).val().trim();
+     		$('#t3').val(ctel);
+     		$('#t4').val("");
+     		$('#sample5_address').val("주소를 검색하세요");
+
+
+            });
+        
+    
+	   $('#btn').on('click', function() {
+		   if($('#t1').val() != "" && $('#t2').val() != "" &&  $('#t3').val() != "" && $('#t4').val() != ""){
+		   $('#frm').submit();			   
+		   } else {
+			alert("정확한 값을 입력하세요.")
+		   }
+		   
+	  	}); 
     
     
     

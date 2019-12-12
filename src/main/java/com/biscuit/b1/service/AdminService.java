@@ -39,4 +39,11 @@ public class AdminService {
 		return adminDAO.movieList();
 	}
 	
+	public int cinemaInsert(CinemaVO cinemaVO) {
+		return adminDAO.cinemaInsert(cinemaVO);
+	}
+	
+	public int theaterInsert(CinemaVO cinemaVO) {
+		return adminDAO.theaterInsert(cinemaVO);
+	}
 }
