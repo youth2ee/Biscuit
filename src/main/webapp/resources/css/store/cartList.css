@@ -5,7 +5,6 @@ input {
 
 #container {
 	width: 100%;
-	background-color: #fdfcf0;
 }
 #contents {
 	clear: both;
@@ -211,6 +210,13 @@ input[type="checkbox"].cart_checkbox:checked + label:before {
 	background-size: 30px 30px;
 	background-position: -3px;
 }
+.cart_list_style li .product_info_img {
+	overflow: hidden;
+	display: block;
+    float: left;
+    width: 360px;
+    margin-bottom: 20px;
+}
 .cart_list_style li .product_info_img img {
 	position: static;
     left: auto;
@@ -218,40 +224,242 @@ input[type="checkbox"].cart_checkbox:checked + label:before {
     width: 90px;
     margin-right: 17px;
 }
+.cart_list_style li .product_info_name {
+	display: block;
+    margin-top: 4px;
+    /* font-weight: 500; */
+    font-size: 16px;
+    color: #000;
+}
+.cart_list_style li .product_info_note {
+	display: block;
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #6a6f77;
+}
+.cart_list_style li .product_info_onePrice_wrap {
+	float: left;
+    width: 115px;
+    text-align: center;
+}
+.product_info_onePrice_wrap .product_info_onePrice {
+	margin-top: 0;
+    height: 85px;
+    line-height: 85px;
+    display: block;
+    font-weight: bold;
+    font-size: 17px;
+    color: #000;
+}
+.product_info_onePrice_wrap .product_info_onePrice:after {
+	content: ' 원';
+    font-size: 14px;
+}
+.cart_list_style li .product_info_amount_wrap {
+	float: left;
+    position: relative;
+    width: 98px;
+    margin-top: 30px;
+    padding: 0 34px;
+}
+.product_info_amount_wrap .product_info_count {
+	float: left;
+    width: 36px;
+    height: 29px;
+    font-size: 16px;
+    color: #000;
+    line-height: 29px;
+    text-align: center;
+    border: 1px solid #bdc1c8;
+    border-right: none;
+}
+.product_info_amount_wrap .btn_amount_plus {
+	position: absolute;
+    left: 71px;
+    width: 18px;
+    height: 14px;
+    font-size: 0;
+    border: 1px solid #bdc1c8;
+}
+.product_info_amount_wrap .btn_amount_plus:before {
+	content: '';
+    display: block;
+    width: 20px;
+    height: 16px;
+    margin-top: -1px;
+    background: transparent url(../../images/store/arrow-up.png) scroll no-repeat;
+    background-size: 18px;
+}
+.product_info_amount_wrap .btn_amount_minus {
+	position: absolute;
+    left: 71px;
+    top: 16px;
+    width: 18px;
+    height: 14px;
+    font-size: 0;
+    border: 1px solid #bdc1c8;
+    border-top: none;
+}
+.product_info_amount_wrap .btn_amount_minus:before {
+	content: '';
+    display: block;
+    width: 20px;
+    height: 16px;
+    margin-top: -2px;
+    background: transparent url(../../images/store/arrow-down.png) scroll no-repeat;
+    background-size: 18px;
+}
+.product_info_amount_wrap .btn_amount_change {
+	float: right;
+    width: 36px;
+    height: 29px;
+    font-size: 13px;
+    text-align: center;
+    color: #4b4f56;
+    line-height: 29px;
+    border: 1px solid #bdc1c8;
+}
+.cart_list_style li .product_info_price {
+	float: left;
+    margin-top: 34px;
+    width: 108px;
+    font-weight: bold;
+    font-size: 17px;
+    color: #000;
+    text-align: center;
+}
+.cart_list_style li .product_info_price:after {
+	content: ' 원';
+    font-size: 14px;
+}
+.cart_list_style li .product_info_btn_wrap {
+	float: left;
+    overflow: hidden;
+    width: 84px;
+    margin: 28px 19px 28px 25px;
+}
+.cart_list_style li .product_info_btn_wrap a {
+	display: block;
+    float: left;
+    width: 100%;
+    height: 32px;
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 13px;
+    color: #fff;
+    line-height: 32px;
+    text-align: center;
+    background-color: #4b4f56;
+}
+.cart_list_style li .product_info_btn_wrap a:first-child {
+	margin-top: 0;
+	
+}
+.cart_list_style li .btn_product_del {
+	float: left;
+    width: 22px;
+    height: 22px;
+    margin-top: 33px;
+    font-size: 0;
+    background: transparent url(../../images/store/close_gray.png) center center scroll no-repeat;
+    /* border: 1px solid #bebebe; */
+}
+.cart_list_wrap .btn_del_selected {
+	float: left;
+    height: 34px;
+    margin-top: 20px;
+    padding: 0 12px;
+    font-size: 14px;
+    color: #373e46;
+    line-height: 34px;
+    text-align: center;
+    border: 1px solid #bebebe;
+}
+
+table {
+	width: 100%;
+    border-spacing: 0;
+}
+.cart_total_price_wrap {
+	clear: both;
+    float: left;
+    margin-top: 60px;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+}
+.cart_total_price_wrap thead th {
+	height: 59px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #000;
+    line-height: 59px;
+    text-align: center;
+    background-color: #f3f3f3;
+}
+.cart_total_price_wrap tbody td {
+	text-align: center;
+    height: 120px;
+    line-height: 120px;
+    font-weight: bold;
+    vertical-align: middle;
+}
+.cart_total_price_wrap tbody td strong {
+	font-weight: bold;
+    font-size: 26px;
+    color: #000;
+}
+.cart_total_price_wrap tbody td strong:after {
+	content: ' 원';
+    font-size: 21px;
+}
+.cart_total_price_wrap tbody td.cart_calculator {
+	position: relative;
+}
+.cart_total_price_wrap tbody td.cart_calculator:before {
+	content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 36px;
+    width: 51px;
+    height: 52px;
+    background: transparent url(../../images/store/subtract-line.png) center center no-repeat;
+    background-size: 52px;
+}
+.cart_total_price_wrap tbody td.cart_calculator:after {
+	content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 36px;
+    width: 51px;
+    height: 52px;
+    background: transparent url(../../images/store/equal_red.png)center center no-repeat;
+}
+.cart_total_price_wrap tbody td strong.cart_total_price {
+	color: rgb(218, 40, 28);
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.btn_wrap {
+	clear: both;
+    position: relative;
+    font-size: 0;
+    text-align: center;
+    padding-top: 60px;
+}
+.btn_wrap a {
+	display: inline-block;
+    margin-left: 14px;
+}
+a.btn_buy {
+	width: 208px;
+    height: 60px;
+    font-weight: bold;
+    font-size: 19px;
+    color: #fff;
+    line-height: 60px;
+    background-color: #373e46;
+    border: 1px solid #373e46;
+}
