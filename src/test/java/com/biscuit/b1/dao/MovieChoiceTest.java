@@ -50,7 +50,6 @@ public class MovieChoiceTest extends TestAbstractCase {
 	public void test3() {
 		TheaterVO theaterVO = new TheaterVO();
 		theaterVO.setCinema_num(1);
-		List<TimeInfoVO> ar = movieSelectDAO.dateSelect(theaterVO);
 		
 		assertNotEquals(ar.size(), 0);
 	}
