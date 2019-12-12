@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.*;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
@@ -20,10 +21,10 @@ public class MovieService {
 	private static final String HOST = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new";
 
 	public void MovieApiTest() throws Exception {
-		
+
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMdd HH:mm:ss");
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
 
 		String serviceKey = "KDJKT151128Z9OMAQ0II";
@@ -67,7 +68,7 @@ public class MovieService {
 					 * posters.substring(0, idx); }
 					 */
 
-					if (ratingGrade.contains("|")) { // ratingGrade에 15세관람가||15세관람가 이렇게 적혀있는 경우가 있음 
+					if (ratingGrade.contains("|")) { // ratingGrade에 15세관람가||15세관람가 이렇게 적혀있는 경우가 있음
 						int idx = ratingGrade.indexOf("|");
 						ratingGrade = ratingGrade.substring(0, idx);
 					}
@@ -79,7 +80,7 @@ public class MovieService {
 						int idx = posters.indexOf("|");
 						posters = posters.substring(0, idx);
 					}
-					System.out.println("몇 개? : "+i);
+					System.out.println("몇 개? : " + i);
 					System.out.println("제목 : " + title);
 					System.out.println("러닝타임 : " + runtime + "분");
 					System.out.println("포스터: " + posters);
