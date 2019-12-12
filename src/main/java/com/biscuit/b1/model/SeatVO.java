@@ -6,7 +6,24 @@ public class SeatVO {
 	private int cinema_num;
 	private String timeInfo_start;
 	private String seat_name;
-	
+	private int theater_num;
+	private int movieInfo_num;
+
+	public int getTheater_num() {
+		return theater_num;
+	}
+
+	public void setTheater_num(int theater_num) {
+		this.theater_num = theater_num;
+	}
+
+	public int getMovieInfo_num() {
+		return movieInfo_num;
+	}
+
+	public void setMovieInfo_num(int movieInfo_num) {
+		this.movieInfo_num = movieInfo_num;
+	}
 
 	public String getMovieInfo_name() {
 		return movieInfo_name;

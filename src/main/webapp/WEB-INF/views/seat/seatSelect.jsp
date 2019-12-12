@@ -57,25 +57,7 @@
 					</c:forEach>
 					</div>
 				</div>
-				
-<%-- 				<div class="selecter3">
-					<h3>어린이(미구현)</h3>
-					<div class="radio-group">
-					<c:forEach begin="0" end="5" var="i">
-						<input type="radio" name="kid" id="kid${i}" onchange="setDisplay()" disabled="disabled" value="${i}"><label for="kid${i}">${i}</label>
-					</c:forEach>
-					</div>
-				</div>
-				
-				<div class="selecter4">
-					<h3>우대(미구현)</h3>
-					<div class="radio-group">
-					<c:forEach begin="0" end="5" var="i">
-						<input type="radio" name="old" id="old${i}" onchange="setDisplay()" disabled="disabled" value="${i}"><label for="old${i}">${i}</label>
-					</c:forEach>
-				</div>
-			</div>
- --%>		</div>
+		</div>
 	</div>
 	<div id="seatSelect">
 		<div id="st2"><img alt="" src="../resources/images/seat/ss2.png"></div>
@@ -140,15 +122,17 @@
 		</a>
 	</div>
 	</div>
-	<input type="hidden" id="movieInfo_name" name="movieInfo_name" value="${movieInfo_name}">
-	<input type="hidden" id="cinema_num" name="cinema_num" value="${cinema_num}">
-	<input type="hidden" id="cinema_loc" name="cinema_loc" value="${cinema_loc}">
-	<input type="hidden" id="cinema_name" name="cinema_name" value="${cinema_name}">
-	<input type="hidden" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}">
-	<input type="hidden" id="seat_name" name="seat_name">
-	<input type="hidden" id="count" name="count">
-	<input type="hidden" id="seatCount" name="seatCount">
-	<input type="hidden" id="price" name="price">
+	<input type="text" id="movieInfo_name" name="movieInfo_name" value="${movieInfo_name}">
+	<input type="text" id="cinema_num" name="cinema_num" value="${cinema_num}">
+	<input type="text" id="cinema_loc" name="cinema_loc" value="${cinema_loc}">
+	<input type="text" id="cinema_name" name="cinema_name" value="${cinema_name}">
+	<input type="text" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}">
+	<input type="text" id="movieInfo_num" name="movieInfo_num" value="${movieInfo_num}">
+	<input type="text" id="theater_num" name="theater_num" value="${theater_num}">
+	<input type="text" id="seat_name" name="seat_name">
+	<input type="text" id="count" name="count">
+	<input type="text" id="seatCount" name="seatCount">
+	<input type="text" id="price" name="price">
 	
 
 	</div>

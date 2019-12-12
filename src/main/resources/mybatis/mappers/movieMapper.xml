@@ -308,7 +308,7 @@
   	</update>
   	
   	<insert id="movieInsert" parameterType="MovieDataVO">
-		insert into movieData values (#{title},#{runtime},#{poster},#{nation},#{genre},#{ratingGrade},#{prodYear},#{releaseDate})  	
+		insert into movieData values (#{title},#{runtime},#{nation},#{genre},#{ratingGrade},#{prodYear},#{releaseDate},#{poster})  	
   	</insert>
   
   

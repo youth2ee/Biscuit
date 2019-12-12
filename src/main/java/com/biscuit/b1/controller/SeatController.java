@@ -35,12 +35,15 @@ public class SeatController {
 		 * System.out.println("상영 시작 : " + choiceVO.getTimeInfo_start());
 		 */
 		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO);
+		System.out.println("시어터번호 : " + choiceVO.getTheater_num());
 		mv.addObject("seats", seatVOs);
 		mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
 		mv.addObject("cinema_num", choiceVO.getCinema_num());
 		mv.addObject("cinema_loc", choiceVO.getCinema_loc());
 		mv.addObject("cinema_name", choiceVO.getCinema_name());
 		mv.addObject("timeInfo_start", choiceVO.getTimeInfo_start());
+		mv.addObject("theater_num", choiceVO.getTheater_num());
+		mv.addObject("movieInfo_num", choiceVO.getMovieInfo_num());
 		mv.setViewName("/seat/seatSelect");
 		return mv;
 	}
@@ -58,6 +61,8 @@ public class SeatController {
 			seatVO.setMovieInfo_name(choiceVO.getMovieInfo_name());
 			seatVO.setSeat_name(seat_names[i]);
 			seatVO.setTimeInfo_start(timeInfo_start);
+			seatVO.setTheater_num(choiceVO.getTheater_num());
+			seatVO.setMovieInfo_num(choiceVO.getMovieInfo_num());
 			/*
 			 * System.out.println("시네마번호:"+seatVO.getCinema_num());
 			 * System.out.println("영화이름:"+seatVO.getMovieInfo_name());

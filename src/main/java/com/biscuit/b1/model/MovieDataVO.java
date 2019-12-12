@@ -1,11 +1,13 @@
 package com.biscuit.b1.model;
 
+import java.sql.Date;
+
 public class MovieDataVO {
 	private String ratingGrade;
 	private String releaseDate;
 	private String title;
 	private String poster;
-	private String runtime;
+	private int runtime;
 	private String genre;
 	private String nation;
 	private String prodYear;
@@ -42,11 +44,11 @@ public class MovieDataVO {
 		this.poster = posters;
 	}
 
-	public String getRuntime() {
+	public int getRuntime() {
 		return runtime;
 	}
 
-	public void setRuntime(String runtime) {
+	public void setRuntime(int runtime) {
 		this.runtime = runtime;
 	}
 
