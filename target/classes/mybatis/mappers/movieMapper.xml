@@ -310,6 +310,10 @@
   	<insert id="movieInsert" parameterType="MovieDataVO">
 		insert into movieData values (#{title},#{runtime},#{nation},#{genre},#{ratingGrade},#{prodYear},#{releaseDate},#{poster})  	
   	</insert>
-  
-  
-  </mapper>
+  	<select id="movieListView" resultType="MovieDataVO">
+  		select * from movieData
+  	</select>
+  	<select id="lastRelease" resultType="String">
+  		select max(releaseDate) from moviedata
+  	</select> 
+ </mapper>

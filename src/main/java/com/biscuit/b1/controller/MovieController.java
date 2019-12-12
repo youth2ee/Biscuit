@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
+import com.biscuit.b1.model.MovieDataVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TimeInfoVO;
 import com.biscuit.b1.service.MovieSelectService;
@@ -32,8 +33,14 @@ public class MovieController {
 	private String key;
 	
 	@GetMapping("movieApiTest")
-	public void movieApiTest() throws Exception {
-		movieService.MovieApiTest();
+	public ModelAndView movieApiTest() throws Exception {
+		String lastRelease = movieService.lastRelease();
+		System.out.println(lastRelease);
+		List<MovieDataVO> movieDataVOs = movieService.movieListView();
+		ModelAndView mv = new ModelAndView();
+		//mv.addObject("lastRelease",lastRelease);
+		mv.addObject("movieDataVOs", movieDataVOs);
+		return mv;
 	}
 	
 	@GetMapping("movieSelect")

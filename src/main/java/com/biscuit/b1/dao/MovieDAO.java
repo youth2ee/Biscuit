@@ -1,5 +1,7 @@
 package com.biscuit.b1.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,6 +16,14 @@ public class MovieDAO {
 	private SqlSession sqlSession;
 
 	public int movieInsert(MovieDataVO movieDataVO) {
-		return sqlSession.insert(NAMESPACE+"movieInsert",movieDataVO);
+		return sqlSession.insert(NAMESPACE + "movieInsert", movieDataVO);
+	}
+
+	public List<MovieDataVO> movieListView() {
+		return sqlSession.selectList(NAMESPACE + "movieListView");
+	}
+
+	public String lastRelease() {
+		return sqlSession.selectOne(NAMESPACE + "lastSelect");
 	}
 }
