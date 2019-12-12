@@ -84,10 +84,10 @@
 
 <!-- 날짜선택  -->
 <div class="s s4">
-<div id="year" style="display: none;">
+<!-- <div id="year" style="display: none;">
 <p>2019</p>
 <p>12</p>
-</div>
+</div> -->
 <table class="sul" id="movieDateSelect">
 </table>
 </div> 
@@ -260,15 +260,14 @@
  	
  	/* 시간을 선택해 볼까요 */
  	 	$(document).on("click",".timeSelect",function(){
- 		$(this).addClass('act').siblings().removeClass('act');
+ 	 	$(this).addClass('act').siblings().removeClass('act');
  		
-  		ctime = $(this).find('.mtd1').text();
+  		ctime = $(this).find('.mtd1').text(); 
  		ctime = ctime.trim();
  		 
  		});
  	
- 	
- 	
+
  	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */
  	$(document).on("click","#btn",function(){
             
