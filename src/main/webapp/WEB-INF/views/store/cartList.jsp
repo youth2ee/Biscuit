@@ -119,7 +119,7 @@
 							</td>
 							<td>
 								<strong class="cart_total_price">
-									<span id="total_price">91011</span>
+									<span id="total_price">910112</span>
 								</strong>
 							</td>
 						</tr>
