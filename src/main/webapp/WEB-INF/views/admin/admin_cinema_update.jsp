@@ -167,6 +167,7 @@
    		function openNav() {
     	  document.getElementById("mySidenav").style.width = "250px";
     	}
+
     	function closeNav() {
     	  document.getElementById("mySidenav").style.width = "0";
     	}
@@ -178,11 +179,14 @@
     	
     	
    	console.clear();
+
     var el = {};
+
     $('.placeholder').on('click', function (ev) {
       $('.placeholder').css('opacity', '0');
       $('.list__ul').toggle();
     });
+
      $('.list__ul a').on('click', function (ev) {
        ev.preventDefault();
        var index = $(this).parent().index();
@@ -197,10 +201,13 @@
        $('#input2').val("15441122");
        $('#t4').val("");
        $('#sample5_address').val("주소를 검색하세요");
+
        $('.list__ul').find('li').eq(index).prependTo('.list__ul');
        $('.list__ul').toggle();   
        
      });
+
+
     $('select').on('change', function (e) {
       // Set text on placeholder hidden element
       $('.placeholder').text(this.value);
@@ -215,6 +222,7 @@
             center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
             level: 5 // 지도의 확대 레벨
         };
+
     //지도를 미리 생성
     var map = new daum.maps.Map(mapContainer, mapOption);
     //주소-좌표 변환 객체를 생성
@@ -224,6 +232,8 @@
         position: new daum.maps.LatLng(37.537187, 127.005476),
         map: map
     });
+
+
     function sample5_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -239,7 +249,9 @@
                 geocoder.addressSearch(data.address, function(results, status) {
                     // 정상적으로 검색이 완료됐으면
                     if (status === daum.maps.services.Status.OK) {
+
                         var result = results[0]; //첫번째 결과의 값을 활용
+
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
                         // 지도를 보여준다.
@@ -255,6 +267,7 @@
         }).open();
     }
     /* 주소끝  */
+
     
         $('#input1').blur(function() {
  		console.log($(this).val());
@@ -265,6 +278,7 @@
  	       $('#input2').val("15441122");
  	       $('#t4').val("");
  	       $('#sample5_address').val("주소를 검색하세요");
+
         });
     
         $('#input2').blur(function() {
@@ -285,8 +299,7 @@
 		   
 	  	}); 
     
-    
-    
+
     </script>
 
 

@@ -1,170 +1,211 @@
 @charset "UTF-8";
 
-body {
+body{
 	background-color: #fcfcf0;
 }
 
-#total {
+#total{
 	background-color: #fcfcf0;
 }
 
-#sec {
+#sec{
 	width: 70%;
 	margin-left: 100px;
 }
 
-#secTitle {
+#secTitle{
 	margin: 0 auto;
 	text-align: left;
 	padding-bottom: 30px;
 }
 
-#sec1 {
+
+#sec1{
 	clear: both;
+ 	float: left; 
+}
+
+#sec2{
 	float: left;
 }
 
-#sec2 {
+#sec3{
 	float: left;
 }
 
-#sec3 {
-	float: left;
-}
-
-#sec4 {
+#sec4{
 	width: 100%;
 	float: left;
 	padding-top: 0;
 	padding-bottom: 40px;
 }
 
-#sec41, #sec42 {
+#sec41, #sec42{
 	float: left;
 }
 
-#sec5 {
+#sec5{
 	padding-left: 15px;
 }
 
-.list {
+#sec6{
+	margin-top: 46px;
+	padding-left: 25px;
+	float: left;
+}
+
+#fbtn{
+	text-align: left;
+	padding-left: 23px;
+	padding-top: 60px;
+}
+
+.list{
 	width: 300px;
 	text-align: left;
 }
 
 .placeholder {
-	border-bottom: 4px solid;
-	cursor: pointer;
-	text-align: left;
+  border-bottom: 4px solid;
+  cursor: pointer;
+  text-align: left;
 }
 
 .placeholder:hover {
-	color: #888888;
+  color: #888888;
 }
 
 .placeholder2 {
-	border-bottom: 4px solid;
-	cursor: pointer;
-	text-align: left;
+  border-bottom: 4px solid;
+  cursor: pointer;
+  text-align: left;
 }
 
 .placeholder2:hover {
-	color: #888888;
+  color: #888888;
 }
 
 .placeholder3 {
-	border-bottom: 4px solid;
-	cursor: pointer;
-	text-align: left;
+  border-bottom: 4px solid;
+  cursor: pointer;
+  text-align: left;
 }
 
 .placeholder3:hover {
-	color: #888888;
+  color: #888888;
 }
 
-.wrapper {
+
+.wrapper{
 	width: 300px;
-	height: 350px;
+ 	height: 350px;
 	text-align: left;
 	float: left;
-	padding-top: 10px;
-	font-size: 30px;
+	padding-top: 10px; 
+ 	font-size: 30px;
 }
 
 body {
-	font-family: "Lato", sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .sidenav {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: #111;
-	overflow-x: hidden;
-	transition: 0.5s;
-	padding-top: 60px;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
 
 .sidenav a {
-	padding: 8px 8px 8px 32px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
 }
 
 .sidenav a:hover {
-	color: #f1f1f1;
+  color: #f1f1f1;
 }
 
 .sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
 }
 
 @media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
 
-#menubar {
+#menubar{
 	text-align: left;
 }
 
-#aa {
+#aa{
 	color: #E76707;
 	cursor: pointer;
 }
 
-.act {
+.act{
 	color: #ee3224;
 }
 
 /* 영화검색 */
 table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-	display: none;
+/*   font-family: arial, sans-serif; */
+  border-collapse: collapse;
+  width: 100%;;
+  display: none;
+  font-size: 12px;
+  cursor:pointer;
 }
 
-td, th {
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
 
+
+/* 
 tr:nth-child(even) {
-	background-color: #dddddd;
+  background-color: #dddddd;
+}
+ */
+/* #input1, #input2, #sample5_address{
+	margin-left: -46px;
+}
+ */
+ 
+ #movieSearch{
+ float:left;
+ padding-top: 173px;
+ text-align: left;
+ }
+
+#m1{
+	float: left;
+	display: inline;
+	width: 500px;
+	height: 220px;
+	margin-top: 30px;
+	padding-left: 60px;
+}
+
+#map{
+	width: 500px;
+	height:220px;
+	margin-top: 10px;
+	display: none;
 }
