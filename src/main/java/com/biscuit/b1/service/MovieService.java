@@ -7,6 +7,7 @@ import java.net.URLEncoder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.*;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
@@ -46,21 +47,11 @@ public class MovieService {
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObj = (JSONObject) jsonParser.parse(str);
 			JSONArray resultArray = (JSONArray) jsonObj.get("Data");
-
 			JSONObject resultObject = (JSONObject) resultArray.get(0);
-			System.out.println(resultObject.get("Result"));
-			
 			String ss = resultObject.get("Result").toString();
+			System.out.println(ss);
 			
-			JSONParser jsonParser2 = new JSONParser();
-			JSONObject jsonObj2 = (JSONObject) jsonParser2.parse(ss);
-			JSONArray resultArray2 = (JSONArray) jsonObj2.get("actor");
-			
-			for (int i = 0; i < resultArray.size(); i++) {
-				System.out.println("======== Title : " + i + " ========");
-				JSONObject resultObject2 = (JSONObject) resultArray2.get(i);
-				System.out.println(resultObject2.get("actorNm"));
-			}
+
 			/*
 			 * 데이터 자르기 String str = restTemplate.postForObject(new URI(HOST), request,
 			 * String.class); String target = "title"; int target_num = str.indexOf(target);
