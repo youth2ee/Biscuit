@@ -9,7 +9,7 @@
 		select
 		    ROW_NUMBER() OVER (ORDER BY c.cart_num desc) as cartList_num,
 		    c.cart_num, c.member_id, c.store_num, c.cart_amount, c.cart_date,
-		    s.store_name, s.store_price, s.store_thumbimg
+		    s.store_name, s.store_price, s.store_note, s.store_thumbimg
 		from cart c
 		    inner join store s
 		    on c.store_num = s.store_num

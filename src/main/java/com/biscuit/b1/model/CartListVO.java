@@ -4,24 +4,17 @@ import java.util.Date;
 
 public class CartListVO {
 
-	/*
-	cart_num number(8),
-    member_id VARCHAR2(200),
-    store_num NUMBER(5) CONSTRAINT cart_storenum_fk REFERENCES store,
-    cart_amount NUMBER(4) not null,
-    cart_date date default sysdate,
-    */
+	private int cart_num; //카트 번호(PK)
+	private String member_id; //주문한 유저 아이디
+	private int store_num; //스토어 번호
+	private int cart_amount; //주문 수량
+	private Date cart_date; //주문 날짜
 	
-	private int cart_num;
-	private String member_id;
-	private int store_num;
-	private int cart_amount;
-	private Date cart_date;
-	
-	private int cartList_num;
-	private String store_name;
-	private int store_price;
-	private String store_thumbimg;
+	private int cartList_num; //카트 리스트 번호
+	private String store_name; //스토어 상품 이름
+	private int store_price; //스토어 상품 가격
+	private String store_note; //스토어 상품 상세 내역
+	private String store_thumbimg; //스토어 상품 썸네일 이미지
 	
 	public int getCart_num() {
 		return cart_num;
@@ -70,6 +63,12 @@ public class CartListVO {
 	}
 	public void setStore_price(int store_price) {
 		this.store_price = store_price;
+	}
+	public String getStore_note() {
+		return store_note;
+	}
+	public void setStore_note(String store_note) {
+		this.store_note = store_note;
 	}
 	public String getStore_thumbimg() {
 		return store_thumbimg;

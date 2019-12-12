@@ -91,7 +91,6 @@
 							
 								$('.aPlus').click(function() {
 									var num = $('.numCount').val();
-									
 									num++;
 									$('.numCount').val(num);
 									
@@ -112,10 +111,6 @@
 <!-- ------------------------------------------ -->							
 							<div class="btn_wrap">
 								<a href="#" class="btn_cart">장바구니</a>
-								
-								
-								
-								
 								<a href="#" class="btn_star">찜하기</a>
 								<a href="cartList" class="btn_buy">구매하기</a>
 							</div>
@@ -192,6 +187,7 @@
 			}
 		});
 	});
+	
 </script>
 
 <footer>
