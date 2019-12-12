@@ -243,9 +243,7 @@ $(document).ready(function(){
 	 */
 }
   
-  
-  
-  
+
 });
     /* 영화검색끝 */
     $(".tab").css("display", "none");

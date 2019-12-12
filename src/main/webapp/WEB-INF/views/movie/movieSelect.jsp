@@ -17,7 +17,7 @@
 
 <!-- HEADER -->
 <header>
-<c:import url="../layout/header.jsp"></c:import>
+<c:import url="../layout/header.jsp"/>
 </header>
 
 <!-- SECTION -->
@@ -262,7 +262,7 @@
  	 	$(document).on("click",".timeSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
  		
-  		ctime = $(this).children().text();
+  		ctime = $(this).find('.mtd1').text();
  		ctime = ctime.trim();
  		 
  		});
