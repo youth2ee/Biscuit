@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>Login Form Using HTML And CSS Only</title>
-<style type="text/css">
-@import
-	url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Login Form Using HTML And CSS Only</title>
+	<style type="text/css">
+	@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 * {
 	box-sizing: border-box;
@@ -85,8 +83,7 @@ input {
 .container {
 	background-color: #fff;
 	border-radius: 10px;
-	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
-		rgba(0, 0, 0, 0.22);
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
 	width: 768px;
@@ -106,6 +103,7 @@ input {
 	z-index: 2;
 }
 
+
 .overlay-container {
 	position: absolute;
 	top: 0;
@@ -113,6 +111,7 @@ input {
 	width: 50%;
 	height: 100%;
 }
+
 
 .overlay {
 	background: #FF416C;
@@ -141,9 +140,11 @@ input {
 	width: 50%;
 }
 
+
 .overlay-right {
 	right: 0;
 }
+
 
 .social-container {
 	margin: 50px 0;
@@ -159,32 +160,30 @@ input {
 	height: 40px;
 	width: 40px;
 }
-</style>
-
+	</style>
+	
 </head>
 <body>
 	<div class="container" id="container">
 		<div class="form-container log-in-container">
-			<form action="./memberLogin" method="post">
+			<form action="#">
 				<h1>Login</h1>
 				<div class="social-container">
 					<a href="#" class="social"><i class="fa fa-facebook fa-2x"></i></a>
 					<a href="#" class="social"><i class="fab fa fa-twitter fa-2x"></i></a>
 				</div>
-				<a href="./memberJoin"><span>or use your account</span></a> <input type="text" placeholder="ID"
-					name="id" /> <input type="password" placeholder="Password"
-					name="pw" /> <a href="#">Forgot your password?</a>
+				<span>or use your account</span>
+				<input type="email" placeholder="Email" />
+				<input type="password" placeholder="Password" />
+				<a href="#">Forgot your password?</a>
 				<button>Log In</button>
 			</form>
 		</div>
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-right">
-					<h1>
-					Evolving Beyond	 Movies,
-					Global No.1 Culturebox</h1>
-					<p>영화,
-					그 이상의 감동CGV</p>
+					<h1>HTML CSS Login Form</h1>
+					<p>This login form is created using pure HTML and CSS. For social icons, FontAwesome is used.</p>
 				</div>
 			</div>
 		</div>
