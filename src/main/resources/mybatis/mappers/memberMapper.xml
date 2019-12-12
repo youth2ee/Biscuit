@@ -4,10 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="memberMapper">
+
+	<sql id="bs">
+		<choose>
+			<when test="kind == 'kI'">
+				where id like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 'kN'">
+				where name like '%'||#{search}||'%'
+			</when>
+		</choose>
+	</sql>
+
 	<insert id="memberJoin" parameterType="MemberVO">
 		insert into member
 		values(#{id},#{pw},#{name},#{email},#{address},#{post},#{phone},#{birth},#{gender},5,0,sysdate)
 	</insert>
+	
 	<select id="idCheck" parameterType="MemberVO" resultType="MemberVO">
 		select id from member where id = #{id}
 	</select>
@@ -24,7 +37,24 @@
  	</select>
  	
  	<delete id="memberDelete" parameterType="MemberVO">
- 		delete member where id=#{id}
+ 		delete member where id = #{id}
  	</delete> 
  	
+ 	<select id="memberManagement" resultType="MemberVO" parameterType="com.biscuit.b1.util.Pager">
+ 		select * from member <include refid="bs"/>
+ 	</select>
+ 	
+ 	<select id="memberManagementDelete" parameterType="String">
+ 		delete member where id = #{id}
+ 	</select>
+ 	
+ 	<update id="memberManagementUpdate" parameterType="MemberVO">
+		update member set id = #{id}, pw = #{pw},name = #{name}, email = #{email},address = #{address},
+		post = #{post}, phone = #{phone},gender=#{gender},grade=#{grade},grade_point=#{grade_point}
+		where id = #{id}
+	</update>
+	
+	<select id="memberCount" resultType="Integer">
+		select count(*) from member <include refid="bs"/>
+	</select>
 </mapper>

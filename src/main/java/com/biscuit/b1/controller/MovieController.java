@@ -15,6 +15,7 @@ import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TimeInfoVO;
 import com.biscuit.b1.service.MovieSelectService;
+import com.biscuit.b1.service.MovieService;
 
 import oracle.net.aso.d;
 
@@ -24,9 +25,16 @@ public class MovieController {
 	
 	@Inject
 	private MovieSelectService movieSelectService;
+	@Inject
+	private MovieService movieService;
 	
 	@Value("${movie.key}")
 	private String key;
+	
+	@GetMapping("movieApiTest")
+	public void movieApiTest() throws Exception {
+		movieService.MovieApiTest();
+	}
 	
 	@GetMapping("movieSelect")
 	public ModelAndView movieSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO) throws Exception {

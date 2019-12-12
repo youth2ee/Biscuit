@@ -11,8 +11,8 @@
 
 		<div id="h12">
 		<div id="h2">
-		<div class="himg"><img alt="" src="./resources/images/home/5_2.png"></div>
-		<div class="himg"><img alt="" src="./resources/images/home/6_2.png"></div>
+		<div class="himg"><a href="./member/memberLogin"><img alt="" src="./resources/images/home/5_2.png"></a></div>
+		<div class="himg"><a href="./member/memberJoin"><img alt="" src="./resources/images/home/6_2.png"></a></div>
 		<div class="himg"><img alt="" src="./resources/images/home/7_2.png"></div>
 		<div class="himg"><img alt="" src="./resources/images/home/8_2.png"></div>
 		</div>
