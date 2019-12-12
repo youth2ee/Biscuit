@@ -244,9 +244,7 @@ $(document).ready(function(){
 	 */
 }
   
-  
-  
-  
+
 });
     /* 영화검색끝 */
 

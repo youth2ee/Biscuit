@@ -3,23 +3,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <meta charset="UTF-8"> -->
-<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../layout/jquery.jsp" />
 
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movie/movieSelect.css" rel="stylesheet">
 
 </head>
 <body>
-<div id="total" class="w3-container">
+<div id="total">
 
 <!-- HEADER -->
 <header>
-<c:import url="../layout/header.jsp"></c:import>
+<c:import url="../layout/header.jsp"/>
 </header>
 
 <!-- SECTION -->
@@ -264,7 +262,7 @@
  	 	$(document).on("click",".timeSelect",function(){
  		$(this).addClass('act').siblings().removeClass('act');
  		
-  		ctime = $(this).children().text();
+  		ctime = $(this).find('.mtd1').text();
  		ctime = ctime.trim();
  		 
  		});
