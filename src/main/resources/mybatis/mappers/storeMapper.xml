@@ -4,12 +4,31 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="storeMapper">
+	<!-- 카트 리스트 -->
+	<select id="cartList" resultType="CartListVO" parameterType="CartListVO">
+		select
+		    ROW_NUMBER() OVER (ORDER BY c.cart_num desc) as cartList_num,
+		    c.cart_num, c.member_id, c.store_num, c.cart_amount, c.cart_date,
+		    s.store_name, s.store_price, s.store_thumbimg
+		from cart c
+		    inner join store s
+		    on c.store_num = s.store_num
+		where c.member_id = #{member_id}
+	</select>
+	
+	<!-- 카트 담기 -->
+	<insert id="cartInsert" parameterType="CartVO">
+		insert into cart (cart_num, member_id, store_num, cart_amount)
+			values (cart_seq.nextval, #{member_id}, #{store_num}, #{cart_amount})
+	</insert>
+	
+	<!-- 스토어 -->
 	<delete id="storeDelete" parameterType="StoreVO">
 		delete from store where store_num=#{store_num}
 	</delete>
 
   	<update id="storeUpdate" parameterType="StoreVO">
-  		update store set store_name=#{store_name}, store_price=#{store_price}, store_note=#{store_note}, store_package=#{store_package}, store_img=#{store_img}, store_thumimg=#{store_thumimg}
+  		update store set store_name=#{store_name}, store_price=#{store_price}, store_note=#{store_note}, store_package=#{store_package}, store_img=#{store_img}, store_thumbimg=#{store_thumbimg}
   		where store_num=#{store_num}
   	</update>
   	
@@ -18,10 +37,13 @@
   	</insert>
   	
   	<select id="storeSelect" resultType="StoreVO" parameterType="StoreVO">
-  		select * from store where store_num=#{store_num}
+  		select * from store
+  		where store_num=#{store_num}
   	</select>
   	
   	<select id="storeList" resultType="StoreVO" parameterType="StoreVO">
-  		select * from store where store_package=#{store_package} order by store_num
+  		select * from store
+  		where store_package=#{store_package}
+  		order by store_num
   	</select>
 </mapper>

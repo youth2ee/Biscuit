@@ -16,7 +16,21 @@ public class FileSaver {
 	static final int THUMB_WIDTH = 310;
 	static final int THUMB_HEIGHT = 250;
 	
+	//파일 삭제
+	public boolean fileDelete(String realPath, String fileName) throws Exception {
+		File file = new File(realPath, fileName);
+		File thumbnail = new File(realPath + File.separator + "th", "th_"+fileName);
+		boolean check = false;
+		
+		if(file.exists()) {
+			check = file.delete();
+			check = thumbnail.delete();
+		}
+				
+		return check;
+	}
 	
+	//파일 저장
 	public String save(String realPath, MultipartFile multipartFile) throws Exception {
 		
 		File file = new File(realPath);
@@ -47,6 +61,7 @@ public class FileSaver {
 		
 		//썸네일 파일 폴더 생성
 		File thumbnail = new File(realPath + File.separator + "th" + File.separator + thumbFileName);
+		System.out.println(thumbnail);
 		
 		//실제 파일이 존재하면, 썸네일 파일 생성
 		if(image.exists()) {

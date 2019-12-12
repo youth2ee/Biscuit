@@ -11,9 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.CartListVO;
+import com.biscuit.b1.model.CartVO;
+import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.model.StoreVO;
 import com.biscuit.b1.service.StoreService;
 
@@ -24,17 +28,79 @@ public class StoreController {
 	@Inject
 	private StoreService storeService;
 	
-	// 상품 삭제
-	@PostMapping("storeDelete")
-	public void storeDelete() throws Exception {
+	//카트 리스트
+	@GetMapping("cartList")
+	public void cartList(CartListVO cartListVO, HttpSession session, Model model) throws Exception {
+		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		//cartListVO.setMember_id(memberVO.getId());
+		cartListVO.setMember_id("a");
 		
+		List<CartListVO> cartList = storeService.cartList(cartListVO);
+		
+		model.addAttribute("cartList", cartList);
+	}
+	
+/////////////////////////////////////////////		
+	//카트 담기 
+	@ResponseBody
+	@PostMapping("cartInsert")
+	public int cartInsert(CartVO cartVO, HttpSession session, Model model) throws Exception {
+		//System.out.println(1);
+		int result = 0;
+		/*MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+		if(memberVO != null) {
+			cartVO.setMember_id(memberVO.getId());
+			result = storeService.cartInsert(cartVO);
+		}
+		*/
+		cartVO.setMember_id("a");
+		result = storeService.cartInsert(cartVO);
+		
+		//model.addAttribute("result", result);
+		return result;
+	}
+	
+/////////////////////////////////////////////	
+	// 상품 삭제
+	@GetMapping("storeDelete")
+	public ModelAndView storeDelete(StoreVO storeVO, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		
+		int result = storeService.storeDelete(storeVO, request);
+		
+		String msg = "상품 삭제 실패";
+		
+		if(result>0) {
+			msg = "상품 삭제 성공";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "storeList");
+		mv.setViewName("common/common_result");
+		
+		return mv;
 	}
 	
 /////////////////////////////////////////////
 	// 상품 수정
 	@PostMapping("storeUpdate")
-	public void storeUpdate(StoreVO storeVO) throws Exception {
+	public ModelAndView storeUpdate(StoreVO storeVO, MultipartFile file, HttpServletRequest request) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		//System.out.println(request.getParameter("store_img"));
+		//System.out.println(storeVO.getStore_img());
+
+		int result = storeService.storeUpdate(storeVO, file, request);
 		
+		String msg = "상품 업데이트 실패";
+		
+		if(result>0) {
+			msg = "상품 업데이트 성공";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "storeList");
+		mv.setViewName("common/common_result");
+		
+		return mv;
 	}
 	
 	// 상품 수정 폼
@@ -42,7 +108,7 @@ public class StoreController {
 	public void storeUpdate(StoreVO storeVO, Model model) throws Exception {
 		storeVO = storeService.storeSelect(storeVO);
 		
-		model.addAttribute("select", storeVO);
+		model.addAttribute("update", storeVO);
 	}
 /////////////////////////////////////////////
 	// 상품 등록
@@ -63,7 +129,7 @@ public class StoreController {
 			msg = "상품 등록 성공";
 		}
 		mv.addObject("msg", msg);
-		mv.addObject("path", "storeWrite");
+		mv.addObject("path", "storeList");
 		mv.setViewName("common/common_result");
 		
 		return mv;
