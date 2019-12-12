@@ -5,9 +5,21 @@ public class SeatVO {
 	private String movieInfo_name;
 	private int cinema_num;
 	private String timeInfo_start;
+	private String timeInfo_date;
 	private String seat_name;
 	private int theater_num;
 	private int movieInfo_num;
+
+	
+	
+	
+	public String getTimeInfo_date() {
+		return timeInfo_date;
+	}
+
+	public void setTimeInfo_date(String timeInfo_date) {
+		this.timeInfo_date = timeInfo_date;
+	}
 
 	public int getTheater_num() {
 		return theater_num;

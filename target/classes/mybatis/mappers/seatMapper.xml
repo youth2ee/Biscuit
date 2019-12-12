@@ -8,19 +8,21 @@
 	<select id="bookCheck" resultType="SeatVO"
 		parameterType="ChoiceVO">
 		select seat_name from seat where cinema_num =
-		#{cinema_num} and movieInfo_name = #{movieInfo_name} and timeInfo_start = #{timeInfo_start} 
+		#{cinema_num} and movieInfo_name = #{movieInfo_name} and
+		timeInfo_start = #{timeInfo_start}
 	</select>
 	<insert id="seatBooking" parameterType="SeatVO">
 		insert into seat
-		(seat_num,movieInfo_name,cinema_num,seat_name,timeInfo_start,theater_num,movieInfo_num) values
-		(seat_seq.nextval,#{movieInfo_name},#{cinema_num},#{seat_name},#{timeInfo_start},#{theater_num},#{movieInfo_num})
+		(seat_num,movieInfo_name,cinema_num,seat_name,timeInfo_start,theater_num,movieInfo_num,timeInfo_date)
+		values
+		(seat_seq.nextval,#{movieInfo_name},#{cinema_num},#{seat_name},#{timeInfo_start},#{theater_num},#{movieInfo_num},#{timeInfo_date})
 	</insert>
-	<select id="searchMovieNum" parameterType="SeatVO" resultType="Integer">
-		select movieInfo_num from movieInfo where
-		movieInfo_title = (select movieInfo_name from seat where
-		cinema_num = #{cinema_num} and movieInfo_name = #{movieInfo_name} and seat_name=#{seat_name} and timeInfo_start = #{timeInfo_start})
-	</select>
 	<insert id="insertTicket" parameterType="Movie_TicketingVO">
-		insert into movie_ticketing values (#{movie_t_num},#{id},#{movieInfo_num},#{cinema_num},#{theater_num},#{seat_name})
+		insert into
+		movie_ticketing values
+		(#{movie_t_num},#{id},#{movieInfo_num},#{cinema_num},#{theater_num},#{seat_name})
 	</insert>
+	<select id="getPoster" resultType="MovieDataVO" parameterType="ChoiceVO">
+		select poster from moviedata where title = (select movieInfo_title from movieInfo where movieInfo_title = #{movieInfo_name})	
+	</select>
 </mapper>

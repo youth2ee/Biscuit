@@ -107,7 +107,7 @@
 		</table>
 	</div>
 	<div id="right-wrap">
-		<img alt="" id="poster" src="../resources/images/seat/frozen.jpg">
+		<img alt="" id="poster" src="${poster}">
 		<h4>영화제목 : ${movieInfo_name} </h4>
 		<h4>영화관 : ${cinema_loc} ${cinema_name} </h4>
 		<h4>시작 시간 : ${timeInfo_start}</h4>
@@ -122,17 +122,17 @@
 		</a>
 	</div>
 	</div>
-	<input type="text" id="movieInfo_name" name="movieInfo_name" value="${movieInfo_name}">
-	<input type="text" id="cinema_num" name="cinema_num" value="${cinema_num}">
-	<input type="text" id="cinema_loc" name="cinema_loc" value="${cinema_loc}">
-	<input type="text" id="cinema_name" name="cinema_name" value="${cinema_name}">
-	<input type="text" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}">
-	<input type="text" id="movieInfo_num" name="movieInfo_num" value="${movieInfo_num}">
-	<input type="text" id="theater_num" name="theater_num" value="${theater_num}">
-	<input type="text" id="seat_name" name="seat_name">
-	<input type="text" id="count" name="count">
-	<input type="text" id="seatCount" name="seatCount">
-	<input type="text" id="price" name="price">
+	<input type="hidden" id="movieInfo_name" name="movieInfo_name" value="${movieInfo_name}">
+	<input type="hidden" id="cinema_num" name="cinema_num" value="${cinema_num}">
+	<input type="hidden" id="cinema_loc" name="cinema_loc" value="${cinema_loc}">
+	<input type="hidden" id="cinema_name" name="cinema_name" value="${cinema_name}">
+	<input type="hidden" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}">
+	<input type="hidden" id="timeInfo_date" name="timeInfo_date" value="${timeInfo_date}">
+	<input type="hidden" id="movieInfo_num" name="movieInfo_num" value="${movieInfo_num}">
+	<input type="hidden" id="theater_num" name="theater_num" value="${theater_num}">
+	<input type="hidden" id="seat_name" name="seat_name">
+	<input type="hidden" id="count" name="count">
+	<input type="hidden" id="seatCount" name="seatCount">
 	
 
 	</div>
