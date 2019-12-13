@@ -49,8 +49,8 @@ public class MovieController {
 	private Environment env;
 	private String key;
 
-	@GetMapping("movieApiTest")
-	public ModelAndView movieApiTest() throws Exception {
+	@GetMapping("movieManagement")
+	public ModelAndView movieManagement() throws Exception {
 		String lastRelease = movieService.lastRelease();
 		List<MovieDataVO> movieDataVOs = movieService.movieListView();
 		for (int i = 0; i < movieDataVOs.size(); i++)
@@ -62,9 +62,18 @@ public class MovieController {
 		return mv;
 	}
 
-	@PostMapping("movieApiTest")
-	public void movieApiTest2() throws Exception {
-		movieService.MovieApiTest();
+	@PostMapping("movieManagement")
+	public ModelAndView movieManagement2() throws Exception {
+		int result = movieService.movieManagement();
+		ModelAndView mv = new ModelAndView();
+		String msg = "영화 추가에 실패했습니다.";
+		if(result > 0) {
+			msg = result+"개의 영화 추가 완료";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./movieManagement");
+		mv.setViewName("common/common_result");
+		return mv;
 	}
 
 	@GetMapping("movieSelect")
