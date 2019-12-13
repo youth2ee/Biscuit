@@ -5,7 +5,7 @@
   
   <mapper namespace="cinemaMapper">
 	<select id="cinema_loc" parameterType="CinemaVO" resultType="CinemaVO">
-	select cinema_name, cinema_add, cinema_tel
+	select cinema_name, cinema_add, cinema_tel, cinema_image
 	from cinema 
   	where cinema_name = #{cinema_name}
 	</select>

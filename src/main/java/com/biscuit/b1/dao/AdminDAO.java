@@ -35,6 +35,18 @@ public class AdminDAO {
 	public int timeInfoInsertA(ChoiceVO choiceVO) {
 		return sqlSession.insert(NAMESPACE+"timeInfoInsertA", choiceVO);
 	}
+	
+	public int timeInfoInsertB(ChoiceVO choiceVO) {
+		return sqlSession.insert(NAMESPACE+"timeInfoInsertB", choiceVO);
+	}
+	
+	public int timeInfoInsertC(ChoiceVO choiceVO) {
+		return sqlSession.insert(NAMESPACE+"timeInfoInsertC", choiceVO);
+	}
+	
+	public int seq_plus() {
+		return sqlSession.update(NAMESPACE+"seq_plus");
+	}
 
 	public List<MovieInfoVO> movieList() {
 		return sqlSession.selectList(NAMESPACE+"movieList");
@@ -47,4 +59,5 @@ public class AdminDAO {
 	public int theaterInsert(CinemaVO cinemaVO) {
 		return sqlSession.insert(NAMESPACE+"theaterInsert", cinemaVO);
 	}
+	
 }

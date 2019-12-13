@@ -34,7 +34,20 @@ public class AdminService {
 	public int timeInfoInsertA(ChoiceVO choiceVO) {
 		return adminDAO.timeInfoInsertA(choiceVO);
 	}
+	
+	public int timeInfoInsertB(ChoiceVO choiceVO) {
+		return adminDAO.timeInfoInsertB(choiceVO);
+	}
+	
+	public int timeInfoInsertC(ChoiceVO choiceVO) {
+		return adminDAO.timeInfoInsertC(choiceVO);
+	}
 
+	
+	public int sql_plus() {
+		return adminDAO.seq_plus();
+	}
+	
 	public List<MovieInfoVO> movieList() {
 		return adminDAO.movieList();
 	}
@@ -46,4 +59,7 @@ public class AdminService {
 	public int theaterInsert(CinemaVO cinemaVO) {
 		return adminDAO.theaterInsert(cinemaVO);
 	}
+	
+
+	
 }

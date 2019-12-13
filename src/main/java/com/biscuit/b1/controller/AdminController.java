@@ -94,7 +94,23 @@ public class AdminController {
 		System.out.println(choiceVO.getTheater_num());
 		System.out.println(choiceVO.getMovieInfo_num());
 		
-		int result = adminService.timeInfoInsertA(choiceVO);
+		System.out.println("내가 알고시푼것");
+		System.out.println(choiceVO.getTheater_name());
+		
+		int result = 0;
+		
+		int seq_result = 0;
+		
+			if (choiceVO.getTheater_name().equals("A")) {
+				seq_result = adminService.sql_plus();
+				result = adminService.timeInfoInsertA(choiceVO);
+			} else if (choiceVO.getTheater_name().equals("B")) {
+				seq_result = adminService.sql_plus();
+				result = adminService.timeInfoInsertB(choiceVO);
+			} else if(choiceVO.getTheater_name().equals("C")) {
+				seq_result = adminService.sql_plus();
+				result = adminService.timeInfoInsertC(choiceVO);
+			}
 		
 		ModelAndView mv = new ModelAndView();
 		
