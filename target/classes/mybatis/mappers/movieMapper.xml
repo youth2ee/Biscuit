@@ -101,4 +101,19 @@
   	select * from movieinfo
   	</select>
 
-  </mapper>
+  	<insert id="movieInsert" parameterType="MovieDataVO">
+		insert into movieData values (#{title},#{runtime},#{nation},#{genre},#{ratingGrade},#{prodYear},#{releaseDate},#{poster})  	
+  	</insert>
+  	<insert id="movieInfoInsert" parameterType="MovieInfoVO">
+  		insert into movieInfo 
+  		(movieInfo_num,movieInfo_title,movieInfo_genre,movieInfo_nation,movieInfo_year,movieInfo_grade,movieInfo_time,movieInfo_date,movieInfo_star,movieInfo_poster) 
+  		values
+  		(movieInfo_seq.nextval,#{movieInfo_title},#{movieInfo_genre},#{movieInfo_nation},#{movieInfo_year},#{movieInfo_grade},#{movieInfo_time},#{movieInfo_date},0,#{movieInfo_poster})
+  	</insert>
+  	<select id="movieListView" resultType="MovieDataVO">
+  		select * from movieData order by releaseDate desc
+  	</select>
+  	<select id="lastRelease" resultType="String">
+  		select max(releaseDate) from moviedata
+  	</select> 
+ </mapper>

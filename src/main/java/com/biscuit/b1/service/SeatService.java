@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.biscuit.b1.dao.SeatDAO;
 import com.biscuit.b1.model.ChoiceVO;
+import com.biscuit.b1.model.MovieDataVO;
 import com.biscuit.b1.model.Movie_TicketingVO;
 import com.biscuit.b1.model.SeatVO;
 
@@ -22,10 +23,10 @@ public class SeatService {
 	public List<SeatVO> bookCheck(ChoiceVO choiceVO) throws Exception{
 		return seatDAO.bookCheck(choiceVO);
 	}
-	public int searchMovieNum(SeatVO seatVO) throws Exception{
-		return seatDAO.searchMovieNum(seatVO);
-	}
 	public int insertTicket(Movie_TicketingVO movie_TicketingVO) throws Exception{
 		return seatDAO.insertTicket(movie_TicketingVO);
+	}
+	public MovieDataVO getPoster(ChoiceVO choiceVO) throws Exception{
+		return seatDAO.getPoster(choiceVO);
 	}
 }

@@ -57,25 +57,7 @@
 					</c:forEach>
 					</div>
 				</div>
-				
-<%-- 				<div class="selecter3">
-					<h3>어린이(미구현)</h3>
-					<div class="radio-group">
-					<c:forEach begin="0" end="5" var="i">
-						<input type="radio" name="kid" id="kid${i}" onchange="setDisplay()" disabled="disabled" value="${i}"><label for="kid${i}">${i}</label>
-					</c:forEach>
-					</div>
-				</div>
-				
-				<div class="selecter4">
-					<h3>우대(미구현)</h3>
-					<div class="radio-group">
-					<c:forEach begin="0" end="5" var="i">
-						<input type="radio" name="old" id="old${i}" onchange="setDisplay()" disabled="disabled" value="${i}"><label for="old${i}">${i}</label>
-					</c:forEach>
-				</div>
-			</div>
- --%>		</div>
+		</div>
 	</div>
 	<div id="seatSelect">
 		<div id="st2"><img alt="" src="../resources/images/seat/ss2.png"></div>
@@ -125,7 +107,7 @@
 		</table>
 	</div>
 	<div id="right-wrap">
-		<img alt="" id="poster" src="../resources/images/seat/frozen.jpg">
+		<img alt="" id="poster" src="${poster}">
 		<h4>영화제목 : ${movieInfo_name} </h4>
 		<h4>영화관 : ${cinema_loc} ${cinema_name} </h4>
 		<h4>시작 시간 : ${timeInfo_start}</h4>
@@ -145,10 +127,12 @@
 	<input type="hidden" id="cinema_loc" name="cinema_loc" value="${cinema_loc}">
 	<input type="hidden" id="cinema_name" name="cinema_name" value="${cinema_name}">
 	<input type="hidden" id="timeInfo_start" name="timeInfo_start" value="${timeInfo_start}">
+	<input type="hidden" id="timeInfo_date" name="timeInfo_date" value="${timeInfo_date}">
+	<input type="hidden" id="movieInfo_num" name="movieInfo_num" value="${movieInfo_num}">
+	<input type="hidden" id="theater_num" name="theater_num" value="${theater_num}">
 	<input type="hidden" id="seat_name" name="seat_name">
 	<input type="hidden" id="count" name="count">
 	<input type="hidden" id="seatCount" name="seatCount">
-	<input type="hidden" id="price" name="price">
 	
 
 	</div>

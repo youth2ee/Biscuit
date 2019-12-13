@@ -47,13 +47,12 @@ public class MovieChoiceTest extends TestAbstractCase {
 	}
 	
 	//@Test
-	/*
-	 * public void test3() { TheaterVO theaterVO = new TheaterVO();
-	 * theaterVO.setCinema_num(1); List<TimeInfoVO> ar =
-	 * movieSelectDAO.dateSelect(theaterVO);
-	 * 
-	 * assertNotEquals(ar.size(), 0); }
-	 */
+	public void test3() {
+		TheaterVO theaterVO = new TheaterVO();
+		theaterVO.setCinema_num(1);
+		
+		assertNotEquals(ar.size(), 0);
+	}
 	
 	//@Test
 	public void movieChoice() {

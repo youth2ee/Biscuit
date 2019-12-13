@@ -1,68 +1,45 @@
-package com.biscuit.b1.service;
+package com.biscuit.b1.dao;
+
+import static org.junit.Assert.*;
 
 import java.net.URI;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 import javax.inject.Inject;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.*;
+import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.biscuit.b1.dao.MovieDAO;
+import com.biscuit.b1.TestAbstractCase;
 import com.biscuit.b1.model.MovieDataVO;
 import com.biscuit.b1.model.MovieInfoVO;
 
-@Service
-public class MovieService {
+public class MovieInsertTest extends TestAbstractCase {
+
 	private static final String HOST = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new";
 	@Inject
 	private MovieDAO movieDAO;
 
-	public List<MovieDataVO> movieListView() {
-		return movieDAO.movieListView();
-	}
-
-	public String lastRelease() {
-		return movieDAO.lastRelease();
-	}
-
+	@Test
 	public void MovieApiTest() throws Exception {
 
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-		Date today = new Date();
-		String time = format.format(today);
-		String year = time.substring(0, 4);
-		String month = time.substring(4, 6);
-		String date = time.substring(6, 8);
-		String lastRelease = movieDAO.lastRelease();
-		String year2 = lastRelease.substring(0, 4);
-		String month2 = lastRelease.substring(5, 7);
-		String date2 = lastRelease.substring(8, 10);
-		lastRelease = year2 + month2 + date2;
-		time = year + month + date;
-
-		int count = 0;
+		SimpleDateFormat format1 = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
 
 		String serviceKey = "KDJKT151128Z9OMAQ0II";
 
 		map.add("ServiceKey", serviceKey);
-		map.add("releaseDts", lastRelease); // 마지막으로 추가한 날
-		map.add("releaseDte", time); // 기간 검색 범위 마지막날 -> 오늘
+		map.add("releaseDts", "20191001");
+		map.add("releaseDte", "20191212");
 		map.add("listCount", "1000");
 
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
@@ -120,10 +97,10 @@ public class MovieService {
 					if (!posters.equals("") && !ratingGrade.equals("") && !releaseDate.equals("0")) { // 포스터, 관람등급이
 																										// null이 아니면
 						if (!releaseDate.substring(6, 8).equals("00")) { // 날짜입력이 이상하게 된 것 제외시킴
-							if (i % 50 == 0) {
+							if (i % 5 == 0) {
 								Thread.sleep(1000);
 							}
-							System.out.println("몇 개? : " + i + 1);
+							System.out.println("몇 개? : " + i);
 							System.out.println("제목 : " + title);
 							System.out.println("러닝타임 : " + runtime + "분");
 							System.out.println("포스터: " + posters);
@@ -144,9 +121,6 @@ public class MovieService {
 							movieDataVO.setReleaseDate(releaseDate);
 
 							/*
-							 * int check = movieDAO.movieInsert(movieDataVO);
-							 * 
-							 * 
 							 * movieInfoVO.setMovieInfo_title(title); movieInfoVO.setMovieInfo_genre(genre);
 							 * movieInfoVO.setMovieInfo_date(releaseDate);
 							 * movieInfoVO.setMovieInfo_nation(nation);
@@ -154,11 +128,11 @@ public class MovieService {
 							 * movieInfoVO.setMovieInfo_time(runtime);
 							 * movieInfoVO.setMovieInfo_poster(posters);
 							 * movieInfoVO.setMovieInfo_year(prodYear);
-							 * 
-							 * 
-							 * if(check == 1) { movieDAO.movieInfoInsert(movieInfoVO); count ++ ; }
 							 */
 
+							int check = movieDAO.movieInsert(movieDataVO);
+							/*if (check == 1)
+								movieDAO.movieInfoInsert(movieInfoVO);*/
 						}
 					}
 
