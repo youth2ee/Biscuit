@@ -9,6 +9,16 @@ public class CinemaVO {
 	private String cinema_tel;
 	private int cinema_locNum;
 	
+	private String cinema_image;
+	
+	
+	
+	public String getCinema_image() {
+		return cinema_image;
+	}
+	public void setCinema_image(String cinema_image) {
+		this.cinema_image = cinema_image;
+	}
 	public int getCinema_num() {
 		return cinema_num;
 	}

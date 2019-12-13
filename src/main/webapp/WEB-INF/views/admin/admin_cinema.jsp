@@ -112,6 +112,16 @@
 </span>
 </div>
 
+<div>
+<span class="input input--chisato">
+		<input class="input__field input__field--chisato" type="number" id="input4" />
+		<label class="input__label input__label--chisato" for="input4" style="padding-top: 5px;">
+			<span class="input__label-content input__label-content--chisato" data-content="극장 사진 URL">극장 사진 URL</span>
+		</label>
+</span>
+</div>
+
+
 <div id="fbtn">
 <form action="./adminCinemaInsert" id="frm" method="post">
 <input type="button" id="btn" value="추가">
@@ -119,6 +129,7 @@
 <input type="hidden" id="t2" readonly="readonly" name="cinema_name"><br>
 <input type="hidden" id="t3" readonly="readonly" name="cinema_tel" value="15441122"><br>
 <input type="hidden" id="t4" readonly="readonly" name="cinema_add"><br>
+<input type="hidden" id="t5" readonly="readonly" name="cinema_image"><br>
 </form>
 
 </div>
@@ -201,7 +212,9 @@
        $('#input2').val("15441122");
        $('#t4').val("");
        $('#sample5_address').val("주소를 검색하세요");
-
+       $('#t5').val("");
+       $('#input4').val("");
+       
        $('.list__ul').find('li').eq(index).prependTo('.list__ul');
        $('.list__ul').toggle();   
        
@@ -278,6 +291,8 @@
  	       $('#input2').val("15441122");
  	       $('#t4').val("");
  	       $('#sample5_address').val("주소를 검색하세요");
+ 	       $('#t5').val("");
+ 	       $('#input4').val("");
 
         });
     
@@ -287,6 +302,8 @@
      		$('#t3').val(ctel);
      		$('#t4').val("");
      		$('#sample5_address').val("주소를 검색하세요");
+            $('#t5').val("");
+            $('#input4').val("");
             });
         
     

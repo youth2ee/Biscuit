@@ -21,9 +21,9 @@
 <!-- section -->
 <section>
 
-<div style="background-image: url('../resources/images/cinema/bricks.jpg');">
+<div id="bricks" style="background-image: url('../resources/images/cinema/bricks.jpg');">
 <!-- cinema 리스트 -->
-<div id="cinemaName">
+<div id="cinemaName"  style="background-image: url('../resources/images/cinema/cmain.jpg')">
 <table id="cinematable">
 
 <c:forEach items="${locList}" var="loc"> 
@@ -47,13 +47,16 @@
 <div id="mid">
 
 <!-- 지도 -->
-<div id="map" style="float: left;"></div>
+<div id="map"></div>
 
 <!-- 그 영화관 정보 -->
-<div id="minfo" style="float: left;">
+<div id="minfo" style="background-image: url('http://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg')">
+<div id="minfo_txt"> 
 <h1>강남</h1>
 <h2>tel</h2>
 <h3>address</h3>
+</div> 
+
 </div>
 
 
@@ -76,6 +79,8 @@
 var cname = ""; //상영관이름
 var cadd = ""; //상영관주소
 var ctel = ""; //상영관번호
+var cimage = ""; //상영관이미지 주소
+
 
 var cinematable = $("#cinematable");
 
@@ -100,11 +105,11 @@ var cinematable = $("#cinematable");
 				cadd = data.cinema_add;
 				cname = data.cinema_name;
 				ctel = data.cinema_tel;
+				cimage = data.cinema_image;
 				
-				$('#minfo').html("");
-				$('#minfo').html('<h1>'+cname+'</h1>');
-				$('#minfo').append('<h2>'+ctel+'</h2>');
-				$('#minfo').append('<h3>'+cadd+'</h3>');
+				$('#minfo_txt').html("");
+				$('#minfo_txt').html('<h1>'+cname+'</h1>'+'<h2>'+ctel+'</h2>'+'<h3>'+cadd+'</h3>');
+				$('#minfo').css('background-image', 'url('+cimage+')' );
 				
 
 				
