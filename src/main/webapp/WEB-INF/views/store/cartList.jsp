@@ -55,7 +55,7 @@
 					<c:forEach items="${cartList}" var="cartList">
 					
 						<li id="cart_item_idx_${cartList.cart_num}">
-							<input type="checkbox" class="cart_checkbox" id="checkbox${cartList.cart_num}" value="${cartList.cartList_num}" checked="checked">
+							<input type="checkbox" class="cart_checkbox" id="checkbox${cartList.cart_num}" value="${cartList.cart_num}" checked="checked">
 							
 							<label for="checkbox${cartList.cart_num}"></label>
 							
@@ -66,9 +66,7 @@
 							</a>
 							
 							<div class="product_info_onePrice_wrap">
-								<span class="product_info_onePrice">
-									<fmt:formatNumber value="${cartList.store_price}" pattern="###,###,###" />
-								</span>
+								<span class="product_info_onePrice"><fmt:formatNumber value="${cartList.store_price}" pattern="###,###,###" /></span>
 							</div>
 							
 							<div class="product_info_amount_wrap">
@@ -77,8 +75,13 @@
 								<a href="#none" class="btn_amount_minus btn_amount_minus${cartList.cart_num}">-</a>
 								<a href="#none" class="btn_amount_change btn_amount_change${cartList.cart_num}">변경</a>
 							</div>
-							
-							<script type="text/javascript">
+							<span class="product_info_price product_info_price${cartList.cart_num}"><fmt:formatNumber value="${cartList.store_price*cartList.cart_amount}" pattern="###,###,###" /></span>
+						<script type="text/javascript">
+							//,찍어주는 정규식 함수
+							function addComma(price) {
+							  var regexp = /\B(?=(\d{3})+(?!\d))/g;
+							  return price.toString().replace(regexp, ',');
+							}
 							//수량 박스 증가
 							$('.btn_amount_plus'+${cartList.cart_num}).click(function() {
 								var count = $('#count'+${cartList.cart_num}).text();
@@ -113,6 +116,9 @@
 										//alert(data);
 										if(data>0){
 											alert("수량이 변경되었습니다.");
+											var price = cart_amount * ${cartList.store_price};
+											price = addComma(price);
+											$('.product_info_price'+${cartList.cart_num}).text(price);
 										}else{
 											alert("수량이 변경되지 않았습니다.");
 										}
@@ -122,14 +128,42 @@
 									}
 								});
 							});
-							</script>
-							
-							<span class="product_info_price"></span>
+						</script>
 							
 							<div class="product_info_btn_wrap">
 								<a href="#none">바로구매</a>
 							</div>
-							<a href="#" class="btn_product_del">삭제</a>
+							<a href="#" class="btn_product_del btn_product_del${cartList.cart_num}">삭제</a>
+							<script type="text/javascript">
+								$('.btn_product_del'+${cartList.cart_num}).click(function() {
+									var confirm_val = confirm("정말 삭제하시겠습니까?");
+									
+									if(confirm_val){
+										var array_check = new Array();
+										
+										array_check.push($('#checkbox$'+${cartList.cart_num}).val());
+										
+										alert(array_check);
+										
+										/* $.ajax({
+											url: "cartDelete",
+											type: "post",
+											data: { list: array_check},
+											success: function(result) {
+												if(result == 1){
+													location.href = "cartList";
+												}else {
+													alert("삭제 실패");
+												}
+											},
+											error: function() {
+												alert("error");
+											}
+										}); */
+										
+									}
+								});
+							</script>
 						</li>
 					</c:forEach>
 				</ul>
@@ -165,7 +199,37 @@
 					$('.span_btn').css("display", "inline");
 					$('.span_btn').text($('.cart_checkbox:checked').length);
 				});
-				
+				//선택 삭제
+				$('.btn_del_selected').click(function() {
+					var confirm_val = confirm("정말 삭제하시겠습니까?");
+					
+					if(confirm_val){
+						var array_check = new Array();
+						
+						$('input[class="cart_checkbox"]:checked').each(function() {
+							array_check.push($(this).val());
+						});
+						
+						alert(array_check);
+						
+						$.ajax({
+							url: "cartDelete",
+							type: "post",
+							data: { list: array_check},
+							success: function(result) {
+								if(result == 1){
+									location.href = "cartList";
+								}else {
+									alert("삭제 실패");
+								}
+							},
+							error: function() {
+								alert("error");
+							}
+						});
+						
+					}
+				});
 				</script>
 				
 				

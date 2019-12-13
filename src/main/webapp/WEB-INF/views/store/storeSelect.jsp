@@ -69,45 +69,50 @@
 								<a href="javascript:void(0)" class="aPlus"><img alt="수량증가" src="../resources/images/store/btn_quantity_plus.jpg"></a>
 							</div>
 							
+							<div class="total">
+								<strong>총 상품 금액</strong>
+								<em>
+									<span class="totalPrice">
+										<fmt:formatNumber value="${select.store_price}" pattern="###,###,###" />
+									</span>
+									원
+								</em>
+							</div>
+							
 							<script type="text/javascript">
 								//,찍어주는 정규식 함수
 								function addComma(price) {
 								  var regexp = /\B(?=(\d{3})+(?!\d))/g;
 								  return price.toString().replace(regexp, ',');
 								}
-							
+								//수량 감소
 								$('.aMinus').click(function() {
 									var num = $('.numCount').val();
 									var minusNum = num - 1;
+									var price = ${select.store_price};
 									
 									if(minusNum <= 0){
-										$('.numCount').val(num);
+										$('.numCount').val(1);
 									}else {
 										$('.numCount').val(minusNum);
 										//$('.totalPrice').html(${select.store_price}*parseInt($('.numCount').val()));
+										price = ${select.store_price} * minusNum;
 									}
+									
+									price = addComma(price);
+									$('.totalPrice').text(price);
 								});
-								
-							
+								//수량 증가
 								$('.aPlus').click(function() {
 									var num = $('.numCount').val();
 									num++;
 									$('.numCount').val(num);
 									
-									alert(num);
+									var price = ${select.store_price} * num;
+									price = addComma(price);
+									$('.totalPrice').text(price);
 								});
 							</script>
-<!-- ------------------------------------------ -->							
-							<div class="total">
-								<strong>총 상품 금액</strong>
-								<em>
-									<span class="totalPrice">
-										<fmt:formatNumber value="${select.store_price}" pattern="###,###,###" />
-										<%-- ${select.store_price} --%>
-									</span>
-									원
-								</em>
-							</div>
 <!-- ------------------------------------------ -->							
 							<div class="btn_wrap">
 								<a href="#" class="btn_cart">장바구니</a>

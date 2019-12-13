@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,16 +30,33 @@ public class StoreController {
 	private StoreService storeService;
 	
 	//카트 삭제
+	@ResponseBody
 	@PostMapping("cartDelete")
-	public void cartDelete(CartVO cartVO, HttpSession session, Model model) throws Exception {
+	public int cartDelete(@RequestParam(value="list[]") List<String> list, CartVO cartVO, HttpSession session) throws Exception {
+		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		//String member_id = memberVO.getId();
 		
+		int result = 0;
+		int cart_num = 0;
+		
+		//if(memberVO != null) {
+			cartVO.setMember_id("a");
+			
+			for(String i : list) {
+				cart_num = Integer.parseInt(i);
+				
+				cartVO.setCart_num(cart_num);
+				
+				result = storeService.cartDelete(cartVO);
+			}
+		//}
+		return result;
 	}
 	
 	//카트 수정
 	@ResponseBody
 	@PostMapping("cartUpdate")
 	public int cartUpdate(CartListVO cartListVO, HttpSession session) throws Exception {
-		
 		return storeService.cartUpdate(cartListVO);
 	}
 	

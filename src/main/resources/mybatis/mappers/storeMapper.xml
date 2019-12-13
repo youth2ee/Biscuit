@@ -5,9 +5,9 @@
   
 <mapper namespace="storeMapper">
 	<!-- 카트 삭제 -->
-	<delete id="cartDelete">
-		delete * from cart
-		where cart_num =#{cart_num}
+	<delete id="cartDelete" parameterType="CartVO">
+		delete from cart
+		where cart_num = #{cart_num} and member_id = #{member_id}
 	</delete>
 		
 	<!-- 카트 수정 -->
