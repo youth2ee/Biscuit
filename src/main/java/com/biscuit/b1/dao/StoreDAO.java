@@ -18,6 +18,16 @@ public class StoreDAO {
 	private SqlSession sqlSession;
 	private final static String NAMESPACE = "storeMapper.";
 	
+	/* 카트 삭제 */
+	public int cartDelete(CartVO cartVO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"cartDelete", cartVO);
+	}
+	
+	/* 카트 수정 */
+	public int cartUpdate(CartListVO cartListVO) throws Exception {
+		return sqlSession.update(NAMESPACE+"cartUpdate", cartListVO);
+	}
+	
 	/* 카트 리스트 */
 	public List<CartListVO> cartList(CartListVO cartListVO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"cartList", cartListVO);

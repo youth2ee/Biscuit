@@ -50,28 +50,80 @@
 					<strong class="checkbox_total">구매금액</strong>
 					<strong class="checkbox_select">선택</strong>
 				</p>
+				
 				<ul class="cart_list_style">
 					<c:forEach items="${cartList}" var="cartList">
 					
 						<li id="cart_item_idx_${cartList.cart_num}">
 							<input type="checkbox" class="cart_checkbox" id="checkbox${cartList.cart_num}" value="${cartList.cartList_num}" checked="checked">
+							
 							<label for="checkbox${cartList.cart_num}"></label>
+							
 							<a href="storeSelect?store_num=${cartList.store_num}" class="product_info_img">
 								<img alt="${cartList.store_name}" src="../resources/upload/store/th/${cartList.store_thumbimg}">
 								<strong class="product_info_name">${cartList.store_name}</strong>
 								<span class="product_info_note">${cartList.store_note}</span>
 							</a>
+							
 							<div class="product_info_onePrice_wrap">
 								<span class="product_info_onePrice">
 									<fmt:formatNumber value="${cartList.store_price}" pattern="###,###,###" />
 								</span>
 							</div>
+							
 							<div class="product_info_amount_wrap">
-								<span class="product_info_count">${cartList.cart_amount}</span>
-								<a href="#none" class="btn_amount_plus">+</a>
-								<a href="#none" class="btn_amount_minus">-</a>
-								<a href="#none" class="btn_amount_change">변경</a>
+								<span class="product_info_count" id="count${cartList.cart_num}">${cartList.cart_amount}</span>
+								<a href="#none" class="btn_amount_plus btn_amount_plus${cartList.cart_num}">+</a>
+								<a href="#none" class="btn_amount_minus btn_amount_minus${cartList.cart_num}">-</a>
+								<a href="#none" class="btn_amount_change btn_amount_change${cartList.cart_num}">변경</a>
 							</div>
+							
+							<script type="text/javascript">
+							//수량 박스 증가
+							$('.btn_amount_plus'+${cartList.cart_num}).click(function() {
+								var count = $('#count'+${cartList.cart_num}).text();
+								//alert(count);
+								count++;
+								//alert(count);
+								$('#count'+${cartList.cart_num}).text(count);
+							});
+							//수량 박스 감소
+							$('.btn_amount_minus'+${cartList.cart_num}).click(function() {
+								var count = $('#count'+${cartList.cart_num}).text();
+								count--;
+								if(count<1){
+									count = 1;
+								}
+								$('#count'+${cartList.cart_num}).text(count);
+							});
+							//수량 박스 변경
+							$('.btn_amount_change'+${cartList.cart_num}).click(function() {
+								var cart_amount = $('#count'+${cartList.cart_num}).text();
+								var cart_num = ${cartList.cart_num};
+								
+								$.ajax({
+									url: "cartUpdate",
+									type: "post",
+									async: false,
+									data: {
+										cart_amount: cart_amount,
+										cart_num: cart_num
+									},
+									success: function(data) {
+										//alert(data);
+										if(data>0){
+											alert("수량이 변경되었습니다.");
+										}else{
+											alert("수량이 변경되지 않았습니다.");
+										}
+									},
+									error: function() {
+										alert("에러");
+									}
+								});
+							});
+							</script>
+							
 							<span class="product_info_price"></span>
 							
 							<div class="product_info_btn_wrap">
@@ -82,13 +134,25 @@
 					</c:forEach>
 				</ul>
 				
+				<a href="#none" class="btn_del_selected">
+					선택 상품 삭제
+					<span class="span_btn"></span>
+				</a>
+				
 				<script type="text/javascript">
 				//체크박스 모두 선택, 해제
+				$('.span_btn').css("display", "inline");
+				$('.span_btn').text($('.cart_checkbox').length);
+				
 				$('#checkbox_all').click(function() {
 					if($('#checkbox_all').prop("checked")){
+						
 						$('.cart_checkbox').prop("checked", true);
+						$('.span_btn').css("display", "inline");
+						$('.span_btn').text($('.cart_checkbox:checked').length);
 					}else {
 						$('.cart_checkbox').prop("checked", false);
+						$('.span_btn').css("display", "none");
 					}
 				});
 				//체크박스 선택, 해제
@@ -98,17 +162,12 @@
 					}else{
 						$('#checkbox_all').prop("checked", false);
 					}
+					$('.span_btn').css("display", "inline");
+					$('.span_btn').text($('.cart_checkbox:checked').length);
 				});
 				
-				//수량 박스 증가, 감소
-				$('.btn_amount_plus').click(function() {
-					
-				});
 				</script>
 				
-				<a href="#none" class="btn_del_selected">
-					선택 상품 삭제
-				</a>
 				
 				<table class="cart_total_price_wrap">
 					<colgroup>
@@ -123,7 +182,6 @@
 							<th>총 결제 예정 금액</th>
 						</tr>
 					</thead>
-					
 					
 					<tbody>
 						<tr>
