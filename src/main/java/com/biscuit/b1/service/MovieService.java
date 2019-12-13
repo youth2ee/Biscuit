@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class MovieService {
 		return movieDAO.lastRelease();
 	}
 
-	public void MovieApiTest() throws Exception {
+	public int movieManagement() throws Exception {
 
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
@@ -49,6 +50,11 @@ public class MovieService {
 		String month = time.substring(4, 6);
 		String date = time.substring(6, 8);
 		String lastRelease = movieDAO.lastRelease();
+		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar c = Calendar.getInstance();
+		c.setTime(format2.parse(lastRelease));
+		c.add(Calendar.DATE, 1);
+		lastRelease = format2.format(c.getTime());
 		String year2 = lastRelease.substring(0, 4);
 		String month2 = lastRelease.substring(5, 7);
 		String date2 = lastRelease.substring(8, 10);
@@ -61,7 +67,7 @@ public class MovieService {
 		String serviceKey = "KDJKT151128Z9OMAQ0II";
 
 		map.add("ServiceKey", serviceKey);
-		map.add("releaseDts", lastRelease); // 마지막으로 추가한 날
+		map.add("releaseDts", lastRelease); // 마지막으로 추가한 날의 다음날
 		map.add("releaseDte", time); // 기간 검색 범위 마지막날 -> 오늘
 		map.add("listCount", "1000");
 
@@ -123,7 +129,7 @@ public class MovieService {
 							if (i % 50 == 0) {
 								Thread.sleep(1000);
 							}
-							System.out.println("몇 개? : " + i + 1);
+							System.out.println("몇 개? : " + i);
 							System.out.println("제목 : " + title);
 							System.out.println("러닝타임 : " + runtime + "분");
 							System.out.println("포스터: " + posters);
@@ -133,6 +139,7 @@ public class MovieService {
 							System.out.println("제작년도 : " + prodYear);
 							System.out.println("개봉일  : " + releaseDate);
 							System.out.println("================================================================");
+							count++;
 
 							movieDataVO.setTitle(title);
 							movieDataVO.setRuntime(runtime);
@@ -143,22 +150,21 @@ public class MovieService {
 							movieDataVO.setProdYear(prodYear);
 							movieDataVO.setReleaseDate(releaseDate);
 
-							/*
-							 * int check = movieDAO.movieInsert(movieDataVO);
-							 * 
-							 * 
-							 * movieInfoVO.setMovieInfo_title(title); movieInfoVO.setMovieInfo_genre(genre);
-							 * movieInfoVO.setMovieInfo_date(releaseDate);
-							 * movieInfoVO.setMovieInfo_nation(nation);
-							 * movieInfoVO.setMovieInfo_grade(ratingGrade);
-							 * movieInfoVO.setMovieInfo_time(runtime);
-							 * movieInfoVO.setMovieInfo_poster(posters);
-							 * movieInfoVO.setMovieInfo_year(prodYear);
-							 * 
-							 * 
-							 * if(check == 1) { movieDAO.movieInfoInsert(movieInfoVO); count ++ ; }
-							 */
+							int check = movieDAO.movieInsert(movieDataVO);
 
+							movieInfoVO.setMovieInfo_title(title);
+							movieInfoVO.setMovieInfo_genre(genre);
+							movieInfoVO.setMovieInfo_date(releaseDate);
+							movieInfoVO.setMovieInfo_nation(nation);
+							movieInfoVO.setMovieInfo_grade(ratingGrade);
+							movieInfoVO.setMovieInfo_time(runtime);
+							movieInfoVO.setMovieInfo_poster(posters);
+							movieInfoVO.setMovieInfo_year(prodYear);
+
+							if (check == 1) {
+								movieDAO.movieInfoInsert(movieInfoVO);
+								count++;
+							}
 						}
 					}
 
@@ -170,6 +176,8 @@ public class MovieService {
 			e.printStackTrace();
 
 		}
+		System.out.println(count);
+		return count;
 	}
 
 }

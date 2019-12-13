@@ -100,13 +100,19 @@ iframe {
 .wrap-table100 {
 	width: 960px;
 	border-radius: 10px;
-	overflow: hidden;
+	overflow: auto
 }
 
 .table {
 	width: 100%;
 	display: table;
 	margin: 0;
+	float: left;
+	border-collapse: collapse;
+}
+
+tbody {
+	float: left;
 }
 
 @media screen and (max-width: 768px) {
@@ -170,6 +176,7 @@ iframe {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #f2f2f2;
+	padding-right: 30px;
 }
 
 .row.header .cell {
@@ -183,31 +190,64 @@ iframe {
 }
 
 .row .cell:nth-child(1) {
-	width: 25%;
 	padding-left: 30px;
-	padding-right: 30px;
 	float: inherit;
-}
-
-.row .cell:nth-child(2) {
-	width: 20%;
 	padding-right: 30px;
 }
 
-.row .cell:nth-child(3) {
-	width: 15%;
+.h_gender, .h_grade, .h_grade_point {
+	width: 100px;
 }
 
-.row .cell:nth-child(4) {
-	width: 15%;
+.h_id {
+	width: 160px;
 }
 
-.row .cell:nth-child(5) {
-	width: 15%;
+.h_pw {
+	width: 130px;
+	box-sizing: content-box;
 }
 
-.row .cell:nth-child(6) {
-	width: 10%;
+.h_name {
+	width: 130px;
+	box-sizing: content-box;
+}
+
+.h_post {
+	width: 130px;
+	box-sizing: content-box;
+}
+
+.h_birth, .h_signIn_date {
+	width: 150px;
+	box-sizing: content-box;
+}
+
+.h_email {
+	width: 180px;
+	box-sizing: content-box;
+}
+
+.h_address {
+	width: 180px;
+	box-sizing: content-box;
+}
+
+.h_phone {
+	width: 180px;
+	box-sizing: content-box;
+}
+
+.gender, .grade, .grade_point {
+	width: 50px;
+}
+
+.id, .pw, .name, .post, .birth, .signIn_date {
+	width: 100px;
+}
+
+.email, .address, .phone {
+	width: 150px;
 }
 
 .table, .row {
