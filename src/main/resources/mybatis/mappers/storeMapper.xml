@@ -4,6 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="storeMapper">
+	<!-- 카트 삭제 -->
+	<delete id="cartDelete" parameterType="CartVO">
+		delete from cart
+		where cart_num = #{cart_num} and member_id = #{member_id}
+	</delete>
+		
+	<!-- 카트 수정 -->
+	<update id="cartUpdate" parameterType="CartListVO">
+		update cart
+		set cart_amount = #{cart_amount}, cart_date = sysdate
+		where cart_num = #{cart_num}
+	</update>
+	
 	<!-- 카트 리스트 -->
 	<select id="cartList" resultType="CartListVO" parameterType="CartListVO">
 		select
@@ -19,21 +32,24 @@
 	<!-- 카트 담기 -->
 	<insert id="cartInsert" parameterType="CartVO">
 		insert into cart (cart_num, member_id, store_num, cart_amount)
-			values (cart_seq.nextval, #{member_id}, #{store_num}, #{cart_amount})
+		values (cart_seq.nextval, #{member_id}, #{store_num}, #{cart_amount})
 	</insert>
 	
 	<!-- 스토어 -->
 	<delete id="storeDelete" parameterType="StoreVO">
-		delete from store where store_num=#{store_num}
+		delete from store
+		where store_num=#{store_num}
 	</delete>
 
   	<update id="storeUpdate" parameterType="StoreVO">
-  		update store set store_name=#{store_name}, store_price=#{store_price}, store_note=#{store_note}, store_package=#{store_package}, store_img=#{store_img}, store_thumbimg=#{store_thumbimg}
+  		update store
+  		set store_name=#{store_name}, store_price=#{store_price}, store_note=#{store_note}, store_package=#{store_package}, store_img=#{store_img}, store_thumbimg=#{store_thumbimg}
   		where store_num=#{store_num}
   	</update>
   	
   	<insert id="storeWrite" parameterType="StoreVO">
-  		insert into store values(store_seq.nextval, #{store_name}, #{store_price}, 0, #{store_note}, #{store_package}, #{store_img}, #{store_thumbimg})
+  		insert into store
+  		values(store_seq.nextval, #{store_name}, #{store_price}, 0, #{store_note}, #{store_package}, #{store_img}, #{store_thumbimg})
   	</insert>
   	
   	<select id="storeSelect" resultType="StoreVO" parameterType="StoreVO">

@@ -12,11 +12,11 @@ public class CartVO {
     cart_date date default sysdate,
     */
 	
-	private int cart_num;
-	private String member_id;
-	private int store_num;
-	private int cart_amount;
-	private Date cart_date;
+	private int cart_num; //카트 번호(PK)
+	private String member_id; //주문한 유저 아이디
+	private int store_num; //스토어 번호
+	private int cart_amount; //주문 수량
+	private Date cart_date; //주문 날짜
 	
 	public int getCart_num() {
 		return cart_num;
