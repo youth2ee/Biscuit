@@ -1,11 +1,18 @@
 package com.biscuit.b1.controller;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +27,8 @@ import com.biscuit.b1.service.MovieService;
 import oracle.net.aso.d;
 
 @Controller
+@Configuration
+@PropertySource("classpath:/properties/DataSource.properties")
 @RequestMapping("/movie/**")
 public class MovieController {
 	
@@ -28,7 +37,12 @@ public class MovieController {
 	@Inject
 	private MovieService movieService;
 	
-	@Value("${movie.key}")
+	/*
+	 * @Value("${movie.key}") private String key;
+	 */
+	
+	@Inject
+	private Environment env;
 	private String key;
 	
 	@GetMapping("movieApiTest")
@@ -132,7 +146,24 @@ public class MovieController {
 		return mv;
 	}
 	
-	
+	//movieList
+	@GetMapping("movieList")
+	public void movieList(Locale locale, Model model) {
+		
+		//api
+		String key=env.getProperty("movie.key");
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		String formattedDate = dateFormat.format(date);
+		
+		//영화 db
+		List<MovieInfoVO> ar = movieSelectService.movieList();
+		
+		
+		model.addAttribute("movieList", ar);
+		model.addAttribute("serverTime", formattedDate );
+		model.addAttribute("key", key);
+	}
 	
 	
 

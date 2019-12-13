@@ -12,6 +12,16 @@ public class MovieInfoVO {
 	private String movieInfo_date;
 	private int movieInfo_star;
 	
+	private String movieInfo_poster;
+	
+	
+	
+	public String getMovieInfo_poster() {
+		return movieInfo_poster;
+	}
+	public void setMovieInfo_poster(String movieInfo_poster) {
+		this.movieInfo_poster = movieInfo_poster;
+	}
 	public int getMovieInfo_num() {
 		return movieInfo_num;
 	}
