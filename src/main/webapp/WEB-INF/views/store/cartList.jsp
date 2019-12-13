@@ -141,6 +141,7 @@
 									if(confirm_val){
 										var array_check = new Array();
 										
+										alert($('#checkbox$'+${cartList.cart_num}).val());
 										array_check.push($('#checkbox$'+${cartList.cart_num}).val());
 										
 										alert(array_check);
