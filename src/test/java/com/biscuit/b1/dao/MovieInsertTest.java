@@ -19,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.biscuit.b1.TestAbstractCase;
 import com.biscuit.b1.model.MovieDataVO;
+import com.biscuit.b1.model.MovieInfoVO;
 
 public class MovieInsertTest extends TestAbstractCase {
 
@@ -53,7 +54,7 @@ public class MovieInsertTest extends TestAbstractCase {
 				JSONObject resultObject = (JSONObject) data.get(j);
 				JSONArray result = (JSONArray) resultObject.get("Result");
 				for (int i = 0; i < result.size(); i++) {
-
+					MovieInfoVO movieInfoVO = new MovieInfoVO();
 					MovieDataVO movieDataVO = new MovieDataVO();
 					JSONObject resultObject2 = (JSONObject) result.get(i);
 					JSONArray rating = (JSONArray) resultObject2.get("rating");
@@ -96,9 +97,10 @@ public class MovieInsertTest extends TestAbstractCase {
 					if (!posters.equals("") && !ratingGrade.equals("") && !releaseDate.equals("0")) { // 포스터, 관람등급이
 																										// null이 아니면
 						if (!releaseDate.substring(6, 8).equals("00")) { // 날짜입력이 이상하게 된 것 제외시킴
-							if (i % 50 == 0) {
+							if (i % 5 == 0) {
 								Thread.sleep(1000);
 							}
+							System.out.println("몇 개? : " + i);
 							System.out.println("제목 : " + title);
 							System.out.println("러닝타임 : " + runtime + "분");
 							System.out.println("포스터: " + posters);
@@ -108,6 +110,7 @@ public class MovieInsertTest extends TestAbstractCase {
 							System.out.println("제작년도 : " + prodYear);
 							System.out.println("개봉일  : " + releaseDate);
 							System.out.println("================================================================");
+
 							movieDataVO.setTitle(title);
 							movieDataVO.setRuntime(runtime);
 							movieDataVO.setPoster(posters);
@@ -117,7 +120,19 @@ public class MovieInsertTest extends TestAbstractCase {
 							movieDataVO.setProdYear(prodYear);
 							movieDataVO.setReleaseDate(releaseDate);
 
-							movieDAO.movieInsert(movieDataVO);
+							/*
+							 * movieInfoVO.setMovieInfo_title(title); movieInfoVO.setMovieInfo_genre(genre);
+							 * movieInfoVO.setMovieInfo_date(releaseDate);
+							 * movieInfoVO.setMovieInfo_nation(nation);
+							 * movieInfoVO.setMovieInfo_grade(ratingGrade);
+							 * movieInfoVO.setMovieInfo_time(runtime);
+							 * movieInfoVO.setMovieInfo_poster(posters);
+							 * movieInfoVO.setMovieInfo_year(prodYear);
+							 */
+
+							int check = movieDAO.movieInsert(movieDataVO);
+							/*if (check == 1)
+								movieDAO.movieInfoInsert(movieInfoVO);*/
 						}
 					}
 

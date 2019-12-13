@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.biscuit.b1.model.MovieDataVO;
+import com.biscuit.b1.model.MovieInfoVO;
 
 @Repository
 public class MovieDAO {
@@ -24,6 +25,10 @@ public class MovieDAO {
 	}
 
 	public String lastRelease() {
-		return sqlSession.selectOne(NAMESPACE + "lastSelect");
+		return sqlSession.selectOne(NAMESPACE + "lastRelease");
+	}
+
+	public int movieInfoInsert(MovieInfoVO movieInfoVO) {
+		return sqlSession.insert(NAMESPACE + "movieInfoInsert", movieInfoVO);
 	}
 }
