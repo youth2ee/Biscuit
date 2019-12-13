@@ -24,43 +24,52 @@
 <!-- section -->
 <section>
 <!-- api -->
-<img alt="" src="http://file.koreafilm.or.kr/thm/02/00/05/35/tn_DPF019295.jpg">
-<div style="width: 70%; margin: 0 auto; padding-top: 30px;">
-
+<!-- <img alt="" src="http://file.koreafilm.or.kr/thm/02/00/05/35/tn_DPF019295.jpg"> -->
+<div id="poster">
 
 
 <c:forEach items="${movieList}" var="mlist" varStatus="status">
 
-<div style="float: left; width: 20%; background-color: red;">${mlist.movieInfo_title} </div>
-<img alt="" src="${mlist.movieInfo_poster}">
+<div class="posterOne">
+<img alt="" src="${mlist.movieInfo_poster}"><br>
+<div style="padding-top: 10px;">
+${mlist.movieInfo_grade}<br>
+${mlist.movieInfo_title}<br>
+${mlist.movieInfo_time}<br>
+${mlist.movieInfo_date}<br>
+${mlist.movieInfo_star}<br>
+</div>
+</div>
 
-<c:if test="${status.index %5 == 0}">
-<br><br>
+
+<c:if test="${(status.index+1)%5 == 0}">
+<div class="posterDiv"></div>
 </c:if>
+
 
 
 </c:forEach>
 
-<div style="float: left;  width: 20%; background-color: orange;">b</div>
-<div style="float: left;  width: 20%; background-color: yellow;">c</div>
-<div style="float: left;  width: 20%; background-color: green;">c</div>
-<div style="float: left;  width: 20%; background-color: blue;">e</div>
 
 </div>
 
-				
-	<%-- 
-					<ol class="officeRank rounded-list">
+
+<%-- 				<ol class="officeRank rounded-list">
+					
 					<c:forEach begin="0" end="9" var="i">
 						<li class="active" id="Rank_${i}">
-							<a href="#"></a>
 						</li>
 					</c:forEach>
-					</ol>
- --%>
-				
-	
 
+					</ol>
+  --%>
+				<!-- 
+				
+				<div id="a"> </div>
+				<div id="b"> </div> -->
+	
+<!-- <form action="./movieAPI" method="post" id="frm">
+</form> -->
 
 </section>
 
@@ -94,13 +103,37 @@ $.ajax({
 		targetDt: yesterDate
 	},
 	success: function(data) {
-		$.each(data.boxOfficeResult.dailyBoxOfficeList, function(i, m) {
-			//$('#Rank_'+i+' a').append("<span class=\"office_cell\">"+m.rank+"</span><span class=\"office_cell\">"+m.rankOldAndNew+"</span><span class=\"office_cell\">"+m.rankInten+"</span><span class=\"office_cell\">"+m.movieNm+"</span>");
-			$('#Rank_'+i+' a').append(m.movieNm);
+		$.each(data.boxOfficeResult.dailyBoxOfficeList, function(m) {
+			/* //$('#Rank_'+i+' a').
+			append("<span class=\"office_cell\">"+
+					m.rank+"</span><span class=\"office_cell\">"+
+					m.rankOldAndNew+"</span><span class=\"office_cell\">"+
+					m.rankInten+"</span><span class=\"office_cell\">"+
+					m.movieNm+"</span>"); */
+		/* 	$('#a').append(m.movieNm);
+			$('#b').append(m.audiAcc); */
+			
+	 		
+			
+	/* 		$('#a').append('<div id="rank'+i+'">'+m.movieNm+'</div>');
+			$('#b').append('<div id="count'+i+'">'+m.audiAcc+'</div>'); */
+			
+	/* 		for (var i = 1; i < 11; i++) {
+			$("#frm").append('<input type="text" name="movieInfo_name'+i+'" value="'+m.movieNm+'">');
+			$("#frm").append('<input type="text" name="movie_count'+i+'" value="'+m.audiAcc+'">');
+			
+			if(i == 10){
+				$("#frm").submit();
+			}
+			
+			}
+ */
+		
+			
+	
 		});
 	}
 });
-
 
 
 </script>

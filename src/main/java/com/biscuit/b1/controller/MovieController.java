@@ -1,5 +1,6 @@
 package com.biscuit.b1.controller;
 
+import java.sql.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,6 +25,7 @@ import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieDataVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TimeInfoVO;
+import com.biscuit.b1.model.TopTenVO;
 import com.biscuit.b1.service.MovieSelectService;
 import com.biscuit.b1.service.MovieService;
 
@@ -169,9 +171,38 @@ public class MovieController {
 		// 영화 db
 		List<MovieInfoVO> ar = movieSelectService.movieList();
 
+		
+		for(MovieInfoVO a : ar) {
+			a.setMovieInfo_date(a.getMovieInfo_date().substring(0, 10));
+		}
+		
+		
+
 		model.addAttribute("movieList", ar);
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("key", key);
 	}
+
+	
+	@PostMapping("movieAPI")
+	public ModelAndView movieAPI(TopTenVO topTenVO) {
+		System.out.println("성공");
+		System.out.println(topTenVO.getMovie_count1());
+		System.out.println(topTenVO.getMovieInfo_name1());
+		
+		String [] moviename = topTenVO.getMovieInfo_name1().split(",");
+		String [] moviecount = topTenVO.getMovie_count1().split(",");
+		
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("moviename", moviename);
+		mv.addObject("moviecount", moviecount);
+		mv.setViewName("movie/movieList");
+		
+		return mv;
+	}
+	
+	
+
 
 }

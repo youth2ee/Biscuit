@@ -1,0 +1,36 @@
+body{
+	font-family: "나눔 고딕", 'Nanum Gothic', 'ng';
+}
+
+
+#poster{
+	width: 70%;
+	margin: 0 auto;
+	padding-top: 30px;	
+	font-size: 14px;
+
+}
+
+.posterOne{
+	float: left;
+	width: 18%;
+/* 	background-color: olive; */
+	text-align: center;
+	/* padding-top: 15px; */
+	padding-bottom: 10px;
+	border: 1px gray solid;
+	margin: 0 auto;
+ 	margin-left: 14px;
+	margin-right: 10px; 
+	
+}
+
+.posterOne img{
+	width: 241px;
+	height: 343px;
+}
+
+.posterDiv{
+	clear: both;
+	height: 20px;
+}
