@@ -14,7 +14,8 @@ body{
 
 /* section */
 #sec{
-	width: 70%;
+	/* width: 70%; */
+	width:1344px;
 	height: 1000px;
 	background-color: #fef8dc;
 	margin: 0 auto;

@@ -12,6 +12,9 @@
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movie/movieList.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/card.css" rel="stylesheet">
+
+
 
 </head>
 <body>
@@ -31,13 +34,34 @@
 <c:forEach items="${movieList}" var="mlist" varStatus="status">
 
 <div class="posterOne">
-<img alt="" src="${mlist.movieInfo_poster}"><br>
-<div style="padding-top: 10px;">
-${mlist.movieInfo_grade}<br>
-${mlist.movieInfo_title}<br>
-${mlist.movieInfo_time}<br>
-${mlist.movieInfo_date}<br>
-${mlist.movieInfo_star}<br>
+<img class="pimg" alt="" src="${mlist.movieInfo_poster}"><br>
+<div class="pcontext">
+
+<div class="ptitle">
+<div class="page">
+<c:choose>
+<c:when test="${mlist.movieInfo_grade eq '전체 관람가'}">
+<img class="age" alt="" src="../resources/images/movieSelect/m1.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '12세 관람가'}">
+<img  class="age" alt="" src="../resources/images/movieSelect/m2.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '15세 관람가'}">
+<img  class="age" alt="" src="../resources/images/movieSelect/m3.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '청소년 관람불가'}">
+<img  class="age" alt="" src="../resources/images/movieSelect/m4.png"></c:when>
+</c:choose>
+</div>
+
+<div class="pname">
+${mlist.movieInfo_title}
+</div>
+
+</div>
+
+<div class="ptext">
+개봉일 : ${mlist.movieInfo_date}<br>
+상영시간  : ${mlist.movieInfo_time}분<br>
+평점 : ${mlist.movieInfo_star}<br>
+</div>
 </div>
 </div>
 
@@ -47,12 +71,9 @@ ${mlist.movieInfo_star}<br>
 </c:if>
 
 
-
 </c:forEach>
 
-
 </div>
-
 
 <%-- 				<ol class="officeRank rounded-list">
 					
@@ -63,13 +84,45 @@ ${mlist.movieInfo_star}<br>
 
 					</ol>
   --%>
-				<!-- 
-				
-				<div id="a"> </div>
-				<div id="b"> </div> -->
-	
-<!-- <form action="./movieAPI" method="post" id="frm">
-</form> -->
+
+
+<!-- modal -->
+
+<div class="card">
+  <div class="thumb">
+  <img class="pimg" alt="" src="http://file.koreafilm.or.kr/thm/02/00/05/35/tn_DPF019295.jpg">
+  </div>
+  <div class="infos">
+    <h2 class="title">new york city<span class="flag"><img  class="age" alt="" src="../resources/images/movieSelect/m4.png"></span></h2>
+    <h3 class="date">november 2 - 4</h3>
+    <h3 class="seats">seats remaining: 2</h3>
+    <p class="txt">
+      Join us for our Live Infinity Session in
+      beautiful New York City. This is a 3 day
+      intensive workshop where you'll learn
+      how to become a better version of...
+    </p>
+    <h3 class="details">event details</h3>
+  </div>
+</div>
+<div class="card">
+  <div class="thumb">
+  <img class="pimg" alt="" src="http://file.koreafilm.or.kr/thm/02/00/05/35/tn_DPF019295.jpg">
+  </div>
+  <div class="infos">
+    <h2 class="title">new york city<span class="flag"><img  class="age" alt="" src="../resources/images/movieSelect/m4.png"></span></h2>
+    <h3 class="date">november 2 - 4</h3>
+    <h3 class="seats">seats remaining: 2</h3>
+    <p class="txt">
+      Join us for our Live Infinity Session in
+      beautiful New York City. This is a 3 day
+      intensive workshop where you'll learn
+      how to become a better version of...
+    </p>
+    <h3 class="details">event details</h3>
+  </div>
+</div>
+
 
 </section>
 
@@ -77,7 +130,7 @@ ${mlist.movieInfo_star}<br>
 <footer></footer>
 
 <script type="text/javascript">
-//어제 날짜 구하기
+/* //어제 날짜 구하기
 var nowDate = new Date();
 var yesterDate = nowDate.getTime() - (1*24*60*60*1000);
 nowDate.setTime(yesterDate);
@@ -130,10 +183,14 @@ $.ajax({
  */
 		
 			
-	
+/* 	
 		});
 	}
-});
+}); */
+ 
+
+/* modal */
+
 
 
 </script>

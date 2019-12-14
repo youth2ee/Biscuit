@@ -56,6 +56,12 @@
 	width: 46%;
 	height: 400px;
 	margin-left: 53px;
+	 -webkit-animation: slide 20s linear infinite;
+}
+
+@-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -400px 0; }
 }
 
 #cinemaName{
