@@ -55,5 +55,9 @@ public class MovieSelectService {
 		return movieSelectDAO.seatCount(choiceVO);
 	}
 	
-
+	//movieList 페이지
+	public List<MovieInfoVO> movieList() {
+		return movieSelectDAO.movieList();
+	}
+	
 }

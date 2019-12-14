@@ -45,8 +45,6 @@ public class MovieSelectDAO {
 	}
 	
 	//날짜
-
-	
 	public List<TimeInfoVO> movieDateSelect(ChoiceVO choiceVO) {
 		return sqlSession.selectList(NAMESPACE+"movieDateSelect",choiceVO);
 	}
@@ -61,27 +59,8 @@ public class MovieSelectDAO {
 	}
 	
 	
-	
-	//db에 영화관 넣기
-	public int timeInfoInsert(TimeInfoVO timeInfoVO) {
-		return sqlSession.insert(NAMESPACE+"timeInfoInsert", timeInfoVO);
+	//movieList 페이지
+	public List<MovieInfoVO> movieList() {
+		return sqlSession.selectList(NAMESPACE+"movieList");
 	}
-	
-	public int timeInfoInsertA(TimeInfoVO timeInfoVO) {
-		return sqlSession.insert(NAMESPACE+"timeInfoInsertA", timeInfoVO);
-	}
-	
-	public int timeInfoInsertB(TimeInfoVO timeInfoVO) {
-		return sqlSession.insert(NAMESPACE+"timeInfoInsertB", timeInfoVO);
-	}
-	
-	public int timeInfoInsertC(TimeInfoVO timeInfoVO) {
-		return sqlSession.insert(NAMESPACE+"timeInfoInsertC", timeInfoVO);
-	}
-	
-
-	public int seq_plus() {
-		return sqlSession.update(NAMESPACE+"seq_plus");
-	}
-	
 }

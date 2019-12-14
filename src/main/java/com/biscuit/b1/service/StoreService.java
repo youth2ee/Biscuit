@@ -25,6 +25,16 @@ public class StoreService {
 	@Inject
 	private FileSaver fileSaver;
 	
+	/* 카트 삭제 */
+	public int cartDelete(CartVO cartVO) throws Exception {
+		return storeDAO.cartDelete(cartVO);
+	}
+	
+	/* 카트 수정 */
+	public int cartUpdate(CartListVO cartListVO) throws Exception {
+		return storeDAO.cartUpdate(cartListVO);
+	}
+	
 	/* 카트 리스트 */
 	public List<CartListVO> cartList(CartListVO cartListVO) throws Exception {
 		return storeDAO.cartList(cartListVO);

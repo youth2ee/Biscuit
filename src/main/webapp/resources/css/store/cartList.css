@@ -40,22 +40,24 @@ input {
     margin-top: -14px;
 }
 .cart_step_unit li.step1:before {
-    background: transparent url(../../images/store/shopping-cart_gray.png) left top scroll no-repeat;
+    background: transparent url(../../images/store/shopping-cart_gray.png) center center no-repeat;
 }
 .cart_step_unit li.step2:before {
-    background: transparent url(../../images/store/bank-card_gray.png) left top scroll no-repeat;
+    background: transparent url(../../images/store/credit-card_gray.png) center center no-repeat;
+    background-size: 36px;
 }
 .cart_step_unit li.step3:before {
-    background: transparent url(../../images/store/user_gray.png) left top scroll no-repeat;
+    background: transparent url(../../images/store/icon-party_gray.png) center center no-repeat;
+    background-size: 36px;
 }
 .cart_step_unit li.step1.active:before {
-    background: transparent url(../../images/store/shopping-cart_red.png) left top scroll no-repeat;
+    background: transparent url(../../images/store/shopping-cart_red.png) center center no-repeat;
 }
 .cart_step_unit li.step2.active:before {
-    background: transparent url(../../images/store/bank-card_red.png) left top scroll no-repeat;
+    background: transparent url(../../images/store/credit-card_red.png) center center no-repeat;
 }
 .cart_step_unit li.step3.active:before {
-    background: transparent url(../../images/store/user_red.png) left top scroll no-repeat;
+    background: transparent url(../../images/store/icon-party_red.png) center center no-repeat;
 }
 .cart_step_unit li span {
 	display: block;
@@ -253,7 +255,7 @@ input[type="checkbox"].cart_checkbox:checked + label:before {
     color: #000;
 }
 .product_info_onePrice_wrap .product_info_onePrice:after {
-	content: ' 원';
+	content: '원';
     font-size: 14px;
 }
 .cart_list_style li .product_info_amount_wrap {
@@ -330,7 +332,7 @@ input[type="checkbox"].cart_checkbox:checked + label:before {
     text-align: center;
 }
 .cart_list_style li .product_info_price:after {
-	content: ' 원';
+	content: '원';
     font-size: 14px;
 }
 .cart_list_style li .product_info_btn_wrap {
@@ -376,6 +378,18 @@ input[type="checkbox"].cart_checkbox:checked + label:before {
     text-align: center;
     border: 1px solid #bebebe;
 }
+.cart_list_wrap .btn_del_selected span {
+	display: none;
+	color: #9197a3;
+	margin-left: -3px;
+}
+.cart_list_wrap .btn_del_selected span:before {
+	content: '(';
+}
+.cart_list_wrap .btn_del_selected span:after {
+	content: ')';
+}
+
 
 table {
 	width: 100%;
@@ -463,3 +477,4 @@ a.btn_buy {
     background-color: #373e46;
     border: 1px solid #373e46;
 }
+

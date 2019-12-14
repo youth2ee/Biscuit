@@ -97,218 +97,23 @@
     order by B.timeinfo_start asc
   	</select>
   	
-  	
-  	<!-- DATABASE에 값 넣기 -->
-  	<!-- A -->
-  	<insert id="timeInfoInsert" parameterType="TimeInfoVO">
-	insert into timeinfo
-	values (timeinfo_seq.nextval,
-	
-	#{theater_num}, 
-	#{movieInfo_num},
-	
-	to_date('19-12-01', 'yy-mm-dd'),
-	to_date('19-12-01 20:00', 'yy-mm-dd HH24:MI'),
-	to_date((select to_char(to_date('19-12-01 20:00', 'yy-mm-dd hh24:mi') +
-	(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-	
-	= #{movieInfo_num})
-	
-	,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
+  	<select id="movieList" resultType="MovieInfoVO">
+  	select * from movieinfo
+  	</select>
+
+  	<insert id="movieInsert" parameterType="MovieDataVO">
+		insert into movieData values (#{title},#{runtime},#{nation},#{genre},#{ratingGrade},#{prodYear},#{releaseDate},#{poster})  	
   	</insert>
-
-	<!-- A -->
-	<insert id="timeInfoInsertA" parameterType="TimeInfoVO">
-		insert all
-		into timeinfo
-		values (timeinfo_seq.nextval,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 08:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 08:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +1 ,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 11:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 11:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +2,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 14:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 14:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +3,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 17:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 17:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +4,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 20:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 20:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num}
-		),'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		select * from dual
-	</insert>
-  	
-  	
-  	
-  	<!-- B -->
-<insert id="timeInfoInsertB" parameterType="TimeInfoVO">
-		insert all
-		into timeinfo
-		values (timeinfo_seq.nextval,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 09:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 09:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +1 ,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 12:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 12:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +2,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 15:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 15:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +3,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 18:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 18:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +4,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 21:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 21:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num}
-		),'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		select * from dual
-	</insert>  	
-  	
-  	
-  	<!-- C -->
-<insert id="timeInfoInsertC" parameterType="TimeInfoVO">
-		insert all
-		into timeinfo
-		values (timeinfo_seq.nextval,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 10:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 10:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +1 ,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 13:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 13:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +2,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 16:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 16:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +3,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 19:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 19:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num})
-		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		into timeinfo
-		values (timeinfo_seq.nextval +4,
-		#{theater_num}, 
-		#{movieInfo_num},
-		to_date('19-12-01', 'yy-mm-dd'),
-		to_date('19-12-01 22:00', 'yy-mm-dd HH24:MI'),
-		to_date((select to_char(to_date('19-12-01 22:00', 'yy-mm-dd hh24:mi') +
-		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
-		= #{movieInfo_num}
-		),'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'))
-
-		select * from dual
-	</insert>  
-  	
-  	<update id="seq_plus">
-  		alter sequence timeinfo_seq increment by +5
-  	</update>
-  	
-  	
-  	
-  
-  
-  </mapper>
+  	<insert id="movieInfoInsert" parameterType="MovieInfoVO">
+  		insert into movieInfo 
+  		(movieInfo_num,movieInfo_title,movieInfo_genre,movieInfo_nation,movieInfo_year,movieInfo_grade,movieInfo_time,movieInfo_date,movieInfo_star,movieInfo_poster) 
+  		values
+  		(movieInfo_seq.nextval,#{movieInfo_title},#{movieInfo_genre},#{movieInfo_nation},#{movieInfo_year},#{movieInfo_grade},#{movieInfo_time},#{movieInfo_date},0,#{movieInfo_poster})
+  	</insert>
+  	<select id="movieListView" resultType="MovieDataVO">
+  		select * from movieData order by releaseDate desc
+  	</select>
+  	<select id="lastRelease" resultType="String">
+  		select max(releaseDate) from moviedata
+  	</select> 
+ </mapper>

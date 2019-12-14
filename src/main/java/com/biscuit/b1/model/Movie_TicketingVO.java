@@ -29,8 +29,8 @@ public class Movie_TicketingVO {
 		return movieInfo_num;
 	}
 
-	public void setMovieInfo_num(int movieInfo_num) {
-		this.movieInfo_num = movieInfo_num;
+	public void setMovieInfo_num(int i) {
+		this.movieInfo_num = i;
 	}
 
 	public int getCinema_num() {

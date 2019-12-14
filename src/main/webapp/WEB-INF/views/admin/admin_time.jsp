@@ -180,7 +180,6 @@
     	var theater = "";
     	var mname = "";
     	var cnum = "";
-
     console.clear();
     
     /* 1 상영일 불러오기 */
@@ -247,8 +246,6 @@ $(document).ready(function(){
 
 });
     /* 영화검색끝 */
-
-
     $(".tab").css("display", "none");
     
     var moviename = "";
@@ -330,14 +327,12 @@ $(document).ready(function(){
 		    });  */
      
 		
-
      
 	    /* 3 */
 	    $('.placeholder3').on('click', function (ev) {
 	     $('.placeholder3').css('opacity', '0');
 	     $('.list__ul3').toggle();
 	    });
-
 	    $('.list__ul3 a').on('click', function (ev) {
 	      ev.preventDefault();
 	      var index = $(this).parent().index();
@@ -351,8 +346,6 @@ $(document).ready(function(){
 	     /*  $('.list__ul3').find('li').eq(index).prependTo('.list__ul3'); */
 	      $('.list__ul3').toggle();   
 	    });
-
-
 	   $('select').on('change', function (e) {
 	     $('.placeholder3').text(this.value);
 	     $(this).animate({width: $('.placeholder3').width() + 'px' });
@@ -369,7 +362,6 @@ $(document).ready(function(){
 		   
 	  	}); 
 	   
-
 	   
 	 
     </script>
