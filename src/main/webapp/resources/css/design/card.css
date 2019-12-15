@@ -60,8 +60,9 @@ a[href]:hover::after {
 }
 
 .card {
+	display: none;
  /*  position: absolute; */
-  left: 50%;
+  /* left: 50%; */
   top: 50%;
  /*  width: 350px; */
  width: 252px;
@@ -72,34 +73,59 @@ a[href]:hover::after {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   float: left;
+  margin-bottom: 30px;
+  margin-left: 14px;
+  margin-right: 10px; 
+  z-index: 1;
+  position: relative;
+  
 }
 .card .thumb {
   width: auto;
-  height: 260px;
-  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/new-york-city.png") no-repeat center;
+  width:241px;
+  height: 343px;
+  background: no-repeat center;
   background-size: cover;
   border-radius: 3px;
+  margin: 0 auto;
+  position: relative;
+  top: -125px;
+  z-index: 2;
 }
 .card .infos {
  /*  position: relative; */
   width: auto;
-  height: 450px;
+  height: 370px;
   padding: 14px 24px;
   /*  padding: 95px 24px; */
-  background: #fff;
+  background: rgba(241,241,241,0.96);
   transition: 0.4s 0.15s cubic-bezier(0.17, 0.67, 0.5, 1.03);
-  margin-top: 83px;
+/*   margin-top: 83px; */
   overflow: hidden;
+/*   background-image: linear-gradient(to top, rgba(40,44,52,1), rgba(241,241,241,1)); */
+  border-radius: 3px;
+  position: relative;
+  z-index: 5;
+  top: -129px;
+
 }
 .card .infos .title {
  /*  position: relative; */
-  margin: 10px 0;
+  margin: 5px 0;
   letter-spacing: 3px;
   color: #152536;
   font-family: "Grotesque Black", sans-serif;
   font-size: 1rem;
   text-transform: uppercase;
   text-shadow: 0 0 0px #32577f;
+  text-align: left;
+  width: 165px;
+  	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	    z-index: 20;
+  position: relative;
+  
 }
 .card .infos .flag {
  /*  position: absolute; */
@@ -112,36 +138,43 @@ a[href]:hover::after {
  /*  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/flag.png") no-repeat top right; */
   background-size: 100% auto;
   display: inline-block;
+  margin-top: 18px;
+  overflow: hidden;
 }
 .card .infos .date, .card .infos .seats {
-  margin-bottom: 10px;
-  text-transform: uppercase;
+  /* margin-bottom: 10px; */
+  margin-bottom: 3px;
+ /*  text-transform: uppercase; */
   font-size: .85rem;
   color: rgba(21, 37, 54, 0.7);
   font-family: "Grotesque", sans-serif;
+  clear: both;
 }
 .card .infos .seats {
+	width:100%;
   display: inline-block;
-  margin-bottom: 24px;
-  padding-bottom: 24px;
+  margin-bottom: 18px;
+  padding-bottom: 18px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   opacity: 0;
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
 }
 .card .infos .txt {
   font-family: "Merriweather", sans-serif;
-  line-height: 2;
+  line-height: 1.5;
   font-size: .95rem;
   color: rgba(21, 37, 54, 0.7);
   opacity: 0;
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
+  height: 110px;
 }
 .card .infos .details {
 /*   position: absolute; */
   left: 0;
   bottom: 0;
-  margin: 10px 0;
-  padding: 20px 24px;
+  margin: 5px 0;
+  padding: 5px 0;
+  padding-left:5px;
   letter-spacing: 1px;
   color: #4e958b;
   font-family: "Grotesque Black", sans-serif;
@@ -154,7 +187,15 @@ a[href]:hover::after {
 .card:hover .infos {
   -webkit-transform: translateY(-260px);
           transform: translateY(-260px);
+  position: relative;
+  z-index: 10;
 }
 .card:hover .infos .seats, .card:hover .infos .txt, .card:hover .infos .details {
   opacity: 1;
+}
+
+.tact{
+	  -webkit-transform: translateY(-260px);
+          transform: translateY(-260px);
+          display: inline-block;
 }

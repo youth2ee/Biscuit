@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.ChoiceVO;
@@ -42,10 +43,6 @@ public class MovieController {
 	private MovieSelectService movieSelectService;
 	@Inject
 	private MovieService movieService;
-
-	/*
-	 * @Value("${movie.key}") private String key;
-	 */
 
 	@Inject
 	private Environment env;
@@ -193,22 +190,13 @@ public class MovieController {
 	}
 
 	
-	@PostMapping("movieAPI")
-	public ModelAndView movieAPI(TopTenVO topTenVO) {
-		System.out.println("성공");
-		System.out.println(topTenVO.getMovie_count1());
-		System.out.println(topTenVO.getMovieInfo_name1());
-		
-		String [] moviename = topTenVO.getMovieInfo_name1().split(",");
-		String [] moviecount = topTenVO.getMovie_count1().split(",");
+	@GetMapping("movieapi")
+	@ResponseBody
+	public String movieapi(String rank1) {
+		System.out.println(rank1);
 		
 		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("moviename", moviename);
-		mv.addObject("moviecount", moviecount);
-		mv.setViewName("movie/movieList");
-		
-		return mv;
+		return rank1;
 	}
 	
 	

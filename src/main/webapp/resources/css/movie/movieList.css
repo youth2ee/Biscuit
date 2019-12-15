@@ -15,6 +15,7 @@ body{
 }
 
 .posterOne{
+	display: none;
 	float: left;
 	width: 18%;
 /* 	background-color: olive; */
@@ -25,6 +26,7 @@ body{
 	margin: 0 auto;
  	margin-left: 14px;
 	margin-right: 10px; 
+	margin-bottom:15px;
 	
 	border-radius: 3px;
 	-webkit-transition: 200ms ease-in-out;
@@ -90,9 +92,14 @@ body{
 .posterDiv{
 	clear: both;
 	height: 20px;
+	display: none;
 }
 
 
 .age{
 	border-radius: 10px;
+}
+
+section{
+	margin-bottom: 30px;
 }
