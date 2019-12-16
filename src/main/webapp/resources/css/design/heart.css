@@ -38,13 +38,13 @@
 }
 
 
-.container {
+/* .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
+} */
 
 .control-group {
   margin: 3px;

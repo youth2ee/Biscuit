@@ -16,7 +16,7 @@ ${time.timeInfo_start}</td>
 <c:forEach items="${seatList}" var="seat" varStatus="status">
 <c:if test="${time.timeInfo_start eq seat.timeInfo_start}">
 <%-- <div>${seat.seatCount} / 195</div> --%>
-<td>${seat.seatCount} / 195</td>
+<td class="mtime2 test">${seat.seatCount} / 195</td>
 </c:if>
 </c:forEach>
 

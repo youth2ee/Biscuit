@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* 
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -7,6 +8,10 @@
   content: " ";
   clear: both;
   height: 0;
+} */
+
+html{
+
 }
 
 body {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page trimDirectiveWhitespaces="true" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -117,11 +118,12 @@
 
 
 <c:if test="${(status.index+1)%5 == 0}">
-<div class="posterDiv"></div>
+<div class="posterDiv" style="height: 0px;"></div>
 </c:if>
 
 
 </c:forEach>
+
 <c:forEach items="${movieList}" var="mlist">
 <div class="newmodal"> 
 <div class="mask" role="dialog" id="${mlist.movieInfo_num}modal"></div>
@@ -199,20 +201,12 @@
 
 </div>
 </c:forEach>
+
+
  <button class="btn more-trigger">더보기</button>
 </div>
 
 
-<input type="hidden" id="r0">
-<input type="hidden" id="r1">
-<input type="hidden" id="r2">
-<input type="hidden" id="r3">
-<input type="hidden" id="r4">
-<input type="hidden" id="r5">
-<input type="hidden" id="r6">
-<input type="hidden" id="r7">
-<input type="hidden" id="r8">
-<input type="hidden" id="r9">
 
 
 </section>
@@ -228,11 +222,10 @@ var x = $('html').offset();
 $(function(){
 	$("html, body").animate({ scrollTop: 0 }, "slow"); 
 });
+
 /* 위치 초기화 끝 */
 
 var mnum = ""; //영화번호
-/* var mstar = ""; //내가 입력한 평점
-var ostar = ""; //db에 입력된 평점 */
 
 
  //어제 날짜 구하기
@@ -252,7 +245,7 @@ yesterDate = yesterDate.trim();
 //alert(yesterDate);
 ////////////////////////////////////////////////////////////////
 
-$.ajax({
+/* $.ajax({
 	type: "GET",
 	url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
 	async: false,
@@ -270,9 +263,9 @@ $.ajax({
 			},
 			success: function(data) {
 				/* alert("성공"); */
-			}
+			//}
 			
-		});
+		//});
 		
 /* 		$('#r0').attr('title');
 		$('#r0').attr('name');
@@ -303,9 +296,9 @@ $.ajax({
 		}
 		 */
 		
-
+/* 
 	}
-}); 
+});  */
  
 
 
@@ -314,10 +307,10 @@ $.ajax({
 
 /* read more */
 
-$(document).ready(function() {
+ $(document).ready(function() {
   $('body').showMoreItems();
 });
- 
+
  
 (function($) {
   $.fn.showMoreItems = function(options) {
@@ -363,9 +356,9 @@ $(document).ready(function() {
 })(jQuery);
 
 
+
 /* info */
  $('.card').on('mouseover',function() {
-	
 	var ostar = $(this).find('.realstar').val();
 	var mnum = $(this).find('.movienum').val();
 	console.log(ostar);
@@ -387,38 +380,7 @@ $(document).ready(function() {
 		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star1').attr('checked','checked');
 	}
-	
 }); 
-
- /* $('.card').on('mouseleave',function() {
-		
-		ostar = $(this).find('.realstar').val();
-		mnum = $(this).find('.movienum').val();
-		console.log(ostar);
-		console.log(mnum);
-
-		if (ostar > 8 && ostar <= 10) {
-			console.log("ostar"+ostar);
-			$(this).find('#'+mnum+'star5').attr('checked','checked');
-		}else if (ostar > 6 && ostar <= 8) {
-			console.log("ostar"+ostar);
-			$(this).find('#'+mnum+'star4').attr('checked','checked');
-		}else if (ostar > 4 && ostar <= 6) {
-			console.log("ostar"+ostar);
-			$(this).find('#'+mnum+'star3').attr('checked','checked');
-		}else if (ostar > 2 && ostar <= 4) {
-			console.log("ostar"+ostar);
-			$(this).find('#'+mnum+'star2').attr('checked','checked');
-		}else if (ostar > 0 && ostar <= 2) {
-			console.log("ostar"+ostar);
-			$(this).find('#'+mnum+'star1').attr('checked','checked');
-		}
-		
-	}); 
- */
-
-
-
 
 
 /* 별점 */
@@ -434,7 +396,6 @@ $('.starlab').click(function() {
 });
  
  
-
 //하트
 $('.checkboxes-container').click(function() {
 	console.log($(this).find('.heart').attr("checked"));
@@ -460,8 +421,6 @@ $('.checkboxes-container').click(function() {
 }, 500); */
 
 // Click event function to open modal (active)
-
-
 $(".myBtn").on("click", function(event){
 	var t = $(this).attr('title');
 	$('#'+t+'modal').addClass('active');
@@ -469,7 +428,6 @@ $(".myBtn").on("click", function(event){
 
 $(".elegant-modal").on("mouseenter", function(event){
    $(".card").off("hover");
-   
 });
 
 
@@ -501,10 +459,6 @@ $(".elegant-modal").on("mouseenter", function(event){
 $('.elegant-modal').mouseenter(function(event) {
 	event.preventDefault();
 });
-
-
-
-
 
 
 </script>

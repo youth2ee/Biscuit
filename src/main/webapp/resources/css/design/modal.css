@@ -2,7 +2,7 @@
 
 
 /* Modal */
-.btn-modal {
+/* .btn-modal {
   padding: 13px 30px;
   background: white;
   color: #0B1847;
@@ -11,15 +11,16 @@
   cursor: pointer;
   font-size: 0.7em;
   display: block;
+  display:inline-block;
   text-transform: uppercase;
   transition: all 0.2s;
   text-align: center;
   width: 200px;
-/*   position: relative;
-  top: 150px; */
+  position: relative;
+  top: 150px;
   text-align: center;
   margin: 0 auto;
-}
+} */
 
 .content-button-close {
   padding: 13px 30px;
@@ -35,7 +36,6 @@
   text-align: center;
   width: 200px;
   margin: 60px auto 0 auto;
-  
 }
 
 .btn-modal:hover,
@@ -70,7 +70,7 @@
   background: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   /* visibility: hidden; */
-  display:none;
+  display: none;
   opacity: 0;
   transition: 0.7s;
 }
@@ -84,9 +84,9 @@
   min-height:450px;
   margin-left: -300px;
   margin-top: -240px;
-  z-index: 10000;
+  z-index: 1000;
   /* visibility: hidden; */
-  display:none; 
+  display: none; 
   opacity: 0;
   transition: 0.5s ease-out;
   transform: translateY(45px);
@@ -109,7 +109,7 @@
 
 .active + .elegant-modal {
   /* visibility: visible; */
-  display:inline;
+  display:inline-block;
   opacity: 1;
   /* transform: translateY(0); */
   position: fixed;
