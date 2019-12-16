@@ -10,8 +10,19 @@ public class MovieInfoVO {
 	private String movieInfo_grade;
 	private int movieInfo_time;
 	private String movieInfo_date;
-	private int movieInfo_star;
+	private String movieInfo_star;
 	private String movieInfo_poster;
+	private String movieInfo_plot;
+	
+	
+	
+	public String getMovieInfo_plot() {
+		return movieInfo_plot;
+	}
+
+	public void setMovieInfo_plot(String movieInfo_plot) {
+		this.movieInfo_plot = movieInfo_plot;
+	}
 
 	public String getMovieInfo_poster() {
 		return movieInfo_poster;
@@ -85,12 +96,14 @@ public class MovieInfoVO {
 		this.movieInfo_date = movieInfo_date;
 	}
 
-	public int getMovieInfo_star() {
+	public String getMovieInfo_star() {
 		return movieInfo_star;
 	}
 
-	public void setMovieInfo_star(int movieInfo_star) {
+	public void setMovieInfo_star(String movieInfo_star) {
 		this.movieInfo_star = movieInfo_star;
 	}
+
+
 
 }

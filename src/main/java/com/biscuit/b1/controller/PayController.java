@@ -2,6 +2,7 @@ package com.biscuit.b1.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +24,7 @@ public class PayController {
 	@GetMapping(value = "kakaoPay")
 	public void kakaoPayGet(HttpServletRequest request) throws Exception {
 		total_amount = request.getParameter("price");
-		System.out.println(total_amount);
 		quantity = request.getParameter("count");
-		System.out.println(quantity);
 	}
 
 	@PostMapping(value = "kakaoPay")
@@ -34,11 +33,17 @@ public class PayController {
 	}
 
 	@GetMapping("/kakaoPaySuccess")
-	public ModelAndView kakaoPaySuccess(HttpServletRequest request) throws Exception {
+	public ModelAndView kakaoPaySuccess(HttpServletRequest request,HttpSession session) throws Exception {
+		String bookCode = (String) session.getAttribute("allBookCode");
 		String pg_token = request.getParameter("pg_token");
+		String adultCount = (String) session.getAttribute("adultCount");
+		String kidCount = (String) session.getAttribute("kidCount");
 		PayInfoVO payInfoVO = new PayInfoVO();
 		ModelAndView mv = new ModelAndView();
 		payInfoVO = payService.KakaoPayApprove(pg_token);
+		mv.addObject("bookCode",bookCode);
+		mv.addObject("adultCount",adultCount);
+		mv.addObject("kidCount", kidCount);
 		mv.addObject("pay", payInfoVO);
 		return mv;
 	}
