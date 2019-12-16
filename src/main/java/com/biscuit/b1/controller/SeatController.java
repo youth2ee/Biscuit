@@ -1,6 +1,7 @@
 package com.biscuit.b1.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.MovieDataVO;
-import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.Movie_TicketingVO;
 import com.biscuit.b1.model.SeatVO;
 import com.biscuit.b1.service.SeatService;
@@ -26,13 +26,14 @@ import com.biscuit.b1.service.SeatService;
 public class SeatController {
 	@Inject
 	private SeatService seatService;
+
 	@RequestMapping(value = "seatSelect")
-	public ModelAndView seatSelect(ChoiceVO choiceVO,HttpServletRequest request) throws Exception {
-		
+	public ModelAndView seatSelect(ChoiceVO choiceVO, HttpServletRequest request) throws Exception {
+
 		ModelAndView mv = new ModelAndView();
 		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO);
 		MovieDataVO movieDataVO = seatService.getPoster(choiceVO);
-		mv.addObject("poster",movieDataVO.getPoster());
+		mv.addObject("poster", movieDataVO.getPoster());
 		mv.addObject("seats", seatVOs);
 		mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
 		mv.addObject("cinema_num", choiceVO.getCinema_num());
@@ -48,10 +49,12 @@ public class SeatController {
 	}
 
 	@PostMapping(value = "seatSelect")
-	public ModelAndView seatSelect(HttpServletRequest request, SeatVO seatVO, ChoiceVO choiceVO,
-			Movie_TicketingVO movie_TicketingVO) throws Exception {
+	public ModelAndView seatSelect(HttpServletRequest request, HttpSession session, SeatVO seatVO, ChoiceVO choiceVO,
+			Movie_TicketingVO movie_TicketingVO,String kidCount,String adultCount) throws Exception {
 		int result1 = 0;
 		int result2 = 0;
+		String allBookCode = null;
+		ArrayList<String> ar = new ArrayList<String>();
 		String[] seat_names = seatVO.getSeat_name().split(",");
 		String timeInfo_start = choiceVO.getTimeInfo_start();
 		ModelAndView mv = new ModelAndView();
@@ -68,15 +71,19 @@ public class SeatController {
 			SimpleDateFormat today = new SimpleDateFormat("MMdd");
 			Date now = new Date();
 			String str1 = String.format("%04d%n", seatVO.getCinema_num()).replace("\r\n", "");
-			String str2 = String.format("%04d%n",seatVO.getMovieInfo_num()).replace("\r\n", "");
+			String str2 = String.format("%04d%n", seatVO.getMovieInfo_num()).replace("\r\n", "");
 			String[] str3s = seatVO.getTimeInfo_start().split(":");// 상영 시간
 			String str3 = str3s[0] + str3s[1];
 			String str4 = today.format(now);
-			String str5 = String.format("%-4s", seat_names[i]).replace(" ", "0").replace("\r\n", "");
-			
-			String bookCode = str1 + "-" + str2 + "-" + str3 + "-" + str4+"-"+str5;
-			System.out.println("예매번호 : " + bookCode);
+			String str5 = null;
+			if( seat_names[i].contains("10")) // F10 이어도 F100, F1이어도 F100이기 때문에 중복값 방지 
+				str5 = String.format("%-4s", seat_names[i]).replace(" ", "1").replace("\r\n", "");
+			else 
+				str5 = String.format("%-4s", seat_names[i]).replace(" ", "0").replace("\r\n", "");
 
+			String bookCode = str1 + "-" + str2 + "-" + str3 + "-" + str4 + "-" + str5;
+			ar.add(bookCode);
+			System.out.println("예매번호 : " + bookCode);
 			movie_TicketingVO.setMovie_t_num(bookCode);
 			movie_TicketingVO.setId("admin"); // 임시
 			movie_TicketingVO.setMovieInfo_num(seatVO.getMovieInfo_num());
@@ -86,10 +93,22 @@ public class SeatController {
 			result2 = seatService.insertTicket(movie_TicketingVO); // 예매정보 테이블에 입력
 
 		}
+		for (int i = 0; i < ar.size(); i++) {
+			if (i == 0)
+				allBookCode = ar.get(i);
+			else
+				allBookCode = allBookCode + "," + ar.get(i);
+		}
+		session.setAttribute("allBookCode", allBookCode); // 파라미터로 보내면 여러군데 거쳐가야하므로 그냥 세션에 넣었음
+		session.setAttribute("adultCount", adultCount);
+		System.out.println("성인 수 : " + adultCount);
+		session.setAttribute("kidCount", kidCount);
+		System.out.println("학생 수 : " + kidCount);
 		String msg = "예매 실패";
 		if (result1 + result2 > 1) {
 			msg = "예매 성공";
-			return new ModelAndView(new RedirectView("../pay/kakaoPay?price="+request.getParameter("price")+"&count="+request.getParameter("count")));
+			return new ModelAndView(new RedirectView("../pay/kakaoPay?price=" + request.getParameter("price")
+					+ "&count=" + request.getParameter("count")));
 		}
 		mv.addObject("msg", msg);
 		mv.addObject("path", "../");

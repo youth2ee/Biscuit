@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +13,7 @@
 
 </head>
 <body>
+
 	<!-- Header -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
 		align="center" class="fullTable" bgcolor="#e1e1e1">
@@ -123,54 +121,60 @@
 									<table width="480" border="0" cellpadding="0" cellspacing="0"
 										align="center" class="fullPadding">
 										<tbody>
-										<tr>
-												<td height="1" colspan="4"
-													style="border-bottom: 1px solid #e4e4e4"></td>
+											<tr>
+												<th
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 10px 7px 0;"
+													width="52%" align="left">Item</th>
+												<th
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
+													align="left"><small>SKU</small></th>
+												<th
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
+													align="center">Quantity</th>
+												<th
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
+													align="right">Subtotal</th>
 											</tr>
-										<fmt:parseNumber value="${kidCount}" type="number" var="kid"/>
-										<fmt:parseNumber value="${adultCount}" type="number" var="adult"/>
-										<fmt:parseNumber value="${adultCount + kidCount}" type="number" var="people"/>
-										<c:set var="bc" value="${fn:split(bookCode,',')}" />
-										<c:set var="total" value="${people}"/>
-										<c:forEach begin="0" end="${adult-1}" var = "i">
-												<tr>
-													<td
-														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 10px 0;"
-														class="article">${bc[i]}</td>
-													<td
-														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 10px 0;"><small>CGV성인</small></td>
-													<td
-														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 10px 0;"
-														align="center">1</td>
-													<td
-														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 10px 0;"
-														align="right">₩10000</td>
-												</tr>
-											</c:forEach>
+											<tr>
+												<td height="1" style="background: #bebebe;" colspan="4"></td>
+											</tr>
+											<tr>
+												<td height="10" colspan="4"></td>
+											</tr>
+											<tr>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 10px 0;"
+													class="article">Beats Studio Over-Ear Headphones</td>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 10px 0;"><small>MH792AM/A</small></td>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 10px 0;"
+													align="center">1</td>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 10px 0;"
+													align="right">$299.95</td>
+											</tr>
 											<tr>
 												<td height="1" colspan="4"
 													style="border-bottom: 1px solid #e4e4e4"></td>
 											</tr>
-											<c:forEach begin="${adult}" end="${people-1}" var="i">
-												<tr>
-													<td
-														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 10px 0;"
-														class="article">${bc[i]}</td>
-													<td
-														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 10px 0;"><small>CGV청소년</small></td>
-													<td
-														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 10px 0;"
-														align="center">1</td>
-													<td
-														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 10px 0;"
-														align="right">₩8000</td>
-												</tr>
-											</c:forEach>
-													<tr>
+											<tr>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000; line-height: 18px; vertical-align: top; padding: 10px 0;"
+													class="article">Beats RemoteTalk Cable</td>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 10px 0;"><small>MHDV2G/A</small></td>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 18px; vertical-align: top; padding: 10px 0;"
+													align="center">1</td>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 10px 0;"
+													align="right">$29.95</td>
+											</tr>
+											<tr>
 												<td height="1" colspan="4"
 													style="border-bottom: 1px solid #e4e4e4"></td>
 											</tr>
-										
 										</tbody>
 									</table>
 								</td>
@@ -202,12 +206,36 @@
 										<tbody>
 											<tr>
 												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align: right;">
+													Subtotal</td>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align: right; white-space: nowrap;"
+													width="80">$329.90</td>
+											</tr>
+											<tr>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align: right;">
+													Shipping &amp; Handling</td>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align: right;">
+													$15.00</td>
+											</tr>
+											<tr>
+												<td
 													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align: right;">
-													<strong>결제 금액</strong>
+													<strong>Grand Total (Incl.Tax)</strong>
 												</td>
 												<td
 													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align: right;">
-													<strong>₩${pay.amount.total}</strong>
+													<strong>$344.90</strong>
+												</td>
+											</tr>
+											<tr>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #b0b0b0; line-height: 22px; vertical-align: top; text-align: right;"><small>TAX</small></td>
+												<td
+													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #b0b0b0; line-height: 22px; vertical-align: top; text-align: right;">
+													<small>$72.40</small>
 												</td>
 											</tr>
 										</tbody>
@@ -288,7 +316,7 @@
 															<tr>
 																<td
 																	style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top;">
-																	${pay.payment_method_type}<br> Credit Card Type:${pay.card_info.issuer_corp} <br>
+																	${pay.payment_method_type}<br> Credit Card Type:${pay.issuer_corp} <br>
 																</td>
 															</tr>
 														</tbody>
@@ -415,10 +443,9 @@
 	</table>
 	
 	<script type="text/javascript">
-		var bookCode = "${bookCode}".split(',');
-		for ( var i in bookCode ) {
-	       console.log(bookCode[i]);
-	      }
+		var bookCode = ${bookCode};
+		var bookCodeAr = bookCode.split('|');
+		console.log("1:"+bookCodeAr.size());
 	</script>
 </body>
 </html>

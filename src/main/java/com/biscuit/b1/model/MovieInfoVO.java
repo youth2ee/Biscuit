@@ -12,13 +12,10 @@ public class MovieInfoVO {
 	private String movieInfo_date;
 	private String movieInfo_star;
 	private String movieInfo_poster;
-	
 	private String movieInfo_plot;
 	
 	
 	
-
-
 	public String getMovieInfo_plot() {
 		return movieInfo_plot;
 	}
