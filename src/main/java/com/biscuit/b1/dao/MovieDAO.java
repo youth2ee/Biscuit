@@ -31,4 +31,8 @@ public class MovieDAO {
 	public int movieInfoInsert(MovieInfoVO movieInfoVO) {
 		return sqlSession.insert(NAMESPACE + "movieInfoInsert", movieInfoVO);
 	}
+	
+	public int insertPlot (MovieInfoVO movieInfoVO) {
+		return sqlSession.update(NAMESPACE+"insertPlot",movieInfoVO);
+	}
 }

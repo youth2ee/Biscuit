@@ -1,18 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page trimDirectiveWhitespaces="true" %>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
     <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>Insert title here</title>
+
 <c:import url="../layout/jquery.jsp" />
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movie/movieList.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/card.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/read_more.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/rating.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/ribbon.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/heart.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/modal.css" rel="stylesheet">
 
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
+<!-- <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:100'> -->
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 </head>
 <body>
 
@@ -23,61 +35,200 @@
 
 <!-- section -->
 <section>
-<!-- api -->
-<!-- <img alt="" src="http://file.koreafilm.or.kr/thm/02/00/05/35/tn_DPF019295.jpg"> -->
-<div id="poster">
 
 
+<!-- top ten -->
+ <div id="poster">
 <c:forEach items="${movieList}" var="mlist" varStatus="status">
+<div class="card">
 
-<div class="posterOne">
-<img alt="" src="${mlist.movieInfo_poster}"><br>
-<div style="padding-top: 10px;">
-${mlist.movieInfo_grade}<br>
-${mlist.movieInfo_title}<br>
-${mlist.movieInfo_time}<br>
-${mlist.movieInfo_date}<br>
-${mlist.movieInfo_star}<br>
+
+<div class="ribbon-2">
+  <div class='checkboxes-container'>
+    <div class='control-group'>
+      <input class='red-heart-checkbox heart' id='red-check${mlist.movieInfo_num}' type='checkbox'>
+      <label for='red-check${mlist.movieInfo_num} heartl'></label>
+    </div>
+
+  </div>
 </div>
+
+<div class="thumb" style="background-image: url('${mlist.movieInfo_poster}');">
+<%-- <img class="pimg" alt="" src="${mlist.movieInfo_poster}"> --%>
 </div>
+
+<div class="infos">
+<div>
+
+<div style="float: left; height: 30px; margin-bottom: 4px;">
+<span class="flag">
+ <c:choose>
+<c:when test="${mlist.movieInfo_grade eq '전체 관람가'}">
+<img class="age" alt="" src="../resources/images/movieSelect/m1.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '12세 관람가'}">
+<img  class="age" alt="" src="../resources/images/movieSelect/m2.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '15세 관람가'}">
+<img  class="age" alt="" src="../resources/images/movieSelect/m3.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '청소년 관람불가'}">
+<img  class="age" alt="" src="../resources/images/movieSelect/m4.png"></c:when>
+</c:choose>
+ </span>
+</div>
+ 
+<div  style="float: left;">
+<h2 class="title">${mlist.movieInfo_title}</h2>
+</div>
+ 
+</div> 
+
+<h3 class="date">개봉일 : ${mlist.movieInfo_date}</h3> 
+<h3 class="date">평점 : ${mlist.movieInfo_star}</h3> 
+<h3 class="seats">상영시간  : ${mlist.movieInfo_time}분</h3>
+
+<p class="txt">
+<!-- Join us for our Live Infinity Session in beautiful New York City.  -->
+</p>
+
+
+<!-- 별점 테스트  -->
+<div class="star-rating rating${status.index}">
+  <fieldset>
+  <input type="hidden" class="realstar" value="${mlist.movieInfo_star}">
+  <input type="hidden" class="movienum" value="${mlist.movieInfo_num}">
+    <input type="radio" checked="checked" id="${mlist.movieInfo_num}star5" class="star star5" name="rating${mlist.movieInfo_num}" value="5" /><label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="Outstanding"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating${mlist.movieInfo_num}" value="4" /><label for="${mlist.movieInfo_num}star4" class="starlab starl4" title="Very Good"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star3" class="star star3" name="rating${mlist.movieInfo_num}" value="3" /><label for="${mlist.movieInfo_num}star3" class="starlab starl3" title="Good"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star2" class="star star2" name="rating${mlist.movieInfo_num}" value="2" /><label for="${mlist.movieInfo_num}star2" class="starlab starl2" title="Poor"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star1" class="star star1" name="rating${mlist.movieInfo_num}" value="1" /><label for="${mlist.movieInfo_num}star1" class="starlab starl1" title="Very Poor"></label>
+  </fieldset>
+</div>
+<!-- 별점 테스트 끝 -->
+
+
+<!-- modal 띄울가 말까 -->
+<h3 class="details myBtn" title="${mlist.movieInfo_num}">comment</h3>
+
+
+
+</div><!-- infos -->
+
+
+
+</div><!-- card -->
 
 
 <c:if test="${(status.index+1)%5 == 0}">
-<div class="posterDiv"></div>
+<div class="posterDiv" style="height: 0px;"></div>
 </c:if>
-
 
 
 </c:forEach>
 
+<c:forEach items="${movieList}" var="mlist">
+<div class="newmodal"> 
+<div class="mask" role="dialog" id="${mlist.movieInfo_num}modal"></div>
+	
+<div class="elegant-modal" role="alert">
+	<button class="close" role="button">X</button>
+	
+	
+	<table style="margin: 0 auto;"> 
+	<tr class="trm" style="width: 390px;">
+	
+	<td class="tdm1" style="text-align: right;">
+	<h1 class="title-modal">${mlist.movieInfo_title}</h1></td>
+	
+	<td class="tdm2" style="text-align: left; padding-top: 20px;"> 
+<c:choose>
+<c:when test="${mlist.movieInfo_grade eq '전체 관람가'}">
+<img style="border-radius: 10px;" alt="" src="../resources/images/movieSelect/m1.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '12세 관람가'}">
+<img style="border-radius: 10px;"  alt="" src="../resources/images/movieSelect/m2.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '15세 관람가'}">
+<img style="border-radius: 10px;"  alt="" src="../resources/images/movieSelect/m3.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '청소년 관람불가'}">
+<img style="border-radius: 10px;"  alt="" src="../resources/images/movieSelect/m4.png"></c:when>
+</c:choose>
+</td>
+	</tr>
+	</table>
+	
+	<hr class="line-modal">
+	
+	<div>
+	<div class="paragraph-modal" style="float: left;"> 
+	
+	<table class="tmodal paragraph-modal" style="position: relative; left: 256px; top:20px; text-align: left; margin-bottom: 20px;"> 
+	<tr>
+	<td style="width: 80px">장르</td>
+	<td>${mlist.movieInfo_genre}</td>
+	</tr>
+	
+	<tr>
+	<td style="width: 80px">개봉일</td>
+	<td>${mlist.movieInfo_date}</td>
+	</tr>
+	
+	<tr>
+	<td style="width: 80px">상영시간</td>
+	<td>${mlist.movieInfo_time}</td>
+	</tr>
+	
+	<tr>
+	<td style="width: 80px">제작국가</td>
+	<td>${mlist.movieInfo_nation}</td>
+	</tr>
+	
+	<tr>
+	<td style="width: 80px">제작년도</td>
+	<td>${mlist.movieInfo_year}</td>	
+	</tr>
+	
+	</table>
+	
+	<p class="paragraph-modal">${mlist.movieInfo_plot}</p> 
+	
+	</div>
 
+	<div style="float: left;"> 
+	<img class="pm" alt="" src="${mlist.movieInfo_poster}"> 
+	</div> 
+	
+	</div>
+	<!-- <button class="content-button-close">CLOSE</button> -->
+	
+</div> 
+
+</div>
+</c:forEach>
+
+
+ <button class="btn more-trigger">더보기</button>
 </div>
 
 
-<%-- 				<ol class="officeRank rounded-list">
-					
-					<c:forEach begin="0" end="9" var="i">
-						<li class="active" id="Rank_${i}">
-						</li>
-					</c:forEach>
 
-					</ol>
-  --%>
-				<!-- 
-				
-				<div id="a"> </div>
-				<div id="b"> </div> -->
-	
-<!-- <form action="./movieAPI" method="post" id="frm">
-</form> -->
 
 </section>
 
 <!-- footer -->
 <footer></footer>
 
+
 <script type="text/javascript">
-//어제 날짜 구하기
+/* 위치 초기화 */
+var x = $('html').offset();
+
+$(function(){
+	$("html, body").animate({ scrollTop: 0 }, "slow"); 
+});
+
+/* 위치 초기화 끝 */
+
+var mnum = ""; //영화번호
+
+
+ //어제 날짜 구하기
 var nowDate = new Date();
 var yesterDate = nowDate.getTime() - (1*24*60*60*1000);
 nowDate.setTime(yesterDate);
@@ -94,7 +245,7 @@ yesterDate = yesterDate.trim();
 //alert(yesterDate);
 ////////////////////////////////////////////////////////////////
 
-$.ajax({
+/* $.ajax({
 	type: "GET",
 	url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
 	async: false,
@@ -103,36 +254,210 @@ $.ajax({
 		targetDt: yesterDate
 	},
 	success: function(data) {
-		$.each(data.boxOfficeResult.dailyBoxOfficeList, function(m) {
-			/* //$('#Rank_'+i+' a').
-			append("<span class=\"office_cell\">"+
-					m.rank+"</span><span class=\"office_cell\">"+
-					m.rankOldAndNew+"</span><span class=\"office_cell\">"+
-					m.rankInten+"</span><span class=\"office_cell\">"+
-					m.movieNm+"</span>"); */
-		/* 	$('#a').append(m.movieNm);
-			$('#b').append(m.audiAcc); */
-			
-	 		
-			
-	/* 		$('#a').append('<div id="rank'+i+'">'+m.movieNm+'</div>');
-			$('#b').append('<div id="count'+i+'">'+m.audiAcc+'</div>'); */
-			
-	/* 		for (var i = 1; i < 11; i++) {
-			$("#frm").append('<input type="text" name="movieInfo_name'+i+'" value="'+m.movieNm+'">');
-			$("#frm").append('<input type="text" name="movie_count'+i+'" value="'+m.audiAcc+'">');
-			
-			if(i == 10){
-				$("#frm").submit();
-			}
-			
-			}
- */
 		
+		$.ajax({
+			type: "GET",
+			url: "./movieapi",
+			data: {
+				rank1:data.boxOfficeResult.dailyBoxOfficeList[0].rank
+			},
+			success: function(data) {
+				/* alert("성공"); */
+			//}
 			
+		//});
+		
+/* 		$('#r0').attr('title');
+		$('#r0').attr('name');
+		$('#r0').val();
 	
-		});
+		alert($('#r0').attr('title'));
+		alert($('#r0').attr('name'));
+		alert($('#r0').val());
+		
+		alert(data.boxOfficeResult.dailyBoxOfficeList[0].rank);
+		alert(data.boxOfficeResult.dailyBoxOfficeList[0].movieNm);
+		alert(data.boxOfficeResult.dailyBoxOfficeList[0].audiAcc); */
+		
+		
+		//for (var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
+/* 			alert(data.boxOfficeResult.dailyBoxOfficeList[i].rank);
+			alert(data.boxOfficeResult.dailyBoxOfficeList[i].movieNm);
+			alert(data.boxOfficeResult.dailyBoxOfficeList[i].audiAcc); */
+/* 			
+			$('#r'+i).attr('title',data.boxOfficeResult.dailyBoxOfficeList[i].rank);
+			$('#r'+i).attr('name',data.boxOfficeResult.dailyBoxOfficeList[i].movieNm);
+			$('#r'+i).val(data.boxOfficeResult.dailyBoxOfficeList[i].audiAcc);
+			
+			alert($('#r'+i).attr('title'));
+			alert($('#r'+i).attr('name'));
+			alert($('#r'+i).val());
+			
+		}
+		 */
+		
+/* 
 	}
+});  */
+ 
+
+
+ 
+
+
+/* read more */
+
+ $(document).ready(function() {
+  $('body').showMoreItems();
+});
+
+ 
+(function($) {
+  $.fn.showMoreItems = function(options) {
+
+    var $totalItems = $('.card').length,
+        $visibleItems = $('.card:visible').length,
+        settings = $.extend({}, $.fn.showMoreItems.defaults, options),
+        i = settings.count,
+        countLess = settings.count - 1;
+
+    $('.card:lt(' + settings.count + ')').show();
+
+    $('.more-trigger').click(function(el) {
+      el.preventDefault();
+
+      if ($visibleItems !== $totalItems) {
+        if(i + settings.count <= $totalItems) {
+          $visibleItems = i += settings.count;
+          $('.card:lt('+ i +')').show();
+
+          if(i == $totalItems) {
+            $('.more-trigger').text("처음으로");
+          }
+
+        } else if (i !== $totalItems) {
+          $('.card:gt(' + countLess + ')').show();
+          $('.more-trigger').text("처음으로");
+          $visibleItems = $totalItems;
+          i = $totalItems;
+        }
+      } else if($visibleItems === $totalItems) {
+        $('.card:gt(' + countLess + ')').hide();
+        $('.more-trigger').text("더보기");
+        $visibleItems = settings.count;
+        i = settings.count;
+      }
+    });
+  }
+
+  $.fn.showMoreItems.defaults = {
+    count: 15
+  };
+})(jQuery);
+
+
+
+/* info */
+ $('.card').on('mouseover',function() {
+	var ostar = $(this).find('.realstar').val();
+	var mnum = $(this).find('.movienum').val();
+	console.log(ostar);
+	console.log(mnum);
+
+	 if (ostar > 8 && ostar <= 10) {
+		console.log("ostar"+ostar);
+		$(this).find('#'+mnum+'star5').attr('checked','checked');
+	}else if (ostar > 6 && ostar <= 8) {
+		console.log("ostar"+ostar);
+		$(this).find('#'+mnum+'star4').attr('checked','checked');
+	}else if (ostar > 4 && ostar <= 6) {
+		console.log("ostar"+ostar);
+		$(this).find('#'+mnum+'star3').attr('checked','checked');
+	}else if (ostar > 2 && ostar <= 4) {
+		console.log("ostar"+ostar);
+		$(this).find('#'+mnum+'star2').attr('checked','checked');
+	}else if (ostar > 0 && ostar <= 2) {
+		console.log("ostar"+ostar);
+		$(this).find('#'+mnum+'star1').attr('checked','checked');
+	}
+}); 
+
+
+/* 별점 */
+$('.starlab').click(function() {
+	x = $(this).closest('.card').offset();
+	$('html').animate({scrollTop : x.top}, 400);
+	
+	mstar = $(this).text();
+	console.log(mstar);
+	$(this).closest('.infos').addClass('.tact');
+	/* 
+	alert(mstar); */
+});
+ 
+ 
+//하트
+$('.checkboxes-container').click(function() {
+	console.log($(this).find('.heart').attr("checked"));
+	if($(this).find('.heart').prop("checked") == true){
+		$(this).find('.heart').prop("checked", false);
+	} else if ($(this).find('.heart').prop("checked") == false) {
+		$(this).find('.heart').prop("checked",true);
+		
+	}
+
+	
+});
+
+
+//모달
+
+
+// Elegant Modal
+
+// Function to open Modal when the page finishes loading (with time to display animation)
+/* setTimeout(function(){
+	$(".mask").addClass("active");
+}, 500); */
+
+// Click event function to open modal (active)
+$(".myBtn").on("click", function(event){
+	var t = $(this).attr('title');
+	$('#'+t+'modal').addClass('active');
+});
+
+$(".elegant-modal").on("mouseenter", function(event){
+   $(".card").off("hover");
+});
+
+
+// Função para fechar o modal.
+ function closeModal(){
+	 $(".mask").removeClass("active");  //Remove the active class
+} 
+
+
+// Function to close the modal screen
+//$(this).closest('.infos').siblings('.newmodal').find(".close")
+
+ $(".close, .mask").on("click", function(){
+  closeModal();
+}); 
+
+// Closes the modal with the button within the content
+ $(".content-button-close").click(function(){
+	closeModal();
+}); 
+
+// or the keyboard (esc)
+ $(document).keyup(function(e) {
+  if (e.keyCode == 27) {
+    closeModal();
+  }
+}); 
+
+$('.elegant-modal').mouseenter(function(event) {
+	event.preventDefault();
 });
 
 

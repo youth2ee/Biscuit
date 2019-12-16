@@ -100,15 +100,6 @@
 </div> 
 
 
-<div>
-<p>JavaScript</p>
-<div class="container">
-  <div class="skills js">65%</div>
-</div>
-
-
-</div>
-
 
  
 <form action="../seat/seatSelect" id="frm">
@@ -268,12 +259,46 @@
  	
  	/* 시간을 선택해 볼까요 */
  	 	$(document).on("click",".timeSelect",function(){
- 	 	$(this).addClass('act').siblings().removeClass('act');
- 		
+ 	 		$(this).find('.mtd1').addClass('act');
+ 	 		$(this).siblings().find('.mtd1').removeClass('act');
+ 	 		$(this).find('.mtime2').addClass('act');
+ 	 	
   		ctime = $(this).find('.mtd1').text(); 
  		ctime = ctime.trim();
+ 		
+ 		console.log(ctime);
  		 
- 		});
+ 		}); 
+ 	
+ 	
+/*  	
+ 	 	$(document).on("click",".timeSelect",function(){
+ 	 	 	 $(this).find(".mtd1").addClass('act').siblings().removeClass('act');
+ 	 	 	$(this).find(".mtd1").addClass('act');
+ 	 	 	$(this).find(".mtd1").siblings().removeClass('act');
+ 	 	 	
+ 	  		ctime = $(this).find('.mtdtxt').text(); 
+ 	 		ctime = ctime.trim();
+ 	 		
+ 	 		console.log(ctime);
+ 	 		 
+ 	 		});  */
+ 	 		
+ 	
+ 		
+ 		
+/*  	 	$(document).on("click",".mtd1",function(){
+ 	 	/* $(this).addClass('act').siblings().removeClass('act'); */
+ 	 	/* $(this).find('.mtd1').addClass('act').find('.mtd1').removeClass('act'); */
+/*  		$(this).addClass('act').siblings().removeClass('act');
+ 	 	
+  		ctime = $(this).text(); 
+ 		ctime = ctime.trim();
+ 		 
+ 		});  */ 
+ 		
+ 		
+ 		
  	
 
  	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */

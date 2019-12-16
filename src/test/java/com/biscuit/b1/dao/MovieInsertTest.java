@@ -39,9 +39,8 @@ public class MovieInsertTest extends TestAbstractCase {
 
 		map.add("ServiceKey", serviceKey);
 		map.add("releaseDts", "20191001");
-		map.add("releaseDte", "20191212");
+		map.add("releaseDte", "20191213");
 		map.add("listCount", "1000");
-
 		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
 
 		try {
@@ -65,6 +64,7 @@ public class MovieInsertTest extends TestAbstractCase {
 					int runtime = Integer.parseInt(resultObject2.get("runtime").toString().trim()); // 상영 시간
 					String genre = resultObject2.get("genre").toString().trim(); // 장르
 					String nation = resultObject2.get("nation").toString().trim(); // 국가
+					String plot = resultObject2.get("plot").toString().trim(); // 줄거리
 					String prodYear = resultObject2.get("prodYear").toString().trim(); // 제작년도
 					for (int x = 0; x < rating.size(); x++) {
 						JSONObject ratingObject = (JSONObject) rating.get(x);
@@ -98,7 +98,7 @@ public class MovieInsertTest extends TestAbstractCase {
 																										// null이 아니면
 						if (!releaseDate.substring(6, 8).equals("00")) { // 날짜입력이 이상하게 된 것 제외시킴
 							if (i % 5 == 0) {
-								Thread.sleep(1000);
+								Thread.sleep(1000); // 입력이 너무 빠르면 DB연결이 해제됨
 							}
 							System.out.println("몇 개? : " + i);
 							System.out.println("제목 : " + title);
@@ -109,6 +109,7 @@ public class MovieInsertTest extends TestAbstractCase {
 							System.out.println("등급 : " + ratingGrade);
 							System.out.println("제작년도 : " + prodYear);
 							System.out.println("개봉일  : " + releaseDate);
+							System.out.println("줄거리 : " + plot);
 							System.out.println("================================================================");
 
 							movieDataVO.setTitle(title);
@@ -120,19 +121,19 @@ public class MovieInsertTest extends TestAbstractCase {
 							movieDataVO.setProdYear(prodYear);
 							movieDataVO.setReleaseDate(releaseDate);
 
-							/*
-							 * movieInfoVO.setMovieInfo_title(title); movieInfoVO.setMovieInfo_genre(genre);
-							 * movieInfoVO.setMovieInfo_date(releaseDate);
-							 * movieInfoVO.setMovieInfo_nation(nation);
-							 * movieInfoVO.setMovieInfo_grade(ratingGrade);
-							 * movieInfoVO.setMovieInfo_time(runtime);
-							 * movieInfoVO.setMovieInfo_poster(posters);
-							 * movieInfoVO.setMovieInfo_year(prodYear);
-							 */
+							movieInfoVO.setMovieInfo_title(title);
+							movieInfoVO.setMovieInfo_genre(genre);
+							movieInfoVO.setMovieInfo_date(releaseDate);
+							movieInfoVO.setMovieInfo_nation(nation);
+							movieInfoVO.setMovieInfo_grade(ratingGrade);
+							movieInfoVO.setMovieInfo_time(runtime);
+							movieInfoVO.setMovieInfo_poster(posters);
+							movieInfoVO.setMovieInfo_year(prodYear);
+							movieInfoVO.setMovieInfo_plot(plot);
 
 							int check = movieDAO.movieInsert(movieDataVO);
-							/*if (check == 1)
-								movieDAO.movieInfoInsert(movieInfoVO);*/
+							if (check == 1)
+								movieDAO.movieInfoInsert(movieInfoVO);
 						}
 					}
 

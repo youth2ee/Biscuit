@@ -18,6 +18,7 @@ public class PayInfoVO {
 	private Date created_at; // 결제 준비 요청 시각
 	private Date approved_at; // 결제 승인 시각
 	private String payload; // 리퀘스트로 전달한 값
+	
 
 	public String getAid() {
 		return aid;

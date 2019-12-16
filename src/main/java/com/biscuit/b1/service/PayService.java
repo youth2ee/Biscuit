@@ -59,7 +59,7 @@ public class PayService {
 
 		RestTemplate restTemplate = new RestTemplate();
 		partner_order_id = "1234";
-		partner_user_id = "test";
+		partner_user_id = "CGV";
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "KakaoAK cd0f72b5c9fb64cd830bdaaab8fabc83");
@@ -71,7 +71,7 @@ public class PayService {
 		map.add("cid", "TC0ONETIME");
 		map.add("partner_order_id", partner_order_id);
 		map.add("partner_user_id", partner_user_id);
-		map.add("item_name", "표"); // 상품명
+		map.add("item_name", "CGV관람권"); // 상품명
 		map.add("quantity", quatity); // 수량
 		map.add("total_amount", total_amount); // 금액
 		map.add("tax_free_amount", "0"); // 세금
