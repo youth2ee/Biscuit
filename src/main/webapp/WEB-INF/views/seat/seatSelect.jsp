@@ -133,8 +133,7 @@
 	<input type="hidden" id="seat_name" name="seat_name">
 	<input type="hidden" id="count" name="count">
 	<input type="hidden" id="seatCount" name="seatCount">
-	<input type="hidden" id="adultCount" name="adultCount">
-	<input type="hidden" id="kidCount" name="kidCount">
+	
 
 	</div>
 	
@@ -295,8 +294,6 @@
 										"input:checkbox[id=seat"+ seatNum[i] + "]").attr('disabled', true);
 								}
 								var pay = teenCount * 8000 + adultCount * 10000;
-								$("#adultCount").val(adultCount);
-								$("#kidCount").val(teenCount);
 								$("#price").val(pay);
 								alert("금액 : " + pay + "원");
 								//alert("좌석 선택 완료");

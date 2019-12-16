@@ -10,9 +10,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/cinema/cinemaList.css" rel="stylesheet">
-
-
-
 </head>
 <body>
 
@@ -64,10 +61,6 @@
 
 
 </div>
-
-
-
-
 
 
 
