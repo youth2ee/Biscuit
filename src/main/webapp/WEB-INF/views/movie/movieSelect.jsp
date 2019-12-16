@@ -261,7 +261,7 @@
  	 	$(document).on("click",".timeSelect",function(){
  	 		$(this).find('.mtd1').addClass('act');
  	 		$(this).siblings().find('.mtd1').removeClass('act');
- 	 		$(this).find('.mtime2').addClass('act');
+ 	 		$(this).find('.mtime2').removeClass('act');
  	 	
   		ctime = $(this).find('.mtd1').text(); 
  		ctime = ctime.trim();
