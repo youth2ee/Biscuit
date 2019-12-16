@@ -19,7 +19,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/design/ribbon.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/heart.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/modal.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/design/makemodal.css" rel="stylesheet">
 
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
 <!-- <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:100'> -->
@@ -35,113 +34,6 @@
 
 <!-- section -->
 <section>
-
-
-
-<!-- api -->
-<!-- <img alt="" src="http://file.koreafilm.or.kr/thm/02/00/05/35/tn_DPF019295.jpg"> -->
-
-<%-- <div id="poster">
-<c:forEach items="${movieList}" var="mlist" varStatus="status">
-
-<div class="posterOne">
-<img class="pimg" alt="" src="${mlist.movieInfo_poster}"><br>
-
-<div class="pcontext">
-
-<div class="ptitle">
-<div class="page">
-<c:choose>
-<c:when test="${mlist.movieInfo_grade eq '전체 관람가'}">
-<img class="age" alt="" src="../resources/images/movieSelect/m1.png"></c:when>
-<c:when test="${mlist.movieInfo_grade eq '12세 관람가'}">
-<img  class="age" alt="" src="../resources/images/movieSelect/m2.png"></c:when>
-<c:when test="${mlist.movieInfo_grade eq '15세 관람가'}">
-<img  class="age" alt="" src="../resources/images/movieSelect/m3.png"></c:when>
-<c:when test="${mlist.movieInfo_grade eq '청소년 관람불가'}">
-<img  class="age" alt="" src="../resources/images/movieSelect/m4.png"></c:when>
-</c:choose>
-</div><!-- page -->
-
-<div class="pname">
-${mlist.movieInfo_title}
-</div><!-- pname -->
-
-</div><!-- ptitle -->
-
-<div class="ptext">
-개봉일 : ${mlist.movieInfo_date}<br>
-상영시간  : ${mlist.movieInfo_time}분<br>
-평점 : ${mlist.movieInfo_star}<br>
-</div><!-- ptext -->
-
-</div><!-- pcontext -->
-</div><!-- posterone -->
-
-
-<c:if test="${(status.index+1)%5 == 0}">
-<div class="posterDiv"></div>
-</c:if>
-
-</c:forEach>
-
- <a href="#" class="btn more-trigger">Show More</a>
-
-</div> --%>
-
-
-
-
-
-
-<!-- poster test!!  -->
-
-<!-- <div class="card">
-
-  <div class="thumb">
-  <img class="pimg" alt="" src="http://file.koreafilm.or.kr/thm/02/00/05/35/tn_DPF019295.jpg">
-  </div>
-  
-  <div class="infos">
-    <h2 class="title">new york city
-    <span class="flag">
-    <img  class="age" alt="" src="../resources/images/movieSelect/m4.png">
-    </span></h2>
-    
-    <h3 class="date">november 2 - 4</h3>
-    <h3 class="seats">seats remaining: 2</h3>
-    <p class="txt">
-      Join us for our Live Infinity Session in
-      beautiful New York City. 
-    </p>
-    <h3 class="details">event details</h3>
-  </div>
-  
-</div> -->
-
-
-
-<!-- <div class='container'>
-
-  <div class='checkboxes-container'>
-  
-    <div class='control-group'>
-      <input checked='checked' class='red-heart-checkbox' id='red-check1' type='checkbox'>
-      <label for='red-check1'>
-        Checked
-      </label>
-    </div>
-    
-    <div class='control-group'>
-      <input class='red-heart-checkbox' id='red-check2' type='checkbox'>
-      <label for='red-check2'>
-        Unchecked
-      </label>
-    </div>
-    
-  </div>
-</div> -->
-
 
 
 <!-- top ten -->
@@ -202,181 +94,115 @@ ${mlist.movieInfo_title}
   <fieldset>
   <input type="hidden" class="realstar" value="${mlist.movieInfo_star}">
   <input type="hidden" class="movienum" value="${mlist.movieInfo_num}">
-    <input type="radio" checked="checked" id="${mlist.movieInfo_num}star5" class="star star5" name="rating" value="5" /><label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="Outstanding"></label>
-    <input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating" value="4" /><label for="${mlist.movieInfo_num}star4" class="starlab starl4" title="Very Good"></label>
-    <input type="radio" id="${mlist.movieInfo_num}star3" class="star star3" name="rating" value="3" /><label for="${mlist.movieInfo_num}star3" class="starlab starl3" title="Good"></label>
-    <input type="radio" id="${mlist.movieInfo_num}star2" class="star star2" name="rating" value="2" /><label for="${mlist.movieInfo_num}star2" class="starlab starl2" title="Poor"></label>
-    <input type="radio" id="${mlist.movieInfo_num}star1" class="star star1" name="rating" value="1" /><label for="${mlist.movieInfo_num}star1" class="starlab starl1" title="Very Poor"></label>
+    <input type="radio" checked="checked" id="${mlist.movieInfo_num}star5" class="star star5" name="rating${mlist.movieInfo_num}" value="5" /><label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="Outstanding"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating${mlist.movieInfo_num}" value="4" /><label for="${mlist.movieInfo_num}star4" class="starlab starl4" title="Very Good"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star3" class="star star3" name="rating${mlist.movieInfo_num}" value="3" /><label for="${mlist.movieInfo_num}star3" class="starlab starl3" title="Good"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star2" class="star star2" name="rating${mlist.movieInfo_num}" value="2" /><label for="${mlist.movieInfo_num}star2" class="starlab starl2" title="Poor"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star1" class="star star1" name="rating${mlist.movieInfo_num}" value="1" /><label for="${mlist.movieInfo_num}star1" class="starlab starl1" title="Very Poor"></label>
   </fieldset>
 </div>
 <!-- 별점 테스트 끝 -->
 
 
 <!-- modal 띄울가 말까 -->
-<h3 class="details myBtn">comment</h3>
+<h3 class="details myBtn" title="${mlist.movieInfo_num}">comment</h3>
 
 
 
 </div><!-- infos -->
 
+
+
+</div><!-- card -->
+
+
+<c:if test="${(status.index+1)%5 == 0}">
+<div class="posterDiv"></div>
+</c:if>
+
+
+</c:forEach>
+<c:forEach items="${movieList}" var="mlist">
 <div class="newmodal"> 
-<div class="mask" role="dialog">gg</div>
+<div class="mask" role="dialog" id="${mlist.movieInfo_num}modal"></div>
 	
 <div class="elegant-modal" role="alert">
 	<button class="close" role="button">X</button>
-	Content
-	<h1 class="title-modal">Modal Content</h1>
+	
+	
+	<table style="margin: 0 auto;"> 
+	<tr class="trm" style="width: 390px;">
+	
+	<td class="tdm1" style="text-align: right;">
+	<h1 class="title-modal">${mlist.movieInfo_title}</h1></td>
+	
+	<td class="tdm2" style="text-align: left; padding-top: 20px;"> 
+<c:choose>
+<c:when test="${mlist.movieInfo_grade eq '전체 관람가'}">
+<img style="border-radius: 10px;" alt="" src="../resources/images/movieSelect/m1.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '12세 관람가'}">
+<img style="border-radius: 10px;"  alt="" src="../resources/images/movieSelect/m2.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '15세 관람가'}">
+<img style="border-radius: 10px;"  alt="" src="../resources/images/movieSelect/m3.png"></c:when>
+<c:when test="${mlist.movieInfo_grade eq '청소년 관람불가'}">
+<img style="border-radius: 10px;"  alt="" src="../resources/images/movieSelect/m4.png"></c:when>
+</c:choose>
+</td>
+	</tr>
+	</table>
+	
 	<hr class="line-modal">
 	
 	<div>
 	<div class="paragraph-modal" style="float: left;"> 
-	<p class="paragraph-modal">${mlist.movieInfo_plot}</p> </div>
+	
+	<table class="tmodal paragraph-modal" style="position: relative; left: 256px; top:20px; text-align: left; margin-bottom: 20px;"> 
+	<tr>
+	<td style="width: 80px">장르</td>
+	<td>${mlist.movieInfo_genre}</td>
+	</tr>
+	
+	<tr>
+	<td style="width: 80px">개봉일</td>
+	<td>${mlist.movieInfo_date}</td>
+	</tr>
+	
+	<tr>
+	<td style="width: 80px">상영시간</td>
+	<td>${mlist.movieInfo_time}</td>
+	</tr>
+	
+	<tr>
+	<td style="width: 80px">제작국가</td>
+	<td>${mlist.movieInfo_nation}</td>
+	</tr>
+	
+	<tr>
+	<td style="width: 80px">제작년도</td>
+	<td>${mlist.movieInfo_year}</td>	
+	</tr>
+	
+	</table>
+	
+	<p class="paragraph-modal">${mlist.movieInfo_plot}</p> 
+	
+	</div>
 
 	<div style="float: left;"> 
 	<img class="pm" alt="" src="${mlist.movieInfo_poster}"> 
 	</div> 
 	
 	</div>
-	
-	<button class="content-button-close">CLOSE</button>
+	<!-- <button class="content-button-close">CLOSE</button> -->
 	
 </div> 
+
 </div>
-
-</div><!-- card -->
-
-
-
-
-
-<c:if test="${(status.index+1)%5 == 0}">
-<div class="posterDiv"></div>
-</c:if>
-
-
 </c:forEach>
-
  <button class="btn more-trigger">더보기</button>
 </div>
 
 
-
-
-
-
-<!-- 전체 리스트 -->
-<%--  <div id="poster">
-<c:forEach items="${movieList}" var="mlist" varStatus="status">
-<div class="card">
-
-<div class="ribbon-2">
-<div class="ribbon-2">
-  <div class='checkboxes-container'>
-  
-    <div class='control-group'>
-      <input class='red-heart-checkbox heart' id='red-check${mlist.movieInfo_num}' type='checkbox'>
-      <label for='red-check${mlist.movieInfo_num}'></label>
-    </div>
-    
-    
-  </div>
-
-</div>
-  <div class="thumb" style="background-image: url('${mlist.movieInfo_poster}');">
-  <img class="pimg" alt="" src="${mlist.movieInfo_poster}">
-  </div>
-
-<div class="infos">
-<div>
-
-<div style="float: left; height: 30px; margin-bottom: 4px;">
-<span class="flag">
- <c:choose>
-<c:when test="${mlist.movieInfo_grade eq '전체 관람가'}">
-<img class="age" alt="" src="../resources/images/movieSelect/m1.png"></c:when>
-<c:when test="${mlist.movieInfo_grade eq '12세 관람가'}">
-<img  class="age" alt="" src="../resources/images/movieSelect/m2.png"></c:when>
-<c:when test="${mlist.movieInfo_grade eq '15세 관람가'}">
-<img  class="age" alt="" src="../resources/images/movieSelect/m3.png"></c:when>
-<c:when test="${mlist.movieInfo_grade eq '청소년 관람불가'}">
-<img  class="age" alt="" src="../resources/images/movieSelect/m4.png"></c:when>
-</c:choose>
- </span>
-</div>
- 
-<div  style="float: left;">
-<h2 class="title">${mlist.movieInfo_title}</h2>
-</div>
- 
-</div> 
-
-<h3 class="date">개봉일 : ${mlist.movieInfo_date}</h3> 
-<h3 class="date">평점 : ${mlist.movieInfo_star}</h3> 
-<h3 class="seats">상영시간  : ${mlist.movieInfo_time}분</h3>
-
-<p class="txt">
-<!-- Join us for our Live Infinity Session in beautiful New York City.  -->
-${mlist.movieInfo_plot}
-</p>
-
-
-<!-- 별점 테스트  -->
-<div class="star-rating rating${status.index}">
-  <fieldset>
-  <input type="hidden" class="realstar" value="${mlist.movieInfo_star}">
-  <input type="hidden" class="movienum" value="${mlist.movieInfo_num}">
-    <input type="radio" id="${mlist.movieInfo_num}star5" class="star star5" name="rating" value="5" /><label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="Outstanding">5</label>
-    <input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating" value="4" /><label for="${mlist.movieInfo_num}star4" class="starlab starl4" title="Very Good">4</label>
-    <input type="radio" id="${mlist.movieInfo_num}star3" class="star star3" name="rating" value="3" /><label for="${mlist.movieInfo_num}star3" class="starlab starl3" title="Good">3</label>
-    <input type="radio" id="${mlist.movieInfo_num}star2" class="star star2" name="rating" value="2" /><label for="${mlist.movieInfo_num}star2" class="starlab starl2" title="Poor">2</label>
-    <input type="radio" id="${mlist.movieInfo_num}star1" class="star star1" name="rating" value="1" /><label for="${mlist.movieInfo_num}star1" class="starlab starl1" title="Very Poor">1</label>
-  </fieldset>
-</div>
-
-<!-- 별점 테스트 끝 -->
-
-
-<!-- modal 띄울가 말까 -->
-<h3 class="details">comment</h3>
-</div>
-
-
-</div><!-- posterone -->
-
-
-<c:if test="${(status.index+1)%5 == 0}">
-<div class="posterDiv"></div>
-</c:if>
-
-</c:forEach>
-
-<!--  <a href="#" class="btn more-trigger">Show More</a> -->
- <button class="btn more-trigger">더보기</button>
-
-</div> --%>
-
-
-
-
-
-
-
-<!-- poster test end  -->
-
-
-
-
-<!-- api -->
-<%-- 				
-<ol class="officeRank rounded-list">
-					
-<c:forEach begin="0" end="9" var="i">
-<li class="active" id="Rank_${i}"></li>
-</c:forEach>
-
-</ol>
-  --%>
-  
 <input type="hidden" id="r0">
 <input type="hidden" id="r1">
 <input type="hidden" id="r2">
@@ -387,52 +213,6 @@ ${mlist.movieInfo_plot}
 <input type="hidden" id="r7">
 <input type="hidden" id="r8">
 <input type="hidden" id="r9">
-
-
- <!-- Picture or Button -->
-<!-- 	<button class="btn-modal" aria-haspopup="true">Open Modal</button> -->
-
-	<!-- Modal Box -->
-<!-- 	<div class="mask" role="dialog"></div>
-	<div class="elegant-modal" role="alert">
-		<button class="close" role="button">X</button>
-		Content
-		<h1 class="title-modal">Modal Content</h1>
-		<hr class="line-modal">
-		<p class="paragraph-modal">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<img  class="age" alt="" src="../resources/images/movieSelect/m4.png">
-		<button class="content-button-close">CLOSE (:</button>
-	</div>
- -->
-
-<!-- new modal -->
-<!-- <div class="container"> -->
-<!--   <a class="button" href="#popup">Open Modal</a>
-  
-  <div class="popup" id="popup">
-  
-    <div class="popup-inner">
-      <div class="popup__photo">
-        <img src="https://images.unsplash.com/photo-1515224526905-51c7d77c7bb8?ixlib=rb-0.3.5&s=9980646201037d28700d826b1bd096c4&auto=format&fit=crop&w=700&q=80" alt="">
-      </div>
-      
-      <div class="popup__text">
-        <h1>Lorem ipsum dolor sit amet</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex velit, viverra non vulputate vitae, blandit vitae nisl. Nullam fermentum orci et erat viverra bibendum. Aliquam sed varius nibh, vitae mattis purus. Mauris elementum sapien non ullamcorper vulputate. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eget felis sit amet eros viverra pulvinar.</p>
-      </div>
-      
-      <a class="popup__close" href="#">X</a>
-    </div>
-    
-  </div> -->
-  
-<!-- </div> -->
-
 
 
 </section>
@@ -591,10 +371,10 @@ $(document).ready(function() {
 	console.log(ostar);
 	console.log(mnum);
 
-	/* if (ostar > 8 && ostar <= 10) {
+	 if (ostar > 8 && ostar <= 10) {
 		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star5').attr('checked','checked');
-	}else */ if (ostar > 6 && ostar <= 8) {
+	}else if (ostar > 6 && ostar <= 8) {
 		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star4').attr('checked','checked');
 	}else if (ostar > 4 && ostar <= 6) {
@@ -683,14 +463,8 @@ $('.checkboxes-container').click(function() {
 
 
 $(".myBtn").on("click", function(event){
-	/* alert('click');
-	alert($(this).closest('.infos').siblings('.newmodal').find(".mask").html()); */
-	//alert($(this).closest('.infos').siblings('.newmodal').find(".close").html());
-	
-	
-	$(this).closest('.infos').siblings('.newmodal').find(".mask").addClass("active");
-
-	
+	var t = $(this).attr('title');
+	$('#'+t+'modal').addClass('active');
 });
 
 $(".elegant-modal").on("mouseenter", function(event){

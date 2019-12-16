@@ -12,12 +12,12 @@
   user-select: none;
   font-size: 30px;
   /* padding-left: 15px; */
-  transition: all 0.2s;
-  text-shadow: 0 0 3px red;
 }
 .red-heart-checkbox:checked + label:before {
   content: "";
   color: #F00;
+  transition: all 0.2s;
+  text-shadow: 0 0 3px red;
 }
 .red-heart-checkbox + label:before {
   width: 31.5px;
@@ -30,7 +30,8 @@
   font-size: 30px;
   content: "";
   transition: all 0.3s;
-  color: #888;
+  color: white;
+
 }
 .red-heart-checkbox + label:hover:before {
   transform: scale(1.2);

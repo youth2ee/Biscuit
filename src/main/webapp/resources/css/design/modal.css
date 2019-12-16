@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* Modal */
 .btn-modal {
   padding: 13px 30px;
@@ -79,10 +80,11 @@
   top: 50%;
   left: 50%;
   width: 600px;
-  height: 450px;
+  /* height: 450px; */
+  min-height:450px;
   margin-left: -300px;
   margin-top: -240px;
-  z-index: 100;
+  z-index: 10000;
   /* visibility: hidden; */
   display:none; 
   opacity: 0;
@@ -102,7 +104,7 @@
   opacity: 1;
   transition: all .2s;
   position: fixed;
-  z-index: 0;
+  z-index: 10000;
 }
 
 .active + .elegant-modal {
@@ -111,12 +113,13 @@
   opacity: 1;
   /* transform: translateY(0); */
   position: fixed;
-  z-index: 1000;
+  z-index: 10000;
 }
 
 .elegant-modal h1.title-modal {
   margin: 40px 0 20px 0;
   padding: 0 15px;
+  color: black;
 }
 
 .elegant-modal hr.line-modal {
@@ -125,11 +128,20 @@
 
 .elegant-modal p.paragraph-modal {
   float:left;
-  width:400px;
-  font-size: 12px;
-  margin-top: 11px;
+  width:300px;
+  font-size: 13px;
+  margin-top: 13px;
   overflow:hidden;
   padding: 0 45px;
   color: #B7B7B7;
-  margin-left: 233px;
+  margin-left: 213px;
+  text-align: justify;
+  padding-bottom: 20px;
+}
+
+.pm{
+	position: fixed;
+	left: 21px;
+	top:111px;
+	margin-bottom: 20px;
 }
