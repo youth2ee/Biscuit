@@ -95,7 +95,7 @@ font-weight: bolder;
 
 .s2{
 	/* width: 16.5%; */
-	width: 204px;
+	width: 202px;
 }
 
 .s3{
@@ -111,11 +111,13 @@ font-weight: bolder;
 }
 
 .s4{
-	width: 16%;
+	/* width: 16%; */
+	width: 173px;
 }
 
 .s5{
-	width: 15.7%;
+	/* width: 15.7%; */
+	width:168px;
 	padding-left: 22px;
 }
 
@@ -185,7 +187,9 @@ td{
 
 .mtd2{
 	width:78%;
-	padding-top: 15px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	/* padding-top: 15px; */
 	vertical-align: top;
 }
 
@@ -199,3 +203,6 @@ td{
 	font-size: 15px;
 }
 
+.checked{
+	color: blue;
+}
