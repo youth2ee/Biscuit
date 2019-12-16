@@ -268,46 +268,12 @@
  	
  	/* 시간을 선택해 볼까요 */
  	 	$(document).on("click",".timeSelect",function(){
- 	 	 //$(this).find(".mtd1").addClass('act').siblings().removeClass('act');
- 	 	$(this).find(".mtd1").addClass('act');
- 	 	$(this).find(".mtd1").siblings().removeClass('act');
- 	 	
+ 	 	$(this).addClass('act').siblings().removeClass('act');
+ 		
   		ctime = $(this).find('.mtd1').text(); 
  		ctime = ctime.trim();
- 		
- 		console.log(ctime);
  		 
- 		}); 
- 	
- 	
-/*  	
- 	 	$(document).on("click",".timeSelect",function(){
- 	 	 	 $(this).find(".mtd1").addClass('act').siblings().removeClass('act');
- 	 	 	$(this).find(".mtd1").addClass('act');
- 	 	 	$(this).find(".mtd1").siblings().removeClass('act');
- 	 	 	
- 	  		ctime = $(this).find('.mtdtxt').text(); 
- 	 		ctime = ctime.trim();
- 	 		
- 	 		console.log(ctime);
- 	 		 
- 	 		});  */
- 	 		
- 	
- 		
- 		
-/*  	 	$(document).on("click",".mtd1",function(){
- 	 	/* $(this).addClass('act').siblings().removeClass('act'); */
- 	 	/* $(this).find('.mtd1').addClass('act').find('.mtd1').removeClass('act'); */
-/*  		$(this).addClass('act').siblings().removeClass('act');
- 	 	
-  		ctime = $(this).text(); 
- 		ctime = ctime.trim();
- 		 
- 		});  */ 
- 		
- 		
- 		
+ 		});
  	
 
  	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */

@@ -10,7 +10,7 @@ public class MovieInfoVO {
 	private String movieInfo_grade;
 	private int movieInfo_time;
 	private String movieInfo_date;
-	private String movieInfo_star;
+	private int movieInfo_star;
 	private String movieInfo_poster;
 
 	public String getMovieInfo_poster() {
@@ -85,14 +85,12 @@ public class MovieInfoVO {
 		this.movieInfo_date = movieInfo_date;
 	}
 
-	public String getMovieInfo_star() {
+	public int getMovieInfo_star() {
 		return movieInfo_star;
 	}
 
-	public void setMovieInfo_star(String movieInfo_star) {
+	public void setMovieInfo_star(int movieInfo_star) {
 		this.movieInfo_star = movieInfo_star;
 	}
-
-
 
 }
