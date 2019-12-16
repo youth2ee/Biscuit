@@ -99,6 +99,7 @@
   	
   	<select id="movieList" resultType="MovieInfoVO">
   	select * from movieinfo
+	order by movieinfo_num asc
   	</select>
 
   	<insert id="movieInsert" parameterType="MovieDataVO">

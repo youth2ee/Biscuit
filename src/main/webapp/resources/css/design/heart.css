@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+.red-heart-checkbox {
+  visibility: hidden;
+}
+.red-heart-checkbox + label {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 30px;
+  /* padding-left: 15px; */
+  transition: all 0.2s;
+  text-shadow: 0 0 3px red;
+}
+.red-heart-checkbox:checked + label:before {
+  content: "";
+  color: #F00;
+}
+.red-heart-checkbox + label:before {
+  width: 31.5px;
+  height: 30px;
+  content: "";
+  position: absolute;
+  margin-left: -48px;
+  margin-top: 3px;
+  font-family: FontAwesome;
+  font-size: 30px;
+  content: "";
+  transition: all 0.3s;
+  color: #888;
+}
+.red-heart-checkbox + label:hover:before {
+  transform: scale(1.2);
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.control-group {
+  margin: 3px;
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+body {
+  font-family: Open Sans, Helvetica;
+}
+
+a, a:visited, a:hover {
+  color: #F00;
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}

@@ -26,7 +26,7 @@
 } 
 
 .star-rating > fieldset:not(:checked) > label:before {
-  content: '\f006';
+  content: '\f006  ';
 }
 .star-rating > fieldset:not(:checked) > label:hover,
 .star-rating > fieldset:not(:checked) > label:hover ~ label {
@@ -35,10 +35,10 @@
 }
 .star-rating > fieldset:not(:checked) > label:hover:before,
 .star-rating > fieldset:not(:checked) > label:hover ~ label:before {
-  content: '\f005';
+  content: '\f005  ';
 }
 .star-rating > fieldset > input:checked ~ label:before {
-  content: '\f005';
+  content: '\f005  ';
   text-shadow: 0 0 3px #1abc9c;
 }
 .star-rating > fieldset > label:active {
@@ -48,7 +48,7 @@
 
 
 .activel{
- 	content: '\f005';
+ 	content: '\f005  ';
   text-shadow: 0 0 3px #1abc9c; 
   
 }
@@ -83,8 +83,4 @@ body a {
 
 .starlab{
 	margin:0 3px;
-}
-
-.ostaract{
-	
 }

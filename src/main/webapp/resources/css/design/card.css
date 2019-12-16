@@ -10,7 +10,7 @@
   src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.eot"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.ttf"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.woff");
   font-weight: bold;
 }
-
+/* 
 * {
   box-sizing: border-box;
 }
@@ -22,7 +22,7 @@ html, body {
 body {
   padding: 0;
   margin: 0;
-}
+} */
 
 a[href] {
  /*  position: relative; */
@@ -63,7 +63,7 @@ a[href]:hover::after {
 	display: none;
  /*  position: absolute; */
   /* left: 50%; */
-  top: 50%;
+ top: 50%;
  /*  width: 350px; */
  width: 252px;
  height: 450px;
@@ -153,8 +153,8 @@ a[href]:hover::after {
 .card .infos .seats {
 	width:100%;
   display: inline-block;
-  margin-bottom: 18px;
-  padding-bottom: 18px;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   opacity: 0;
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
@@ -162,7 +162,7 @@ a[href]:hover::after {
 .card .infos .txt {
   font-family: "Merriweather", sans-serif;
   line-height: 1.5;
-  font-size: .95rem;
+  font-size: 9px;
   color: rgba(21, 37, 54, 0.7);
   opacity: 0;
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
@@ -184,12 +184,15 @@ a[href]:hover::after {
   opacity: 0;
   transition: 0.5s 0.25s cubic-bezier(0.17, 0.67, 0.5, 1.03);
 }
-.card:hover .infos {
+
+ .card:hover .infos {
   -webkit-transform: translateY(-260px);
           transform: translateY(-260px);
   position: relative;
   z-index: 10;
-}
+} 
+
+
 .card:hover .infos .seats, .card:hover .infos .txt, .card:hover .infos .details {
   opacity: 1;
 }

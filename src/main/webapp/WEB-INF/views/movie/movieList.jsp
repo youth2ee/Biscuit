@@ -17,12 +17,14 @@
 <link href="${pageContext.request.contextPath}/resources/css/design/read_more.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/rating.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/ribbon.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/heart.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/modal.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/makemodal.css" rel="stylesheet">
 
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
 <!-- <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:100'> -->
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-
-
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 </head>
 <body>
 
@@ -34,17 +36,7 @@
 <!-- section -->
 <section>
 
-<div class="box">
-  <div class="ribbon-1"></div>
 
-  <div class="ribbon-2"></div>
-
-  <div class="ribbon-3"></div>
-
-  <div class="ribbon-4">
-    <div class="ribbon-content"></div>
-  </div>
-</div>
 
 <!-- api -->
 <!-- <img alt="" src="http://file.koreafilm.or.kr/thm/02/00/05/35/tn_DPF019295.jpg"> -->
@@ -129,15 +121,48 @@ ${mlist.movieInfo_title}
 
 
 
+<!-- <div class='container'>
+
+  <div class='checkboxes-container'>
+  
+    <div class='control-group'>
+      <input checked='checked' class='red-heart-checkbox' id='red-check1' type='checkbox'>
+      <label for='red-check1'>
+        Checked
+      </label>
+    </div>
+    
+    <div class='control-group'>
+      <input class='red-heart-checkbox' id='red-check2' type='checkbox'>
+      <label for='red-check2'>
+        Unchecked
+      </label>
+    </div>
+    
+  </div>
+</div> -->
+
+
+
 <!-- top ten -->
  <div id="poster">
 <c:forEach items="${movieList}" var="mlist" varStatus="status">
 <div class="card">
 
-<div class="ribbon-2"></div>
-  <div class="thumb" style="background-image: url('${mlist.movieInfo_poster}');">
-  <%-- <img class="pimg" alt="" src="${mlist.movieInfo_poster}"> --%>
+
+<div class="ribbon-2">
+  <div class='checkboxes-container'>
+    <div class='control-group'>
+      <input class='red-heart-checkbox heart' id='red-check${mlist.movieInfo_num}' type='checkbox'>
+      <label for='red-check${mlist.movieInfo_num} heartl'></label>
+    </div>
+
   </div>
+</div>
+
+<div class="thumb" style="background-image: url('${mlist.movieInfo_poster}');">
+<%-- <img class="pimg" alt="" src="${mlist.movieInfo_poster}"> --%>
+</div>
 
 <div class="infos">
 <div>
@@ -168,7 +193,7 @@ ${mlist.movieInfo_title}
 <h3 class="seats">상영시간  : ${mlist.movieInfo_time}분</h3>
 
 <p class="txt">
-Join us for our Live Infinity Session in beautiful New York City. 
+<!-- Join us for our Live Infinity Session in beautiful New York City.  -->
 </p>
 
 
@@ -177,32 +202,61 @@ Join us for our Live Infinity Session in beautiful New York City.
   <fieldset>
   <input type="hidden" class="realstar" value="${mlist.movieInfo_star}">
   <input type="hidden" class="movienum" value="${mlist.movieInfo_num}">
-    <input type="radio" id="${mlist.movieInfo_num}star5" class="star star5" name="rating" value="5" /><label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="Outstanding">5</label>
-    <input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating" value="4" /><label for="${mlist.movieInfo_num}star4" class="starlab starl4" title="Very Good">4</label>
-    <input type="radio" id="${mlist.movieInfo_num}star3" class="star star3" name="rating" value="3" /><label for="${mlist.movieInfo_num}star3" class="starlab starl3" title="Good">3</label>
-    <input type="radio" id="${mlist.movieInfo_num}star2" class="star star2" name="rating" value="2" /><label for="${mlist.movieInfo_num}star2" class="starlab starl2" title="Poor">2</label>
-    <input type="radio" id="${mlist.movieInfo_num}star1" class="star star1" name="rating" value="1" /><label for="${mlist.movieInfo_num}star1" class="starlab starl1" title="Very Poor">1</label>
+    <input type="radio" checked="checked" id="${mlist.movieInfo_num}star5" class="star star5" name="rating" value="5" /><label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="Outstanding"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating" value="4" /><label for="${mlist.movieInfo_num}star4" class="starlab starl4" title="Very Good"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star3" class="star star3" name="rating" value="3" /><label for="${mlist.movieInfo_num}star3" class="starlab starl3" title="Good"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star2" class="star star2" name="rating" value="2" /><label for="${mlist.movieInfo_num}star2" class="starlab starl2" title="Poor"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star1" class="star star1" name="rating" value="1" /><label for="${mlist.movieInfo_num}star1" class="starlab starl1" title="Very Poor"></label>
   </fieldset>
 </div>
-
 <!-- 별점 테스트 끝 -->
 
 
 <!-- modal 띄울가 말까 -->
-<h3 class="details">comment</h3>
+<h3 class="details myBtn">comment</h3>
+
+
+
+</div><!-- infos -->
+
+<div class="newmodal"> 
+<div class="mask" role="dialog">gg</div>
+	
+<div class="elegant-modal" role="alert">
+	<button class="close" role="button">X</button>
+	Content
+	<h1 class="title-modal">Modal Content</h1>
+	<hr class="line-modal">
+	
+	<div>
+	<div class="paragraph-modal" style="float: left;"> 
+	<p class="paragraph-modal">${mlist.movieInfo_plot}</p> </div>
+
+	<div style="float: left;"> 
+	<img class="pm" alt="" src="${mlist.movieInfo_poster}"> 
+	</div> 
+	
+	</div>
+	
+	<button class="content-button-close">CLOSE</button>
+	
+</div> 
 </div>
 
+</div><!-- card -->
 
-</div><!-- posterone -->
+
+
 
 
 <c:if test="${(status.index+1)%5 == 0}">
 <div class="posterDiv"></div>
 </c:if>
 
+
 </c:forEach>
 
-
+ <button class="btn more-trigger">더보기</button>
 </div>
 
 
@@ -211,13 +265,25 @@ Join us for our Live Infinity Session in beautiful New York City.
 
 
 <!-- 전체 리스트 -->
- <div id="poster">
+<%--  <div id="poster">
 <c:forEach items="${movieList}" var="mlist" varStatus="status">
 <div class="card">
 
-<div class="ribbon-2"></div>
+<div class="ribbon-2">
+<div class="ribbon-2">
+  <div class='checkboxes-container'>
+  
+    <div class='control-group'>
+      <input class='red-heart-checkbox heart' id='red-check${mlist.movieInfo_num}' type='checkbox'>
+      <label for='red-check${mlist.movieInfo_num}'></label>
+    </div>
+    
+    
+  </div>
+
+</div>
   <div class="thumb" style="background-image: url('${mlist.movieInfo_poster}');">
-  <%-- <img class="pimg" alt="" src="${mlist.movieInfo_poster}"> --%>
+  <img class="pimg" alt="" src="${mlist.movieInfo_poster}">
   </div>
 
 <div class="infos">
@@ -249,7 +315,8 @@ Join us for our Live Infinity Session in beautiful New York City.
 <h3 class="seats">상영시간  : ${mlist.movieInfo_time}분</h3>
 
 <p class="txt">
-Join us for our Live Infinity Session in beautiful New York City. 
+<!-- Join us for our Live Infinity Session in beautiful New York City.  -->
+${mlist.movieInfo_plot}
 </p>
 
 
@@ -286,7 +353,7 @@ Join us for our Live Infinity Session in beautiful New York City.
 <!--  <a href="#" class="btn more-trigger">Show More</a> -->
  <button class="btn more-trigger">더보기</button>
 
-</div>
+</div> --%>
 
 
 
@@ -322,6 +389,49 @@ Join us for our Live Infinity Session in beautiful New York City.
 <input type="hidden" id="r9">
 
 
+ <!-- Picture or Button -->
+<!-- 	<button class="btn-modal" aria-haspopup="true">Open Modal</button> -->
+
+	<!-- Modal Box -->
+<!-- 	<div class="mask" role="dialog"></div>
+	<div class="elegant-modal" role="alert">
+		<button class="close" role="button">X</button>
+		Content
+		<h1 class="title-modal">Modal Content</h1>
+		<hr class="line-modal">
+		<p class="paragraph-modal">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<img  class="age" alt="" src="../resources/images/movieSelect/m4.png">
+		<button class="content-button-close">CLOSE (:</button>
+	</div>
+ -->
+
+<!-- new modal -->
+<!-- <div class="container"> -->
+<!--   <a class="button" href="#popup">Open Modal</a>
+  
+  <div class="popup" id="popup">
+  
+    <div class="popup-inner">
+      <div class="popup__photo">
+        <img src="https://images.unsplash.com/photo-1515224526905-51c7d77c7bb8?ixlib=rb-0.3.5&s=9980646201037d28700d826b1bd096c4&auto=format&fit=crop&w=700&q=80" alt="">
+      </div>
+      
+      <div class="popup__text">
+        <h1>Lorem ipsum dolor sit amet</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ex velit, viverra non vulputate vitae, blandit vitae nisl. Nullam fermentum orci et erat viverra bibendum. Aliquam sed varius nibh, vitae mattis purus. Mauris elementum sapien non ullamcorper vulputate. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eget felis sit amet eros viverra pulvinar.</p>
+      </div>
+      
+      <a class="popup__close" href="#">X</a>
+    </div>
+    
+  </div> -->
+  
+<!-- </div> -->
 
 
 
@@ -372,13 +482,6 @@ $.ajax({
 	},
 	success: function(data) {
 		
-		
-		
-		
-		
-		
-		
-		
 		$.ajax({
 			type: "GET",
 			url: "./movieapi",
@@ -386,7 +489,7 @@ $.ajax({
 				rank1:data.boxOfficeResult.dailyBoxOfficeList[0].rank
 			},
 			success: function(data) {
-				alert("성공");
+				/* alert("성공"); */
 			}
 			
 		});
@@ -488,10 +591,10 @@ $(document).ready(function() {
 	console.log(ostar);
 	console.log(mnum);
 
-	if (ostar > 8 && ostar <= 10) {
+	/* if (ostar > 8 && ostar <= 10) {
 		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star5').attr('checked','checked');
-	}else if (ostar > 6 && ostar <= 8) {
+	}else */ if (ostar > 6 && ostar <= 8) {
 		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star4').attr('checked','checked');
 	}else if (ostar > 4 && ostar <= 6) {
@@ -540,14 +643,92 @@ $(document).ready(function() {
 
 /* 별점 */
 $('.starlab').click(function() {
+	x = $(this).closest('.card').offset();
+	$('html').animate({scrollTop : x.top}, 400);
+	
 	mstar = $(this).text();
 	console.log(mstar);
 	$(this).closest('.infos').addClass('.tact');
-	
-	x = $(this).closest('.card').offset();
-	$('html').animate({scrollTop : x.top}, 400);
-
+	/* 
+	alert(mstar); */
 });
+ 
+ 
+
+//하트
+$('.checkboxes-container').click(function() {
+	console.log($(this).find('.heart').attr("checked"));
+	if($(this).find('.heart').prop("checked") == true){
+		$(this).find('.heart').prop("checked", false);
+	} else if ($(this).find('.heart').prop("checked") == false) {
+		$(this).find('.heart').prop("checked",true);
+		
+	}
+
+	
+});
+
+
+//모달
+
+
+// Elegant Modal
+
+// Function to open Modal when the page finishes loading (with time to display animation)
+/* setTimeout(function(){
+	$(".mask").addClass("active");
+}, 500); */
+
+// Click event function to open modal (active)
+
+
+$(".myBtn").on("click", function(event){
+	/* alert('click');
+	alert($(this).closest('.infos').siblings('.newmodal').find(".mask").html()); */
+	//alert($(this).closest('.infos').siblings('.newmodal').find(".close").html());
+	
+	
+	$(this).closest('.infos').siblings('.newmodal').find(".mask").addClass("active");
+
+	
+});
+
+$(".elegant-modal").on("mouseenter", function(event){
+   $(".card").off("hover");
+   
+});
+
+
+// Função para fechar o modal.
+ function closeModal(){
+	 $(".mask").removeClass("active");  //Remove the active class
+} 
+
+
+// Function to close the modal screen
+//$(this).closest('.infos').siblings('.newmodal').find(".close")
+
+ $(".close, .mask").on("click", function(){
+  closeModal();
+}); 
+
+// Closes the modal with the button within the content
+ $(".content-button-close").click(function(){
+	closeModal();
+}); 
+
+// or the keyboard (esc)
+ $(document).keyup(function(e) {
+  if (e.keyCode == 27) {
+    closeModal();
+  }
+}); 
+
+$('.elegant-modal').mouseenter(function(event) {
+	event.preventDefault();
+});
+
+
 
 
 
