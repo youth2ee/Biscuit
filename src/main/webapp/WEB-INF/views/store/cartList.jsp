@@ -50,8 +50,11 @@
 					<strong class="checkbox_total">구매금액</strong>
 					<strong class="checkbox_select">선택</strong>
 				</p>
-				
+<!-- ------------------------------------------------------------ -->
 				<ul class="cart_list_style">
+				
+					<c:set var="sum" value="0" />
+				
 					<c:forEach items="${cartList}" var="cartList">
 					
 						<li id="cart_item_idx_${cartList.cart_num}">
@@ -75,12 +78,35 @@
 								<a href="#none" class="btn_amount_minus btn_amount_minus${cartList.cart_num}">-</a>
 								<a href="#none" class="btn_amount_change btn_amount_change${cartList.cart_num}">변경</a>
 							</div>
+							
 							<span class="product_info_price product_info_price${cartList.cart_num}"><fmt:formatNumber value="${cartList.store_price*cartList.cart_amount}" pattern="###,###,###" /></span>
+						
 						<script type="text/javascript">
 							//,찍어주는 정규식 함수
 							function addComma(price) {
 							  var regexp = /\B(?=(\d{3})+(?!\d))/g;
 							  return price.toString().replace(regexp, ',');
+							}
+							//총액 계산 함수
+							function calTotal() {
+								var price = 0;
+								var amount = 0;
+								
+								$('input[class="cart_checkbox"]:checked').each(function(i) {
+									
+									if($(this).attr("checked") == "checked"){
+										//alert($(this).attr("checked"));
+										tprice = parseInt($(this).parent().find('.product_info_price').text().replace(/[^\d.-]/g, ''));
+										//var salePrice = parseInt($(this).parent().find().text().replace(/[^\d.-]/g, ''));
+										//amount = parseInt($(this).parent().find('.product_info_count').text().replace(/[^\d.-]/g, ''));
+										
+										price += tprice;
+									}
+									//총 상품금액
+									$('#sales_price').text(addComma(price));
+									//총 결제 예상 금액
+									$('#total_price').text(addComma(price));
+								});
 							}
 							//수량 박스 증가
 							$('.btn_amount_plus'+${cartList.cart_num}).click(function() {
@@ -119,8 +145,10 @@
 											var price = cart_amount * ${cartList.store_price};
 											price = addComma(price);
 											$('.product_info_price'+${cartList.cart_num}).text(price);
-										}else{
-											alert("수량이 변경되지 않았습니다.");
+											
+											calTotal();
+										}else {
+											alert("수량 변경 실패");
 										}
 									},
 									error: function() {
@@ -134,47 +162,74 @@
 								<a href="#none">바로구매</a>
 							</div>
 							<a href="#" class="btn_product_del btn_product_del${cartList.cart_num}">삭제</a>
-							<script type="text/javascript">
-								$('.btn_product_del'+${cartList.cart_num}).click(function() {
-									var confirm_val = confirm("정말 삭제하시겠습니까?");
+							
+						<script type="text/javascript">
+							$('.btn_product_del'+${cartList.cart_num}).click(function() {
+								var confirm_val = confirm("선택하신 상품을 삭제하시겠습니까?");
+								
+								if(confirm_val){
+									var array_check = new Array();
 									
-									if(confirm_val){
-										var array_check = new Array();
-										
-										alert($('#checkbox$'+${cartList.cart_num}).val());
-										array_check.push($('#checkbox$'+${cartList.cart_num}).val());
-										
-										alert(array_check);
-										
-										/* $.ajax({
-											url: "cartDelete",
-											type: "post",
-											data: { list: array_check},
-											success: function(result) {
-												if(result == 1){
-													location.href = "cartList";
-												}else {
-													alert("삭제 실패");
-												}
-											},
-											error: function() {
-												alert("error");
+									//alert($('#checkbox'+${cartList.cart_num}).val());
+									array_check.push($('#checkbox'+${cartList.cart_num}).val());
+									
+									//alert(array_check);
+									
+									$.ajax({
+										url: "cartDelete",
+										type: "post",
+										data: { list: array_check},
+										success: function(result) {
+											if(result == 1){
+												alert("삭제되었습니다.");
+												location.href = "cartList";
+											}else {
+												alert("삭제 실패");
 											}
-										}); */
-										
-									}
-								});
-							</script>
+										},
+										error: function() {
+											alert("error");
+										}
+									});
+									
+								}
+							});
+						</script>
+					
 						</li>
+					
+					<c:set var="sum" value="${sum + (cartList.store_price*cartList.cart_amount)}" />	
+						
 					</c:forEach>
 				</ul>
-				
+<!-- ------------------------------------------------------------ -->
 				<a href="#none" class="btn_del_selected">
 					선택 상품 삭제
 					<span class="span_btn"></span>
 				</a>
 				
-				<script type="text/javascript">
+			<script type="text/javascript">
+				//총액 계산 함수
+				function calTotal() {
+					var price = 0;
+					var amount = 0;
+					
+					$('input[class="cart_checkbox"]:checked').each(function(i) {
+						
+						if($(this).attr("checked") == "checked"){
+							//alert($(this).attr("checked"));
+							tprice = parseInt($(this).parent().find('.product_info_price').text().replace(/[^\d.-]/g, ''));
+							//var salePrice = parseInt($(this).parent().find().text().replace(/[^\d.-]/g, ''));
+							//amount = parseInt($(this).parent().find('.product_info_count').text().replace(/[^\d.-]/g, ''));
+							
+							price += tprice;
+						}
+						//총 상품금액
+						$('#sales_price').text(addComma(price));
+						//총 결제 예상 금액
+						$('#total_price').text(addComma(price));
+					});
+				}
 				//체크박스 모두 선택, 해제
 				$('.span_btn').css("display", "inline");
 				$('.span_btn').text($('.cart_checkbox').length);
@@ -189,6 +244,7 @@
 						$('.cart_checkbox').prop("checked", false);
 						$('.span_btn').css("display", "none");
 					}
+					calTotal();
 				});
 				//체크박스 선택, 해제
 				$('.cart_checkbox').click(function() {
@@ -199,10 +255,11 @@
 					}
 					$('.span_btn').css("display", "inline");
 					$('.span_btn').text($('.cart_checkbox:checked').length);
+					calTotal();
 				});
 				//선택 삭제
 				$('.btn_del_selected').click(function() {
-					var confirm_val = confirm("정말 삭제하시겠습니까?");
+					var confirm_val = confirm("선택하신 상품을 삭제하시겠습니까?");
 					
 					if(confirm_val){
 						var array_check = new Array();
@@ -211,7 +268,7 @@
 							array_check.push($(this).val());
 						});
 						
-						alert(array_check);
+						//alert(array_check);
 						
 						$.ajax({
 							url: "cartDelete",
@@ -219,6 +276,7 @@
 							data: { list: array_check},
 							success: function(result) {
 								if(result == 1){
+									alert("삭제되었습니다.");
 									location.href = "cartList";
 								}else {
 									alert("삭제 실패");
@@ -231,7 +289,7 @@
 						
 					}
 				});
-				</script>
+			</script>
 				
 				
 				<table class="cart_total_price_wrap">
@@ -252,23 +310,27 @@
 						<tr>
 							<td>
 								<strong>
-									<span id="sales_price">1234</span>
+									<span id="sales_price">
+										<fmt:formatNumber value="${sum}" pattern="###,###,###"/>
+									</span>
 								</strong>
 							</td>
 							<td class="cart_calculator">
 								<strong>
-									<span id="total_discount">5678</span>
+									<span id="total_discount">0</span>
 								</strong>
 							</td>
 							<td>
 								<strong class="cart_total_price">
-									<span id="total_price">910112</span>
+									<span id="total_price">
+										<fmt:formatNumber value="${sum}" pattern="###,###,###"/>
+									</span>
 								</strong>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				
+			
 				<div class="btn_wrap">
 					<a href="#none" class="btn_buy">결제하기</a>
 				</div>

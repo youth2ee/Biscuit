@@ -40,12 +40,17 @@ public class StoreService {
 		return storeDAO.cartList(cartListVO);
 	}
 	
+	/* 카트 동일 상품 존재 여부 조회 */
+	public CartVO cartSelect(CartVO cartVO) throws Exception {
+		return storeDAO.cartSelect(cartVO);
+	}
+	
 	/* 카트 담기 */
 	public int cartInsert(CartVO cartVO) throws Exception {
 		return storeDAO.cartInsert(cartVO);
 	}
 	
-	/* 스토어 */
+/////* 스토어 */////////////////////////////////////////////////
 	public int storeDelete(StoreVO storeVO, HttpServletRequest request) throws Exception {
 		String realPath = request.getSession().getServletContext().getRealPath("resources/upload/store");
 		StoreVO storeVO2 = storeDAO.storeSelect(storeVO);
