@@ -29,4 +29,7 @@ public class SeatService {
 	public MovieDataVO getPoster(ChoiceVO choiceVO) throws Exception{
 		return seatDAO.getPoster(choiceVO);
 	}
+	public int ratingUpdate(ChoiceVO choiceVO) throws Exception{
+		return seatDAO.ratingUpdate(choiceVO);
+	}
 }

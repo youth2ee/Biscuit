@@ -25,4 +25,10 @@
 	<select id="getPoster" resultType="MovieDataVO" parameterType="ChoiceVO">
 		select poster from moviedata where title = (select movieInfo_title from movieInfo where movieInfo_title = #{movieInfo_name})	
 	</select>
+	<update id="ratingUpdate">
+		update movieinfo set movieinfo_rating = 
+		(select (select count(seat_num) from seat where movieinfo_num = #{movieInfo_num})/((select count(theater_num) 
+		from timeinfo where movieinfo_num = #{movieInfo_num})*195)*100 from dual)
+		where movieinfo_num = #{movieInfo_num}
+	</update>
 </mapper>
