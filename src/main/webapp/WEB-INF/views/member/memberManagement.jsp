@@ -61,35 +61,35 @@ tr input[type="text"] {
 								<c:set var="i" value="1"></c:set>
 								<tbody>
 									<tr class="row">
-										<td class="cell"><input type="text" value="${member.id}" class="id"
-											id="id${status.index}" readonly="readonly"></td>
-										<td class="cell"><input type="text" value="${member.pw}" class="pw"
-											id="pw${status.index}"></td>
-										<td class="cell"><input type="text"  class="name"
+										<td class="cell"><input type="text" value="${member.id}"
+											class="id" id="id${status.index}" readonly="readonly"></td>
+										<td class="cell"><input type="text" value="${member.pw}"
+											class="pw" id="pw${status.index}"></td>
+										<td class="cell"><input type="text" class="name"
 											value="${member.name}" id="name${status.index}"></td>
 										<td class="cell"><input type="text" class="email"
 											value="${member.email}" id="email${status.index}"></td>
 										<td class="cell"><input type="text" class="post"
 											value="${member.post}" id="post${status.index}"></td>
-										<td class="cell"><input type="text"  class="address"
+										<td class="cell"><input type="text" class="address"
 											value="${member.address}" id="address${status.index}"></td>
-										<td class="cell"><input type="text"  class="phone"
+										<td class="cell"><input type="text" class="phone"
 											value="${member.phone}" id="phone${status.index}"></td>
-										<td class="cell"><input type="text"  class="birth"
+										<td class="cell"><input type="text" class="birth"
 											value="${member.birth}" id="birth${status.index}"
 											readonly="readonly"></td>
 										<td class="cell"><input type="text" class="gender"
 											value="${member.gender}" id="gender${status.index}"></td>
-										<td class="cell"><input type="text"  class="grade"
+										<td class="cell"><input type="text" class="grade"
 											value="${member.grade}" id="grade${status.index}"></td>
-										<td class="cell"><input type="text"  class="grade_point"
+										<td class="cell"><input type="text" class="grade_point"
 											value="${member.grade_point}" id="grade_point${status.index}"></td>
 										<td class="cell"><input type="text" class="signIn_date"
-											value="${member.signIn_date}" id="signIn_date${status.index}" 
+											value="${member.signIn_date}" id="signIn_date${status.index}"
 											readonly="readonly"></td>
-										<td class="cell"><input type="button" class="update"
+										<td class="cell"><input type="button"
 											id="btn${status.index}" value="수정" class="${status.index}"></td>
-										<td class="cell"><input type="button" class="delete"
+										<td class="cell"><input type="button"
 											id="delete${status.index}" value="탈퇴" class="${status.index}"></td>
 									</tr>
 								</tbody>

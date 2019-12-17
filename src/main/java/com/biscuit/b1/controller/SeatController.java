@@ -107,6 +107,7 @@ public class SeatController {
 		String msg = "예매 실패";
 		if (result1 + result2 > 1) {
 			msg = "예매 성공";
+			seatService.ratingUpdate(choiceVO);
 			return new ModelAndView(new RedirectView("../pay/kakaoPay?price=" + request.getParameter("price")
 					+ "&count=" + request.getParameter("count")));
 		}

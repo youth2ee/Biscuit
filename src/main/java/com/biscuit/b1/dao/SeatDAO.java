@@ -39,7 +39,9 @@ public class SeatDAO {
 	public MovieDataVO getPoster(ChoiceVO choiceVO) {
 		return sqlsession.selectOne(NAMESPACE + "getPoster", choiceVO);
 	}
-	
+	public int ratingUpdate(ChoiceVO choiceVO) {
+		return sqlsession.update(NAMESPACE+"ratingUpdate",choiceVO);
+	}
 	
 
 }
