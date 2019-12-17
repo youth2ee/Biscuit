@@ -25,7 +25,7 @@
 		<label for="gender">남<input type="radio" name="gender" id="gender" value="M"> 
 							여<input type="radio" name="gender" id="gender" value="F">
 		</label><br> <label for="phone">전화번호 <input type="text"name="phone" id="phone"value = "${member.phone}" ></label><br> 
-		<input type="submit" id="signIn" value="회원가입">
+		<input type="submit" value="업데이트">
 	</form>
 	<script type="text/javascript">
 		$("#addressSearch input[type='text']").click(function() {

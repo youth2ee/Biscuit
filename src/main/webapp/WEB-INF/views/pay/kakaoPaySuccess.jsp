@@ -46,8 +46,8 @@
 												<tbody>
 													<tr>
 														<td align="left"><img
-															src="http://www.supah.it/dribbble/017/logo.png"
-															width="32" height="32" alt="logo" border="0" /></td>
+															src="../resources/images/header/CGV_BI4.png"
+															alt="logo" border="0" style="width: 50%"/></td>
 													</tr>
 													<tr class="hiddenMobile">
 														<td height="40"></td>
@@ -144,7 +144,7 @@
 														align="center">1</td>
 													<td
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 10px 0;"
-														align="right">₩10000</td>
+														align="right">₩ 10,000</td>
 												</tr>
 											</c:forEach>
 											<tr>
@@ -163,13 +163,15 @@
 														align="center">1</td>
 													<td
 														style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; line-height: 18px; vertical-align: top; padding: 10px 0;"
-														align="right">₩8000</td>
+														align="right">₩ 8,000</td>
 												</tr>
 											</c:forEach>
+												<c:if test="${kid ne 0}">
 													<tr>
 												<td height="1" colspan="4"
 													style="border-bottom: 1px solid #e4e4e4"></td>
 											</tr>
+												</c:if>
 										
 										</tbody>
 									</table>
@@ -203,11 +205,11 @@
 											<tr>
 												<td
 													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align: right;">
-													<strong>결제 금액</strong>
+													<strong>Grand Total (Incl.Tax)</strong>
 												</td>
 												<td
 													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align: right;">
-													<strong>₩${pay.amount.total}</strong>
+													<strong>₩ <fmt:formatNumber value="${pay.amount.total}" pattern="\#,###.##"/></strong>
 												</td>
 											</tr>
 										</tbody>
@@ -252,7 +254,7 @@
 															<tr>
 																<td
 																	style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top;">
-																	<strong>BILLING INFORMATION</strong>
+																	<strong>결제 주소지</strong>
 																</td>
 															</tr>
 															<tr>
@@ -261,9 +263,9 @@
 															<tr>
 																<td
 																	style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top;">
-																	Philip Brooks<br> Public Wales, Somewhere<br>
-																	New York NY<br> 4468, United States<br> T:
-																	202-555-0133
+																	 (04377)<br>서울특별시 용산구 한강대로 23길<br>
+																	 55 아이파크몰 6층<br> (한강로동)<br> T:
+																	1544-1122
 																</td>
 															</tr>
 														</tbody>
@@ -279,7 +281,7 @@
 															<tr>
 																<td
 																	style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top;">
-																	<strong>PAYMENT METHOD</strong>
+																	<strong>결제 방식</strong>
 																</td>
 															</tr>
 															<tr>
@@ -288,7 +290,7 @@
 															<tr>
 																<td
 																	style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top;">
-																	${pay.payment_method_type}<br> Credit Card Type:${pay.card_info.issuer_corp} <br>
+																	${pay.payment_method_type}<br><c:if test="${pay.payment_method_type eq CARD}">Credit Card Type : ${pay.card_info.issuer_corp}</c:if><br>
 																</td>
 															</tr>
 														</tbody>
@@ -318,7 +320,7 @@
 															<tr>
 																<td
 																	style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top;">
-																	<strong>SHIPPING INFORMATION</strong>
+																	<strong>판매자 정보</strong>
 																</td>
 															</tr>
 															<tr>
@@ -327,14 +329,13 @@
 															<tr>
 																<td
 																	style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top;">
-																	Sup Inc<br> Another Place, Somewhere<br> New
-																	York NY<br> 4468, United States<br> T:
-																	202-555-0171
+																	CEO KimAmugae<br> corporate 
+																	<br> 000-00-00000<br> Amumal <br>
+																	111-11-11111
 																</td>
 															</tr>
 														</tbody>
 													</table>
-
 
 													<table width="220" border="0" cellpadding="0"
 														cellspacing="0" align="right" class="col">
@@ -348,7 +349,7 @@
 															<tr>
 																<td
 																	style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top;">
-																	<strong>SHIPPING METHOD</strong>
+																	<strong>SNS</strong>
 																</td>
 															</tr>
 															<tr>
@@ -357,7 +358,7 @@
 															<tr>
 																<td
 																	style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top;">
-																	UPS: U.S. Shipping Services</td>
+																	FaceBook<br> https://www.facebook.com/CJCGV<br>Twitter<br> https://twitter.com/cj_cgv<br>Insta<br> https://www.instagram.com/cgv_korea</td>
 															</tr>
 														</tbody>
 													</table>
@@ -396,7 +397,11 @@
 									<tr>
 										<td
 											style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-											Have a nice day.</td>
+											영화 그 이상의 감동. CGV
+											<div
+												style="transform: rotate(-268deg); display: inline-block;margin-left: 5px;">
+												;)</div>
+										</td>
 									</tr>
 								</tbody>
 							</table>

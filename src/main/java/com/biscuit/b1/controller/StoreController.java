@@ -1,6 +1,8 @@
 package com.biscuit.b1.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +36,6 @@ public class StoreController {
 	@PostMapping("cartDelete")
 	public int cartDelete(@RequestParam(value="list[]") List<String> list, CartVO cartVO, HttpSession session) throws Exception {
 		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		//String member_id = memberVO.getId();
 		
 		int result = 0;
 		int cart_num = 0;
@@ -57,7 +58,19 @@ public class StoreController {
 	@ResponseBody
 	@PostMapping("cartUpdate")
 	public int cartUpdate(CartListVO cartListVO, HttpSession session) throws Exception {
-		return storeService.cartUpdate(cartListVO);
+		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+				
+		int result = 0;
+		/*
+		if(memberVO != null) {
+			cartListVO.setMember_id(memberVO.getId());
+			result = storeService.cartUpdate(cartListVO);
+		}
+		*/
+		cartListVO.setMember_id("a");
+		result = storeService.cartUpdate(cartListVO);
+		
+		return result;
 	}
 	
 	//카트 리스트
@@ -71,25 +84,54 @@ public class StoreController {
 		
 		model.addAttribute("cartList", cartList);
 	}
-	
+/////////////////////////////////////////////	
+	//카트 동일 상품 존재 여부 조회
+	@ResponseBody
+	@PostMapping("cartSelect")
+	public Map<String, Integer> cartSelect(CartVO cartVO, HttpSession session) throws Exception {
+		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+		int result = 0; //로그인 X
+		
+		//if(memberVO != null) {
+			//cartVO.setMember_id(memberVO.getId());
+			
+			cartVO.setMember_id("a");
+			cartVO = storeService.cartSelect(cartVO);
+			
+			if(cartVO != null) {
+				int cart_num = cartVO.getCart_num();
+				int cart_amount = cartVO.getCart_amount();
+				//System.out.println(cart_num);
+				map.put("cart_num", cart_num);
+				map.put("cart_amount", cart_amount);
+				result = 1; //동일 상품 존재 O
+			}else {
+				result = 2; //동일 상품 존재 X
+			}
+			map.put("result", result);
+		//}
+		return map;
+	}
 /////////////////////////////////////////////		
 	//카트 담기 
 	@ResponseBody
 	@PostMapping("cartInsert")
 	public int cartInsert(CartVO cartVO, HttpSession session) throws Exception {
 		//System.out.println(1);
+		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		int result = 0;
-		/*MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		
+		/*
 		if(memberVO != null) {
 			cartVO.setMember_id(memberVO.getId());
 			result = storeService.cartInsert(cartVO);
 		}
 		*/
+		
 		cartVO.setMember_id("a");
 		result = storeService.cartInsert(cartVO);
 		
-		//model.addAttribute("result", result);
 		return result;
 	}
 	

@@ -18,9 +18,7 @@
 		<img src="../resources/images/pay/pay_icon.png" id="btn">
 	</form>
 	<script type="text/javascript">
-		$("#btn").click(function() {
 			$("#frm").submit();
-		});
 	</script>
 </body>
 </html>

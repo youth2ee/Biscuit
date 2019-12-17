@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.service.MemberService;
 import com.biscuit.b1.util.Pager;
@@ -23,10 +24,14 @@ public class MemberController {
 	private MemberService memberService;
 
 	@GetMapping("memberLogout")
-	public String memberLogout(HttpSession session) throws Exception {
+	public ModelAndView memberLogout(HttpSession session) throws Exception {
 		// 로그아웃
 		session.invalidate();
-		return "redirect:../";
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg","로그아웃되었습니다.");
+		mv.addObject("path", "../");
+		mv.setViewName("common/common_result");
+		return mv;
 	}
 
 	@PostMapping("memberDelete")
@@ -34,8 +39,6 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		String sessionPw = memberVO.getPw();
-		System.out.println("세션비밀번호" + sessionPw);
-		System.out.println("폼비밀번호" + pwCheck);
 		if (sessionPw.equals(pwCheck)) {
 			int result = memberService.memberDelete(memberVO);
 			String msg = "탈퇴에 실패했습니다.";
@@ -108,23 +111,68 @@ public class MemberController {
 
 	@GetMapping("memberJoin2")
 	public void memberJoin2() {
-
 	}
+	
 
 	@PostMapping("memberLogin")
-	public ModelAndView memberLogin(MemberVO memberVO, HttpSession session) throws Exception {
+	public ModelAndView memberLogin(ChoiceVO choiceVO, MemberVO memberVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		memberVO = memberService.memberLogin(memberVO);
-		String msg = "로그인 실패";
-		String path = "./memberLogin";
+		
+		
+		//로그인이 안된상태에서 로그인하기
+		if (memberVO.getId() != null) {
+			memberVO = memberService.memberLogin(memberVO);		
+		}
+		
+		String msg = "";
+		String path = "";		
+		
+		
+		//로그인 안된 상태에서 성공
+		msg = "로그인 완료";
+		path = "../";
+		
+
+		
+		//로그인 안된 상태에서 실패
+		msg = "로그인 실패";
+		path = "./memberLogin";		
+		
+		
+		
+		//로그인이 된 상태에서  성공
+		msg = "로그인 완료";
+		path = "../";
+		session.setAttribute("member", memberVO);
+		
+		//로그인이 된 상태에서 실패
+		msg = "로그인 실패";
+		path = "./memberLogin";
+		
+		
+		
+		
+		
+		//영화 예매 페이지에서 choiceVO를 받았을 때 : 로그인 실패
+		/*
+		 * if (choiceVO != null) { path = "../movie/movieSelect"; }
+		 */
+		System.out.println(choiceVO.getMovieInfo_name());	
+		
 		if (memberVO != null) {
 			msg = "로그인 완료";
 			path = "../";
-			session.setAttribute("member", memberVO);
+			//영화 예매 페이지에서 choiceVO를 받았을 때 : 로그인 성공
+			if(choiceVO != null) {
+				path = "../seat/seatSelect";
+				session.setAttribute("ChoiceVO", choiceVO);
+			}
+			System.out.println(session.getAttribute("member"));
 		}
-
-		mv.addObject("msg", msg);
+		
+		
 		mv.addObject("path", path);
+		mv.addObject("msg", msg);
 		mv.setViewName("common/common_result");
 		return mv;
 	}
@@ -196,6 +244,16 @@ public class MemberController {
 	public ModelAndView idCheck(String id) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = memberService.idCheck(id);
+		if (memberVO == null) {
+			mv.addObject("result", 1);
+		} else
+			mv.addObject("result", 0);
+		return mv;
+	}
+	@GetMapping("emailCheck")
+	public ModelAndView emailCheck(String email) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO = memberService.emailCheck(email);
 		if (memberVO == null) {
 			mv.addObject("result", 1);
 		} else

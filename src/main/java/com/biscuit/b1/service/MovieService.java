@@ -94,6 +94,7 @@ public class MovieService {
 					int runtime = Integer.parseInt(resultObject2.get("runtime").toString().trim()); // 상영 시간
 					String genre = resultObject2.get("genre").toString().trim(); // 장르
 					String nation = resultObject2.get("nation").toString().trim(); // 국가
+					String plot = resultObject2.get("plot").toString().trim(); // 줄거리
 					String prodYear = resultObject2.get("prodYear").toString().trim(); // 제작년도
 					for (int x = 0; x < rating.size(); x++) {
 						JSONObject ratingObject = (JSONObject) rating.get(x);
@@ -139,32 +140,25 @@ public class MovieService {
 							System.out.println("제작년도 : " + prodYear);
 							System.out.println("개봉일  : " + releaseDate);
 							System.out.println("================================================================");
-							count++;
 
-							movieDataVO.setTitle(title);
-							movieDataVO.setRuntime(runtime);
-							movieDataVO.setPoster(posters);
-							movieDataVO.setNation(nation);
-							movieDataVO.setGenre(genre);
-							movieDataVO.setRatingGrade(ratingGrade);
-							movieDataVO.setProdYear(prodYear);
-							movieDataVO.setReleaseDate(releaseDate);
-
-							int check = movieDAO.movieInsert(movieDataVO);
-
-							movieInfoVO.setMovieInfo_title(title);
-							movieInfoVO.setMovieInfo_genre(genre);
-							movieInfoVO.setMovieInfo_date(releaseDate);
-							movieInfoVO.setMovieInfo_nation(nation);
-							movieInfoVO.setMovieInfo_grade(ratingGrade);
-							movieInfoVO.setMovieInfo_time(runtime);
-							movieInfoVO.setMovieInfo_poster(posters);
-							movieInfoVO.setMovieInfo_year(prodYear);
-
-							if (check == 1) {
-								movieDAO.movieInfoInsert(movieInfoVO);
-								count++;
-							}
+							/*
+							 * movieDataVO.setTitle(title); movieDataVO.setRuntime(runtime);
+							 * movieDataVO.setPoster(posters); movieDataVO.setNation(nation);
+							 * movieDataVO.setGenre(genre); movieDataVO.setRatingGrade(ratingGrade);
+							 * movieDataVO.setProdYear(prodYear); movieDataVO.setReleaseDate(releaseDate);
+							 * 
+							 * int check = movieDAO.movieInsert(movieDataVO);
+							 * 
+							 * movieInfoVO.setMovieInfo_title(title); movieInfoVO.setMovieInfo_genre(genre);
+							 * movieInfoVO.setMovieInfo_date(releaseDate);
+							 * movieInfoVO.setMovieInfo_nation(nation);
+							 * movieInfoVO.setMovieInfo_grade(ratingGrade);
+							 * movieInfoVO.setMovieInfo_time(runtime);
+							 * movieInfoVO.setMovieInfo_poster(posters);
+							 * movieInfoVO.setMovieInfo_year(prodYear); movieInfoVO.setMovieInfo_plot(plot);
+							 * 
+							 * if (check == 1) { movieDAO.movieInfoInsert(movieInfoVO); count++; }
+							 */
 						}
 					}
 

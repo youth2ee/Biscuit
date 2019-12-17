@@ -7,8 +7,18 @@
   
   	<!-- 영화선택 -->
   	<select id="movieTitleSelect" resultType="MovieInfoVO">
-  	select movieinfo_num, movieinfo_title, movieinfo_grade
+<!--   	select movieinfo_num, movieinfo_title, movieinfo_grade
     from movieinfo
+    order by movieinfo_rating asc -->
+    <![CDATA[
+    select movieinfo_num, movieinfo_title, movieinfo_grade, movieinfo_date
+    from
+    (select movieinfo_num, movieinfo_title, movieinfo_grade, movieinfo_date
+    from movieinfo
+    where movieinfo_date >= (select to_char(add_months(sysdate-15,-1),'yy/mm/dd')from dual)
+    order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
+    WHERE ROWNUM <= 50
+    ]]>
   	</select>
   
   	<!-- 영화지역 선택 -->
@@ -98,8 +108,17 @@
   	</select>
   	
   	<select id="movieList" resultType="MovieInfoVO">
-  	select * from movieinfo
-	order by movieinfo_num asc
+<!--   	select * from movieinfo
+	order by movieinfo_star desc -->
+	<![CDATA[
+	select *
+    from
+    (select *
+    from movieinfo
+    where movieinfo_date >= (select to_char(add_months(sysdate-15,-1),'yy/mm/dd')from dual)
+    order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
+    WHERE ROWNUM <= 50
+    ]]>
   	</select>
 
   	<insert id="movieInsert" parameterType="MovieDataVO">
@@ -107,9 +126,9 @@
   	</insert>
   	<insert id="movieInfoInsert" parameterType="MovieInfoVO">
   		insert into movieInfo 
-  		(movieInfo_num,movieInfo_title,movieInfo_genre,movieInfo_nation,movieInfo_year,movieInfo_grade,movieInfo_time,movieInfo_date,movieInfo_star,movieInfo_poster,movieInfo_plot) 
+  		(movieInfo_num,movieInfo_title,movieInfo_genre,movieInfo_nation,movieInfo_year,movieInfo_grade,movieInfo_time,movieInfo_date,movieInfo_star,movieInfo_poster,movieInfo_plot,movieInfo_rating) 
   		values
-  		(movieInfo_seq.nextval,#{movieInfo_title},#{movieInfo_genre},#{movieInfo_nation},#{movieInfo_year},#{movieInfo_grade},#{movieInfo_time},#{movieInfo_date},0,#{movieInfo_poster},#{movieInfo_plot})
+  		(movieInfo_seq.nextval,#{movieInfo_title},#{movieInfo_genre},#{movieInfo_nation},#{movieInfo_year},#{movieInfo_grade},#{movieInfo_time},#{movieInfo_date},0,#{movieInfo_poster},#{movieInfo_plot},0)
   	</insert>
   	<select id="movieListView" resultType="MovieDataVO">
   		select * from movieData order by releaseDate desc

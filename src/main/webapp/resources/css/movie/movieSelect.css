@@ -72,6 +72,8 @@ font-weight: bolder;
 .sname{
 	/* width: 22%; */
 	width: 242px;
+	overflow: auto;
+	height: 437px;
 }
 
 
@@ -81,8 +83,6 @@ font-weight: bolder;
 	padding-left: 20px; */
 	padding: 20px;
 	margin: 6px;
-	height: 600px;
-	overflow: auto;
 	float: left;
 	border-radius: 3px;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
@@ -91,6 +91,8 @@ font-weight: bolder;
 .s1{
 	/* width: 15%; */
 	width: 135px;
+	height: 437px;
+	overflow: hidden;
 }
 
 .s2{
@@ -102,8 +104,8 @@ font-weight: bolder;
 	font-size: 13px;
 	padding: 20px;
 	margin: 6px;
-	height: 600px;
-	overflow: auto;
+	height: 437px;
+	overflow: hidden;
 	float: left;
 /* 	border: 1px solid #e71a0f; */
 	border-radius: 3px;
@@ -112,13 +114,18 @@ font-weight: bolder;
 
 .s4{
 	/* width: 16%; */
-	width: 173px;
+
+	width: 170px;
+	height: 437px;
+	overflow: hidden;
+
 }
 
 .s5{
 	/* width: 15.7%; */
 	width:168px;
 	padding-left: 22px;
+	height: 437px;
 }
 
 .sul{
@@ -187,10 +194,10 @@ td{
 
 .mtd2{
 	width:78%;
+
+	vertical-align: top;
 	padding-left: 10px;
 	padding-bottom: 5px;
-	/* padding-top: 15px; */
-	vertical-align: top;
 }
 
 #year{
@@ -203,6 +210,13 @@ td{
 	font-size: 15px;
 }
 
-.checked{
-	color: blue;
+
+/* .noncheck{
+ color: #b9b3b3;
+} */
+
+.soldout {
+	pointer-events: none;
+	 color: #dcd9d9;
 }
+

@@ -18,7 +18,11 @@ public class MemberService {
 	public int memberJoin(MemberVO memberVO) throws Exception {
 		return memberDAO.memberJoin(memberVO);
 	}
-
+	
+	public MemberVO emailCheck(String email) throws Exception {
+		return memberDAO.emailCheck(email);
+	}
+	
 	public MemberVO idCheck(String id) throws Exception {
 		return memberDAO.idCheck(id);
 	}

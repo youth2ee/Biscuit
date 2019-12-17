@@ -53,8 +53,10 @@
 		post = #{post}, phone = #{phone},gender=#{gender},grade=#{grade},grade_point=#{grade_point}
 		where id = #{id}
 	</update>
-	
 	<select id="memberCount" resultType="Integer">
 		select count(*) from member <include refid="bs"/>
+	</select>
+	<select id="emailCheck" resultType="MemberVO" parameterType="String">
+		select email from member where email = #{email} 
 	</select>
 </mapper>
