@@ -108,7 +108,7 @@
 
 
  
-<form action="../seat/seatSelect" id="frm">
+<form action="../member/memberLogin" id="frm">
 <div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div>
 </form>
  
@@ -233,23 +233,8 @@
 				data = data.trim();
 				$('#cinemaNameSelect').html(data);
 				
-/* 		 	var test = $('.cinemaSelect').find('.mtd1');
-				 alert(test);
-				
-			if(test.has('.yooza')){
-					
-				alert('aa');  
-				
-				$(this).closest('.cinemaSelect').find('.mtd2').addClass('act'); 
-					
-	 		 		$.each($(this), function(i,e){
-						alert(i)
-					    alert($(this).html());
-					
-			 		}); 
-			} */
-			
-			
+				/* $('.check').addClass('act'); */
+				$('.noncheck').addClass('noncheck').addClass('soldout');
 		}
  		});
  	});
@@ -320,6 +305,19 @@
 			success : function(data) {
 				data = data.trim();
 				$('#movieTimeSelect').html(data);	
+
+				
+
+		 		$.each($('.mtime2'), function(i,e){
+			
+					console.log($(this).text());
+					
+					if($(this).text() == '매진'){
+						$(this).closest('.timeSelect').addClass('soldout');
+					}
+
+		 		});
+
 			}
 		}); 
  		});

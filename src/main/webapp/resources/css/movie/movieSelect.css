@@ -207,3 +207,14 @@ td{
 	font-size: 15px;
 }
 
+/* .noncheck{
+ color: #b9b3b3;
+} */
+
+.soldout {
+	pointer-events: none;
+	 color: #dcd9d9;
+}
+
+
+

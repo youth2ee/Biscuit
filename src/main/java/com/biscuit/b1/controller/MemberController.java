@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.service.MemberService;
 import com.biscuit.b1.util.Pager;
@@ -114,19 +115,35 @@ public class MemberController {
 	}
 
 	@PostMapping("memberLogin")
-	public ModelAndView memberLogin(MemberVO memberVO, HttpSession session) throws Exception {
+	public ModelAndView memberLogin(ChoiceVO choiceVO ,MemberVO memberVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		memberVO = memberService.memberLogin(memberVO);
+		
 		String msg = "로그인 실패";
 		String path = "./memberLogin";
+		
+		
+		//영화 예매 페이지에서 choiceVO를 받았을 때 : 로그인 실패
+		if (choiceVO != null) {
+			path = "../movie/movieSelect";
+		}
+		
+		
 		if (memberVO != null) {
 			msg = "로그인 완료";
-			path = "../";
 			session.setAttribute("member", memberVO);
+			path = "../";
+			
+			//영화 예매 페이지에서 choiceVO를 받았을 때 : 로그인 성공
+			if(choiceVO != null) {
+				path = "../seat/seatSelect";
+				session.setAttribute("ChoiceVO", choiceVO);
+			}
 		}
-
-		mv.addObject("msg", msg);
+		
+		
 		mv.addObject("path", path);
+		mv.addObject("msg", msg);
 		mv.setViewName("common/common_result");
 		return mv;
 	}

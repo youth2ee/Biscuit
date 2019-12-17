@@ -3,16 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:forEach items="${result}" var="cinema" varStatus="status">
-<h1>${check[status.index]}</h1>
 <tr class="cinemaSelect">
-
 
 
 <c:if test="${check[status.index] eq '1'}">
 	<td class="mcinema mtd2 check" title="${cinema.cinema_num}">${cinema.cinema_name}</td>
 </c:if>
 <c:if test="${check[status.index] eq '0'}">
-	<td class="mcinema mtd2" title="${cinema.cinema_num}">${cinema.cinema_name}</td>
+	<td class="mcinema mtd2 noncheck" title="${cinema.cinema_num}">${cinema.cinema_name}</td>
 </c:if>
 
 
