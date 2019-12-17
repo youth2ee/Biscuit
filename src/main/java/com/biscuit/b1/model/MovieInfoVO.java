@@ -14,8 +14,19 @@ public class MovieInfoVO {
 	private String movieInfo_poster;
 	private String movieInfo_plot;
 	
+	private double movieInfo_rating;
 	
 	
+	
+	
+	public double getMovieInfo_rating() {
+		return movieInfo_rating;
+	}
+
+	public void setMovieInfo_rating(double movieInfo_rating) {
+		this.movieInfo_rating = movieInfo_rating;
+	}
+
 	public String getMovieInfo_plot() {
 		return movieInfo_plot;
 	}

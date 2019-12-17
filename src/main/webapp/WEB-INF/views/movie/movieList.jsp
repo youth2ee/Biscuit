@@ -81,12 +81,20 @@
  
 </div> 
 
-<h3 class="date">개봉일 : ${mlist.movieInfo_date}</h3> 
+<h3 class="date">예매율 : ${mlist.movieInfo_rating}</h3> 
 <h3 class="date">평점 : ${mlist.movieInfo_star}</h3> 
+
 <h3 class="seats">상영시간  : ${mlist.movieInfo_time}분</h3>
+
+
+<h3 class="date">개봉일 : ${mlist.movieInfo_date}</h3> 
 
 <p class="txt">
 <!-- Join us for our Live Infinity Session in beautiful New York City.  -->
+예매율을 넣자
+
+
+
 </p>
 
 

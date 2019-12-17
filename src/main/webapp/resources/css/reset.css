@@ -22,7 +22,8 @@ height: 12px;
 }
 
 ::-webkit-scrollbar-track {
-	background-color: #fcfcf0;
+	/* background-color: #fcfcf0; */
+	background-color:white;
 	border-radius: 9px;
 }
 

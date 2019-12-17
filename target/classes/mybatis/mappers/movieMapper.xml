@@ -107,9 +107,9 @@
   	</insert>
   	<insert id="movieInfoInsert" parameterType="MovieInfoVO">
   		insert into movieInfo 
-  		(movieInfo_num,movieInfo_title,movieInfo_genre,movieInfo_nation,movieInfo_year,movieInfo_grade,movieInfo_time,movieInfo_date,movieInfo_star,movieInfo_poster,movieInfo_plot) 
+  		(movieInfo_num,movieInfo_title,movieInfo_genre,movieInfo_nation,movieInfo_year,movieInfo_grade,movieInfo_time,movieInfo_date,movieInfo_star,movieInfo_poster,movieInfo_plot,movieInfo_rating) 
   		values
-  		(movieInfo_seq.nextval,#{movieInfo_title},#{movieInfo_genre},#{movieInfo_nation},#{movieInfo_year},#{movieInfo_grade},#{movieInfo_time},#{movieInfo_date},0,#{movieInfo_poster},#{movieInfo_plot})
+  		(movieInfo_seq.nextval,#{movieInfo_title},#{movieInfo_genre},#{movieInfo_nation},#{movieInfo_year},#{movieInfo_grade},#{movieInfo_time},#{movieInfo_date},0,#{movieInfo_poster},#{movieInfo_plot},0)
   	</insert>
   	<select id="movieListView" resultType="MovieDataVO">
   		select * from movieData order by releaseDate desc
