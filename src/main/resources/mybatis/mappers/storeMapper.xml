@@ -14,7 +14,7 @@
 	<update id="cartUpdate" parameterType="CartListVO">
 		update cart
 		set cart_amount = #{cart_amount}, cart_date = sysdate
-		where cart_num = #{cart_num}
+		where cart_num = #{cart_num} and member_id = #{member_id}
 	</update>
 	
 	<!-- 카트 리스트 -->
@@ -27,6 +27,12 @@
 		    inner join store s
 		    on c.store_num = s.store_num
 		where c.member_id = #{member_id}
+	</select>
+	
+	<!-- 카트 동일 상품 존재 여부 조회 -->
+	<select id="cartSelect" resultType="CartVO" parameterType="CartVO">
+		select * from cart
+		where store_num = #{store_num} and member_id = #{member_id}
 	</select>
 	
 	<!-- 카트 담기 -->

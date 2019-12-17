@@ -17,7 +17,7 @@ public class CartVO {
 	private int store_num; //스토어 번호
 	private int cart_amount; //주문 수량
 	private Date cart_date; //주문 날짜
-	
+	 
 	public int getCart_num() {
 		return cart_num;
 	}

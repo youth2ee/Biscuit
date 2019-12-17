@@ -352,7 +352,7 @@ input[type="checkbox"].cart_checkbox:checked + label:before {
     color: #fff;
     line-height: 32px;
     text-align: center;
-    background-color: #4b4f56;
+    background-color: #DA281C;
 }
 .cart_list_style li .product_info_btn_wrap a:first-child {
 	margin-top: 0;
@@ -474,7 +474,6 @@ a.btn_buy {
     font-size: 19px;
     color: #fff;
     line-height: 60px;
-    background-color: #373e46;
-    border: 1px solid #373e46;
+    background-color: #fb4357;
 }
 
