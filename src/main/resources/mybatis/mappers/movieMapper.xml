@@ -7,8 +7,13 @@
   
   	<!-- 영화선택 -->
   	<select id="movieTitleSelect" resultType="MovieInfoVO">
-  	select movieinfo_num, movieinfo_title, movieinfo_grade
+<!--   	select movieinfo_num, movieinfo_title, movieinfo_grade
     from movieinfo
+    order by movieinfo_rating asc -->
+  	select movieinfo_num, movieinfo_title, movieinfo_grade, movieinfo_date
+    from movieinfo
+    where movieinfo_date >= '19/12/01'
+    order by movieinfo_rating asc, movieinfo_date desc, movieinfo_star asc, movieinfo_title asc
   	</select>
   
   	<!-- 영화지역 선택 -->
