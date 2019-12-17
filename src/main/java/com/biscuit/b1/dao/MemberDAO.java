@@ -45,10 +45,14 @@ public class MemberDAO {
 	}
 
 	public List<MemberVO> memberManagement(Pager pager) throws Exception {
-		return sqlSession.selectList(NAMESPACE + "memberManagement",pager);
+		return sqlSession.selectList(NAMESPACE + "memberManagement", pager);
 	}
-	
+
 	public int memberCount(Pager pager) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"memberCount", pager);
+		return sqlSession.selectOne(NAMESPACE + "memberCount", pager);
+	}
+
+	public MemberVO emailCheck(String email) {
+		return sqlSession.selectOne(NAMESPACE + "emailCheck", email);
 	}
 }
