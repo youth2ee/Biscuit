@@ -160,7 +160,7 @@
 		</c:forEach>
 		
 		for(var i = 0; i < list.length; i++){ // 이미 예매된 좌석 선택 불가
-			for(var j = 1; j < $("input:checkbox[class='seat']").length; j++){
+			for(var j = 1; j < $("input:checkbox[class='seat']").length + 1; j++){
 				if(list[i] == $("input:checkbox[id='seat"+j+"']").val()){
 					$("input:checkbox[id='seat"+j+"']").parents("td").attr("class","booked");
 					$("input:checkbox[id='seat"+j+"']").attr('disabled', true);
@@ -179,7 +179,7 @@
 		
 		$("input:checkbox[class='seat']").change(function() { // 선택 좌석 취소 시 경고창
 				var seat_name = "";
-				for(var i = 0; i < $("input:checkbox[class='seat']").length; i++){
+				for(var i = 0; i < $("input:checkbox[class='seat']").length+1; i++){
 					if ($("input:checkbox[id=seat" + i + "]").is(":checked") == true) {
 						seat_name = seat_name + $("input:checkbox[id=seat" + i + "]").val();
 						$("#seat_name").val(seat_name);

@@ -23,10 +23,14 @@ public class MemberController {
 	private MemberService memberService;
 
 	@GetMapping("memberLogout")
-	public String memberLogout(HttpSession session) throws Exception {
+	public ModelAndView memberLogout(HttpSession session) throws Exception {
 		// 로그아웃
 		session.invalidate();
-		return "redirect:../";
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg","로그아웃되었습니다.");
+		mv.addObject("path", "../");
+		mv.setViewName("common/common_result");
+		return mv;
 	}
 
 	@PostMapping("memberDelete")
@@ -34,8 +38,6 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		String sessionPw = memberVO.getPw();
-		System.out.println("세션비밀번호" + sessionPw);
-		System.out.println("폼비밀번호" + pwCheck);
 		if (sessionPw.equals(pwCheck)) {
 			int result = memberService.memberDelete(memberVO);
 			String msg = "탈퇴에 실패했습니다.";
@@ -196,6 +198,16 @@ public class MemberController {
 	public ModelAndView idCheck(String id) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		MemberVO memberVO = memberService.idCheck(id);
+		if (memberVO == null) {
+			mv.addObject("result", 1);
+		} else
+			mv.addObject("result", 0);
+		return mv;
+	}
+	@GetMapping("emailCheck")
+	public ModelAndView emailCheck(String email) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberVO memberVO = memberService.emailCheck(email);
 		if (memberVO == null) {
 			mv.addObject("result", 1);
 		} else

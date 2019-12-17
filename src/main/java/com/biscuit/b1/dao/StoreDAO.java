@@ -33,12 +33,17 @@ public class StoreDAO {
 		return sqlSession.selectList(NAMESPACE+"cartList", cartListVO);
 	}
 	
+	/* 카트 동일 상품 존재 여부 조회 */
+	public CartVO cartSelect(CartVO cartVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"cartSelect", cartVO);
+	}
+	
 	/* 카트 담기 */
 	public int cartInsert(CartVO cartVO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"cartInsert", cartVO);
 	}
 	
-	/* 스토어 */
+/////* 스토어 */////////////////////////////////////////////////////////
 	public int storeDelete(StoreVO storeVO) throws Exception {
 		return sqlSession.delete(NAMESPACE+"storeDelete", storeVO);
 	}

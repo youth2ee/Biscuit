@@ -1,192 +1,198 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<title>Login Form Using HTML And CSS Only</title>
-	<style type="text/css">
-	@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link
+	href="${pageContext.request.contextPath}/resources/css/member/join.css"
+	rel="stylesheet">
+<title>VueJS/VeeValidate Signup form Built with Bulma CSS</title>
 
-* {
-	box-sizing: border-box;
-}
+<!-- Bulma CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
 
-body {
-	background: #f3e0e2;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
-}
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
-h1 {
-	font-weight: bold;
-	margin: 0;
-}
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Playfair+Display:700i,900i|Work+Sans:300,400,500,700"
+	rel="stylesheet">
 
-p {
-	font-size: 14px;
-	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
-}
-
-span {
-	font-size: 12px;
-}
-
-a {
-	color: #333;
-	font-size: 14px;
-	text-decoration: none;
-	margin: 15px 0;
-}
-
-button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
-}
-
-form {
-	background-color: #FFFFFF;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
-	text-align: center;
-}
-
-input {
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
-	width: 100%;
-}
-
-.container {
-	background-color: #fff;
-	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
-}
-
-.form-container {
-	position: absolute;
-	top: 0;
-	height: 100%;
-}
-
-.log-in-container {
-	left: 0;
-	width: 50%;
-	z-index: 2;
-}
-
-
-.overlay-container {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 50%;
-	height: 100%;
-}
-
-
-.overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 0 0;
-	color: #FFFFFF;
-	position: relative;
-	left: -100%;
-	height: 100%;
-	width: 200%;
-}
-
-.overlay-panel {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 40px;
-	text-align: center;
-	top: 0;
-	height: 100%;
-	width: 50%;
-}
-
-
-.overlay-right {
-	right: 0;
-}
-
-
-.social-container {
-	margin: 50px 0;
-}
-
-.social-container a {
-	border: 1px solid #DDDDDD;
-	border-radius: 50%;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0 5px;
-	height: 40px;
-	width: 40px;
-}
-	</style>
-	
 </head>
+
 <body>
-	<div class="container" id="container">
-		<div class="form-container log-in-container">
-			<form action="#">
-				<h1>Login</h1>
-				<div class="social-container">
-					<a href="#" class="social"><i class="fa fa-facebook fa-2x"></i></a>
-					<a href="#" class="social"><i class="fab fa fa-twitter fa-2x"></i></a>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<form id="frm" action="./memberJoin" method="post">
+		<div class="skewed-bg">
+			<section class="section" id="app">
+				<div class="container">
+					<div class="columns is-paddingless is-radiusless form-wrapper">
+						<div
+							class="column is-one-fifth has-background-brand has-text-white">
+							<div class="form-heading-container is-paddingless is-radiusless">
+								<h1
+									class="is-size-large has-text-weight-bold is-cursive is-rotated-minus-ninty form-heading">Signup</h1>
+							</div>
+						</div>
+						<div class="column has-text-black form-container">
+							<div class="column form-header">
+								<h2
+									class="has-text-weight-bold title is-paddingless is-marginless">New
+									User?</h2>
+								<p class="has-text-weight-light caption">Use the form below
+									to create your account.</p>
+							</div>
+							<div class="column">
+								<div class="columns">
+									<div class="column">
+										<div class="field">
+											<label class="label">ID</label>
+											<div class="control">
+												<input type="text" id="id" placeholder="Enter id" name="id">
+												<div id="idCheck"></div>
+											</div>
+										</div>
+										<div class="field">
+											<label class="label">Password</label>
+											<div class="control">
+												<input type="password" id="pw" placeholder="Enter password"
+													name="pw">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="label">Password Check</label>
+											<div class="control">
+												<input type="password" class="form-control" id="pwCheck">
+											</div>
+										</div>
+
+										<div class="field">
+											<label class="label">Phone Number</label>
+											<div class="control">
+												<input type="text" id="phone" name="phone">
+											</div>
+										</div>
+										<div class="field">
+											<label class="label">Email</label>
+											<div class="control">
+												<input type="text" id="email" placeholder="Enter email"
+													name="email">
+											</div>
+										</div>
+									</div>
+									<div class="column">
+										<div class="field">
+											<label class="label">Name</label>
+											<div class="control has-icons-right">
+												<input type="text" id="name" name="name"> <span
+													class="icon is-small is-right"> </span>
+											</div>
+											<div class="field">
+												<label class="label">Birth</label>
+												<div class="control has-icons-right">
+													<input type="date" class="form-control" id="birth"
+														name="birth">
+												</div>
+
+											</div>
+											<div class="field">
+												<label class="label">Gender</label>
+												<div class="control gender-container">
+													<label class="custom-radio">Male<input type="radio"
+														name="gender" id="gender" value="M" checked="checked">
+														<span class="checkmark"></span>
+													</label> <label class="custom-radio">Female <input
+														type="radio" name="gender" id="gender" value="F">
+														<span class="checkmark"></span>
+													</label>
+												</div>
+											</div>
+											<div id="addressSearch">
+												<div class="field">
+													<label class="label">Post</label>
+													<div class="control">
+														<input type="text" class="form-control" id="post"
+															name="post" readonly="readonly">
+													</div>
+												</div>
+												<div class="field">
+													<label class="label">Address</label>
+													<div class="control">
+														<input type="text" class="form-control" id="address"
+															readonly="readonly" name="address">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="column form-footer">
+									<div class="columns">
+										<div class="column login-link">
+											Have an account? <a href="./member/memberLogin" class="is-link has-text-brand">Login</a>
+										</div>
+										<div class="column">
+											<div class="field">
+												<div class="control">
+													<button style="background-color: #5a61ed;"
+														class="button has-text-white has-background-brand is-cursive is-radiusless is-size-5 btn-signup">Complete
+														Signup</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<span>or use your account</span>
-				<input type="email" placeholder="Email" />
-				<input type="password" placeholder="Password" />
-				<a href="#">Forgot your password?</a>
-				<button>Log In</button>
-			</form>
+			</section>
 		</div>
-		<div class="overlay-container">
-			<div class="overlay">
-				<div class="overlay-panel overlay-right">
-					<h1>HTML CSS Login Form</h1>
-					<p>This login form is created using pure HTML and CSS. For social icons, FontAwesome is used.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+	</form>
+	<script type="text/javascript">
+	var isIdCheck = false;
+	$("#id").blur(function() {
+		var id = $('#id').val();
+		$.get("./idCheck?id=" + id, function(data) {
+			data = data.trim();
+			if (data == 1) {
+				if (id == "") {
+					alert("아이디를 입력하세요")
+				} else {
+					$("#idCheck").html("사용가능한 아이디입니다.");
+					idCheck = true;
+				}
+			} else {
+				$("idCheck").empty();
+				/* $("#checkId").css("color","red"); */
+				$("#idCheck").html("이미 사용중인 아이디입니다.");
+				//$('#id').focus();
+				isIdCheck = false;
+			}
+		});
+	});
+	$("#addressSearch input[type='text']").click(function() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				$("#post").val(data.zonecode);
+				$("#address").val(data.address);
+			}
+		}).open();
+	});
+	$("#signIn").click(function() {
+		$("#frm").submit();
+	});
+	</script>
+
+
 </body>
+
 </html>

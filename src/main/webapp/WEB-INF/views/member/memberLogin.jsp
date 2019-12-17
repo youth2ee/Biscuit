@@ -174,7 +174,7 @@ input {
 				<a href="./memberJoin"><span>or use your account</span></a> <input type="text" placeholder="ID"
 					name="id" /> <input type="password" placeholder="Password"
 					name="pw" /> <a href="#">Forgot your password?</a>
-				<button>Log In</button>
+				<button style="cursor: pointer;">Log In</button>
 			</form>
 		</div>
 		<div class="overlay-container">

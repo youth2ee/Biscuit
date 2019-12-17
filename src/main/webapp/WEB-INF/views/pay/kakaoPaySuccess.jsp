@@ -290,7 +290,7 @@
 															<tr>
 																<td
 																	style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top;">
-																	${pay.payment_method_type}<br> Credit Card Type : ${pay.card_info.issuer_corp} <br>${pay.approved_id}
+																	${pay.payment_method_type}<br><c:if test="${pay.payment_method_type eq CARD}">Credit Card Type : ${pay.card_info.issuer_corp}</c:if><br>
 																</td>
 															</tr>
 														</tbody>
