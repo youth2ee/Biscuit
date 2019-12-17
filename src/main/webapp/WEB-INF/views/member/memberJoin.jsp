@@ -64,9 +64,7 @@
 										<div class="field">
 											<label class="label">Password<b> *</b></label>
 											<div class="control">
-												<input type="password" id="pw" placeholder="Enter password"
-													name="pw">
-												
+												<input type="password" id="pw" placeholder="Enter password" name="pw">
 											</div>
 										</div>
 										<div class="form-group">
@@ -81,7 +79,7 @@
 											<label class="label">Phone<b> *</b></label>
 											<div class="control">
 												<input type="text" id="phone" name="phone">
-												<div id="pwConfirmCheck"></div>
+												<div id="phoneCheck"></div>
 											</div>
 										</div>
 										<div class="field">
@@ -97,8 +95,7 @@
 										<div class="field">
 											<label class="label">Name<b> *</b></label>
 											<div class="control has-icons-right">
-												<input type="text" id="name" name="name"> <span
-													class="icon is-small is-right"> </span>
+												<input type="text" id="name1" name="name">
 												<div id="nameCheck"></div>
 											</div>
 											<div class="field">
@@ -113,12 +110,9 @@
 											<div class="field">
 												<label class="label">Gender<b> *</b></label>
 												<div class="control gender-container">
-													<label class="custom-radio">Male<input type="radio"
-														name="gender" id="gender" value="M" checked="checked">
-														<span class="checkmark"></span>
-													</label> <label class="custom-radio">Female <input
-														type="radio" name="gender" id="gender" value="F">
-														<span class="checkmark"></span>
+													<label class="custom-radio" for="male"><input type="radio" name="gender" id="male" value="M" checked="checked">Male
+													</label> 
+													<label class="custom-radio" for="female"> <input type="radio" name="gender" id="female"value="F">Female
 													</label>
 												</div>
 											</div>
@@ -168,6 +162,9 @@
 	<script type="text/javascript">
 		var isIdCheck = false;
 		var isEmailCheck = false;
+		$("input[name='gender']:radio").change(function () {
+			alert('test');	
+		});
 		$("#id").blur(function() {
 			var id = $('#id').val();
 			$.get("./idCheck?id=" + id, function(data) {
@@ -177,7 +174,7 @@
 						$("#idCheck").html("아이디를 입력하세요.");
 					} else {
 						$("#idCheck").html("사용가능한 아이디입니다.");
-						idCheck = true;
+						isIdCheck = true;
 					}
 				} else {
 					$("#idCheck").html("이미 사용중인 아이디입니다.");
@@ -194,7 +191,7 @@
 						$("#emailCheck").html("이메일을 입력하세요.");
 					} else {
 						$("#emailCheck").html("사용가능한 이메일입니다.");
-						emailCheck = true;
+						isEmailCheck = true;
 					}
 				} else {
 					$("#emailCheck").html("이미 사용중인 이메일입니다.");
@@ -210,43 +207,49 @@
 				}
 			}).open();
 		});
-		$("#pw").blur(function() {
-			if ($("#pw").val() == "") {
-				$("#pwCheck").html= "비밀번호를 입력하세요.";
-			} else if ($("#pw").val().length < 4) {
-				$("#pwCheck").html = "4자리 이상 입력하세요.";
-			} else {
-				$("#pwCheck").html = "";
+		
+		$('#pwConfirm').blur(function() {
+			var p1 = $('#pw').val();
+			var p2 = $('#pwConfirm').val();
+			if(p1 == p2){
+				if(p1 != "" && p2 != "")
+				$("#pwConfirmCheck").html("사용가능한 비밀번호입니다.");		
+			}
+			else {
+				$("#pwConfirmCheck").html("비밀번호가 일치하지 않습니다.");
 			}
 		});
-		$("#pw").change(function() {
-			$("#pwConfirm").val("");
-			$("#pwConfirmCheck").html = "";
+		
+		$('#pw').change(function() {
+			$('#pwConfirm').val('');
+			$('#pwConfirmCheck').html = "";
 		});
-		$("#pwConfirm").blur(
-				function() {
-					if ($("#pw").val() != $("#pwConfirm").val()) {
-						$("#pwConfirmCheck").html = "비밀번호가 일치하지 않습니다.";
-					} else {
-						$("#pwConfirmCheck").html = "사용 가능한 비밀번호 입니다.";
-					}
-				})
-		$("#name").blur(function() {
-			if ($("#name").val() == "")
-				$("#nameCheck").html = "이름을 입력하세요.";
+		$('#name').blur(function() {
+			if ($('#name1').val() == "")
+				$('#nameCheck').html("이름을 입력하세요");
 			else
-				$("#nameCheck").html = "";
+				$('#nameCheck').html("");
 		});
-		$("#signIn").click(
+		$('#phone').blur(function() {
+			if ($('#phone').val() == "")
+				$('#phoneCheck').html("전화번호를 입력하세요");
+			else
+				$('#phoneCheck').html("");
+		});
+		
+		$('#signIn').click(
 				function() {
-					if ($("#pw").val() == $("#pwConfirm").val()
-							&& isEmailCheck == true && isIdCheck == true
-							&& $("#phone").val() != ""
-							&& $("#birth").val() != ""
-							&& $("#name").val() != "")
-						$("#frm").submit();
+					if ($('#pw').val() == $('#pwConfirm').val() && isEmailCheck == true && isIdCheck == true
+							&& $('#phone').val() != ''
+							&& $('#birth').val() != ''
+							&& $('#name').val() != '')
+						$('#frm').submit();
 					else
-						alert("필수 항목을 모두 작성 하십시오");
+						alert('필수 항목을 모두 작성 하십시오');
+					alert($("input[name='gender']:radio").val());
+					alert(isIdCheck);
+					alert(isEmailCheck);
+					
 				});
 	</script>
 
