@@ -31,6 +31,7 @@
   content: "";
   transition: all 0.3s;
   color: white;
+  left: 257px;
 
 }
 .red-heart-checkbox + label:hover:before {
@@ -47,7 +48,14 @@
 } */
 
 .control-group {
-  margin: 3px;
+ /*  margin: 3px; */
+/*  padding-left: 10px; */
+ left: -66px;
+ position: relative;
+/*  background-color: red; */
+ width: 66px;
+ color: white;
+ text-align: center;
 }
 
 .attribution {
@@ -68,4 +76,23 @@ a, a:visited, a:hover {
 
 h1 {
   text-align: center;
+}
+
+.ranking{
+	position: relative;
+	top: -44px;
+	left: 12px;
+	width: 56px;
+/* 	background-color: white; */
+	color: white;
+	padding-left: 5px;
+
+	height: 38px;
+	font-size: 23px;
+	padding-top: 3px;
+	background-color: rgba(48, 144, 154, 0.8);
+	border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 0 15px gray;
+  
 }
