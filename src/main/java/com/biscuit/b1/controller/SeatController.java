@@ -70,8 +70,12 @@ public class SeatController {
 	 */
 	
 	@RequestMapping(value = "seatSelect")
-	public ModelAndView seatSelect(ChoiceVO choiceVO, HttpServletRequest request) throws Exception {
-
+	public ModelAndView seatSelect(ChoiceVO choiceVO, HttpServletRequest request, HttpSession session) throws Exception {
+		//영화 예매
+		choiceVO = (ChoiceVO)session.getAttribute("ChoiceVO");
+		
+		
+		//
 		ModelAndView mv = new ModelAndView();
 		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO);
 		MovieDataVO movieDataVO = seatService.getPoster(choiceVO);

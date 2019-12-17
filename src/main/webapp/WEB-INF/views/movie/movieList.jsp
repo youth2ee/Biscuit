@@ -41,17 +41,28 @@
  <div id="poster">
 <c:forEach items="${movieList}" var="mlist" varStatus="status">
 <div class="card">
+<!-- <!-- <div class="ribbon-3">
+</div> -->
 
+<!-- 랭킹 순위 표시하기 
+varstatus가 1이면 varstatus index로 랭킹 1 표시하기
+10까지만 표시하기
+-->
+<%-- ${status.index} --%>
 
 <div class="ribbon-2">
   <div class='checkboxes-container'>
     <div class='control-group'>
       <input class='red-heart-checkbox heart' id='red-check${mlist.movieInfo_num}' type='checkbox'>
-      <label for='red-check${mlist.movieInfo_num} heartl'></label>
+      <label for='red-check${mlist.movieInfo_num} heartl'>
+      <c:if test="${status.count lt 11}"><div class="ranking">${status.count}</div></c:if>
+      </label>
     </div>
 
   </div>
 </div>
+
+
 
 <div class="thumb" style="background-image: url('${mlist.movieInfo_poster}');">
 <%-- <img class="pimg" alt="" src="${mlist.movieInfo_poster}"> --%>
@@ -114,16 +125,21 @@
 
 
 <!-- modal 띄울가 말까 -->
-<h3 class="details myBtn" title="${mlist.movieInfo_num}">comment</h3>
+<h3 class="details myBtn" style="float: left;" title="${mlist.movieInfo_num}">detail / </h3>
+<%-- <h3 class="details myBtn2" style="float: left;" title="${mlist.movieInfo_title}">reservation</h3> --%>
+
+<form action="./movieSelect" method="get" class=".frm" >
+<input type="hidden" name="movieInfo_name" value="${mlist.movieInfo_title}">
+<button class="myBtn2"><h3 class="details" style="float: left;" title="${mlist.movieInfo_title}">reservation</h3></button>
 
 
+</form>
 
 </div><!-- infos -->
 
 
 
 </div><!-- card -->
-
 
 <c:if test="${(status.index+1)%5 == 0}">
 <div class="posterDiv" style="height: 0px;"></div>
@@ -417,10 +433,16 @@ $('.checkboxes-container').click(function() {
 	
 });
 
+//예약
+$(".myBtn2").on("click", function(){
+	$(this).submit(); 
+	 /* $(this).siblings('.frm').submit();  */
+});
+
+
+
 
 //모달
-
-
 // Elegant Modal
 
 // Function to open Modal when the page finishes loading (with time to display animation)
@@ -433,6 +455,7 @@ $(".myBtn").on("click", function(event){
 	var t = $(this).attr('title');
 	$('#'+t+'modal').addClass('active');
 });
+
 
 $(".elegant-modal").on("mouseenter", function(event){
    $(".card").off("hover");

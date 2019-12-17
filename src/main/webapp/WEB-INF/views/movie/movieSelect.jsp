@@ -38,6 +38,11 @@
 
 <div id="secMain"> 
 
+<!-- 받아온 영화제목 -->
+<c:if test="${not empty movieInfo_name}">
+<input type="hidden" value="${movieInfo_name}" id="selectMovieName">
+</c:if>
+
 <!-- 영화제목 선택 -->
 <div class="sname s">
 <table class="sul">
@@ -58,6 +63,7 @@
 </td>
 
 <td class="mtitle mtd" title="${title.movieInfo_num}">${title.movieInfo_title}</td>
+
 </tr>
 </c:forEach>
 </table>
@@ -102,7 +108,7 @@
 
 
  
-<form action="../seat/seatSelect" id="frm">
+<form action="../member/memberLogin" id="frm">
 <div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div>
 </form>
  
@@ -119,6 +125,9 @@
 
 
   <script type="text/javascript">
+ 	var smname = ""; //선택된 영화 제목
+ 	sname = $('#selectMovieName').val();
+
  	var mnum = ""; //영화번호	
  	var mname = ""; //영화이름
  	var loc = ""; //영화지역
@@ -133,10 +142,51 @@
 	var date = $("#movieDateSelect");
  	var time = $("#movieTimeSelect");
  	
+ 	$(document).ready(function() {
+ 	/* 	alert($('.mtitle')); */
+ 		
+ 		$.each($('.mtitle'), function(i,e){
+			/* alert($(this).text()); */
+			console.log($(this).text());
+			
+			if($(this).text().trim() == sname){
+				
+				var position = $(this).position();
+				console.log("position");
+				console.log(position.top);
+				console.log(position.left);
+				
+				var offset = $(this).offset();
+				console.log("offset");
+				console.log(offset.top);
+				console.log(offset.left);
+				
+
+ 	 	 		$(this).addClass('act');
+				
+ 	 	 		mnum = $(this).attr('title');
+ 	 	 		mname = $(this).text();
+
+ 	 	 		console.log(mnum);
+ 	 	 		console.log(mname);
+ 	 	 		
+ 	 	 		var pos = 0;
+ 	 	 		pos = Number(position.top);
+				pos = pos + 11
+				
+				$(this).closest('.sname').scrollTop(pos);
+
+ 	 	 	}
+ 		});
+
+ 	 	
+ 	});
+
  
  	/* 클릭한 영화명 기억하기 */
  	$(document).on("click", ".movietitle", function() {
  		$(this).addClass('act').siblings().removeClass('act');
+ 		$(this).siblings().find('.mtitle').removeClass('act');
  		
  		if(theater.html().trim() != ""){
  			theater.find(".act").removeClass('act');
@@ -182,10 +232,12 @@
 			success : function(data) {
 				data = data.trim();
 				$('#cinemaNameSelect').html(data);
-			}
-		});
+				
+				/* $('.check').addClass('act'); */
+				$('.noncheck').addClass('noncheck').addClass('soldout');
+		}
  		});
- 	
+ 	});
  	
  	/* 영화관을 선택하면 날짜가 뜹니다. */
  	$(document).on("click",".cinemaSelect",function(){
@@ -253,6 +305,19 @@
 			success : function(data) {
 				data = data.trim();
 				$('#movieTimeSelect').html(data);	
+
+				
+
+		 		$.each($('.mtime2'), function(i,e){
+			
+					console.log($(this).text());
+					
+					if($(this).text() == '매진'){
+						$(this).closest('.timeSelect').addClass('soldout');
+					}
+
+		 		});
+
 			}
 		}); 
  		});

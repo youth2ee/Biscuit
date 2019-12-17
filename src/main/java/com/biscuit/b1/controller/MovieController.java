@@ -77,13 +77,16 @@ public class MovieController {
 	}
 
 	@GetMapping("movieSelect")
-	public ModelAndView movieSelect(CinemaVO cinemaVO, TimeInfoVO timeInfoVO) throws Exception {
+	public ModelAndView movieSelect(ChoiceVO choiceVO) throws Exception {
 		List<MovieInfoVO> movieTitle = movieSelectService.movieTitleSelect();
 		List<CinemaVO> movieLoc = movieSelectService.movieLocSelect();
 
+		System.out.println(choiceVO.getMovieInfo_name());
+		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("movieTitle", movieTitle);
 		mv.addObject("movieLoc", movieLoc);
+		mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
 		mv.setViewName("movie/movieSelect");
 
 		return mv;
