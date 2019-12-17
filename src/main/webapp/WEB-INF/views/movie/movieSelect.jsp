@@ -108,8 +108,9 @@
 
 
  
-<form action="../member/memberLogin" id="frm">
-<div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div>
+<form action="../member/memberLogin" id="frm" method="post">
+<button id="btn"><img alt="" src="../resources/images/movieSelect/seat.png"></button>
+<!-- <div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div> -->
 </form>
  
  

@@ -111,34 +111,63 @@ public class MemberController {
 
 	@GetMapping("memberJoin2")
 	public void memberJoin2() {
-
 	}
+	
 
 	@PostMapping("memberLogin")
-	public ModelAndView memberLogin(ChoiceVO choiceVO ,MemberVO memberVO, HttpSession session) throws Exception {
+	public ModelAndView memberLogin(ChoiceVO choiceVO, MemberVO memberVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		memberVO = memberService.memberLogin(memberVO);
 		
-		String msg = "로그인 실패";
-		String path = "./memberLogin";
+		
+		//로그인이 안된상태에서 로그인하기
+		if (memberVO.getId() != null) {
+			memberVO = memberService.memberLogin(memberVO);		
+		}
+		
+		String msg = "";
+		String path = "";		
+		
+		
+		//로그인 안된 상태에서 성공
+		msg = "로그인 완료";
+		path = "../";
+		
+
+		
+		//로그인 안된 상태에서 실패
+		msg = "로그인 실패";
+		path = "./memberLogin";		
+		
+		
+		
+		//로그인이 된 상태에서  성공
+		msg = "로그인 완료";
+		path = "../";
+		session.setAttribute("member", memberVO);
+		
+		//로그인이 된 상태에서 실패
+		msg = "로그인 실패";
+		path = "./memberLogin";
+		
+		
+		
 		
 		
 		//영화 예매 페이지에서 choiceVO를 받았을 때 : 로그인 실패
-		if (choiceVO != null) {
-			path = "../movie/movieSelect";
-		}
-		
+		/*
+		 * if (choiceVO != null) { path = "../movie/movieSelect"; }
+		 */
+		System.out.println(choiceVO.getMovieInfo_name());	
 		
 		if (memberVO != null) {
 			msg = "로그인 완료";
-			session.setAttribute("member", memberVO);
 			path = "../";
-			
 			//영화 예매 페이지에서 choiceVO를 받았을 때 : 로그인 성공
 			if(choiceVO != null) {
 				path = "../seat/seatSelect";
 				session.setAttribute("ChoiceVO", choiceVO);
 			}
+			System.out.println(session.getAttribute("member"));
 		}
 		
 		

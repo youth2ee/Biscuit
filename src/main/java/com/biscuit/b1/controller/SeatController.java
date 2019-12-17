@@ -75,7 +75,7 @@ public class SeatController {
 		choiceVO = (ChoiceVO)session.getAttribute("ChoiceVO");
 		
 		
-		//
+		
 		ModelAndView mv = new ModelAndView();
 		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO);
 		MovieDataVO movieDataVO = seatService.getPoster(choiceVO);
