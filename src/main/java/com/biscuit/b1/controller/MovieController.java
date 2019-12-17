@@ -3,6 +3,7 @@ package com.biscuit.b1.controller;
 import java.sql.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -66,8 +67,8 @@ public class MovieController {
 		int result = movieService.movieManagement();
 		ModelAndView mv = new ModelAndView();
 		String msg = "영화 추가에 실패했습니다.";
-		if(result > 0) {
-			msg = result+"개의 영화 추가 완료";
+		if (result > 0) {
+			msg = result + "개의 영화 추가 완료";
 		}
 		mv.addObject("msg", msg);
 		mv.addObject("path", "./movieManagement");
@@ -96,12 +97,25 @@ public class MovieController {
 
 		// 선택한 영화에 따른 영화관
 		List<ChoiceVO> cr = movieSelectService.movieChoice(choiceVO);
+		//List<Integer> check = new ArrayList<Integer>();
+		Integer [] check = new Integer[ar.size()];
+		for(int i=0;i<check.length;i++) {
+			check[i]=0;
+		}
+		for(int i = 0 ; i < cr.size(); i++) {
+			for(int j = 0 ; j< ar.size();j++) {
+				if(cr.get(i).getCinema_name().equals(ar.get(j).getCinema_name())) {
+					check[j]=1;
+			}
+		}
+		}
+		
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/cinema_result");
 		mv.addObject("result", ar);
 		mv.addObject("selectResult", cr);
-
+		mv.addObject("check",check);
 		return mv;
 	}
 
@@ -177,29 +191,21 @@ public class MovieController {
 		// 영화 db
 		List<MovieInfoVO> ar = movieSelectService.movieList();
 
-		
-		for(MovieInfoVO a : ar) {
+		for (MovieInfoVO a : ar) {
 			a.setMovieInfo_date(a.getMovieInfo_date().substring(0, 10));
 		}
-		
-		
 
 		model.addAttribute("movieList", ar);
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("key", key);
 	}
 
-	
 	@GetMapping("movieapi")
 	@ResponseBody
 	public String movieapi(String rank1) {
 		System.out.println(rank1);
-		
-		
+
 		return rank1;
 	}
-	
-	
-
 
 }

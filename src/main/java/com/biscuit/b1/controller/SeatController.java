@@ -26,7 +26,49 @@ import com.biscuit.b1.service.SeatService;
 public class SeatController {
 	@Inject
 	private SeatService seatService;
-
+	
+	/*
+	 * @RequestMapping(value = "seatSelect2") public ModelAndView
+	 * seatSelect2(ChoiceVO choiceVO, HttpServletRequest request) throws Exception {
+	 * 
+	 * ModelAndView mv = new ModelAndView(); List<SeatVO> seatVOs =
+	 * seatService.bookCheck(choiceVO); MovieDataVO movieDataVO =
+	 * seatService.getPoster(choiceVO); mv.addObject("poster",
+	 * movieDataVO.getPoster()); mv.addObject("seats", seatVOs);
+	 * mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
+	 * mv.addObject("cinema_num", choiceVO.getCinema_num());
+	 * mv.addObject("cinema_loc", choiceVO.getCinema_loc());
+	 * mv.addObject("cinema_name", choiceVO.getCinema_name());
+	 * mv.addObject("timeInfo_start", choiceVO.getTimeInfo_start()); String
+	 * timeInfo_date = choiceVO.getTimeInfo_date().substring(2);
+	 * mv.addObject("timeInfo_date", timeInfo_date); mv.addObject("theater_num",
+	 * choiceVO.getTheater_num()); mv.addObject("movieInfo_num",
+	 * choiceVO.getMovieInfo_num()); mv.setViewName("/seat/seatSelect"); return mv;
+	 * }
+	 * 
+	 * @PostMapping(value = "seatSelect2") public ModelAndView
+	 * seatSelect2(HttpServletRequest request, HttpSession session, SeatVO seatVO,
+	 * ChoiceVO choiceVO, Movie_TicketingVO movie_TicketingVO) throws Exception {
+	 * int result1 = 0; int result2 = 0; String allBookCode = null;
+	 * ArrayList<String> ar = new ArrayList<String>(); String[] seat_names =
+	 * seatVO.getSeat_name().split(","); String timeInfo_start =
+	 * choiceVO.getTimeInfo_start(); ModelAndView mv = new ModelAndView(); for (int
+	 * i = 0; i < seat_names.length; i++) { // 표 장수에 따라서 db에 넣는 횟수(표 개수) if (i % 5
+	 * == 0) { Thread.sleep(1000); // 입력이 너무 빠르면 DB연결이 해제됨 }
+	 * seatVO.setCinema_num(choiceVO.getCinema_num());
+	 * seatVO.setMovieInfo_name(choiceVO.getMovieInfo_name());
+	 * seatVO.setSeat_name(seat_names[i]); seatVO.setTimeInfo_start(timeInfo_start);
+	 * seatVO.setTheater_num(choiceVO.getTheater_num());
+	 * seatVO.setMovieInfo_num(choiceVO.getMovieInfo_num());
+	 * seatVO.setMovieInfo_name(choiceVO.getMovieInfo_name());
+	 * seatVO.setTimeInfo_date(seatVO.getTimeInfo_date()); result1 =
+	 * seatService.seatBooking(seatVO); // 좌석 테이블에 입력 } for (int i = 0; i <
+	 * ar.size(); i++) { if (i == 0) allBookCode = ar.get(i); else allBookCode =
+	 * allBookCode + "," + ar.get(i); }
+	 * 
+	 * return mv; }
+	 */
+	
 	@RequestMapping(value = "seatSelect")
 	public ModelAndView seatSelect(ChoiceVO choiceVO, HttpServletRequest request) throws Exception {
 
