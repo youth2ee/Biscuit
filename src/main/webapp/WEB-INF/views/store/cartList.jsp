@@ -161,6 +161,7 @@
 							<div class="product_info_btn_wrap">
 								<a href="#none">바로구매</a>
 							</div>
+							
 							<a href="#" class="btn_product_del btn_product_del${cartList.cart_num}">삭제</a>
 							
 						<script type="text/javascript">
@@ -191,7 +192,6 @@
 											alert("error");
 										}
 									});
-									
 								}
 							});
 						</script>
@@ -209,6 +209,14 @@
 				</a>
 				
 			<script type="text/javascript">
+				//버튼 활성화, 비활성화 배경색 변경
+				function btn_active() {
+					if($('.cart_checkbox:checked').length > 0){
+						$('.btn_wrap a.btn_buy').css("background-color", "#fb4357");
+					}else{
+						$('.btn_wrap a.btn_buy').css("background-color", "#373e46");
+					}
+				}	
 				//총액 계산 함수
 				function calTotal() {
 					var price = 0;
@@ -230,21 +238,29 @@
 						$('#total_price').text(addComma(price));
 					});
 				}
+				
 				//체크박스 모두 선택, 해제
 				$('.span_btn').css("display", "inline");
 				$('.span_btn').text($('.cart_checkbox').length);
 				
 				$('#checkbox_all').click(function() {
 					if($('#checkbox_all').prop("checked")){
-						
 						$('.cart_checkbox').prop("checked", true);
 						$('.span_btn').css("display", "inline");
 						$('.span_btn').text($('.cart_checkbox:checked').length);
+						calTotal();
+						
+						$('.btn_wrap a.btn_buy').css("background-color", "#fb4357");
 					}else {
 						$('.cart_checkbox').prop("checked", false);
 						$('.span_btn').css("display", "none");
+						//총 상품금액
+						$('#sales_price').text(0);
+						//총 결제 예상 금액
+						$('#total_price').text(0);
+						
+						$('.btn_wrap a.btn_buy').css("background-color", "#373e46");
 					}
-					calTotal();
 				});
 				//체크박스 선택, 해제
 				$('.cart_checkbox').click(function() {
@@ -256,6 +272,7 @@
 					$('.span_btn').css("display", "inline");
 					$('.span_btn').text($('.cart_checkbox:checked').length);
 					calTotal();
+					btn_active();
 				});
 				//선택 삭제
 				$('.btn_del_selected').click(function() {
@@ -334,6 +351,16 @@
 				<div class="btn_wrap">
 					<a href="#none" class="btn_buy">결제하기</a>
 				</div>
+				
+			<script type="text/javascript">
+				$('.btn_wrap a.btn_buy').click(function() {
+					if($('.cart_checkbox:checked').length > 0){
+					}else{
+						alert("상품을 선택하세요.");
+					}
+				});
+			</script>
+			
 			</div>
 		</div>
 	</div>

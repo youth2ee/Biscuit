@@ -13,6 +13,7 @@
 			<span class="molthum">
 				<img alt="${list.store_name}" src="../resources/upload/store/th/${list.store_thumbimg}">
 			</span>
+		
 			<span class="listinfo">
 				<span class="tit">${list.store_name}</span>
 				<span class="desc">
@@ -23,5 +24,9 @@
 				</span>
 			</span>
 		</a>
+		
+		<a class="btn_category_product_cart">장바구니</a>
+		<a class="btn_category_product_buy">구매하기</a>
+		
 	</li>
 </c:forEach>
