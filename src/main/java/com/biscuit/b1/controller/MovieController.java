@@ -84,7 +84,8 @@ public class MovieController {
 		List<MovieInfoVO> movieTitle = movieSelectService.movieTitleSelect();
 		List<CinemaVO> movieLoc = movieSelectService.movieLocSelect();
 
-		System.out.println(choiceVO.getMovieInfo_name());
+		
+		/* System.out.println(choiceVO.getMovieInfo_name()); */
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("movieTitle", movieTitle);
@@ -132,16 +133,17 @@ public class MovieController {
 
 		for (TimeInfoVO a : movieDateSelect) {
 			/* a.setTimeInfo_date(a.getTimeInfo_date().substring(2,10)); */
-			System.out.println(a.getTimeInfo_date());
+			System.out.println("내가원하는 정보");
+			/* System.out.println(a.getTimeInfo_date()); */
 
-			/*
-			 * a.setYear(a.getTimeInfo_date().substring(0, 4));
-			 * a.setMonth(a.getTimeInfo_date().substring(5, 7));
-			 * a.setDay(a.getTimeInfo_date().substring(8));
-			 * 
-			 * System.out.println(a.getYear()); System.out.println(a.getMonth());
-			 * System.out.println(a.getDay());
-			 */
+			  a.setYear("20"+a.getTimeInfo_date().substring(0, 2));
+			  a.setMonth(a.getTimeInfo_date().substring(3, 5));
+			  a.setDay(a.getTimeInfo_date().substring(6));
+			  
+			  System.out.println(a.getYear()); 
+			  System.out.println(a.getMonth());
+			  System.out.println(a.getDay());
+			 
 		}
 
 		// theater num
@@ -157,10 +159,12 @@ public class MovieController {
 
 	@GetMapping("timeSelect")
 	public ModelAndView timeSelect(ChoiceVO choiceVO) throws Exception {
-		System.out.println(choiceVO.getMovieInfo_num());
-		System.out.println(choiceVO.getCinema_num());
-		System.out.println(choiceVO.getTimeInfo_date());
-		System.out.println(choiceVO.getCinema_num());
+		/*
+		 * System.out.println(choiceVO.getMovieInfo_num());
+		 * System.out.println(choiceVO.getCinema_num());
+		 * System.out.println(choiceVO.getTimeInfo_date());
+		 * System.out.println(choiceVO.getCinema_num());
+		 */
 		
 		
 		List<ChoiceVO> timeSelect = movieSelectService.movieTimeSelect(choiceVO);
@@ -170,11 +174,13 @@ public class MovieController {
 			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
 			a.setTimeInfo_end(a.getTimeInfo_end().substring(11, 16));
 			
-			System.out.println(a.getTimeInfo_date());
-			System.out.println(a.getTimeInfo_start());
-			System.out.println(a.getTimeInfo_end());
-			System.out.println(a.getTheater_name());
-			System.out.println(a.getTheater_num());
+			/*
+			 * System.out.println(a.getTimeInfo_date());
+			 * System.out.println(a.getTimeInfo_start());
+			 * System.out.println(a.getTimeInfo_end());
+			 * System.out.println(a.getTheater_name());
+			 * System.out.println(a.getTheater_num());
+			 */
 		}
 
 
@@ -184,7 +190,7 @@ public class MovieController {
 
 		for (ChoiceVO b : seatList) {
 			b.setTimeInfo_start(b.getTimeInfo_start().substring(11, 16));
-			System.out.println(b.getTimeInfo_start());
+			/* System.out.println(b.getTimeInfo_start()); */
 		}
 
 		ModelAndView mv = new ModelAndView();
@@ -224,7 +230,7 @@ public class MovieController {
 	@GetMapping("movieapi")
 	@ResponseBody
 	public String movieapi(String rank1) {
-		System.out.println(rank1);
+		/* System.out.println(rank1); */
 
 		return rank1;
 	}
