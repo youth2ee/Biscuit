@@ -1,11 +1,8 @@
 package com.biscuit.b1.service;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
-
 import com.biscuit.b1.dao.CinemaDAO;
 import com.biscuit.b1.model.CinemaVO;
 

@@ -5,8 +5,7 @@
 
 <c:forEach items="${result}" var="time"> 
 <tr class="timeSelect mtd">
-<td class="mtd1" style="width: 50px;">
-${time.timeInfo_start}</td>
+<td class="mtd1" style="width: 50px;" title="${time.timeInfo_end}">${time.timeInfo_start}</td>
 
 <!-- 여기에 좌석 수를 넣어야 한다. -->
 <c:forEach items="${seatList}" var="seat" varStatus="status">
