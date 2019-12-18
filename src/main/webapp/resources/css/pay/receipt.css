@@ -8,6 +8,29 @@ body {
 	background: #e1e1e1;
 }
 
+a {
+	color: black;
+	text-decoration: none;
+}
+
+
+/* 스크롤  */
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: white;
+	border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #ee3224;
+	border-radius: 9px;
+}
+
+/* 스크롤 끝  */
 .table {
 	width: 600;
 	border: 0;

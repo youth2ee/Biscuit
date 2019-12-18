@@ -46,7 +46,7 @@ public class MovieSelectService {
 		return movieSelectDAO.movieDateSelect(choiceVO);
 	}
 	
-	public List<TimeInfoVO> movieTimeSelect(ChoiceVO choiceVO) {
+	public List<ChoiceVO> movieTimeSelect(ChoiceVO choiceVO) {
 		return movieSelectDAO.movieTimeSelect(choiceVO);
 	}
 

@@ -34,7 +34,7 @@
 				<div>
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-<!-- 							<div class="swiper-slide sbox">1</div>
+<!-- 						<div class="swiper-slide sbox">1</div>
 							<div class="swiper-slide sbox">2</div>
 							<div class="swiper-slide sbox">3</div>
 							<div class="swiper-slide sbox">4</div>
@@ -196,8 +196,7 @@
  	/* date */
 	!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e=e||self).Swiper=t()}
  	(this,(function(){"use strict";var e="undefined"==typeof document?{
- 		body:{},addEventListener:function(){},removeEventListener:function(){},
- 		activeElement:{blur:function(){},nodeName:""},querySelector:function(){return null},querySelectorAll:function(){return[]},getElementById:function(){return null},createEvent:function(){return{initEvent:function(){}}},createElement:function(){return{children:[],childNodes:[],style:{},setAttribute:function(){},getElementsByTagName:function(){return[]}}},location:{hash:""}}:document,t="undefined"==typeof window?{document:e,navigator:{userAgent:""},location:{},history:{},CustomEvent:function(){return this},addEventListener:function(){},removeEventListener:function(){},getComputedStyle:function(){return{getPropertyValue:function(){return""}}},
+ 		body:{},addEventListener:function(){},removeEventListener:function(){},activeElement:{blur:function(){},nodeName:""},querySelector:function(){return null},querySelectorAll:function(){return[]},getElementById:function(){return null},createEvent:function(){return{initEvent:function(){}}},createElement:function(){return{children:[],childNodes:[],style:{},setAttribute:function(){},getElementsByTagName:function(){return[]}}},location:{hash:""}}:document,t="undefined"==typeof window?{document:e,navigator:{userAgent:""},location:{},history:{},CustomEvent:function(){return this},addEventListener:function(){},removeEventListener:function(){},getComputedStyle:function(){return{getPropertyValue:function(){return""}}},
  					Image:function(){},Date:function(){},screen:{},setTimeout:function(){},
  					clearTimeout:function(){}}:window,
  					i=function(e){for(var t=0;t<e.length;t+=1)this[t]=e[t];return this.length=e.length,this};
@@ -351,7 +350,7 @@
 			url : "./dateSelect",
 			success : function(data) {
 				data = data.trim();
-				 $('#movieDateSelect').html(data);
+				$('#movieDateSelect').html(data);
 				/* $('.swiper-wrapper').html(data); */
 				
 			}
@@ -365,30 +364,32 @@
   		cdate = $(this).find('.mtd').attr("title");
  		cdate = cdate.trim();
  		
- 	 	tnum = $(this).children().find('.tnum').text();
+/*  	 	tnum = $(this).children().find('.tnum').text();
  	 	tnum = tnum.trim(); 
  	 	
  	 	tname = $(this).children().find('.tname').text();
- 	 	tname = tname.trim(); 
+ 	 	tname = tname.trim();  */
  	 	
  		
  	 	console.log("aa");
  	 	console.log(cdate);
  		console.log(mnum);
  		console.log(cnum);
- 		console.log(tnum);
- 		console.log(tname);
+ 	/* 	console.log(tnum);
+ 		console.log(tname); */
  		
   		$.ajax({
 			data : {
 				timeInfo_date:cdate,
 				movieInfo_num:mnum,
-				cinema_num:cnum,
-				theater_num:tnum
+				cinema_num:cnum
+				/* theater_num:tnum */
 			},
 			type : "GET",
 			url : "./timeSelect",
 			success : function(data) {
+				
+				alert("오나요");
 				data = data.trim();
 				$('#movieTimeSelect').html(data);	
 

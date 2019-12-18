@@ -62,28 +62,43 @@
   	
   	<!-- 날짜 선택하기 -->	
   	<select id="movieDateSelect" parameterType="ChoiceVO" resultType="TimeInfoVO">
-  	select distinct B.timeinfo_date, A.theater_num
+<!--   	select distinct B.timeinfo_date, A.theater_num
 	from theater A full outer Join timeinfo B
 	on A.theater_num = B.theater_num
 	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} 
-	order by B.timeinfo_date asc
+	order by B.timeinfo_date asc -->
+<!-- 	select distinct A.timeinfo_date
+    from timeinfo A full outer join theater B
+    on A.theater_num = B.theater_num
+    where A.movieinfo_num = #{movieInfo_num} and A.cinema_num = #{cinema_num}
+    order by A.timeinfo_date asc -->
+    select distinct to_char(A.timeinfo_date,'yy/mm/dd') timeinfo_date
+    from timeinfo A full outer join theater B
+    on A.theater_num = B.theater_num
+    where A.movieinfo_num =  #{movieInfo_num} and A.cinema_num = #{cinema_num}
+    order by timeinfo_date asc
   	</select>
   	
-  	<select id="movieTimeSelect" parameterType="ChoiceVO" resultType="TimeInfoVO">
-<!-- 	select B.timeinfo_start, B.timeinfo_date
+  	<select id="movieTimeSelect" parameterType="ChoiceVO" resultType="ChoiceVO">
+<!--select B.timeinfo_start, B.timeinfo_date
 	from theater A full outer Join timeinfo B
 	on A.theater_num = B.theater_num
 	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} and B.timeinfo_date = #{timeInfo_date}
 	order by B.timeinfo_start asc -->
-	select B.timeinfo_date, B.timeinfo_start, B.timeinfo_end
+<!-- 	select B.timeinfo_date, B.timeinfo_start, B.timeinfo_end
 	from theater A full outer Join timeinfo B
 	on A.theater_num = B.theater_num
 	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} and B.timeinfo_date = #{timeInfo_date}
-	order by B.timeinfo_start asc
+	order by B.timeinfo_start asc -->
+	select B.theater_name, B.theater_num ,A.timeinfo_start, A.timeinfo_end
+    from timeinfo A full outer join theater B
+    on A.theater_num = B.theater_num
+    where A.movieinfo_num = #{movieInfo_num} and A.cinema_num = #{cinema_num} and A.timeinfo_date = #{timeInfo_date}
+    order by B.theater_num asc, A.timeinfo_start asc
   	</select>
   	
   	<!-- 좌석 -->
-<!--   	<select id="seatCount" parameterType="ChoiceVO" resultType="ChoiceVO">
+<!--<select id="seatCount" parameterType="ChoiceVO" resultType="ChoiceVO">
   	select timeinfo_start, count(*) seatCount
     from seat
     where movieinfo_num = #{movieInfo_num} and cinema_num = #{cinema_num}
@@ -91,7 +106,7 @@
     order by timeinfo_start asc
   	</select> -->
 
-<!--   	<select id="">
+<!--<select id="">
   	select B.timeinfo_start, A.timeinfo_start seatTime, A.seatCount
     from (select timeinfo_start, count(*) seatCount
     from seat
@@ -104,7 +119,7 @@
   	</select> -->
   	
   	<select id="seatCount" parameterType="ChoiceVO" resultType="ChoiceVO">    
-    select B.timeinfo_start timeinfo_start, A.timeinfo_start seatTime, nvl(A.seatcount,0) seatcount
+   <!--  select B.timeinfo_start timeinfo_start, A.timeinfo_start seatTime, nvl(A.seatcount,0) seatcount
     from (select timeinfo_start, count(*) seatCount
     from seat
     where movieinfo_num = #{movieInfo_num} and theater_num = #{theater_num} and timeinfo_date = #{timeInfo_date}
@@ -113,11 +128,40 @@
     full join timeinfo B 
     on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI'))
     where B.movieinfo_num = #{movieInfo_num} and B.theater_num = #{theater_num} and B.timeinfo_date = #{timeInfo_date}
-    order by B.timeinfo_start asc
+    order by B.timeinfo_start asc -->
+<!--     select B.timeinfo_start timeinfo_start, nvl(A.seatcount,0) seatcount
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    where movieinfo_num = #{movieInfo_num} and theater_num = #{theater_num} and timeinfo_date = #{timeInfo_date}
+    group by timeinfo_start
+    order by timeinfo_start asc) A 
+    full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI'))
+    where B.movieinfo_num = #{movieInfo_num} and B.theater_num = #{theater_num} and B.timeinfo_date = #{timeInfo_date}
+    order by B.timeinfo_start asc -->
+<!--     select B.timeinfo_start timeinfo_start, nvl(A.seatcount,0) seatcount, B.theater_num
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    where movieinfo_num = #{movieInfo_num} and timeinfo_date = #{timeInfo_date}
+    group by timeinfo_start
+    order by timeinfo_start asc) A 
+    full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI'))
+    where B.movieinfo_num = #{movieInfo_num}  and B.timeinfo_date = #{timeInfo_date}
+    order by B.theater_num asc, B.timeinfo_start asc -->
+    select B.timeinfo_start timeinfo_start, nvl(A.seatcount,0) seatcount, B.theater_num, B.movieinfo_num
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    where movieinfo_num = #{movieInfo_num} and timeinfo_date = #{timeInfo_date} and cinema_num=#{cinema_num}
+    group by timeinfo_start
+    order by timeinfo_start asc) A full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI'))
+    where B.movieinfo_num = #{movieInfo_num}  and B.timeinfo_date = #{timeInfo_date} and cinema_num=#{cinema_num}
+    order by B.theater_num asc, B.timeinfo_start asc
   	</select>
   	
   	<select id="movieList" resultType="MovieInfoVO">
-<!--   	select * from movieinfo
+<!-- select * from movieinfo
 	order by movieinfo_star desc -->
 	<![CDATA[
 	select *
@@ -148,4 +192,31 @@
   	<update id="insertPlot" parameterType="MovieInfoVO">
   		update movieInfo set movieInfo_plot = #{movieInfo_plot} where movieInfo_title = #{movieInfo_title} 
   	</update>
+  	
+  	
+  	<!-- movielist heart -->
+  	<select id="movieGradeSelect" parameterType="MovieGradeVO" resultType="MovieGradeVO">
+  	select * from movie_grade
+	where id=#{id} and movieinfo_num=#{movieInfo_num}
+  	</select>
+  	
+  	<insert id="movieGradeInsert" parameterType="MovieGradeVO">
+  	insert into movie_grade
+    values (moviegrade_seq.nextval, 
+    #{id}, #{movieInfo_num}, 
+    0, 0, 0, (select movieinfo_title from movieinfo where movieinfo_num = #{movieInfo_num}))
+  	</insert>
+  	
+  	<update id="movieHeartUpdate" parameterType="MovieGradeVO">
+  	update movie_grade set
+	moviegrade_heart = #{movieGrade_heart}
+	where id=#{id} and movieinfo_num=#{movieInfo_num}
+  	</update>
+  	
+    <update id="movieStarUpdate" parameterType="MovieGradeVO">
+  	update movie_grade set
+	moviegrade_star = #{movieGrade_star}
+	where id=#{id} and movieinfo_num=#{movieInfo_num}
+  	</update>
+  	
  </mapper>
