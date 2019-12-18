@@ -72,8 +72,8 @@ public class SeatController {
 	@RequestMapping(value = "seatSelect")
 	public ModelAndView seatSelect(ChoiceVO choiceVO, HttpServletRequest request, HttpSession session) throws Exception {
 		//영화 예매
+		System.out.println("세션:"+(ChoiceVO)session.getAttribute("ChoiceVO"));
 		choiceVO = (ChoiceVO)session.getAttribute("ChoiceVO");
-		
 		ModelAndView mv = new ModelAndView();
 		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO);
 		MovieDataVO movieDataVO = seatService.getPoster(choiceVO);
@@ -85,6 +85,12 @@ public class SeatController {
 		mv.addObject("cinema_name", choiceVO.getCinema_name());
 		mv.addObject("timeInfo_start", choiceVO.getTimeInfo_start());
 		String timeInfo_date = choiceVO.getTimeInfo_date().substring(2);
+		System.out.println("test1:"+choiceVO.getMovieInfo_name());
+		System.out.println("test2:"+choiceVO.getCinema_num());
+		System.out.println("test3:"+choiceVO.getCinema_loc());
+		System.out.println("test4:"+choiceVO.getCinema_name());
+		System.out.println("test5:"+choiceVO.getTimeInfo_start());
+		System.out.println("test6:"+choiceVO.getTimeInfo_end());
 		mv.addObject("timeInfo_date", timeInfo_date);
 		mv.addObject("theater_num", choiceVO.getTheater_num());
 		mv.addObject("movieInfo_num", choiceVO.getMovieInfo_num());
