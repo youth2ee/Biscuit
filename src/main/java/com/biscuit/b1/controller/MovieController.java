@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
@@ -149,6 +150,7 @@ public class MovieController {
 		mv.setViewName("common/date_result");
 		mv.addObject("result", movieDateSelect);
 		mv.addObject("theater_num", choiceVO.getTheater_num());
+		mv.addObject("theater_name", choiceVO.getTheater_name());
 
 		return mv;
 	}
@@ -160,6 +162,7 @@ public class MovieController {
 		for (TimeInfoVO a : dateSelect) {
 			a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
 			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
+			a.setTimeInfo_end(a.getTimeInfo_end().substring(11, 16));
 		}
 
 		choiceVO.setTimeInfo_date(choiceVO.getTimeInfo_date().substring(2));
@@ -210,5 +213,6 @@ public class MovieController {
 
 		return rank1;
 	}
+	
 
 }
