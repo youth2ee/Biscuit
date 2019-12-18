@@ -95,6 +95,12 @@
 			});
 		</script>
 		<!-- <img alt="신규" src="./resources/images/home/boxoffice/icon_new.png"> -->
+		<!-- text -->
+			<div id="txtbox">
+				<div class="txtimg"><img alt="" src="./resources/images/home/mt1.png"></div>
+				<div class="txtimg"><img alt="" src="./resources/images/home/mt2.png"></div>
+				<div class="txtimg"><img alt="" src="./resources/images/home/mt3.png"></div>
+			</div>
 		</div>
 <!-- ----------------boxOffice--------------- -->
 		

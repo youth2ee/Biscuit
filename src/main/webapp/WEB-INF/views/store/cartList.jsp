@@ -67,18 +67,18 @@
 							<a href="storeSelect?store_num=${cartList.store_num}" class="product_info_img">
 								<img alt="${cartList.store_name}" src="../resources/upload/store/th/${cartList.store_thumbimg}">
 								<strong class="product_info_name">${cartList.store_name}</strong>
-								<input type="hidden" id="input_sname${cartList.cart_num}" value="${cartList.store_name}">
+								<input type="hidden" class="sname" id="input_sname${cartList.cart_num}" value="${cartList.store_name}">
 								<span class="product_info_note">${cartList.store_note}</span>
 							</a>
 							
 							<div class="product_info_onePrice_wrap">
 								<span class="product_info_onePrice"><fmt:formatNumber value="${cartList.store_price}" pattern="###,###,###" /></span>
-								<input type="hidden" id="input_sprice${cartList.cart_num}" value="${cartList.store_price}">
+								<input type="hidden" class="sprice" id="input_sprice${cartList.cart_num}" value="${cartList.store_price}">
 							</div>
 							
 							<div class="product_info_amount_wrap">
 								<span class="product_info_count" id="count${cartList.cart_num}">${cartList.cart_amount}</span>
-								<input type="hidden" class="input_camount" value="${cartList.cart_amount}" name="camount">
+								<input type="hidden" class="camount" id="input_camount${cartList.cart_num}" value="${cartList.cart_amount}">
 								<a href="#none" class="btn_amount_plus btn_amount_plus${cartList.cart_num}">+</a>
 								<a href="#none" class="btn_amount_minus btn_amount_minus${cartList.cart_num}">-</a>
 								<a href="#none" class="btn_amount_change btn_amount_change${cartList.cart_num}">변경</a>
@@ -151,7 +151,7 @@
 											price = addComma(price);
 											$('.product_info_price'+${cartList.cart_num}).text(price);
 											
-											$('#count'+${cartList.cart_num}).text(count);
+											$('#input_camount'+${cartList.cart_num}).val(cart_amount);
 											calTotal();
 										}else {
 											alert("수량 변경 실패");
@@ -165,16 +165,20 @@
 						</script>
 							
 							<div class="product_info_btn_wrap">
-								<a href="#none">바로구매</a>
+								<button type="submit" id="btn_now${cartList.cart_num}">바로구매</button>
 							</div>
 							
+						<script type="text/javascript">
+							$('#btn_now'+${cartList.cart_num}).click(function() {
+								$('#input_sname'+${cartList.cart_num}).attr("name", "sname");
+								$('#input_sprice'+${cartList.cart_num}).attr("name", "sprice");
+								$('#input_camount'+${cartList.cart_num}).attr("name", "camount");
+							});	
+						</script>
+						
 							<a href="#" class="btn_product_del btn_product_del${cartList.cart_num}">삭제</a>
 							
 						<script type="text/javascript">
-						var ar = new Array();
-						
-						
-						
 							$('.btn_product_del'+${cartList.cart_num}).click(function() {
 								var confirm_val = confirm("선택하신 상품을 삭제하시겠습니까?");
 								
@@ -223,9 +227,9 @@
 				//버튼 활성화, 비활성화 배경색 변경
 				function btn_active() {
 					if($('.cart_checkbox:checked').length > 0){
-						$('.btn_wrap a.btn_buy').css("background-color", "#fb4357");
+						$('.btn_wrap .btn_buy').css("background-color", "#fb4357");
 					}else{
-						$('.btn_wrap a.btn_buy').css("background-color", "#373e46");
+						$('.btn_wrap .btn_buy').css("background-color", "#373e46");
 					}
 				}	
 				//총액 계산 함수
@@ -261,7 +265,7 @@
 						$('.span_btn').text($('.cart_checkbox:checked').length);
 						calTotal();
 						
-						$('.btn_wrap a.btn_buy').css("background-color", "#fb4357");
+						$('.btn_wrap .btn_buy').css("background-color", "#fb4357");
 					}else {
 						$('.cart_checkbox').prop("checked", false);
 						$('.span_btn').css("display", "none");
@@ -270,18 +274,27 @@
 						//총 결제 예상 금액
 						$('#total_price').text(0);
 						
-						$('.btn_wrap a.btn_buy').css("background-color", "#373e46");
+						$('.btn_wrap .btn_buy').css("background-color", "#373e46");
 					}
 				});
 				//체크박스 선택, 해제
 				$('.cart_checkbox').click(function() {
+					
+					//전체 선택
 					if($('.cart_checkbox:checked').length == $('.cart_checkbox').length){
 						$('#checkbox_all').prop("checked", true);
 					}else{
 						$('#checkbox_all').prop("checked", false);
 					}
+					//선택 상품 개수
 					$('.span_btn').css("display", "inline");
-					$('.span_btn').text($('.cart_checkbox:checked').length);
+					
+					if($('.cart_checkbox:checked').length > 0) {
+						$('.span_btn').text($('.cart_checkbox:checked').length);
+					}else {
+						$('.span_btn').css("display", "none");
+					}
+					
 					calTotal();
 					btn_active();
 				});
@@ -296,7 +309,7 @@
 							array_check.push($(this).val());
 						});
 						
-						alert(array_check);
+						//alert(array_check);
 						
 						$.ajax({
 							url: "cartDelete",
@@ -365,12 +378,40 @@
 				</div>
 				
 			<script type="text/javascript">
+				function parameter() {
+					
+					var sn_i = $('input[name="sname"]').length;
+					var sp_i = $('input[name="sprice"]').length;
+					var ca_i = $('input[name="camount"]').length;
+					var sname = new Array(sn_i);
+					var sprice = new Array(sp_i);
+					var camount = new Array(ca_i);
+					
+					for(var i=0; i<sn_i; i++){
+						sname[i] = $('input[name="sname"]')[i].value;
+					}
+					for(var i=0; i<sp_i; i++){
+						sprice[i] = $('input[name="sprice"]')[i].value;
+					}
+					for(var i=0; i<ca_i; i++){
+						camount[i] = $('input[name="camount"]')[i].value;
+					}
+				}	
+			
 				$('.btn_wrap .btn_buy').click(function() {
 					if($('.cart_checkbox:checked').length > 0){
-						//$("#frm").submit(); //sname, sprice, camount
-						alert($('.input_sname').val());
-						alert($('.input_sprice').val());
-						alert($('.input_camount').val());
+						
+							if($('.cart_checkbox:checked')){
+								$('.cart_checkbox:checked').parent().children().find('input[class="sname"]').attr("name", "sname");
+								$('.cart_checkbox:checked').parent().children().find('input[class="sprice"]').attr("name", "sprice");
+								$('.cart_checkbox:checked').parent().children().find('input[class="camount"]').attr("name", "camount");
+							}else {
+								$('input[class="sname"]').removeAttr("name");
+								$('input[class="sprice"]').removeAttr("name");
+								$('input[class="camount"]').removeAttr("name");
+							}
+						
+							$("#frm").submit(); //sname, sprice, camount
 					}else{
 						alert("상품을 선택하세요.");
 					}

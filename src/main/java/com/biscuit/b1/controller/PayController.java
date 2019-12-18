@@ -26,7 +26,20 @@ public class PayController {
 		total_amount = request.getParameter("price");
 		quantity = request.getParameter("count");
 	}
-
+	/*
+	@GetMapping(value = "kakaoPay")
+	public void kakaoPayGet(String[] sname, String[] sprice, String[] camount) throws Exception {
+		for(int i=0;i<sname.length;i++) {
+			System.out.println(sname[i]);
+		}
+		for(int i=0;i<sprice.length;i++) {
+			System.out.println(sprice[i]);
+		}
+		for(int i=0;i<camount.length;i++) {
+			System.out.println(camount[i]);
+		}
+	}
+	*/
 	@PostMapping(value = "kakaoPay")
 	public String KakaoPayPost() throws Exception {
 		return "redirect:" + payService.KakaoPayReady(total_amount,quantity);
