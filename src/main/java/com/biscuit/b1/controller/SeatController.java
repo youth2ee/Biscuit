@@ -90,6 +90,7 @@ public class SeatController {
 		System.out.println("test3:"+choiceVO.getCinema_loc());
 		System.out.println("test4:"+choiceVO.getCinema_name());
 		System.out.println("test5:"+choiceVO.getTimeInfo_start());
+		System.out.println("test6:"+choiceVO.getTimeInfo_end());
 		mv.addObject("timeInfo_date", timeInfo_date);
 		mv.addObject("theater_num", choiceVO.getTheater_num());
 		mv.addObject("movieInfo_num", choiceVO.getMovieInfo_num());
