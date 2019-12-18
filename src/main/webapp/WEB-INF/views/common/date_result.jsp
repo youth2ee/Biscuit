@@ -7,14 +7,18 @@
 
 </c:forEach>  --%>
 
- <c:forEach items="${result}" var="date" varStatus="status">
+<c:forEach items="${result}" var="date" varStatus="status">
 <tr class="dateSelect">
 <td class="mtd" title="${date.timeInfo_date}">
 ${date.timeInfo_date}
-<%-- ${date.day} --%>
+${date.day}
 <div class="tnum" style="display: none;">${theater_num}</div>
 <div class="tname" style="display: none;">${theater_name}</div>
 </td>
 </tr>
 </c:forEach> 
 
+
+<%-- <c:forEach items="${result}" var="date" varStatus="status">
+<div class="swiper-slide sbox">${date.timeInfo_date}</div>
+</c:forEach>  --%>

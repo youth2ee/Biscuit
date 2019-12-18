@@ -115,15 +115,25 @@ public class MemberController {
 	
 	
 	@PostMapping("movieLogin")
-	public ModelAndView movieLogin(ChoiceVO choiceVO, HttpSession session) {
+	public String movieLogin(ChoiceVO choiceVO, HttpSession session) {
 		System.out.println("choiceVO");
 		System.out.println(choiceVO.getMovieInfo_name());
-		session.setAttribute("ChoiceVO", choiceVO);
 		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("member/memberLogin");
+		String path = "";
 		
-		return mv;
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+		if(memberVO != null) {
+			//로그인 되어 있는 상태
+			path = "redirect:../seat/seatSelect";
+		} else {
+			//로그인 안되어 있는 상태
+			path = "redirect:./memberLogin";		
+		}
+		
+		session.setAttribute("ChoiceVO", choiceVO);		
+		
+		return path;
 	}
 	
 	
@@ -163,7 +173,7 @@ public class MemberController {
 				} else {
 					path = "./memberLogin";		
 				}
-				
+			
 			}
 		//}
 		
