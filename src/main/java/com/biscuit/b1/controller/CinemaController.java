@@ -69,7 +69,7 @@ public class CinemaController {
 	public ModelAndView cinemaInfo(CinemaVO cinemaVO) {
 		
 		//cinema 영화관에 따른 정보받기 
-		cinemaVO = cinemaService.cineamInfo(cinemaVO);
+		cinemaVO = cinemaService.cinemaInfo(cinemaVO);
 		
 		System.out.println(cinemaVO.getCinema_name());
 		System.out.println(cinemaVO.getCinema_add());

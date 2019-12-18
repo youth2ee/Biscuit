@@ -44,8 +44,7 @@ span {
 }
 
 a {
-	color: #333;
-	font-size: 14px;
+	color: #ee2e24;
 	text-decoration: none;
 	margin: 15px 0;
 }
@@ -146,7 +145,8 @@ input {
 }
 
 .social-container {
-	margin: 50px 0;
+	/*margin: 50px 0;*/
+	
 }
 
 .social-container a {
@@ -159,6 +159,13 @@ input {
 	height: 40px;
 	width: 40px;
 }
+
+.headH1 {
+	position: absolute;
+	margin-left: -110px;
+	color: #ee2e24;
+	margin-top: -190px;
+}
 </style>
 
 </head>
@@ -166,25 +173,24 @@ input {
 	<div class="container" id="container">
 		<div class="form-container log-in-container">
 			<form action="./memberLogin" method="post">
-				<h1>Login</h1>
-				<div class="social-container">
-					<a href="#" class="social"><i class="fa fa-facebook fa-2x"></i></a>
-					<a href="#" class="social"><i class="fab fa fa-twitter fa-2x"></i></a>
+				<h1 class="headH1"><a href="../">CGV</a></h1>
+				<div class="goMain">
+					<a href="../"><img alt="" src="../resources/images/Login/popcorn.gif"style="width: 63%;"></a>
+					
+
 				</div>
-				<a href="./memberJoin"><span>or use your account</span></a> <input type="text" placeholder="ID"
-					name="id" /> <input type="password" placeholder="Password"
-					name="pw" /> <a href="#">Forgot your password?</a>
+
+				<input type="text" placeholder="ID" name="id" /> <input
+					type="password" placeholder="Password" name="pw" /> <a
+					href="./memberJoin"> <span>or use your account</span></a>
 				<button style="cursor: pointer;">Log In</button>
 			</form>
 		</div>
 		<div class="overlay-container">
 			<div class="overlay">
 				<div class="overlay-panel overlay-right">
-					<h1>
-					Evolving Beyond	 Movies,
-					Global No.1 Culturebox</h1>
-					<p>영화,
-					그 이상의 감동CGV</p>
+					<h1>Evolving Beyond Movies, Global No.1 Culturebox</h1>
+					<p>영화, 그 이상의 감동 CGV</p>
 				</div>
 			</div>
 		</div>

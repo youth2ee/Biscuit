@@ -3,6 +3,7 @@ package com.biscuit.b1.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -106,70 +107,75 @@ public class MemberController {
 
 	@GetMapping("memberLogin")
 	public void memberLogin() {
-
 	}
 
 	@GetMapping("memberJoin2")
 	public void memberJoin2() {
 	}
 	
+	
+	@PostMapping("movieLogin")
+	public String movieLogin(ChoiceVO choiceVO, HttpSession session) {
+		System.out.println("choiceVO");
+		System.out.println(choiceVO.getMovieInfo_name());
+		
+		String path = "";
+		
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+		if(memberVO != null) {
+			//로그인 되어 있는 상태
+			path = "redirect:../seat/seatSelect";
+		} else {
+			//로그인 안되어 있는 상태
+			path = "redirect:./memberLogin";		
+		}
+		
+		session.setAttribute("ChoiceVO", choiceVO);		
+		
+		return path;
+	}
+	
+	
 
 	@PostMapping("memberLogin")
 	public ModelAndView memberLogin(ChoiceVO choiceVO, MemberVO memberVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
-		
-		//로그인이 안된상태에서 로그인하기
-		if (memberVO.getId() != null) {
-			memberVO = memberService.memberLogin(memberVO);		
-		}
-		
 		String msg = "";
-		String path = "";		
-		
-		
-		//로그인 안된 상태에서 성공
-		msg = "로그인 완료";
-		path = "../";
-		
+		String path = "";	
 
+		choiceVO = (ChoiceVO)session.getAttribute("ChoiceVO");
 		
-		//로그인 안된 상태에서 실패
-		msg = "로그인 실패";
-		path = "./memberLogin";		
-		
-		
-		
-		//로그인이 된 상태에서  성공
-		msg = "로그인 완료";
-		path = "../";
-		session.setAttribute("member", memberVO);
-		
-		//로그인이 된 상태에서 실패
-		msg = "로그인 실패";
-		path = "./memberLogin";
-		
-		
-		
-		
-		
-		//영화 예매 페이지에서 choiceVO를 받았을 때 : 로그인 실패
-		/*
-		 * if (choiceVO != null) { path = "../movie/movieSelect"; }
-		 */
-		System.out.println(choiceVO.getMovieInfo_name());	
-		
-		if (memberVO != null) {
-			msg = "로그인 완료";
-			path = "../";
-			//영화 예매 페이지에서 choiceVO를 받았을 때 : 로그인 성공
-			if(choiceVO != null) {
-				path = "../seat/seatSelect";
-				session.setAttribute("ChoiceVO", choiceVO);
+		//로그인이 안된상태에서 로그인하기 : 아이디 값이 넘어오면 로그인이 안되어 있는 상태
+		//if (memberVO.getId() != null) {
+			//받아온 아이디 값 보내기 : 로그인 성공실패 판단
+			memberVO = memberService.memberLogin(memberVO);	
+			
+			//받아 왔으니 로그인 성공함
+			if (memberVO != null) {
+				msg = "로그인 완료";
+				session.setAttribute("member", memberVO);
+				//예매후 로그인 성공시
+				if (choiceVO != null) {
+					path = "../seat/seatSelect";
+					
+				}else { //일반로그인 성공시
+					path = "../";
+				}
 			}
-			System.out.println(session.getAttribute("member"));
-		}
-		
+			
+			//못받았으니 로그인 실패함
+			if (memberVO == null) {
+				msg = "로그인 실패";
+				//예매후 로그인 실패시
+				if (choiceVO != null) {
+					path = "../movie/movieSelect";	
+				} else {
+					path = "./memberLogin";		
+				}
+			
+			}
+		//}
 		
 		mv.addObject("path", path);
 		mv.addObject("msg", msg);

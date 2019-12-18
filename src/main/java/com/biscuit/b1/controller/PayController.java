@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.PayInfoVO;
 import com.biscuit.b1.service.PayService;
 
@@ -38,9 +39,11 @@ public class PayController {
 		String pg_token = request.getParameter("pg_token");
 		String adultCount = (String) session.getAttribute("adultCount");
 		String kidCount = (String) session.getAttribute("kidCount");
+		ChoiceVO choiceVO = (ChoiceVO) session.getAttribute("ChoiceVO");
 		PayInfoVO payInfoVO = new PayInfoVO();
 		ModelAndView mv = new ModelAndView();
 		payInfoVO = payService.KakaoPayApprove(pg_token);
+		mv.addObject("vo",choiceVO);
 		mv.addObject("bookCode",bookCode);
 		mv.addObject("adultCount",adultCount);
 		mv.addObject("kidCount", kidCount);

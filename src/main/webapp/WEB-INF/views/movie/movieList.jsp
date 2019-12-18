@@ -36,6 +36,9 @@
 <!-- section -->
 <section>
 
+<!-- 로그인  정보 -->
+<input type="hidden" id="memberid" value="${member.id}">
+<!-- 로그인 정보 끝  -->
 
 <!-- top ten -->
  <div id="poster">
@@ -87,7 +90,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 </div>
  
 <div  style="float: left;">
-<h2 class="title">${mlist.movieInfo_title}</h2>
+<h2 class="title" id="${mlist.movieInfo_num}" >${mlist.movieInfo_title}</h2>
 </div>
  
 </div> 
@@ -230,9 +233,6 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
  <button class="btn more-trigger">더보기</button>
 </div>
 
-
-
-
 </section>
 
 <!-- footer -->
@@ -253,7 +253,7 @@ var mnum = ""; //영화번호
 
 
  //어제 날짜 구하기
-var nowDate = new Date();
+/* var nowDate = new Date();
 var yesterDate = nowDate.getTime() - (1*24*60*60*1000);
 nowDate.setTime(yesterDate);
 
@@ -265,7 +265,7 @@ if(yesterMonth < 10){ yesterMonth = "0"+ yesterMonth; }
 if(yesterDay < 10){ yesterDay = "0" + yesterDay; }
 
 var yesterDate = yesterYear + "" + yesterMonth + "" + yesterDay;
-yesterDate = yesterDate.trim();
+yesterDate = yesterDate.trim(); */
 //alert(yesterDate);
 ////////////////////////////////////////////////////////////////
 
@@ -385,8 +385,8 @@ yesterDate = yesterDate.trim();
  $('.card').on('mouseover',function() {
 	var ostar = $(this).find('.realstar').val();
 	var mnum = $(this).find('.movienum').val();
-	console.log(ostar);
-	console.log(mnum);
+/* 	console.log(ostar);
+	console.log(mnum); */
 
 	 if (ostar > 8 && ostar <= 10) {
 		console.log("ostar"+ostar);
@@ -413,7 +413,7 @@ $('.starlab').click(function() {
 	$('html').animate({scrollTop : x.top}, 400);
 	
 	mstar = $(this).text();
-	console.log(mstar);
+	/* console.log(mstar); */
 	$(this).closest('.infos').addClass('.tact');
 	/* 
 	alert(mstar); */
@@ -422,14 +422,54 @@ $('.starlab').click(function() {
  
 //하트
 $('.checkboxes-container').click(function() {
-	console.log($(this).find('.heart').attr("checked"));
-	if($(this).find('.heart').prop("checked") == true){
-		$(this).find('.heart').prop("checked", false);
-	} else if ($(this).find('.heart').prop("checked") == false) {
-		$(this).find('.heart').prop("checked",true);
+	
+	var id = $('#memberid').val();
+	/* var mname = $(this).closest('.ribbon-2').siblings('.infos').find('.title').text(); */
+	var mnum = $(this).closest('.ribbon-2').siblings('.infos').find('.title').attr('id');
+	var mheart = 0;
+	
+	if (id != '') {
+		//로그인 되어있을 때만
+		//영화 하트 체크 했으면 1
+		//영화 하트 체크 안했으면 0
 		
+		if($(this).find('.heart').prop("checked") == true){
+			mheart = 0;
+			$(this).find('.heart').prop("checked", false);
+			console.log(id);
+			console.log(mnum);
+			console.log(mheart);
+		} else if ($(this).find('.heart').prop("checked") == false) {
+			mheart = 1;
+			$(this).find('.heart').prop("checked",true);	
+			console.log(id);
+			console.log(mnum);
+			console.log(mheart);
+		}
+	} else {
+		alert('로그인 해주세요')
 	}
 
+	//받은 정보 ajax로 보내기
+		 $.ajax({
+			data : {
+				id:id,
+				movieInfo_num:mnum,
+				movieGrade_heart:mheart
+				},
+			type : "POST",
+			url : "./movieListHeart",
+			success : function(data) {
+				data = data.trim();
+				  
+
+				
+			}
+		}); 
+	
+	
+	
+	
 	
 });
 

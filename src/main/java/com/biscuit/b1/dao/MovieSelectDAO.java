@@ -49,7 +49,7 @@ public class MovieSelectDAO {
 		return sqlSession.selectList(NAMESPACE+"movieDateSelect",choiceVO);
 	}
 	
-	public List<TimeInfoVO> movieTimeSelect(ChoiceVO choiceVO) {
+	public List<ChoiceVO> movieTimeSelect(ChoiceVO choiceVO) {
 		return sqlSession.selectList(NAMESPACE+"movieTimeSelect", choiceVO);
 	}
 	

@@ -9,7 +9,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Order confirmation</title>
 <meta name="robots" content="noindex,nofollow" />
-<meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+<!-- <meta name="viewport" content="width=device-width; initial-scale=1.0;" /> -->
+
+<link
+	href="${pageContext.request.contextPath}/resources/css/layout/header.css"
+	rel="stylesheet">
 <link
 	href="${pageContext.request.contextPath}/resources/css/pay/receipt.css"
 	rel="stylesheet">
@@ -17,6 +21,12 @@
 </head>
 <body>
 	<!-- Header -->
+		<header>
+			<c:import url="../layout/header.jsp" />
+		</header>
+	
+	
+	
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
 		align="center" class="fullTable" bgcolor="#e1e1e1">
 		<tr>
@@ -45,9 +55,9 @@
 												align="left" class="col">
 												<tbody>
 													<tr>
-														<td align="left"><img
+														<td align="left"><a href="../"><img 
 															src="../resources/images/header/CGV_BI4.png"
-															alt="logo" border="0" style="width: 50%"/></td>
+															alt="logo" border="0" style="width: 50%"/></a></td>
 													</tr>
 													<tr class="hiddenMobile">
 														<td height="40"></td>
@@ -74,7 +84,7 @@
 													<tr>
 														<td
 															style="font-size: 21px; color: #ff0000; letter-spacing: -1px; font-family: 'Open Sans', sans-serif; line-height: 1; vertical-align: top; text-align: right;">
-															Invoice</td>
+															Receipt</td>
 													</tr>
 													<tr>
 													<tr class="hiddenMobile">
@@ -263,9 +273,8 @@
 															<tr>
 																<td
 																	style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top;">
-																	 (04377)<br>서울특별시 용산구 한강대로 23길<br>
-																	 55 아이파크몰 6층<br> (한강로동)<br> T:
-																	1544-1122
+																	 ${vo.movieInfo_name}<br>CGV ${vo.cinema_name}점 ${vo.theater_name}관<br>
+																	${vo.timeInfo_date}<br>${vo.timeInfo_start} ~ ${vo.timeInfo_end}
 																</td>
 															</tr>
 														</tbody>

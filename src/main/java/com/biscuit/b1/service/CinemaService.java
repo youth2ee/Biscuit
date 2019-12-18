@@ -1,11 +1,8 @@
 package com.biscuit.b1.service;
 
 import java.util.List;
-
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
-
 import com.biscuit.b1.dao.CinemaDAO;
 import com.biscuit.b1.model.CinemaVO;
 
@@ -27,8 +24,8 @@ public class CinemaService {
 		return cinemaDAO.cinemaList_cinema();
 	}
 
-	public CinemaVO cineamInfo(CinemaVO cinemaVO) {
-		return cinemaDAO.cineamInfo(cinemaVO);
+	public CinemaVO cinemaInfo(CinemaVO cinemaVO) {
+		return cinemaDAO.cinemaInfo(cinemaVO);
 	}
 	
 }
