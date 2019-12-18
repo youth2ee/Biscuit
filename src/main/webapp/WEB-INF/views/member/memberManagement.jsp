@@ -60,7 +60,13 @@ tr input[type="text"] {
 	border: none;
 }
 
-tr input[type="button"] {
+input[type="button"] {
+	background: #ffffff;
+	border: transparent;
+	box-shadow: 0px 0px 2px 0px #a6a6a6;
+}
+
+button {
 	background: transparent;
 	border: transparent;
 	box-shadow: 0px 0px 2px 0px #a6a6a6;
@@ -210,85 +216,117 @@ h1 {
 .new_tr {
 	background: #f5f5f5;
 }
+
+.selecter {
+	margin-bottom: 10px;
+}
+
+.gender input[type="text"] {
+	width: 40px;
+}
+
+.grade input[type="text"] {
+	width: 50px;
+}
+
+.grade_point input[type="text"] {
+	width: 30px;
+}
+
+.insert {
+	background-color: #ccc; 	
+}
 </style>
 </head>
 
 <body>
-	<div id="wrapper">
-		<h1>Member</h1>
-		<div style="overflow: auto;">
-			<table id="keywords" cellspacing="0" cellpadding="0">
-				<thead>
-					<tr>
-						<th><span>ID</span></th>
-						<th><span>PassWord</span></th>
-						<th><span>Name</span></th>
-						<th><span>Email</span></th>
-						<th><span>Post</span></th>
-						<th><span>Address</span></th>
-						<th><span>Phone</span></th>
-						<th><span>Birth</span></th>
-						<th><span>Gender</span></th>
-						<th><span>Grade</span></th>
-						<th><span>GradePoint</span></th>
-						<th><span>SignIn</span></th>
-						<th><span>Update</span></th>
-						<th><span>Delete</span></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${members}" var="member" varStatus="status">
-						<c:set var="i" value="1"></c:set>
+	<form method="get" action="./memberManagement" id="frm">
+		<div id="wrapper">
+			<h1>Member</h1>
+			<div class="selecter">
+				<input type="hidden" value="1" name="curPage" id="curPage">
+				<select name="kind">
+					<option id="kI" value="kI">아이디</option>
+					<option id="kN" value="kN">이름</option>
+				</select> <input type="text" name="search" value="${pager.search}">
+				<button id="searchBtn">검색</button>
+				<input
+					type="button" id="add" value="추가">
+			</div>
+			<div id = 'tableWrap' style="overflow: auto; height: 800px; padding-bottom: 15px; padding-left: 1px;">
+				<table id="keywords" cellspacing="0" cellpadding="0">
+					<thead>
 						<tr>
-							<td class="lalign"><input type="text" value="${member.id}"
-								class="id" id="id${status.index}" readonly="readonly"></td>
-							<td><input type="text" value="${member.pw}" class="pw"
-								id="pw${status.index}"></td>
-							<td><input type="text" class="name" value="${member.name}"
-								id="name${status.index}"></td>
-							<td><input type="text" class="email" value="${member.email}"
-								id="email${status.index}"></td>
-							<td><input type="text" class="post" value="${member.post}"
-								id="post${status.index}"></td>
-							<td><input type="text" class="address"
-								value="${member.address}" id="address${status.index}"></td>
-							<td><input type="text" class="phone" value="${member.phone}"
-								id="phone${status.index}"></td>
-							<td><input type="text" class="birth" value="${member.birth}"
-								id="birth${status.index}" readonly="readonly"></td>
-							<td><input type="text" class="gender"
-								value="${member.gender}" id="gender${status.index}"></td>
-							<td><input type="text" class="grade" value="${member.grade}"
-								id="grade${status.index}"></td>
-							<td><input type="text" class="grade_point"
-								value="${member.grade_point}" id="grade_point${status.index}"></td>
-							<td><input type="text" class="signIn_date"
-								value="${member.signIn_date}" id="signIn_date${status.index}"
-								readonly="readonly"></td>
-							<td><input type="button" id="btn${status.index}" value="수정"
-								class="${status.index}"></td>
-							<td><input type="button" id="delete${status.index}"
-								value="탈퇴" class="${status.index}"></td>
+							<th><span>ID</span></th>
+							<th><span>PassWord</span></th>
+							<th><span>Name</span></th>
+							<th><span>Email</span></th>
+							<th><span>Post</span></th>
+							<th><span>Address</span></th>
+							<th><span>Phone</span></th>
+							<th><span>Birth</span></th>
+							<th><span>Gender</span></th>
+							<th><span>Grade</span></th>
+							<th><span>GradePoint</span></th>
+							<th><span>SignIn</span></th>
+							<th><span>Update</span></th>
+							<th><span>Delete</span></th>
 						</tr>
-					</c:forEach>
-				</tbody>
-				<tbody id="addMember">
-				</tbody>
-			</table>
-			<input type="hidden" name="id" id="id"> <input type="hidden"
-				name="pw" id="pw"> <input type="hidden" name="name"
-				id="name"> <input type="hidden" name="email" id="email">
-			<input type="hidden" name="post" id="post"> <input
-				type="hidden" name="address" id="address"> <input
-				type="hidden" name="phone" id="phone"> <input type="hidden"
-				name="birth" id="birth"> <input type="hidden" name="gender"
-				id="gender"> <input type="hidden" name="grade" id="grade">
-			<input type="hidden" name="grade_point" id="grade_point"> <input
-				type="hidden" name="signIn_date" id="signIn_date"> <input
-				type="button" id="add" value="추가">
+					</thead>
+					<tbody id="addMember">
+					</tbody>
+					<tbody>
+						<c:forEach items="${members}" var="member" varStatus="status">
+							<c:set var="i" value="1"></c:set>
+							<tr>
+								<td class="lalign"><input type="text" value="${member.id}"
+									class="id" id="id${status.index}" readonly="readonly"></td>
+								<td><input type="text" value="${member.pw}" class="pw"
+									id="pw${status.index}"></td>
+								<td><input type="text" class="name" value="${member.name}"
+									id="name${status.index}"></td>
+								<td><input type="text" class="email"
+									value="${member.email}" id="email${status.index}"></td>
+								<td><input type="text" class="post" value="${member.post}"
+									id="post${status.index}"></td>
+								<td><input type="text" class="address"
+									value="${member.address}" id="address${status.index}"></td>
+								<td><input type="text" class="phone"
+									value="${member.phone}" id="phone${status.index}"></td>
+								<td><input type="text" class="birth"
+									value="${member.birth}" id="birth${status.index}"
+									readonly="readonly"></td>
+								<td><input type="text" class="gender"
+									value="${member.gender}" id="gender${status.index}"></td>
+								<td><input type="text" class="grade"
+									value="${member.grade}" id="grade${status.index}"></td>
+								<td><input type="text" class="grade_point"
+									value="${member.grade_point}" id="grade_point${status.index}"></td>
+								<td><input type="text" class="signIn_date"
+									value="${member.signIn_date}" id="signIn_date${status.index}"
+									readonly="readonly"></td>
+								<td><input type="button" id="btn${status.index}" value="수정"
+									class="${status.index}"></td>
+								<td><input type="button" id="delete${status.index}"
+									value="탈퇴" class="${status.index}"></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<input type="hidden" name="id" id="id"> <input type="hidden"
+					name="pw" id="pw"> <input type="hidden" name="name"
+					id="name"> <input type="hidden" name="email" id="email">
+				<input type="hidden" name="post" id="post"> <input
+					type="hidden" name="address" id="address"> <input
+					type="hidden" name="phone" id="phone"> <input type="hidden"
+					name="birth" id="birth"> <input type="hidden" name="gender"
+					id="gender"> <input type="hidden" name="grade" id="grade">
+				<input type="hidden" name="grade_point" id="grade_point"> <input
+					type="hidden" name="signIn_date" id="signIn_date"> 
 
+			</div>
 		</div>
-	</div>
+	</form>
 	<script type="text/javascript">
 		var kind = '${pager.kind}';
 		if (kind == '') {
@@ -296,23 +334,21 @@ h1 {
 		}
 		$("#" + kind).prop("selected", true);
 
-		$("#add")
-				.click(
-						function() { // 회원추가 (1)
+		$("#add").click(function() { // 회원추가 (1)
 							$("#add").hide();
 							var rowItem = "<tr class='new_tr row'>";
-							rowItem += '<td class="cell"><input type="text" id="id${fn:length("${member}")}" class="id" ></td>';
-							rowItem += '<td class="cell"><input type="text" id="pw${fn:length("${member}")}" class="pw"></td>';
-							rowItem += '<td class="cell"><input type="text" id="name${fn:length("${member}")}" class="name"></td>';
-							rowItem += '<td class="cell"><input type="text" id="email${fn:length("${member}")}" class="email"></td>';
-							rowItem += '<td class="cell"><input type="text" id="post${fn:length("${member}")}" class="post"></td>';
-							rowItem += '<td class="cell"><input type="text" id="address${fn:length("${member}")}" class="address"></td>';
-							rowItem += '<td class="cell"><input type="text" id="phone${fn:length("${member}")}" class="phone"></td>';
-							rowItem += '<td class="cell"><input type="text" id="birth${fn:length("${member}")}" class="birth"></td>';
-							rowItem += '<td class="cell"><input type="text" id="gender${fn:length("${member}")}" class="gender"></td>';
+							rowItem += '<td class="cell"><input type="text" id="id${fn:length("${member}")}" class="id"  placeholder="아이디"></td>';
+							rowItem += '<td class="cell"><input type="text" id="pw${fn:length("${member}")}" class="pw"  placeholder="비밀번호"></td>';
+							rowItem += '<td class="cell"><input type="text" id="name${fn:length("${member}")}" class="name" placeholder="이름"></td>';
+							rowItem += '<td class="cell"><input type="text" id="email${fn:length("${member}")}" class="email" placeholder="이메일"></td>';
+							rowItem += '<td class="cell"><input type="text" id="post${fn:length("${member}")}" class="post" placeholder="우편번호"></td>';
+							rowItem += '<td class="cell"><input type="text" id="address${fn:length("${member}")}" class="address" placeholder="주소"></td>';
+							rowItem += '<td class="cell"><input type="text" id="phone${fn:length("${member}")}" class="phone" placeholder="전화번호"></td>';
+							rowItem += '<td class="cell"><input type="text" id="birth${fn:length("${member}")}" class="birth" placeholder="생일"></td>';
+							rowItem += '<td class="cell"><input type="text" id="gender${fn:length("${member}")}" class="gender" placeholder="성별"></td>';
 							rowItem += '<td class="cell"><input type="text" id="grade${fn:length("${member}")}" value="5" class="grade"></td>';
 							rowItem += '<td class="cell"><input type="text" id="grade_point${fn:length("${member}")}" value="0" class="grade_point"></td>';
-							rowItem += '<td class="cell"><input type="text" id="signIn_date${fn:length("${member}")}" value="2019-12-10" class="signIn_date"></td>';
+							rowItem += '<td class="cell"><input type="text" id="signIn_date${fn:length("${member}")}" value="Default" class="signIn_date" readonly="readonly"></td>';
 							rowItem += '<td colspan="2"><input type="button" id="addMemberBtn" value="추가" class="${fn:length("${member}")}" style="width: 74%;"></td>';
 							$('#addMember').append(rowItem);
 						});
@@ -379,6 +415,12 @@ h1 {
 									+ $("#id").val();
 						}
 					});
+			$("input[type='text']").focus(function() {
+				$(this).addClass('insert');
+			});
+			$("input[type='text']").blur(function() {
+				$(this).removeClass('insert');
+			});
 
 		}
 	</script>

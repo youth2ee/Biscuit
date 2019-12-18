@@ -15,7 +15,8 @@
 </head>
 <body>
 	<form action="kakaoPay" method="post" id="frm">
-		<img src="../resources/images/pay/pay_icon.png" id="btn">
+		<input type="hidden" value="${count}" name="quantity">
+		<input type="hidden" value="${price}" name="total_amount">
 	</form>
 	<script type="text/javascript">
 			$("#frm").submit();

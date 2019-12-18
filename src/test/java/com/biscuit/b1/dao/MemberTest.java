@@ -6,28 +6,32 @@ import javax.inject.Inject;
 
 import org.junit.Test;
 
+import com.biscuit.b1.TestAbstractCase;
 import com.biscuit.b1.model.MemberVO;
 
-public class MemberTest {
+public class MemberTest extends TestAbstractCase {
 
 	@Inject
 	private MemberDAO memberDAO;
-	
+
 	@Test
-	public void test() throws Exception{
-		MemberVO memberVO = new MemberVO();
-		memberVO.setId("newni123");
-		memberVO.setPw("1234");
-		memberVO.setName("임윤희");
-		memberVO.setEmail("email");
-		memberVO.setAddress("address");
-		memberVO.setPost("post");
-		memberVO.setPhone("010-4735-2699");
-		memberVO.setBirth("2019-12-09");
-		memberVO.setGender("F");
-		
-		int result = memberDAO.memberJoin(memberVO);
-		assertEquals(1, result);
+	public void test() throws Exception {
+		for (int i = 1; i < 101; i++) {
+			MemberVO memberVO = new MemberVO();
+			memberVO.setId("test" + i);
+			memberVO.setPw("test");
+			memberVO.setName("테스트" + i);
+			memberVO.setEmail("email" + i + "@email.com");
+			memberVO.setAddress("address");
+			memberVO.setPost("post");
+			memberVO.setPhone("010-1234-5678");
+			memberVO.setBirth("2019-12-09");
+			memberVO.setGender("F");
+			memberVO.setGrade(5);
+			memberVO.setGrade_point(0);
+			memberVO.setSignIn_date("2019-12-18");
+			memberDAO.memberJoin(memberVO);
+		}
 	}
 
 }

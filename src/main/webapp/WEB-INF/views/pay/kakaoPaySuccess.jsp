@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Order confirmation</title>
 <meta name="robots" content="noindex,nofollow" />
-<meta name="viewport" content="width=device-width; initial-scale=1.0;" />
 <link
 	href="${pageContext.request.contextPath}/resources/css/pay/receipt.css"
 	rel="stylesheet">
@@ -209,7 +208,7 @@
 												</td>
 												<td
 													style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align: right;">
-													<strong>₩ <fmt:formatNumber value="${pay.amount.total}" pattern="\#,###.##"/></strong>
+													<strong>₩ <fmt:formatNumber value="${pay.amount.total}" pattern="#,###.##"/></strong>
 												</td>
 											</tr>
 										</tbody>
@@ -254,7 +253,7 @@
 															<tr>
 																<td
 																	style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top;">
-																	<strong>결제 주소지</strong>
+																	<strong>예매 정보</strong>
 																</td>
 															</tr>
 															<tr>
@@ -289,7 +288,8 @@
 															<tr>
 																<td
 																	style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top;">
-																	${pay.payment_method_type}<br><c:if test="${pay.payment_method_type eq CARD}">Credit Card Type : ${pay.card_info.issuer_corp}</c:if><br>
+																	${pay.payment_method_type}<br>${pay.card_info.issuer_corp}<br>
+																	승인 번호 : ${pay.card_info.approved_id}<br>
 																</td>
 															</tr>
 														</tbody>

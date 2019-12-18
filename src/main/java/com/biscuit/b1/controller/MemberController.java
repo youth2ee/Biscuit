@@ -29,7 +29,7 @@ public class MemberController {
 		// 로그아웃
 		session.invalidate();
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("msg","로그아웃되었습니다.");
+		mv.addObject("msg", "로그아웃되었습니다.");
 		mv.addObject("path", "../");
 		mv.setViewName("common/common_result");
 		return mv;
@@ -112,71 +112,68 @@ public class MemberController {
 	@GetMapping("memberJoin2")
 	public void memberJoin2() {
 	}
-	
-	
+
 	@PostMapping("movieLogin")
 	public String movieLogin(ChoiceVO choiceVO, HttpSession session) {
 		System.out.println("choiceVO");
 		System.out.println(choiceVO.getMovieInfo_name());
-		
+
 		String path = "";
-		
-		MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		
-		if(memberVO != null) {
-			//로그인 되어 있는 상태
+
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+
+		if (memberVO != null) {
+			// 로그인 되어 있는 상태
 			path = "redirect:../seat/seatSelect";
 		} else {
-			//로그인 안되어 있는 상태
-			path = "redirect:./memberLogin";		
+			// 로그인 안되어 있는 상태
+			path = "redirect:./memberLogin";
 		}
-		
-		session.setAttribute("ChoiceVO", choiceVO);		
-		
+
+		session.setAttribute("ChoiceVO", choiceVO);
+
 		return path;
 	}
-	
-	
 
 	@PostMapping("memberLogin")
 	public ModelAndView memberLogin(ChoiceVO choiceVO, MemberVO memberVO, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
-		String path = "";	
+		String path = "";
 
-		choiceVO = (ChoiceVO)session.getAttribute("ChoiceVO");
-		
-		//로그인이 안된상태에서 로그인하기 : 아이디 값이 넘어오면 로그인이 안되어 있는 상태
-		//if (memberVO.getId() != null) {
-			//받아온 아이디 값 보내기 : 로그인 성공실패 판단
-			memberVO = memberService.memberLogin(memberVO);	
-			
-			//받아 왔으니 로그인 성공함
-			if (memberVO != null) {
-				msg = "로그인 완료";
-				session.setAttribute("member", memberVO);
-				//예매후 로그인 성공시
-				if (choiceVO != null) {
-					path = "../seat/seatSelect";
-					
-				}else { //일반로그인 성공시
-					path = "../";
-				}
+		choiceVO = (ChoiceVO) session.getAttribute("ChoiceVO");
+
+		// 로그인이 안된상태에서 로그인하기 : 아이디 값이 넘어오면 로그인이 안되어 있는 상태
+		// if (memberVO.getId() != null) {
+		// 받아온 아이디 값 보내기 : 로그인 성공실패 판단
+		memberVO = memberService.memberLogin(memberVO);
+
+		// 받아 왔으니 로그인 성공함
+		if (memberVO != null) {
+			msg = "로그인 완료";
+			session.setAttribute("member", memberVO);
+			// 예매후 로그인 성공시
+			if (choiceVO != null) {
+				path = "../seat/seatSelect";
+
+			} else { // 일반로그인 성공시
+				path = "../";
 			}
-			
-			//못받았으니 로그인 실패함
-			if (memberVO == null) {
-				msg = "로그인 실패";
-				//예매후 로그인 실패시
-				if (choiceVO != null) {
-					path = "../movie/movieSelect";	
-				} else {
-					path = "./memberLogin";		
-				}
-			
+		}
+
+		// 못받았으니 로그인 실패함
+		if (memberVO == null) {
+			msg = "로그인 실패";
+			// 예매후 로그인 실패시
+			if (choiceVO != null) {
+				path = "../movie/movieSelect";
+			} else {
+				path = "./memberLogin";
 			}
-		//}
-		
+
+		}
+		// }
+
 		mv.addObject("path", path);
 		mv.addObject("msg", msg);
 		mv.setViewName("common/common_result");
@@ -184,8 +181,7 @@ public class MemberController {
 	}
 
 	@PostMapping("memberManagementAdd")
-	public ModelAndView memberManagementAdd(MemberVO memberVO) throws Exception{
-		System.out.println(memberVO.getId());
+	public ModelAndView memberManagementAdd(MemberVO memberVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.memberJoin(memberVO);
 		String msg = "멤버추가 실패";
@@ -196,7 +192,7 @@ public class MemberController {
 		mv.setViewName("common/common_result");
 		return mv;
 	}
-	
+
 	@GetMapping("memberManagement")
 	public ModelAndView memberManagement(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -205,14 +201,13 @@ public class MemberController {
 			memberVO2.setBirth(memberVO2.getBirth().substring(0, 10));
 			memberVO2.setSignIn_date(memberVO2.getSignIn_date().substring(0, 10));
 		}
-		System.out.println(pager.getSearch());
 		mv.addObject("members", memberVOs);
 		mv.addObject("pager", pager);
 		return mv;
 	}
 
 	@PostMapping("memberManagementUpdate")
-	public ModelAndView memberManagementUpdate(MemberVO memberVO) throws Exception{
+	public ModelAndView memberManagementUpdate(MemberVO memberVO) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.memberManagementUpdate(memberVO);
 		String msg = "업데이트 실패";
@@ -224,8 +219,6 @@ public class MemberController {
 		mv.setViewName("common/common_result");
 		return mv;
 	}
-	
-	
 
 	@GetMapping("memberManagementDelete")
 	public ModelAndView memberManagementDelete(String id, HttpSession session) throws Exception {
@@ -256,6 +249,7 @@ public class MemberController {
 			mv.addObject("result", 0);
 		return mv;
 	}
+
 	@GetMapping("emailCheck")
 	public ModelAndView emailCheck(String email) throws Exception {
 		ModelAndView mv = new ModelAndView();

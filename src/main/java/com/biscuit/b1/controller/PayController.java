@@ -17,19 +17,13 @@ import com.biscuit.b1.service.PayService;
 @Controller
 @RequestMapping("/pay/**")
 public class PayController {
-	private String total_amount = null; // 합계금액
-	private String quantity = null;
 	@Inject
 	private PayService payService;
 	
-	@GetMapping(value = "kakaoPay")
-	public void kakaoPayGet(HttpServletRequest request) throws Exception {
-		total_amount = request.getParameter("price");
-		quantity = request.getParameter("count");
-	}
-
 	@PostMapping(value = "kakaoPay")
-	public String KakaoPayPost() throws Exception {
+	public String KakaoPayPost(String total_amount, String quantity) throws Exception {
+		System.out.println(total_amount);
+		System.out.println(quantity);
 		return "redirect:" + payService.KakaoPayReady(total_amount,quantity);
 	}
 
