@@ -22,7 +22,7 @@
 	order by cinema_num asc
 	</select>
 	
-	<select id="cineamInfo" parameterType="CinemaVO" resultType="CinemaVO">
+	<select id="cinemaInfo" parameterType="CinemaVO" resultType="CinemaVO">
 	select * 
 	from cinema
 	where cinema_name = #{cinema_name}

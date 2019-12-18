@@ -13,6 +13,7 @@
 ${date.timeInfo_date}
 <%-- ${date.day} --%>
 <div class="tnum" style="display: none;">${theater_num}</div>
+<div class="tname" style="display: none;">${theater_name}</div>
 </td>
 </tr>
 </c:forEach> 

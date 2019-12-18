@@ -108,8 +108,9 @@
 
 
  
-<form action="../member/memberLogin" id="frm">
-<div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div>
+<form action="../member/movieLogin" id="frm" method="post">
+<button id="btn"><img alt="" src="../resources/images/movieSelect/seat.png"></button>
+<!-- <div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div> -->
 </form>
  
  
@@ -135,7 +136,9 @@
  	var cname = ""; //영화관이름 
  	var cdate = ""; //날짜
  	var ctime = ""; //시간
+ 	var cendtime = ""; //끝시간
  	var tnum = ""; //상영관번호
+ 	var tname = ""; //상영관이름
  	
  	var theater = $("#theaterNameSelect");
  	var cinema = $("#cinemaNameSelect");
@@ -143,7 +146,7 @@
  	var time = $("#movieTimeSelect");
  	
  	$(document).ready(function() {
- 	/* 	alert($('.mtitle')); */
+ 	 	/* alert($('.mtitle'));  */
  		
  		$.each($('.mtitle'), function(i,e){
 			/* alert($(this).text()); */
@@ -286,12 +289,17 @@
  		
  	 	tnum = $(this).children().find('.tnum').text();
  	 	tnum = tnum.trim(); 
+ 	 	
+ 	 	tname = $(this).children().find('.tname').text();
+ 	 	tname = tname.trim(); 
+ 	 	
  		
  	 	console.log("aa");
  	 	console.log(cdate);
  		console.log(mnum);
  		console.log(cnum);
  		console.log(tnum);
+ 		console.log(tname);
  		
   		$.ajax({
 			data : {
@@ -305,8 +313,6 @@
 			success : function(data) {
 				data = data.trim();
 				$('#movieTimeSelect').html(data);	
-
-				
 
 		 		$.each($('.mtime2'), function(i,e){
 			
@@ -332,9 +338,7 @@
  		ctime = ctime.trim();
  		
  		console.log(ctime);
- 		 
  		}); 
- 	
  	
 /*  	
  	 	$(document).on("click",".timeSelect",function(){
@@ -349,8 +353,7 @@
  	 		 
  	 		});  */
  	 		
- 	
- 		
+
  		
 /*  	 	$(document).on("click",".mtd1",function(){
  	 	/* $(this).addClass('act').siblings().removeClass('act'); */
@@ -380,6 +383,7 @@
           console.log(cdate);    
           console.log(ctime);  
           console.log(tnum);
+          console.log(tname);
        
            $("#frm").append('<input type="hidden" name="movieInfo_num" value="'+mnum+'">');
            $("#frm").append('<input type="hidden" name="movieInfo_name" value="'+mname+'">');
@@ -389,6 +393,7 @@
            $("#frm").append('<input type="hidden" name="timeInfo_date" value="'+cdate+'">');
            $("#frm").append('<input type="hidden" name="timeInfo_start" value="'+ctime+'">');
            $("#frm").append('<input type="hidden" name="theater_num" value="'+tnum+'">');
+           $("#frm").append('<input type="hidden" name="theater_name" value="'+tname+'">');
          
            $("#frm").submit();
       } else {
