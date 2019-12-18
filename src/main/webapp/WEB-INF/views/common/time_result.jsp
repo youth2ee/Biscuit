@@ -23,16 +23,9 @@ ${time.timeInfo_start}</td>
 </c:if>
 
 
-
-
-
 </c:if>
 
-
-
 </c:forEach>
-
-
 
 </tr>
 </c:forEach> 

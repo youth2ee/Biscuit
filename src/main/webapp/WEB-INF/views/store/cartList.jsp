@@ -51,6 +51,8 @@
 					<strong class="checkbox_select">선택</strong>
 				</p>
 <!-- ------------------------------------------------------------ -->
+			<form action="../pay/kakaoPay" method="get" id="frm">
+			
 				<ul class="cart_list_style">
 				
 					<c:set var="sum" value="0" />
@@ -65,22 +67,25 @@
 							<a href="storeSelect?store_num=${cartList.store_num}" class="product_info_img">
 								<img alt="${cartList.store_name}" src="../resources/upload/store/th/${cartList.store_thumbimg}">
 								<strong class="product_info_name">${cartList.store_name}</strong>
+								<input type="hidden" id="input_sname${cartList.cart_num}" value="${cartList.store_name}">
 								<span class="product_info_note">${cartList.store_note}</span>
 							</a>
 							
 							<div class="product_info_onePrice_wrap">
 								<span class="product_info_onePrice"><fmt:formatNumber value="${cartList.store_price}" pattern="###,###,###" /></span>
+								<input type="hidden" id="input_sprice${cartList.cart_num}" value="${cartList.store_price}">
 							</div>
 							
 							<div class="product_info_amount_wrap">
 								<span class="product_info_count" id="count${cartList.cart_num}">${cartList.cart_amount}</span>
+								<input type="hidden" class="input_camount" value="${cartList.cart_amount}" name="camount">
 								<a href="#none" class="btn_amount_plus btn_amount_plus${cartList.cart_num}">+</a>
 								<a href="#none" class="btn_amount_minus btn_amount_minus${cartList.cart_num}">-</a>
 								<a href="#none" class="btn_amount_change btn_amount_change${cartList.cart_num}">변경</a>
 							</div>
 							
 							<span class="product_info_price product_info_price${cartList.cart_num}"><fmt:formatNumber value="${cartList.store_price*cartList.cart_amount}" pattern="###,###,###" /></span>
-						
+							
 						<script type="text/javascript">
 							//,찍어주는 정규식 함수
 							function addComma(price) {
@@ -146,6 +151,7 @@
 											price = addComma(price);
 											$('.product_info_price'+${cartList.cart_num}).text(price);
 											
+											$('#count'+${cartList.cart_num}).text(count);
 											calTotal();
 										}else {
 											alert("수량 변경 실패");
@@ -165,6 +171,10 @@
 							<a href="#" class="btn_product_del btn_product_del${cartList.cart_num}">삭제</a>
 							
 						<script type="text/javascript">
+						var ar = new Array();
+						
+						
+						
 							$('.btn_product_del'+${cartList.cart_num}).click(function() {
 								var confirm_val = confirm("선택하신 상품을 삭제하시겠습니까?");
 								
@@ -202,6 +212,7 @@
 						
 					</c:forEach>
 				</ul>
+			</form>
 <!-- ------------------------------------------------------------ -->
 				<a href="#none" class="btn_del_selected">
 					선택 상품 삭제
@@ -285,7 +296,7 @@
 							array_check.push($(this).val());
 						});
 						
-						//alert(array_check);
+						alert(array_check);
 						
 						$.ajax({
 							url: "cartDelete",
@@ -349,12 +360,17 @@
 				</table>
 			
 				<div class="btn_wrap">
-					<a href="#none" class="btn_buy">결제하기</a>
+					<input type="hidden" class="">
+					<button class="btn_buy">결제하기</button>
 				</div>
 				
 			<script type="text/javascript">
-				$('.btn_wrap a.btn_buy').click(function() {
+				$('.btn_wrap .btn_buy').click(function() {
 					if($('.cart_checkbox:checked').length > 0){
+						//$("#frm").submit(); //sname, sprice, camount
+						alert($('.input_sname').val());
+						alert($('.input_sprice').val());
+						alert($('.input_camount').val());
 					}else{
 						alert("상품을 선택하세요.");
 					}

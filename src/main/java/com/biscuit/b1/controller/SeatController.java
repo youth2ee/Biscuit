@@ -74,8 +74,6 @@ public class SeatController {
 		//영화 예매
 		System.out.println("세션:"+(ChoiceVO)session.getAttribute("ChoiceVO"));
 		choiceVO = (ChoiceVO)session.getAttribute("ChoiceVO");
-		
-		
 		ModelAndView mv = new ModelAndView();
 		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO);
 		MovieDataVO movieDataVO = seatService.getPoster(choiceVO);

@@ -27,8 +27,8 @@ public class CinemaService {
 		return cinemaDAO.cinemaList_cinema();
 	}
 
-	public CinemaVO cineamInfo(CinemaVO cinemaVO) {
-		return cinemaDAO.cineamInfo(cinemaVO);
+	public CinemaVO cinemaInfo(CinemaVO cinemaVO) {
+		return cinemaDAO.cinemaInfo(cinemaVO);
 	}
 	
 }
