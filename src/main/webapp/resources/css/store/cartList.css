@@ -467,7 +467,7 @@ table {
 	display: inline-block;
     margin-left: 14px;
 }
-a.btn_buy {
+.btn_buy {
 	width: 208px;
     height: 60px;
     font-weight: bold;
