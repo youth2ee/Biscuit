@@ -17,16 +17,19 @@
 
 <header>
 <c:import url="../layout/header.jsp" />
-<h2>Mypage</h2>
 </header>
 
 <section>
 <div class="mypagewrap"> 
 
-<div style="margin: 0 auto; width: 100%;">
-<div class="mymenu"> </div>
-<div class="mycontext"> </div>
+<div id="test">
+
+<div class="mymenu">a</div>
+<div class="mycontext">b</div>
+
 </div>
+
+
 
 
 </div>

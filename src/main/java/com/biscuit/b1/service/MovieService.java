@@ -199,7 +199,9 @@ public class MovieService {
 		return movieDAO.movieStarUpdate(movieGradeVO);
 	}
 	
-	
+	public int movieInfoStarUpdate(MovieGradeVO movieGradeVO) {
+		return movieDAO.movieInfoStarUpdate(movieGradeVO);
+	}
 	
 	
 }

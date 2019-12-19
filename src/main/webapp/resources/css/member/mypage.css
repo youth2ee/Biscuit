@@ -1,22 +1,37 @@
 @charset "UTF-8";
 
+header{
+	margin-bottom: 50px;
+}
+
 .mypagewrap{
-	width: 70%;
+	width: 1600px;
 	background-color: olive;
 	margin: 0 auto;
 	height: 500px;
 }
 
 .mymenu{
-	width: 10%;
-	height: 400px;
+	width: 20%;
+	height: 500px;
 	background-color: yellow;
 	float: left;
 }
 
 .mycontext{
 	width: 80%;
-	height: 400px;
+	height: 500px;
 	background-color: purple;
 	float: left;
 }
+
+#test{
+	margin:0 auto;
+	width:95%;
+
+	background-color: red;
+}
+
+
+
+

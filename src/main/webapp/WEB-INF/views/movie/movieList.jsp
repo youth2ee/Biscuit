@@ -57,13 +57,21 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
   <div class="checkboxes-container">
     <div class="control-group">
  		<c:forEach items="${grade}" var="grade1">
- 		<c:if test="${grade1.id eq member.id && grade1.movieInfo_num eq mlist.movieInfo_num && grade1.movieGrade_heart eq 1}">
-        <input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}" checked="checked">   
+ 		<c:if test="${grade1.id eq member.id && grade1.movieInfo_num eq mlist.movieInfo_num}">
+ 		
+ 		<c:choose> 
+ 		<c:when test="${grade1.movieGrade_heart eq 1}">
+ 		<input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}" checked="checked">  
+ 		</c:when>
+ 		<c:when test="${grade1.movieGrade_heart eq 0}">
+ 		<input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}"> 
+ 		</c:when>
+ 		</c:choose> 
         </c:if>
         
-      <c:if test="${grade1.id eq member.id && grade1.movieInfo_num eq mlist.movieInfo_num && grade1.movieGrade_heart eq 0}">
+<%--       <c:if test="${grade1.id eq member.id && grade1.movieInfo_num eq mlist.movieInfo_num && grade1.movieGrade_heart eq 0}">
         <input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}">   
-        </c:if> 
+        </c:if>  --%>
         </c:forEach>
         
       <label for='red-check${mlist.movieInfo_num} heartl'>
@@ -98,7 +106,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
  </span>
 </div>
  
-<div  style="float: left;">
+<div style="float: left;">
 <h2 class="title" id="${mlist.movieInfo_num}" >${mlist.movieInfo_title}</h2>
 </div>
  
@@ -118,13 +126,18 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <!-- 별점 테스트  -->
 <div class="star-rating rating${status.index}">
   <fieldset>
-  <input type="hidden" class="realstar" value="${mlist.movieInfo_star}">
-  <input type="hidden" class="movienum" value="${mlist.movieInfo_num}">
-    <input type="radio" checked="checked" id="${mlist.movieInfo_num}star5" class="star star5" name="rating${mlist.movieInfo_num}" value="5" /><label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="Outstanding"></label>
-    <input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating${mlist.movieInfo_num}" value="4" /><label for="${mlist.movieInfo_num}star4" class="starlab starl4" title="Very Good"></label>
-    <input type="radio" id="${mlist.movieInfo_num}star3" class="star star3" name="rating${mlist.movieInfo_num}" value="3" /><label for="${mlist.movieInfo_num}star3" class="starlab starl3" title="Good"></label>
-    <input type="radio" id="${mlist.movieInfo_num}star2" class="star star2" name="rating${mlist.movieInfo_num}" value="2" /><label for="${mlist.movieInfo_num}star2" class="starlab starl2" title="Poor"></label>
-    <input type="radio" id="${mlist.movieInfo_num}star1" class="star star1" name="rating${mlist.movieInfo_num}" value="1" /><label for="${mlist.movieInfo_num}star1" class="starlab starl1" title="Very Poor"></label>
+    <input type="hidden" class="realstar" value="${mlist.movieInfo_star}">
+    <input type="hidden" class="movienum" value="${mlist.movieInfo_num}">
+    <input type="radio" id="${mlist.movieInfo_num}star5" class="star star5" name="rating${mlist.movieInfo_num}" value="5" />
+    <label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="5"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating${mlist.movieInfo_num}" value="4" />
+    <label for="${mlist.movieInfo_num}star4" class="starlab starl4" title="4"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star3" class="star star3" name="rating${mlist.movieInfo_num}" value="3" />
+    <label for="${mlist.movieInfo_num}star3" class="starlab starl3" title="3"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star2" class="star star2" name="rating${mlist.movieInfo_num}" value="2" />
+    <label for="${mlist.movieInfo_num}star2" class="starlab starl2" title="2"></label>
+    <input type="radio" id="${mlist.movieInfo_num}star1" class="star star1" name="rating${mlist.movieInfo_num}" value="1" />
+    <label for="${mlist.movieInfo_num}star1" class="starlab starl1" title="1"></label>
   </fieldset>
 </div>
 <!-- 별점 테스트 끝 -->
@@ -251,7 +264,6 @@ $(function(){
 
 /* 위치 초기화 끝 */
 
-var mnum = ""; //영화번호
 
 
  //어제 날짜 구하기
@@ -380,12 +392,13 @@ yesterDate = yesterDate.trim(); */
   };
 })(jQuery);
 
-
+var mnum = ""; //영화번호
+var id = $('#memberid').val().trim(); //로그인되어있는지 확인
 
 /* info */
  $('.card').on('mouseover',function() {
 	var ostar = $(this).find('.realstar').val();
-	var mnum = $(this).find('.movienum').val();
+	mnum = $(this).find('.movienum').val();
 /* 	console.log(ostar);
 	console.log(mnum); */
 
@@ -408,25 +421,54 @@ yesterDate = yesterDate.trim(); */
 }); 
 
 
+
 /* 별점 */
 $('.starlab').click(function() {
 	x = $(this).closest('.card').offset();
 	$('html').animate({scrollTop : x.top}, 400);
 	
-	mstar = $(this).text();
-	/* console.log(mstar); */
+	var mstar =$(this).attr('title');
+	mstar = mstar*2;
+	console.log(mstar); 
+	
 	$(this).closest('.infos').addClass('.tact');
-	/* 
-	alert(mstar); */
+	
+	mnum = $(this).closest('.star-rating').find('.movienum').val();
+	console.log(mnum);
+	
+	//로그인 되어 있을때
+	if (id != '') {
+		//받은 정보 ajax로 보내기
+		 $.ajax({
+			data : {
+				id:id,
+				movieInfo_num:mnum,
+				movieGrade_star:mstar
+				},
+			type : "POST",
+			url : "./movieListStar",
+			success : function(data) {
+				
+				if (data == 1) {
+					alert("성공");
+				} else {
+					alert("실패");
+				}
+				
+			}
+		}); 
+		
+	} else{		
+		alert('로그인 해주세요');
+	} 
+
 });
  
  
 //하트
 $('.checkboxes-container').click(function() {
-	
-	var id = $('#memberid').val().trim();
 	/* var mname = $(this).closest('.ribbon-2').siblings('.infos').find('.title').text(); */
-	var mnum = $(this).closest('.ribbon-2').siblings('.infos').find('.title').attr('id').trim();
+	mnum = $(this).closest('.ribbon-2').siblings('.infos').find('.title').attr('id').trim();
 	var mheart = 0;
 	
 	if (id != '') {
@@ -447,12 +489,10 @@ $('.checkboxes-container').click(function() {
 			console.log(mnum);
 			console.log(mheart);
 		}
-	} else {
-		alert('로그인 해주세요')
-	}
-
-	//받은 정보 ajax로 보내기
- 		 $.ajax({
+		
+		
+		//받은 정보 ajax로 보내기
+		 $.ajax({
 			data : {
 				id:id,
 				movieInfo_num:mnum,
@@ -470,10 +510,11 @@ $('.checkboxes-container').click(function() {
 				
 			}
 		}); 
-	
-	
-	
-	
+
+		
+	} else {
+		alert('로그인 해주세요')
+	}
 	
 });
 

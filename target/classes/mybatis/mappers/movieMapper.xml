@@ -231,4 +231,11 @@
 	where id=#{id} and movieinfo_num=#{movieInfo_num}
   	</update>
   	
+  	<update id="movieInfoStarUpdate" parameterType="MovieGradeVO">
+  	update movieinfo set movieinfo_star = (select (select sum(moviegrade_star) from movie_grade 
+  	where movieinfo_num = #{movieInfo_num})/(select count(movieinfo_num) from movie_grade 
+  	where movieinfo_num = #{movieInfo_num}) from dual)
+    where movieinfo_num = #{movieInfo_num}
+  	</update>
+  	
  </mapper>
