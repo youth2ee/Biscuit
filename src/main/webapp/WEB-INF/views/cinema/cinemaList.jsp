@@ -24,7 +24,7 @@
 <!-- section -->
 <section>
 
-<div id="bricks" style="background-image: url('../resources/images/cinema/bricks.jpg');">
+<div id="bricks" style="background-image: url('../resources/images/cinema/bricks.jpg');" >
 <!-- cinema 리스트 -->
 <div id="cinemaName"  style="background-image: url('../resources/images/cinema/cmain.jpg')">
 <table id="cinematable">

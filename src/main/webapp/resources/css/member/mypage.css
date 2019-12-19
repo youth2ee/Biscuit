@@ -1,12 +1,16 @@
 @charset "UTF-8";
 
+body{
+	background-color: #fdfcf0;
+}
+
 header{
 	margin-bottom: 50px;
 }
 
 .mypagewrap{
 	width: 1600px;
-	background-color: olive;
+/* 	background-color: olive; */
 	margin: 0 auto;
 	height: 500px;
 }
@@ -14,24 +18,80 @@ header{
 .mymenu{
 	width: 20%;
 	height: 500px;
-	background-color: yellow;
+/* 	background-color: yellow; */
 	float: left;
 }
 
 .mycontext{
 	width: 80%;
 	height: 500px;
-	background-color: purple;
+/* 	background-color: purple; */
 	float: left;
 }
 
 #test{
 	margin:0 auto;
 	width:95%;
-
-	background-color: red;
 }
 
+.menutitle{
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 35px;
+	overflow: hidden;
+}
 
+.menumain{
+	width: 50%;
+	padding-top: 100px;
+	margin: 0 auto;
+}
 
+.mmain{
+	padding: 5px 0;
+}
 
+#bricks{
+	height: 315px;
+	margin-bottom: 30px;
+}
+
+#binfoimg{
+	width: 503px;
+	height: 230px;
+	margin-top: 27px;
+	margin-left: 44px;
+	background-size: contain;
+}
+
+#binfolevel{
+	height: 113px;
+	padding-top: 41px;
+	padding-left: 40px;
+}
+
+#binfocgv{
+	padding-top: 41px;
+	padding-left: 40px;
+}
+
+#pacoimg{
+	width: 559px;
+	margin-top: 99px;
+	margin-left: 61px;
+}
+
+#tboxmain{
+	width: 100%;
+	background-color: #f4f3ea;
+	height: 300px;	
+}
+
+.tbox{
+	float: left;
+	width: 29%;
+	height: 250px;
+	margin: 26px 26px;
+	border: 0.3px solid black;
+}

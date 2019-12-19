@@ -17,7 +17,7 @@
 		</c:if>
 		<c:if test="${member ne null }">
 			<div class="himg"><a href="./member/memberLogout"><img alt="" src="./resources/images/home/7_2.png"></a></div>
-			<div class="himg"><a href="./member/memberMyPage"><img alt="" src="./resources/images/home/8_2.png"></a></div>
+			<div class="himg"><a href="./member/mypage/myPage"><img alt="" src="./resources/images/home/8_2.png"></a></div>
 		</c:if>
 		</div>
 		

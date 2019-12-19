@@ -43,6 +43,8 @@
 
 #bricks{
 	margin-bottom: 50px;
+	padding-top:50px;
+	height: 363px;
 }
 
 #map{

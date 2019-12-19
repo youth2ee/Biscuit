@@ -56,7 +56,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <div class="ribbon-2">
   <div class="checkboxes-container">
     <div class="control-group">
-        <input type="checkbox" class="red-heart-checkbox heart t${mlist.movieInfo_num }" id="red-check${mlist.movieInfo_num}">   
+        <input type="checkbox" class="red-heart-checkbox heart t${mlist.movieInfo_num}" id="red-check${mlist.movieInfo_num}">   
       <label for='red-check${mlist.movieInfo_num} heartl'>
       <c:if test="${status.count lt 11}"><div class="ranking">${status.count}</div></c:if>
       </label>
@@ -247,79 +247,6 @@ $(function(){
 
 /* 위치 초기화 끝 */
 
-
-
- //어제 날짜 구하기
-/* var nowDate = new Date();
-var yesterDate = nowDate.getTime() - (1*24*60*60*1000);
-nowDate.setTime(yesterDate);
-
-var yesterYear = nowDate.getFullYear();
-var yesterMonth = nowDate.getMonth() +1;
-var yesterDay = nowDate.getDate();
-
-if(yesterMonth < 10){ yesterMonth = "0"+ yesterMonth; }
-if(yesterDay < 10){ yesterDay = "0" + yesterDay; }
-
-var yesterDate = yesterYear + "" + yesterMonth + "" + yesterDay;
-yesterDate = yesterDate.trim(); */
-//alert(yesterDate);
-////////////////////////////////////////////////////////////////
-
-/* $.ajax({
-	type: "GET",
-	url: "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
-	async: false,
-	data: {
-		key: "${key}",
-		targetDt: yesterDate
-	},
-	success: function(data) {
-		
-		$.ajax({
-			type: "GET",
-			url: "./movieapi",
-			data: {
-				rank1:data.boxOfficeResult.dailyBoxOfficeList[0].rank
-			},
-			success: function(data) {
-				/* alert("성공"); */
-			//}
-			
-		//});
-		
-/* 		$('#r0').attr('title');
-		$('#r0').attr('name');
-		$('#r0').val();
-	
-		alert($('#r0').attr('title'));
-		alert($('#r0').attr('name'));
-		alert($('#r0').val());
-		
-		alert(data.boxOfficeResult.dailyBoxOfficeList[0].rank);
-		alert(data.boxOfficeResult.dailyBoxOfficeList[0].movieNm);
-		alert(data.boxOfficeResult.dailyBoxOfficeList[0].audiAcc); */
-		
-		
-		//for (var i = 0; i < data.boxOfficeResult.dailyBoxOfficeList.length; i++) {
-/* 			alert(data.boxOfficeResult.dailyBoxOfficeList[i].rank);
-			alert(data.boxOfficeResult.dailyBoxOfficeList[i].movieNm);
-			alert(data.boxOfficeResult.dailyBoxOfficeList[i].audiAcc); */
-/* 			
-			$('#r'+i).attr('title',data.boxOfficeResult.dailyBoxOfficeList[i].rank);
-			$('#r'+i).attr('name',data.boxOfficeResult.dailyBoxOfficeList[i].movieNm);
-			$('#r'+i).val(data.boxOfficeResult.dailyBoxOfficeList[i].audiAcc);
-			
-			alert($('#r'+i).attr('title'));
-			alert($('#r'+i).attr('name'));
-			alert($('#r'+i).val());
-			
-		}
-		 */
-		
-/* 
-	}
-});  */
  
 /* 저장 된 하트 값 져오기  */
 	var list = [];
@@ -386,8 +313,9 @@ var id = $('#memberid').val().trim(); //로그인되어있는지 확인
  $('.card').on('mouseover',function() {
 	var ostar = $(this).find('.realstar').val();
 	mnum = $(this).find('.movienum').val();
-/* 	console.log(ostar);
-	console.log(mnum); */
+/* 	console.log(ostar);*/
+	console.log("aa"+mnum); 
+	
 
 	 if (ostar > 8 && ostar <= 10) {
 		console.log("ostar"+ostar);
@@ -410,7 +338,6 @@ var id = $('#memberid').val().trim(); //로그인되어있는지 확인
 		$(this).find('#'+mnum+'star3').attr('checked',false);
 		$(this).find('#'+mnum+'star4').attr('checked',false);
 		$(this).find('#'+mnum+'star5').attr('checked',false);
-		
 	}
 }); 
 
@@ -443,11 +370,11 @@ $('.starlab').click(function() {
 			url : "./movieListStar",
 			success : function(data) {
 				
-				if (data == 1) {
+		/* 		if (data == 1) {
 					alert("성공");
 				} else {
 					alert("실패");
-				}
+				} */
 				
 			}
 		}); 
@@ -495,12 +422,12 @@ $('.checkboxes-container').click(function() {
 			url : "./movieListHeart",
 			success : function(data) {
 				
-				if (data == 1) {
+		/* 		if (data == 1) {
 					alert("성공");
 				} else {
 					alert("실패");
 				}
-				
+				 */
 			}
 		}); 
 
