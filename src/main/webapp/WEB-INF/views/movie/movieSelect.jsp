@@ -413,17 +413,19 @@
  	
  	/* 시간을 선택해 볼까요 */
  	 	$(document).on("click",".timeSelect",function(){
- 	 		$(this).addClass('act').closest('.ttable').siblings().find('.timeSelect').
+ 	 		$(this).addClass('act').closest('.ttable').siblings().find('.timeSelect').removeClass('act');
  	 		
  	 		
 /*  	 		$(this).find('.mtd1').addClass('act');
  	 		$(this).siblings().find('.mtd1').removeClass('act');
  	 		$(this).find('.mtime2').removeClass('act');*/
  	 	
-  		ctime = $(this).find('.mtd1').text(); 
+ 	 	
+ 	 		
+  		ctime = $(this).text(); 
  		ctime = ctime.trim();
  		
- 		cendtime = $(this).find('.mtd1').attr('title'); 
+ 		cendtime = $(this).attr('id'); 
  		cendtime = cendtime.trim(); 
  		
  		console.log(ctime);
