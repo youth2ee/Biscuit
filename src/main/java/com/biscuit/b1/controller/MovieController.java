@@ -267,9 +267,46 @@ public class MovieController {
 			result = movieService.movieHeartUpdate(movieGradeVO);
 		}
 		
+		return result;
+	}
+	
+	//movieList : 별점
+	@PostMapping("movieListStar")
+	@ResponseBody
+	public int movieListStar(MovieGradeVO movieGradeVO) {
+		System.out.println("moviegrade !!");
+		System.out.println(movieGradeVO.getId());
+		System.out.println(movieGradeVO.getMovieInfo_num());
+		System.out.println(movieGradeVO.getMovieGrade_heart());
+		
+		int result = 0;
+		
+		MovieGradeVO movieGradeVO2 = movieService.movieGradeSelect(movieGradeVO);
+		
+		System.out.println(movieGradeVO);
+		
+		if(movieGradeVO2 == null) {
+			//널이면 insert
+			result = movieService.movieGradeInsert(movieGradeVO);
+			if(result > 0) {				
+				result = movieService.movieStarUpdate(movieGradeVO);
+				if (result > 0 ) {
+					result = movieService.movieInfoStarUpdate(movieGradeVO);
+				}
+			}
+			
+			
+		}else {
+			//낫널이면 update
+			result = movieService.movieStarUpdate(movieGradeVO);
+			if (result > 0) {
+				result = movieService.movieInfoStarUpdate(movieGradeVO);
+			}
+		}
 		
 		return result;
 	}
+	
 	
 
 }

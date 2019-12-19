@@ -59,4 +59,8 @@ public class MovieDAO {
 		return sqlSession.update(NAMESPACE+"movieStarUpdate", movieGradeVO);
 	}
 	
+	public int movieInfoStarUpdate(MovieGradeVO movieGradeVO) {
+		return sqlSession.update(NAMESPACE+"movieInfoStarUpdate", movieGradeVO);
+	}
+	
 }
