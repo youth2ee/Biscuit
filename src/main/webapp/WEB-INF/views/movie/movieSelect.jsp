@@ -354,16 +354,25 @@
  	
  	/* 날짜를 선택하면 시간이 떠야겠지요? */
  	 $(document).on("click",".dateSelect",function(){
- 		$(this).addClass('act').siblings().removeClass('act');
+ 		 $(this).addClass('act').siblings().removeClass('act');
+ 		 
+ 		 cdate = $(this).attr('id');
+ 		 cdate = cdate.trim();
+ 		 
+ 		 console.log(cdate);
+ 		 
+ 	/* 	$(this).addClass('act').siblings().removeClass('act');
  		
   		cdate = $(this).find('.mtd').attr("title");
- 		cdate = cdate.trim();
+ 		cdate = cdate.trim(); */
  		
-/*  	 	tnum = $(this).children().find('.tnum').text();
+/*  	tnum = $(this).children().find('.tnum').text();
  	 	tnum = tnum.trim(); 
  	 	
  	 	tname = $(this).children().find('.tname').text();
  	 	tname = tname.trim();  */
+ 	 	
+ 	 	
  	 	
  		
  	 	console.log("aa");
@@ -404,15 +413,18 @@
  	
  	/* 시간을 선택해 볼까요 */
  	 	$(document).on("click",".timeSelect",function(){
- 	 		$(this).find('.mtd1').addClass('act');
+ 	 		$(this).addClass('act').closest('.ttable').siblings().find('.timeSelect').
+ 	 		
+ 	 		
+/*  	 		$(this).find('.mtd1').addClass('act');
  	 		$(this).siblings().find('.mtd1').removeClass('act');
- 	 		$(this).find('.mtime2').removeClass('act');
+ 	 		$(this).find('.mtime2').removeClass('act');*/
  	 	
   		ctime = $(this).find('.mtd1').text(); 
  		ctime = ctime.trim();
  		
  		cendtime = $(this).find('.mtd1').attr('title'); 
- 		cendtime = cendtime.trim();
+ 		cendtime = cendtime.trim(); 
  		
  		console.log(ctime);
  		console.log(cendtime);

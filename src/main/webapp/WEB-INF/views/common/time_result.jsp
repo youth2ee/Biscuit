@@ -30,16 +30,16 @@
 </c:forEach>  --%>
 
 <!-- ************************************************* -->
-<tr class="timeSelect mtd">
+<tr class="mtd">
 <td class="mtd1">
 <c:forEach items="${result}" var="time" varStatus="status"> 
 <c:if test="${status.count % 5 == 1}"> 
 <div style="clear: both; color: #b54d15; font-weight:bolder; padding: 5px;">${time.theater_name}관</div>
 </c:if>
 
-<table style="float: left;"> 
+<table class="ttable" style="float: left;"> 
 
-<tr><td style="width: 56px; text-align: center; border: 1px solid gray; font-weight: bolder;">${time.timeInfo_start}</td></tr>
+<tr><td class="timeSelect" style="width: 56px; text-align: center; border: 1px solid gray; font-weight: bolder;">${time.timeInfo_start}</td></tr>
 
 
 <!-- 여기에 좌석 수를 넣어야 한다. -->
