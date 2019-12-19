@@ -74,6 +74,7 @@ font-weight: bolder;
 	width: 242px;
 	overflow: auto;
 	height: 437px;
+	font-weight: bold;
 }
 
 
@@ -93,11 +94,13 @@ font-weight: bolder;
 	width: 135px;
 	height: 437px;
 	overflow: hidden;
+	font-weight: bold;
 }
 
 .s2{
 	/* width: 16.5%; */
-	width: 204px;
+	width: 202px;
+	font-weight: bold;
 }
 
 .s3{
@@ -110,18 +113,23 @@ font-weight: bolder;
 /* 	border: 1px solid #e71a0f; */
 	border-radius: 3px;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+		font-weight: bold;
 }
 
 .s4{
 	/* width: 16%; */
-	width: 170px;
+font-weight: bold;
+	/* width: 170px; */
+	width:148px;
 	height: 437px;
 	overflow: hidden;
+
 }
 
 .s5{
 	/* width: 15.7%; */
-	width:168px;
+	/* width:168px; */
+	width:193px;
 	padding-left: 22px;
 	height: 437px;
 }
@@ -178,7 +186,6 @@ font-weight: bolder;
 
 td{
 	height: 25px;
-	font-weight: bold;
 }
 
 .mtd{
@@ -194,6 +201,7 @@ td{
 
 .mtd2{
 	width:78%;
+
 	vertical-align: top;
 	padding-left: 10px;
 	padding-bottom: 5px;
@@ -209,6 +217,7 @@ td{
 	font-size: 15px;
 }
 
+
 /* .noncheck{
  color: #b9b3b3;
 } */
@@ -217,7 +226,6 @@ td{
 	pointer-events: none;
 	 color: #dcd9d9;
 }
-
 
 /* time slider */
 /*포스터*/
@@ -264,3 +272,4 @@ td{
 .sbox{
 	background-color: red;
 }
+

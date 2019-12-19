@@ -19,5 +19,6 @@
   		<typeAlias type="com.biscuit.b1.model.CartVO" alias="CartVO"/>
   		<typeAlias type="com.biscuit.b1.model.CartListVO" alias="CartListVO"/>
   		<typeAlias type="com.biscuit.b1.model.MovieDataVO" alias="MovieDataVO"/>
+  		<typeAlias type="com.biscuit.b1.model.MovieGradeVO" alias="MovieGradeVO"/>
   	</typeAliases>
   </configuration>

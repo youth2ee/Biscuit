@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.biscuit.b1.model.MovieDataVO;
+import com.biscuit.b1.model.MovieGradeVO;
 import com.biscuit.b1.model.MovieInfoVO;
 
 @Repository
@@ -35,4 +36,22 @@ public class MovieDAO {
 	public int insertPlot (MovieInfoVO movieInfoVO) {
 		return sqlSession.update(NAMESPACE+"insertPlot",movieInfoVO);
 	}
+	
+	//movieList
+	public MovieGradeVO movieGradeSelect(MovieGradeVO movieGradeVO) {
+		return sqlSession.selectOne(NAMESPACE+"movieGradeSelect", movieGradeVO);
+	}
+	
+	public int movieGradeInsert(MovieGradeVO movieGradeVO) {
+		return sqlSession.insert(NAMESPACE+"movieGradeInsert", movieGradeVO);
+	}
+	
+	public int movieHeartUpdate(MovieGradeVO movieGradeVO) {
+		return sqlSession.update(NAMESPACE+"movieHeartUpdate", movieGradeVO);
+	}
+	
+	public int movieStarUpdate (MovieGradeVO movieGradeVO) {
+		return sqlSession.update(NAMESPACE+"movieStarUpdate", movieGradeVO);
+	}
+	
 }

@@ -25,7 +25,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
+import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.model.MovieDataVO;
+import com.biscuit.b1.model.MovieGradeVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TimeInfoVO;
 import com.biscuit.b1.model.TopTenVO;
@@ -82,7 +84,8 @@ public class MovieController {
 		List<MovieInfoVO> movieTitle = movieSelectService.movieTitleSelect();
 		List<CinemaVO> movieLoc = movieSelectService.movieLocSelect();
 
-		System.out.println(choiceVO.getMovieInfo_name());
+		
+		/* System.out.println(choiceVO.getMovieInfo_name()); */
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("movieTitle", movieTitle);
@@ -129,56 +132,70 @@ public class MovieController {
 		List<TimeInfoVO> movieDateSelect = movieSelectService.movieDateSelect(choiceVO);
 
 		for (TimeInfoVO a : movieDateSelect) {
-			a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
+			/* a.setTimeInfo_date(a.getTimeInfo_date().substring(2,10)); */
+			System.out.println("내가원하는 정보");
+			/* System.out.println(a.getTimeInfo_date()); */
 
-			System.out.println(a.getTimeInfo_date());
-
-			a.setYear(a.getTimeInfo_date().substring(0, 4));
-			a.setMonth(a.getTimeInfo_date().substring(5, 7));
-			a.setDay(a.getTimeInfo_date().substring(8));
-
-			System.out.println(a.getYear());
-			System.out.println(a.getMonth());
-			System.out.println(a.getDay());
-
+			  a.setYear("20"+a.getTimeInfo_date().substring(0, 2));
+			  a.setMonth(a.getTimeInfo_date().substring(3, 5));
+			  a.setDay(a.getTimeInfo_date().substring(6));
+			  
+			  System.out.println(a.getYear()); 
+			  System.out.println(a.getMonth());
+			  System.out.println(a.getDay());
+			 
 		}
 
 		// theater num
-		choiceVO = movieSelectService.theaterSelect(choiceVO);
+		/* choiceVO = movieSelectService.theaterSelect(choiceVO); */
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/date_result");
 		mv.addObject("result", movieDateSelect);
-		mv.addObject("theater_num", choiceVO.getTheater_num());
-		mv.addObject("theater_name", choiceVO.getTheater_name());
+		/* mv.addObject("choiceVO", choiceVO); */
 
 		return mv;
 	}
 
 	@GetMapping("timeSelect")
 	public ModelAndView timeSelect(ChoiceVO choiceVO) throws Exception {
-		List<TimeInfoVO> dateSelect = movieSelectService.movieTimeSelect(choiceVO);
+		/*
+		 * System.out.println(choiceVO.getMovieInfo_num());
+		 * System.out.println(choiceVO.getCinema_num());
+		 * System.out.println(choiceVO.getTimeInfo_date());
+		 * System.out.println(choiceVO.getCinema_num());
+		 */
+		
+		
+		List<ChoiceVO> timeSelect = movieSelectService.movieTimeSelect(choiceVO);
 
-		for (TimeInfoVO a : dateSelect) {
-			a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
+		for (ChoiceVO a : timeSelect) {
+			/* a.setTimeInfo_date(a.getTimeInfo_date().substring(2, 10)); */
 			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
 			a.setTimeInfo_end(a.getTimeInfo_end().substring(11, 16));
+			
+			/*
+			 * System.out.println(a.getTimeInfo_date());
+			 * System.out.println(a.getTimeInfo_start());
+			 * System.out.println(a.getTimeInfo_end());
+			 * System.out.println(a.getTheater_name());
+			 * System.out.println(a.getTheater_num());
+			 */
 		}
 
-		choiceVO.setTimeInfo_date(choiceVO.getTimeInfo_date().substring(2));
+
+		
 		// 여기서 좌석수를 보내조야 해
 		List<ChoiceVO> seatList = movieSelectService.seatCount(choiceVO);
 
 		for (ChoiceVO b : seatList) {
-			System.out.println(b.getSeatCount());
-
 			b.setTimeInfo_start(b.getTimeInfo_start().substring(11, 16));
-			System.out.println(b.getTimeInfo_start());
+			/* System.out.println(b.getTimeInfo_start()); */
 		}
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/time_result");
-		mv.addObject("result", dateSelect);
+		mv.addObject("result", timeSelect);
 		mv.addObject("seatList", seatList);
 
 		return mv;
@@ -186,7 +203,7 @@ public class MovieController {
 
 	// movieList
 	@GetMapping("movieList")
-	public void movieList(Locale locale, Model model) {
+	public void movieList(Locale locale, Model model, HttpSession session) {
 
 		// api
 		String key = env.getProperty("movie.key");
@@ -200,18 +217,46 @@ public class MovieController {
 		for (MovieInfoVO a : ar) {
 			a.setMovieInfo_date(a.getMovieInfo_date().substring(0, 10));
 		}
-
+		
+		//로그인정보 : 세션에서 member 찾기
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
 		model.addAttribute("movieList", ar);
 		model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("key", key);
+		model.addAttribute("member", memberVO);
 	}
 
 	@GetMapping("movieapi")
 	@ResponseBody
 	public String movieapi(String rank1) {
-		System.out.println(rank1);
+		/* System.out.println(rank1); */
 
 		return rank1;
+	}
+	
+	//movieList : 하트
+	@PostMapping("movieListHeart")
+	@ResponseBody
+	public int movieListHeart(MovieGradeVO movieGradeVO) {
+		int result = 0;
+		
+		movieGradeVO = movieService.movieGradeSelect(movieGradeVO);
+		
+		if(movieGradeVO == null) {
+			//널이면 insert
+			result = movieService.movieGradeInsert(movieGradeVO);
+		}else {
+			//낫널이면 update
+			result = movieService.movieHeartUpdate(movieGradeVO);
+		}
+		
+	
+		
+		
+		
+		
+		return result;
 	}
 	
 

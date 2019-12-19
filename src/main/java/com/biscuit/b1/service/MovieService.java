@@ -23,6 +23,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.biscuit.b1.dao.MovieDAO;
 import com.biscuit.b1.model.MovieDataVO;
+import com.biscuit.b1.model.MovieGradeVO;
 import com.biscuit.b1.model.MovieInfoVO;
 
 @Service
@@ -174,4 +175,26 @@ public class MovieService {
 		return count;
 	}
 
+	
+	
+	//movielist
+	public MovieGradeVO movieGradeSelect(MovieGradeVO movieGradeVO) {
+		return movieDAO.movieGradeSelect(movieGradeVO);
+	}
+	
+	public int movieGradeInsert(MovieGradeVO movieGradeVO) {
+		return movieDAO.movieGradeInsert(movieGradeVO);
+	}
+	
+	public int movieHeartUpdate(MovieGradeVO movieGradeVO) {
+		return movieDAO.movieHeartUpdate(movieGradeVO);
+	}
+	
+	public int movieStarUpdate(MovieGradeVO movieGradeVO) {
+		return movieDAO.movieStarUpdate(movieGradeVO);
+	}
+	
+	
+	
+	
 }
