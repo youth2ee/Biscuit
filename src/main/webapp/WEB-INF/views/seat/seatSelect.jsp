@@ -142,11 +142,11 @@
 							<input type="hidden" id="movieInfo_num" name="movieInfo_num"
 								value="${movieInfo_num}"> <input type="hidden"
 								id="theater_num" name="theater_num" value="${theater_num}">
-							<input type="hidden" id="seat_name" name="seat_name"> <input
-								type="hidden" id="count" name="count"> <input
-								type="hidden" id="seatCount" name="seatCount"> <input
-								type="hidden" id="adultCount" name="adultCount"> <input
-								type="hidden" id="kidCount" name="kidCount">
+							<input type="hidden" id="seat_name" name="seat_name"> 
+							<input type="hidden" id="count" name="count"> 
+							<input type="hidden" id="seatCount" name="seatCount"> 
+							<input type="hidden" id="adultCount" name="adultCount"> 
+							<input type="hidden" id="kidCount" name="kidCount">
 
 						</div>
 					</div>
