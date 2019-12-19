@@ -1,13 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>Login Form Using HTML And CSS Only</title>
-<style type="text/css">
+@charset "UTF-8";
 @import
 	url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
@@ -16,7 +7,6 @@
 }
 
 body {
-	background: #f3e0e2;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -166,34 +156,3 @@ input {
 	color: #ee2e24;
 	margin-top: -190px;
 }
-</style>
-
-</head>
-<body>
-	<div class="container" id="container">
-		<div class="form-container log-in-container">
-			<form action="./memberLogin" method="post">
-				<h1 class="headH1"><a href="../">CGV</a></h1>
-				<div class="goMain">
-					<a href="../"><img alt="" src="../resources/images/join/popcorn.gif"style="width: 63%;"></a>
-					
-
-				</div>
-
-				<input type="text" placeholder="ID" name="id" /> <input
-					type="password" placeholder="Password" name="pw" /> <a
-					href="./memberJoin"> <span>or use your account</span></a>
-				<button style="cursor: pointer;">Log In</button>
-			</form>
-		</div>
-		<div class="overlay-container">
-			<div class="overlay">
-				<div class="overlay-panel overlay-right">
-					<h1>Evolving Beyond Movies, Global No.1 Culturebox</h1>
-					<p>영화, 그 이상의 감동 CGV</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>

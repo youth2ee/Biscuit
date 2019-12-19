@@ -76,26 +76,26 @@ public class SeatController {
 			throws Exception {
 		// 영화 예매
 		System.out.println("세션:" + (ChoiceVO) session.getAttribute("ChoiceVO"));
-		choiceVO = (ChoiceVO) session.getAttribute("ChoiceVO");
 		ModelAndView mv = new ModelAndView();
-		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO);
-		MovieDataVO movieDataVO = seatService.getPoster(choiceVO);
+		choiceVO = (ChoiceVO) session.getAttribute("ChoiceVO");
+		String[] timeInfo_date_s = choiceVO.getTimeInfo_date().split("/"); // 19/12/20 형식의 날짜를 자름
+		String timeInfo_date = timeInfo_date_s[1] + timeInfo_date_s[2]; // 1220
+		choiceVO.setTimeInfo_date(timeInfo_date);
+		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO); // 예약된 좌석들을 가져옴
+		MovieDataVO movieDataVO = seatService.getPoster(choiceVO); // 포스터 url을 가져와서 넣어줌
+		String grade = seatService.getGrade(choiceVO);
+		timeInfo_date = timeInfo_date.substring(0, 2) + "월 " + timeInfo_date.substring(2) + "일";
+		String timeInfo_start = choiceVO.getTimeInfo_start().substring(0, 2) + "시 "
+				+ choiceVO.getTimeInfo_start().substring(3) + "분";
 		mv.addObject("poster", movieDataVO.getPoster());
+		mv.addObject("grade", grade);
 		mv.addObject("seats", seatVOs);
 		mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
 		mv.addObject("cinema_num", choiceVO.getCinema_num());
 		mv.addObject("cinema_loc", choiceVO.getCinema_loc());
 		mv.addObject("cinema_name", choiceVO.getCinema_name());
-		mv.addObject("timeInfo_date",choiceVO.getTimeInfo_date());
-		mv.addObject("timeInfo_start", choiceVO.getTimeInfo_start());
-		String[] timeInfo_date_s = choiceVO.getTimeInfo_date().split("/");
-		String timeInfo_date = timeInfo_date_s[1] + timeInfo_date_s[2];
-		System.out.println("test1:" + choiceVO.getMovieInfo_name());
-		System.out.println("test2:" + choiceVO.getCinema_num());
-		System.out.println("test3:" + choiceVO.getCinema_loc());
-		System.out.println("test4:" + choiceVO.getCinema_name());
-		System.out.println("test5:" + choiceVO.getTimeInfo_start());
-		System.out.println("test6:" + choiceVO.getTimeInfo_end());
+		mv.addObject("timeInfo_date", choiceVO.getTimeInfo_date());
+		mv.addObject("timeInfo_start",timeInfo_start);
 		mv.addObject("timeInfo_date", timeInfo_date);
 		mv.addObject("theater_num", choiceVO.getTheater_num());
 		mv.addObject("movieInfo_num", choiceVO.getMovieInfo_num());

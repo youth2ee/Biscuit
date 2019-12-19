@@ -31,4 +31,7 @@
 		from timeinfo where movieinfo_num = #{movieInfo_num})*195)*100 from dual)
 		where movieinfo_num = #{movieInfo_num}
 	</update>
+	<select id ="getGrade" resultType="String" parameterType="ChoiceVO">
+		select movieInfo_grade from movieInfo where movieInfo_title = #{movieInfo_name}
+	</select>
 </mapper>

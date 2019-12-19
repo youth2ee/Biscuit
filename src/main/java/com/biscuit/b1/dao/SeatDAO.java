@@ -42,6 +42,8 @@ public class SeatDAO {
 	public int ratingUpdate(ChoiceVO choiceVO) {
 		return sqlsession.update(NAMESPACE+"ratingUpdate",choiceVO);
 	}
-	
+	public String getGrade(ChoiceVO choiceVO) {
+		return sqlsession.selectOne(NAMESPACE+"getGrade",choiceVO);
+	}
 
 }

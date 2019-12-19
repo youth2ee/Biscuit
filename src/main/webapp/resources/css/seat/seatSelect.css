@@ -14,7 +14,9 @@ input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
 	clip: rect(0, 0, 0, 0);
 	border: 0
 }
-
+.grade{
+	border-radius: 50px;
+}
 td {
 	width: 20px;
 	height: 20px;
