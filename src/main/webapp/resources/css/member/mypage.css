@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.mypagewrap{
+	width: 70%;
+	background-color: olive;
+	margin: 0 auto;
+	height: 500px;
+}
+
+.mymenu{
+	width: 10%;
+	height: 400px;
+	background-color: yellow;
+	float: left;
+}
+
+.mycontext{
+	width: 80%;
+	height: 400px;
+	background-color: purple;
+	float: left;
+}

@@ -8,11 +8,38 @@
 <title>Member Login</title>
 <c:import url="../layout/jquery.jsp" />
 <c:import url="../layout/bootStrap.jsp" />
+<link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/member/mypage.css" rel="stylesheet">
+
 </head>
 <body>
 
+<header>
+<c:import url="../layout/header.jsp" />
+<h2>Mypage</h2>
+</header>
+
+<section>
+<div class="mypagewrap"> 
+
+<div style="margin: 0 auto; width: 100%;">
+<div class="mymenu"> </div>
+<div class="mycontext"> </div>
+</div>
+
+
+</div>
+
+</section>
+
+<footer>
+
+</footer>
+
+<%-- 
 <div class="container">
-		<h2>Mypage</h2>
+	
 
 		<form action="#">
 		
@@ -53,7 +80,7 @@
 			</div>
 
 		</form>
-	</div>
+	</div> --%>
 
 	<script type="text/javascript">
 		$("#del").click(function() {

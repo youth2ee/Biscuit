@@ -65,6 +65,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
         <input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}">   
         </c:if> 
         </c:forEach>
+        
       <label for='red-check${mlist.movieInfo_num} heartl'>
       <c:if test="${status.count lt 11}"><div class="ranking">${status.count}</div></c:if>
       </label>
