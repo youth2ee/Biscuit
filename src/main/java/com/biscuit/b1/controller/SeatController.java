@@ -95,7 +95,7 @@ public class SeatController {
 		mv.addObject("cinema_loc", choiceVO.getCinema_loc());
 		mv.addObject("cinema_name", choiceVO.getCinema_name());
 		mv.addObject("timeInfo_date", choiceVO.getTimeInfo_date());
-		mv.addObject("timeInfo_start",timeInfo_start);
+		mv.addObject("timeInfo_start", timeInfo_start);
 		mv.addObject("timeInfo_date", timeInfo_date);
 		mv.addObject("theater_num", choiceVO.getTheater_num());
 		mv.addObject("movieInfo_num", choiceVO.getMovieInfo_num());
@@ -135,9 +135,8 @@ public class SeatController {
 			String str1_2 = String.format("%02d%n", seatVO.getTheater_num()).replace("\r\n", ""); // 관번호
 			String str1 = str1_1 + str1_2; // 극장지점 + 관번호
 			String str2 = String.format("%04d%n", seatVO.getMovieInfo_num()).replace("\r\n", ""); // 영화번호
-			String[] str3s = seatVO.getTimeInfo_start().split(":");
-			String str3 = str3s[0] + str3s[1]; // 상영 시간
-			String str4 = choiceVO.getTimeInfo_date();// 상영날짜
+			String str3 = seatVO.getTimeInfo_start().substring(0, 2) + seatVO.getTimeInfo_start().substring(4, 6);
+			String str4 = choiceVO.getTimeInfo_date().substring(0, 2) + choiceVO.getTimeInfo_date().substring(4, 6);// 상영날짜
 			String str5 = null;
 			if (seat_names[i].contains("10")) // F10 이어도 F100, F1이어도 F100이기 때문에 중복값 방지
 				str5 = String.format("%-4s", seat_names[i]).replace(" ", "1").replace("\r\n", "");

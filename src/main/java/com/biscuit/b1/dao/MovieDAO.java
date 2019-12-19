@@ -58,5 +58,8 @@ public class MovieDAO {
 	public int movieStarUpdate (MovieGradeVO movieGradeVO) {
 		return sqlSession.update(NAMESPACE+"movieStarUpdate", movieGradeVO);
 	}
+	public List<MovieGradeVO> searchForHeart(String id) {
+		return sqlSession.selectList(NAMESPACE+"searchForHeart",id);
+	}
 	
 }

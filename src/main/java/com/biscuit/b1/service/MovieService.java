@@ -42,7 +42,6 @@ public class MovieService {
 	}
 
 	public int movieManagement() throws Exception {
-
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
@@ -143,24 +142,32 @@ public class MovieService {
 							System.out.println("개봉일  : " + releaseDate);
 							System.out.println("================================================================");
 
-							/*
-							 * movieDataVO.setTitle(title); movieDataVO.setRuntime(runtime);
-							 * movieDataVO.setPoster(posters); movieDataVO.setNation(nation);
-							 * movieDataVO.setGenre(genre); movieDataVO.setRatingGrade(ratingGrade);
-							 * movieDataVO.setProdYear(prodYear); movieDataVO.setReleaseDate(releaseDate);
-							 * 
-							 * int check = movieDAO.movieInsert(movieDataVO);
-							 * 
-							 * movieInfoVO.setMovieInfo_title(title); movieInfoVO.setMovieInfo_genre(genre);
-							 * movieInfoVO.setMovieInfo_date(releaseDate);
-							 * movieInfoVO.setMovieInfo_nation(nation);
-							 * movieInfoVO.setMovieInfo_grade(ratingGrade);
-							 * movieInfoVO.setMovieInfo_time(runtime);
-							 * movieInfoVO.setMovieInfo_poster(posters);
-							 * movieInfoVO.setMovieInfo_year(prodYear); movieInfoVO.setMovieInfo_plot(plot);
-							 * 
-							 * if (check == 1) { movieDAO.movieInfoInsert(movieInfoVO); count++; }
-							 */
+							movieDataVO.setTitle(title);
+							movieDataVO.setRuntime(runtime);
+							movieDataVO.setPoster(posters);
+							movieDataVO.setNation(nation);
+							movieDataVO.setGenre(genre);
+							movieDataVO.setRatingGrade(ratingGrade);
+							movieDataVO.setProdYear(prodYear);
+							movieDataVO.setReleaseDate(releaseDate);
+
+							int check = movieDAO.movieInsert(movieDataVO);
+
+							movieInfoVO.setMovieInfo_title(title);
+							movieInfoVO.setMovieInfo_genre(genre);
+							movieInfoVO.setMovieInfo_date(releaseDate);
+							movieInfoVO.setMovieInfo_nation(nation);
+							movieInfoVO.setMovieInfo_grade(ratingGrade);
+							movieInfoVO.setMovieInfo_time(runtime);
+							movieInfoVO.setMovieInfo_poster(posters);
+							movieInfoVO.setMovieInfo_year(prodYear);
+							movieInfoVO.setMovieInfo_plot(plot);
+
+							if (check == 1) {
+								movieDAO.movieInfoInsert(movieInfoVO);
+								count++;
+							}
+
 						}
 					}
 
@@ -176,30 +183,29 @@ public class MovieService {
 		return count;
 	}
 
-	
-	
-	//movielist
+	// movielist
 	public List<MovieGradeVO> movieGradeTotal(MemberVO memberVO) {
 		return movieDAO.movieGradeTotal(memberVO);
 	}
-	
+
 	public MovieGradeVO movieGradeSelect(MovieGradeVO movieGradeVO) {
 		return movieDAO.movieGradeSelect(movieGradeVO);
 	}
-	
+
 	public int movieGradeInsert(MovieGradeVO movieGradeVO) {
 		return movieDAO.movieGradeInsert(movieGradeVO);
 	}
-	
+
 	public int movieHeartUpdate(MovieGradeVO movieGradeVO) {
 		return movieDAO.movieHeartUpdate(movieGradeVO);
 	}
-	
+
 	public int movieStarUpdate(MovieGradeVO movieGradeVO) {
 		return movieDAO.movieStarUpdate(movieGradeVO);
 	}
-	
-	
-	
-	
+
+	public List<MovieGradeVO> searchForHeart(String id) {
+		return movieDAO.searchForHeart(id);
+	}
+
 }

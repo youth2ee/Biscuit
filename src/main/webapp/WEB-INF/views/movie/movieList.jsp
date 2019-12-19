@@ -56,15 +56,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <div class="ribbon-2">
   <div class="checkboxes-container">
     <div class="control-group">
- 		<c:forEach items="${grade}" var="grade1">
- 		<c:if test="${grade1.id eq member.id && grade1.movieInfo_num eq mlist.movieInfo_num && grade1.movieGrade_heart eq 1}">
-        <input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}" checked="checked">   
-        </c:if>
-        
-      <c:if test="${grade1.id eq member.id && grade1.movieInfo_num eq mlist.movieInfo_num && grade1.movieGrade_heart eq 0}">
-        <input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}">   
-        </c:if> 
-        </c:forEach>
+        <input type="checkbox" class="red-heart-checkbox heart t${mlist.movieInfo_num }" id="red-check${mlist.movieInfo_num}">   
       <label for='red-check${mlist.movieInfo_num} heartl'>
       <c:if test="${status.count lt 11}"><div class="ranking">${status.count}</div></c:if>
       </label>
@@ -325,10 +317,14 @@ yesterDate = yesterDate.trim(); */
 	}
 });  */
  
-
-
- 
-
+/* 저장 된 하트 값 져오기  */
+	var list = [];
+		<c:forEach items="${hearts}" var="heart"> 
+			list.push("${heart.movieInfo_num}"); // 컨트롤러에서 해당 아이디가 좋아요한 영화 번호 가져와서 배열에 넣음
+		</c:forEach> 
+for (var i = 0; i < list.length; i++) { // 하트 체크 해놓기
+ 	$("input:checkbox[id='red-check" + list[i] + "']").attr('checked', true);
+}
 
 /* read more */
 
@@ -403,6 +399,13 @@ yesterDate = yesterDate.trim(); */
 	}else if (ostar > 0 && ostar <= 2) {
 		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star1').attr('checked','checked');
+	} else{
+		$(this).find('#'+mnum+'star1').attr('checked',false);
+		$(this).find('#'+mnum+'star2').attr('checked',false);
+		$(this).find('#'+mnum+'star3').attr('checked',false);
+		$(this).find('#'+mnum+'star4').attr('checked',false);
+		$(this).find('#'+mnum+'star5').attr('checked',false);
+		
 	}
 }); 
 
@@ -427,7 +430,6 @@ $('.checkboxes-container').click(function() {
 	/* var mname = $(this).closest('.ribbon-2').siblings('.infos').find('.title').text(); */
 	var mnum = $(this).closest('.ribbon-2').siblings('.infos').find('.title').attr('id').trim();
 	var mheart = 0;
-	
 	if (id != '') {
 		//로그인 되어있을 때만
 		//영화 하트 체크 했으면 1
@@ -533,7 +535,6 @@ $(".elegant-modal").on("mouseenter", function(event){
 $('.elegant-modal').mouseenter(function(event) {
 	event.preventDefault();
 });
-
 
 </script>
 
