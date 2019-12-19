@@ -115,8 +115,8 @@
 							</script>
 <!-- ------------------------------------------ -->							
 							<div class="btn_wrap">
+								<a href="./storeList?store_package=${select.store_package}" class="btn_list">상품 리스트</a>
 								<a href="#" class="btn_cart">장바구니</a>
-								<a href="#" class="btn_star">찜하기</a>
 								<a href="cartList" class="btn_buy">구매하기</a>
 							</div>
 						</div>
@@ -249,7 +249,6 @@
 			}
 		});
 	});
-	
 </script>
 
 <footer>
