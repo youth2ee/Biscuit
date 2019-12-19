@@ -154,9 +154,9 @@
 
 
 					<form action="../member/movieLogin" id="frm" method="post">
-						<button id="btn">
-							<img alt="" src="../resources/images/movieSelect/seat.png">
-						</button>
+						
+							 <img id="btn" alt="" src="../resources/images/movieSelect/seat.png"> 
+						
 						<!-- <div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div> -->
 					</form>
 
@@ -425,11 +425,20 @@
   		ctime = $(this).text(); 
  		ctime = ctime.trim();
  		
- 		cendtime = $(this).attr('id'); 
+ 		cendtime = $(this).attr('title'); 
  		cendtime = cendtime.trim(); 
+ 		
+ 		tname = $(this).attr('id'); 
+ 		tname = tname.trim(); 
+ 		
+ 		tnum = $(this).closest('.tstr').attr('id');
+  
  		
  		console.log(ctime);
  		console.log(cendtime);
+ 		console.log(tname);
+ 		console.log(tnum);
+ 		
  		}); 
  	
 /*  	
@@ -466,6 +475,7 @@
             
        if (mnum != "" && mname != "" && loc != "" && cnum != "" && cname != "" && cdate != "" && ctime != "") {
    
+    	  
           console.log("check");
           console.log(mnum);    
           console.log(mname);    
@@ -489,7 +499,7 @@
            $("#frm").append('<input type="hidden" name="theater_num" value="'+tnum+'">');
            $("#frm").append('<input type="hidden" name="theater_name" value="'+tname+'">');
          
-           $("#frm").submit();
+           $("#frm").submit(); 
       } else {
          alert("영화를 바르게 선택해주세요");
       }

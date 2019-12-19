@@ -251,10 +251,7 @@ public class MovieController {
 			result = movieService.movieHeartUpdate(movieGradeVO);
 		}
 		
-	
-		
-		
-		
+
 		
 		return result;
 	}
