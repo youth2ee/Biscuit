@@ -24,7 +24,20 @@ public class PayController {
 	public void KakaoPayGet() throws Exception {
 
 	}
-
+	/*
+	@GetMapping(value = "kakaoPay")
+	public void kakaoPayGet(String[] sname, String[] sprice, String[] camount) throws Exception {
+		for(int i=0;i<sname.length;i++) {
+			System.out.println(sname[i]);
+		}
+		for(int i=0;i<sprice.length;i++) {
+			System.out.println(sprice[i]);
+		}
+		for(int i=0;i<camount.length;i++) {
+			System.out.println(camount[i]);
+		}
+	}
+	*/
 	@PostMapping(value = "kakaoPay")
 	public String KakaoPayPost(String total_amount, String quantity) throws Exception {
 		System.out.println(total_amount);

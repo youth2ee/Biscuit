@@ -35,13 +35,13 @@ public class StoreController {
 	@ResponseBody
 	@PostMapping("cartDelete")
 	public int cartDelete(@RequestParam(value="list[]") List<String> list, CartVO cartVO, HttpSession session) throws Exception {
-		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		
 		int result = 0;
 		int cart_num = 0;
 		
-		//if(memberVO != null) {
-			cartVO.setMember_id("a");
+		if(memberVO != null) {
+			//cartVO.setMember_id("a");
 			
 			for(String i : list) {
 				cart_num = Integer.parseInt(i);
@@ -50,7 +50,7 @@ public class StoreController {
 				
 				result = storeService.cartDelete(cartVO);
 			}
-		//}
+		}
 		return result;
 	}
 	
@@ -58,17 +58,17 @@ public class StoreController {
 	@ResponseBody
 	@PostMapping("cartUpdate")
 	public int cartUpdate(CartListVO cartListVO, HttpSession session) throws Exception {
-		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 				
 		int result = 0;
-		/*
+		
 		if(memberVO != null) {
 			cartListVO.setMember_id(memberVO.getId());
 			result = storeService.cartUpdate(cartListVO);
 		}
-		*/
-		cartListVO.setMember_id("a");
-		result = storeService.cartUpdate(cartListVO);
+		
+		//cartListVO.setMember_id("a");
+		//result = storeService.cartUpdate(cartListVO);
 		
 		return result;
 	}
@@ -76,9 +76,9 @@ public class StoreController {
 	//카트 리스트
 	@GetMapping("cartList")
 	public void cartList(CartListVO cartListVO, HttpSession session, Model model) throws Exception {
-		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		//cartListVO.setMember_id(memberVO.getId());
-		cartListVO.setMember_id("a");
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		cartListVO.setMember_id(memberVO.getId());
+		//cartListVO.setMember_id("a");
 		
 		List<CartListVO> cartList = storeService.cartList(cartListVO);
 		
@@ -89,15 +89,15 @@ public class StoreController {
 	@ResponseBody
 	@PostMapping("cartSelect")
 	public Map<String, Integer> cartSelect(CartVO cartVO, HttpSession session) throws Exception {
-		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		
 		int result = 0; //로그인 X
 		
-		//if(memberVO != null) {
-			//cartVO.setMember_id(memberVO.getId());
+		if(memberVO != null) {
+			cartVO.setMember_id(memberVO.getId());
 			
-			cartVO.setMember_id("a");
+			//cartVO.setMember_id("a");
 			cartVO = storeService.cartSelect(cartVO);
 			
 			if(cartVO != null) {
@@ -111,7 +111,7 @@ public class StoreController {
 				result = 2; //동일 상품 존재 X
 			}
 			map.put("result", result);
-		//}
+		}
 		return map;
 	}
 /////////////////////////////////////////////		
@@ -120,17 +120,17 @@ public class StoreController {
 	@PostMapping("cartInsert")
 	public int cartInsert(CartVO cartVO, HttpSession session) throws Exception {
 		//System.out.println(1);
-		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		int result = 0;
-		/*
+		
 		if(memberVO != null) {
 			cartVO.setMember_id(memberVO.getId());
 			result = storeService.cartInsert(cartVO);
 		}
-		*/
 		
-		cartVO.setMember_id("a");
-		result = storeService.cartInsert(cartVO);
+		
+		//cartVO.setMember_id("a");
+		//result = storeService.cartInsert(cartVO);
 		
 		return result;
 	}
@@ -226,8 +226,9 @@ public class StoreController {
 	// 상품 목록
 	@GetMapping("storeList")
 	public void storeList(StoreVO storeVO, Model model) throws Exception {
-		storeVO.setStore_package(1);
-		
+		if(storeVO.getStore_package() == 0) {
+			storeVO.setStore_package(1);
+		}
 		List<StoreVO> list = storeService.storeList(storeVO);
 		
 		model.addAttribute("list", list);

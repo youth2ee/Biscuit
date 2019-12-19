@@ -4,10 +4,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:forEach items="${list}" var="list" varStatus="loop">
+	
+<%-- 	<c:choose>
+	<c:when test="${loop.index%3==0 and !loop.isFirst() and !loop.isLast()}">
+		</ul>
+		<ul class="product_molist topline">
+	</c:when>
+	</c:choose>
+	 --%>
 	<c:if test="${loop.index%3==0 and !loop.isFirst() and !loop.isLast()}">
 		</ul>
 		<ul class="product_molist topline">
 	</c:if>
+	
 	<li>
 		<a href="./storeSelect?store_num=${list.store_num}&store_package=${list.store_package}" class="product_btn">
 			<span class="molthum">
@@ -25,8 +34,10 @@
 			</span>
 		</a>
 		
+		<div class="hover_wrap"></div>
 		<a class="btn_category_product_cart">장바구니</a>
-		<a class="btn_category_product_buy">구매하기</a>
 		
+		<div class="hover_wrap hover_wrap2"></div>
+		<a class="btn_category_product_buy">바로구매</a>
 	</li>
 </c:forEach>
