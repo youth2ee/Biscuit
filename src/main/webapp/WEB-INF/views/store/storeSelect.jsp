@@ -17,6 +17,7 @@
 	<c:import url="../layout/header.jsp"></c:import>
 </header>
 <section>
+<form action="../pay/marketPay" id="frm">
 	<div id="container">
 		<div id="content">
 			<div class="detailtop_wrap">
@@ -31,10 +32,13 @@
 <!-- ------------------------------------------ -->
 						<div class="product_right">
 							<h2 class="detail_title">${select.store_name}</h2>
+							<input type="hidden" value="${select.store_name}" name="sname">
+							
 							<div class="info">
 								<strong class="price">
 									<fmt:formatNumber value="${select.store_price}" pattern="###,###,###" />
 									<span class="won">원</span>
+									<input type="hidden" value="${select.store_price}" name="sprice">
 								</strong>
 							</div>
 <!-- ------------------------------------------ -->							
@@ -65,7 +69,7 @@
 <!-- ------------------------------------------ -->							
 							<div class="quantity">
 								<a href="javascript:void(0)" class="aMinus"><img alt="수량감소" src="../resources/images/store/btn_quantity_minus.jpg"></a>
-								<input type="text" class="numCount" value="1" readonly="readonly">
+								<input type="text" class="numCount" value="1" readonly="readonly" name="camount">
 								<a href="javascript:void(0)" class="aPlus"><img alt="수량증가" src="../resources/images/store/btn_quantity_plus.jpg"></a>
 							</div>
 							
@@ -117,7 +121,8 @@
 							<div class="btn_wrap">
 								<a href="./storeList?store_package=${select.store_package}" class="btn_list">상품 리스트</a>
 								<a href="#" class="btn_cart">장바구니</a>
-								<a href="cartList" class="btn_buy">구매하기</a>
+								<!-- <a class="btn_buy">구매하기</a> -->
+								<button type="button" class="btn_buy">구매하기</button>
 							</div>
 						</div>
 <!-- ------------------------------------------ -->
@@ -128,6 +133,7 @@
 			</div>
 		</div>
 	</div>
+	</form>
 <!-- ------------------------------------------ -->
 <!-- modal -->
 	<div class="confirmLayer">
@@ -248,6 +254,11 @@
 				alert("에러");
 			}
 		});
+	});
+	
+	//구매하기 버튼 눌렀을 때
+	$('.btn_buy').click(function() {
+		$('#frm').submit();
 	});
 </script>
 

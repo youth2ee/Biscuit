@@ -31,6 +31,21 @@ public class StoreController {
 	@Inject
 	private StoreService storeService;
 	
+	//카트 진입시 로그인 여부
+	@ResponseBody
+	@PostMapping("cartLogin")
+	public int cartLogin(HttpSession session) throws Exception {
+		int result = 0;
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+		//로그인 O
+		if(memberVO != null) {
+			result = 1;
+		}
+		
+		return result;
+	}
+	
 	//카트 삭제
 	@ResponseBody
 	@PostMapping("cartDelete")

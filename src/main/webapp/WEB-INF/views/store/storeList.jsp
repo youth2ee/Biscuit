@@ -87,8 +87,50 @@
 						</div>
 <!-- --------------------------------------------- -->
 					</div>
+					
+					<button id="myCart">Cart</button>
+					<script type="text/javascript">
+						$('#myCart').click(function() {
+							$.ajax({
+								url: "cartLogin",
+								type: "POST",
+								//async: false,
+								success: function(data) {
+									alert(data);
+									if(data == 0){
+										var confirm_val = confirm("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?");
+										if(confirm_val){
+											location.href = "../member/memberLogin";
+											//이동후에 로그인하면 다시 원래 페이지로 돌아오는 방법이 없을까?
+										}
+									}else {
+										location.href = "./cartList";
+									}
+								}
+							});
+						});
+					</script>
 					<a href="storeWrite" id="btn_register">등록</a>
 				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- modal -->
+	<div class="confirmLayer">
+		<div class="confirm_wrap">
+			<div class="header">
+				<h3>장바구니 담기</h3>
+				<div class="close">
+					<img alt="닫기" src="../resources/images/store/close-line_white.png">
+				</div>
+			</div>
+			<div class="content">
+				<p>장바구니에 상품이 정상적으로 담겼습니다.</p>
+			</div>
+			<div class="footer">
+				<a href="cartList" class="btn_cartList">장바구니 이동</a>
+				<button class="btn_remove">쇼핑 계속하기</button>
 			</div>
 		</div>
 	</div>
@@ -99,7 +141,6 @@
 </footer>
 
 <script type="text/javascript">
-
 ////스크롤 이벤트
 	$(window).scroll(function() {
 		if($(window).scrollTop() > 730){
@@ -107,7 +148,28 @@
 		}else {
 			$('.product_index').removeClass("sticky");
 		}
+		if($(window).scrollTop() > 50){
+			$('#myCart').css("display", "block");
+		}else {
+			$('#myCart').css("display", "none");
+		}
 	});
+////모달 창 띄우기(장바구니)
+	function modal() {
+		$('.confirmLayer').css("display", "block");
+		
+		$('.close').click(function() {
+			$('.confirmLayer').css("display", "none");
+		});
+		
+		$('.btn_remove').click(function() {
+			$('.confirmLayer').css("display", "none");
+		});
+		
+		$(document).click(function(event) {
+			$('.confirmLayer').css("display", "none");
+		});
+	}
 /////* 클릭하면 메뉴 탭 및 내용 전환 */////////////
 	$('ul.tab_mallmenu li').click(function() {
 		var activeTab = $(this).attr('data-menuid');
@@ -135,11 +197,93 @@
 				//alert('.product_molist'+activeTab);
 				//$('.product_molist'+store_package).empty();
 				$('.product_molist'+store_package).html(data);
+				
+				
+			//////장바구니 버튼 클릭했을 때/////////////////
+				$('.btn_category_product_cart').click(function() {
+					var store_num = $(this).parent().find("input").val();
+					//alert(store_num);
+					var cart_amount = 1;
+					
+					$.ajax({
+						url: "cartSelect",
+						type: "POST",
+						//async: false,
+						data: { store_num : store_num },
+						success: function(data) {
+							//alert(data.result);
+							//동일 상품 존재 O - Update
+							if(data.result == 1){
+								//alert(data.cart_num);
+								
+								var confirm_val = confirm("장바구니에 동일한 상품이 존재합니다.\n수량을 변경하시겠습니까?");
+								
+								if(confirm_val){
+									var cart_num = data.cart_num;
+									cart_amount = cart_amount + data.cart_amount;
+									//alert(cart_amount);
+									
+									$.ajax({
+										url: "cartUpdate",
+										type: "POST",
+										//async: false,
+										data: {
+											cart_amount: cart_amount,
+											cart_num: cart_num
+										},
+										success: function(result) {
+											//alert(result);
+											if(result == 1){
+												modal();
+											}else {
+												alert("수량 변경 실패");
+											}
+										},
+										error: function() {
+											alert("에러");
+										}
+									});
+								}
+							//동일 상품 존재 X - Insert
+							}else if(data.result == 2){
+								$.ajax({
+									url: "cartInsert",
+									type: "POST",
+									//async: false,
+									data: {
+										store_num: store_num,
+										cart_amount: cart_amount
+									},
+									success: function(result2) {
+										if(result2 == 1){
+											modal();
+										}else {
+											alert("카트 등록 실패");
+										}	
+									},
+									error: function() {
+										alert("에러");
+									}
+								});
+							//로그인 X
+							}else{
+								var confirm_val = confirm("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?");
+								if(confirm_val){
+									location.href = "../member/memberLogin";
+									//이동후에 로그인하면 다시 원래 페이지로 돌아오는 방법이 없을까?
+								}
+							}
+						},
+						error: function() {
+							alert("에러");
+						}
+					});
+				});
 			}
 		});
 		/****************************************************************/
 	});
-//////////////////////////////	
+/////////////////////////////
 </script>
 </body>
 </html>
