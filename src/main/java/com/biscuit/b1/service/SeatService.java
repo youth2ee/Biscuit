@@ -32,4 +32,7 @@ public class SeatService {
 	public int ratingUpdate(ChoiceVO choiceVO) throws Exception{
 		return seatDAO.ratingUpdate(choiceVO);
 	}
+	public String getGrade(ChoiceVO choiceVO) throws Exception{
+		return seatDAO.getGrade(choiceVO);
+	}
 }

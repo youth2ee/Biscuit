@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
+<c:import url="../layout/header.jsp"></c:import>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link
 	href="${pageContext.request.contextPath}/resources/css/member/join.css"
 	rel="stylesheet">
-<title>VueJS/VeeValidate Signup form Built with Bulma CSS</title>
+<title>CGV 회원가입</title>
 
 <!-- Bulma CSS -->
 <link rel="stylesheet"
@@ -27,7 +31,6 @@
 	rel="stylesheet">
 
 </head>
-
 <body>
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -45,11 +48,6 @@
 						</div>
 						<div class="column has-text-black form-container">
 							<div class="column form-header">
-								<h2
-									class="has-text-weight-bold title is-paddingless is-marginless">New
-									User?</h2>
-								<p class="has-text-weight-light caption">Use the form below
-									to create your account.</p>
 							</div>
 							<div class="column">
 								<div class="columns">
@@ -144,15 +142,15 @@
 										<div class="column">
 											<div class="field">
 												<div class="control">
-													<button type="button" style="background-color: #e71a0f;" id="signIn"
-														class="button has-text-white has-background-brand is-cursive is-radiusless is-size-5 btn-signup">Complete
-														SignUp</button>
+													<button type="button" style="background-color: #e71a0f; margin-right: 100px;" id="signIn"
+														class="button has-text-white has-background-brand is-cursive is-radiusless is-size-5 btn-signup">회원 가입</button>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+							<img id="corn" alt="" src="../resources/images/join/pop_corn.png">
 						</div>
 					</div>
 				</div>

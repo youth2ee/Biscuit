@@ -19,7 +19,6 @@
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
 
@@ -53,18 +52,19 @@
 											</c:forEach>
 										</div>
 									</div>
-
-									<div class="selecter2">
-										<h3>청소년</h3>
-										<div class="radio-group">
-											<c:forEach begin="0" end="5" var="i">
-
-												<input type="radio" name="teen" id="teen${i}"
-													onchange="setDisplay()" value="${i}">
-												<label for="teen${i}">${i}</label>
-											</c:forEach>
+									<c:if test="${grade ne '청소년 관람불가'}">
+										<div class="selecter2">
+											<h3>청소년</h3>
+											<div class="radio-group">
+												<c:forEach begin="0" end="5" var="i">
+	
+													<input type="radio" name="teen" id="teen${i}"
+														onchange="setDisplay()" value="${i}">
+													<label for="teen${i}">${i}</label>
+												</c:forEach>
+											</div>
 										</div>
-									</div>
+									</c:if>
 								</div>
 							</div>
 							<div id="seatSelect">
@@ -117,16 +117,21 @@
 							</div>
 							<div id="right-wrap">
 								<img alt="" id="poster" src="${poster}">
-								<h4>영화제목 : ${movieInfo_name}</h4>
-								<h4>영화관 : ${cinema_loc} ${cinema_name}</h4>
+								<h4>
+								<c:if test="${grade eq '전체 관람가'}"><img alt="" src="../resources/images/movieSelect/m1.png" class="grade"></c:if>
+								<c:if test="${grade eq '12세 관람가'}"><img alt="" src="../resources/images/movieSelect/m2.png" class="grade"></c:if>
+								<c:if test="${grade eq '15세 관람가'}"><img alt="" src="../resources/images/movieSelect/m3.png" class="grade"></c:if>
+								<c:if test="${grade eq '청소년 관람불가'}"><img alt="" src="../resources/images/movieSelect/m4.png" class="grade"></c:if>
+								${movieInfo_name}</h4>
+								<h4>CGV ${cinema_name}점</h4>
+								<h4>상영 일자 : ${timeInfo_date}</h4>
 								<h4>시작 시간 : ${timeInfo_start}</h4>
 								<div class="price_wrap">
 									<input type="text" id="price" name="price" readonly="readonly">원
 								</div>
 								<div id="btnSelect"></div>
 								<div id="next_button">
-									<!-- <input type="button" id="btn" value="check"> -->
-									<a href="#" style="color: white" id="btn">결제하기<!-- <img id="btn" alt="" src="../resources/images/seat/seatm.png"> -->
+									<a href="#" style="color: white" id="btn">결제하기
 									</a>
 								</div>
 							</div>
@@ -170,7 +175,6 @@
 		<c:forEach items="${seats}" var="seat">
 		list.push("${seat.seat_name}");
 		</c:forEach>
-
 		for (var i = 0; i < list.length; i++) { // 이미 예매된 좌석 선택 불가
 			for (var j = 1; j < $("input:checkbox[class='seat']").length + 1; j++) {
 				if (list[i] == $("input:checkbox[id='seat" + j + "']").val()) {

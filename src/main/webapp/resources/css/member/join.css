@@ -61,7 +61,6 @@ b{
 /* ---------------------------------------------- */
 
 .skewed-bg {
-    background: #F4F5FC;
     color: #FFF;
     padding: .5em;
     position: relative;
@@ -80,7 +79,6 @@ b{
     right: -1000px;
     border-style: solid;
     border-width: 0 1000px 1000px 1000px;
-    border-color: transparent transparent #FFEC47 transparent;
 }
 
 .is-cursive {
@@ -273,13 +271,20 @@ button,
     outline: none;
     border-color: none;
 }
-
+#signIn {
+    font: icon;
+}
 .input,
 .textarea,
 .select select {
     background: transparent;
 }
-
+#corn {
+	height: 250px;
+    float: right;
+   margin-right: 200px;
+    margin-top: -20px;
+}
 .select:not(.is-multiple):not(.is-loading)::after {
     border-color: #111;
 }

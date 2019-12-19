@@ -8,6 +8,17 @@ public class Movie_TicketingVO {
 	private int cinema_num;
 	private int theater_num;
 	private String seat_name;
+	private int price;
+
+	
+	
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
 	public String getMovie_t_num() {
 		return movie_t_num;
