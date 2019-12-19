@@ -211,5 +211,9 @@ public class MovieService {
 	public List<MovieGradeVO> searchForHeart(String id) {
 		return movieDAO.searchForHeart(id);
 	}
+	
+	public List<MovieGradeVO> myGrade(String id){
+		return movieDAO.myGrade(id);
+	}
 
 }
