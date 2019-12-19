@@ -119,6 +119,7 @@
 								<img alt="" id="poster" src="${poster}">
 								<h4>영화제목 : ${movieInfo_name}</h4>
 								<h4>영화관 : ${cinema_loc} ${cinema_name}</h4>
+								<h4>상영 일자 : ${timeInfo_date}</h4>
 								<h4>시작 시간 : ${timeInfo_start}</h4>
 								<div class="price_wrap">
 									<input type="text" id="price" name="price" readonly="readonly">원

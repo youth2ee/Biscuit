@@ -19,16 +19,21 @@ import com.biscuit.b1.service.PayService;
 public class PayController {
 	@Inject
 	private PayService payService;
-	
+
+	@GetMapping(value = "kakaoPay")
+	public void KakaoPayGet() throws Exception {
+
+	}
+
 	@PostMapping(value = "kakaoPay")
 	public String KakaoPayPost(String total_amount, String quantity) throws Exception {
 		System.out.println(total_amount);
 		System.out.println(quantity);
-		return "redirect:" + payService.KakaoPayReady(total_amount,quantity);
+		return "redirect:" + payService.KakaoPayReady(total_amount, quantity);
 	}
 
 	@GetMapping("/kakaoPaySuccess")
-	public ModelAndView kakaoPaySuccess(HttpServletRequest request,HttpSession session) throws Exception {
+	public ModelAndView kakaoPaySuccess(HttpServletRequest request, HttpSession session) throws Exception {
 		String bookCode = (String) session.getAttribute("allBookCode");
 		String pg_token = request.getParameter("pg_token");
 		String adultCount = (String) session.getAttribute("adultCount");
@@ -37,9 +42,9 @@ public class PayController {
 		PayInfoVO payInfoVO = new PayInfoVO();
 		ModelAndView mv = new ModelAndView();
 		payInfoVO = payService.KakaoPayApprove(pg_token);
-		mv.addObject("vo",choiceVO);
-		mv.addObject("bookCode",bookCode);
-		mv.addObject("adultCount",adultCount);
+		mv.addObject("vo", choiceVO);
+		mv.addObject("bookCode", bookCode);
+		mv.addObject("adultCount", adultCount);
 		mv.addObject("kidCount", kidCount);
 		mv.addObject("pay", payInfoVO);
 		return mv;
