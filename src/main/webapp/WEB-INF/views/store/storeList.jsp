@@ -99,7 +99,8 @@
 </footer>
 
 <script type="text/javascript">
-	//스크롤 이벤트
+
+////스크롤 이벤트
 	$(window).scroll(function() {
 		if($(window).scrollTop() > 730){
 			$('.product_index').addClass("sticky");
@@ -107,7 +108,7 @@
 			$('.product_index').removeClass("sticky");
 		}
 	});
-	/* 클릭하면 메뉴 탭 및 내용 전환 */
+/////* 클릭하면 메뉴 탭 및 내용 전환 */////////////
 	$('ul.tab_mallmenu li').click(function() {
 		var activeTab = $(this).attr('data-menuid');
 		
@@ -138,7 +139,7 @@
 		});
 		/****************************************************************/
 	});
-	
+//////////////////////////////	
 </script>
 </body>
 </html>
