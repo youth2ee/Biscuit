@@ -54,9 +54,17 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <%-- ${status.index} --%>
 
 <div class="ribbon-2">
-  <div class='checkboxes-container'>
-    <div class='control-group'>
-      <input class='red-heart-checkbox heart' id='red-check${mlist.movieInfo_num}' type='checkbox'>
+  <div class="checkboxes-container">
+    <div class="control-group">
+ 		<c:forEach items="${grade}" var="grade1">
+ 		<c:if test="${grade1.id eq member.id && grade1.movieInfo_num eq mlist.movieInfo_num && grade1.movieGrade_heart eq 1}">
+        <input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}" checked="checked">   
+        </c:if>
+        
+      <c:if test="${grade1.id eq member.id && grade1.movieInfo_num eq mlist.movieInfo_num && grade1.movieGrade_heart eq 0}">
+        <input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}">   
+        </c:if> 
+        </c:forEach>
       <label for='red-check${mlist.movieInfo_num} heartl'>
       <c:if test="${status.count lt 11}"><div class="ranking">${status.count}</div></c:if>
       </label>
@@ -97,18 +105,12 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 
 <h3 class="date">예매율 : ${mlist.movieInfo_rating}</h3> 
 <h3 class="date">평점 : ${mlist.movieInfo_star}</h3> 
-
 <h3 class="seats">상영시간  : ${mlist.movieInfo_time}분</h3>
-
-
 <h3 class="date">개봉일 : ${mlist.movieInfo_date}</h3> 
 
 <p class="txt">
 <!-- Join us for our Live Infinity Session in beautiful New York City.  -->
 예매율을 넣자
-
-
-
 </p>
 
 
@@ -128,12 +130,12 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 
 
 <!-- modal 띄울가 말까 -->
-<h3 class="details myBtn" style="float: left;" title="${mlist.movieInfo_num}">detail / </h3>
+<h3 class="details myBtn" style="float: left;" title="${mlist.movieInfo_num}">상세보기 / </h3>
 <%-- <h3 class="details myBtn2" style="float: left;" title="${mlist.movieInfo_title}">reservation</h3> --%>
 
 <form action="./movieSelect" method="get" class=".frm" >
 <input type="hidden" name="movieInfo_name" value="${mlist.movieInfo_title}">
-<button class="myBtn2"><h3 class="details" style="float: left;" title="${mlist.movieInfo_title}">reservation</h3></button>
+<button class="myBtn2"><h3 class="details" style="float: left;" title="${mlist.movieInfo_title}">예매하기</h3></button>
 
 
 </form>
@@ -147,7 +149,6 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <c:if test="${(status.index+1)%5 == 0}">
 <div class="posterDiv" style="height: 0px;"></div>
 </c:if>
-
 
 </c:forEach>
 
@@ -344,8 +345,7 @@ yesterDate = yesterDate.trim(); */
         settings = $.extend({}, $.fn.showMoreItems.defaults, options),
         i = settings.count,
         countLess = settings.count - 1;
-
-    $('.card:lt(' + settings.count + ')').show();
+  	 $('.card:lt(' + settings.count + ')').show();
 
     $('.more-trigger').click(function(el) {
       el.preventDefault();
@@ -423,9 +423,9 @@ $('.starlab').click(function() {
 //하트
 $('.checkboxes-container').click(function() {
 	
-	var id = $('#memberid').val();
+	var id = $('#memberid').val().trim();
 	/* var mname = $(this).closest('.ribbon-2').siblings('.infos').find('.title').text(); */
-	var mnum = $(this).closest('.ribbon-2').siblings('.infos').find('.title').attr('id');
+	var mnum = $(this).closest('.ribbon-2').siblings('.infos').find('.title').attr('id').trim();
 	var mheart = 0;
 	
 	if (id != '') {
@@ -451,7 +451,7 @@ $('.checkboxes-container').click(function() {
 	}
 
 	//받은 정보 ajax로 보내기
-		 $.ajax({
+ 		 $.ajax({
 			data : {
 				id:id,
 				movieInfo_num:mnum,
@@ -460,9 +460,12 @@ $('.checkboxes-container').click(function() {
 			type : "POST",
 			url : "./movieListHeart",
 			success : function(data) {
-				data = data.trim();
-				  
-
+				
+				if (data == 1) {
+					alert("성공");
+				} else {
+					alert("실패");
+				}
 				
 			}
 		}); 

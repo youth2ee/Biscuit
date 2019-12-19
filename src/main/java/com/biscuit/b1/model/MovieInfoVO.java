@@ -16,9 +16,57 @@ public class MovieInfoVO {
 	
 	private double movieInfo_rating;
 	
+	private int movieGrade_num;
+	private String id;
+	private int movieGrade_heart;
+	private int movieGrade_star;
+	private int movieGrade_watched;
+
 	
 	
 	
+	
+	
+	public int getMovieGrade_num() {
+		return movieGrade_num;
+	}
+
+	public void setMovieGrade_num(int movieGrade_num) {
+		this.movieGrade_num = movieGrade_num;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getMovieGrade_heart() {
+		return movieGrade_heart;
+	}
+
+	public void setMovieGrade_heart(int movieGrade_heart) {
+		this.movieGrade_heart = movieGrade_heart;
+	}
+
+	public int getMovieGrade_star() {
+		return movieGrade_star;
+	}
+
+	public void setMovieGrade_star(int movieGrade_star) {
+		this.movieGrade_star = movieGrade_star;
+	}
+
+	public int getMovieGrade_watched() {
+		return movieGrade_watched;
+	}
+
+	public void setMovieGrade_watched(int movieGrade_watched) {
+		this.movieGrade_watched = movieGrade_watched;
+	}
+
 	public double getMovieInfo_rating() {
 		return movieInfo_rating;
 	}

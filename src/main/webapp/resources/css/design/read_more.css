@@ -3,7 +3,7 @@
 
 .clearfix:after {
   /* visibility: hidden; */
-  display: block;
+  display: none;
   font-size: 0;
   content: " ";
   clear: both;

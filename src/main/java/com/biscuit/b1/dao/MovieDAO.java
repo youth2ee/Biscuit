@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.model.MovieDataVO;
 import com.biscuit.b1.model.MovieGradeVO;
 import com.biscuit.b1.model.MovieInfoVO;
@@ -38,6 +39,10 @@ public class MovieDAO {
 	}
 	
 	//movieList
+	public List<MovieGradeVO> movieGradeTotal(MemberVO memberVO) {
+		return sqlSession.selectList(NAMESPACE+"movieGradeTotal", memberVO);
+	}
+	
 	public MovieGradeVO movieGradeSelect(MovieGradeVO movieGradeVO) {
 		return sqlSession.selectOne(NAMESPACE+"movieGradeSelect", movieGradeVO);
 	}

@@ -22,6 +22,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.biscuit.b1.dao.MovieDAO;
+import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.model.MovieDataVO;
 import com.biscuit.b1.model.MovieGradeVO;
 import com.biscuit.b1.model.MovieInfoVO;
@@ -178,6 +179,10 @@ public class MovieService {
 	
 	
 	//movielist
+	public List<MovieGradeVO> movieGradeTotal(MemberVO memberVO) {
+		return movieDAO.movieGradeTotal(memberVO);
+	}
+	
 	public MovieGradeVO movieGradeSelect(MovieGradeVO movieGradeVO) {
 		return movieDAO.movieGradeSelect(movieGradeVO);
 	}

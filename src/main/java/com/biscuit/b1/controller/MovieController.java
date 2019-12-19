@@ -30,7 +30,6 @@ import com.biscuit.b1.model.MovieDataVO;
 import com.biscuit.b1.model.MovieGradeVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TimeInfoVO;
-import com.biscuit.b1.model.TopTenVO;
 import com.biscuit.b1.service.MovieSelectService;
 import com.biscuit.b1.service.MovieService;
 
@@ -206,10 +205,11 @@ public class MovieController {
 	public void movieList(Locale locale, Model model, HttpSession session) {
 
 		// api
-		String key = env.getProperty("movie.key");
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
+		/*
+		 * String key = env.getProperty("movie.key"); Date date = new Date(); DateFormat
+		 * dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG,
+		 * locale); String formattedDate = dateFormat.format(date);
+		 */
 
 		// 영화 db
 		List<MovieInfoVO> ar = movieSelectService.movieList();
@@ -221,9 +221,17 @@ public class MovieController {
 		//로그인정보 : 세션에서 member 찾기
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		
+		List<MovieGradeVO> br = new ArrayList<MovieGradeVO>();
+		
+		//grade
+		if(memberVO != null) {
+			br = movieService.movieGradeTotal(memberVO); 
+		}
+		 		
+		model.addAttribute("grade", br); 
 		model.addAttribute("movieList", ar);
-		model.addAttribute("serverTime", formattedDate);
-		model.addAttribute("key", key);
+		//model.addAttribute("serverTime", formattedDate);
+		/* model.addAttribute("key", key); */
 		model.addAttribute("member", memberVO);
 	}
 
@@ -239,19 +247,26 @@ public class MovieController {
 	@PostMapping("movieListHeart")
 	@ResponseBody
 	public int movieListHeart(MovieGradeVO movieGradeVO) {
+		System.out.println("moviegrade !!");
+		System.out.println(movieGradeVO.getId());
+		System.out.println(movieGradeVO.getMovieInfo_num());
+		System.out.println(movieGradeVO.getMovieGrade_heart());
+		
 		int result = 0;
 		
-		movieGradeVO = movieService.movieGradeSelect(movieGradeVO);
+		MovieGradeVO movieGradeVO2 = movieService.movieGradeSelect(movieGradeVO);
 		
-		if(movieGradeVO == null) {
+		System.out.println(movieGradeVO);
+		
+		if(movieGradeVO2 == null) {
 			//널이면 insert
 			result = movieService.movieGradeInsert(movieGradeVO);
+			result = movieService.movieHeartUpdate(movieGradeVO);
 		}else {
 			//낫널이면 update
 			result = movieService.movieHeartUpdate(movieGradeVO);
 		}
 		
-
 		
 		return result;
 	}

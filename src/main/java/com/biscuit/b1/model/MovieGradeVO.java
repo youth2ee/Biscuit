@@ -8,6 +8,8 @@ public class MovieGradeVO {
 	private int movieGrade_heart;
 	private int movieGrade_star;
 	private int movieGrade_watched;
+
+	
 	
 	public int getMovieGrade_num() {
 		return movieGrade_num;

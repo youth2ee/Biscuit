@@ -163,7 +163,7 @@
   	<select id="movieList" resultType="MovieInfoVO">
 <!-- select * from movieinfo
 	order by movieinfo_star desc -->
-	<![CDATA[
+<![CDATA[
 	select *
     from
     (select *
@@ -172,6 +172,13 @@
     order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
     WHERE ROWNUM <= 50
     ]]>
+<!--     <![CDATA[
+    select *
+    from (select * from movieinfo where movieinfo_date >= (select to_char(add_months(sysdate-15,-1),'yy/mm/dd')from dual) order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
+    A full outer join movie_grade B
+    on A.movieinfo_num = B.movieinfo_num
+    WHERE ROWNUM <= 50
+    ]]> -->
   	</select>
 
   	<insert id="movieInsert" parameterType="MovieDataVO">
@@ -195,6 +202,11 @@
   	
   	
   	<!-- movielist heart -->
+  	<select id="movieGradeTotal" parameterType="MemberVO" resultType="MovieGradeVO">
+  	select * from movie_grade
+	where id=#{id}
+  	</select>
+  	
   	<select id="movieGradeSelect" parameterType="MovieGradeVO" resultType="MovieGradeVO">
   	select * from movie_grade
 	where id=#{id} and movieinfo_num=#{movieInfo_num}
