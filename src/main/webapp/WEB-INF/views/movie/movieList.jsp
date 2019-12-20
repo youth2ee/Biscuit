@@ -244,7 +244,6 @@ var x = $('html').offset();
 $(function(){
 	$("html, body").animate({ scrollTop: 0 }, "slow"); 
 });
-
 /* 위치 초기화 끝 */
 
  
@@ -262,6 +261,8 @@ $(function(){
 	 $("#myGrade"+numList[i]).val(gradeList[i]);
  }
  
+
+
 /* 저장 된 하트 값 져오기  */
 	var heartlist = [];
 		<c:forEach items="${hearts}" var="heart"> 
