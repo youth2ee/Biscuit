@@ -59,6 +59,7 @@ body {
 #officeCont li a.rk_cont .office_cell {
 	display: inline-block;
     height: 17px;
+    width: 180px;
     line-height: 17px;
     vertical-align: middle;
     text-overflow: ellipsis;
