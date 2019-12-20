@@ -34,10 +34,12 @@
 			</span>
 		</a>
 		
+		<input type="hidden" value="${list.store_num}"></input>
+		
 		<div class="hover_wrap"></div>
 		<a class="btn_category_product_cart">장바구니</a>
 		
 		<div class="hover_wrap hover_wrap2"></div>
-		<a class="btn_category_product_buy">바로구매</a>
+		<a href="../pay/marketPay?sname=${list.store_name}&sprice=${list.store_price}&camount=1" class="btn_category_product_buy">바로구매</a>
 	</li>
 </c:forEach>
