@@ -18,7 +18,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
 		Object obj = request.getSession().getAttribute("member");
 		
 		if (obj != null) {
-			if (!memberVO.getId().equals("admin")) {
+			if (!(memberVO.getGrade() == 6)) {
 				modelAndView.addObject("msg", "잘못된 접근입니다.");
 				modelAndView.addObject("path", "../");
 				modelAndView.setViewName("common/common_result");
