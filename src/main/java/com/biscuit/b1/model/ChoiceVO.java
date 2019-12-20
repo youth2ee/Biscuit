@@ -23,11 +23,20 @@ public class ChoiceVO {
 	
 	private String movie_count;
 	
+	private String movieInfo_title;
+	
+	
 	
 	
 	
 
 	
+	public String getMovieInfo_title() {
+		return movieInfo_title;
+	}
+	public void setMovieInfo_title(String movieInfo_title) {
+		this.movieInfo_title = movieInfo_title;
+	}
 	public String getMovie_count() {
 		return movie_count;
 	}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.service.CinemaService;
 
@@ -57,30 +58,54 @@ public class CinemaController {
 		}
 		cinemaVO = cinemaService.cinema_loc(cinemaVO);
 		
-		System.out.println(cinemaVO.getCinema_name());
-		System.out.println(cinemaVO.getCinema_add());
-		
 		return cinemaVO;
 	}
 	
 	
 	
-	@GetMapping("cinemaInfo")
-	public ModelAndView cinemaInfo(CinemaVO cinemaVO) {
-		
-		//cinema 영화관에 따른 정보받기 
-		cinemaVO = cinemaService.cinemaInfo(cinemaVO);
-		
-		System.out.println(cinemaVO.getCinema_name());
-		System.out.println(cinemaVO.getCinema_add());
-		System.out.println(cinemaVO.getCinema_tel());
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("cinemaInfo", cinemaVO);
-		mv.setViewName("common/cinemaInfo_result");
-
-		return mv;
-	}
+	/*
+	 * @GetMapping("cinemaInfo") public ModelAndView cinemaInfo(CinemaVO cinemaVO) {
+	 * 
+	 * //cinema 영화관에 따른 정보받기 cinemaVO = cinemaService.cinemaInfo(cinemaVO);
+	 * 
+	 * System.out.println(cinemaVO.getCinema_name());
+	 * System.out.println(cinemaVO.getCinema_add());
+	 * System.out.println(cinemaVO.getCinema_tel());
+	 * 
+	 * ModelAndView mv = new ModelAndView(); mv.addObject("cinemaInfo", cinemaVO);
+	 * mv.setViewName("common/cinemaInfo_result");
+	 * 
+	 * return mv; }
+	 */
 	
+	
+	  @GetMapping("cinemaTime")
+	  public ModelAndView cinemaTime(ChoiceVO choiceVO) {
+	  
+	  List<ChoiceVO> timelist = cinemaService.cinemaTime(choiceVO);
+	  
+	  for(ChoiceVO a : timelist) {
+		  System.out.println(a.getCinema_name());
+		  System.out.println(a.getCinema_num());
+		  System.out.println(a.getTimeInfo_date());
+		  System.out.println(a.getTimeInfo_start());
+		  System.out.println(a.getTimeInfo_end());
+		  System.out.println(a.getTheater_num());
+		  System.out.println(a.getMovieInfo_num());
+		  
+		  
+		  a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
+		  a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
+	  }
+	  
+	  
+	  
+	  ModelAndView mv = new ModelAndView();
+	  mv.addObject("timelist", timelist);
+	  mv.setViewName("common/cinemaTime_result");
+	  
+	  return mv;
+	  }
+	 
 	
 }

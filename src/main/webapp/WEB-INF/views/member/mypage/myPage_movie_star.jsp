@@ -49,9 +49,9 @@
 
 <c:forEach items="${starList}" var="star">
 <div class="starbox">
+<img alt="" src="${star.movieInfo_poster}">
 ${star.movieInfo_title}
 ${star.movieGrade_star}
-<img alt="" src="${star.movieInfo_poster}">
 </div>
 </c:forEach>
 

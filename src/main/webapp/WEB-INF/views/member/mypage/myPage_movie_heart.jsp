@@ -50,8 +50,9 @@
 
 <c:forEach items="${heartList}" var="heart">
 <div class="heartbox">
-${heart.movieInfo_title}
 <img alt="" src="${heart.movieInfo_poster}">
+${heart.movieInfo_title}
+하트
 </div>
 </c:forEach>
 

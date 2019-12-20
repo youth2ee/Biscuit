@@ -110,8 +110,27 @@ header{
 
 .starbox{
 	float: left;
-	width: 29%;
-	height: 250px;
-	margin: 26px 26px;
+	width: 212px;
+	height: 362px;
+	margin: 26px 15px;
 	border: 0.3px solid black;
 }
+
+.heartbox{
+	float: left;
+	width: 212px;
+	height: 362px;
+	margin: 26px 15px;
+	border: 0.3px solid black;
+}
+
+.starbox img{
+	width: 213px;
+	height: 305px;
+}
+
+.heartbox img{
+	width: 213px;
+	height: 305px;
+}
+

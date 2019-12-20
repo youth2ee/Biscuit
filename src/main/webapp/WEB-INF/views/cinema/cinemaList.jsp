@@ -66,7 +66,7 @@
 
 
 <div id="mtime">
-<div style="float: left;">여기에 타임테이블을 넣읍시다요</div>
+<div>여기에 타임테이블을 넣읍시다요</div>
 
 
 </div>
@@ -123,8 +123,8 @@ var cinematable = $("#cinematable");
 				$('#minfo_txt').html('<h1>'+cname+'</h1>'+'<h2>'+ctel+'</h2>'+'<h3>'+cadd+'</h3>');
 				$('#minfo').css('background-image', 'url('+cimage+')' );
 				
+				//timetable 띄우기
 
-				
 				/* 3. 지도 띄우기 */
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 				    mapOption = {
@@ -167,9 +167,27 @@ var cinematable = $("#cinematable");
 				alert("실패");
 			}
 		
-			
-			
 		});
+ 		
+ 		
+		
+		 $.ajax({
+			data : {
+				cinema_name:cname
+			},
+			type : "GET",
+			url : "./cinemaTime",
+			success : function(data) {
+			data = data.trim();
+			$('#mtime').html(data);
+
+			}
+		}); 
+		
+ 		
+ 		
+ 		
+ 		
  		
  		});
 	
