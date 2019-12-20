@@ -4,9 +4,13 @@
 
 #head1 {
 	margin: 0 auto;
-	padding-top: 20px;
+	padding-top: 11px;
 	text-align:center;
 	margin-bottom: 25px;
+	width: 230px;
+	padding-left: 680px;
+	padding-right: 10px;
+	padding-bottom: 9px;
 }
 
 
@@ -14,6 +18,19 @@
 	padding-top: 10px;
 	text-align: center;
 	margin-bottom: 8px;
+	height: 88px;
+}
+
+#head2_1{
+	float: left;	
+	margin-left: 600px;
+	margin-top: 7px;
+}
+
+#head2_2{
+	float: left;
+	margin-top: 9px;
+	margin-left: 29px;
 }
 
 #head3{

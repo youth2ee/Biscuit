@@ -8,9 +8,25 @@ public class MovieGradeVO {
 	private int movieGrade_heart;
 	private int movieGrade_star;
 	private int movieGrade_watched;
+	private String movieInfo_title;
+	
+	private String movieInfo_poster;
+	
+	
+	
 
-	
-	
+	public String getMovieInfo_poster() {
+		return movieInfo_poster;
+	}
+	public void setMovieInfo_poster(String movieInfo_poster) {
+		this.movieInfo_poster = movieInfo_poster;
+	}
+	public String getMovieInfo_title() {
+		return movieInfo_title;
+	}
+	public void setMovieInfo_title(String movieInfo_title) {
+		this.movieInfo_title = movieInfo_title;
+	}
 	public int getMovieGrade_num() {
 		return movieGrade_num;
 	}

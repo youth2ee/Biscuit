@@ -43,6 +43,8 @@
 
 #bricks{
 	margin-bottom: 50px;
+	padding-top:50px;
+	height: 363px;
 }
 
 #map{
@@ -88,4 +90,12 @@
 	background-color: rgba(56, 52, 53, 0.7);
 	color: white;
 	padding: 28px;
+}
+
+#mtime{
+	padding-top:20px;
+	width: 70%;
+	height:100px;
+	margin: 0 auto;
+	text-align: left;
 }

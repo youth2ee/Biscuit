@@ -303,7 +303,7 @@
 				movieInfo_num:mnum
 			},
 			type : "GET",
-			url : "./locSelect",
+			url : "./movie_heart",
 			success : function(data) {
 				data = data.trim();
 				$('#cinemaNameSelect').html(data);

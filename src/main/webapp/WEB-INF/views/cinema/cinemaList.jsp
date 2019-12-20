@@ -24,7 +24,7 @@
 <!-- section -->
 <section>
 
-<div id="bricks" style="background-image: url('../resources/images/cinema/bricks.jpg');">
+<div id="bricks" style="background-image: url('../resources/images/cinema/bricks.jpg');" >
 <!-- cinema 리스트 -->
 <div id="cinemaName"  style="background-image: url('../resources/images/cinema/cmain.jpg')">
 <table id="cinematable">
@@ -56,15 +56,20 @@
 <div id="minfo" style="background-image: url('http://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg')">
 <div id="minfo_txt"> 
 <h1>강남</h1>
-<h2>tel</h2>
-<h3>address</h3>
+<h2>1544-1122</h2>
+<h3>서울특별시 강남구 강남대로 438</h3>
 </div> 
 
 </div>
 
-
 </div>
 
+
+<div id="mtime">
+<div style="float: left;">여기에 타임테이블을 넣읍시다요</div>
+
+
+</div>
 
 
 

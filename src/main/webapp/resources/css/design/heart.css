@@ -86,11 +86,11 @@ h1 {
 /* 	background-color: white; */
 	color: white;
 	padding-left: 5px;
-
 	height: 38px;
 	font-size: 23px;
 	padding-top: 3px;
-	background-color: rgba(48, 144, 154, 0.8);
+	/* background-color: rgba(48, 144, 154, 0.8); */
+	background-color:rgba(231, 26, 15, 0.8);
 	border-radius: 3px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     text-shadow: 0 0 15px gray;

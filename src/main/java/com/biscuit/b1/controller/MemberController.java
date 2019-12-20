@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.MemberVO;
+import com.biscuit.b1.model.MovieGradeVO;
 import com.biscuit.b1.service.MemberService;
 import com.biscuit.b1.util.Pager;
 
@@ -43,7 +45,7 @@ public class MemberController {
 		if (sessionPw.equals(pwCheck)) {
 			int result = memberService.memberDelete(memberVO);
 			String msg = "탈퇴에 실패했습니다.";
-			String path = "./memberMyPage";
+			String path = "./mypage/myPage";
 			if (result > 0) {
 				msg = "정상적으로 탈퇴하였습니다.";
 				path = "../";
@@ -55,7 +57,7 @@ public class MemberController {
 			return mv;
 		} else {
 			mv.addObject("msg", "비밀번호가 일치하지 않습니다");
-			mv.addObject("path", "./memberMyPage");
+			mv.addObject("path", "./mypage/myPage");
 			mv.setViewName("common/common_result");
 			return mv;
 		}
@@ -70,7 +72,7 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		int result = memberService.memberUpdate(memberVO);
 		String msg = "업데이트 실패";
-		String path = "./memberMyPage";
+		String path = "./mypage/myPage";
 		if (result > 0) {
 			msg = "업데이트 완료";
 			path = "../";
@@ -234,11 +236,6 @@ public class MemberController {
 		return mv;
 	}
 
-	@GetMapping("memberMyPage")
-	public void myPage(MemberVO memberVO) throws Exception {
-
-	}
-
 	@GetMapping("idCheck")
 	public ModelAndView idCheck(String id) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -260,5 +257,52 @@ public class MemberController {
 			mv.addObject("result", 0);
 		return mv;
 	}
+	
+	
+	//mypage
+	@GetMapping("/mypage/myPage")
+	public void myPage(HttpSession session, Model model) throws Exception {
+	MemberVO memberVO = new MemberVO();
+	memberVO = (MemberVO)session.getAttribute("member");
+	
+	model.addAttribute("member", memberVO);
+	
+	}
+	
 
+	@GetMapping("/mypage/myPage_store_res")
+	public void myPage_store_res() {
+	}
+	
+	@GetMapping("/mypage/myPage_movie_res")
+	public void myPage_movie_res() {
+	}
+	
+	@GetMapping("/mypage/myPage_movie_star")
+	public void myPage_movie_star(HttpSession session, Model model) {
+	MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+	List<MovieGradeVO> starList = memberService.mypageStar(memberVO);
+	
+	model.addAttribute("starList", starList);
+	}
+	
+	@GetMapping("/mypage/myPage_movie_heart")
+	public void myPage_movie_heart(HttpSession session, Model model) {
+	 MemberVO memberVO = (MemberVO)session.getAttribute("member");
+	 
+	 List<MovieGradeVO> heartList =  memberService.mypageHeart(memberVO);
+	 
+	 model.addAttribute("heartList", heartList);
+	}
+	
+	@GetMapping("/mypage/myPage_member_update")
+	public void myPage_member_update() {
+	}
+	
+	@GetMapping("/mypage/myPage_cinema")
+	public void myPage_cinema() {
+	}
+	
+	
 }
