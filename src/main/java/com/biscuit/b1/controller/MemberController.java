@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.model.MovieGradeVO;
+import com.biscuit.b1.model.Movie_TicketingVO;
 import com.biscuit.b1.service.MemberService;
 import com.biscuit.b1.util.Pager;
 
@@ -264,7 +265,12 @@ public class MemberController {
 	public void myPage(HttpSession session, Model model) throws Exception {
 	MemberVO memberVO = new MemberVO();
 	memberVO = (MemberVO)session.getAttribute("member");
-	
+	 System.out.println(memberVO.getId());
+	Movie_TicketingVO movie_TicketingVO = memberService.newest(memberVO);
+	ModelAndView mv = new ModelAndView();
+	model.addAttribute("newestBook",movie_TicketingVO);
+	System.out.println("출력1:"+movie_TicketingVO.getId());
+	System.out.println("출력2:"+movie_TicketingVO.getSeat_name());
 	model.addAttribute("member", memberVO);
 	
 	}
@@ -275,7 +281,8 @@ public class MemberController {
 	}
 	
 	@GetMapping("/mypage/myPage_movie_res")
-	public void myPage_movie_res() {
+	public void myPage_movie_res(HttpSession session) {
+	
 	}
 	
 	@GetMapping("/mypage/myPage_movie_star")
@@ -292,7 +299,6 @@ public class MemberController {
 	 MemberVO memberVO = (MemberVO)session.getAttribute("member");
 	 
 	 List<MovieGradeVO> heartList =  memberService.mypageHeart(memberVO);
-	 
 	 model.addAttribute("heartList", heartList);
 	}
 	

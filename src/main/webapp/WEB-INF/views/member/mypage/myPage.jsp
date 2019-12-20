@@ -58,7 +58,9 @@
 
 <div id="tboxmain">
 
-<div class="tbox">최신 예매내역</div>
+<div class="tbox">최신 예매내역
+	<div>${newestBook.}</div>
+</div>
 <div class="tbox">최신 구매내역</div>
 <div class="tbox">위시리스트</div>
 

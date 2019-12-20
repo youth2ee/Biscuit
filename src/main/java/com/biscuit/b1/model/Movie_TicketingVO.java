@@ -9,9 +9,20 @@ public class Movie_TicketingVO {
 	private int theater_num;
 	private String seat_name;
 	private int price;
+	private String timeInfo_start;
 
 	
 	
+	
+	
+	public String getTimeInfo_start() {
+		return timeInfo_start;
+	}
+
+	public void setTimeInfo_start(String timeInfo_start) {
+		this.timeInfo_start = timeInfo_start;
+	}
+
 	public int getPrice() {
 		return price;
 	}

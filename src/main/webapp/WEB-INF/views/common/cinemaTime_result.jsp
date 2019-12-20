@@ -1,21 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<div>ddd</div>
 <div> 
-<c:forEach items="${timelist}" var="ee" >
-<div style="float: left; background-color: red;">${ee.timeInfo_date}</div>
-<div style="float: left; background-color: yellow;">${ee.theater_name}</div>
-<div style="float: left; background-color: gray;">${ee.movieInfo_title}</div>
 <c:forEach items="${timelist}" var="time" varStatus="status">
-<c:if test="${status.count % 5 == 1}"> 
-	ddd
+
+
+<c:if test="${status.count % 5 == 1}">
+
+
+<div style="float: left; background-color: red;">${time.timeInfo_date}</div>
+<div style="float: left; background-color: yellow;">${time.theater_name}</div>
+<div style="float: left; background-color: gray;">${time.movieInfo_title}</div>
+<div id="wrap">
 </c:if>
-<div style="clear: both;"></div>
 
-<div style="background-color: blue;">${time.timeInfo_start}</div>
+<span style="background-color: blue;">${time.timeInfo_start}</span>
 
-<div style="clear: both;"></div>
-</c:forEach>
+<c:if test="${status.count % 5 == 0}">
+</div>
+</c:if>
 </c:forEach>
 </div>

@@ -84,5 +84,8 @@
 	order by A.moviegrade_star desc
   	</select>
 	
+	<select id="newest" parameterType="MemberVO" resultType="Movie_TicketingVO">
+		select * from movie_ticketing where book_date = (select max(book_date) from movie_ticketing where id = #{id} )and rowNum = 1
+	</select>
 	
 </mapper>

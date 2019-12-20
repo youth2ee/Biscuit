@@ -244,4 +244,6 @@
   	<select id="myGrade" resultType="MovieGradeVO" parameterType="String">
   		select movieInfo_num,movieGrade_star from movie_grade where id =#{id}
   	</select>
+  	
+  	
  </mapper>

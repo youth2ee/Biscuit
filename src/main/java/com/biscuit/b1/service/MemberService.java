@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.biscuit.b1.dao.MemberDAO;
 import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.model.MovieGradeVO;
+import com.biscuit.b1.model.Movie_TicketingVO;
 import com.biscuit.b1.util.Pager;
 
 @Service
@@ -67,6 +68,10 @@ public class MemberService {
 	
 	public List<MovieGradeVO> mypageStar(MemberVO memberVO) {
 		return memberDAO.mypageStar(memberVO);
+	}
+	
+	public Movie_TicketingVO newest(MemberVO memberVO) {
+		return memberDAO.newest(memberVO);
 	}
 
 }
