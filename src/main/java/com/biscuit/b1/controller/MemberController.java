@@ -290,6 +290,10 @@ public class MemberController {
 	System.out.println("출력2:"+movie_TicketingVO.getSeat_name());
 	model.addAttribute("member", memberVO);
 	
+	//등급
+	MemberVO memberVO2 = memberService.memberGrade(memberVO);
+	model.addAttribute("memberGrade", memberVO2.getGrade_name());
+	
 	}
 	
 

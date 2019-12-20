@@ -44,8 +44,8 @@
 
 <div id="binfoimg" style="background-image: url('../../resources/images/mypage/mycgv_info.gif'); float: left;"> 
 <div id="binfolevel"> 
-<div>이가영님</div>
-<div>고객님의 등급은 vip입니다.</div>
+<div>${member.name}님</div>
+<div>고객님의 등급은 ${memberGrade}입니다.</div>
 </div>
 <div id="binfocgv">자주가는 cgv</div>
 </div>
@@ -59,7 +59,7 @@
 <div id="tboxmain">
 
 <div class="tbox">최신 예매내역
-	<div>${newestBook.}</div>
+	<%-- <div>${newestBook}</div> --%>
 </div>
 <div class="tbox">최신 구매내역</div>
 <div class="tbox">위시리스트</div>

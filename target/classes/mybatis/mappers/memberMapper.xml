@@ -88,4 +88,10 @@
 		select * from movie_ticketing where book_date = (select max(book_date) from movie_ticketing where id = #{id} )and rowNum = 1
 	</select>
 	
+	<!-- 등급 -->
+	<select id="memberGrade" parameterType="MemberVO" resultType="MemberVO">
+	select grade_name from member_grade
+    where grade_num = (select grade from member where id = #{id}) 
+	</select>
+	
 </mapper>

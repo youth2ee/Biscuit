@@ -11,9 +11,9 @@
 
 
 <div id="movieInfo">
+<div style="float: left; background-color: yellow;">${time.theater_name}관</div>
 <div style="float: left; background-color: gray; ">${time.movieInfo_title} &nbsp</div>
 <div style="float: left; background-color: red;">${time.timeInfo_date} &nbsp</div>
-<div style="float: left; background-color: yellow;">${time.theater_name}관</div>
 </div>
 <div id="wrap">
 </c:if>

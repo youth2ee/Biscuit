@@ -321,6 +321,17 @@ for (var i = 0; i < heartlist.length; i++) { // 하트 체크 해놓기
   };
 })(jQuery);
 
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36251023-1']);
+_gaq.push(['_setDomainName', 'jqueryscript.net']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+
 var mnum = ""; //영화번호
 var id = $('#memberid').val().trim(); //로그인되어있는지 확인
 
@@ -437,12 +448,12 @@ $('.checkboxes-container').click(function() {
 			url : "./movieListHeart",
 			success : function(data) {
 				
-		/* 		if (data == 1) {
+	/* 	 		if (data == 1) {
 					alert("성공");
 				} else {
 					alert("실패");
-				}
-				 */
+				} */
+				
 			}
 		}); 
 

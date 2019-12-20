@@ -6,10 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Member Login</title>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+ <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 <c:import url="../../layout/jquery.jsp" />
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/member/mypage.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/member/mypage_heart.css" rel="stylesheet">
 
 </head>
 <body>
@@ -51,11 +54,13 @@
 <c:forEach items="${heartList}" var="heart">
 <div class="heartbox">
 <img alt="" src="${heart.movieInfo_poster}">
-${heart.movieInfo_title}
-하트
+<div class="htxt">
+<%-- <p class="htitle">${heart.movieInfo_title}</p> --%>
+<div class="htitle"><i class='fas fa-heart' style='font-size:18px;color:red;padding-right: 10px;'></i>${heart.movieInfo_title}</div>
+</div>
 </div>
 </c:forEach>
-
+ <button class="btn more-trigger">더보기</button>
 </div>
 
 
@@ -69,29 +74,74 @@ ${heart.movieInfo_title}
 
 <footer></footer>
 
-<!-- <script type="text/javascript">
 
-	$.ajax({
-		data : {
-			id:id
-		},
-		type : "GET",
-		url : "./locSelect",
-		success : function(data) {
-			data = data.trim();
-			$('#cinemaNameSelect').html(data);
-			
-			/* $('.check').addClass('act'); */
-			$('.noncheck').addClass('noncheck').addClass('soldout');
-	}
-		});
+  
+<script type="text/javascript">
 
+/* read more */
+
+$(document).ready(function() {
+  $('body').showMoreItems();
+});
+
+(function($) {
+	  $.fn.showMoreItems = function(options) {
+
+	    var $totalItems = $('.heartbox').length,
+	        $visibleItems = $('.heartbox:visible').length,
+	        settings = $.extend({}, $.fn.showMoreItems.defaults, options),
+	        i = settings.count,
+	        countLess = settings.count - 1;
+
+	    $('.heartbox:lt(' + settings.count + ')').show();
+
+	    $('.more-trigger').click(function(el) {
+	      el.preventDefault();
+
+	      if ($visibleItems !== $totalItems) {
+	        if(i + settings.count <= $totalItems) {
+	          $visibleItems = i += settings.count;
+	          $('.heartbox:lt('+ i +')').show();
+
+	          if(i == $totalItems) {
+	            $('.more-trigger').text("처음으로");
+	          }
+
+	        } else if (i !== $totalItems) {
+	          $('.heartbox:gt(' + countLess + ')').show();
+	          $('.more-trigger').text("처음으로");
+	          $visibleItems = $totalItems;
+	          i = $totalItems;
+	        }
+	      } else if($visibleItems === $totalItems) {
+	        $('.heartbox:gt(' + countLess + ')').hide();
+	        $('.more-trigger').text("더보기");
+	        $visibleItems = settings.count;
+	        i = settings.count;
+	      }
+
+	    });
+	  }
+
+	  $.fn.showMoreItems.defaults = {
+	    count: 8
+	  };
+	})(jQuery);
+	
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-36251023-1']);
+_gaq.push(['_setDomainName', 'jqueryscript.net']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
 
 
 
 </script>
-
- -->
 
 </body>
 </html>

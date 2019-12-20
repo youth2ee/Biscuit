@@ -69,4 +69,9 @@ public class MemberDAO {
 	public Movie_TicketingVO newest(MemberVO memberVO) {
 		return sqlSession.selectOne(NAMESPACE + "newest", memberVO);
 	}
+	
+	//grade_name
+	public MemberVO memberGrade(MemberVO memberVO) {
+		return sqlSession.selectOne(NAMESPACE+"memberGrade", memberVO);
+	}
 }

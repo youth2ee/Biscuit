@@ -148,7 +148,7 @@ public class AdminController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("msg", msg);
-		mv.addObject("path", "./admin_cinema");
+		mv.addObject("path", "./admin_cinemaInsert");
 		mv.setViewName("common/common_result");
 		
 		return mv;
@@ -189,5 +189,8 @@ public class AdminController {
 	public void adminmain() {
 	}
 	
-	
+	@RequestMapping("admin_cinemaInsert")
+	public void admin_cinemaInsert() {
+		
+	}
 }

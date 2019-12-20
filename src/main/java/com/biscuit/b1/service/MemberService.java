@@ -73,5 +73,11 @@ public class MemberService {
 	public Movie_TicketingVO newest(MemberVO memberVO) {
 		return memberDAO.newest(memberVO);
 	}
+	
+	//memberGrade
+	public MemberVO memberGrade(MemberVO memberVO) {
+		return memberDAO.memberGrade(memberVO);
+	}
+	
 
 }

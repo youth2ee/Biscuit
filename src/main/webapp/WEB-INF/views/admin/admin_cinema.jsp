@@ -40,7 +40,7 @@
 
 
 <!--  -->
-<div id="mySidenav" class="sidenav">
+<!-- <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="./admin_cinema">Cinema 추가</a>
   <a href="./admin_time">Time 추가</a>
@@ -49,10 +49,10 @@
 </div>
 
 <div id="menubar">
-<!-- <h2>Animated Sidenav Example</h2>
-<p>Click on the element below to open the side navigation menu.</p> -->
+<h2>Animated Sidenav Example</h2>
+<p>Click on the element below to open the side navigation menu.</p>
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; MENU</span>
-</div>
+</div> -->
 
 <div id = "secTitle">
 <br>

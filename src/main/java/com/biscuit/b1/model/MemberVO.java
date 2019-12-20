@@ -14,6 +14,18 @@ public class MemberVO {
 	private int grade;
 	private int grade_point;
 	private String signIn_date;
+	
+	private String grade_name;
+	
+	
+
+	public String getGrade_name() {
+		return grade_name;
+	}
+
+	public void setGrade_name(String grade_name) {
+		this.grade_name = grade_name;
+	}
 
 	public String getId() {
 		return id;
