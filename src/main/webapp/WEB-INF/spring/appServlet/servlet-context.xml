@@ -36,7 +36,8 @@
 		<beans:property name="maxUploadSize" value="104857600" />
 	</beans:bean>
 	
-	<beans:bean class="com.biscuit.b1.interceptors.LoginInterceptor" id="LoginInterceptor"/>
+	<!-- 인터셉터  -->
+	<!-- <beans:bean class="com.biscuit.b1.interceptors.LoginInterceptor" id="LoginInterceptor"/>
 	<beans:bean class="com.biscuit.b1.interceptors.LoginInterceptor2" id="LoginInterceptor2"/>
 	<beans:bean class="com.biscuit.b1.interceptors.AdminInterceptor" id="AdminInterceptor"/>
 	<interceptors>
@@ -57,6 +58,7 @@
 			<mapping path="/movie/movieManagement"/>
 			<beans:ref bean="AdminInterceptor"/>
 		</interceptor>
+
 	</interceptors>
 	<!-- 인터셉터 객체 생성 -->
 	<!-- <beans:bean class="com.biscuit.b1.interceptors.CartInterceptor" id="cartInterceptor" /> -->
@@ -72,6 +74,11 @@
 		</interceptor>
 	</interceptors> -->
 	
+
+	</interceptors> -->
+	
+	
+
 	<!-- properties -->
 	<context:property-placeholder file-encoding="UTF-8" location="classpath:/properties/**/*.properties"/>
 	

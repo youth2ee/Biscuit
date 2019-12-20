@@ -52,6 +52,7 @@
 <img alt="" src="${star.movieInfo_poster}">
 ${star.movieInfo_title}
 ${star.movieGrade_star}
+<div class="e"></div>
 </div>
 </c:forEach>
 
