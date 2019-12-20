@@ -68,7 +68,7 @@
 					<div class="divT">
 						<img alt="" src="../resources/images/movieSelect/ms3.png">
 					</div>
-					<div class="divT">
+					<div class="divT2">
 						<img alt="" src="../resources/images/movieSelect/ms4.png">
 					</div>
 				</div>
@@ -130,7 +130,6 @@
 					<!-- 영화 지역에 따른 영화관 선택 -->
 					<div class="s3 s2">
 						<table class="sul" id="cinemaNameSelect">
-						<tr><td>서울 지역 그냥 뿌려주기</td></tr>
 						</table>
 					</div>
 
@@ -139,7 +138,6 @@
 					<div class="s s4">
 					<img class="corn3" alt="" src="../resources/images/movieSelect/pop_cornT.png">
 						<table class="sul" id="movieDateSelect">
-						<tr><td>날짜는 위로 갈거</td></tr>
 						</table>
 					</div>
 
@@ -148,7 +146,6 @@
 					<div class="s s5">
 					<img class="corn4" alt="" src="../resources/images/movieSelect/pop_corn_D.png">
 						<table class="sul" id="movieTimeSelect">
-						<tr><td>영화, 극장, 날짜를 선택해주세요. 파코니 넣을까</td></tr>
 						</table>
 					</div>
 
