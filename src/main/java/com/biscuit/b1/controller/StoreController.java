@@ -143,7 +143,6 @@ public class StoreController {
 			result = storeService.cartInsert(cartVO);
 		}
 		
-		
 		//cartVO.setMember_id("a");
 		//result = storeService.cartInsert(cartVO);
 		

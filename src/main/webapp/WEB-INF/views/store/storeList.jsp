@@ -88,15 +88,15 @@
 <!-- --------------------------------------------- -->
 					</div>
 					
-					<button id="myCart">Cart</button>
+					<button id="myCart">Cart</button>>
 					<script type="text/javascript">
-						$('#myCart').click(function() {
+					 	$('#myCart').click(function() {
 							$.ajax({
 								url: "cartLogin",
 								type: "POST",
 								//async: false,
 								success: function(data) {
-									alert(data);
+									//alert(data);
 									if(data == 0){
 										var confirm_val = confirm("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?");
 										if(confirm_val){
@@ -282,6 +282,86 @@
 			}
 		});
 		/****************************************************************/
+	});
+//////장바구니 버튼 클릭했을 때/////////////////
+	$('.btn_category_product_cart').click(function() {
+		var store_num = $(this).parent().find("input").val();
+		//alert(store_num);
+		var cart_amount = 1;
+		
+		$.ajax({
+			url: "cartSelect",
+			type: "POST",
+			//async: false,
+			data: { store_num : store_num },
+			success: function(data) {
+				//alert(data.result);
+				//동일 상품 존재 O - Update
+				if(data.result == 1){
+					//alert(data.cart_num);
+					
+					var confirm_val = confirm("장바구니에 동일한 상품이 존재합니다.\n수량을 변경하시겠습니까?");
+					
+					if(confirm_val){
+						var cart_num = data.cart_num;
+						cart_amount = cart_amount + data.cart_amount;
+						//alert(cart_amount);
+						
+						$.ajax({
+							url: "cartUpdate",
+							type: "POST",
+							//async: false,
+							data: {
+								cart_amount: cart_amount,
+								cart_num: cart_num
+							},
+							success: function(result) {
+								//alert(result);
+								if(result == 1){
+									modal();
+								}else {
+									alert("수량 변경 실패");
+								}
+							},
+							error: function() {
+								alert("에러");
+							}
+						});
+					}
+				//동일 상품 존재 X - Insert
+				}else if(data.result == 2){
+					$.ajax({
+						url: "cartInsert",
+						type: "POST",
+						//async: false,
+						data: {
+							store_num: store_num,
+							cart_amount: cart_amount
+						},
+						success: function(result2) {
+							if(result2 == 1){
+								modal();
+							}else {
+								alert("카트 등록 실패");
+							}	
+						},
+						error: function() {
+							alert("에러");
+						}
+					});
+				//로그인 X
+				}else{
+					var confirm_val = confirm("로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?");
+					if(confirm_val){
+						location.href = "../member/memberLogin";
+						//이동후에 로그인하면 다시 원래 페이지로 돌아오는 방법이 없을까?
+					}
+				}
+			},
+			error: function() {
+				alert("에러");
+			}
+		});
 	});
 /////////////////////////////
 </script>

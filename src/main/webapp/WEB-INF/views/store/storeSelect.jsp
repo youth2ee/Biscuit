@@ -69,7 +69,7 @@
 <!-- ------------------------------------------ -->							
 							<div class="quantity">
 								<a href="javascript:void(0)" class="aMinus"><img alt="수량감소" src="../resources/images/store/btn_quantity_minus.jpg"></a>
-								<input type="text" class="numCount" value="1" readonly="readonly" name="camount">
+								<input type="text" class="numCount" value="${param.camount}" readonly="readonly" name="camount">
 								<a href="javascript:void(0)" class="aPlus"><img alt="수량증가" src="../resources/images/store/btn_quantity_plus.jpg"></a>
 							</div>
 							
@@ -84,6 +84,12 @@
 							</div>
 							
 							<script type="text/javascript">
+							if('${param.camount}' == ""){
+							$('.numCount').val(1);
+								
+							}
+							
+							
 								//,찍어주는 정규식 함수
 								function addComma(price) {
 								  var regexp = /\B(?=(\d{3})+(?!\d))/g;
