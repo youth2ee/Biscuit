@@ -4,6 +4,7 @@ import java.sql.Array;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -140,11 +141,11 @@ public class MovieController {
 			System.out.println(a.getYear());
 			System.out.println(a.getMonth());
 			System.out.println(a.getDay());
-
 		}
 
 		// theater num
 		/* choiceVO = movieSelectService.theaterSelect(choiceVO); */
+		
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/date_result");
@@ -223,7 +224,10 @@ public class MovieController {
 			br = movieService.movieGradeTotal(memberVO);
 			String id = memberVO.getId();
 			List<MovieGradeVO> hearts = movieService.searchForHeart(id);
+			List<MovieGradeVO> myGrade = movieService.myGrade(id);
+			System.out.println(myGrade);
 			model.addAttribute("hearts", hearts);
+			model.addAttribute("myGrade", myGrade);
 		}
 		model.addAttribute("grade", br);
 		model.addAttribute("movieList", ar);

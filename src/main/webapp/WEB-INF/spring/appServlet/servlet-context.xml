@@ -36,6 +36,54 @@
 		<beans:property name="maxUploadSize" value="104857600" />
 	</beans:bean>
 	
+	<!-- 인터셉터  -->
+	<!-- <beans:bean class="com.biscuit.b1.interceptors.LoginInterceptor" id="LoginInterceptor"/>
+	<beans:bean class="com.biscuit.b1.interceptors.LoginInterceptor2" id="LoginInterceptor2"/>
+	<beans:bean class="com.biscuit.b1.interceptors.AdminInterceptor" id="AdminInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/seat/seatSelect"/>
+			<mapping path="/pay/**"/>
+			<beans:ref bean="LoginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/member/mypage/**"/>
+			<beans:ref bean="LoginInterceptor2"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/member/memberManagement**"/>
+			<mapping path="/admin/**"/>
+			<mapping path="/store/storeUpdate"/>
+			<mapping path="/store/storeWrite"/>
+			<mapping path="/movie/movieManagement"/>
+			<beans:ref bean="AdminInterceptor"/>
+		</interceptor>
+
+	</interceptors>
+	<!-- 인터셉터 객체 생성 -->
+	<!-- <beans:bean class="com.biscuit.b1.interceptors.CartInterceptor" id="cartInterceptor" /> -->
+	
+	<!-- 인터셉터 설정 -->
+	<!-- <interceptors>
+		<interceptor>
+			<mapping path="/store/**"/>
+			<exclude-mapping path="/store/storeSelect"/>
+			<exclude-mapping path="/store/storeList"/>
+			<exclude-mapping path="/store/storeList2"/>
+			<beans:ref bean="cartInterceptor"/>
+		</interceptor> -->
+	</interceptors>
+	<!-- 인터셉터 객체 생성 -->
+	<beans:bean class="com.biscuit.b1.interceptors.CartInterceptor" id="cartInterceptor" />
+	
+	<!-- 인터셉터 설정 -->
+	
+	
+
+<!-- 	</interceptors>  -->
+	
+	
+
 	<!-- properties -->
 	<context:property-placeholder file-encoding="UTF-8" location="classpath:/properties/**/*.properties"/>
 	

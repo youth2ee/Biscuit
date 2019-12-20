@@ -56,7 +56,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <div class="ribbon-2">
   <div class="checkboxes-container">
     <div class="control-group">
-        <input type="checkbox" class="red-heart-checkbox heart t${mlist.movieInfo_num}" id="red-check${mlist.movieInfo_num}">   
+        <input type="checkbox" class="red-heart-checkbox heart" id="red-check${mlist.movieInfo_num}">   
       <label for='red-check${mlist.movieInfo_num} heartl'>
       <c:if test="${status.count lt 11}"><div class="ranking">${status.count}</div></c:if>
       </label>
@@ -111,6 +111,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
   <fieldset>
     <input type="hidden" class="realstar" value="${mlist.movieInfo_star}">
     <input type="hidden" class="movienum" value="${mlist.movieInfo_num}">
+    <input type="hidden" id="myGrade${mlist.movieInfo_num}" class="myGrade">
     <input type="radio" id="${mlist.movieInfo_num}star5" class="star star5" name="rating${mlist.movieInfo_num}" value="5" />
     <label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="5"></label>
     <input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating${mlist.movieInfo_num}" value="4" />
@@ -127,9 +128,8 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 
 
 <!-- modal 띄울가 말까 -->
-<h3 class="details myBtn" style="float: left;" title="${mlist.movieInfo_num}">상세보기 / </h3>
-<%-- <h3 class="details myBtn2" style="float: left;" title="${mlist.movieInfo_title}">reservation</h3> --%>
-
+<h3 class="details myBtn" style="float: left;" title="${mlist.movieInfo_num}">상세보기</h3>
+<h3 class="under" style="float: left;">  /  </h3>
 <form action="./movieSelect" method="get" class=".frm" >
 <input type="hidden" name="movieInfo_name" value="${mlist.movieInfo_title}">
 <button class="myBtn2"><h3 class="details" style="float: left;" title="${mlist.movieInfo_title}">예매하기</h3></button>
@@ -244,17 +244,32 @@ var x = $('html').offset();
 $(function(){
 	$("html, body").animate({ scrollTop: 0 }, "slow"); 
 });
-
 /* 위치 초기화 끝 */
 
  
+ 
+ /* 뭐라도 해보자 */
+ 
+ var gradeList = [];
+ var numList = [] ;
+<c:forEach items="${myGrade}" var="grade"> 
+	gradeList.push("${grade.movieGrade_star}"); 
+	numList.push("${grade.movieInfo_num}");
+</c:forEach> 
+
+ for (var i = 0; i <gradeList.length; i++){
+	 $("#myGrade"+numList[i]).val(gradeList[i]);
+ }
+ 
+
+
 /* 저장 된 하트 값 져오기  */
-	var list = [];
+	var heartlist = [];
 		<c:forEach items="${hearts}" var="heart"> 
-			list.push("${heart.movieInfo_num}"); // 컨트롤러에서 해당 아이디가 좋아요한 영화 번호 가져와서 배열에 넣음
+			heartlist.push("${heart.movieInfo_num}"); // 컨트롤러에서 해당 아이디가 좋아요한 영화 번호 가져와서 배열에 넣음
 		</c:forEach> 
-for (var i = 0; i < list.length; i++) { // 하트 체크 해놓기
- 	$("input:checkbox[id='red-check" + list[i] + "']").attr('checked', true);
+for (var i = 0; i < heartlist.length; i++) { // 하트 체크 해놓기
+ 	$("input:checkbox[id='red-check" + heartlist[i] + "']").attr('checked', true);
 }
 
 /* read more */
@@ -311,7 +326,7 @@ var id = $('#memberid').val().trim(); //로그인되어있는지 확인
 
 /* info */
  $('.card').on('mouseover',function() {
-	var ostar = $(this).find('.realstar').val();
+	var ostar = $(this).find('.myGrade').val();
 	mnum = $(this).find('.movienum').val();
 /* 	console.log(ostar);*/
 	console.log("aa"+mnum); 

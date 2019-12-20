@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.biscuit.b1.model.MemberVO;
+import com.biscuit.b1.model.MovieGradeVO;
+import com.biscuit.b1.model.Movie_TicketingVO;
 import com.biscuit.b1.util.Pager;
 
 @Repository
@@ -39,7 +41,6 @@ public class MemberDAO {
 	public int memberDelete(MemberVO memberVO) throws Exception {
 		return sqlSession.delete(NAMESPACE + "memberDelete", memberVO);
 	}
-
 	public int memberManagementDelete(String id) throws Exception {
 		return sqlSession.delete(NAMESPACE + "memberDelete", id);
 	}
@@ -54,5 +55,18 @@ public class MemberDAO {
 
 	public MemberVO emailCheck(String email) {
 		return sqlSession.selectOne(NAMESPACE + "emailCheck", email);
+	}
+
+	// mypage
+	public List<MovieGradeVO> mypageHeart(MemberVO memberVO) {
+		return sqlSession.selectList(NAMESPACE + "mypageHeart", memberVO);
+	}
+
+	public List<MovieGradeVO> mypageStar(MemberVO memberVO) {
+		return sqlSession.selectList(NAMESPACE + "mypageStar", memberVO);
+	}
+
+	public Movie_TicketingVO newest(MemberVO memberVO) {
+		return sqlSession.selectOne(NAMESPACE + "newest", memberVO);
 	}
 }

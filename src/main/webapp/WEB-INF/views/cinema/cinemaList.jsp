@@ -56,15 +56,20 @@
 <div id="minfo" style="background-image: url('http://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg')">
 <div id="minfo_txt"> 
 <h1>강남</h1>
-<h2>tel</h2>
-<h3>address</h3>
+<h2>1544-1122</h2>
+<h3>서울특별시 강남구 강남대로 438</h3>
 </div> 
 
 </div>
 
-
 </div>
 
+
+<div id="mtime">
+<div>여기에 타임테이블을 넣읍시다요</div>
+
+
+</div>
 
 
 
@@ -118,8 +123,8 @@ var cinematable = $("#cinematable");
 				$('#minfo_txt').html('<h1>'+cname+'</h1>'+'<h2>'+ctel+'</h2>'+'<h3>'+cadd+'</h3>');
 				$('#minfo').css('background-image', 'url('+cimage+')' );
 				
+				//timetable 띄우기
 
-				
 				/* 3. 지도 띄우기 */
 				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 				    mapOption = {
@@ -162,9 +167,27 @@ var cinematable = $("#cinematable");
 				alert("실패");
 			}
 		
-			
-			
 		});
+ 		
+ 		
+		
+		 $.ajax({
+			data : {
+				cinema_name:cname
+			},
+			type : "GET",
+			url : "./cinemaTime",
+			success : function(data) {
+			data = data.trim();
+			$('#mtime').html(data);
+
+			}
+		}); 
+		
+ 		
+ 		
+ 		
+ 		
  		
  		});
 	

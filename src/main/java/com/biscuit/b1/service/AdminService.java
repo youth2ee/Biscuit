@@ -60,6 +60,14 @@ public class AdminService {
 		return adminDAO.theaterInsert(cinemaVO);
 	}
 	
+	//list
+	public List<CinemaVO> cinemaList() {
+		return adminDAO.cinemaList();
+	}
 
+	public List<ChoiceVO> movieTimeList() {
+		return adminDAO.movieTimeList();
+	}
+	
 	
 }

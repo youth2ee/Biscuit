@@ -51,7 +51,7 @@
 					<strong class="checkbox_select">선택</strong>
 				</p>
 <!-- ------------------------------------------------------------ -->
-			<form action="../pay/kakaoPay" method="get" id="frm">
+			<form action="../pay/marketPay" method="post" id="frm">
 			
 				<ul class="cart_list_style">
 				
@@ -163,7 +163,7 @@
 								});
 							});
 						</script>
-							
+<!-- ------------------------------------------------------------ -->
 							<div class="product_info_btn_wrap">
 								<button type="submit" id="btn_now${cartList.cart_num}">바로구매</button>
 							</div>
@@ -175,7 +175,7 @@
 								$('#input_camount'+${cartList.cart_num}).attr("name", "camount");
 							});	
 						</script>
-						
+<!-- ------------------------------------------------------------ -->
 							<a href="#" class="btn_product_del btn_product_del${cartList.cart_num}">삭제</a>
 							
 						<script type="text/javascript">
@@ -331,7 +331,7 @@
 					}
 				});
 			</script>
-				
+<!-- ------------------------------------------------------------ -->				
 				
 				<table class="cart_total_price_wrap">
 					<colgroup>

@@ -22,7 +22,7 @@
 /*   white-space: nowrap; */
   cursor: pointer;
   font-size: 200%;
-  color: #16a085;
+  color: #e71a0f;
 } 
 
 .star-rating > fieldset:not(:checked) > label:before {
@@ -30,8 +30,8 @@
 }
 .star-rating > fieldset:not(:checked) > label:hover,
 .star-rating > fieldset:not(:checked) > label:hover ~ label {
-  color: #1abc9c;
-  text-shadow: 0 0 3px #1abc9c;
+  color: #e71a0f;
+  text-shadow: 0 0 3px #e71a0f;
 }
 .star-rating > fieldset:not(:checked) > label:hover:before,
 .star-rating > fieldset:not(:checked) > label:hover ~ label:before {
@@ -39,7 +39,8 @@
 }
 .star-rating > fieldset > input:checked ~ label:before {
   content: '\f005  ';
-  text-shadow: 0 0 3px #1abc9c;
+ /*  text-shadow: 0 0 3px #1abc9c; */
+ text-shadow: 0 0 3px #e71a0f;
 }
 .star-rating > fieldset > label:active {
   position: relative;
@@ -49,7 +50,7 @@
 
 .activel{
  	content: '\f005  ';
-  text-shadow: 0 0 3px #1abc9c; 
+  text-shadow: 0 0 3px #e71a0f; 
   
 }
 /*     content: '\f006  ';

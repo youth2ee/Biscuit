@@ -124,8 +124,8 @@
 								<c:if test="${grade eq '청소년 관람불가'}"><img alt="" src="../resources/images/movieSelect/m4.png" class="grade"></c:if>
 								${movieInfo_name}</h4>
 								<h4>CGV ${cinema_name}점</h4>
-								<h4>상영 일자 : ${timeInfo_date}</h4>
-								<h4>시작 시간 : ${timeInfo_start}</h4>
+								<h4>상영 일자 : <span id = "final_date"></span></h4>
+								<h4>시작 시간 : <span id = "final_time"></span></h4>
 								<div class="price_wrap">
 									<input type="text" id="price" name="price" readonly="readonly">원
 								</div>
@@ -168,9 +168,17 @@
 
 
 	<script type="text/javascript">
+		var timeInfo_date = "${timeInfo_date}"
+		var sliceDate = timeInfo_date.split("/");
+		var finalDate = sliceDate[1] + "월 "+sliceDate[2] + "일";
+		var timeInfo_start = "${timeInfo_start}";
+		var sliceTime = timeInfo_start.split(":");
+		var finalTime = sliceTime[0] + "시 "+sliceTime[1] + "분";
+		$("#final_time").html(finalTime);
+		$("#final_date").html(finalDate);
+		
+		
 		var seatCount = 0; // 선택 좌석 수
-		/* $("#seatSelect").hide(); */
-
 		var list = [];
 		<c:forEach items="${seats}" var="seat">
 		list.push("${seat.seat_name}");

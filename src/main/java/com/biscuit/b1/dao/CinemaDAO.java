@@ -7,7 +7,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
+import com.biscuit.b1.model.MemberVO;
 
 @Repository
 public class CinemaDAO {
@@ -33,7 +35,10 @@ public class CinemaDAO {
 		return sqlSession.selectOne(NAMESPACE+"cinemaInfo", cinemaVO);
 	}
 	
-	
+	//cinema timetable
+	public List<ChoiceVO> cinemaTime(ChoiceVO choiceVO) {
+		return sqlSession.selectList(NAMESPACE+"cinemaTime", choiceVO);
+	}
 	
 	
 	

@@ -8,14 +8,13 @@
 
 
 <tr>
-	<td class="mtd">
-		<div
-			style="margin: 0 auto; width: 100%; text-align: center; font-size: 15px;">
-			<div>2019</div>
-			<div>12</div>
+	<td class="datetd" style="padding-left: 5px;">
+		<div style="margin: 0 auto; width: 100%; text-align: center;">
+			<div style="font-size: 11px; color: #666666;">2019</div>
+			<div style="font-size: 30px; color: #666666;">12</div>
 		</div> 
 		<c:forEach items="${result}" var="date" varStatus="status">
-		<div class="dateSelect" id="${date.timeInfo_date}">${date.day}</div>
+		<div class="dateSelect" id="${date.timeInfo_date}" style="font-size: 15px; padding: 10px">${date.day}</div>
 		</c:forEach>
 	</td>
 </tr>

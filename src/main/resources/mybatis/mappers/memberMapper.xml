@@ -59,4 +59,33 @@
 	<select id="emailCheck" resultType="MemberVO" parameterType="String">
 		select email from member where email = #{email} 
 	</select>
+	
+	
+	<!-- mypage -->
+	<select id="mypageHeart" parameterType="MemberVO" resultType="MovieGradeVO">
+<!--   	select * from movie_grade
+ 	where id=#{id} and moviegrade_heart = 1
+ 	order by movieinfo_num desc -->
+ 	 select A.moviegrade_heart, A.movieinfo_title, A.movieinfo_num, B.movieinfo_poster
+ 	from movie_grade A full join movieinfo B
+ 	on A.movieinfo_num = B.movieinfo_num
+ 	where A.id=#{id} and A.moviegrade_heart = 1
+ 	order by A.movieinfo_num desc
+  	</select>
+  	
+  	<select id="mypageStar" parameterType="MemberVO" resultType="MovieGradeVO">
+<!--   	 select * from  movie_grade
+ 	 where id=#{id} and moviegrade_star != 0
+	 order by moviegrade_star desc -->
+	select A.moviegrade_star, A.movieinfo_title, A.movieinfo_num, B.movieinfo_poster
+ 	from  movie_grade A full join movieinfo B
+	on A.movieinfo_num = B.movieinfo_num
+ 	where A.id=#{id} and A.moviegrade_star != 0
+	order by A.moviegrade_star desc
+  	</select>
+	
+	<select id="newest" parameterType="MemberVO" resultType="Movie_TicketingVO">
+		select * from movie_ticketing where book_date = (select max(book_date) from movie_ticketing where id = #{id} )and rowNum = 1
+	</select>
+	
 </mapper>
