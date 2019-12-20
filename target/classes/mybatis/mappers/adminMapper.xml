@@ -262,5 +262,21 @@
   		alter sequence timeinfo_seq increment by +5
   	</update>
 	
+	<!--  -->
+	<select id="cinemaList" resultType="CinemaVO">
+	select cinema_num, cinema_loc, cinema_name, cinema_add, cinema_tel
+	from cinema
+	order by cinema_num asc
+	</select>
+	
+	<select id="movieTimeList" resultType="ChoiceVO">
+    select D.cinema_name, C.theater_num, C.movieinfo_title movieinfo_name, C.timeinfo_date, C.timeinfo_start, C.timeinfo_end
+    from (select * from timeinfo A left outer join movieinfo B on A.movieinfo_num = B.movieinfo_num) C 
+    left outer join cinema D
+    on C.cinema_num = D.cinema_num
+    order by C.timeinfo_date desc, C.timeinfo_start asc
+	</select>
+	
+
 
   </mapper>

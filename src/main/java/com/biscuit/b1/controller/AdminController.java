@@ -155,5 +155,39 @@ public class AdminController {
 	}
 	
 
+	//관리자 부트스트랩
+	@GetMapping("admin_cinemaList")
+	public Model admin_cinemaList(Model model) {
+		//시네마 리스트 받기
+		List<CinemaVO> cinemalist =  adminService.cinemaList();
+		
+		//수정하면 값 폼으로 받아서 수정하기
+		
+		model.addAttribute("cinemalist", cinemalist);
+	
+		return model;
+	}
+	
+	@GetMapping("admin_movieTimeList")
+	public Model admin_movieTimeList(Model model) {
+		//무비리스트 받기
+		List<ChoiceVO> movieTimeList = adminService.movieTimeList();
+		
+		for(ChoiceVO a : movieTimeList) {
+			a.setTimeInfo_date(a.getTimeInfo_date().substring(0,10));
+			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
+			a.setTimeInfo_end(a.getTimeInfo_end().substring(11, 16));
+			
+		}
+		
+		model.addAttribute("movieTimeList", movieTimeList);
+	
+		return model;
+	}
+	
+	@RequestMapping("adminmain")
+	public void adminmain() {
+	}
+	
 	
 }
