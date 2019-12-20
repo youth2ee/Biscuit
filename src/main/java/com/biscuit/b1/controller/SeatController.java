@@ -79,15 +79,20 @@ public class SeatController {
 		System.out.println("세션:" + (ChoiceVO) session.getAttribute("ChoiceVO"));
 		ModelAndView mv = new ModelAndView();
 		choiceVO = (ChoiceVO) session.getAttribute("ChoiceVO");
-		String[] timeInfo_date_s = choiceVO.getTimeInfo_date().split("/"); // 19/12/20 형식의 날짜를 자름
-		String timeInfo_date = timeInfo_date_s[1] + timeInfo_date_s[2]; // 1220
-		choiceVO.setTimeInfo_date(timeInfo_date);
+		/*
+		 * String[] timeInfo_date_s = choiceVO.getTimeInfo_date().split("/"); //
+		 * 19/12/20 형식의 날짜를 자름 String timeInfo_date = timeInfo_date_s[1] +
+		 * timeInfo_date_s[2]; // 1220 choiceVO.setTimeInfo_date(timeInfo_date);
+		 */
 		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO); // 예약된 좌석들을 가져옴
 		MovieDataVO movieDataVO = seatService.getPoster(choiceVO); // 포스터 url을 가져와서 넣어줌
 		String grade = seatService.getGrade(choiceVO);
-		timeInfo_date = timeInfo_date.substring(0, 2) + "월 " + timeInfo_date.substring(2) + "일";
-		String timeInfo_start = choiceVO.getTimeInfo_start().substring(0, 2) + "시 "
-				+ choiceVO.getTimeInfo_start().substring(3) + "분";
+		/*
+		 * timeInfo_date = timeInfo_date.substring(0, 2) + "월 " +
+		 * timeInfo_date.substring(2) + "일"; String timeInfo_start =
+		 * choiceVO.getTimeInfo_start().substring(0, 2) + "시 " +
+		 * choiceVO.getTimeInfo_start().substring(3) + "분";
+		 */
 		mv.addObject("poster", movieDataVO.getPoster());
 		mv.addObject("grade", grade);
 		mv.addObject("seats", seatVOs);
@@ -96,14 +101,16 @@ public class SeatController {
 		mv.addObject("cinema_loc", choiceVO.getCinema_loc());
 		mv.addObject("cinema_name", choiceVO.getCinema_name());
 		mv.addObject("timeInfo_date", choiceVO.getTimeInfo_date());
-		mv.addObject("timeInfo_start", timeInfo_start);
-		mv.addObject("timeInfo_date", timeInfo_date);
+		mv.addObject("timeInfo_start", choiceVO.getTimeInfo_start());
+		System.out.println(choiceVO.getTimeInfo_start());
+		mv.addObject("timeInfo_date", choiceVO.getTimeInfo_date());
 		mv.addObject("theater_num", choiceVO.getTheater_num());
 		mv.addObject("movieInfo_num", choiceVO.getMovieInfo_num());
 		mv.setViewName("/seat/seatSelect");
 		return mv;
 	}
-	@Transactional(rollbackFor =Exception.class)
+
+	@Transactional(rollbackFor = Exception.class)
 	@PostMapping(value = "seatSelect")
 	public String seatSelect(HttpServletRequest request, HttpSession session, SeatVO seatVO, ChoiceVO choiceVO,
 			Movie_TicketingVO movie_TicketingVO, String kidCount, String adultCount,
@@ -123,7 +130,7 @@ public class SeatController {
 			seatVO.setTimeInfo_start(timeInfo_start);
 			seatVO.setTheater_num(choiceVO.getTheater_num());
 			seatVO.setMovieInfo_num(choiceVO.getMovieInfo_num());
-			seatVO.setTimeInfo_date(seatVO.getTimeInfo_date());
+			seatVO.setTimeInfo_date(choiceVO.getTimeInfo_date());
 			result1 = seatService.seatBooking(seatVO); // 좌석 테이블에 입력
 
 			// 예매 번호 생성하기
@@ -136,8 +143,11 @@ public class SeatController {
 			String str1_2 = String.format("%02d%n", seatVO.getTheater_num()).replace("\r\n", ""); // 관번호
 			String str1 = str1_1 + str1_2; // 극장지점 + 관번호
 			String str2 = String.format("%04d%n", seatVO.getMovieInfo_num()).replace("\r\n", ""); // 영화번호
-			String str3 = seatVO.getTimeInfo_start().substring(0, 2) + seatVO.getTimeInfo_start().substring(4, 6);
-			String str4 = choiceVO.getTimeInfo_date().substring(0, 2) + choiceVO.getTimeInfo_date().substring(4, 6);// 상영날짜
+			System.out.println(choiceVO.getTimeInfo_start());
+			System.out.println(choiceVO.getTimeInfo_date());
+			String str3 = choiceVO.getTimeInfo_start().substring(0, 2) + seatVO.getTimeInfo_start().substring(3,5);
+			System.out.println(str3);
+			String str4 = choiceVO.getTimeInfo_date().substring(3, 5) + choiceVO.getTimeInfo_date().substring(6);// 상영날짜
 			String str5 = null;
 			if (seat_names[i].contains("10")) // F10 이어도 F100, F1이어도 F100이기 때문에 중복값 방지
 				str5 = String.format("%-4s", seat_names[i]).replace(" ", "1").replace("\r\n", "");
