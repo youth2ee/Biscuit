@@ -71,8 +71,13 @@
 			<exclude-mapping path="/store/storeList"/>
 			<exclude-mapping path="/store/storeList2"/>
 			<beans:ref bean="cartInterceptor"/>
-		</interceptor>
-	</interceptors> -->
+		</interceptor> -->
+	</interceptors>
+	<!-- 인터셉터 객체 생성 -->
+	<beans:bean class="com.biscuit.b1.interceptors.CartInterceptor" id="cartInterceptor" />
+	
+	<!-- 인터셉터 설정 -->
+	
 	
 
 <!-- 	</interceptors>  -->

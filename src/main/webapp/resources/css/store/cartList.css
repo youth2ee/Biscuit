@@ -352,6 +352,7 @@ input[type="checkbox"].cart_checkbox:checked + label:before {
     line-height: 32px;
     text-align: center;
     background-color: #DA281C;
+    cursor: pointer;
 }
 .cart_list_style li .product_info_btn_wrap a:first-child {
 	margin-top: 0;
@@ -474,5 +475,6 @@ table {
     color: #fff;
     line-height: 60px;
     background-color: #fb4357;
+    cursor: pointer;
 }
 

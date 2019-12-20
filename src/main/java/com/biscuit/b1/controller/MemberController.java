@@ -29,11 +29,18 @@ public class MemberController {
 
 	@GetMapping("memberLogout")
 	public ModelAndView memberLogout(HttpSession session) throws Exception {
+		String path = "../";
+		String redirectURI = (String)session.getAttribute("redirectURI");
 		// 로그아웃
 		session.invalidate();
 		ModelAndView mv = new ModelAndView();
+		
+		if(redirectURI != null) {
+			path = redirectURI;
+		}
+		
 		mv.addObject("msg", "로그아웃되었습니다.");
-		mv.addObject("path", "../");
+		mv.addObject("path", path);
 		mv.setViewName("common/common_result");
 		return mv;
 	}
@@ -109,13 +116,16 @@ public class MemberController {
 	}
 
 	@GetMapping("memberLogin")
-	public void memberLogin() {
+	public void memberLogin(HttpServletRequest request) {
+		//System.out.println(request.getHeader("Referer"));
+		String referer = request.getHeader("Referer");
+		request.getSession().setAttribute("redirectURI", referer);
 	}
 
 	@GetMapping("memberJoin2")
 	public void memberJoin2() {
 	}
-
+	
 	@PostMapping("movieLogin")
 	public String movieLogin(ChoiceVO choiceVO, HttpSession session) {
 		System.out.println("choiceVO");
@@ -140,10 +150,13 @@ public class MemberController {
 
 	@PostMapping("memberLogin")
 	public ModelAndView memberLogin(ChoiceVO choiceVO, MemberVO memberVO, HttpSession session) throws Exception {
+		//System.out.println(session.getAttribute("redirectURI"));
+		
 		ModelAndView mv = new ModelAndView();
 		String msg = "";
 		String path = "";
-
+		String redirectURI = (String)session.getAttribute("redirectURI");
+		
 		choiceVO = (ChoiceVO) session.getAttribute("ChoiceVO");
 
 		// 로그인이 안된상태에서 로그인하기 : 아이디 값이 넘어오면 로그인이 안되어 있는 상태
@@ -159,7 +172,9 @@ public class MemberController {
 			if (choiceVO != null) {
 				path = "../seat/seatSelect";
 
-			} else { // 일반로그인 성공시
+			}else if(redirectURI != null){
+				path = redirectURI;
+			}else { // 일반로그인 성공시
 				path = "../";
 			}
 		}
@@ -170,6 +185,8 @@ public class MemberController {
 			// 예매후 로그인 실패시
 			if (choiceVO != null) {
 				path = "../movie/movieSelect";
+			}else if(redirectURI != null){
+				path = redirectURI;
 			} else {
 				path = "./memberLogin";
 			}

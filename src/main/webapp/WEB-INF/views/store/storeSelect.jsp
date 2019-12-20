@@ -17,7 +17,7 @@
 	<c:import url="../layout/header.jsp"></c:import>
 </header>
 <section>
-<form action="../pay/marketPay" id="frm">
+<form action="../pay/marketPay" id="frm" method="post">
 	<div id="container">
 		<div id="content">
 			<div class="detailtop_wrap">

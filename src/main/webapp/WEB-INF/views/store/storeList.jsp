@@ -19,6 +19,7 @@
 </header>
 <!-- section -->
 <section>
+<form id="frm" method="post" action="../pay/marketPay">
 	<div id="container">
 		<div id="content">
 			<!-- 상단이미지 -->
@@ -88,11 +89,11 @@
 <!-- --------------------------------------------- -->
 					</div>
 					
-					<button id="myCart">Cart</button>>
+					<button id="myCart">Cart</button>
 					<script type="text/javascript">
 					 	$('#myCart').click(function() {
 							$.ajax({
-								url: "cartLogin",
+								url: "cartLoginCheck",
 								type: "POST",
 								//async: false,
 								success: function(data) {
@@ -110,13 +111,22 @@
 							});
 						});
 					</script>
+					
+					<button id="goTop">Top</button>
+				<script type="text/javascript">
+					$('#goTop').click(function() {
+						$('html, body').animate({scrollTop : 0}, 400);
+						return false;
+					});
+				</script>
+					
 					<a href="storeWrite" id="btn_register">등록</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	
-	<!-- modal -->
+<!-- modal -->
 	<div class="confirmLayer">
 		<div class="confirm_wrap">
 			<div class="header">
@@ -134,6 +144,7 @@
 			</div>
 		</div>
 	</div>
+</form>	
 </section>
 <!-- footer -->
 <footer>
@@ -149,9 +160,11 @@
 			$('.product_index').removeClass("sticky");
 		}
 		if($(window).scrollTop() > 50){
-			$('#myCart').css("display", "block");
+			$('#myCart').fadeIn();
+			$('#goTop').fadeIn();
 		}else {
-			$('#myCart').css("display", "none");
+			$('#myCart').fadeOut();
+			$('#goTop').fadeOut();
 		}
 	});
 ////모달 창 띄우기(장바구니)
@@ -285,7 +298,7 @@
 	});
 //////장바구니 버튼 클릭했을 때/////////////////
 	$('.btn_category_product_cart').click(function() {
-		var store_num = $(this).parent().find("input").val();
+		var store_num = $(this).parent().find('input[class="input_num"]').val();
 		//alert(store_num);
 		var cart_amount = 1;
 		
@@ -364,6 +377,15 @@
 		});
 	});
 /////////////////////////////
+//바로 구매 클릭했을 때
+$('.btn_category_product_buy').click(function name() {
+	$('#frm').submit();
+});
+
+
+
+
+
 </script>
 </body>
 </html>

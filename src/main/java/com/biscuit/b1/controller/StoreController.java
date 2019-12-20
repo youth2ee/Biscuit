@@ -33,8 +33,8 @@ public class StoreController {
 	
 	//카트 진입시 로그인 여부
 	@ResponseBody
-	@PostMapping("cartLogin")
-	public int cartLogin(HttpSession session) throws Exception {
+	@PostMapping("cartLoginCheck")
+	public int cartLoginCheck(HttpSession session) throws Exception {
 		int result = 0;
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		
