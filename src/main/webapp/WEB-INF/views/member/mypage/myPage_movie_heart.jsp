@@ -43,17 +43,21 @@
 <div class="mycontext">
 
 <h1>myPage_movie_heart</h1>
+<h1>${member.id}</h1>
 
 
+<div id="heartboxmain">
 
-<div id="tboxmain">
-
-<div class="tbox">최신 예매내역</div>
-<div class="tbox">최신 구매내역</div>
-<div class="tbox">위시리스트</div>
-
+<c:forEach items="${heartList}" var="heart">
+<div class="heartbox">
+${heart.movieInfo_title}
+<img alt="" src="${heart.movieInfo_poster}">
+</div>
+</c:forEach>
 
 </div>
+
+
 
 </div>
 
@@ -64,6 +68,29 @@
 
 <footer></footer>
 
+<!-- <script type="text/javascript">
+
+	$.ajax({
+		data : {
+			id:id
+		},
+		type : "GET",
+		url : "./locSelect",
+		success : function(data) {
+			data = data.trim();
+			$('#cinemaNameSelect').html(data);
+			
+			/* $('.check').addClass('act'); */
+			$('.noncheck').addClass('noncheck').addClass('soldout');
+	}
+		});
+
+
+
+
+</script>
+
+ -->
 
 </body>
 </html>

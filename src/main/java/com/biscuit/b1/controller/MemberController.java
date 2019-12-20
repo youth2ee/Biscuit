@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.MemberVO;
+import com.biscuit.b1.model.MovieGradeVO;
 import com.biscuit.b1.service.MemberService;
 import com.biscuit.b1.util.Pager;
 
@@ -273,16 +274,26 @@ public class MemberController {
 	public void myPage_store_res() {
 	}
 	
-	@GetMapping("/mypage/myPage_movie_star")
-	public void myPage_movie_star() {
-	}
-	
 	@GetMapping("/mypage/myPage_movie_res")
 	public void myPage_movie_res() {
 	}
 	
+	@GetMapping("/mypage/myPage_movie_star")
+	public void myPage_movie_star(HttpSession session, Model model) {
+	MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+	List<MovieGradeVO> starList = memberService.mypageStar(memberVO);
+	
+	model.addAttribute("starList", starList);
+	}
+	
 	@GetMapping("/mypage/myPage_movie_heart")
-	public void myPage_movie_heart() {
+	public void myPage_movie_heart(HttpSession session, Model model) {
+	 MemberVO memberVO = (MemberVO)session.getAttribute("member");
+	 
+	 List<MovieGradeVO> heartList =  memberService.mypageHeart(memberVO);
+	 
+	 model.addAttribute("heartList", heartList);
 	}
 	
 	@GetMapping("/mypage/myPage_member_update")
@@ -292,5 +303,6 @@ public class MemberController {
 	@GetMapping("/mypage/myPage_cinema")
 	public void myPage_cinema() {
 	}
+	
 	
 }

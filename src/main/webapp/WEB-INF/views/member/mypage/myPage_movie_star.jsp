@@ -43,13 +43,17 @@
 <div class="mycontext">
 
 <h1>myPage_movie_star</h1>
-
+<h1>${member.id}</h1>
 
 <div id="tboxmain">
 
-<div class="tbox">최신 예매내역</div>
-<div class="tbox">최신 구매내역</div>
-<div class="tbox">위시리스트</div>
+<c:forEach items="${starList}" var="star">
+<div class="starbox">
+${star.movieInfo_title}
+${star.movieGrade_star}
+<img alt="" src="${star.movieInfo_poster}">
+</div>
+</c:forEach>
 
 
 </div>

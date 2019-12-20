@@ -95,3 +95,23 @@ header{
 	margin: 26px 26px;
 	border: 0.3px solid black;
 }
+
+#starboxmain{
+	width: 100%;
+	background-color: #f4f3ea;
+	height: 300px;
+}
+
+#heartboxmain{
+	width: 100%;
+	background-color: #f4f3ea;
+	height: 300px;
+}
+
+.starbox{
+	float: left;
+	width: 29%;
+	height: 250px;
+	margin: 26px 26px;
+	border: 0.3px solid black;
+}

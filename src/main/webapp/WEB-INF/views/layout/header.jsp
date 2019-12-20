@@ -4,12 +4,13 @@
 <div id="htotal">
 <div id="head1">
 	<c:if test="${member eq null}">
-		<div style="float: left;"><a href="./member/memberLogin"><img alt="" src="../resources/images/home/5_2.png"></a></div>
-		<div style="float: left;"><a href="./member/memberJoin"><img alt="" src="../resources/images/home/6_2.png"></a></div>
+		<div style="float: left;"><a href="${pageContext.request.contextPath}/member/memberLogin"><img alt="" src="${pageContext.request.contextPath}/resources/images/home/5_2.png"></a></div>
+		<div style="float: left;"><a href="${pageContext.request.contextPath}/member/memberJoin"><img alt="" src="${pageContext.request.contextPath}/resources/images/home/6_2.png"></a></div>
 	</c:if>
 	<c:if test="${member ne null }">
-		<div style="float: left;"><a href="./member/memberLogout"><img alt="" src="../resources/images/home/7_2.png"></a></div>
-		<div style="float: left;"><a href="./member/mypage/myPage"><img alt="" src="../resources/images/home/8_2.png"></a></div>
+		<div style="float: left;">${member.name}님</div>
+		<div style="float: left;"><a href="${pageContext.request.contextPath}/member/memberLogout"><img alt="" src="${pageContext.request.contextPath}/resources/images/home/7_2.png"></a></div>
+		<div style="float: left;"><a href="${pageContext.request.contextPath}/member/mypage/myPage"><img alt="" src="${pageContext.request.contextPath}/resources/images/home/8_2.png"></a></div>
 	</c:if>
 </div>
 

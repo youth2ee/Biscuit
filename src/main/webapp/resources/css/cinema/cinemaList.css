@@ -91,3 +91,11 @@
 	color: white;
 	padding: 28px;
 }
+
+#mtime{
+	padding-top:20px;
+	width: 70%;
+	height:100px;
+	margin: 0 auto;
+	text-align: left;
+}
