@@ -16,7 +16,6 @@ body{
 	background-color: #fcfcf0;
 }
 
-
 /* #total{
 	background-color: #fcfcf0;
 	height: 1400px;
@@ -272,4 +271,18 @@ td{
 .sbox{
 	background-color: red;
 }
+.corn3{
+	position: absolute;
+    width: 5%;
+    margin-left: 50px;
+    margin-top: 305px;
+    opacity: 30%;
+}
 
+.corn4{
+	position: absolute;
+    width: 5%;
+    margin-left: 90px;
+    margin-top: 300px;
+    opacity: 30%;
+}

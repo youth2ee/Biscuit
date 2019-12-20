@@ -51,7 +51,7 @@
 					<strong class="checkbox_select">선택</strong>
 				</p>
 <!-- ------------------------------------------------------------ -->
-			<form action="../pay/kakaoPay" method="get" id="frm">
+			<form action="../pay/marketPay" method="post" id="frm">
 			
 				<ul class="cart_list_style">
 				

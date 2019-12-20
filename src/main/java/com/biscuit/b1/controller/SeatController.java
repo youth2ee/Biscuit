@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -102,7 +103,7 @@ public class SeatController {
 		mv.setViewName("/seat/seatSelect");
 		return mv;
 	}
-
+	@Transactional(rollbackFor =Exception.class)
 	@PostMapping(value = "seatSelect")
 	public String seatSelect(HttpServletRequest request, HttpSession session, SeatVO seatVO, ChoiceVO choiceVO,
 			Movie_TicketingVO movie_TicketingVO, String kidCount, String adultCount,

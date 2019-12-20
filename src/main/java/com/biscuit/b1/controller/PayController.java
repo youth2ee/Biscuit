@@ -20,24 +20,31 @@ public class PayController {
 	@Inject
 	private PayService payService;
 
+	@GetMapping(value = "marketPaySuccess")
+	public ModelAndView marketPayGet(HttpServletRequest request) throws Exception {
+		PayInfoVO payInfoVO = new PayInfoVO();
+		String pg_token = request.getParameter("pg_token");
+		ModelAndView mv = new ModelAndView();
+		payInfoVO = payService.KakaoPayApprove(pg_token);
+		mv.addObject("pay", payInfoVO);
+		return mv;
+	}
+	@GetMapping(value = "marketSuccess")
+	public void marketPaySuccess(HttpServletRequest request, HttpSession session) throws Exception {
+		
+	}
+	
+
+	@PostMapping(value = "marketPay")
+	public String marketPayPost(String[] sname, String[] sprice, String[] camount,HttpSession session) throws Exception {
+		return "redirect:" + payService.marketPayReady(sname, camount, sprice, session);
+	}
+
 	@GetMapping(value = "kakaoPay")
 	public void KakaoPayGet() throws Exception {
 
 	}
-	/*
-	@GetMapping(value = "kakaoPay")
-	public void kakaoPayGet(String[] sname, String[] sprice, String[] camount) throws Exception {
-		for(int i=0;i<sname.length;i++) {
-			System.out.println(sname[i]);
-		}
-		for(int i=0;i<sprice.length;i++) {
-			System.out.println(sprice[i]);
-		}
-		for(int i=0;i<camount.length;i++) {
-			System.out.println(camount[i]);
-		}
-	}
-	*/
+
 	@PostMapping(value = "kakaoPay")
 	public String KakaoPayPost(String total_amount, String quantity) throws Exception {
 		System.out.println(total_amount);
