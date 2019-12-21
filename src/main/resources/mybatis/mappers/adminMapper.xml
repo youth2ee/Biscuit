@@ -277,6 +277,45 @@
     order by C.timeinfo_date desc, C.timeinfo_start asc
 	</select>
 	
+	
+	<!-- admin 매출 -->
+	<select id="monthMovieTotal" resultType="AdminVO">
+	select sum(price) totalmovie
+    from movie_ticketing
+    where book_date between '19/12/01' and '19/12/31'
+	</select>
+	
+	<select id="monthStoreTotal" resultType="AdminVO">
+	select sum(cart_amount*store_price) totalstore
+    from cart A left outer join store B
+    on A.store_num = B.store_num
+	</select>
+	
+	<select id="todayMovieRate" resultType="AdminVO">
+	select TRUNC((((select count(seat_num) selectseat from seat where timeinfo_date = to_char(sysdate,'yy/mm/dd'))/
+    (select count(timeinfo_num)*195 totalseat from timeinfo where timeinfo_date = to_date(sysdate,'yy/mm/dd'))
+    )*100),2) todayrate from dual
+	</select>
+	
+	<select id="theaterTotal" resultType="AdminVO">
+	select count(theater_num) totaltheater
+    from theater 
+	</select>
 
+	<select id="cinemaTotal" resultType="AdminVO">
+  	select A.totalprice, A.cinema_num, B.cinema_name
+    from (select sum(price) totalprice, cinema_num
+    from movie_ticketing  where book_date between '19/12/01' and '19/12/31'
+    group by cinema_num) A left outer join cinema B
+    on A.cinema_num = B.cinema_num
+    order by A.totalprice desc
+	</select>
+	
+	<select id="movieTop" resultType="AdminVO">
+	select count(seat_name) totalseat, movieinfo_name
+	from seat
+	group by movieinfo_name
+	order by totalseat desc
+	</select>
 
   </mapper>

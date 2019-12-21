@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.biscuit.b1.dao.AdminDAO;
+import com.biscuit.b1.model.AdminVO;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
@@ -69,5 +70,30 @@ public class AdminService {
 		return adminDAO.movieTimeList();
 	}
 	
+	//판매량
+	public AdminVO monthMovieTotal() {
+		return adminDAO.monthMovieTotal();
+	}
 	
+	public AdminVO monthStoreTotal() {
+		return adminDAO.monthStoreTotal();
+	}
+	
+	public AdminVO todayMovieRate() {
+		return adminDAO.todayMovieRate();
+	}
+
+	public AdminVO theaterTotal() {
+		return adminDAO.theaterTotal();
+	}
+	
+	public List<AdminVO> cinemaTotal() {
+		return adminDAO.cinemaTotal();
+	}
+	
+	public List<AdminVO> movieTop() {
+		return adminDAO.movieTop();
+	}
+
+
 }

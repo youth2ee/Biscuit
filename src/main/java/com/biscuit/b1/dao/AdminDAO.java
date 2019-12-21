@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.biscuit.b1.model.AdminVO;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
@@ -68,5 +69,32 @@ public class AdminDAO {
 	public List<ChoiceVO> movieTimeList() {
 		return sqlSession.selectList(NAMESPACE+"movieTimeList");
 	}
+	
+	//매출
+	public AdminVO monthMovieTotal() {
+		return sqlSession.selectOne(NAMESPACE+"monthMovieTotal");
+	}
+	
+	public AdminVO monthStoreTotal() {
+		return sqlSession.selectOne(NAMESPACE+"monthStoreTotal");
+	}
+	
+	public AdminVO todayMovieRate() {
+		return sqlSession.selectOne(NAMESPACE+"todayMovieRate");
+	}
+	
+	public AdminVO theaterTotal() {
+		return sqlSession.selectOne(NAMESPACE+"theaterTotal");
+	}
+	
+	public List<AdminVO> cinemaTotal() {
+		return sqlSession.selectList(NAMESPACE+"cinemaTotal");
+	}
+	
+	public List<AdminVO> movieTop() {
+		return sqlSession.selectList(NAMESPACE+"movieTop");
+	}
+	
+	
 
 }

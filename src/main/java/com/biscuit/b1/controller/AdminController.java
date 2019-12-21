@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.biscuit.b1.model.AdminVO;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
@@ -89,12 +90,14 @@ public class AdminController {
 		//timeinfo_date
 		choiceVO.setTimeInfo_date(choiceVO.getTimeInfo_date().substring(2));
 		
-		System.out.println(choiceVO.getTimeInfo_date());
-		System.out.println(choiceVO.getTheater_num());
-		System.out.println(choiceVO.getMovieInfo_num());
-		
-		System.out.println("내가 알고시푼것");
-		System.out.println(choiceVO.getTheater_name());
+		/*
+		 * System.out.println(choiceVO.getTimeInfo_date());
+		 * System.out.println(choiceVO.getTheater_num());
+		 * System.out.println(choiceVO.getMovieInfo_num());
+		 * 
+		 * System.out.println("내가 알고시푼것");
+		 * System.out.println(choiceVO.getTheater_name());
+		 */
 		
 		int result = 0;
 		
@@ -185,7 +188,15 @@ public class AdminController {
 	}
 	
 	@RequestMapping("adminmain")
-	public void adminmain() {
+	public Model adminmain(Model model) {
+		model.addAttribute("mmtotal", adminService.monthMovieTotal());
+		model.addAttribute("mstotal", adminService.monthStoreTotal());
+		model.addAttribute("tmovierate", adminService.todayMovieRate());
+		model.addAttribute("theatertotal", adminService.theaterTotal());
+		model.addAttribute("cinematotal", adminService.cinemaTotal());
+		model.addAttribute("movietop", adminService.movieTop());
+	
+		return model;
 	}
 	
 	@RequestMapping("admin_cinemaInsert")
