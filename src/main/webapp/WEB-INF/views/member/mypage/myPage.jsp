@@ -59,7 +59,22 @@
 <div id="tboxmain">
 
 <div class="tbox">최신 예매내역
-	<div>${newestBook.}</div>
+	<div class = "newestBookWrap">
+		<div class="newestBookPoster" >
+			<img alt="" src="${newestBook.movieInfo_poster}">
+		</div>
+		<div class="newestBookInfo">
+			${newestBook.movieInfo_title}<br>
+			CGV ${newestBook.cinema_name}점 
+			${newestBook.theater_name}관<br>
+			${newestBook.book_date}<br>
+			${newestBook.timeInfo_start}<br><br>
+			<span class="canceled"></span>
+			<!-- 상영 일자가 오늘 날짜 이후일 경우 별점주러가기로, 이전일경우 예매취소로 바꾸기 (날짜비교 쉬움)-->
+			<button><span id="bookCancle">예매 취소<span></button>
+			<button><span id="goToStar">별점 주기<span></button>
+		</div>
+	</div>
 </div>
 <div class="tbox">최신 구매내역</div>
 <div class="tbox">위시리스트</div>
@@ -77,6 +92,16 @@
 <footer></footer>
 
 
+<script type="text/javascript">
+	$("#bookCancle").click(function() {
+		/* 폼태그로 넘길 것인지 상담 해 봐야 함  
+			폼태그로 넘길 시에는 버튼 클릭시 action 변경 되도록 구현
+		*/
+	});
+	$("#goToStar"){
+		location.href="../../movie/movieList";
+	}
 
+</script>
 </body>
 </html>

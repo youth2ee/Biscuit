@@ -144,4 +144,15 @@ header{
 	width: 213px;
 	height: 305px;
 }
-
+.newestBookWrap{
+}
+.newestBookPoster img{
+	float: left;
+	width: 150px;
+	margin-left: 20px;
+}
+.newestBookInfo{
+	display: -webkit-inline-box;
+    margin-left: 20px;
+    margin-top: 50px;
+}

@@ -17,6 +17,7 @@ import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.model.MovieGradeVO;
 import com.biscuit.b1.model.Movie_TicketingVO;
+import com.biscuit.b1.model.NewestVO;
 import com.biscuit.b1.service.MemberService;
 import com.biscuit.b1.util.Pager;
 
@@ -258,57 +259,65 @@ public class MemberController {
 			mv.addObject("result", 0);
 		return mv;
 	}
-	
-	
-	//mypage
+
+	// mypage
 	@GetMapping("/mypage/myPage")
 	public void myPage(HttpSession session, Model model) throws Exception {
-	MemberVO memberVO = new MemberVO();
-	memberVO = (MemberVO)session.getAttribute("member");
-	 System.out.println(memberVO.getId());
-	Movie_TicketingVO movie_TicketingVO = memberService.newest(memberVO);
-	ModelAndView mv = new ModelAndView();
-	model.addAttribute("newestBook",movie_TicketingVO);
-	System.out.println("출력1:"+movie_TicketingVO.getId());
-	System.out.println("출력2:"+movie_TicketingVO.getSeat_name());
-	model.addAttribute("member", memberVO);
-	
+		MemberVO memberVO = new MemberVO();
+		memberVO = (MemberVO) session.getAttribute("member");
+		System.out.println(memberVO.getId());
+		NewestVO newestVO = memberService.newest(memberVO);
+		ModelAndView mv = new ModelAndView();
+		String book_date = newestVO.getBook_date(); // 가공 하기전 날짜정보를 미리 빼놓음 (jsp에서 사용)
+		String book_date_str = newestVO.getBook_date().substring(0, 10);
+		book_date_str = book_date_str.substring(0,4) +"년 "+ book_date_str.substring(5,7) +"월 "+ book_date_str.substring(8)+"일 ";
+		newestVO.setBook_date(book_date_str);
+		String timeInfo_start_str = newestVO.getTimeInfo_start();
+		timeInfo_start_str = timeInfo_start_str.substring(0,2) + "시 "+timeInfo_start_str.substring(3) +"분";
+		newestVO.setTimeInfo_start(timeInfo_start_str);
+		model.addAttribute("newestBook", newestVO);
+		model.addAttribute("book_date" , book_date);
+		System.out.println("출력1:" + newestVO.getBook_date());
+		System.out.println("출력2:" + newestVO.getMovieInfo_title());
+		System.out.println("출력3:" + newestVO.getTheater_name());
+		System.out.println("출력4:" + newestVO.getCinema_name());
+		System.out.println("출력5:" + newestVO.getTimeInfo_start());
+		//model.addAttribute("member", memberVO);
+
 	}
-	
 
 	@GetMapping("/mypage/myPage_store_res")
 	public void myPage_store_res() {
 	}
-	
+
 	@GetMapping("/mypage/myPage_movie_res")
 	public void myPage_movie_res(HttpSession session) {
-	
+
 	}
-	
+
 	@GetMapping("/mypage/myPage_movie_star")
 	public void myPage_movie_star(HttpSession session, Model model) {
-	MemberVO memberVO = (MemberVO)session.getAttribute("member");
-		
-	List<MovieGradeVO> starList = memberService.mypageStar(memberVO);
-	
-	model.addAttribute("starList", starList);
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+
+		List<MovieGradeVO> starList = memberService.mypageStar(memberVO);
+
+		model.addAttribute("starList", starList);
 	}
-	
+
 	@GetMapping("/mypage/myPage_movie_heart")
 	public void myPage_movie_heart(HttpSession session, Model model) {
-	 MemberVO memberVO = (MemberVO)session.getAttribute("member");
-	 
-	 List<MovieGradeVO> heartList =  memberService.mypageHeart(memberVO);
-	 model.addAttribute("heartList", heartList);
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+
+		List<MovieGradeVO> heartList = memberService.mypageHeart(memberVO);
+		model.addAttribute("heartList", heartList);
 	}
-	
+
 	@GetMapping("/mypage/myPage_member_update")
 	public void myPage_member_update() {
 	}
-	
+
 	@GetMapping("/mypage/myPage_cinema")
 	public void myPage_cinema() {
 	}
-	
-	
+
 }
