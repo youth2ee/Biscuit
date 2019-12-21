@@ -1,7 +1,7 @@
 .typo, .list a {
   font-size: 30px;
   font-weight: 700;
-  font-family: 'Source Sans Pro', sans-serif;
+/*   font-family: 'Source Sans Pro', sans-serif; */
   color: #585858;
   text-decoration: none;
 }
@@ -55,10 +55,10 @@ body {
   height: 3px;
   width: 0;
   left: 0;
-  background: #e42313;
+   background: #e42313; 
   bottom: 0;
-  -webkit-transition: all .4s ease-out;
-  transition: all .4s ease-out;
+   -webkit-transition: all .4s ease-out;
+  transition: all .4s ease-out; 
 }
 
 .list a:hover {
@@ -66,10 +66,9 @@ body {
   color: #e42313;
 }
 
-.list a:hover:after {
+/* .list a:hover:after {
  width: 100%; 
-  width: 200px;
-}
+} */
 
 /*  */
 .list2 {

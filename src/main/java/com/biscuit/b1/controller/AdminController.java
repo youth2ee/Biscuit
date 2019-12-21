@@ -48,7 +48,6 @@ public class AdminController {
 		model.addAttribute("movieList", movieList);
 		
 		return model;
-		
 	}
 	
 	@GetMapping("adminLocSelect")
@@ -121,7 +120,7 @@ public class AdminController {
 		} 
 		
 		mv.addObject("msg", msg);
-		mv.addObject("path", "./admin_time");
+		mv.addObject("path", "./admin_movieTimeInsert");
 		mv.setViewName("common/common_result");
 		
 		return mv;
@@ -192,5 +191,20 @@ public class AdminController {
 	@RequestMapping("admin_cinemaInsert")
 	public void admin_cinemaInsert() {
 		
+	}
+	
+	@RequestMapping("admin_movieTimeInsert")
+	public Model admin_movieTimeInsert(Model model) {
+		
+		List<MovieInfoVO> movieList = adminService.movieList();
+		
+		for(MovieInfoVO a : movieList) {
+			System.out.println(a.getMovieInfo_title());
+		}
+		
+		
+		model.addAttribute("movieList", movieList);
+		
+		return model;
 	}
 }

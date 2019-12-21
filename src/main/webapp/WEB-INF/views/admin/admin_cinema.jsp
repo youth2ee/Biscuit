@@ -151,7 +151,7 @@
 
 
 
-<!-- <div id="sec8">
+<div id="sec8">
 <form action="./adminCinemaInsert" id="frm" method="post">
 <input type="hidden" id="t1" readonly="readonly" name="cinema_loc"><br>
 <input type="hidden" id="t2" readonly="readonly" name="cinema_name"><br>
@@ -159,7 +159,7 @@
 <input type="hidden" id="t4" readonly="readonly" name="cinema_add"><br>
 <input type="button" id="btn" value="추가">
 </form>
-</div> -->
+</div>
 
 
 

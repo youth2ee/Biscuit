@@ -71,13 +71,19 @@
 </div>
 
 <!-- 상영할 영화명 -->
-<div id="sec42">
-<span class="input input--chisato">
+<div id="sec42">dd
+<!-- <span class="input input--chisato">
 		<input class="input__field input__field--chisato input-13" type="text" id="myInput" placeholder="Search.." />
 		<label class="input__label input__label--chisato" for="myInput">
 			<span class="input__label-content input__label-content--chisato2" data-content="상영할 영화명">상영할 영화명</span>
 		</label>
-</span>
+</span> -->
+<div>
+  <label>
+    <input type="text" required="required" id="myInput" class="input-13" value="Search.."/>
+    <span>상영할 영화명</span>
+  </label>
+ </div> 
 </div>	
 
 <div id="sec6" >

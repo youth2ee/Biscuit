@@ -1,12 +1,4 @@
-html, body {
-	min-height: 100%;
-	margin: 0;
-}
 
-body {
-	padding: 30px;
-	box-sizing: border-box;
-}
 
 .select-box {
 	position: relative;

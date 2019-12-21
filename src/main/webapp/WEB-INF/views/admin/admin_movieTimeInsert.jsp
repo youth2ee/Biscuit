@@ -22,11 +22,6 @@
 
 <link href="${pageContext.request.contextPath}/resources/css/select/selectList.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/select/style.css">
-  
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> 
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js" ></script>
 
 	<link href="${pageContext.request.contextPath}/resources/css/admin/admin_cinemaInsert.css" rel="stylesheet">
 
@@ -383,135 +378,125 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">영화관 추가</h1>
-        
+          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+           <h1 class="h3 mb-3 text-gray-800">관리자 모드 (새로 개관한 극장을 추가하기)</h1>
   
  
 <!--  -->
-<div id="sec">
+<div class="container">
+<div id="sec4">
+<!-- 상영일 -->
+<div id="sec41" style="padding-right: 30px;">
+<!-- <span class="input input--chisato">
+		<input class="input__field input__field--chisato" type="date" id="input-14" />
+		<label class="input__label input__label--chisato" for="input-14" style="padding-top: 5px;">
+			<span class="input__label-content input__label-content--chisato" data-content="상영일">상영일</span>
+		</label>
+</span> -->
+<div>
+  <label>
+    <input type="date" required="required" id="input-14"/>
+    <span>상영일</span>
+  </label>
+ </div> 
+</div>
+
+<!-- 상영할 영화명 -->
+<div id="sec42">
+<!-- <span class="input input--chisato">
+		<input class="input__field input__field--chisato input-13" type="text" id="myInput" placeholder="Search.." />
+		<label class="input__label input__label--chisato" for="myInput">
+			<span class="input__label-content input__label-content--chisato2" data-content="상영할 영화명">상영할 영화명</span>
+		</label>
+</span> -->
+<div>
+  <label>
+    <input type="text" required="required" id="myInput" class="input-13" />
+    <span>상영할 영화명</span>
+  </label>
+ </div> 
+</div>	
 
 
+
+
+</div>	
+
+
+<div id="sec5">
 <!--  -->
-<div id="sec1" style="float: left; ">
+<div id="sec1">
 <div class="wrapper typo">영화관 지역
   <div class="list">
   <span class="placeholder">select</span>
     <ul class="list__ul">
-      <li><a href="">서울</a></li>
-      <li><a href="">경기</a></li>
-      <li><a href="">인천</a></li>
-      <li><a href="">강원</a></li>
-      <li><a href="">대전/충청</a></li>
-      <li><a href="">대구</a></li>
-      <li><a href="">부산/울산</a></li>
-      <li><a href="">경상</a></li>
-      <li><a href="">광주/전라/제주</a></li>
+      <li><a class="s1" href="">서울</a></li>
+      <li><a class="s1" href="">경기</a></li>
+      <li><a class="s1" href="">인천</a></li>
+      <li><a class="s1" href="">강원</a></li>
+      <li><a class="s1" href="">대전/충청</a></li>
+      <li><a class="s1" href="">대구</a></li>
+      <li><a class="s1" href="">부산/울산</a></li>
+      <li><a class="s1" href="">경상</a></li>
+      <li><a class="s1" href="">광주/전라/제주</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!--  -->
+<div id="sec2">
+<div class="wrapper2 typo">영화관명
+<ul id="aa"></ul>
+</div>
+</div>
+
+
+
+
+<!--  -->
+<div id="sec3">
+<div class="wrapper typo">상영관명
+  <div class="list">
+  <span class="placeholder3">select</span>
+    <ul class="list__ul3">
+      <li><a class="s3" href="">A</a></li>
+      <li><a class="s3" href="">B</a></li>
+      <li><a class="s3" href="">C</a></li>
     </ul>
   </div>
 </div>
 </div>
 
 
-<div id="d2" style="float: left; padding-top:14px; width: 200px; ">
-<div>
-  <label>
-    <input type="text" required="required" id="input1"/>
-    <span>새로 개관할 극장명</span>
-  </label>
- </div> 
-  
-  <div>
-    <label>
-    <input type="number" required="required"  id="input2" value="15441122"/>
-    <span>극장 전화번호</span>
-  </label>
-  </div>
-  
-  <div>
-      <label>
-    <input type="text" required="required" id="sample5_address" value="주소를 검색하세요">
-    <span>극장 주소</span>
-  </label>
-  </div>
-  
-<div > 
-<div style="height: 20px;">
-<div style="float: left;"><input type="button" class="btn btn-primary btn-icon-split" style="padding: 3px 9px;" onclick="sample5_execDaumPostcode()" value="주소 검색"></div>
-
-<div id="fbtn" style="float: left;">
-<form action="./adminCinemaInsert" id="frm" method="post">
-<input type="button" class="btn btn-success btn-icon-split" id="btn" value="추가" style="padding: 3px 9px;"><input type="hidden" id="t1" readonly="readonly" name="cinema_loc"><br><input type="hidden" id="t2" readonly="readonly" name="cinema_name"><br><input type="hidden" id="t3" readonly="readonly" name="cinema_tel" value="15441122"><br><input type="hidden" id="t4" readonly="readonly" name="cinema_add"><br><input type="hidden" id="t5" readonly="readonly" name="cinema_image"><br>
+<div id="sec6" >
+<form action="./adminTimeInsert" id="frm" method="post">
+<input type="button" class="btn btn-primary btn-icon-split" style="padding: 3px 9px;" id="btn" value="추가">
+<input type="hidden" id="t1" readonly="readonly" name="timeInfo_date">
+<input type="hidden" id="t2" readonly="readonly" name="movieInfo_name">
+<input type="hidden" id="t3" readonly="readonly">
+<input type="hidden" id="t4" readonly="readonly" name="cinema_name">
+<input type="hidden" id="t5" readonly="readonly" name="theater_name">
+<input type="hidden" id="t6" name="cinema_num">
 </form>
-
 </div>
 
-
-
-
-<div id="map" ></div>
-</div>
-</div> <!-- d2 -->
-
-
-<!--   
-  <label>
-    <input data-provide="datepicker" required="required">
-    <input type="text" class="dateselect" required="required"/>
-    <span>Date1</span>
-  </label>
-  
-  <label>
-    <input type="text" class="dateselect2" required="required"/>
-    <span>Date2</span>
-  </label> -->
-
-</div>
-
-
-
-
-
-
-
-
-
-</div><!-- sec -->
-     
-          
-          
-
-
+<!-- 영화검색 -->
+<div id="movieSearch">
+<table id="myTable" class="tab">
+  <c:forEach items="${movieList}" var="mlist"> 
+  <tr><td class="mltd">${mlist.movieInfo_title}</td></tr>
+  </c:forEach>
+</table>
+ </div>
+<!-- 영화검색끝 -->
 
 
 <!--  -->
-<!-- <div class="wrapper">
+</div>
+</div>
 
-<form action="./adminCinemaInsert" id="frm" method="post">
-
-  <label>
-    <input type="text" required="required" name="cinema_loc"/>
-    <span>Name</span>
-  </label>
-  
-  <label>
-    <input data-provide="datepicker" required="required">
-    <input type="text" class="dateselect" required="required"/>
-    <span>Date1</span>
-  </label>
-  
-  <label>
-    <input type="text" class="dateselect2" required="required"/>
-    <span>Date2</span>
-  </label>
-  
-  <button>click</button>
-  
-  </form>
-  
-  
-  
-</div> -->
-
+</div>
 
 <!--  -->
           
@@ -521,6 +506,7 @@
 
       </div>
       <!-- End of Main Content -->
+
 
 
     </div>
@@ -564,158 +550,208 @@
   <script src="${pageContext.request.contextPath}/resources/vendor/js/sb-admin-2.min.js"></script>
 
 
-
-
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c385975a519fabb671122b6c7f825767&libraries=services"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <script type="text/javascript">
 
-//https://github.com/uxsolutions/bootstrap-datepicker
 
-/* $('.dateselect').datepicker({
-    format: 'mm/dd/yyyy',
-    startDate: '-3d'
-});
- */
-// $('.dateselect2').datepicker({
-//     format: 'mm/dd/yyyy',
-//     autoclose:true,
-//     todayHighlidht: true,
-// }).on("hide", function(){
-//   if ($)
-// }
 
-	function openNav() {
-  	  document.getElementById("mySidenav").style.width = "250px";
-  	}
-  	function closeNav() {
-  	  document.getElementById("mySidenav").style.width = "0";
-  	}
-  
- 	var loc = "";
- 	var cname = ""; //영화관명
- 	var cadd = ""; //영화관 주소
- 	var ctel = ""; //영화관 전화번호
-  	
-  	
- 	console.clear();
-  var el = {};
-  $('.placeholder').on('click', function (ev) {
-    $('.placeholder').css('opacity', '0');
-    $('.list__ul').toggle();
-  });
-   $('.list__ul a').on('click', function (ev) {
-     ev.preventDefault();
-     var index = $(this).parent().index();
-     $('.placeholder').text( $(this).text() ).css('opacity', '1');
-     console.log($('.list__ul').find('a').eq(index).html());
-     
-     loc = $('.list__ul').find('a').eq(index).html();
-     $('#t1').val(loc);
-     $('#t2').val("");
-     $('#input1').val("");
-     $('#t3').val("");
-     $('#input2').val("15441122");
-     $('#t4').val("");
-     $('#sample5_address').val("주소를 검색하세요");
-     $('#t5').val("");
-     $('#input4').val("");
-     
-     $('.list__ul').find('li').eq(index).prependTo('.list__ul');
-     $('.list__ul').toggle();   
-     
-   });
-  $('select').on('change', function (e) {
-    // Set text on placeholder hidden element
-    $('.placeholder').text(this.value);
-    // Animate select width as placeholder
-    $(this).animate({width: $('.placeholder').width() + 'px' });
+  		function openNav() {
+    	  document.getElementById("mySidenav").style.width = "250px";
+    	}
+    	function closeNav() {
+    	  document.getElementById("mySidenav").style.width = "0";
+    	}
+    
+    	var loc = "";
+    	var cinema = "";
+    	var theater = "";
+    	var mname = "";
+    	var cnum = "";
+    console.clear();
+    
+    /* 1 상영일 불러오기 */
+    $('#input-14').blur(function() {
+ 		console.log($(this).val());
+ 		mdate = $(this).val().trim();
+ 		$('#t1').val(mdate);
+ 		$('#t2').val("");
+ 		$('.input-13').val("");
+ 		$('#t3').val("");
+ 		$('.placeholder').text("select");
+ 		$('#t4').val("");
+ 		$('#aa').empty();
+ 	    $('#t5').val("");
+ 	   $('.placeholder3').text("select");
+ 		
+    });
+    
+    /* 2 영화명 불러오기 */
+    $('.input-13').blur(function() {
+ 		console.log($(this).val());
+ 		mname = $(this).val().trim();
+ 		$('#t2').val(mname);
+ 		$('#t3').val("");
+ 		$('.placeholder').text("select");
+ 		$('#t4').val("");
+ 		$('#aa').empty();
+ 	    $('#t5').val("");
+ 	   $('.placeholder3').text("select");
+    });
+    
+    
+    /* 영화검색 */
+$(document).ready(function(){
+	
+  $("#myInput").on("keyup", function() {
+	  
+    var value = $(this).val().toLowerCase();
+    
+    if(value == ""){
+    	 $(".tab").css("display", "none");
+    }else{
+    $(".tab").css("display", "inline");
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+    }
     
   });
   
-  /* 주소 */
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-      mapOption = {
-          center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-          level: 5 // 지도의 확대 레벨
-      };
-  //지도를 미리 생성
-  var map = new daum.maps.Map(mapContainer, mapOption);
-  //주소-좌표 변환 객체를 생성
-  var geocoder = new daum.maps.services.Geocoder();
-  //마커를 미리 생성
-  var marker = new daum.maps.Marker({
-      position: new daum.maps.LatLng(37.537187, 127.005476),
-      map: map
-  });
-  function sample5_execDaumPostcode() {
-      new daum.Postcode({
-          oncomplete: function(data) {
-              var addr = data.address; // 최종 주소 변수
-				console.log(addr);
-				cadd = addr;
-				$('#t4').val(cadd);
-              
-				
-              // 주소 정보를 해당 필드에 넣는다.
-              document.getElementById("sample5_address").value = addr;
-              // 주소로 상세 정보를 검색
-              geocoder.addressSearch(data.address, function(results, status) {
-                  // 정상적으로 검색이 완료됐으면
-                  if (status === daum.maps.services.Status.OK) {
-                      var result = results[0]; //첫번째 결과의 값을 활용
-                      // 해당 주소에 대한 좌표를 받아서
-                      var coords = new daum.maps.LatLng(result.y, result.x);
-                      // 지도를 보여준다.
-                      mapContainer.style.display = "block";
-                      map.relayout();
-                      // 지도 중심을 변경한다.
-                      map.setCenter(coords);
-                      // 마커를 결과값으로 받은 위치로 옮긴다.
-                      marker.setPosition(coords)
-                  }
-              });
-          }
-      }).open();
+/*   var v = "1";
+  var i = 0;
+  
+  $('#total').html('<div id="a'+i+'">'+v+'</div>');
+  i++;
+  
+  for (var j = 0; j < i; j++) {
+  if( $('#a'+j).text() == v){
+	  $('#a'+j).text("");
   }
-  /* 주소끝  */
+	 */
+//}
   
-      $('#input1').blur(function() {
-		console.log($(this).val());
-		cname = $(this).val().trim();
+
+});
+    /* 영화검색끝 */
+    $(".tab").css("display", "none");
+    
+    var moviename = "";
+    
+    $('.mltd').on("click", function() {
+    	
+    	if($('#t2').val(moviename) != ""){
+    		$('#t2').val("");
+    	}
+    	
+    	
+    	moviename = $(this).text();
+    	$('#t2').val(moviename);
+    	$('.input-13').val(moviename);
+/*     	alert(moviename); */
+    	$(".tab").css("display", "none");
+	});
+    
+    
+    
+    
+    
+    /*  */
+    var el = {};
+      $('.placeholder').on('click', function (ev) {
+      $('.placeholder').css('opacity', '0');
+      $('.list__ul').toggle();
+     });
+ 
+     $('.list__ul a').on('click', function (ev) {
+       ev.preventDefault();
+       var index = $(this).parent().index();
+       $('.placeholder').text( $(this).text() ).css('opacity', '1');
+       console.log($('.list__ul').find('a').eq(index).html());
+       
+       loc = $('.list__ul').find('a').eq(index).html();
+       $('#t3').val(loc);
+       $('#t4').val("");
+       $('#aa').empty();
+       $('#t5').val("");
+       $('.placeholder3').text("select");
+       
+  /*      $('.list__ul').find('li').eq(index).prependTo('.list__ul'); */
+       $('.list__ul').toggle();   
+       
+       
+       $.ajax({
+			data : {
+				cinema_loc:loc
+			},
+			type : "GET",
+			url : "./adminLocSelect",
+			success : function(data) {
+				data = data.trim();
+				
+ 				$('#aa').html(data);
+				$('#aa li').on('click', function() {
+					$(this).addClass('act').siblings().removeClass('act');
+					cinema = $(this).find('.cname').text();
+					console.log(cinema);
+					
+					$('#t4').val(cinema); 
+					
+					cnum = $(this).find('.cnum').text();
+					$('#t6').val(cnum);
+					
+					$('#t5').val("");
+					$('.placeholder3').text("select");
+					
+				});
+			}
+		});
+     });
+     
+/* 
+		$('select').on('change', function (e) {
+		      $('.placeholder').text(this.value);
+		      $(this).animate({width: $('.placeholder').width() + 'px' });
+		    });  */
+     
 		
-		$('#t2').val(cname); 		
-		 $('#t3').val("");
-	       $('#input2').val("15441122");
-	       $('#t4').val("");
-	       $('#sample5_address').val("주소를 검색하세요");
-	       $('#t5').val("");
-	       $('#input4').val("");
-      });
-  
-      $('#input2').blur(function() {
-   		console.log($(this).val());
-   		ctel = $(this).val().trim();
-   		$('#t3').val(ctel);
-   		$('#t4').val("");
-   		$('#sample5_address').val("주소를 검색하세요");
-          $('#t5').val("");
-          $('#input4').val("");
-          });
-      
-  
+     
+	    /* 3 */
+	    $('.placeholder3').on('click', function (ev) {
+	     $('.placeholder3').css('opacity', '0');
+	     $('.list__ul3').toggle();
+	    });
+	    $('.list__ul3 a').on('click', function (ev) {
+	      ev.preventDefault();
+	      var index = $(this).parent().index();
+	      
+	      $('.placeholder3').text( $(this).text() ).css('opacity', '1');
+	      console.log($('.list__ul3').find('a').eq(index).html());
+	      
+	      theater = $('.list__ul3').find('a').eq(index).html();
+	      $('#t5').val(theater);
+	      
+	     /*  $('.list__ul3').find('li').eq(index).prependTo('.list__ul3'); */
+	      $('.list__ul3').toggle();   
+	    });
+	   $('select').on('change', function (e) {
+	     $('.placeholder3').text(this.value);
+	     $(this).animate({width: $('.placeholder3').width() + 'px' });
+	   });
+	
+    
 	   $('#btn').on('click', function() {
-		   if($('#t1').val() != "" && $('#t2').val() != "" &&  $('#t3').val() != "" && $('#t4').val() != ""){
+		   
+		   if($('#t1').val() != "" && $('#t2').val() != "" &&  $('#t3').val() != "" && $('#t4').val() != "" && $('#t5').val() != ""){
 		   $('#frm').submit();			   
 		   } else {
 			alert("정확한 값을 입력하세요.")
 		   }
 		   
 	  	}); 
-  
+	  
+	 
+    </script>
 
-</script>
 
 
 
