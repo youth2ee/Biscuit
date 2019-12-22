@@ -45,7 +45,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="${pageContext.request.contextPath}/admin/adminmain">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>ADMIN PAGE</span></a>
+          <span class="active">ADMIN PAGE</span></a>
       </li>
       
       <!-- Divider -->
@@ -65,8 +65,8 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">MOVIE</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaList">영화 데이터 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaInsert">영화 데이터 추가</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataInsert">영화 데이터 추가</a>
           </div>
         </div>
       </li>
@@ -140,8 +140,7 @@
         <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">MEMBER MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeList">회원정보 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeInsert">상영시간표 추가</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_memberList">회원정보 관리</a>
           </div>
         </div>
       </li>
@@ -166,8 +165,8 @@
         <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">STORE MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeList">스토어 메뉴 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeInsert">스토어 메뉴 추가</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeList">스토어 메뉴 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeInsert">스토어 메뉴 추가</a>
           </div>
         </div>
       </li>

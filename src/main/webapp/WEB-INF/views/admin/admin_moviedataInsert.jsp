@@ -26,7 +26,7 @@
 </head>
 <body id="page-top">
 
-  <!-- Page Wrapper -->
+   <!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
@@ -59,15 +59,15 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
           <i class="fas fa-fw fa-cog"></i>
           <span>영화 관리</span>
         </a>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">MOVIE</h6>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataInsert">영화 데이터 추가</a>
+            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_moviedataInsert">영화 데이터 추가</a>
           </div>
         </div>
       </li>
@@ -84,14 +84,14 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>영화관 관리</span>
         </a>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">CINEMA MANAGEMENT</h6>
-            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_cinemaList">영화관 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaList">영화관 관리</a>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaInsert">영화관 추가</a>
           </div>
         </div>
@@ -241,42 +241,16 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">영화관</h1>
-          <p class="mb-4">영화관의 상세정보를 보여줍니다.</p>
+          <h1 class="h3 mb-2 text-gray-800">moviedata insert</h1>
+         
+       <!-- ******************* 데이터 넣는 곳 *************************** -->
+         
+         
+         
+  
 
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">영화관 상세정보</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>번호</th>
-                      <th>지역 </th>
-                      <th>이름</th>
-                      <th>주소</th>
-                      <th>전화번호</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <c:forEach items="${cinemalist}" var="clist"> 
-                    <tr>
-                      <td>${clist.cinema_num}</td>
-                      <td>${clist.cinema_loc}</td>
-                      <td>${clist.cinema_name}</td>
-                      <td>${clist.cinema_add}</td>
-                      <td>${clist.cinema_tel}</td>
-                    </tr>
-                  </c:forEach>
 
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+		<!-- ********************** 데이터 끝  *************************** -->
 
         </div>
         <!-- /.container-fluid -->

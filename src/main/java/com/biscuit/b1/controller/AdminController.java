@@ -90,15 +90,6 @@ public class AdminController {
 		//timeinfo_date
 		choiceVO.setTimeInfo_date(choiceVO.getTimeInfo_date().substring(2));
 		
-		/*
-		 * System.out.println(choiceVO.getTimeInfo_date());
-		 * System.out.println(choiceVO.getTheater_num());
-		 * System.out.println(choiceVO.getMovieInfo_num());
-		 * 
-		 * System.out.println("내가 알고시푼것");
-		 * System.out.println(choiceVO.getTheater_name());
-		 */
-		
 		int result = 0;
 		
 		int seq_result = 0;
@@ -158,35 +149,6 @@ public class AdminController {
 	
 
 	//관리자 부트스트랩
-	@GetMapping("admin_cinemaList")
-	public Model admin_cinemaList(Model model) {
-		//시네마 리스트 받기
-		List<CinemaVO> cinemalist =  adminService.cinemaList();
-		
-		//수정하면 값 폼으로 받아서 수정하기
-		
-		model.addAttribute("cinemalist", cinemalist);
-	
-		return model;
-	}
-	
-	@GetMapping("admin_movieTimeList")
-	public Model admin_movieTimeList(Model model) {
-		//무비리스트 받기
-		List<ChoiceVO> movieTimeList = adminService.movieTimeList();
-		
-		for(ChoiceVO a : movieTimeList) {
-			a.setTimeInfo_date(a.getTimeInfo_date().substring(0,10));
-			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
-			a.setTimeInfo_end(a.getTimeInfo_end().substring(11, 16));
-			
-		}
-		
-		model.addAttribute("movieTimeList", movieTimeList);
-	
-		return model;
-	}
-	
 	@RequestMapping("adminmain")
 	public Model adminmain(Model model) {
 		model.addAttribute("mmtotal", adminService.monthMovieTotal());
@@ -201,21 +163,61 @@ public class AdminController {
 	
 	@RequestMapping("admin_cinemaInsert")
 	public void admin_cinemaInsert() {
-		
 	}
 	
+	@GetMapping("admin_cinemaList")
+	public Model admin_cinemaList(Model model) {
+		//시네마 리스트 받기
+		List<CinemaVO> cinemalist =  adminService.cinemaList();
+		//수정하면 값 폼으로 받아서 수정하기
+		model.addAttribute("cinemalist", cinemalist);
+		return model;
+	}
+	
+	@GetMapping("admin_movieTimeList")
+	public Model admin_movieTimeList(Model model) {
+		//무비리스트 받기
+		List<ChoiceVO> movieTimeList = adminService.movieTimeList();
+		
+		for(ChoiceVO a : movieTimeList) {
+			a.setTimeInfo_date(a.getTimeInfo_date().substring(0,10));
+			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
+			a.setTimeInfo_end(a.getTimeInfo_end().substring(11, 16));
+		}
+		model.addAttribute("movieTimeList", movieTimeList);
+		return model;
+	}
+
 	@RequestMapping("admin_movieTimeInsert")
 	public Model admin_movieTimeInsert(Model model) {
-		
 		List<MovieInfoVO> movieList = adminService.movieList();
-		
 		for(MovieInfoVO a : movieList) {
 			System.out.println(a.getMovieInfo_title());
 		}
-		
-		
 		model.addAttribute("movieList", movieList);
-		
 		return model;
+	}
+	
+	// 관리자 : 영화관리
+	@RequestMapping("admin_moviedataList")
+	public void admin_moviedataList() {	
+	}
+	
+	@RequestMapping("admin_moviedataInsert")
+	public void admin_moviedataInsert() {	
+	}
+	
+	//관리자 : 회원관리
+	@RequestMapping("admin_memberList")
+	public void admin_memberList() {	
+	}
+	
+	//관리자  : 스토어관리
+	@RequestMapping("admin_storeList")
+	public void admin_storeList() {	
+	}
+	
+	@RequestMapping("admin_storeInsert")
+	public void admin_storeInsert() {	
 	}
 }

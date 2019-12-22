@@ -49,7 +49,7 @@
 
 <body id="page-top">
 
-<!-- Page Wrapper -->
+ <!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
@@ -89,8 +89,8 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">MOVIE</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaList">영화 데이터 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaInsert">영화 데이터 추가</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataInsert">영화 데이터 추가</a>
           </div>
         </div>
       </li>
@@ -131,16 +131,16 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-cog"></i>
           <span>상영시간표 관리</span>
         </a>
         
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">SCHEDULE MANAGEMENT</h6>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeList">상영시간표 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeInsert">상영시간표 추가</a>
+            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_movieTimeInsert">상영시간표 추가</a>
           </div>
         </div>
       </li>
@@ -164,8 +164,7 @@
         <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">MEMBER MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeList">회원정보 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeInsert">상영시간표 추가</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_memberList">회원정보 관리</a>
           </div>
         </div>
       </li>
@@ -190,8 +189,8 @@
         <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">STORE MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeList">스토어 메뉴 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeInsert">스토어 메뉴 추가</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeList">스토어 메뉴 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeInsert">스토어 메뉴 추가</a>
           </div>
         </div>
       </li>
@@ -260,6 +259,7 @@
 
         </nav>
         <!-- End of Topbar -->
+
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
