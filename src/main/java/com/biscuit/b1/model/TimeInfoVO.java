@@ -17,11 +17,16 @@ public class TimeInfoVO {
 	private String month;
 	private String day;
 	
+	private String week;
+	
 	
 
-	
-
-	
+	public String getWeek() {
+		return week;
+	}
+	public void setWeek(String week) {
+		this.week = week;
+	}
 	public String getYear() {
 		return year;
 	}

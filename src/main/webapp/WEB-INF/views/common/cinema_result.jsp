@@ -15,7 +15,7 @@
 </c:if>
 
 
-<td class="mtd mtd1">
+<!-- <td class="mtd mtd1"> -->
 
 
 <%-- <c:forEach items="${selectResult}" var="select" varStatus="status2"> 
@@ -27,7 +27,7 @@
 
 </c:forEach> --%>
 
-</td>
+<!-- </td> -->
 
 
 </tr>

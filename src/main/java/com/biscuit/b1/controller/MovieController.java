@@ -130,30 +130,64 @@ public class MovieController {
 		List<TimeInfoVO> movieDateSelect = movieSelectService.movieDateSelect(choiceVO);
 
 		for (TimeInfoVO a : movieDateSelect) {
-			/* a.setTimeInfo_date(a.getTimeInfo_date().substring(2,10)); */
-			System.out.println("내가원하는 정보");
-			/* System.out.println(a.getTimeInfo_date()); */
+			System.out.println("durl");
+			System.out.println(a.getTimeInfo_date());
+			
+			//요일 구하기
+			 SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd") ;
+			 Date nDate = dateFormat.parse(a.getTimeInfo_date()) ;
+		    
+			 Calendar cal = Calendar.getInstance() ;
+			 cal.setTime(nDate);
+			     
+			 int dayNum = cal.get(Calendar.DAY_OF_WEEK) ;
+			 System.out.println(dayNum);
+			     
+			 String week = "";    
+			 
+			    switch(dayNum){
+			        case 1:
+			            week = "일";
+			            break;
+			        case 2:
+			        	week = "월";
+			            break;
+			        case 3:
+			        	week = "화";
+			            break;
+			        case 4:
+			        	week = "수";
+			            break;
+			        case 5:
+			        	week = "목";
+			            break;
+			        case 6:
+			        	week = "금";
+			            break;
+			        case 7:
+			        	week = "토";
+			            break;
+  
+			    }
+	
+			a.setWeek(week);
 
 			a.setYear("20" + a.getTimeInfo_date().substring(0, 2));
 			a.setMonth(a.getTimeInfo_date().substring(3, 5));
 			a.setDay(a.getTimeInfo_date().substring(6));
-
-			System.out.println(a.getYear());
-			System.out.println(a.getMonth());
-			System.out.println(a.getDay());
 		}
-
-		// theater num
-		/* choiceVO = movieSelectService.theaterSelect(choiceVO); */
-		
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("common/date_result");
 		mv.addObject("result", movieDateSelect);
-		/* mv.addObject("choiceVO", choiceVO); */
 
 		return mv;
 	}
+	
+	
+	
+	
+	
 
 	@GetMapping("timeSelect")
 	public ModelAndView timeSelect(ChoiceVO choiceVO) throws Exception {

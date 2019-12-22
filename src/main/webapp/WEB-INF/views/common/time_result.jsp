@@ -39,7 +39,7 @@
 
 <table class="ttable" style="float: left;"> 
 
-<tr class="tstr" id="${time.theater_num}"><td class="timeSelect" id="${time.theater_name}"  title="${time.timeInfo_end}" style="width: 56px; text-align: center; border: 1px solid gray; font-weight: bolder;">${time.timeInfo_start}</td></tr>
+<tr class="tstr" id="${time.theater_num}"><td class="timeSelect" id="${time.theater_name}"  title="${time.timeInfo_end}" >${time.timeInfo_start}</td></tr>
 
 
 <!-- 여기에 좌석 수를 넣어야 한다. -->

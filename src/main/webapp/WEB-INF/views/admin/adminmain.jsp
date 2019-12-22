@@ -450,9 +450,15 @@
                   </c:if>
                   </c:forEach> 
                   
+                   <c:set var="flag2" value="true"/>
                   <c:forEach items="${cinematotal}" var="clist" varStatus="status2"> 
+                   <c:if test="${flag2 eq 'true'}">
                   <input type="hidden" id="${status2.index}cname" value="${clist.cinema_name}">
                   <input type="hidden" id="${status2.index}cprice" value="${clist.totalprice}">
+                  <c:if test="${status2.index == 9}">
+					<c:set var="flag2" value="false"/>
+                   </c:if> 
+                  </c:if>
                   </c:forEach>
   
   

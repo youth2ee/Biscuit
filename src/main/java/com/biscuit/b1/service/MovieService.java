@@ -215,5 +215,6 @@ public class MovieService {
 	public List<MovieGradeVO> myGrade(String id){
 		return movieDAO.myGrade(id);
 	}
+	
 
 }
