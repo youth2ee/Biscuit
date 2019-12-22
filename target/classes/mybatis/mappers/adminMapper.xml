@@ -270,11 +270,11 @@
 	</select>
 	
 	<select id="movieTimeList" resultType="ChoiceVO">
-    select D.cinema_name, C.theater_num, C.movieinfo_title movieinfo_name, C.timeinfo_date, C.timeinfo_start, C.timeinfo_end
+    select C.timeinfo_num, D.cinema_name, C.theater_num, C.movieinfo_title movieinfo_name, C.timeinfo_date, C.timeinfo_start, C.timeinfo_end
     from (select * from timeinfo A left outer join movieinfo B on A.movieinfo_num = B.movieinfo_num) C 
     left outer join cinema D
     on C.cinema_num = D.cinema_num
-    order by C.timeinfo_date desc, C.timeinfo_start asc
+    order by C.timeinfo_date desc, D.cinema_name asc, C.timeinfo_start asc, C.theater_num asc
 	</select>
 	
 	
@@ -336,6 +336,32 @@
 	<delete id="cinemalistDelete" parameterType="CinemaVO">
 	delete cinema
     where cinema_num = #{cinema_num}
+	</delete>
+	
+	<delete id="theaterDelete"  parameterType="CinemaVO">
+	delete theater
+    where cinema_num = #{cinema_num}
+	</delete>
+	
+	<!--  -->
+	<select id="movietimeSelect" parameterType="ChoiceVO" resultType="ChoiceVO">
+	select C.timeinfo_num, D.cinema_name, C.theater_num, C.movieinfo_title movieinfo_name, C.timeinfo_date, C.timeinfo_start, C.timeinfo_end
+    from (select * from timeinfo A left outer join movieinfo B on A.movieinfo_num = B.movieinfo_num) C 
+    left outer join cinema D
+    on C.cinema_num = D.cinema_num
+    where c.timeinfo_num = #{timeInfo_num}
+    order by C.timeinfo_date desc, D.cinema_name asc, C.timeinfo_start asc, C.theater_num asc
+	</select>
+	
+	<update id="movietimeUpdate" parameterType="ChoiceVO">
+	update timeinfo set 
+    movieinfo_num = (select movieinfo_num from movieinfo where movieinfo_title = #{movieInfo_name})
+    where timeinfo_num = #{timeInfo_num}
+	</update>
+	
+	<delete id="movietimeDelete" parameterType="ChoiceVO">
+	delete timeinfo
+    where timeinfo_num = #{timeInfo_num}
 	</delete>
 
 	

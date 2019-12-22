@@ -254,34 +254,46 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-              <form action="./admin_cinemaUpdate">
+              <form action="./admin_movieTimeUpdate">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
                     <tr>
-  					<th>번호</th> 
-  					<td><input type="text" class="is" value="${cinemaVO.cinema_num}" readonly="readonly" name="cinema_num"></td>
+  					<th>번호</th> <td><input type="text" class="is" value="${choiceVO.timeInfo_num}" readonly="readonly" name="timeInfo_num">
+  					</td>
+                    </tr>
+
+
+                    <tr>
+  					<th>영화관 이름</th> <td><input type="text" class="is" value="${choiceVO.cinema_name}" readonly="readonly" name="cinema_loc"></td>
                     </tr>
                     
                     <tr>
-  					<th>지역</th> <td><input type="text" class="is" value="${cinemaVO.cinema_loc}" readonly="readonly" name="cinema_loc"></td>
-                    </tr>
-                    
-                      <tr>
-  					<th>이름</th> <td><input type="text" class="is" value="${cinemaVO.cinema_name}" name="cinema_name"></td>
+  					<th>상영관 번호</th> <td><input type="text" class="is" value="${choiceVO.theater_num}"  readonly="readonly" name="theater_num"></td>
                     </tr>
                     
                     <tr>
-  					<th>주소</th> <td><input type="text" class="is" value="${cinemaVO.cinema_add}" name="cinema_add"></td>
+  					<th>영화 제목</th> <td><input type="text" class="is myInput" value="${choiceVO.movieInfo_name}" name="movieInfo_name"></td>
                     </tr>
                                   
                      <tr>
-  					<th>전화번호</th> <td><input type="text" class="is" value="${cinemaVO.cinema_tel}" name="cinema_tel"></td>
-                    </tr>                                 
+  					<th>상영날짜</th> <td><input type="text" class="is" value="${choiceVO.timeInfo_date}" readonly="readonly" name="timeInfo_date"></td>
+                    </tr>              
+                    
+                    <tr>
+  					<th>시작시간</th> <td><input type="text" class="is" value="${choiceVO.timeInfo_start}"  readonly="readonly" name="timeInfo_start"></td>
+                    </tr>     
+                    
+                    <tr>
+  					<th>종료시간</th> <td><input type="text" class="is" value="${choiceVO.timeInfo_end}"  readonly="readonly" name="timeInfo_end"></td>
+                    </tr>               
 
                 </table>
-                <button class="btn btn-warning btn-icon-split">영화관정보 수정</button>
-                <a href="./admin_cinemaDelete?cinema_num=${cinemaVO.cinema_num}"><input type="button" class="btn btn-danger btn-icon-split" value="영화관정보 삭제"></a> 
-                <!-- <button class="btn btn-danger btn-icon-split">영화관정보 삭제</button> -->
+                <button class="btn btn-warning btn-icon-split">상영시간정보 수정</button>
+                <a href="./admin_movieTimeDelete?timeInfo_num=${choiceVO.timeInfo_num}"><input type="button" class="btn btn-danger btn-icon-split" value="상영시간정보 삭제"></a> 
                 </form>
+                
+                
+                
               </div>
             </div>
           </div>
@@ -348,6 +360,7 @@
 
   <!-- Page level custom scripts -->
   <script src="${pageContext.request.contextPath}/resources/vendor/js/demo/datatables-demo.js"></script>
+
 
 </body>
 

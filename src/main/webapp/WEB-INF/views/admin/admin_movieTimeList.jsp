@@ -23,6 +23,7 @@
   <!-- Custom styles for this page -->
   <link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+ <link href="${pageContext.request.contextPath}/resources/css/admin/admin_cinemaSelect.css" rel="stylesheet">
 </head>
 <body id="page-top">
   <!-- Page Wrapper -->
@@ -253,6 +254,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                    <th>번호</th>
                       <th>영화관 이름</th>
                       <th>상영관 번호</th>
                       <th>영화 제목</th>
@@ -264,12 +266,13 @@
                   <tbody>
                   <c:forEach items="${movieTimeList}" var="tlist"> 
                     <tr>
-                      <td>${tlist.cinema_name}</td>
-                      <td>${tlist.theater_num}</td>
-                      <td>${tlist.movieInfo_name}</td>
-                      <td>${tlist.timeInfo_date}</td>
-                      <td>${tlist.timeInfo_start}</td>
-                      <td>${tlist.timeInfo_end}</td>
+                    <td><a href="${pageContext.request.contextPath}/admin/admin_movieTimeSelect?timeInfo_num=${tlist.timeInfo_num}">${tlist.timeInfo_num}</a></td>
+                      <td><a href="${pageContext.request.contextPath}/admin/admin_movieTimeSelect?timeInfo_num=${tlist.timeInfo_num}">${tlist.cinema_name}</a></td>
+                      <td><a href="${pageContext.request.contextPath}/admin/admin_movieTimeSelect?timeInfo_num=${tlist.timeInfo_num}">${tlist.theater_num}</a></td>
+                      <td><a href="${pageContext.request.contextPath}/admin/admin_movieTimeSelect?timeInfo_num=${tlist.timeInfo_num}">${tlist.movieInfo_name}</a></td>
+                      <td><a href="${pageContext.request.contextPath}/admin/admin_movieTimeSelect?timeInfo_num=${tlist.timeInfo_num}">${tlist.timeInfo_date}</a></td>
+                      <td><a href="${pageContext.request.contextPath}/admin/admin_movieTimeSelect?timeInfo_num=${tlist.timeInfo_num}">${tlist.timeInfo_start}</a></td>
+                      <td><a href="${pageContext.request.contextPath}/admin/admin_movieTimeSelect?timeInfo_num=${tlist.timeInfo_num}">${tlist.timeInfo_end}</a></td>
                     </tr>
                   </c:forEach>
 

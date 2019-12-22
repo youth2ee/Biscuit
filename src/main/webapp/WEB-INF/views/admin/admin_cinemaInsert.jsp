@@ -115,15 +115,15 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>영화관 관리</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">CINEMA MANAGEMENT</h6>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaList">영화관 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_cinemaInsert">영화관 추가</a>
+            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_cinemaInsert">영화관 추가</a>
           </div>
         </div>
       </li>
@@ -144,11 +144,11 @@
           <span>상영시간표 관리</span>
         </a>
         
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse  collapsed" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">SCHEDULE MANAGEMENT</h6>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeList">상영시간표 관리</a>
-            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_movieTimeInsert">상영시간표 추가</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_movieTimeInsert">상영시간표 추가</a>
           </div>
         </div>
       </li>
@@ -504,7 +504,7 @@
      $('#t1').val(loc);
      $('#t2').val("");
      $('#input1').val("");
-     $('#t3').val("");
+     $('#t3').val("15441122");
      $('#input2').val("15441122");
      $('#t4').val("");
      $('#sample5_address').val("주소를 검색하세요");
@@ -575,7 +575,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 		cname = $(this).val().trim();
 		
 		$('#t2').val(cname); 		
-		 $('#t3').val("");
+		 $('#t3').val("15441122");
 	       $('#input2').val("15441122");
 	       $('#t4').val("");
 	       $('#sample5_address').val("주소를 검색하세요");

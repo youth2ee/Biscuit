@@ -109,4 +109,20 @@ public class AdminService {
 		return adminDAO.cinemalistDelete(cinemaVO);
 	}
 
+	public int theaterDelete(CinemaVO cinemaVO) {
+		return adminDAO.theaterDelete(cinemaVO);
+	}
+	
+	//
+	public ChoiceVO movietimeSelect(ChoiceVO choiceVO) {
+		return adminDAO.movietimeSelect(choiceVO);
+	}
+	
+	public int movietimeUpdate(ChoiceVO choiceVO) {
+		return adminDAO.movietimeUpdate(choiceVO);
+	}
+	
+	public int movietimeDelete(ChoiceVO choiceVO) {
+		return adminDAO.movietimeDelete(choiceVO);
+	}
 }

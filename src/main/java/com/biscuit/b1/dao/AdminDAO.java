@@ -107,5 +107,23 @@ public class AdminDAO {
 	public int cinemalistDelete(CinemaVO cinemaVO) {
 		return sqlSession.delete(NAMESPACE+"cinemalistDelete", cinemaVO);
 	}
+	
+	public int theaterDelete(CinemaVO cinemaVO) {
+		return sqlSession.delete(NAMESPACE+"theaterDelete", cinemaVO);
+	}
 
+	//timelist
+	public ChoiceVO movietimeSelect(ChoiceVO choiceVO) {
+		return sqlSession.selectOne(NAMESPACE+"movietimeSelect", choiceVO);
+	}
+	
+	public int movietimeUpdate(ChoiceVO choiceVO) {
+		return sqlSession.update(NAMESPACE+"movietimeUpdate", choiceVO);
+	}
+	
+	public int movietimeDelete(ChoiceVO choiceVO) {
+		return sqlSession.delete(NAMESPACE+"movietimeDelete", choiceVO);
+	}
+	
+	
 }
