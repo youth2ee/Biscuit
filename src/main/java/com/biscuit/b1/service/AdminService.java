@@ -13,6 +13,7 @@ import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TheaterVO;
 import com.biscuit.b1.model.TimeInfoVO;
+import com.sun.org.apache.regexp.internal.recompile;
 
 @Service
 public class AdminService {
@@ -95,5 +96,17 @@ public class AdminService {
 		return adminDAO.movieTop();
 	}
 
+	//listSelect
+	public CinemaVO cinemalistSelect(CinemaVO cinemaVO) {
+		return adminDAO.cinemalistSelect(cinemaVO);
+	}
+	
+	public int cinemalistUpdate (CinemaVO cinemaVO) {
+		return adminDAO.cinemalistUpdate(cinemaVO);
+	}
+	
+	public int cinemalistDelete(CinemaVO cinemaVO) {
+		return adminDAO.cinemalistDelete(cinemaVO);
+	}
 
 }

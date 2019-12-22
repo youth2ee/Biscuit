@@ -26,8 +26,8 @@
 
 <div id="bricks" style="background-image: url('../resources/images/cinema/bricks.jpg');" >
 <!-- cinema 리스트 -->
-<div id="cinemaName"  style="background-image: url('../resources/images/cinema/cmain.jpg')">
-<table id="cinematable">
+<div id="cinemaName"  style="background-image: url('../resources/images/cinema/cmain.jpg'); background-size: contain;" >
+<%-- <table id="cinematable">
 
 <c:forEach items="${locList}" var="loc"> 
 <tr>
@@ -40,8 +40,46 @@
 </tr>
 </c:forEach>
 
-</table>
+</table> --%>
+
+<div id="cinematable">
+
+<div class="cmtitle">
+<c:forEach items="${locList}" var="loc"> 
+<c:if test="${loc.cinema_loc eq '서울' || loc.cinema_loc eq '경기'}">
+<div class="loctd" style="height: 64px; line-height: 64px;">${loc.cinema_loc}</div>
+</c:if>
+
+<c:if test="${loc.cinema_loc eq '인천' || loc.cinema_loc eq '강원' || loc.cinema_loc eq '대전/충청' || loc.cinema_loc eq '대구' || loc.cinema_loc eq '부산/울산' || loc.cinema_loc eq '경상' || loc.cinema_loc eq '광주/전라/제주'}">
+<div class="loctd" style="height: 32px; line-height: 32px;">${loc.cinema_loc}</div>
+</c:if>
+
+
+</c:forEach>
 </div>
+
+<div class="cmmain">
+<c:forEach items="${locList}" var="loc"> 
+<div class="loccmain">
+<c:forEach items="${cinemaList}" var="cinema">
+<c:if test="${cinema.cinema_loc eq loc.cinema_loc}">
+<div class="cinematd" style="float: left;">${cinema.cinema_name}</div>
+</c:if>
+</c:forEach>
+<div style="clear: both;"></div>
+ </div>
+</c:forEach>
+ </div>
+
+
+</div>
+
+
+
+
+
+</div>
+
 </div>
 
 
@@ -55,7 +93,7 @@
 <!-- 그 영화관 정보 -->
 <div id="minfo" style="background-image: url('http://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg')">
 <div id="minfo_txt"> 
-<h1>강남</h1>
+<h1 class="ct">강남</h1>
 <h2>1544-1122</h2>
 <h3>서울특별시 강남구 강남대로 438</h3>
 </div> 
@@ -64,17 +102,16 @@
 
 </div>
 
-
 <div id="mtime">
-<div>여기에 타임테이블을 넣읍시다요</div>
-
-
 </div>
 
-
-
-
-
+<form action="" method="post">
+<input type="hidden" name="">
+<input type="hidden" name="">
+<input type="hidden" name="">
+<input type="hidden" name="">
+<input type="hidden" name="">
+</form>
 
 </section>
 
@@ -88,13 +125,47 @@
 /* 어디 영화관 선택할건지 값 보내주기 */
  
 /* 1. 지역선택해서 보내주기 */
-var cname = ""; //상영관이름
+var cname = "강남"; //상영관이름
 var cadd = ""; //상영관주소
 var ctel = ""; //상영관번호
 var cimage = ""; //상영관이미지 주소
-
-
 var cinematable = $("#cinematable");
+
+var time = "";
+var date = "";
+var mname = "";
+var tname = "";
+
+
+$.ajax({
+	data : {
+		cinema_name:cname
+	},
+	type : "GET",
+	url : "./cinemaTime",
+	success : function(data) {
+	data = data.trim();
+	$('#mtime').html(data);
+
+	$('.showTime').click(function() {
+		
+		time = $(this).text();
+		date = $(this).closest('.wrap2').prev('.movieInfo').find('.mitdate').text();
+		mname = $(this).closest('.wrap2').prev('.movieInfo').find('.mittitle').text();
+		tname = $(this).closest('.wrap2').prev('.movieInfo').find('.mitname').text();
+		
+		cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
+		
+		alert(time);
+		alert(date);
+		alert(mname);
+		alert(cname);
+		alert(tname);
+		
+	});
+	
+	}
+}); 
 
 	$(document).on("click", ".cinematd", function() {
  		/* $(this).addClass('act').siblings().removeClass('act'); */
@@ -120,7 +191,7 @@ var cinematable = $("#cinematable");
 				cimage = data.cinema_image;
 				
 				$('#minfo_txt').html("");
-				$('#minfo_txt').html('<h1>'+cname+'</h1>'+'<h2>'+ctel+'</h2>'+'<h3>'+cadd+'</h3>');
+				$('#minfo_txt').html('<h1 class="ct">'+cname+'</h1>'+'<h2>'+ctel+'</h2>'+'<h3>'+cadd+'</h3>');
 				$('#minfo').css('background-image', 'url('+cimage+')' );
 				
 				//timetable 띄우기
@@ -181,14 +252,26 @@ var cinematable = $("#cinematable");
 			data = data.trim();
 			$('#mtime').html(data);
 
+			$('.showTime').click(function() {
+				time = $(this).text();
+				date = $(this).closest('.wrap2').prev('.movieInfo').find('.mitdate').text();
+				mname = $(this).closest('.wrap2').prev('.movieInfo').find('.mittitle').text();
+				tname = $(this).closest('.wrap2').prev('.movieInfo').find('.mitname').text();
+				
+				cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
+				
+				alert(time);
+				alert(date);
+				alert(mname);
+				alert(cname);
+				alert(tname);
+
+			});
+			
 			}
 		}); 
 		
- 		
- 		
- 		
- 		
- 		
+
  		});
 	
 	/* 초기 지도 띄우기 */
@@ -228,7 +311,7 @@ var cinematable = $("#cinematable");
 	    } 
 	}); 
 	
-	
+
 
 
 

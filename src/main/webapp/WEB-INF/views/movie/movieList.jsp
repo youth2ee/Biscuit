@@ -101,8 +101,6 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <h3 class="date">개봉일 : ${mlist.movieInfo_date}</h3> 
 
 <p class="txt">
-<!-- Join us for our Live Infinity Session in beautiful New York City.  -->
-예매율을 넣자
 </p>
 
 
@@ -130,7 +128,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <!-- modal 띄울가 말까 -->
 <h3 class="details myBtn" style="float: left;" title="${mlist.movieInfo_num}">상세보기</h3>
 <h3 class="under" style="float: left;">  /  </h3>
-<form action="./movieSelect" method="get" class=".frm" >
+<form action="./movieSelect" method="get" class="frm" >
 <input type="hidden" name="movieInfo_name" value="${mlist.movieInfo_title}">
 <button class="myBtn2"><h3 class="details" style="float: left;" title="${mlist.movieInfo_title}">예매하기</h3></button>
 

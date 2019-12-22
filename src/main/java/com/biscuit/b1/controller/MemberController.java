@@ -286,7 +286,7 @@ public class MemberController {
 	Movie_TicketingVO movie_TicketingVO = memberService.newest(memberVO);
 	ModelAndView mv = new ModelAndView();
 	model.addAttribute("newestBook",movie_TicketingVO);
-	System.out.println("출력1:"+movie_TicketingVO.getId());
+	//System.out.println("출력1:"+movie_TicketingVO.getId());
 	System.out.println("출력2:"+movie_TicketingVO.getSeat_name());
 	model.addAttribute("member", memberVO);
 	

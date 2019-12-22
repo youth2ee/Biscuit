@@ -12,14 +12,30 @@
 }
 
 .loctd{
-	width: 50px;
+	width: 100%;
 	height: 30px;
 /* 	background-color:orange; */
 	color:white;	
 	text-align: center;
 	font-weight: bolder;
-	border-right: 3px solid #656364;
+	/* border-bottom: 1px solid #656364; */
 	padding-left: 3px;
+}
+
+.cmtitle{
+	width:113px;
+	float: left;
+
+}
+
+.cmmain{
+	width:88%;
+	float: left;
+
+}
+
+.loccmain{
+	/* border-bottom: 1px solid #656364; */
 }
 
 #cinematable{
@@ -33,7 +49,8 @@
 }
 
 .cinematd{
-	width: 30px;
+	line-height: 30px;
+	width: 81px;
 	height: 30px;
 /* 	background-color:green; */
 	text-align: center;
@@ -76,12 +93,12 @@
     from { background-position: 0 0; }
     to { background-position: -400px 0; }
 }
-
-#cinemaName{
-	width: 70%;
-	margin: 0 auto;
-	padding-top: 11px;
-	padding-bottom: 13px;
+#cinemaName {
+    width: 947px;
+    margin: 0 auto;
+    padding-top: 21px;
+    /* padding-bottom: 13px; */
+    height: 365px;
 }
 
 #minfo_txt{
@@ -106,12 +123,27 @@
     margin-bottom: 20px;
     padding-left: 50px;
 }
-#showTime{
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+
+.wrap2{
+	border-bottom: dotted 1.5px;
+    padding: 20px 0;
+    padding-left: 16px;
+    margin-bottom: 20px;
 }
+.showTime {
+	font-weight:bolder;
+    font-size: 14px;
+    margin-right: 5px;
+    border: 0.5px solid black;
+    PADDING: 5PX 7px;
+    cursor: pointer;
+}
+
+.showTime:hover {
+color: red;
+font-weight:bolder;
+}
+
 #timeTable{
 	margin-bottom: 20px;
     border-bottom: dotted 1.5px;
@@ -121,4 +153,15 @@
 #movieInfo{
 	padding-left: 50px;
 	font-weight: bold;
+}
+
+.mitname{
+/* 	float: left; */
+}
+
+.mittitle{
+	float: left;
+		font-size: 23px;
+	font-weight: bolder;
+	margin-left: 18px;
 }

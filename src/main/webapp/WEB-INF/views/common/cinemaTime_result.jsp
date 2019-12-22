@@ -10,18 +10,19 @@
 <c:if test="${status.count % 5 == 1}">
 
 
-<div id="movieInfo">
-<div style="float: left; background-color: yellow;">${time.theater_name}관</div>
-<div style="float: left; background-color: gray; ">${time.movieInfo_title} &nbsp</div>
-<div style="float: left; background-color: red;">${time.timeInfo_date} &nbsp</div>
+<div class="movieInfo">
+<div class="mittitle">${time.movieInfo_title} &nbsp</div>
+<div class="mitname">${time.theater_name}관</div>
+<div class="mitdate">${time.timeInfo_date} &nbsp</div>
 </div>
-<div id="wrap">
+<div class="wrap2">
 </c:if>
 
-<span id="showTime" style="background-color: blue;">${time.timeInfo_start}</span>
+<span class="showTime">${time.timeInfo_start}</span>
 
 <c:if test="${status.count % 5 == 0}">
 </div>
 </c:if>
+
 </c:forEach>
 </div>

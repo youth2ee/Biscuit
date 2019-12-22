@@ -95,6 +95,17 @@ public class AdminDAO {
 		return sqlSession.selectList(NAMESPACE+"movieTop");
 	}
 	
+	//listSelct
+	public CinemaVO cinemalistSelect (CinemaVO cinemaVO) {
+		return sqlSession.selectOne(NAMESPACE+"cinemalistSelect", cinemaVO);
+	}
 	
+	public int cinemalistUpdate(CinemaVO cinemaVO) {
+		return sqlSession.update(NAMESPACE+"cinemalistUpdate", cinemaVO);
+	}
+	
+	public int cinemalistDelete(CinemaVO cinemaVO) {
+		return sqlSession.delete(NAMESPACE+"cinemalistDelete", cinemaVO);
+	}
 
 }

@@ -11,8 +11,8 @@
 <body>
 
 <script type="text/javascript">
- 	alert("${msg}");
- 	location.href="${path}";
+ 	alert('${msg}');
+ 	location.href='${path}';
 </script>
 
 </body>

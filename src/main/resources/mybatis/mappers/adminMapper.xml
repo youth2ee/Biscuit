@@ -317,5 +317,26 @@
 	group by movieinfo_name
 	order by totalseat desc
 	</select>
+	
+	
+	<!--  -->
+	<select id="cinemalistSelect" parameterType="CinemaVO" resultType="CinemaVO">
+	select * from cinema 
+    where cinema_num = #{cinema_num}
+	</select>
 
+	<update id="cinemalistUpdate" parameterType="CinemaVO">
+	update cinema set 
+    cinema_name = #{cinema_name},
+    cinema_add = #{cinema_add},
+    cinema_tel = #{cinema_tel}
+    where cinema_num = #{cinema_num}
+	</update>
+	
+	<delete id="cinemalistDelete" parameterType="CinemaVO">
+	delete cinema
+    where cinema_num = #{cinema_num}
+	</delete>
+
+	
   </mapper>

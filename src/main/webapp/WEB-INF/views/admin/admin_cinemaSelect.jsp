@@ -23,7 +23,8 @@
   <!-- Custom styles for this page -->
   <link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
- <link href="${pageContext.request.contextPath}/resources/css/admin/admin_cinemaSelect.css" rel="stylesheet">
+
+<link href="${pageContext.request.contextPath}/resources/css/admin/admin_cinemaSelect.css" rel="stylesheet">
 
 </head>
 <body id="page-top">
@@ -253,29 +254,33 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
+              <form action="./admin_cinemaUpdate">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
                     <tr>
-                      <th>번호</th>
-                      <th>지역 </th>
-                      <th>이름</th>
-                      <th>주소</th>
-                      <th>전화번호</th>
+  					<th>번호</th> 
+  					<td><input type="text" class="is" value="${cinemaVO.cinema_num}" readonly="readonly" name="cinema_num"></td>
                     </tr>
-                  </thead>
-                  <tbody>
-                  <c:forEach items="${cinemalist}" var="clist"> 
+                    
                     <tr>
-                      <td><a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_num}</a></td>
-                      <td><a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_loc}</a></td>
-                      <td><a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_name}</a></td>
-                      <td><a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_add}</a></td>
-                      <td><a href="${pageContext.request.contextPath}/admin/admin_cinemaSelect?cinema_num=${clist.cinema_num}">${clist.cinema_tel}</a></td>
+  					<th>지역</th> <td><input type="text" class="is" value="${cinemaVO.cinema_loc}" readonly="readonly" name="cinema_loc"></td>
                     </tr>
-                  </c:forEach>
+                    
+                      <tr>
+  					<th>이름</th> <td><input type="text" class="is" value="${cinemaVO.cinema_name}" name="cinema_name"></td>
+                    </tr>
+                    
+                    <tr>
+  					<th>주소</th> <td><input type="text" class="is" value="${cinemaVO.cinema_add}" name="cinema_add"></td>
+                    </tr>
+                                  
+                     <tr>
+  					<th>전화번호</th> <td><input type="text" class="is" value="${cinemaVO.cinema_tel}" name="cinema_tel"></td>
+                    </tr>                                 
 
-                  </tbody>
                 </table>
+                <button class="btn btn-warning btn-icon-split">영화관정보 수정</button>
+                <!-- <button class="btn btn-danger btn-icon-split">영화관정보 삭제</button> -->
+                </form>
               </div>
             </div>
           </div>

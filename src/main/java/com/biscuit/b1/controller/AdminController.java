@@ -220,4 +220,58 @@ public class AdminController {
 	@RequestMapping("admin_storeInsert")
 	public void admin_storeInsert() {	
 	}
+	
+	//cinemaselect
+	@RequestMapping("admin_cinemaSelect")
+	public CinemaVO admin_cinemaSelect(CinemaVO cinemaVO) {
+		cinemaVO = adminService.cinemalistSelect(cinemaVO);
+		
+		return cinemaVO;
+	}
+	
+	@RequestMapping("admin_cinemaUpdate")
+	public ModelAndView admin_cinemaUpdate(CinemaVO cinemaVO) {
+		System.out.println("들어오니");
+		System.out.println(cinemaVO.getCinema_num());
+		int result = adminService.cinemalistUpdate(cinemaVO);
+		
+		System.out.println(result);
+		
+		String msg = "수정 실패";
+		
+		if (result > 0) {
+			msg = "수정 성공";
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./admin_cinemaList");
+		mv.setViewName("common/common_result");
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping("admin_cinemaDelete")
+	public ModelAndView admin_cinemaDelete(CinemaVO cinemaVO) {
+		int result = adminService.cinemalistDelete(cinemaVO);
+		
+
+		String msg = "삭제 실패";
+		
+		if (result > 0) {
+			msg = "삭제 성공";
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./admin_cinemaList");
+		mv.setViewName("common/common_result");
+		
+		return mv;
+		
+	}
+	
+
+	
 }

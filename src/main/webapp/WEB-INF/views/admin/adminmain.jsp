@@ -337,7 +337,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">영화관별 예매율순</h6>
+                  <h6 class="m-0 font-weight-bold text-primary"> 티켓 판매량순 영화관 TOP 5</h6>
           
                 </div>
                 <!-- Card Body -->
@@ -354,7 +354,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">판매량순 TOP 5 영화</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">예매율순 영화 TOP 5</h6>
          
                 </div>
                 <!-- Card Body -->
@@ -364,15 +364,15 @@
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> 
+                      <i class="fas fa-circle" style="color: #e42313;"></i> 
                       <span id="0title">aa</span> 
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i>
+                      <i class="fas fa-circle" style="color: #ff9800;"></i>
                       <span id="1title"> Social</span>
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> 
+                      <i class="fas fa-circle" style="color: #8bc34a;" ></i> 
                       <span id="2title"> Referral</span>
                     </span>
                   </div>
@@ -399,13 +399,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
+
       <!-- End of Footer -->
 
     </div>
@@ -500,9 +494,9 @@ var myPieChart = new Chart(ctx, {
     labels: [$('#0name').val(), $('#1name').val(), $('#2name').val()],
     datasets: [{
       data: [$('#0seat').val(), $('#1seat').val(), $('#2seat').val()],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
-      hoverBorderColor: "rgba(234, 236, 244, 1)",
+      backgroundColor: ['#e42313', '#ff9800', '#8bc34a'],
+      hoverBackgroundColor: ['#b11609', '#e28c0e', '#63902f'],
+      hoverBorderColor: "#fff",
     }],
   },
   options: {
@@ -558,7 +552,7 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [$('#0cname').val(), $('#1cname').val(),$('#2cname').val(), $('#3cname').val()/* , $('#4cname').val(), $('#5cname').val(), $('#6cname').val(), $('#7cname').val(), $('#8cname').val(),$('#9cname').val(), $('#10cname').val(),$('#11cname').val() */],
+    labels: [$('#0cname').val(), $('#1cname').val(),$('#2cname').val(), $('#3cname').val() , $('#4cname').val(), $('#5cname').val(), $('#6cname').val()],
     datasets: [{
       label: "판매량",
       lineTension: 0.3,
@@ -572,7 +566,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [$('#0cprice').val(), $('#1cprice').val(),$('#2cprice').val(), $('#3cprice').val()/* , $('#4cprice').val(), $('#5cprice').val(), $('#6cprice').val(), $('#7cprice').val(), $('#8cprice').val(),$('#9cprice').val(), $('#10cprice').val(),$('#11cprice').val() */],
+      data: [$('#0cprice').val(), $('#1cprice').val(),$('#2cprice').val(), $('#3cprice').val() , $('#4cprice').val(), $('#5cprice').val(), $('#6cprice').val()],
     }],
   },
   options: {
