@@ -70,4 +70,7 @@ public class MemberDAO {
 	public NewestVO newest(MemberVO memberVO) {
 		return sqlSession.selectOne(NAMESPACE + "newest", memberVO);
 	}
+	public int cancelCheck(NewestVO newestVO) {
+		return sqlSession.selectOne(NAMESPACE + "cancelCheck" , newestVO);
+	}
 }

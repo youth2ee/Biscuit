@@ -298,7 +298,7 @@ public class MemberController {
 		model.addAttribute("isCancel" , cancelCheck);
 		model.addAttribute("bookCheck" , bookCheck);
 		model.addAttribute("compare" , compare);
-		System.out.println("출력1:" + newestVO.getBook_date());
+		System.out.println("출력1:" + newestVO.getBook_date()); // 여기 timeInfo_start로 바꾸기 (db설정손봐야함)
 		System.out.println("출력2:" + newestVO.getMovieInfo_title());
 		System.out.println("출력3:" + newestVO.getTheater_name());
 		System.out.println("출력4:" + newestVO.getCinema_name());
