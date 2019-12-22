@@ -1,5 +1,7 @@
 package com.biscuit.b1.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -262,26 +264,46 @@ public class MemberController {
 
 	// mypage
 	@GetMapping("/mypage/myPage")
-	public void myPage(HttpSession session, Model model) throws Exception {
+	public void myPage(HttpSession session, Model model,HttpServletRequest request) throws Exception {
+		String bookCheck = request.getParameter("bookCheck");
 		MemberVO memberVO = new MemberVO();
 		memberVO = (MemberVO) session.getAttribute("member");
 		System.out.println(memberVO.getId());
 		NewestVO newestVO = memberService.newest(memberVO);
+		newestVO.setId(memberVO.getId());
+		int cancelCheck = memberService.cancelCheck(newestVO);
 		ModelAndView mv = new ModelAndView();
-		String book_date = newestVO.getBook_date(); // 가공 하기전 날짜정보를 미리 빼놓음 (jsp에서 사용)
-		String book_date_str = newestVO.getBook_date().substring(0, 10);
-		book_date_str = book_date_str.substring(0,4) +"년 "+ book_date_str.substring(5,7) +"월 "+ book_date_str.substring(8)+"일 ";
+		String book_date = newestVO.getBook_date().substring(0, 10); 
+		String book_date_str =  book_date.substring(0,4) +"년 "+ book_date.substring(5,7) +"월 "+ book_date.substring(8)+"일 "; // 예매내역 출력용
+		book_date = book_date.substring(0,4) + book_date.substring(5,7) + book_date.substring(8); // 오늘날짜랑 예매날짜 비교용
+		Date today = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		String time = format.format(today);
+		String year = time.substring(0, 4);
+		String month = time.substring(4, 6);
+		String date = time.substring(6, 8);
+		time = year + month + date; // 오늘날짜
+		String compare = null;
+		if(Integer.parseInt(time) > Integer.parseInt(book_date))
+			compare = "1";
+		else
+			compare = "0";
+			
 		newestVO.setBook_date(book_date_str);
 		String timeInfo_start_str = newestVO.getTimeInfo_start();
 		timeInfo_start_str = timeInfo_start_str.substring(0,2) + "시 "+timeInfo_start_str.substring(3) +"분";
 		newestVO.setTimeInfo_start(timeInfo_start_str);
 		model.addAttribute("newestBook", newestVO);
 		model.addAttribute("book_date" , book_date);
+		model.addAttribute("isCancel" , cancelCheck);
+		model.addAttribute("bookCheck" , bookCheck);
+		model.addAttribute("compare" , compare);
 		System.out.println("출력1:" + newestVO.getBook_date());
 		System.out.println("출력2:" + newestVO.getMovieInfo_title());
 		System.out.println("출력3:" + newestVO.getTheater_name());
 		System.out.println("출력4:" + newestVO.getCinema_name());
 		System.out.println("출력5:" + newestVO.getTimeInfo_start());
+		System.out.println("출력6:" + cancelCheck);
 		//model.addAttribute("member", memberVO);
 
 	}

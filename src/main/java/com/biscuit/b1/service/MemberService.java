@@ -74,5 +74,9 @@ public class MemberService {
 	public NewestVO newest(MemberVO memberVO) {
 		return memberDAO.newest(memberVO);
 	}
+	
+	public int cancelCheck(NewestVO newestVO) {
+		return memberDAO.cancelCheck(newestVO);
+	}
 
 }

@@ -96,4 +96,35 @@
 	order by book_date desc
 	</select>
 	
+	<select id="cancelCheck" parameterType="NewestVO" resultType="Integer">
+	select seat_check from movie_ticketing 
+	where movieinfo_num=#{movieInfo_num} and cinema_num=#{cinema_num} and 
+	timeInfo_start = #{timeInfo_start} and theater_num=#{theater_num} and 
+	id=#{id} and rownum = 1 order by book_date
+	</select>
+	
+	<update id="cancelUpdate" parameterType="NewestVO">
+	update movie_ticketing set seat_check = 1 
+	where movie_t_num = (select seat_check from movie_ticketing 
+	where movieinfo_num=#{movieInfo_num} and cinema_num=#{cinema_num} and 
+	timeInfo_start = #{timeInfo_start} and theater_num=#{theater_num} and 
+	id=#{id} and rownum = 1);
+	</update>
+	
+	<select id ="getMovieTicketingVO" parameterType="NewestVO" resultType="Movie_TicketingVO"> <!-- 아래 셀렉트 딜리트에 쓸거 -->
+	select * from movie_ticketing 
+	where movieinfo_num=#{movieInfo_num} and cinema_num=#{cinema_num} and 
+	timeInfo_start = #{timeInfo_start} and theater_num=#{theater_num} and 
+	id=#{id} and rownum = 1 order by book_date
+	</select>
+	
+	<delete id="seatDelete" parameterType="Movie_TicketingVO"> <!-- 무비티켓팅VO를 위 매퍼로 받아와야함 이거 쓰는거에 대해선 폼태그 어떻게 할지 얘기해보고 -->
+	delete from seat 
+	where seat_name = #{seat_name} and
+	cinema_num = #{cinema_num} and
+	timeInfo_start = #{timeInfo_start} and
+	theater_num= #{theater_num} and
+	movieInfo_num = #{movieInfo_num} and 
+	timeInfo_date = #{timeInfo_date} 
+	</delete>
 </mapper>

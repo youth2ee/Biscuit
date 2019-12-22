@@ -64,6 +64,7 @@
 			<img alt="" src="${newestBook.movieInfo_poster}">
 		</div>
 		<div class="newestBookInfo">
+		<input type="hidden" name="bookCheck" id="bookCheck">
 			${newestBook.movieInfo_title}<br>
 			CGV ${newestBook.cinema_name}점 
 			${newestBook.theater_name}관<br>
@@ -71,8 +72,12 @@
 			${newestBook.timeInfo_start}<br><br>
 			<span class="canceled"></span>
 			<!-- 상영 일자가 오늘 날짜 이후일 경우 별점주러가기로, 이전일경우 예매취소로 바꾸기 (날짜비교 쉬움)-->
-			<button><span id="bookCancle">예매 취소<span></button>
-			<button><span id="goToStar">별점 주기<span></button>
+			<c:if test="${isCancel eq 0 && compare eq 0}">
+				<button><span id="bookCancle">예매 취소<span></button>
+			</c:if>
+			<c:if test="${isCancel eq 0 && compare eq 1}">
+				<button><span id="goToStar">별점 주기<span></button>
+			</c:if>
 		</div>
 	</div>
 </div>
@@ -98,9 +103,9 @@
 			폼태그로 넘길 시에는 버튼 클릭시 action 변경 되도록 구현
 		*/
 	});
-	$("#goToStar"){
+	$("#goToStar").click(function(){
 		location.href="../../movie/movieList";
-	}
+	});
 
 </script>
 </body>

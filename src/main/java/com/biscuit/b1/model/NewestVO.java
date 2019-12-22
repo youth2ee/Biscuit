@@ -10,6 +10,15 @@ public class NewestVO {
 	private int theater_num;
 	private String book_date;
 	private String theater_name;
+	public String id;
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getMovieInfo_title() {
 		return movieInfo_title;
 	}
