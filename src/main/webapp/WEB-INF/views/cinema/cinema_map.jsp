@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>지도 생성하기</title>
+    <title>영화 그 이상의 감동 CGV</title>
     
 </head>
 <body>

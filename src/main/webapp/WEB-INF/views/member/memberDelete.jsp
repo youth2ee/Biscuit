@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화 그 이상의 감동 CGV</title>
 </head>
 <body>
 	<h3>탈퇴하시려면 비밀번호를 한 번 더 입력해주십시오.</h3>

@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin 2 - Blank</title>
+  <title>CGV ADMIN</title>
 <c:import url="../layout/jquery.jsp" />
 
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">

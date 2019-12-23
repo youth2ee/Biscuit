@@ -15,7 +15,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/member/join.css"
 	rel="stylesheet">
-<title>CGV 회원가입</title>
+<title>영화 그 이상의 감동 CGV</title>
 
 <!-- Bulma CSS -->
 <link rel="stylesheet"

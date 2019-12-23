@@ -18,7 +18,7 @@
 	rel="stylesheet">
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화 그 이상의 감동 CGV</title>
 </head>
 <body>
 
@@ -131,7 +131,7 @@
 								</div>
 								<div id="btnSelect"></div>
 								<div id="next_button">
-									<a href="#" style="color: white" id="btn">결제하기
+									<fa href="#" style="color: white" id="btn">결제하기
 									</a>
 								</div>
 							</div>

@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/resources/css/member/main.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화 그 이상의 감동 CGV</title>
 <style type="text/css">
 tr input[type="text"] {
 	border: none;

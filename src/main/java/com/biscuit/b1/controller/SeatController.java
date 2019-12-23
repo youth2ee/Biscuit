@@ -64,6 +64,9 @@ public class SeatController {
 		String timeInfo_start = choiceVO.getTimeInfo_start();
 		ModelAndView mv = new ModelAndView();
 		for (int i = 0; i < seat_names.length; i++) { // 표 장수에 따라서 DB에 넣는 횟수(표 개수)
+			if(i % 3 == 0)
+				Thread.sleep(1000);
+			System.out.println(seat_names.length);
 			seatVO.setCinema_num(choiceVO.getCinema_num());
 			seatVO.setMovieInfo_name(choiceVO.getMovieInfo_name());
 			seatVO.setSeat_name(seat_names[i]);
@@ -71,9 +74,7 @@ public class SeatController {
 			seatVO.setTheater_num(choiceVO.getTheater_num());
 			seatVO.setMovieInfo_num(choiceVO.getMovieInfo_num());
 			seatVO.setTimeInfo_date(choiceVO.getTimeInfo_date());
-			if (i % 5 == 0) {
-				Thread.sleep(1000);
-			}
+		
 			result1 = seatService.seatBooking(seatVO); // 좌석 테이블에 입력
 
 			// 예매 번호 생성하기

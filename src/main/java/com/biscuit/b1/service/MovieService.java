@@ -32,7 +32,15 @@ public class MovieService {
 	private static final String HOST = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new";
 	@Inject
 	private MovieDAO movieDAO;
-
+	
+	//home
+	public List<MovieInfoVO> homeposter() {
+		return movieDAO.homeposter();
+	}
+	
+	
+	
+	//
 	public List<MovieDataVO> movieListView() {
 		return movieDAO.movieListView();
 	}

@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>영화 그 이상의 감동 CGV</title>
 
 <c:import url="../layout/jquery.jsp" />
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">

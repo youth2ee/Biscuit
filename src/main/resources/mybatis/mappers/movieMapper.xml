@@ -4,6 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="movieMapper">
+
+	<select id="homeposter" resultType="MovieInfoVO">
+	<![CDATA[
+	select movieinfo_title, movieinfo_poster from(
+	select * from movieinfo
+	order by movieinfo_rating desc)
+	where rownum < 30
+	 ]]>
+	</select>
+
+
   
   	<!-- 영화선택 -->
   	<select id="movieTitleSelect" resultType="MovieInfoVO">

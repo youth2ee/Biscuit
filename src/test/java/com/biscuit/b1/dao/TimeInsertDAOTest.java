@@ -26,23 +26,23 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum1_2 = 272;
 	private int mnum1_3 = 1;
 	
-	private int mnum2_1 = 270;
+	private int mnum2_1 = 7;
 	private int mnum2_2 = 272;
 	private int mnum2_3 = 181;
 	
-	private int mnum3_1 = 270;
+	private int mnum3_1 = 7;
 	private int mnum3_2 = 272;
 	private int mnum3_3 = 181;
 	
 	private int mnum4_1 = 270;
-	private int mnum4_2 = 272;
+	private int mnum4_2 = 7;
 	private int mnum4_3 = 1;
 	
 	private int mnum5_1 = 270;
 	private int mnum5_2 = 272;
 	private int mnum5_3 = 1;
 	
-	private int mnum6_1 = 270;
+	private int mnum6_1 = 7;
 	private int mnum6_2 = 272;
 	private int mnum6_3 = 63;
 	
@@ -51,7 +51,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum7_3 = 63;
 	
 	private int mnum8_1 = 270;
-	private int mnum8_2 = 272;
+	private int mnum8_2 = 7;
 	private int mnum8_3 = 181;
 	
 	private int mnum9_1 = 270;
@@ -59,7 +59,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum9_3 = 1;
 	
 	private int mnum10_1 = 270;
-	private int mnum10_2 = 272;
+	private int mnum10_2 = 7;
 	private int mnum10_3 = 63;
 	
 	private int mnum11_1 = 270;
@@ -75,7 +75,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum13_3 = 102;
 	
 	private int mnum14_1 = 270;
-	private int mnum14_2 = 282;
+	private int mnum14_2 = 7;
 	private int mnum14_3 = 181;
 	
 	private int mnum15_1 = 270;
@@ -91,7 +91,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum17_3 = 181;
 	
 	private int mnum18_1 = 270;
-	private int mnum18_2 = 272;
+	private int mnum18_2 = 7;
 	private int mnum18_3 = 102;
 	
 	private int mnum19_1 = 270;
