@@ -256,7 +256,7 @@ button:hover {
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">영화 데이터 관리</h1>
-          <p class="mb-4">영화 목록을 보여주고 최신 데이터를 추가합니다.</p>
+          <p class="mb-4">영화 목록을 출력하고 최신 데이터를 추가합니다.</p>
          
        <!-- ******************* 데이터 넣는 곳 *************************** -->
      <form action="./admin_moviedataList" method="post" id="frm">
@@ -312,15 +312,6 @@ button:hover {
       </div>
       <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>2019 CGV</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->

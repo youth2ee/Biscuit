@@ -10,7 +10,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/cinema/cinemaList.css" rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/resources/css/layout/footer.css" rel="stylesheet">
 
 
 </head>
@@ -114,8 +114,6 @@
 </form>
 
 </section>
-
-
 
 
 <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
@@ -317,5 +315,10 @@ $.ajax({
 
    
 </script>
+
+
+<footer style="margin-top: 800px;">
+	<c:import url="../layout/footer.jsp" />
+</footer>
 </body>
 </html>

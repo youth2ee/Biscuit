@@ -249,12 +249,13 @@ input[type="button"]{
 
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">회원 관리</h1>
- 
+  			<p class="mb-4">회원의 데이터를 수정 및 삭제 또는 새 회원을 추가합니다.</p>
  		<!-- ******************* 데이터 넣는 곳 *************************** -->
         
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">회원 상세정보</h6>
+            
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -349,15 +350,6 @@ input[type="button"]{
       </div>
       <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>2019 CGV</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
 
     </div>
     <!-- End of Content Wrapper -->

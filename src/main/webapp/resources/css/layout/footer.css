@@ -1,0 +1,76 @@
+@charset "UTF-8";
+.footer{
+	border-top : 1px solid #666;
+}
+.footer a:hover{
+	text-decoration: underline;
+}
+#footerWrap{
+	padding-top: 50px;
+    padding-bottom: 70px;
+	margin: 0 auto;
+    width: 1344px;
+    font-size: 14px;
+}
+#footerLogo img{
+	margin-bottom: 15px;
+}
+.footerLink ul{
+	margin-bottom: 15px;
+}
+.footerLink li{
+	float:left;
+	display: inline-block;
+    position: relative;
+    margin-right: 12px;
+}
+.footerText {
+	margin-top: 30px;
+}
+.copyRight{
+	float:right;
+}
+.footerSns{
+	position: absolute;
+    float: right;
+    width: 300px;
+    margin-left: 1160px;
+    margin-top: -120px;
+}
+
+.footerSns img{
+    margin-right: 8px;
+    width: 13%;
+}
+.footerSiteMap{
+	float: right;
+    margin-left: 1150px;
+    margin-top: 50px;
+    position: absolute;
+}
+.footerSelect{
+	width: 158px;
+    height: 29px;
+    background: transparent;
+    border: 1px solid #999;
+    font-size: 13px;
+    line-height: 1.2;
+    color: #666;
+    font-family: 'CJONLYONENEW', '맑은 고딕', '돋움', Dotum, sans-serif;
+    font-weight: 300;
+    color: -internal-light-dark-color(black, white);
+    background-color: -internal-light-dark-color(white, black);
+    font: 400 13.3333px Arial;
+    border-color: rgb(169, 169, 169);
+    border-image: initial;
+}
+.selectBotton{
+	width: 29px;
+    height: 29px;
+    background-color: #666;
+    color: #fdfcf0;
+    font-family: verdana, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+}
