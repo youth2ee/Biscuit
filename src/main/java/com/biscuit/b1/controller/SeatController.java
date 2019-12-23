@@ -62,6 +62,7 @@ public class SeatController {
 			RedirectAttributes redirectAttributes) throws Exception {
 		int result1 = 0;
 		int result2 = 0;
+		int adultCheck = 0;
 		String allBookCode = null;
 		ArrayList<String> ar = new ArrayList<String>();
 		String[] seat_names = seatVO.getSeat_name().split(",");
@@ -106,7 +107,12 @@ public class SeatController {
 			movie_TicketingVO.setSeat_name(seat_names[i]);
 			movie_TicketingVO.setTimeInfo_start(choiceVO.getTimeInfo_start());
 			movie_TicketingVO.setTimeInfo_date(choiceVO.getTimeInfo_date());
-			movie_TicketingVO.setPrice(10000); // 어른이라면 가격 테이블에 10000
+			if (Integer.parseInt(adultCount) > adultCheck) {
+				movie_TicketingVO.setPrice(10000); // 어른이라면 가격 테이블에 10000
+				adultCheck++;
+			} else {
+				movie_TicketingVO.setPrice(8000); // 청소년이면 8000
+			}
 			if (result1 > 0) // Seat테이블에 추가가 되면
 				result2 = seatService.insertTicket(movie_TicketingVO); // 예매정보 테이블에 입력
 

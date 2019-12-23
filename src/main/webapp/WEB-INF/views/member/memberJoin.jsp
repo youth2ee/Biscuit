@@ -160,9 +160,6 @@
 	<script type="text/javascript">
 		var isIdCheck = false;
 		var isEmailCheck = false;
-		$("input[name='gender']:radio").change(function () {
-			alert('test');	
-		});
 		$("#id").blur(function() {
 			var id = $('#id').val();
 			$.get("./idCheck?id=" + id, function(data) {
