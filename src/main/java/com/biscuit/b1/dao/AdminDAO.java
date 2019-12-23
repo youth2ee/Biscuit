@@ -20,7 +20,7 @@ public class AdminDAO {
 	@Inject
 	private SqlSession sqlSession;
 	private final static String NAMESPACE = "adminMapper.";
-
+	
 	public List<CinemaVO> adminLocSelect(CinemaVO cinemaVO) {
 		return sqlSession.selectList(NAMESPACE + "adminLocSelect", cinemaVO);
 	}

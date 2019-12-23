@@ -34,11 +34,6 @@ public class PayController {
 		
 	}
 	
-	@GetMapping(value = "marketPay")
-	public void marketPayGet() throws Exception {
-
-	}
-	
 	@PostMapping(value = "marketPay")
 	public String marketPayPost(String[] sname, String[] sprice, String[] camount,HttpSession session) throws Exception {
 		return "redirect:" + payService.marketPayReady(sname, camount, sprice, session);

@@ -81,16 +81,28 @@
 					
 					$.each(data.boxOfficeResult.dailyBoxOfficeList, function(i, m) {
 						$('#Rank_'+i+' a').append("<img alt=\""+m.rnum+"위\" src=\"./resources/images/home/boxoffice/numeric-"+m.rnum+".png\"><span class=\"office_cell\">"+m.movieNm+"</span>");
-						$('#Rank_'+i).append("<span class=\"office_cell right rk_inten\">"+m.rankInten+"</span>");
-						$('#Rank_'+i).append("<span class=\"office_cell right rk_new "+m.rankOldAndNew+"\">"+m.rankOldAndNew+"</span>");
+						$('#Rank_'+i).append("<span class=\"office_cell right rk_inten\" id=\"rk_inten"+i+"\">"+m.rankInten+"</span>");
+						$('#Rank_'+i).append("<span class=\"office_cell right "+m.rankOldAndNew+"\">"+m.rankOldAndNew+"</span>");
 						
-						$('span.NEW').html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/icon_new.png\">");
+						var rk_new = m.rankOldAndNew;
+						var rk_inten = parseInt($('#rk_inten'+i).text());
 						
+						if(rk_new == 'NEW'){//new일 때
+							$('span.NEW').html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/icon_new.png\">");
+							$('.rk_inten').empty();
+						}else if(rk_new == 'OLD' && rk_inten > 0){//양수일 때
+							$('#rk_inten'+i).html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/arrow-up-line.png\"><span style=\"color:orange;\">"+rk_inten+"</span>");
+							//console.log(rk_inten);
+						}else if(rk_new == 'OLD' && rk_inten == 0){//0일 때
+							$('#rk_inten'+i).html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/subtract-line.png\"><span style=\"color:gray;\">"+rk_inten+"</span>");
+						}else {//음수일 때
+							rk_inten = rk_inten.trim().replace(/[^0-9]/g, "");
+							$('#rk_inten'+i).html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/arrow-down-line.png\"><span  style=\"color:lightblue;\">"+rk_inten+"</span>");
+						}
 						$('span.OLD').empty();
-						
 					});
-						//alert($('span.NEW').parent().);
-					
+						//alert($('span.NEW').parent());
+						//console.log($('.rk_inten').text());
 				}
 			});
 		</script>

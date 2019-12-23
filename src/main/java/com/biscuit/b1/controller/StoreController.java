@@ -151,7 +151,7 @@ public class StoreController {
 	
 /////////////////////////////////////////////	
 	// 상품 삭제
-	@GetMapping("storeDelete")
+	@PostMapping("storeDelete")
 	public ModelAndView storeDelete(StoreVO storeVO, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		
@@ -163,7 +163,7 @@ public class StoreController {
 			msg = "상품 삭제 성공";
 		}
 		mv.addObject("msg", msg);
-		mv.addObject("path", "storeList");
+		mv.addObject("path", "../admin/admin_storeList");
 		mv.setViewName("common/common_result");
 		
 		return mv;
@@ -185,7 +185,7 @@ public class StoreController {
 			msg = "상품 업데이트 성공";
 		}
 		mv.addObject("msg", msg);
-		mv.addObject("path", "storeList");
+		mv.addObject("path", "../admin/admin_storeList");
 		mv.setViewName("common/common_result");
 		
 		return mv;
@@ -217,7 +217,7 @@ public class StoreController {
 			msg = "상품 등록 성공";
 		}
 		mv.addObject("msg", msg);
-		mv.addObject("path", "storeList");
+		mv.addObject("path", "../admin/admin_storeList");
 		mv.setViewName("common/common_result");
 		
 		return mv;
