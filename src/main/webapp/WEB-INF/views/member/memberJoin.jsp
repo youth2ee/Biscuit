@@ -244,10 +244,6 @@
 						$('#frm').submit();
 					else
 						alert('필수 항목을 모두 작성 하십시오');
-					alert($("input[name='gender']:radio").val());
-					alert(isIdCheck);
-					alert(isEmailCheck);
-					
 				});
 	</script>
 
