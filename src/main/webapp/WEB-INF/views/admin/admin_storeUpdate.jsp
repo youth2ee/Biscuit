@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>CGV ADMIN</title>
+  <title>SB Admin 2 - Tables</title>
 
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -23,7 +24,8 @@
   <!-- Custom styles for this page -->
   <link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 	
-	<c:import url="../layout/jquery.jsp" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 </head>
 <body id="page-top">
 
@@ -68,6 +70,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">MOVIE</h6>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataInsert">영화 데이터 추가</a>
           </div>
         </div>
       </li>
@@ -160,14 +163,14 @@
       <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsefive" aria-expanded="true" aria-controls="collapsefive">
           <i class="fas fa-fw fa-cog"></i>
-          <span>스토어 관리</span>
+          <span class="active">스토어 관리</span>
         </a>
         
         <div id="collapsefive" class="collapse show" aria-labelledby="headingfive" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">STORE MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeList">스토어 메뉴 관리</a>
-            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_storeInsert">스토어 메뉴 추가</a>
+            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_storeList">스토어 메뉴 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeInsert">스토어 메뉴 추가</a>
           </div>
         </div>
       </li>
@@ -221,7 +224,6 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">${member.id}님 환영합니다.</span>
                <img alt="" src="${pageContext.request.contextPath}/resources/images/home/CGV_BI.png" style="width: 80px;">
-                <!-- <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> -->
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -241,30 +243,34 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <!-- <h1 class="h3 mb-2 text-gray-800">store insert</h1> -->
+          <h1 class="h3 mb-2 text-gray-800">store list</h1>
 
-		<!-- ******************* 데이터 넣는 곳 *************************** -->
-		<div class="container">
-			<h2>Store Menu Register</h2>
-			<form class="form-horizontal" action="../store/storeWrite" method="post" enctype="multipart/form-data">
+         
+         <!-- ******************* 데이터 넣는 곳 *************************** -->
+        <div class="container">
+			<h2>Store Update Form</h2>
+			<form class="form-horizontal" action="storeUpdate" method="post" enctype="multipart/form-data">
+				
+				<input type="hidden" value="${update.store_num}" class="form-control" id="store_num" name="store_num">
+				
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="store_name">상품명:</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="store_name" placeholder="상품명을 입력하세요" name="store_name">
+						<input type="text" class="form-control" id="store_name" value="${update.store_name}" name="store_name">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="store_price">상품가격:</label>
 					<div class="col-sm-10">
-						<input type="number" class="form-control" id="store_price" style="IME-MODE:disabled;" placeholder="상품가격을 입력하세요" name="store_price">
+						<input type="number" class="form-control" id="store_price" value="${update.store_price}" name="store_price">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="store_note">상품구성:</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" id="store_note" placeholder="상품구성을 입력하세요" name="store_note">
+						<input type="text" class="form-control" id="store_note" value="${update.store_note}" name="store_note">
 					</div>
 				</div>
 				
@@ -281,38 +287,52 @@
 						</select>
 					</div>
 				</div>
+				<script type="text/javascript">
+					$('#store_package').val(${update.store_package});
+				</script>
 				
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="store_img">상품이미지:</label>
 					<div class="col-sm-10">
-						<input type="file" class="form-control" id="store_img" name="file"> <!-- controller에서 MultipartFile file로 받으니까 name도 file로 해줘야함 -->
+						<input type="file" class="form-control" id="store_img" name="file">
 					</div>
 					
-					<div class="select_img"><img alt="" src=""></div>	
+					<div class="select_img" style="width: 420px; height: 420px;">
+						<img alt="" src="../resources/upload/store/${update.store_img}" style="margin-left: 20px;">
+						<input type="hidden" name="store_img" value="${update.store_img}">
+						<input type="hidden" name="store_thumbimg" value="${update.store_thumbimg}">
+					</div>	
 					
 					<script type="text/javascript">
-					$('#store_img').change(function() {
-						if(this.files && this.files[0]){
-							var reader = new FileReader;
-							reader.onload = function(data) {
-								$('.select_img img').attr("src", data.target.result).width(300);
+						$('#store_img').change(function() {
+							if(this.files && this.files[0]){
+								var reader = new FileReader;
+								reader.onload = function(data) {
+									$('.select_img img').attr("src", data.target.result).width(300);
+								}
+								reader.readAsDataURL(this.files[0]);
 							}
-							reader.readAsDataURL(this.files[0]);
-						}
-					});
+						});
 					</script>
 					
 				</div>
 				
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<input type="submit" class="btn" value="등록" style="position: absolute; right: 13px; background-color: #4e73df; color: #fff;">
+					<div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
+						<button type="button" id="btn_back" class="btn btn-danger">취소</button>
+						<input type="submit" class="btn btn-info" value="등록" style="margin-left: 20px;">
+						
+						<script type="text/javascript">
+							$('#btn_back').click(function() {
+								history.back();
+								//location.href = "storeSelect?store_num=" + ${update.store_num} + "&&store_package=" + ${update.store_package};
+							});
+						</script>
 					</div>
 				</div>
 			</form>
 		</div>
 		<!-- ********************** 데이터 끝  *************************** -->
-
 
         </div>
         <!-- /.container-fluid -->
