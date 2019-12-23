@@ -34,18 +34,6 @@
 				<div>
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-<!-- 						<div class="swiper-slide sbox">1</div>
-							<div class="swiper-slide sbox">2</div>
-							<div class="swiper-slide sbox">3</div>
-							<div class="swiper-slide sbox">4</div>
-							<div class="swiper-slide sbox">5</div>
-							<div class="swiper-slide sbox">6</div>
-							<div class="swiper-slide sbox">1</div>
-							<div class="swiper-slide sbox">2</div>
-							<div class="swiper-slide sbox">3</div>
-							<div class="swiper-slide sbox">4</div>
-							<div class="swiper-slide sbox">5</div>
-							<div class="swiper-slide sbox">6</div> -->
 						</div>
 						<!-- Add Pagination -->
 						<div class="swiper-pagination"></div>
@@ -53,10 +41,6 @@
 				</div>
 				<!-- date 끝 -->
 
-
-				<!-- <div id="secTitle">
-<h1>Movie Select</h1>
-</div> -->
 
 				<div id="secMidTitle">
 					<div class="dname">
@@ -149,14 +133,8 @@
 						</table>
 					</div>
 
-
-
-
 					<form action="../member/movieLogin" id="frm" method="post">
-						
-							 <img id="btn" alt="" src="../resources/images/movieSelect/seat.png"> 
-						
-						<!-- <div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div> -->
+						 <img id="btn" alt="" src="../resources/images/movieSelect/seat.png"> 
 					</form>
 
 
@@ -279,8 +257,6 @@
 			success : function(data) {
 				data = data.trim();
 				$('#cinemaNameSelect').html(data);
-				
-				/* $('.check').addClass('act'); */
 				$('.noncheck').addClass('noncheck').addClass('soldout');
 		}
  		});
@@ -319,9 +295,6 @@
 			success : function(data) {
 				data = data.trim();
 				$('#movieDateSelect').html(data);
-				/* $('.swiper-wrapper').html(data); */
-				
-
 			}
 		}); 
  		});
@@ -333,35 +306,18 @@
  		 cdate = $(this).attr('id');
  		 cdate = cdate.trim();
  		 
- 		 console.log(cdate);
- 		 
- 	/* 	$(this).addClass('act').siblings().removeClass('act');
- 		
-  		cdate = $(this).find('.mtd').attr("title");
- 		cdate = cdate.trim(); */
- 		
-/*  	tnum = $(this).children().find('.tnum').text();
- 	 	tnum = tnum.trim(); 
- 	 	
- 	 	tname = $(this).children().find('.tname').text();
- 	 	tname = tname.trim();  */
- 	 	
- 	 	
- 	 	
- 		
+ 		console.log(cdate);
  	 	console.log("aa");
  	 	console.log(cdate);
  		console.log(mnum);
  		console.log(cnum);
- 	/* 	console.log(tnum);
- 		console.log(tname); */
+
  		
   		$.ajax({
 			data : {
 				timeInfo_date:cdate,
 				movieInfo_num:mnum,
 				cinema_num:cnum
-				/* theater_num:tnum */
 			},
 			type : "GET",
 			url : "./timeSelect",
