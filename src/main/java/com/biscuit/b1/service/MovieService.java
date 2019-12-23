@@ -131,17 +131,6 @@ public class MovieService {
 							if (i % 50 == 0) {
 								Thread.sleep(1000);
 							}
-							System.out.println("몇 개? : " + i);
-							System.out.println("제목 : " + title);
-							System.out.println("러닝타임 : " + runtime + "분");
-							System.out.println("포스터: " + posters);
-							System.out.println("국가 : " + nation);
-							System.out.println("장르 : " + genre);
-							System.out.println("등급 : " + ratingGrade);
-							System.out.println("제작년도 : " + prodYear);
-							System.out.println("개봉일  : " + releaseDate);
-							System.out.println("================================================================");
-
 							movieDataVO.setTitle(title);
 							movieDataVO.setRuntime(runtime);
 							movieDataVO.setPoster(posters);
