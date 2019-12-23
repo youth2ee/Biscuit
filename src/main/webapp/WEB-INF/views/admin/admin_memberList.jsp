@@ -310,8 +310,8 @@ input[type="button"]{
 									readonly="readonly"></td>
 								<td><input type="button" id="btn${status.index}" value="수정"
 									class="${status.index}"></td>
-								<td><input type="button" id="delete${status.index}"
-									value="탈퇴" class="${status.index}"></td>
+								<td><input type="button" id="delete${status.index}" 
+									value="탈퇴 " class="${status.index}"></td>
 							</tr>
 						</c:forEach>
                   </tbody>
@@ -327,7 +327,7 @@ input[type="button"]{
 					id="gender"> <input type="hidden" name="grade" id="grade">
 				<input type="hidden" name="grade_point" id="grade_point"> <input
 					type="hidden" name="signIn_date" id="signIn_date"> 
-				<input type="button" id="add" value="추가">
+				<input type="button" id="add" class="btn btn-primary btn-icon-split" value="추가">
 				</form>
               </div>
             </div>
@@ -413,7 +413,7 @@ input[type="button"]{
 							rowItem += '<td><input type="text" id="grade${fn:length("${member}")}" value="5" class="grade"></td>';
 							rowItem += '<td><input type="text" id="grade_point${fn:length("${member}")}" value="0" class="grade_point"></td>';
 							rowItem += '<td><input type="text" id="signIn_date${fn:length("${member}")}" value="Default" class="signIn_date" readonly="readonly"></td>';
-							rowItem += '<td colspan="2"><input type="button" id="addMemberBtn" value="추가" class="${fn:length("${member}")}" style="width: 74%;"></td>';
+							rowItem += '<td colspan="2"><input type="button" id="addMemberBtn" value="추가" class="${fn:length("${member}")}" style="width: 100%;"></td>';
 							$('#addMember').before(rowItem);
 						});
 
