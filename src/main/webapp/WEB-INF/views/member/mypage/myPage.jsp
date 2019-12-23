@@ -60,6 +60,7 @@
 
 <div class="tbox">최신 예매내역
 	<div class = "newestBookWrap">
+<c:if test="${!empty newestBook}">
 		<div class="newestBookPoster" >
 			<img alt="" src="${newestBook.movieInfo_poster}">
 		</div>
@@ -79,6 +80,10 @@
 				<button><span id="goToStar">별점 주기<span></button>
 			</c:if>
 		</div>
+	</c:if>
+	<c:if test="${empty newestBook}">
+		<div>예매하신 내역이 없습니다.</div>
+	</c:if>	
 	</div>
 </div>
 <div class="tbox">최신 구매내역</div>
@@ -102,6 +107,10 @@
 		/* 폼태그로 넘길 것인지 상담 해 봐야 함  
 			폼태그로 넘길 시에는 버튼 클릭시 action 변경 되도록 구현
 		*/
+		var check = confirm('정말로 취소하겠습니까?');
+		if(check){
+			
+		}
 	});
 	$("#goToStar").click(function(){
 		location.href="../../movie/movieList";

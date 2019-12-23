@@ -144,9 +144,9 @@ header{
 }
 .newestBookPoster img{
 	float: left;
-	width: 125px;
-	margin-top:25px;	
-	margin-left: 20px;
+    width: 125px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 .newestBookInfo{
 	display: -webkit-inline-box;

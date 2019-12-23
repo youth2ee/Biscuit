@@ -4,7 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+i.fas.fa-redo-alt:hover {
+	transform: rotate(360deg);
+	transition: all ease 2s;
+}
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
 
+button:hover {
+	cursor: pointer;
+}
+</style>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +41,7 @@
 </head>
 <body id="page-top">
 
-  <!-- Page Wrapper -->
+   <!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
@@ -66,8 +81,7 @@
         <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">MOVIE</h6>
-            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataInsert">영화 데이터 추가</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
           </div>
         </div>
       </li>
@@ -241,16 +255,57 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">moviedata list</h1>
-
-         <!-- ******************* 데이터 넣는 곳 *************************** -->
+          <h1 class="h3 mb-2 text-gray-800">영화 데이터 관리</h1>
+          <p class="mb-4">영화 목록을 보여주고 최신 데이터를 추가합니다.</p>
          
+       <!-- ******************* 데이터 넣는 곳 *************************** -->
+     <form action="./admin_moviedataList" method="post" id="frm">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">영화관 상세정보</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+              	마지막 업데이트 : <b>${lastRelease}</b><button id="btn" type="button">
+						<i class='fas fa-redo-alt' style='font-size: 17px'></i>
+					</button>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>제목</th>
+                      <th>장르 </th>
+                      <th>국가 </th>
+                      <th>등급</th>
+                      <th>개봉일</th>
+                      <th>제작연도</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <c:forEach items="${movieDataVOs}" var="movie"> 
+                    <tr>
+                      <td>${movie.title}</td>
+                      <td>${movie.genre}</td>
+                      <td>${movie.nation}</td>
+                      <td>${movie.ratingGrade}</td>
+                      <td>${movie.releaseDate}</td>
+                      <td>${movie.prodYear}</td>
+                    </tr>
+                  </c:forEach>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+</form>
+        </div>
          
          
   
 
 
 		<!-- ********************** 데이터 끝  *************************** -->
+
         </div>
         <!-- /.container-fluid -->
 
@@ -297,6 +352,8 @@
     </div>
   </div>
 
+
+
   <!-- Bootstrap core JavaScript-->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -313,6 +370,26 @@
 
   <!-- Page level custom scripts -->
   <script src="${pageContext.request.contextPath}/resources/vendor/js/demo/datatables-demo.js"></script>
+  <script type="text/javascript">
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth() + 1;
+		var yyyy = today.getFullYear();
+		if (dd < 10) {
+			dd = '0' + dd
+		}
+		if (mm < 10) {
+			mm = '0' + mm
+		}
+		today = yyyy + '-' + mm + '-' + dd;
+		$("#btn").click(function() {
+			if ('${lastRelease}' != today)
+				$("#frm").submit();
+			else {
+				alert('현재 최신 데이터 입니다.');
+			}
+		});
+	</script>
 
 </body>
 

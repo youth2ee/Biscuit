@@ -323,7 +323,17 @@ public class MemberController {
 		System.out.println("출력5:" + newestVO.getTimeInfo_start());
 		System.out.println("출력6:" + cancelCheck);
 		//model.addAttribute("member", memberVO);
+		
+		
 
+	}
+	@PostMapping("/mypage/myPage")
+	public void myPage2(HttpSession session, Model model,HttpServletRequest request) throws Exception {
+		/*
+		 * Movie_TicketingVO movie_TicketingVO =
+		 * memberService.getMovieTicketingVO(newestVO);
+		 * memberService.seatDelete(movie_TicketingVO);
+		 */
 	}
 
 	@GetMapping("/mypage/myPage_store_res")
