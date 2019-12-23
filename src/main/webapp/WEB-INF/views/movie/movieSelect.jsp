@@ -188,7 +188,8 @@
 				console.log(offset.left);
 				 */
 
- 	 	 		$(this).addClass('act');
+				/* alert($(this).closest('.movietitle').html()); */
+ 	 	 		$(this).closest('.movietitle').addClass('act');
 				
  	 	 		mnum = $(this).attr('title');
  	 	 		mname = $(this).text();
@@ -198,7 +199,7 @@
  	 	 		
  	 	 		var pos = 0;
  	 	 		pos = Number(position.top);
-				pos = pos + 11
+				pos = pos + 14
 				
 				$(this).closest('.sname').scrollTop(pos);
 
@@ -342,14 +343,7 @@
  	
  	/* 시간을 선택해 볼까요 */
  	 	$(document).on("click",".timeSelect",function(){
- 	 		$(this).addClass('act').closest('.ttable').siblings().find('.timeSelect').removeClass('act');
- 	 		
- 	 		
-/*  	 		$(this).find('.mtd1').addClass('act');
- 	 		$(this).siblings().find('.mtd1').removeClass('act');
- 	 		$(this).find('.mtime2').removeClass('act');*/
- 	 	
- 	 	
+ 	 	$(this).addClass('act').closest('.ttable').siblings().find('.timeSelect').removeClass('act');
  	 		
   		ctime = $(this).text(); 
  		ctime = ctime.trim();
@@ -370,34 +364,7 @@
  		
  		}); 
  	
-/*  	
- 	 	$(document).on("click",".timeSelect",function(){
- 	 	 	 $(this).find(".mtd1").addClass('act').siblings().removeClass('act');
- 	 	 	$(this).find(".mtd1").addClass('act');
- 	 	 	$(this).find(".mtd1").siblings().removeClass('act');
- 	 	 	
- 	  		ctime = $(this).find('.mtdtxt').text(); 
- 	 		ctime = ctime.trim();
- 	 		
- 	 		console.log(ctime);
- 	 		 
- 	 		});  */
- 	 		
 
- 		
-/*  	 	$(document).on("click",".mtd1",function(){
- 	 	/* $(this).addClass('act').siblings().removeClass('act'); */
- 	 	/* $(this).find('.mtd1').addClass('act').find('.mtd1').removeClass('act'); */
-/*  		$(this).addClass('act').siblings().removeClass('act');
- 	 	
-  		ctime = $(this).text(); 
- 		ctime = ctime.trim();
- 		 
- 		});  */ 
- 		
- 		
- 		
- 	
 
  	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */
  	$(document).on("click","#btn",function(){

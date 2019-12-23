@@ -27,7 +27,7 @@
 }
 
 #h2{
-	width:40%;
+	width:291px;
 	height: 20%;
 	text-align:right;
 /* 	background-color:olive; */
@@ -37,7 +37,7 @@
 	float: right;
 	clear:both;
 	position: relative;
-	left: 128px;
+	left: -1px;
 }
 
 #h3{
@@ -47,7 +47,7 @@
 	text-align: center;
 	padding-top: 140px;
 	padding-left: 30px;
-	padding-left: 300px;
+	padding-left: 391px;
 }
 
 .himg{
@@ -63,7 +63,7 @@
 	padding-right: 20px;
 }
 
-.hname{
-	
+.hname {
+    position: relative;
+    left: -17px;
 }
-

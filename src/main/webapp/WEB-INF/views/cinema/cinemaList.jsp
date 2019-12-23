@@ -105,13 +105,6 @@
 <div id="mtime">
 </div>
 
-<form action="" method="post">
-<input type="hidden" name="">
-<input type="hidden" name="">
-<input type="hidden" name="">
-<input type="hidden" name="">
-<input type="hidden" name="">
-</form>
 
 </section>
 
@@ -154,11 +147,11 @@ $.ajax({
 		
 		cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
 		
-		alert(time);
+	/* 	alert(time);
 		alert(date);
 		alert(mname);
 		alert(cname);
-		alert(tname);
+		alert(tname); */
 		
 	});
 	
@@ -258,11 +251,11 @@ $.ajax({
 				
 				cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
 				
-				alert(time);
+		/* 		alert(time);
 				alert(date);
 				alert(mname);
 				alert(cname);
-				alert(tname);
+				alert(tname); */
 
 			});
 			

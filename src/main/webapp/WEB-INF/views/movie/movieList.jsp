@@ -131,8 +131,6 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <form action="./movieSelect" method="get" class="frm" >
 <input type="hidden" name="movieInfo_name" value="${mlist.movieInfo_title}">
 <button class="myBtn2"><h3 class="details" style="float: left;" title="${mlist.movieInfo_title}">예매하기</h3></button>
-
-
 </form>
 
 </div><!-- infos -->
