@@ -242,7 +242,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">영화관</h1>
+          <h1 class="h3 mb-2 text-gray-800">영화관 관리</h1>
           <p class="mb-4">영화관의 상세정보를 보여줍니다.</p>
 
           <!-- DataTales Example -->

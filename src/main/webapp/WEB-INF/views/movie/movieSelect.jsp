@@ -217,20 +217,20 @@
  	$(document).ready(function() {
  		
  		$.each($('.mtitle'), function(i,e){
-			console.log($(this).text());
+			/* console.log($(this).text()); */
 			
 			if($(this).text().trim() == sname){
 				
 				var position = $(this).position();
-				console.log("position");
+	/* 			console.log("position");
 				console.log(position.top);
-				console.log(position.left);
+				console.log(position.left); */
 				
 				var offset = $(this).offset();
-				console.log("offset");
+				/* console.log("offset");
 				console.log(offset.top);
 				console.log(offset.left);
-				
+				 */
 
  	 	 		$(this).addClass('act');
 				
@@ -352,7 +352,6 @@
  		 cdate = cdate.trim();
  		 
  		console.log(cdate);
- 	 	console.log("aa");
  	 	console.log(cdate);
  		console.log(mnum);
  		console.log(cnum);
@@ -373,11 +372,10 @@
 				$('#movieTimeSelect').html(data);	
 
 		 		$.each($('.mtime2'), function(i,e){
-			
-					console.log($(this).text());
 					
 					if($(this).text() == '매진'){
-						$(this).closest('.timeSelect').addClass('soldout');
+						/* $(this).closest('.timeSelect').addClass('soldout'); */
+						$(this).parent().siblings('.tstr').find('.timeSelect').addClass('soldout'); 
 					}
 
 		 		});

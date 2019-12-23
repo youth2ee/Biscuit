@@ -272,6 +272,7 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">영화관 추가</h1>
+          <p class="mb-4">새로 개관한 영화관을 추가합니다.</p>
         
   
  

@@ -112,6 +112,7 @@ public class AdminDAO {
 
 	public int theaterDelete(CinemaVO cinemaVO) {
 		return sqlSession.delete(NAMESPACE+"theaterDelete", cinemaVO);
+	}
 
 	//movieInsert
 	public int movieInsert(MovieDataVO movieDataVO) {

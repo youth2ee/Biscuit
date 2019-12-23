@@ -264,8 +264,8 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-           <h1 class="h3 mb-3 text-gray-800">관리자 모드 (새로 개관한 극장을 추가하기)</h1>
+           <h1 class="h3 mb-3 text-gray-800">상영시간표 추가</h1>
+            <p class="mb-4">영화관의 상영시간표를 추가합니다.</p>
   
  
 <!--  -->
