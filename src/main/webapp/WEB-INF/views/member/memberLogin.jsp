@@ -175,7 +175,7 @@ input {
 			<form action="./memberLogin" method="post">
 				<h1 class="headH1"><a href="../">CGV</a></h1>
 				<div class="goMain">
-					<a href="../"><img alt="" src="../resources/images/join/popcorn.gif"style="width: 63%;"></a>
+					<a href="../"><img alt="" src="${pageContext.request.contextPath}/resources/images/Login/popcorn.gif"style="width: 63%;"></a>
 					
 
 				</div>
