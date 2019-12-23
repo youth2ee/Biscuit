@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="adminMapper">
+  
+	<select id="adminLocSelect" parameterType="CinemaVO" resultType="CinemaVO">
+    select cinema_name, cinema_num
+    from cinema
+    where cinema_loc = #{cinema_loc}
+    order by cinema_num asc
+	</select>
+	
+	<select id="movie_num" parameterType="MovieInfoVO" resultType="MovieInfoVO">
+	select movieinfo_num
+    from movieinfo
+    where movieinfo_title = #{movieInfo_title}
+	</select>
+	
+	<select id="theater_num" parameterType="TheaterVO" resultType="TheaterVO">
+	select theater_num 
+    from theater
+    where cinema_num = #{cinema_num} and theater_name = #{theater_name}
+	</select>
+	
+	<!-- 검색할 영화 -->
+	<select id="movieList" resultType="MovieInfoVO">
+	select movieinfo_title
+    from movieinfo
+    order by movieinfo_title asc
+	</select>
+	
+	<!-- cinema insert -->
+	<insert id="cinemaInsert" parameterType="CinemaVO">
+	insert
+	into cinema values (
+	CINEMA_SEQ.nextval, #{cinema_loc}, #{cinema_name}, #{cinema_add}, #{cinema_tel}, 
+	(select distinct cinema_locnum from cinema where cinema_loc = #{cinema_loc}), #{cinema_image})
+	</insert>
+	
+	<!-- theater insert -->
+	<insert id="theaterInsert" parameterType="CinemaVO">
+	insert all 
+	into theater 
+	values (theater_seq.nextval, 
+	(select cinema_num from cinema where cinema_name = #{cinema_name})
+	,'A')
+	
+	into theater 
+	values (theater_seq.nextval +1, 
+	(select cinema_num from cinema where cinema_name = #{cinema_name})
+	,'B')
+	
+	into theater 
+	values (theater_seq.nextval +2, 
+	(select cinema_num from cinema where cinema_name = #{cinema_name})
+	,'C')
+	select * from dual
+	</insert>
+	
+	
+	
+	<insert id="timeInfoInsertA" parameterType="ChoiceVO">
+    insert all
+		into timeinfo
+		values (timeinfo_seq.nextval,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 08:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 08:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+
+		into timeinfo
+		values (timeinfo_seq.nextval +1 ,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 11:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 11:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+        
+		into timeinfo
+		values (timeinfo_seq.nextval +2,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 14:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 14:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+
+		into timeinfo
+		values (timeinfo_seq.nextval +3,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 17:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 17:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+
+		into timeinfo
+		values (timeinfo_seq.nextval +4,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 20:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 20:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num}
+		),'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+        
+        select * from dual
+	</insert>
+	
+	
+	<insert id="timeInfoInsertB" parameterType="ChoiceVO">
+    insert all
+		into timeinfo
+		values (timeinfo_seq.nextval,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 09:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 09:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+
+		into timeinfo
+		values (timeinfo_seq.nextval +1 ,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 12:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 12:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+        
+		into timeinfo
+		values (timeinfo_seq.nextval +2,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 15:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 15:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+
+		into timeinfo
+		values (timeinfo_seq.nextval +3,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 18:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 18:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+
+		into timeinfo
+		values (timeinfo_seq.nextval +4,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 21:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 21:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num}
+		),'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+        
+        select * from dual
+	</insert>
+	
+	
+	<insert id="timeInfoInsertC" parameterType="ChoiceVO">
+    insert all
+		into timeinfo
+		values (timeinfo_seq.nextval,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 10:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 10:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+
+		into timeinfo
+		values (timeinfo_seq.nextval +1 ,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 13:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 13:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+        
+		into timeinfo
+		values (timeinfo_seq.nextval +2,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 16:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 16:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+
+		into timeinfo
+		values (timeinfo_seq.nextval +3,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 19:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 19:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num})
+		,'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+
+		into timeinfo
+		values (timeinfo_seq.nextval +4,
+		#{theater_num}, 
+		#{movieInfo_num},
+		to_date(#{timeInfo_date}, 'yy-mm-dd'),
+		to_date((select concat(#{timeInfo_date},' 22:00') from dual), 'yy-mm-dd HH24:MI'),
+		to_date((select to_char(to_date((select concat(#{timeInfo_date},' 22:00') from dual), 'yy-mm-dd hh24:mi') +
+		(1/24/60)*(select movieinfo_time from movieinfo where movieinfo_num
+		= #{movieInfo_num}
+		),'yy-mm-dd HH24:MI') from dual), 'yy-mm-dd HH24:MI'),
+        (select cinema_num from theater where theater_num = #{theater_num}))
+        
+        select * from dual
+	</insert>
+	
+	<update id="seq_plus">
+  		alter sequence timeinfo_seq increment by +5
+  	</update>
+	
+	<!--  -->
+	<select id="cinemaList" resultType="CinemaVO">
+	select cinema_num, cinema_loc, cinema_name, cinema_add, cinema_tel
+	from cinema
+	order by cinema_num asc
+	</select>
+	
+	<select id="movieTimeList" resultType="ChoiceVO">
+    select C.timeinfo_num, D.cinema_name, C.theater_num, C.movieinfo_title movieinfo_name, C.timeinfo_date, C.timeinfo_start, C.timeinfo_end
+    from (select * from timeinfo A left outer join movieinfo B on A.movieinfo_num = B.movieinfo_num) C 
+    left outer join cinema D
+    on C.cinema_num = D.cinema_num
+    order by C.timeinfo_date desc, D.cinema_name asc, C.timeinfo_start asc, C.theater_num asc
+	</select>
+	
+	
+	<!-- admin 매출 -->
+	<select id="monthMovieTotal" resultType="AdminVO">
+	select sum(price) totalmovie
+    from movie_ticketing
+    where book_date between '19/12/01' and '19/12/31'
+	</select>
+	
+	<select id="monthStoreTotal" resultType="AdminVO">
+	select sum(cart_amount*store_price) totalstore
+    from cart A left outer join store B
+    on A.store_num = B.store_num
+	</select>
+	
+	<select id="todayMovieRate" resultType="AdminVO">
+	select TRUNC((((select count(seat_num) selectseat from seat where timeinfo_date = to_char(sysdate,'yy/mm/dd'))/
+    (select count(timeinfo_num)*195 totalseat from timeinfo where timeinfo_date = to_date(sysdate,'yy/mm/dd'))
+    )*100),2) todayrate from dual
+	</select>
+	
+	<select id="theaterTotal" resultType="AdminVO">
+	select count(theater_num) totaltheater
+    from theater 
+	</select>
+
+	<select id="cinemaTotal" resultType="AdminVO">
+  	select A.totalprice, A.cinema_num, B.cinema_name
+    from (select sum(price) totalprice, cinema_num
+    from movie_ticketing  where book_date between '19/12/01' and '19/12/31'
+    group by cinema_num) A left outer join cinema B
+    on A.cinema_num = B.cinema_num
+    order by A.totalprice desc
+	</select>
+	
+	<select id="movieTop" resultType="AdminVO">
+	select count(seat_name) totalseat, movieinfo_name
+	from seat
+	group by movieinfo_name
+	order by totalseat desc
+	</select>
+	
+	
+	<!--  -->
+	<select id="cinemalistSelect" parameterType="CinemaVO" resultType="CinemaVO">
+	select * from cinema 
+    where cinema_num = #{cinema_num}
+	</select>
+
+	<update id="cinemalistUpdate" parameterType="CinemaVO">
+	update cinema set 
+    cinema_name = #{cinema_name},
+    cinema_add = #{cinema_add},
+    cinema_tel = #{cinema_tel}
+    where cinema_num = #{cinema_num}
+	</update>
+	
+	<delete id="cinemalistDelete" parameterType="CinemaVO">
+	delete cinema
+    where cinema_num = #{cinema_num}
+	</delete>
+	
+	<delete id="theaterDelete"  parameterType="CinemaVO">
+	delete theater
+    where cinema_num = #{cinema_num}
+	</delete>
+	
+	<!--  -->
+	<select id="movietimeSelect" parameterType="ChoiceVO" resultType="ChoiceVO">
+	select C.timeinfo_num, D.cinema_name, C.theater_num, C.movieinfo_title movieinfo_name, C.timeinfo_date, C.timeinfo_start, C.timeinfo_end
+    from (select * from timeinfo A left outer join movieinfo B on A.movieinfo_num = B.movieinfo_num) C 
+    left outer join cinema D
+    on C.cinema_num = D.cinema_num
+    where c.timeinfo_num = #{timeInfo_num}
+    order by C.timeinfo_date desc, D.cinema_name asc, C.timeinfo_start asc, C.theater_num asc
+	</select>
+	
+	<update id="movietimeUpdate" parameterType="ChoiceVO">
+	update timeinfo set 
+    movieinfo_num = (select movieinfo_num from movieinfo where movieinfo_title = #{movieInfo_name})
+    where timeinfo_num = #{timeInfo_num}
+	</update>
+	
+	<delete id="movietimeDelete" parameterType="ChoiceVO">
+	delete timeinfo
+    where timeinfo_num = #{timeInfo_num}
+	</delete>
+
+	
+  </mapper>

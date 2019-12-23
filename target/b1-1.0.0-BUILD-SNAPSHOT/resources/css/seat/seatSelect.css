@@ -1,0 +1,231 @@
+@charset "UTF-8";
+
+body {
+	background-color: #fcfcf0;
+}
+
+.grade{
+	border-radius: 50px;
+}
+td {
+	width: 20px;
+	height: 20px;
+	box-sizing: content-box;
+}
+
+label {
+	cursor: pointer;
+}
+
+.bookable { /*예매가능*/
+	text-align: center;
+	background-color: #eeefea;
+	font-size: 12px;
+}
+
+.booking { /*선택한자리*/
+	text-align: center;
+	background-color: #e4620d;
+	font-size: 12px;
+}
+
+.bookend { /*좌석 선택 완료*/
+	text-align: center;
+	background-color: #ffc952;
+	font-size: 12px;
+}
+
+.booked { /*이미 예매된 자리*/
+	text-align: center;
+	background-color: #666666;
+	font-size: 12px;
+}
+
+.over { /*마우스 오버*/
+	background: #e42313;
+}
+
+#screen {
+	display: block;
+	text-align: center;
+	margin-left: 0px;
+	background-color: silver;
+	margin-bottom: 30px;
+}
+
+#seatSelect {
+	box-sizing: border-box;
+	display: inline-block;
+	float: left;
+	width: 50%;
+	/* background-color: purple; */
+	padding: 0px 50px 20px 50px;
+	margin-top: 50px
+}
+
+#Select {
+	/* 	background-color: blue; */
+	color: black;
+	float: left;
+	width: 25%;
+}
+
+#btnSelect {
+	clear: both;
+}
+
+section {
+	width: 100%;
+}
+
+#sec {
+	width: 50%;
+	margin: 0 auto;
+	height: 600px;
+	background-color: #fef8dc;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	border-radius: 30px;
+	box-shadow: 5px 10px 10px grey;
+	background: linear-gradient(90deg, #ffffff 75%, #e42313 25%);
+}
+
+h4, h3 {
+	font-size: 13px;
+}
+
+#frm {
+	/* 	background-color: salmon; */
+	height: 100%;
+}
+
+#st1 {
+	width: 300px;
+	height: 45px;
+	background-color: black;
+	text-align: center;
+}
+
+#st2 {
+	width: 100%;
+	height: 45px;
+	background-color: black;
+	text-align: center;
+}
+
+#title {
+	width: 100%;
+	height: 8%;
+	background: linear-gradient(#1f1f1f 25%, #000000 75%);
+	border-radius: 15px 0 0 0;
+	border-bottom: black 2px dotted;
+	width: 75%;
+}
+
+.frm {
+	margin-top: 50px;
+}
+
+b {
+	color: white;
+	margin-left: 20px;
+	margin-top: 13px;
+	position: absolute;
+}
+
+#right-wrap {
+	text-align: center;
+	background-color: #e42313;
+	/* 	background-color: yellow; */
+}
+
+#right-wrap {
+	/* 	background-color: red; */
+	height: 100%;
+	float: left;
+	width: 25%;
+	color: #ffffff;
+	background-color: #e42313;
+}
+
+.radio-group input[type=radio] {
+	position: absolute;
+	visibility: hidden;
+	display: none;
+}
+
+.radio-group label {
+	color: #e71a0f;
+	/* color: #fcfcf0; */
+	display: inline-block;
+	cursor: pointer;
+	font-weight: bold;
+	padding: 5px 10px;
+}
+
+.radio-group input[type=radio]:checked+label {
+	color: #fcfcf0;
+	background: #e71a0f;
+}
+
+.radio-group {
+	border: solid 3px #e71a0f;
+	display: inline-block;
+	margin: 10px 10px 10px 0px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.selectInnerWrap {
+	margin-top: 50px;
+}
+
+.selecter1, .selecter2, .selecter3, .selecter4 {
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+input[type="text"] {
+	background-color: transparent;
+	font-size: 13px;
+	color: white;
+	width: 40px;
+}
+
+.price_wrap {
+	margin-top: 40px;
+}
+
+#poster {
+	border-radius: 10px;
+	width: 80%;
+	margin-bottom: 15px;
+	margin-top: 10px;
+	border-radius: 3px;
+	transform-origin: 50% 50%;
+	transform: rotate(20deg);
+	box-shadow: 3px 3px 0px -1px #8c0808;
+	margin-bottom: 40px;
+}
+
+#hole {
+	width: 20px;
+	height: 30px;
+	background-color: #fcfcf0;
+	border-radius: 50px;
+	float: right;
+	margin-right: 20px;
+	margin-top: 20px;
+	box-shadow: inset -5px 5px 2px #8a8a8a;
+}
+
+#next_button {
+	margin: 0 auto;
+	padding-top: 8px;
+	width: 80%;
+	box-sizing: border-box;
+	height: 40px;
+	background-color: black;
+	background: linear-gradient(#1f1f1f 25%, #000000 75%);
+	border-radius: 5px;
+}

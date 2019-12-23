@@ -1,0 +1,410 @@
+@charset "UTF-8";
+#container {
+	border-top: 1px solid #e9e4d2;
+	width: 100%;
+	min-width: 980px;
+	min-height: 669px;
+	position: relative;
+	padding-top: 30px;
+}
+#content {
+	width: 100%;
+	position: relative;
+}
+.store_top {
+	overflow: hidden;
+	background: url("../../images/store/store_top.jpg") 50% no-repeat;
+	position: absolute;
+	width: 100%;
+	height: 400px;
+}
+.product_wrap{
+	width: 100%;
+	position: absolute;
+	margin-top: 420px;
+}
+.product_inner{
+	width: 980px;
+	margin: 0 auto;
+	padding: 30px 0 10px;
+}
+.product_index{
+}
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	border-top-color: #fff;
+}
+.bg_fixedIndex{
+	background: #fff;
+}
+.tab_mallmenu{
+	overflow: hidden;
+	width: 980px;
+	height: 50px;
+}
+.tab_mallmenu li {
+	float: left;
+	width: 163.3px;
+	height: 48px;
+	border: 1px solid #c0c0c0;
+	border-left: 0;
+	border-right: 0;
+}
+.tab_mallmenu li span {
+	position: relative;
+	display: block;
+	padding: 16px 0;
+	text-align: center;
+	font-size: 14px;
+	color: #231f20;
+	-webkit-box-sizing: border-box;
+	cursor: pointer;
+}
+.tab_mallmenu li.current span {
+	color: #fff;
+	background-color: #231f20;
+	border-color: #231f20;
+	z-index: 1;
+}
+.tab_mallmenu li:first-child span::before {
+	background: none;
+}
+.tab_mallmenu li span:before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 1px;
+	height: 16px;
+	background: #e5e5e5;
+}
+.tab_mallmenu li.current span:before {
+	background-color: #231f20;
+}
+
+/* 메뉴탭  */
+.menuTab {
+	display: none;
+	/* background-color: lightblue; */
+	color: #000;
+}
+.menuTab.current {
+	display: block;
+}
+/************************************/
+/*품목*/
+.product_molist {
+	overflow: hidden;
+	margin: 0 0 30px 0;
+	text-align: center;
+}
+.product_molist.topline {
+	border-top: 1px solid #dfdfdf;
+}
+.product_molist li {
+	display: inline-block;
+	position: relative;
+    width: 250px;
+    padding: 0 30px;
+}
+.product_molist:last-child {
+	text-align: left;
+	margin-left: 13px;
+}
+.molthum {
+	display: block;
+    overflow: hidden;
+    /* width: 300px; */
+    /* height: 250px; */
+    padding-top: 40px;
+}
+.product_molist li
+.product_btn {
+	display: block;
+}
+.product_molist li:hover
+a.product_btn .molthum:before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 250px;
+	height: 250px;
+	background-color: #000;
+	opacity: .2;
+	z-index: 3;
+}
+.molthum img {
+	
+}
+.listinfo {
+	display: block;
+	/* height: 120px; */
+    padding: 20px 15px 20px;
+    color: #231f20;
+    text-align: center;
+}
+.listinfo .tit {
+	display: block;
+	padding-bottom: 15px;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 26px;
+}
+.listinfo .desc {
+	display: block;
+    vertical-align: middle;
+    color: #231f20;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 15px;
+    word-break: break-all;
+}
+.listinfo .desc .price {
+	padding: 0 5px;
+    font-size: 20px;
+}
+.listinfo .desc .price .won {
+	padding-left: 3px;
+    font-size: 13px;
+    vertical-align: 1px;
+}
+
+
+
+
+
+
+.hover_wrap {
+	display: none;
+	background-color: black;
+	opacity: .7;
+	top: 140px;
+	left: 80px;
+	position: absolute;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    border-radius: 50%;
+    z-index: 5;
+}
+.hover_wrap2 {
+	left: 175px;
+}
+.product_molist li:hover
+.hover_wrap {
+	display: block;
+}
+
+.product_molist li
+a.btn_category_product_cart {
+	font-size: 0;
+	display: none;
+}
+.product_molist li:hover
+a.btn_category_product_cart {
+	display: block;
+	background: url("../../images/store/shopping-cart_white.png") center center no-repeat;
+	z-index: 10;
+	width: 30px;
+    height: 30px;
+    position: absolute;
+    color: white;
+    top: 152px;
+    left: 90px;
+    font-size: 0;
+    background-size: 30px 30px;
+}
+.product_molist li:hover
+a.btn_category_product_cart:hover {
+	background: none;
+	font-size: 14px;
+	top: 147.5px;
+    left: 90px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.product_molist li
+a.btn_category_product_buy {
+	display: none;
+	font-size: 0;
+}
+.product_molist li:hover
+a.btn_category_product_buy {
+	display: block;
+	background: url("../../images/store/shopping-bag_white.png") center center no-repeat;
+	z-index: 10;
+	width: 30px;
+    height: 30px;
+    position: absolute;
+    color: white;
+    top: 150px;
+    left: 184.5px;
+    font-size: 0;
+    background-size: 30px 30px;
+}
+.product_molist li:hover
+a.btn_category_product_buy:hover {
+	background: none;
+	font-size: 14px;
+	top: 147px;
+    left: 184px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* confirm창 커스텀 */
+/* The Modal (background) */
+.confirmLayer {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1000; /* Sit on top */
+	padding-top: 20%; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Modal Content */
+.confirm_wrap {
+	position: relative;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 0;
+	border: 1px solid #888;
+	border-radius: 3px;
+	width: 450px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 0.4s;
+    overflow: hidden;
+}
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+.confirm_wrap .header {
+    padding: 10px;
+    background-color: rgb(218, 40, 28);
+    border-bottom: 1px solid #e5e5e5;
+}
+.confirm_wrap .header h3 {
+    font-size: 14px;
+    margin: 0;
+    color: #fff;
+    line-height: 1.5;
+    display: inline-block;
+}
+/* The Close Button */
+.confirm_wrap .header .close {
+    float: right;
+    cursor: pointer;
+    margin-top: -4px;
+    margin-right: -3px;
+}
+.confirm_wrap .header .close img {
+    width: 30px;
+    height: 30px;
+}
+.confirm_wrap .content {
+	padding: 185px 20px 65px;
+    text-align: center;
+    background: url(../../images/store/bg_add_basket.gif) no-repeat 50% 68px;
+	font-size: 12px;
+}
+.confirm_wrap .content p {
+	font-weight: bold;
+    color: #2e2e2e;
+}
+.confirm_wrap .footer {
+	padding: 9px;
+    border-top: 1px solid #d7d5d5;
+    text-align: center;
+    background: #f9f6ec;
+}
+.confirm_wrap .footer .btn_cartList {
+	display: inline-block;
+	width: 96px;
+    padding: 6px 8px;
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: normal;
+    vertical-align: middle;
+    text-align: center;
+    color: #ffffff;
+    background-color: rgb(218, 40, 28);
+}
+.confirm_wrap .footer .btn_remove {
+	display: inline-block;
+	width: 96px;
+    padding: 6px 8px;
+    margin-left: 20px;
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: normal;
+    vertical-align: middle;
+    text-align: center;
+    color: #000;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+/***************************************/
+
+
+
+/* 버튼 그룹 */
+#btn_register {
+	background-color: pink;
+	border-radius: 3px;
+}
+#myCart {
+	display: none;
+	position: fixed;
+	width: 55px;
+	height: 50px;
+	bottom: 90px;
+	right: 30px;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: gray;
+	color: white;
+	cursor: pointer;
+	border-radius: 4px;
+}
+#myCart:hover, #goTop:hover {
+	background-color: #da281c;
+}
+#goTop {
+	display: none;
+	position: fixed;
+	width: 55px;
+	height: 50px;
+	bottom: 30px;
+	right: 30px;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: gray;
+	color: white;
+	cursor: pointer;
+	border-radius: 4px;
+}

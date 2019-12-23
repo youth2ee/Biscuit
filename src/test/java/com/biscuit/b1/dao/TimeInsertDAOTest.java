@@ -11,7 +11,6 @@ import javax.xml.crypto.Data;
 
 import org.junit.Test;
 
-import com.biscuit.b1.TestAbstractCase;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 
@@ -20,7 +19,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	@Inject
 	private AdminDAO adminDAO;
 	private int num = 1;
-	private String date = "19/12/24";
+	private String date = "19/12/26";
 	
 	private int mnum1_1 = 270;
 	private int mnum1_2 = 272;

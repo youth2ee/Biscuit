@@ -1,0 +1,221 @@
+@charset "UTF-8";
+
+body{
+	background-color: #fcfcf0;
+}
+
+#total{
+	background-color: #fcfcf0;
+}
+
+#sec{
+	width: 70%;
+	margin-left: 100px;
+}
+
+#secTitle{
+	margin: 0 auto;
+	text-align: left;
+	padding-bottom: 30px;
+}
+
+
+#sec1{
+	clear: both;
+ 	float: left; 
+}
+
+#sec2{
+	float: left;
+}
+
+#sec3{
+	float: left;
+}
+
+#sec4{
+	width: 100%;
+	float: left;
+	padding-top: 0;
+	padding-bottom: 40px;
+}
+
+#sec41, #sec42{
+	float: left;
+}
+
+#sec5{
+	padding-left: 15px;
+}
+
+#sec6{
+position: absolute;
+    left: 965px;
+    top: 231px;
+}
+
+
+.list{
+	width: 300px;
+	text-align: left;
+}
+
+.placeholder {
+  border-bottom: 4px solid;
+  cursor: pointer;
+  text-align: left;
+}
+
+.placeholder:hover {
+  color: #888888;
+}
+
+.placeholder2 {
+  border-bottom: 4px solid;
+  cursor: pointer;
+  text-align: left;
+}
+
+.placeholder2:hover {
+  color: #888888;
+}
+
+.placeholder3 {
+  border-bottom: 4px solid;
+  cursor: pointer;
+  text-align: left;
+}
+
+.placeholder3:hover {
+  color: #888888;
+}
+
+
+.wrapper{
+	width: 264px;
+ 	height: 463px;
+	text-align: left;
+	float: left;
+	padding-top: 10px; 
+ 	font-size: 30px;
+}
+
+.wrapper2{
+	width: 217px;
+ 	height:463px;
+	text-align: left;
+	float: left;
+	padding-top: 10px; 
+ 	font-size: 30px;
+ 	margin-right: 56px;
+ 	overflow-y:scroll;
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#menubar{
+	text-align: left;
+}
+
+#aa{
+	color: #E76707;
+	cursor: pointer;
+}
+
+.act{
+	color: #ee3224;
+}
+
+/* 영화검색 */
+table {
+/*   font-family: arial, sans-serif; */
+  border-collapse: collapse;
+
+/*   display: none; */
+  font-size: 12px;
+  cursor:pointer;
+  position: absolute;
+  top: 278px;
+  left: 610px;
+}
+
+/* td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+} */
+
+.mltd{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  background-color: white;
+  color: gray;
+  width: 307px;
+}
+
+
+/* 
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+ */
+/* #input1, #input2, #sample5_address{
+	margin-left: -46px;
+}
+ */
+ 
+ #movieSearch{
+ float:left;
+ text-align: left;
+/*  position: fixed;
+ top: 154px;
+ left: 610px; */
+ }
+
+#m1{
+	float: left;
+	display: inline;
+	width: 500px;
+	height: 220px;
+	margin-top: 30px;
+	padding-left: 60px;
+}

@@ -1,0 +1,63 @@
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+#starboxmain{
+	width: 1051px;
+	background-color: #f4f3ea;
+	height: 865px;
+}
+.starbox {
+  display: none;
+  	float: left;
+	width: 212px;
+	height: 359px;
+	margin: 18px 15px;
+	border: 0.3px solid black;
+	padding:10px;
+	background:black;
+	text-align:center;
+	color:white;
+	letter-spacing:-2px;
+}
+
+.starbox img{
+	width: 213px;
+	height: 305px;
+}
+
+.stitle{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.stxt{
+	padding-top: 7px;
+}
+
+.btn {
+	clear:both;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: 44px;
+  line-height: 47px;
+  background: #E74C3C;
+  border-bottom:3px solid #C0392B;
+  text-align: center;
+  border-radius:3px;
+}

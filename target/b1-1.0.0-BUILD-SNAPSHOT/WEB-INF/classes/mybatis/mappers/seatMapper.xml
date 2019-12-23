@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="seatMapper">
+
+	<select id="bookCheck" resultType="SeatVO"
+		parameterType="ChoiceVO">
+		select seat_name from seat where cinema_num =
+		#{cinema_num} and movieInfo_name = #{movieInfo_name} and
+		timeInfo_start = #{timeInfo_start} and timeInfo_date = #{timeInfo_date}
+	</select>
+	<insert id="seatBooking" parameterType="SeatVO">
+		insert into seat
+		(seat_num,movieInfo_name,cinema_num,seat_name,timeInfo_start,theater_num,movieInfo_num,timeInfo_date)
+		values
+		(seat_seq.nextval,#{movieInfo_name},#{cinema_num},#{seat_name},#{timeInfo_start},#{theater_num},#{movieInfo_num},#{timeInfo_date})
+	</insert>
+	<insert id="insertTicket" parameterType="Movie_TicketingVO">
+		insert into
+		movie_ticketing values
+		(#{movie_t_num},#{id},#{movieInfo_num},#{cinema_num},#{theater_num},#{seat_name},0,#{price},sysdate,#{timeInfo_start},#{timeInfo_date})
+	</insert>
+	<select id="getPoster" resultType="MovieDataVO" parameterType="ChoiceVO">
+		select poster from moviedata where title = (select movieInfo_title from movieInfo where movieInfo_title = #{movieInfo_name})	
+	</select>
+	<update id="ratingUpdate">
+		update movieinfo set movieinfo_rating = 
+		(select (select count(seat_num) from seat where movieinfo_num = #{movieInfo_num})/((select count(theater_num) 
+		from timeinfo where movieinfo_num = #{movieInfo_num})*195)*100 from dual)
+		where movieinfo_num = #{movieInfo_num}
+	</update>
+	<select id ="getGrade" resultType="String" parameterType="ChoiceVO">
+		select movieInfo_grade from movieInfo where movieInfo_title = #{movieInfo_name}
+	</select>	
+
+</mapper>

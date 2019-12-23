@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="movieMapper">
+
+	<select id="homeposter" resultType="MovieInfoVO">
+	<![CDATA[
+	select movieinfo_title, movieinfo_poster from(
+	select * from movieinfo
+	order by movieinfo_rating desc)
+	where rownum < 30
+	 ]]>
+	</select>
+
+
+  
+  	<!-- 영화선택 -->
+  	<select id="movieTitleSelect" resultType="MovieInfoVO">
+<!--   	select movieinfo_num, movieinfo_title, movieinfo_grade
+    from movieinfo
+    order by movieinfo_rating asc -->
+    <![CDATA[
+    select movieinfo_num, movieinfo_title, movieinfo_grade, movieinfo_date
+    from
+    (select movieinfo_num, movieinfo_title, movieinfo_grade, movieinfo_date
+    from movieinfo
+    where movieinfo_date >= (select to_char(add_months(sysdate-15,-1),'yy/mm/dd')from dual)
+    order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
+    WHERE ROWNUM <= 50
+    ]]>
+  	</select>
+  
+  	<!-- 영화지역 선택 -->
+  	<select id="movieLocSelect" resultType="CinemaVO">
+  	select DISTINCT cinema_loc, cinema_locnum
+  	from cinema
+	order by cinema_locnum asc
+  	</select>
+  	
+  	
+  	<!-- 영화지역에 따른 관 선택 -->
+  	<select id="movieCinemaSelect" parameterType="ChoiceVO" resultType="CinemaVO">
+  	select distinct cinema_name, cinema_num
+    from cinema
+    where cinema_loc = #{cinema_loc}
+    order by cinema_num asc
+  	</select>
+  	
+  	<!-- 선택한 영화 지역 보여주기  -->
+  	<select id="movieChoice" parameterType="ChoiceVO" resultType="ChoiceVO">
+  	select distinct cinema_name, count(cinema_name) cinema_num
+    from cinema A full outer join timeinfo B
+    on A.cinema_num = B.cinema_num
+    where A.cinema_loc = #{cinema_loc} and B.movieinfo_num = #{movieInfo_num}
+    group by cinema_name
+    order by cinema_name asc
+  	</select>
+
+  	<!-- theater num 받기 -->
+  	<select id="theaterSelect" parameterType="ChoiceVO" resultType="ChoiceVO">
+<!--   	select distinct theater_num 
+    from timeinfo
+    where movieinfo_num = #{movieInfo_num} and cinema_num = #{cinema_num} -->
+    select distinct A.theater_num, B.theater_name
+    from timeinfo A full outer join theater B
+    on A.theater_num = B.theater_num
+    where A.movieinfo_num = #{movieInfo_num} and A.cinema_num = #{cinema_num}
+  	</select>
+  	
+  	
+  	
+  	<!-- 날짜 선택하기 -->	
+  	<select id="movieDateSelect" parameterType="ChoiceVO" resultType="TimeInfoVO">
+<!--   	select distinct B.timeinfo_date, A.theater_num
+	from theater A full outer Join timeinfo B
+	on A.theater_num = B.theater_num
+	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} 
+	order by B.timeinfo_date asc -->
+<!-- 	select distinct A.timeinfo_date
+    from timeinfo A full outer join theater B
+    on A.theater_num = B.theater_num
+    where A.movieinfo_num = #{movieInfo_num} and A.cinema_num = #{cinema_num}
+    order by A.timeinfo_date asc -->
+    select distinct to_char(A.timeinfo_date,'yy/mm/dd') timeinfo_date
+    from timeinfo A full outer join theater B
+    on A.theater_num = B.theater_num
+    where A.movieinfo_num =  #{movieInfo_num} and A.cinema_num = #{cinema_num}
+    order by timeinfo_date asc
+  	</select>
+  	
+  	<select id="movieTimeSelect" parameterType="ChoiceVO" resultType="ChoiceVO">
+<!--select B.timeinfo_start, B.timeinfo_date
+	from theater A full outer Join timeinfo B
+	on A.theater_num = B.theater_num
+	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} and B.timeinfo_date = #{timeInfo_date}
+	order by B.timeinfo_start asc -->
+<!-- 	select B.timeinfo_date, B.timeinfo_start, B.timeinfo_end
+	from theater A full outer Join timeinfo B
+	on A.theater_num = B.theater_num
+	where A.cinema_num = #{cinema_num} and B.movieinfo_num = #{movieInfo_num} and B.timeinfo_date = #{timeInfo_date}
+	order by B.timeinfo_start asc -->
+	select B.theater_name, B.theater_num ,A.timeinfo_start, A.timeinfo_end
+    from timeinfo A full outer join theater B
+    on A.theater_num = B.theater_num
+    where A.movieinfo_num = #{movieInfo_num} and A.cinema_num = #{cinema_num} and A.timeinfo_date = #{timeInfo_date}
+    order by B.theater_num asc, A.timeinfo_start asc
+  	</select>
+  	
+  	<!-- 좌석 -->
+<!--<select id="seatCount" parameterType="ChoiceVO" resultType="ChoiceVO">
+  	select timeinfo_start, count(*) seatCount
+    from seat
+    where movieinfo_num = #{movieInfo_num} and cinema_num = #{cinema_num}
+    group by timeinfo_start
+    order by timeinfo_start asc
+  	</select> -->
+
+<!--<select id="">
+  	select B.timeinfo_start, A.timeinfo_start seatTime, A.seatCount
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    group by timeinfo_start
+    order by timeinfo_start asc) A 
+    full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI' ))
+    where B.movieinfo_num = #{movieInfo_num} and B.cinema_num = #{cinema_num}
+    order by A.timeinfo_start asc
+  	</select> -->
+  	
+  	<select id="seatCount" parameterType="ChoiceVO" resultType="ChoiceVO">    
+   <!--  select B.timeinfo_start timeinfo_start, A.timeinfo_start seatTime, nvl(A.seatcount,0) seatcount
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    where movieinfo_num = #{movieInfo_num} and theater_num = #{theater_num} and timeinfo_date = #{timeInfo_date}
+    group by timeinfo_start
+    order by timeinfo_start asc) A 
+    full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI'))
+    where B.movieinfo_num = #{movieInfo_num} and B.theater_num = #{theater_num} and B.timeinfo_date = #{timeInfo_date}
+    order by B.timeinfo_start asc -->
+<!--     select B.timeinfo_start timeinfo_start, nvl(A.seatcount,0) seatcount
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    where movieinfo_num = #{movieInfo_num} and theater_num = #{theater_num} and timeinfo_date = #{timeInfo_date}
+    group by timeinfo_start
+    order by timeinfo_start asc) A 
+    full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI'))
+    where B.movieinfo_num = #{movieInfo_num} and B.theater_num = #{theater_num} and B.timeinfo_date = #{timeInfo_date}
+    order by B.timeinfo_start asc -->
+<!--     select B.timeinfo_start timeinfo_start, nvl(A.seatcount,0) seatcount, B.theater_num
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    where movieinfo_num = #{movieInfo_num} and timeinfo_date = #{timeInfo_date}
+    group by timeinfo_start
+    order by timeinfo_start asc) A 
+    full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI'))
+    where B.movieinfo_num = #{movieInfo_num}  and B.timeinfo_date = #{timeInfo_date}
+    order by B.theater_num asc, B.timeinfo_start asc -->
+    select B.timeinfo_start timeinfo_start, nvl(A.seatcount,0) seatcount, B.theater_num, B.movieinfo_num
+    from (select timeinfo_start, count(*) seatCount
+    from seat
+    where movieinfo_num = #{movieInfo_num} and timeinfo_date = #{timeInfo_date} and cinema_num=#{cinema_num}
+    group by timeinfo_start
+    order by timeinfo_start asc) A full join timeinfo B 
+    on (A.timeinfo_start = to_char(B.timeinfo_start, 'HH24:MI'))
+    where B.movieinfo_num = #{movieInfo_num}  and B.timeinfo_date = #{timeInfo_date} and cinema_num=#{cinema_num}
+    order by B.theater_num asc, B.timeinfo_start asc
+  	</select>
+  	
+  	<select id="movieList" resultType="MovieInfoVO">
+<!-- select * from movieinfo
+	order by movieinfo_star desc -->
+<![CDATA[
+	select *
+    from
+    (select *
+    from movieinfo
+    where movieinfo_date >= (select to_char(add_months(sysdate-15,-1),'yy/mm/dd')from dual)
+    order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
+    WHERE ROWNUM <= 50
+    ]]>
+<!--     <![CDATA[
+    select *
+    from (select * from movieinfo where movieinfo_date >= (select to_char(add_months(sysdate-15,-1),'yy/mm/dd')from dual) order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
+    A full outer join movie_grade B
+    on A.movieinfo_num = B.movieinfo_num
+    WHERE ROWNUM <= 50
+    ]]> -->
+  	</select>
+
+  	<insert id="movieInsert" parameterType="MovieDataVO">
+		insert into movieData values (#{title},#{runtime},#{nation},#{genre},#{ratingGrade},#{prodYear},#{releaseDate},#{poster})  	
+  	</insert>
+  	<insert id="movieInfoInsert" parameterType="MovieInfoVO">
+  		insert into movieInfo 
+  		(movieInfo_num,movieInfo_title,movieInfo_genre,movieInfo_nation,movieInfo_year,movieInfo_grade,movieInfo_time,movieInfo_date,movieInfo_star,movieInfo_poster,movieInfo_plot,movieInfo_rating) 
+  		values
+  		(movieInfo_seq.nextval,#{movieInfo_title},#{movieInfo_genre},#{movieInfo_nation},#{movieInfo_year},#{movieInfo_grade},#{movieInfo_time},#{movieInfo_date},0,#{movieInfo_poster},#{movieInfo_plot},0)
+  	</insert>
+  	<select id="movieListView" resultType="MovieDataVO">
+  		select * from movieData order by releaseDate desc
+  	</select>
+  	<select id="lastRelease" resultType="String">
+  		select max(releaseDate) from moviedata
+  	</select> 
+  	<update id="insertPlot" parameterType="MovieInfoVO">
+  		update movieInfo set movieInfo_plot = #{movieInfo_plot} where movieInfo_title = #{movieInfo_title} 
+  	</update>
+  	
+  	
+  	<!-- movielist heart -->
+  	<select id="movieGradeTotal" parameterType="MemberVO" resultType="MovieGradeVO">
+  	select * from movie_grade
+	where id=#{id}
+  	</select>
+  	
+  	<select id="movieGradeSelect" parameterType="MovieGradeVO" resultType="MovieGradeVO">
+  	select * from movie_grade
+	where id=#{id} and movieinfo_num=#{movieInfo_num}
+  	</select>
+  	
+  	<insert id="movieGradeInsert" parameterType="MovieGradeVO">
+  	insert into movie_grade
+    values (moviegrade_seq.nextval, 
+    #{id}, #{movieInfo_num}, 
+    0, 0, 0, (select movieinfo_title from movieinfo where movieinfo_num = #{movieInfo_num}))
+  	</insert>
+  	
+  	<update id="movieHeartUpdate" parameterType="MovieGradeVO">
+  	update movie_grade set
+	moviegrade_heart = #{movieGrade_heart}
+	where id=#{id} and movieinfo_num=#{movieInfo_num}
+  	</update>
+  	
+    <update id="movieStarUpdate" parameterType="MovieGradeVO">
+  	update movie_grade set
+	moviegrade_star = #{movieGrade_star}
+	where id=#{id} and movieinfo_num=#{movieInfo_num}
+  	</update>
+  	
+  	<update id="movieInfoStarUpdate" parameterType="MovieGradeVO">
+  	update movieinfo set movieinfo_star = (select (select sum(moviegrade_star) from movie_grade 
+  	where movieinfo_num = #{movieInfo_num})/(select count(movieinfo_num) from movie_grade 
+  	where movieinfo_num = #{movieInfo_num}) from dual)
+    where movieinfo_num = #{movieInfo_num}
+  	</update>
+  	
+  	<select id="searchForHeart" resultType="MovieGradeVO" parameterType="String">
+  		select movieInfo_num from movie_grade where moviegrade_heart = 1 and id = #{id}
+  	</select>
+  	<select id="myGrade" resultType="MovieGradeVO" parameterType="String">
+  		select movieInfo_num,movieGrade_star from movie_grade where id =#{id}
+  	</select>
+  	
+  	
+ </mapper>

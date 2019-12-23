@@ -15,7 +15,7 @@
 		</div> 
 		<c:forEach items="${result}" var="date" varStatus="status">
 		
-		<c:if test="${date.week eq '일'}">
+		<c:if test="${date.week eq '일' || date.week eq '수'}">
 		<div class="dateSelect" id="${date.timeInfo_date}" style="color: red;">${date.day} ${date.week}</div>
 		</c:if>
 		
@@ -23,7 +23,7 @@
 		<div class="dateSelect" id="${date.timeInfo_date}" style="color: blue;">${date.day} ${date.week}</div>
 		</c:if>
 		
-		<c:if test="${date.week eq '월' || date.week eq '화' || date.week eq '수' || date.week eq '목' || date.week eq '금'}">
+		<c:if test="${date.week eq '월' || date.week eq '화' || date.week eq '목' || date.week eq '금'}">
 		<div class="dateSelect" id="${date.timeInfo_date}">${date.day} ${date.week}</div>
 		</c:if>
 		

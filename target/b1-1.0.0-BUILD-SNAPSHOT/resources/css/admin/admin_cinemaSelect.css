@@ -1,0 +1,15 @@
+@charset "UTF-8";
+a {
+	color : #858796;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #e42313;
+	text-decoration: none;
+}
+
+.is{
+	width: 400px;
+}
+
