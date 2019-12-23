@@ -353,11 +353,8 @@ h1 {
 							$('#addMember').append(rowItem);
 						});
 
-		$(document).on(
-				"click",
-				"#addMemberBtn",
-				function() { // 회원 추가 (2)
-					for (var i = 0; i < '${fn:length("${member}")}'; i++) {
+		$(document).on("click","#addMemberBtn",function() { // 회원 추가 (2)
+					for (var i = 0; i < '${fn:length("${members}")}'; i++) {
 						var attr = $(this).attr('class');
 						$("#id").val($("#id" + attr).val());
 						$("#pw").val($("#pw" + attr).val());
@@ -386,9 +383,10 @@ h1 {
 						alert("항목을 모두 입력하세요");
 					}
 				});
-		for (var i = 0; i < '${fn:length("${member}")}'; i++) { // 회원정보 수정
+		for (var i = 0; i < '${fn:length("${members}")}'; i++) { // 회원정보 수정
 
 			$("#btn" + i).click(function() {
+				alert('${fn:length("${members}")}');
 				var attr = $(this).attr('class');
 				$("#id").val($("#id" + attr).val());
 				$("#pw").val($("#pw" + attr).val());

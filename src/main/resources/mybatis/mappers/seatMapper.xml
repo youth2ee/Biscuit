@@ -20,7 +20,7 @@
 	<insert id="insertTicket" parameterType="Movie_TicketingVO">
 		insert into
 		movie_ticketing values
-		(#{movie_t_num},#{id},#{movieInfo_num},#{cinema_num},#{theater_num},#{seat_name},0,#{price},sysdate,#{timeInfo_start})
+		(#{movie_t_num},#{id},#{movieInfo_num},#{cinema_num},#{theater_num},#{seat_name},0,#{price},sysdate,#{timeInfo_start},#{timeInfo_date})
 	</insert>
 	<select id="getPoster" resultType="MovieDataVO" parameterType="ChoiceVO">
 		select poster from moviedata where title = (select movieInfo_title from movieInfo where movieInfo_title = #{movieInfo_name})	
@@ -33,6 +33,6 @@
 	</update>
 	<select id ="getGrade" resultType="String" parameterType="ChoiceVO">
 		select movieInfo_grade from movieInfo where movieInfo_title = #{movieInfo_name}
-	</select>
+	</select>	
 
 </mapper>

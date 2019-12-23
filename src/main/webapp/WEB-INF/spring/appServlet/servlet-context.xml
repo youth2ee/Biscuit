@@ -58,7 +58,6 @@
 			<mapping path="/movie/movieManagement"/>
 			<beans:ref bean="AdminInterceptor"/>
 		</interceptor>
-
 	</interceptors>
 	
 	 <beans:bean class="com.biscuit.b1.interceptors.CartInterceptor" id="cartInterceptor" />
@@ -82,9 +81,9 @@
 
 <!-- 	</interceptors>  -->
 	
+		<!-- properties -->
+	<context:property-placeholder file-encoding="UTF-8" location="classpath:/properties/**/*.properties"/>
 	
 
-	<!-- properties -->
-	<context:property-placeholder file-encoding="UTF-8" location="classpath:/properties/**/*.properties"/>
 	
 </beans:beans>

@@ -28,7 +28,7 @@
 	
 	
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 		<tr>
 			<td height="20"></td>
 		</tr>
@@ -114,7 +114,7 @@
 	<!-- /Header -->
 	<!-- Order Details -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 		<tbody>
 			<tr>
 				<td>
@@ -199,7 +199,7 @@
 	<!-- /Order Details -->
 	<!-- Total -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 		<tbody>
 			<tr>
 				<td>
@@ -236,7 +236,7 @@
 	<!-- /Total -->
 	<!-- Information -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 		<tbody>
 			<tr>
 				<td>
@@ -316,7 +316,7 @@
 									<table width="480" border="0" cellpadding="0" cellspacing="0"
 										align="center" class="fullPadding">
 										<tbody>
-											<tr>
+											<!-- <tr>
 												<td>
 													<table width="220" border="0" cellpadding="0"
 														cellspacing="0" align="left" class="col">
@@ -377,7 +377,7 @@
 										</tbody>
 									</table>
 								</td>
-							</tr>
+							</tr> -->
 							<tr class="hiddenMobile">
 								<td height="60"></td>
 							</tr>
@@ -392,7 +392,7 @@
 	</table>
 	<!-- /Information -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 
 		<tr>
 			<td>

@@ -59,7 +59,27 @@
 <div id="tboxmain">
 
 <div class="tbox">최신 예매내역
-	<%-- <div>${newestBook}</div> --%>
+	<div class = "newestBookWrap">
+		<div class="newestBookPoster" >
+			<img alt="" src="${newestBook.movieInfo_poster}">
+		</div>
+		<div class="newestBookInfo">
+		<input type="hidden" name="bookCheck" id="bookCheck">
+			<span>${newestBook.movieInfo_title}<br></span>
+			<span>CGV ${newestBook.cinema_name}점 </span>
+			<span>${newestBook.theater_name}관<br></span>
+			<span>${newestBook.book_date}<!-- 이거 예매한 날짜 말고 상영 날짜로 바꿔야함 (디비손봐야함) --><br></span>
+			<span>${newestBook.timeInfo_start}<br><br></span>
+			<span class="canceled"></span>
+			<!-- 상영 일자가 오늘 날짜 이후일 경우 별점주러가기로, 이전일경우 예매취소로 바꾸기 (날짜비교 쉬움)-->
+			<c:if test="${isCancel eq 0 && compare eq 0}">
+				<button><span id="bookCancle">예매 취소<span></button>
+			</c:if>
+			<c:if test="${isCancel eq 0 && compare eq 1}">
+				<button><span id="goToStar">별점 주기<span></button>
+			</c:if>
+		</div>
+	</div>
 </div>
 <div class="tbox">최신 구매내역</div>
 <div class="tbox">위시리스트</div>
@@ -77,6 +97,16 @@
 <footer></footer>
 
 
+<script type="text/javascript">
+	$("#bookCancle").click(function() {
+		/* 폼태그로 넘길 것인지 상담 해 봐야 함  
+			폼태그로 넘길 시에는 버튼 클릭시 action 변경 되도록 구현
+		*/
+	});
+	$("#goToStar").click(function(){
+		location.href="../../movie/movieList";
+	});
 
+</script>
 </body>
 </html>
