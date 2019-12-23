@@ -303,6 +303,7 @@ font-weight: bold;
 
 .footer{
 	border-top : 1px solid #666;
+	font-size : 14px;
 }
 .footer a:hover{
 	text-decoration: underline;

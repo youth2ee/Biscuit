@@ -65,11 +65,11 @@
 		</div>
 		<div class="newestBookInfo">
 		<input type="hidden" name="bookCheck" id="bookCheck">
-			${newestBook.movieInfo_title}<br>
-			CGV ${newestBook.cinema_name}점 
-			${newestBook.theater_name}관<br>
-			${newestBook.book_date}<!-- 이거 예매한 날짜 말고 상영 날짜로 바꿔야함 (디비손봐야함) --><br>
-			${newestBook.timeInfo_start}<br><br>
+			<span>${newestBook.movieInfo_title}<br></span>
+			<span>CGV ${newestBook.cinema_name}점 </span>
+			<span>${newestBook.theater_name}관<br></span>
+			<span>${newestBook.book_date}<!-- 이거 예매한 날짜 말고 상영 날짜로 바꿔야함 (디비손봐야함) --><br></span>
+			<span>${newestBook.timeInfo_start}<br><br></span>
 			<span class="canceled"></span>
 			<!-- 상영 일자가 오늘 날짜 이후일 경우 별점주러가기로, 이전일경우 예매취소로 바꾸기 (날짜비교 쉬움)-->
 			<c:if test="${isCancel eq 0 && compare eq 0}">
