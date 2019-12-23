@@ -34,9 +34,13 @@ public class SeatController {
 	public ModelAndView seatSelect(ChoiceVO choiceVO, HttpServletRequest request, HttpSession session)
 			throws Exception {
 		choiceVO = (ChoiceVO) session.getAttribute("ChoiceVO");
+
 		ModelAndView mv = new ModelAndView();
-		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO);
-		MovieDataVO movieDataVO = seatService.getPoster(choiceVO);
+
+		List<SeatVO> seatVOs = seatService.bookCheck(choiceVO); // 예약된 좌석들을 가져옴
+		MovieDataVO movieDataVO = seatService.getPoster(choiceVO); // 포스터 url을 가져와서 넣어줌
+		String grade = seatService.getGrade(choiceVO);
+
 		mv.addObject("poster", movieDataVO.getPoster());
 		mv.addObject("seats", seatVOs);
 		mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
@@ -76,13 +80,6 @@ public class SeatController {
 			seatVO.setTimeInfo_date(choiceVO.getTimeInfo_date());
 		
 			result1 = seatService.seatBooking(seatVO); // 좌석 테이블에 입력
-
-			// 예매 번호 생성하기
-
-			/*
-			 * SimpleDateFormat today = new SimpleDateFormat("MMdd"); Date now = new Date();
-			 */
-
 			String str1_1 = String.format("%02d%n", seatVO.getCinema_num()).replace("\r\n", ""); // 극장지점
 			String str1_2 = String.format("%02d%n", seatVO.getTheater_num()).replace("\r\n", ""); // 관번호
 			String str1 = str1_1 + str1_2; // 극장지점 + 관번호
@@ -100,7 +97,6 @@ public class SeatController {
 
 			String bookCode = str1 + "-" + str2 + "-" + str3 + "-" + str4 + "-" + str5;
 			ar.add(bookCode);
-			System.out.println("예매번호 : " + bookCode);
 			MemberVO memberVO = (MemberVO) session.getAttribute("member");
 			movie_TicketingVO.setMovie_t_num(bookCode);
 			movie_TicketingVO.setId(memberVO.getId());
@@ -121,6 +117,11 @@ public class SeatController {
 			else
 				allBookCode = allBookCode + "," + ar.get(i);
 		}
+
+		session.setAttribute("allBookCode", allBookCode); // 파라미터로 보내면 여러군데 거쳐가야하므로 그냥 세션에 넣었음
+		session.setAttribute("adultCount", adultCount);
+		session.setAttribute("kidCount", kidCount);
+
 		String msg = "예매 실패";
 		if (result1 + result2 > 1) {
 			msg = "예매 성공";

@@ -11,6 +11,7 @@
 <title>영화 그 이상의 감동 CGV</title>
 
 <c:import url="../layout/jquery.jsp" />
+<link href="${pageContext.request.contextPath}/resources/css/layout/footer.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movie/movieList.css" rel="stylesheet">
@@ -20,7 +21,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/design/ribbon.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/heart.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/modal.css" rel="stylesheet">
-
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
 <!-- <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:100'> -->
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -232,7 +232,9 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 </section>
 
 <!-- footer -->
-<footer></footer>
+<footer>
+		<c:import url="../layout/footer.jsp" />
+</footer>
 
 
 <script type="text/javascript">

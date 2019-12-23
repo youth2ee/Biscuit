@@ -9,6 +9,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header_home.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/footer.css" rel="stylesheet">
 
 
 
@@ -94,6 +95,12 @@
 				}
 			});
 		</script>
+		<div>
+		    <img class="mainImg" src="http://img.cgv.co.kr/Front/Main/2019/1219/15767252497760.jpg">
+		</div>
+		<div>
+			<img class="mainImg2" src = "http://img.cgv.co.kr/Images/Banner/2017/0309/14890258372960.jpg">
+		</div>
 		<!-- <img alt="신규" src="./resources/images/home/boxoffice/icon_new.png"> -->
 		<!-- text -->
 			<div id="txtbox">
@@ -161,8 +168,6 @@
 
 
 
-
-
 <script type="text/javascript">
 	/* 포스터 */
 
@@ -184,6 +189,8 @@
 	    });
 	
 </script>
-
+	<footer style="margin-top: 800px">
+		<c:import url="./layout/footer.jsp" />
+</footer>
 </body>
 </html>
