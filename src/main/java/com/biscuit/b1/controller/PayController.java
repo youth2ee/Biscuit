@@ -27,6 +27,7 @@ public class PayController {
 		ModelAndView mv = new ModelAndView();
 		payInfoVO = payService.KakaoPayApprove(pg_token);
 		mv.addObject("pay", payInfoVO);
+		
 		return mv;
 	}
 	@GetMapping(value = "marketSuccess")

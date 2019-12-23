@@ -42,14 +42,17 @@
 
 <div class="mycontext">
 
-<h1>myPage_movie_res</h1>
+<h1>MyPage - 스토어 구매내역</h1>
 
 
 <div id="tboxmain">
 
-<div class="tbox">최신 예매내역</div>
 <div class="tbox">최신 구매내역</div>
-<div class="tbox">위시리스트</div>
+
+
+
+
+
 
 
 </div>

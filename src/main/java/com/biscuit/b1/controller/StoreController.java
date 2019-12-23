@@ -31,6 +31,11 @@ public class StoreController {
 	@Inject
 	private StoreService storeService;
 	
+	//주문 정보
+	
+	//주문 상세 정보
+	
+	
 	//카트 진입시 로그인 여부
 	@ResponseBody
 	@PostMapping("cartLoginCheck")
