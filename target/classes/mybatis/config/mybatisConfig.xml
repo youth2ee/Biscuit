@@ -21,5 +21,6 @@
   		<typeAlias type="com.biscuit.b1.model.MovieDataVO" alias="MovieDataVO"/>
   		<typeAlias type="com.biscuit.b1.model.MovieGradeVO" alias="MovieGradeVO"/>
   		<typeAlias type="com.biscuit.b1.model.AdminVO" alias="AdminVO"/>
+  		<typeAlias type="com.biscuit.b1.model.NewestVO" alias="NewestVO"/>
   	</typeAliases>
   </configuration>

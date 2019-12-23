@@ -316,7 +316,7 @@
 									<table width="480" border="0" cellpadding="0" cellspacing="0"
 										align="center" class="fullPadding">
 										<tbody>
-											<tr>
+											<!-- <tr>
 												<td>
 													<table width="220" border="0" cellpadding="0"
 														cellspacing="0" align="left" class="col">
@@ -377,7 +377,7 @@
 										</tbody>
 									</table>
 								</td>
-							</tr>
+							</tr> -->
 							<tr class="hiddenMobile">
 								<td height="60"></td>
 							</tr>

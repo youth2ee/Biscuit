@@ -165,6 +165,7 @@ public class SeatController {
 			movie_TicketingVO.setTheater_num(choiceVO.getTheater_num());
 			movie_TicketingVO.setSeat_name(seat_names[i]);
 			movie_TicketingVO.setTimeInfo_start(choiceVO.getTimeInfo_start());
+			movie_TicketingVO.setTimeInfo_date(choiceVO.getTimeInfo_date());
 			if (Integer.parseInt(adultCount) > adultCheck) {
 				movie_TicketingVO.setPrice(10000); // 어른이라면 가격 테이블에 10000
 				adultCheck++;

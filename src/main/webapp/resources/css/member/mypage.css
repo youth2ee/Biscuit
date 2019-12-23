@@ -104,3 +104,51 @@ header{
 
 
 
+.starbox{
+	float: left;
+	width: 212px;
+	height: 362px;
+	margin: 26px 15px;
+	border: 0.3px solid black;
+	padding:10px;
+	background:black;
+	text-align:center;
+	color:white;
+	letter-spacing:-2px;
+	
+	
+}
+.e{
+	height: 10px;
+	width: 10px;
+	background: url("../../images/mypage/ff.png")
+}
+.heartbox{
+	float: left;
+	width: 212px;
+	height: 362px;
+	margin: 26px 15px;
+	border: 0.3px solid black;
+}
+
+.starbox img{
+	width: 213px;
+	height: 305px;
+}
+
+.heartbox img{
+	width: 213px;
+	height: 305px;
+}
+.newestBookWrap{
+}
+.newestBookPoster img{
+	float: left;
+	width: 150px;
+	margin-left: 20px;
+}
+.newestBookInfo{
+	display: -webkit-inline-box;
+    margin-left: 20px;
+    margin-top: 50px;
+}

@@ -10,11 +10,19 @@ public class Movie_TicketingVO {
 	private String seat_name;
 	private int price;
 	private String timeInfo_start;
+	private String timeInfo_date;
+	
+	
+	
+	
+	public String getTimeInfo_date() {
+		return timeInfo_date;
+	}
 
-	
-	
-	
-	
+	public void setTimeInfo_date(String timeInfo_date) {
+		this.timeInfo_date = timeInfo_date;
+	}
+
 	public String getTimeInfo_start() {
 		return timeInfo_start;
 	}
