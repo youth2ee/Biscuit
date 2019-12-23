@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.biscuit.b1.model.AdminVO;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
+import com.biscuit.b1.model.MovieDataVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TheaterVO;
 import com.biscuit.b1.model.TimeInfoVO;
@@ -106,6 +107,27 @@ public class AdminDAO {
 	
 	public int cinemalistDelete(CinemaVO cinemaVO) {
 		return sqlSession.delete(NAMESPACE+"cinemalistDelete", cinemaVO);
+	}
+	
+	//movieInsert
+	public int movieInsert(MovieDataVO movieDataVO) {
+		return sqlSession.insert(NAMESPACE + "movieInsert", movieDataVO);
+	}
+
+	public List<MovieDataVO> movieListView() {
+		return sqlSession.selectList(NAMESPACE + "movieListView");
+	}
+
+	public String lastRelease() {
+		return sqlSession.selectOne(NAMESPACE + "lastRelease");
+	}
+
+	public int movieInfoInsert(MovieInfoVO movieInfoVO) {
+		return sqlSession.insert(NAMESPACE + "movieInfoInsert", movieInfoVO);
+	}
+	
+	public int insertPlot (MovieInfoVO movieInfoVO) {
+		return sqlSession.update(NAMESPACE+"insertPlot",movieInfoVO);
 	}
 
 }

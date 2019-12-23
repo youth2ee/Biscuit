@@ -26,7 +26,7 @@
 </head>
 <body id="page-top">
 
-   <!-- Page Wrapper -->
+  <!-- Page Wrapper -->
   <div id="wrapper">
 
     <!-- Sidebar -->
@@ -66,8 +66,7 @@
         <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">MOVIE</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
-            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_moviedataInsert">영화 데이터 추가</a>
+            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
           </div>
         </div>
       </li>
@@ -241,9 +240,9 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">moviedata insert</h1>
-         
-       <!-- ******************* 데이터 넣는 곳 *************************** -->
+          <h1 class="h3 mb-2 text-gray-800">moviedata list</h1>
+
+         <!-- ******************* 데이터 넣는 곳 *************************** -->
          
          
          
@@ -251,7 +250,6 @@
 
 
 		<!-- ********************** 데이터 끝  *************************** -->
-
         </div>
         <!-- /.container-fluid -->
 

@@ -79,4 +79,12 @@ public class MemberDAO {
 	public int cancelCheck(NewestVO newestVO) {
 		return sqlSession.selectOne(NAMESPACE + "cancelCheck", newestVO);
 	}
+	
+	public Movie_TicketingVO getMovieTicketingVO(NewestVO newestVO) {
+		return sqlSession.selectOne(NAMESPACE + "getMovieTicketingVO", newestVO);
+	}
+	
+	public int seatDelete (Movie_TicketingVO movie_TicketingVO) {
+		return sqlSession.selectOne(NAMESPACE + "seatDelete", movie_TicketingVO);
+	}
 }

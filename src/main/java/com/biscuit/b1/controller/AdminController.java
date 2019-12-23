@@ -3,6 +3,7 @@ package com.biscuit.b1.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +16,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biscuit.b1.model.AdminVO;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
+import com.biscuit.b1.model.MemberVO;
+import com.biscuit.b1.model.MovieDataVO;
 import com.biscuit.b1.model.MovieInfoVO;
 import com.biscuit.b1.model.TheaterVO;
 import com.biscuit.b1.model.TimeInfoVO;
 import com.biscuit.b1.service.AdminService;
 import com.biscuit.b1.service.CinemaService;
+import com.biscuit.b1.service.MemberService;
+import com.biscuit.b1.service.MovieService;
+import com.biscuit.b1.util.Pager;
 
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -30,8 +36,11 @@ public class AdminController {
 	
 	 @Inject 
 	 private AdminService adminService;
+	 @Inject
+	 private MovieService movieService;
+	 @Inject
+	 private MemberService memberService;
 	 
-
 	@GetMapping("admin_cinema")
 	public void movieSelect_admin_cinema() {
 	}
@@ -163,6 +172,7 @@ public class AdminController {
 	
 	@RequestMapping("admin_cinemaInsert")
 	public void admin_cinemaInsert() {
+		
 	}
 	
 	@GetMapping("admin_cinemaList")
@@ -200,18 +210,89 @@ public class AdminController {
 	
 	// 관리자 : 영화관리
 	@RequestMapping("admin_moviedataList")
-	public void admin_moviedataList() {	
+	public ModelAndView admin_moviedataInsert() {	
+		String lastRelease = movieService.lastRelease();
+		List<MovieDataVO> movieDataVOs = movieService.movieListView();
+		for (int i = 0; i < movieDataVOs.size(); i++)
+			movieDataVOs.get(i).setReleaseDate(movieDataVOs.get(i).getReleaseDate().substring(0, 10));
+		ModelAndView mv = new ModelAndView();
+		lastRelease = lastRelease.substring(0, 10);
+		mv.addObject("movieDataVOs", movieDataVOs);
+		mv.addObject("lastRelease", lastRelease);
+		return mv;
 	}
 	
-	@RequestMapping("admin_moviedataInsert")
-	public void admin_moviedataInsert() {	
+	
+	@PostMapping("admin_moviedataList")
+	public ModelAndView admin_moviedataInsert2() throws Exception {
+		int result = movieService.movieManagement();
+		ModelAndView mv = new ModelAndView();
+		String msg = "영화 추가에 실패했습니다.";
+		if (result > 0) {
+			msg = result + "개의 영화 추가 완료";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./admin_moviedataList");
+		mv.setViewName("common/common_result");
+		return mv;
 	}
+	
 	
 	//관리자 : 회원관리
-	@RequestMapping("admin_memberList")
-	public void admin_memberList() {	
+	@PostMapping("admin_memberManagementAdd")
+	public ModelAndView memberManagementAdd(MemberVO memberVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.memberJoin(memberVO);
+		String msg = "멤버추가 실패";
+		if (result > 0)
+			msg = "멤버추가 완료";
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./admin_memberList");
+		mv.setViewName("common/common_result");
+		return mv;
 	}
-	
+
+	@GetMapping("admin_memberList")
+	public ModelAndView memberManagement(Pager pager) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<MemberVO> memberVOs = memberService.memberManagement(pager);
+		for (MemberVO memberVO2 : memberVOs) {
+			memberVO2.setBirth(memberVO2.getBirth().substring(0, 10));
+			memberVO2.setSignIn_date(memberVO2.getSignIn_date().substring(0, 10));
+		}
+		mv.addObject("members", memberVOs);
+		return mv;
+	}
+
+	@PostMapping("admin_memberManagementUpdate")
+	public ModelAndView memberManagementUpdate(MemberVO memberVO) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.memberManagementUpdate(memberVO);
+		String msg = "업데이트 실패";
+		if (result > 0) {
+			msg = "업데이트 완료";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./admin_memberList");
+		mv.setViewName("common/common_result");
+		return mv;
+	}
+
+	@GetMapping("admin_memberManagementDelete")
+	public ModelAndView memberManagementDelete(String id, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.memberManagementDelete(id);
+		String msg = "탈퇴에 실패했습니다.";
+		if (result > 0) {
+			msg = "정상적으로 탈퇴 처리 되었습니다.";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./admin_memberList");
+		mv.setViewName("common/common_result");
+		return mv;
+	}
+
+
 	//관리자  : 스토어관리
 	@RequestMapping("admin_storeList")
 	public void admin_storeList() {	

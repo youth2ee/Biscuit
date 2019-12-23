@@ -75,12 +75,20 @@ public class MemberService {
 		return memberDAO.newest(memberVO);
 	}
 	
+	public Movie_TicketingVO getMovieTicketingVO(NewestVO newestVO) {
+		return memberDAO.getMovieTicketingVO(newestVO);
+	}
+	
 	//memberGrade
 	public MemberVO memberGrade(MemberVO memberVO) {
 		return memberDAO.memberGrade(memberVO);
 	}
 	public int cancelCheck(NewestVO newestVO) {
 		return memberDAO.cancelCheck(newestVO);
+	}
+	
+	public int seatDelete (Movie_TicketingVO movie_TicketingVO) {
+		return memberDAO.seatDelete(movie_TicketingVO);
 	}
 
 }

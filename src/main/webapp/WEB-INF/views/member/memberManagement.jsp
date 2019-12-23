@@ -29,7 +29,6 @@
 	rel="stylesheet">
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Amarante');
-
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
 	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
@@ -51,27 +50,22 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
 html {
 	overflow-y: scroll;
 }
-
 tr input[type="text"] {
 	border: none;
 }
-
 input[type="button"] {
 	background: #ffffff;
 	border: transparent;
 	box-shadow: 0px 0px 2px 0px #a6a6a6;
 }
-
 button {
 	background: transparent;
 	border: transparent;
 	box-shadow: 0px 0px 2px 0px #a6a6a6;
 }
-
 body {
 	background: #eee url('https://i.imgur.com/eeQeRmk.png');
 	/* https://subtlepatterns.com/weave/ */
@@ -82,36 +76,29 @@ body {
 	padding: 22px 10px;
 	padding-bottom: 55px;
 }
-
 ::selection {
 	background: #5f74a0;
 	color: #fff;
 }
-
 ::-moz-selection {
 	background: #5f74a0;
 	color: #fff;
 }
-
 ::-webkit-selection {
 	background: #5f74a0;
 	color: #fff;
 }
-
 br {
 	display: block;
 	line-height: 1.6em;
 }
-
 article, aside, details, figcaption, figure, footer, header, hgroup,
 	menu, nav, section {
 	display: block;
 }
-
 ol, ul {
 	list-style: none;
 }
-
 input, textarea {
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-size-adjust: 100%;
@@ -121,30 +108,24 @@ input, textarea {
 	box-sizing: border-box;
 	outline: none;
 }
-
 blockquote, q {
 	quotes: none;
 }
-
 blockquote:before, blockquote:after, q:before, q:after {
 	content: '';
 	content: none;
 }
-
 strong, b {
 	font-weight: bold;
 }
-
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 img {
 	border: 0;
 	max-width: 100%;
 }
-
 h1 {
 	font-family: 'Amarante', Tahoma, sans-serif;
 	font-weight: bold;
@@ -153,7 +134,6 @@ h1 {
 	margin-bottom: 10px;
 	text-align: center;
 }
-
 /** page structure **/
 #wrapper {
 	display: block;
@@ -163,76 +143,60 @@ h1 {
 	padding: 10px 17px;
 	-webkit-box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.35);
 }
-
 #keywords {
 	margin: 0 auto;
 	font-size: 1.2em;
 	margin-bottom: 15px;
 }
-
 #keywords thead {
 	cursor: pointer;
 	background: #c9dff0;
 }
-
 #keywords thead tr th {
 	font-weight: bold;
 	padding: 12px 30px;
 	padding-left: 42px;
 }
-
 #keywords thead tr th span {
 	padding-right: 20px;
 	background-repeat: no-repeat;
 	background-position: 100% 100%;
 }
-
 #keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown
 	{
 	background: #acc8dd;
 }
-
 #keywords thead tr th.headerSortUp span {
 	background-image: url('https://i.imgur.com/SP99ZPJ.png');
 }
-
 #keywords thead tr th.headerSortDown span {
 	background-image: url('https://i.imgur.com/RkA9MBo.png');
 }
-
 #keywords tbody tr {
 	color: #555;
 }
-
 #keywords tbody tr td {
 	text-align: center;
 	padding: 15px 10px;
 }
-
 #keywords tbody tr td.lalign {
 	text-align: left;
 }
-
 .new_tr {
 	background: #f5f5f5;
 }
-
 .selecter {
 	margin-bottom: 10px;
 }
-
 .gender input[type="text"] {
 	width: 40px;
 }
-
 .grade input[type="text"] {
 	width: 50px;
 }
-
 .grade_point input[type="text"] {
 	width: 30px;
 }
-
 .insert {
 	background-color: #ccc; 	
 }
@@ -333,7 +297,6 @@ h1 {
 			kind = "kI";
 		}
 		$("#" + kind).prop("selected", true);
-
 		$("#add").click(function() { // 회원추가 (1)
 							$("#add").hide();
 							var rowItem = "<tr class='new_tr row'>";
@@ -352,7 +315,6 @@ h1 {
 							rowItem += '<td colspan="2"><input type="button" id="addMemberBtn" value="추가" class="${fn:length("${member}")}" style="width: 74%;"></td>';
 							$('#addMember').append(rowItem);
 						});
-
 		$(document).on(
 				"click",
 				"#addMemberBtn",
@@ -372,7 +334,6 @@ h1 {
 						$("#grade_point").val($("#grade_point" + attr).val());
 						$("#signIn_date").val($("#signIn_date" + attr).val());
 					}
-
 					if ($("#id").val() != "" && $("#pw").val() != ""
 							&& $("#name").val() != ""
 							&& $("#email").val() != ""
@@ -387,7 +348,6 @@ h1 {
 					}
 				});
 		for (var i = 0; i < '${fn:length("${member}")}'; i++) { // 회원정보 수정
-
 			$("#btn" + i).click(function() {
 				var attr = $(this).attr('class');
 				$("#id").val($("#id" + attr).val());
@@ -406,7 +366,6 @@ h1 {
 				$("#frm").attr("method", "post");
 				$("#frm").submit();
 			});
-
 			$("#delete" + i).click(
 					function() { // 회원 탈퇴 처리
 						$("#id").val($("#id" + $(this).attr('class')).val());
@@ -421,7 +380,6 @@ h1 {
 			$("input[type='text']").blur(function() {
 				$(this).removeClass('insert');
 			});
-
 		}
 	</script>
 </body>
