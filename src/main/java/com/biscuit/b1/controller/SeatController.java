@@ -57,7 +57,7 @@ public class SeatController {
 	}
 
 	@PostMapping(value = "seatSelect")
-	public void seatSelect(HttpServletRequest request, HttpSession session, SeatVO seatVO, ChoiceVO choiceVO,
+	public String seatSelect(HttpServletRequest request, HttpSession session, SeatVO seatVO, ChoiceVO choiceVO,
 			Movie_TicketingVO movie_TicketingVO, String kidCount, String adultCount,
 			RedirectAttributes redirectAttributes) throws Exception {
 		int result1 = 0;
@@ -69,9 +69,6 @@ public class SeatController {
 		String timeInfo_start = choiceVO.getTimeInfo_start();
 		ModelAndView mv = new ModelAndView();
 		for (int i = 0; i < seat_names.length; i++) { // 표 장수에 따라서 DB에 넣는 횟수(표 개수)
-			if(i % 3 == 0)
-				Thread.sleep(1000);
-			System.out.println(seat_names.length);
 			seatVO.setCinema_num(choiceVO.getCinema_num());
 			seatVO.setMovieInfo_name(choiceVO.getMovieInfo_name());
 			seatVO.setSeat_name(seat_names[i]);
@@ -79,15 +76,21 @@ public class SeatController {
 			seatVO.setTheater_num(choiceVO.getTheater_num());
 			seatVO.setMovieInfo_num(choiceVO.getMovieInfo_num());
 			seatVO.setTimeInfo_date(choiceVO.getTimeInfo_date());
-		
 			result1 = seatService.seatBooking(seatVO); // 좌석 테이블에 입력
+
+			// 예매 번호 생성하기
+
+			/*
+			 * SimpleDateFormat today = new SimpleDateFormat("MMdd"); Date now = new Date();
+			 */
+
 			String str1_1 = String.format("%02d%n", seatVO.getCinema_num()).replace("\r\n", ""); // 극장지점
 			String str1_2 = String.format("%02d%n", seatVO.getTheater_num()).replace("\r\n", ""); // 관번호
 			String str1 = str1_1 + str1_2; // 극장지점 + 관번호
 			String str2 = String.format("%04d%n", seatVO.getMovieInfo_num()).replace("\r\n", ""); // 영화번호
 			System.out.println(choiceVO.getTimeInfo_start());
 			System.out.println(choiceVO.getTimeInfo_date());
-			String str3 = choiceVO.getTimeInfo_start().substring(0, 2) + seatVO.getTimeInfo_start().substring(3, 5);
+			String str3 = choiceVO.getTimeInfo_start().substring(0, 2) + seatVO.getTimeInfo_start().substring(3,5);
 			System.out.println(str3);
 			String str4 = choiceVO.getTimeInfo_date().substring(3, 5) + choiceVO.getTimeInfo_date().substring(6);// 상영날짜
 			String str5 = null;
@@ -98,6 +101,7 @@ public class SeatController {
 
 			String bookCode = str1 + "-" + str2 + "-" + str3 + "-" + str4 + "-" + str5;
 			ar.add(bookCode);
+			System.out.println("예매번호 : " + bookCode);
 			MemberVO memberVO = (MemberVO) session.getAttribute("member");
 			movie_TicketingVO.setMovie_t_num(bookCode);
 			movie_TicketingVO.setId(memberVO.getId());
@@ -123,16 +127,23 @@ public class SeatController {
 			else
 				allBookCode = allBookCode + "," + ar.get(i);
 		}
-
 		session.setAttribute("allBookCode", allBookCode); // 파라미터로 보내면 여러군데 거쳐가야하므로 그냥 세션에 넣었음
 		session.setAttribute("adultCount", adultCount);
+		System.out.println("성인 수 : " + adultCount);
 		session.setAttribute("kidCount", kidCount);
-
+		System.out.println("학생 수 : " + kidCount);
 		String msg = "예매 실패";
 		if (result1 + result2 > 1) {
 			msg = "예매 성공";
 			seatService.ratingUpdate(choiceVO);
+			redirectAttributes.addFlashAttribute("price", request.getParameter("price"));
+			redirectAttributes.addFlashAttribute("count", request.getParameter("count"));
+			return "redirect:/pay/kakaoPay";
 		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", "../");
 
+		return "common/common_result";
 	}
+
 }
