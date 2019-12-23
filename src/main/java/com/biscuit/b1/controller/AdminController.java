@@ -51,8 +51,7 @@ public class AdminController {
 	 private MovieService movieService;
 	 @Inject
 	 private MemberService memberService;
-	 
-
+	 @Inject
 	 private StoreService storeService;
 
 

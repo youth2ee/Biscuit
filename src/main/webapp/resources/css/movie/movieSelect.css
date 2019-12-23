@@ -253,13 +253,14 @@ font-weight: bold;
 
 .soldout {
 	pointer-events: none;
-	 color: #dcd9d9;
+	color: #dcd9d9;
 }
 
 
 .sbox{
 	background-color: red;
 }
+
 .corn3 {
     position: absolute;
     width: 5%;
@@ -346,4 +347,3 @@ font-weight: bold;
     padding: 0;
     border: 0;
 }
-
