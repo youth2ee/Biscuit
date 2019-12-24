@@ -547,7 +547,7 @@
 		$("#allClick").click(function() {
 			$(".seat").prop("checked",true);
 			$(".seat").change(function() { // 선택 좌석 취소 시 경고창
-				alert('test');
+				/* alert('test'); */
 				var seat_name = "";
 				for(var i = 0; i < $("input:checkbox[class='seat']").length + 1; i++){
 					if ($("input:checkbox[id=seat" + i + "]").is(":checked") == true) {
