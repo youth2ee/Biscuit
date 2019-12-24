@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -53,7 +54,7 @@ public class StoreController {
 	
 	//카트 삭제
 	@ResponseBody
-	@PostMapping("cartDelete")
+	@PostMapping(value = "cartDelete")
 	public int cartDelete(@RequestParam(value="list[]") List<String> list, CartVO cartVO, HttpSession session) throws Exception {
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		
@@ -61,7 +62,7 @@ public class StoreController {
 		int cart_num = 0;
 		
 		if(memberVO != null) {
-			//cartVO.setMember_id("a");
+			cartVO.setMember_id(memberVO.getId());
 			
 			for(String i : list) {
 				cart_num = Integer.parseInt(i);

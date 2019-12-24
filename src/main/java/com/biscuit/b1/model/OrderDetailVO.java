@@ -1,6 +1,6 @@
 package com.biscuit.b1.model;
 
-public class OrderDetail {
+public class OrderDetailVO {
 
 	/*
 	create table order_detail (

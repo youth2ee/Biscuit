@@ -95,6 +95,7 @@
 								  var regexp = /\B(?=(\d{3})+(?!\d))/g;
 								  return price.toString().replace(regexp, ',');
 								}
+								
 								//수량 감소
 								$('.aMinus').click(function() {
 									var num = $('.numCount').val();
@@ -105,13 +106,13 @@
 										$('.numCount').val(1);
 									}else {
 										$('.numCount').val(minusNum);
-										//$('.totalPrice').html(${select.store_price}*parseInt($('.numCount').val()));
 										price = ${select.store_price} * minusNum;
 									}
 									
 									price = addComma(price);
 									$('.totalPrice').text(price);
 								});
+								
 								//수량 증가
 								$('.aPlus').click(function() {
 									var num = $('.numCount').val();
@@ -122,6 +123,7 @@
 									price = addComma(price);
 									$('.totalPrice').text(price);
 								});
+								
 							</script>
 <!-- ------------------------------------------ -->							
 							<div class="btn_wrap">
@@ -133,8 +135,6 @@
 						</div>
 <!-- ------------------------------------------ -->
 					</div>
-					<a href="storeUpdate?store_num=${select.store_num}" id="btn_update">수정</a>
-					<a href="storeDelete?store_num=${select.store_num}" id="btn_delete">삭제</a>
 				</div>
 			</div>
 		</div>
