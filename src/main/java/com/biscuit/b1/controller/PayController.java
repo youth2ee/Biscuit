@@ -11,17 +11,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.ChoiceVO;
+import com.biscuit.b1.model.MemberVO;
+import com.biscuit.b1.model.MyOrderVO;
 import com.biscuit.b1.model.PayInfoVO;
 import com.biscuit.b1.service.PayService;
+import com.biscuit.b1.service.StoreService;
 
 @Controller
 @RequestMapping("/pay/**")
 public class PayController {
 	@Inject
 	private PayService payService;
-
+	@Inject
+	private StoreService storeService;
+	
 	@GetMapping(value = "marketPaySuccess")
 	public ModelAndView marketPayGet(HttpServletRequest request) throws Exception {
+		
+		PayInfoVO payInfoVO = new PayInfoVO();
+		String pg_token = request.getParameter("pg_token");
+		ModelAndView mv = new ModelAndView();
+		payInfoVO = payService.KakaoPayApprove(pg_token);
+		mv.addObject("pay", payInfoVO);
+		
+		MyOrderVO myOrderVO = new MyOrderVO();
+		MemberVO memberVO = (MemberVO)request.getSession().getAttribute("member");
+		
+		myOrderVO.setMemberId(memberVO.getId());
+		myOrderVO.setTotalAmount(payInfoVO.getAmount().getTotal());
+		
+		storeService.orderInsert(myOrderVO);
+		
+		return mv;
+	}
+	
+/*	@GetMapping(value = "marketPaySuccess")
+	public ModelAndView marketPayGet(HttpServletRequest request) throws Exception {
+		
 		PayInfoVO payInfoVO = new PayInfoVO();
 		String pg_token = request.getParameter("pg_token");
 		ModelAndView mv = new ModelAndView();
@@ -29,14 +55,14 @@ public class PayController {
 		mv.addObject("pay", payInfoVO);
 		
 		return mv;
-	}
+	}*/
 	@GetMapping(value = "marketSuccess")
 	public void marketPaySuccess(HttpServletRequest request, HttpSession session) throws Exception {
 		
 	}
 	
 	@PostMapping(value = "marketPay")
-	public String marketPayPost(String[] sname, String[] sprice, String[] camount,HttpSession session) throws Exception {
+	public String marketPayPost(String[] sname, String[] sprice, String[] camount, HttpSession session) throws Exception {
 		return "redirect:" + payService.marketPayReady(sname, camount, sprice, session);
 	}
 

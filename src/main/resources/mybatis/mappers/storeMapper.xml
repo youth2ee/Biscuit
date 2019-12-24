@@ -5,13 +5,13 @@
   
 <mapper namespace="storeMapper">
 	<!-- 주문 정보 -->
-	<insert id="orderInsert">
+	<insert id="orderInsert" parameterType="MyOrderVO">
 		insert into myorder(orderId, memberId, totalAmount)
 			values(#{orderId}, #{memberId}, #{totalAmount})
 	</insert>
 	
 	<!-- 주문 상세 정보 -->
-	<insert id="detailInsert">
+	<insert id="detailInsert" parameterType="OrderDetailVO">
 		insert into order_detail(orderDetailNum, orderId, store_num)
 			select detail_seq.nextval, #{orderId}, store_num
 				from cart
