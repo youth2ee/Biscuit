@@ -318,6 +318,20 @@
 				$('#movieTimeSelect').html(data);	
 
 		 		$.each($('.mtime2'), function(i,e){
+		 			
+		 			var ftime = $(this).parent().siblings('.tstr').find('.timeSelect').text()
+		 			
+	
+		 			if(cdate == '19/12/24'){
+		 				
+		 				if(ftime == '08:00' || ftime == '11:00' || ftime == '14:00'){
+		 					$(this).parent().siblings('.tstr').find('.timeSelect').addClass('soldout'); 
+		 					$(this).text("상영종료");
+		 				}
+		 			}
+		 			
+		 			//alert($(this).parent().siblings('.tstr').find('.timeSelect').text());
+		 			
 					if($(this).text() == '매진'){
 						$(this).parent().siblings('.tstr').find('.timeSelect').addClass('soldout'); 
 					}

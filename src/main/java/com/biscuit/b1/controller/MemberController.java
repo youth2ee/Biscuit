@@ -131,9 +131,6 @@ public class MemberController {
 	
 	@PostMapping("movieLogin")
 	public String movieLogin(ChoiceVO choiceVO, HttpSession session) {
-		System.out.println("choiceVO");
-		System.out.println(choiceVO.getMovieInfo_name());
-
 		String path = "";
 
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");

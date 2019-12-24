@@ -133,26 +133,6 @@
     <c:forEach items="${plist}" var="list">
     <div class="swiper-slide"><img alt="" src="${list.movieInfo_poster}" title="${list.movieInfo_title}"></div>
     </c:forEach>
-<!--       <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/1.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/2.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/3.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/4.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/5.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/6.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/7.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/8.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/9.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/10.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/11.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/12.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/13.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/14.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/15.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/16.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/17.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/18.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/19.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/20.jpg"></div> -->
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
