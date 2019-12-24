@@ -81,7 +81,7 @@
 	</c:if>
 	<c:if test="${empty newestBook}">
 		<div>예매하신 내역이 없습니다.</div>
-	</c:if>	z
+	</c:if>
 	</div>
 </div>
 <!-- <div class="tbox">최신 구매내역</div>
