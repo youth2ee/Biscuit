@@ -35,18 +35,13 @@
 
 <div class="menumain"> 
 <div class="mmain"><a href="./myPage_movie_res">예매내역</a></div>
-<div class="mmain"><a href="./myPage_store_res">스토어구매내역</a></div>
 <div class="mmain"><a href="./myPage_movie_heart">내가 찜한 영화</a></div>
-<div class="mmain"><a href="./myPage_movie_star">내가 준 평점</a></div>
-<div class="mmain"><a href="./myPage_cinema">자주가는 영화관</a></div>
+<div class="mmain" style="background-color: #3b3b3b; padding-top: 10px; padding-bottom: 10px; color: black; padding-left: 10px;"><a style="color: white;"  href="./myPage_movie_star">내가 준 평점</a></div>
 <div class="mmain"><a href="./myPage_member_update">회원정보수정</a></div>
 </div>
 </div>
 
 <div class="mycontext">
-
-<h1>myPage_movie_star</h1>
-<h1>${member.id}</h1>
 
 <div id="tboxmain2">
 

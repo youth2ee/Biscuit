@@ -37,7 +37,7 @@
 	</beans:bean>
 	
 	<!-- 인터셉터  -->
-<!-- 	<beans:bean class="com.biscuit.b1.interceptors.LoginInterceptor" id="LoginInterceptor"/>
+	<beans:bean class="com.biscuit.b1.interceptors.LoginInterceptor" id="LoginInterceptor"/>
 	<beans:bean class="com.biscuit.b1.interceptors.LoginInterceptor2" id="LoginInterceptor2"/>
 	<beans:bean class="com.biscuit.b1.interceptors.AdminInterceptor" id="AdminInterceptor"/>
 	<interceptors>
@@ -61,19 +61,18 @@
 	</interceptors>
 	
 	 <beans:bean class="com.biscuit.b1.interceptors.CartInterceptor" id="cartInterceptor" />
-	 -->
+	
 	<!-- 인터셉터 설정 -->
-	<!-- <interceptors>
+	<interceptors>
 		<interceptor>
 			<mapping path="/store/**"/>
 			<exclude-mapping path="/store/storeSelect"/>
 			<exclude-mapping path="/store/storeList"/>
 			<exclude-mapping path="/store/storeList2"/>
 			<beans:ref bean="cartInterceptor"/>
-		</interceptor> -->
-	<!-- </interceptors> -->
+		</interceptor>
+	 </interceptors>
 	<!-- 인터셉터 객체 생성 -->
-	<!-- <beans:bean class="com.biscuit.b1.interceptors.CartInterceptor" id="cartInterceptor" /> -->
 	
 	<!-- 인터셉터 설정 -->
 	

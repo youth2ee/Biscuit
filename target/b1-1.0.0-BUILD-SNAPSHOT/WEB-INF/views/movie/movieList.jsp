@@ -11,6 +11,7 @@
 <title>영화 그 이상의 감동 CGV</title>
 
 <c:import url="../layout/jquery.jsp" />
+<link href="${pageContext.request.contextPath}/resources/css/layout/footer.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movie/movieList.css" rel="stylesheet">
@@ -20,7 +21,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/design/ribbon.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/heart.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/modal.css" rel="stylesheet">
-
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
 <!-- <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:100'> -->
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -128,12 +128,12 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 <!-- modal 띄울가 말까 -->
 <h3 class="details myBtn" style="float: left;" title="${mlist.movieInfo_num}">상세보기</h3>
 <h3 class="under" style="float: left;">  /  </h3>
+
 <form action="./movieSelect" method="get" class="frm" >
 <input type="hidden" name="movieInfo_name" value="${mlist.movieInfo_title}">
 <button class="myBtn2"><h3 class="details" style="float: left;" title="${mlist.movieInfo_title}">예매하기</h3></button>
-
-
 </form>
+
 
 </div><!-- infos -->
 
@@ -232,7 +232,11 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 </section>
 
 <!-- footer -->
-<footer></footer>
+<footer style="color: black;
+    text-shadow: none;
+    font-weight: normal;">
+		<c:import url="../layout/footer.jsp" />
+</footer>
 
 
 <script type="text/javascript">
@@ -246,27 +250,31 @@ $(function(){
 
  
  
- /* 뭐라도 해보자 */
- 
+ /* 저장 된 별점 가져오기 */
  var gradeList = [];
  var numList = [] ;
-<c:forEach items="${myGrade}" var="grade"> 
-	gradeList.push("${grade.movieGrade_star}"); 
+<c:forEach items="${myGrade}" var="grade">
+	// 별점을 준 영화 번호
 	numList.push("${grade.movieInfo_num}");
+	// 내가 준 별점
+	gradeList.push("${grade.movieGrade_star}"); 
 </c:forEach> 
 
  for (var i = 0; i <gradeList.length; i++){
+	 // myGrade + 영화번호를 아이디로 가지는 항목에 그에 해당하는 별점 넣어주기
 	 $("#myGrade"+numList[i]).val(gradeList[i]);
  }
  
 
 
 /* 저장 된 하트 값 져오기  */
-	var heartlist = [];
-		<c:forEach items="${hearts}" var="heart"> 
-			heartlist.push("${heart.movieInfo_num}"); // 컨트롤러에서 해당 아이디가 좋아요한 영화 번호 가져와서 배열에 넣음
-		</c:forEach> 
-for (var i = 0; i < heartlist.length; i++) { // 하트 체크 해놓기
+var heartlist = [];
+	<c:forEach items="${hearts}" var="heart"> 
+		// DB에서 해당 아이디가 좋아요한 영화 번호를 가져와서 배열에 넣음
+		heartlist.push("${heart.movieInfo_num}"); 
+	</c:forEach> 
+for (var i = 0; i < heartlist.length; i++) {
+	// red-check + 영화번호를 아이디로 가지는 항목에 하트 체크 여부 값 넣어주기
  	$("input:checkbox[id='red-check" + heartlist[i] + "']").attr('checked', true);
 }
 
@@ -374,16 +382,13 @@ $('.starlab').click(function() {
 	
 	var mstar =$(this).attr('title');
 	mstar = mstar*2;
-	console.log(mstar); 
 	
 	$(this).closest('.infos').addClass('.tact');
 	
 	mnum = $(this).closest('.star-rating').find('.movienum').val();
-	console.log(mnum);
-	
-	//로그인 되어 있을때
+
+
 	if (id != '') {
-		//받은 정보 ajax로 보내기
 		 $.ajax({
 			data : {
 				id:id,
@@ -394,11 +399,11 @@ $('.starlab').click(function() {
 			url : "./movieListStar",
 			success : function(data) {
 				
-		/* 		if (data == 1) {
-					alert("성공");
+		 		if (data == 1) {
+					alert("별점 추가 성공");
 				} else {
-					alert("실패");
-				} */
+					alert("별점 추가 실패");
+				} 
 				
 			}
 		}); 
@@ -455,7 +460,6 @@ $('.checkboxes-container').click(function() {
 			}
 		}); 
 
-		
 	} else {
 		alert('로그인 해주세요')
 	}
@@ -467,7 +471,6 @@ $(".myBtn2").on("click", function(){
 	$(this).submit(); 
 	 /* $(this).siblings('.frm').submit();  */
 });
-
 
 
 

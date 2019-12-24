@@ -16,6 +16,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/movie/movieSelect.css"
 	rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/layout/footer.css" rel="stylesheet">
 
 </head>
 <body>
@@ -142,54 +143,9 @@
 			</div>
 		</section>
 
-		<!-- FOOTER -->
-		<footer class="footer">
-			<div id="footerWrap">
-				<div id="footerLogo">
-					<img alt="" src="../resources/images/footer/footerLogo.png">	
-						<div class="footerSiteMap">
-							<select class="footerSelect">
-								<option>홈페이지 바로가기</option>
-								<option>영화 예매</option>
-								<option>영화 목록</option>
-								<option>로그인</option>
-								<option>마이 페이지</option>
-							</select>
-						<button class="selectBotton">Go</button>	
-						</div>
-						<ul class="footerLink">
-							<li><a href="#">회사소개</a> &nbsp| </li>
-							<li><a href="#">IR</a> &nbsp| </li>
-							<li><a href="#">채용정보</a> &nbsp| </li>
-							<li><a href="#">광고/프로모션문의</a> &nbsp| </li>
-							<li><a href="#">제휴문의</a> &nbsp| </li>
-							<li><a href="#">출점문의</a> &nbsp| </li>
-							<li><a href="#">이용약관</a> &nbsp| </li>
-							<li><a href="#">편성기준</a> &nbsp| </li>
-							<li><a href="#">개인정보처리방침</a></li>
-						</ul>
-				</div>
-				<div class="footerText">
-					<div class="footerAddress">
-						<br>(04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동)
-					</div>
-					<div class="">대표이사 : 최병환 | 사업자등록번호 : 104-81-45690 | 통신판매업신고번호 : 2017-서울용산-0662
-						
-					</div>
-						<div>호스팅사업자 : CJ올리브네트웍스 | 개인정보보호 책임자 : 정종민 | 대표이메일 : cjcgvmaster@cj.netCGV | 고객센터 : 1544-1122
-							<div class="footerSns">
-							<a href="https://www.facebook.com/CJCGV"><img alt="" src="../resources/images/footer/cgv_fb.png"></a>
-							<a href="https://twitter.com/cj_cgv"><img alt="" src="../resources/images/footer/cgv_tt.png"></a>
-							<a href="https://www.instagram.com/cgv_korea/"><img alt="" src="../resources/images/footer/cgv_insta.png"></a>
-						</div>
-						<p class="copyRight">© CJ CGV. All Rights Reserved</p>
-					</div>
-					<div></div>
-				</div>
-			</div>
-		
+		<footer>
+			<c:import url="../layout/footer.jsp" />
 		</footer>
-
 
 
 
@@ -213,26 +169,16 @@
 	var date = $("#movieDateSelect");
  	var time = $("#movieTimeSelect");
  	
- 	
  	$(document).ready(function() {
  		
  		$.each($('.mtitle'), function(i,e){
-			console.log($(this).text());
-			
+ 			
 			if($(this).text().trim() == sname){
 				
 				var position = $(this).position();
-				console.log("position");
-				console.log(position.top);
-				console.log(position.left);
-				
 				var offset = $(this).offset();
-				console.log("offset");
-				console.log(offset.top);
-				console.log(offset.left);
-				
 
- 	 	 		$(this).addClass('act');
+ 	 	 		$(this).closest('.movietitle').addClass('act');
 				
  	 	 		mnum = $(this).attr('title');
  	 	 		mname = $(this).text();
@@ -242,7 +188,7 @@
  	 	 		
  	 	 		var pos = 0;
  	 	 		pos = Number(position.top);
-				pos = pos + 11
+				pos = pos + 14
 				
 				$(this).closest('.sname').scrollTop(pos);
 
@@ -251,6 +197,7 @@
 
  	 	
  	});
+ 	
 
  
  	/* 클릭한 영화명 기억하기 */
@@ -352,7 +299,6 @@
  		 cdate = cdate.trim();
  		 
  		console.log(cdate);
- 	 	console.log("aa");
  	 	console.log(cdate);
  		console.log(mnum);
  		console.log(cnum);
@@ -360,26 +306,35 @@
  		
   		$.ajax({
 			data : {
-				timeInfo_date:cdate,
 				movieInfo_num:mnum,
-				cinema_num:cnum
+				cinema_num:cnum,
+				timeInfo_date:cdate
 			},
 			type : "GET",
 			url : "./timeSelect",
 			success : function(data) {
 				
-		
 				data = data.trim();
 				$('#movieTimeSelect').html(data);	
 
 		 		$.each($('.mtime2'), function(i,e){
-			
-					console.log($(this).text());
-					
+		 			
+		 			var ftime = $(this).parent().siblings('.tstr').find('.timeSelect').text()
+		 			
+	
+		 			if(cdate == '19/12/24'){
+		 				
+		 				if(ftime == '08:00' || ftime == '11:00' || ftime == '14:00'){
+		 					$(this).parent().siblings('.tstr').find('.timeSelect').addClass('soldout'); 
+		 					$(this).text("상영종료");
+		 				}
+		 			}
+		 			
+		 			//alert($(this).parent().siblings('.tstr').find('.timeSelect').text());
+		 			
 					if($(this).text() == '매진'){
-						$(this).closest('.timeSelect').addClass('soldout');
+						$(this).parent().siblings('.tstr').find('.timeSelect').addClass('soldout'); 
 					}
-
 		 		});
 
 			}
@@ -388,14 +343,7 @@
  	
  	/* 시간을 선택해 볼까요 */
  	 	$(document).on("click",".timeSelect",function(){
- 	 		$(this).addClass('act').closest('.ttable').siblings().find('.timeSelect').removeClass('act');
- 	 		
- 	 		
-/*  	 		$(this).find('.mtd1').addClass('act');
- 	 		$(this).siblings().find('.mtd1').removeClass('act');
- 	 		$(this).find('.mtime2').removeClass('act');*/
- 	 	
- 	 	
+ 	 	$(this).addClass('act').closest('.ttable').siblings().find('.timeSelect').removeClass('act');
  	 		
   		ctime = $(this).text(); 
  		ctime = ctime.trim();
@@ -416,34 +364,7 @@
  		
  		}); 
  	
-/*  	
- 	 	$(document).on("click",".timeSelect",function(){
- 	 	 	 $(this).find(".mtd1").addClass('act').siblings().removeClass('act');
- 	 	 	$(this).find(".mtd1").addClass('act');
- 	 	 	$(this).find(".mtd1").siblings().removeClass('act');
- 	 	 	
- 	  		ctime = $(this).find('.mtdtxt').text(); 
- 	 		ctime = ctime.trim();
- 	 		
- 	 		console.log(ctime);
- 	 		 
- 	 		});  */
- 	 		
 
- 		
-/*  	 	$(document).on("click",".mtd1",function(){
- 	 	/* $(this).addClass('act').siblings().removeClass('act'); */
- 	 	/* $(this).find('.mtd1').addClass('act').find('.mtd1').removeClass('act'); */
-/*  		$(this).addClass('act').siblings().removeClass('act');
- 	 	
-  		ctime = $(this).text(); 
- 		ctime = ctime.trim();
- 		 
- 		});  */ 
- 		
- 		
- 		
- 	
 
  	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */
  	$(document).on("click","#btn",function(){

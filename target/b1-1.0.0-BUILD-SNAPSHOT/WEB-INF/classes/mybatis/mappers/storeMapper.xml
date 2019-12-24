@@ -4,6 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="storeMapper">
+	<!-- 주문 정보 -->
+	<insert id="orderInsert">
+		insert into myorder(orderId, memberId, totalAmount)
+			values(#{orderId}, #{memberId}, #{totalAmount})
+	</insert>
+	
+	<!-- 주문 상세 정보 -->
+	<insert id="detailInsert">
+		insert into order_detail(orderDetailNum, orderId, store_num)
+			select detail_seq.nextval, #{orderId}, store_num
+				from cart
+	</insert>
+	
 	<!-- 카트 삭제 -->
 	<delete id="cartDelete" parameterType="CartVO">
 		delete from cart

@@ -4,6 +4,16 @@ body {
 	background-color: #fcfcf0;
 }
 
+input[type="checkbox"] { /* 실제 체크박스는 화면에서 숨김 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0
+}
 .grade{
 	border-radius: 50px;
 }

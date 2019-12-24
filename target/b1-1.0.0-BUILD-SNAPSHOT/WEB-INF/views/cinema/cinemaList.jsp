@@ -10,7 +10,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/cinema/cinemaList.css" rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/resources/css/layout/footer.css" rel="stylesheet">
 
 
 </head>
@@ -105,17 +105,8 @@
 <div id="mtime">
 </div>
 
-<form action="" method="post">
-<input type="hidden" name="">
-<input type="hidden" name="">
-<input type="hidden" name="">
-<input type="hidden" name="">
-<input type="hidden" name="">
-</form>
 
 </section>
-
-
 
 
 <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
@@ -156,11 +147,11 @@ $.ajax({
 		
 		cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
 		
-		alert(time);
+	/* 	alert(time);
 		alert(date);
 		alert(mname);
 		alert(cname);
-		alert(tname);
+		alert(tname); */
 		
 	});
 	
@@ -260,11 +251,11 @@ $.ajax({
 				
 				cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
 				
-				alert(time);
+		/* 		alert(time);
 				alert(date);
 				alert(mname);
 				alert(cname);
-				alert(tname);
+				alert(tname); */
 
 			});
 			
@@ -317,5 +308,10 @@ $.ajax({
 
    
 </script>
+
+
+<footer style="margin-top: 1300px;">
+	<c:import url="../layout/footer.jsp" />
+</footer>
 </body>
 </html>

@@ -9,6 +9,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header_home.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/footer.css" rel="stylesheet">
 
 
 
@@ -80,20 +81,36 @@
 				success: function(data) {
 					
 					$.each(data.boxOfficeResult.dailyBoxOfficeList, function(i, m) {
-						$('#Rank_'+i+' a').append("<img alt=\""+m.rnum+"위\" src=\"./resources/images/home/boxoffice/numeric-"+m.rnum+".png\"><span class=\"office_cell\">"+m.movieNm+"</span>");
-						$('#Rank_'+i).append("<span class=\"office_cell right rk_inten\">"+m.rankInten+"</span>");
-						$('#Rank_'+i).append("<span class=\"office_cell right rk_new "+m.rankOldAndNew+"\">"+m.rankOldAndNew+"</span>");
+						$('#Rank_'+i+' a').append("<img alt=\""+m.rnum+"위\" src=\"./resources/images/home/boxoffice/numeric-"
+															+m.rnum+".png\"><span class=\"office_cell\">"+m.movieNm+"</span>");
+						$('#Rank_'+i).append("<span class=\"office_cell right rk_inten\" id=\"rk_inten"+i+"\">"+m.rankInten+"</span>");
+						$('#Rank_'+i).append("<span class=\"office_cell right "+m.rankOldAndNew+"\">"+m.rankOldAndNew+"</span>");
 						
-						$('span.NEW').html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/icon_new.png\">");
+						var rk_new = m.rankOldAndNew;
+						var rk_inten = parseInt($('#rk_inten'+i).text());
 						
+						if(rk_new == 'NEW'){//new일 때
+							$('span.NEW').html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/icon_new.png\">");
+							$('#rk_inten'+i).empty();
+						}else if(rk_new == 'OLD' && rk_inten > 0){//양수일 때
+							$('#rk_inten'+i).html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/arrow-up-line.png\"><span style=\"color:orange;\">"+rk_inten+"</span>");
+						}else if(rk_new == 'OLD' && rk_inten == 0){//0일 때
+							$('#rk_inten'+i).html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/subtract-line.png\"><span style=\"color:gray;\">"+rk_inten+"</span>");
+						}else {//음수일 때
+							rk_inten = String(rk_inten).trim().replace(/[^0-9]/g, "");
+							$('#rk_inten'+i).html("<img alt=\"신규\" src=\"./resources/images/home/boxoffice/arrow-down-line.png\"><span style=\"color:lightblue;\">"+rk_inten+"</span>");
+						}
 						$('span.OLD').empty();
-						
 					});
-						//alert($('span.NEW').parent().);
-					
 				}
 			});
 		</script>
+		<div>
+		    <img class="mainImg" src="http://img.cgv.co.kr/Front/Main/2019/1219/15767252497760.jpg">
+		</div>
+		<div>
+			<img class="mainImg2" src = "http://img.cgv.co.kr/Images/Banner/2017/0309/14890258372960.jpg">
+		</div>
 		<!-- <img alt="신규" src="./resources/images/home/boxoffice/icon_new.png"> -->
 		<!-- text -->
 			<div id="txtbox">
@@ -116,26 +133,6 @@
     <c:forEach items="${plist}" var="list">
     <div class="swiper-slide"><img alt="" src="${list.movieInfo_poster}" title="${list.movieInfo_title}"></div>
     </c:forEach>
-<!--       <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/1.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/2.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/3.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/4.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/5.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/6.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/7.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/8.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/9.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/10.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/11.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/12.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/13.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/14.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/15.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/16.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/17.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/18.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/19.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/20.jpg"></div> -->
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
@@ -144,6 +141,7 @@
 
 <!-- youtube -->
 <div id="youtube">
+
 <iframe width="800" height="450" src="https://www.youtube.com/embed/bbh1NIpDo-c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
@@ -158,8 +156,6 @@
 
 
 <video src="http://www.kmdb.or.kr/vod/vod_basic.asp?nation=K&p_dataid=21615"></video>
-
-
 
 
 
@@ -184,6 +180,8 @@
 	    });
 	
 </script>
-
+	<footer style="margin-top: 800px">
+		<c:import url="./layout/footer.jsp" />
+</footer>
 </body>
 </html>

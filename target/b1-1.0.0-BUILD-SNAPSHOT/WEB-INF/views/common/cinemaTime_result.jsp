@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<div id = "timeTable">상영시간표</div>
+<div id = "timeTable"><H1>상영시간표</H1></div>
 <div> 
 <c:forEach items="${timelist}" var="time" varStatus="status">
 
@@ -18,7 +18,10 @@
 <div class="wrap2">
 </c:if>
 
-<span class="showTime">${time.timeInfo_start}</span>
+<form action="../movie/movieSelect" method="get" class="frm" >
+<input type="hidden" name="movieInfo_name" value="${time.movieInfo_title}">
+<button class="myBtn2" style="float: left; background-color: transparent;"><span class="showTime">${time.timeInfo_start}</span></button>
+</form>
 
 <c:if test="${status.count % 5 == 0}">
 </div>
@@ -26,3 +29,4 @@
 
 </c:forEach>
 </div>
+

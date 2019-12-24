@@ -160,9 +160,6 @@
 	<script type="text/javascript">
 		var isIdCheck = false;
 		var isEmailCheck = false;
-		$("input[name='gender']:radio").change(function () {
-			alert('test');	
-		});
 		$("#id").blur(function() {
 			var id = $('#id').val();
 			$.get("./idCheck?id=" + id, function(data) {
@@ -244,10 +241,6 @@
 						$('#frm').submit();
 					else
 						alert('필수 항목을 모두 작성 하십시오');
-					alert($("input[name='gender']:radio").val());
-					alert(isIdCheck);
-					alert(isEmailCheck);
-					
 				});
 	</script>
 

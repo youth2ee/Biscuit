@@ -32,13 +32,13 @@
 <!-- ************************************************* -->
 <tr class="mtd">
 <td class="mtd1">
+
 <c:forEach items="${result}" var="time" varStatus="status"> 
 <c:if test="${status.count % 5 == 1}"> 
 <div style="clear: both; color:rgba(21, 37, 54, 0.7); font-weight:bolder; padding: 5px;">${time.theater_name}관</div>
 </c:if>
 
 <table class="ttable" style="float: left;"> 
-
 <tr class="tstr" id="${time.theater_num}"><td class="timeSelect" id="${time.theater_name}"  title="${time.timeInfo_end}" >${time.timeInfo_start}</td></tr>
 
 
@@ -47,17 +47,19 @@
 <c:if test="${time.timeInfo_start eq seat.timeInfo_start && time.theater_num eq seat.theater_num}">
 
 <c:if test="${seat.seatCount ge 195}">
-<tr><td style="width: 40px; text-align: center; color:red;">매진</td></tr>
+<tr><td class="mtime2" style="width: 40px; text-align: center; color:red;">매진</td></tr>
 </c:if>
 
 <c:if test="${seat.seatCount lt 195}">
-<tr><td style="width: 40px; text-align: center; color:green;">${seat.seatCount} / 195</td></tr>
+<tr><td class="mtime2" style="width: 40px; text-align: center; color:green;">${seat.seatCount} / 195</td></tr>
 </c:if>
 
 </c:if>
 </c:forEach>
 </table>
 </c:forEach> 
+
+
 </td>
 </tr>
 

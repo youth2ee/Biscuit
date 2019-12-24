@@ -69,7 +69,6 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">MOVIE</h6>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataInsert">영화 데이터 추가</a>
           </div>
         </div>
       </li>
@@ -168,7 +167,7 @@
         <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
            <h6 class="collapse-header">STORE MANAGEMENT</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeList">스토어 메뉴 관리</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeList?store_package=1">스토어 메뉴 관리</a>
             <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_storeInsert">스토어 메뉴 추가</a>
           </div>
         </div>
