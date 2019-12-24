@@ -22,10 +22,10 @@ import com.biscuit.b1.service.StoreService;
 public class PayController {
 	@Inject
 	private PayService payService;
-	@Inject
-	private StoreService storeService;
+	//@Inject
+	//private StoreService storeService;
 	
-	@GetMapping(value = "marketPaySuccess")
+/*	@GetMapping(value = "marketPaySuccess")
 	public ModelAndView marketPayGet(HttpServletRequest request) throws Exception {
 		
 		PayInfoVO payInfoVO = new PayInfoVO();
@@ -44,9 +44,9 @@ public class PayController {
 		storeService.orderInsert(myOrderVO);
 		
 		return mv;
-	}
+	}*/
 	
-/*	@GetMapping(value = "marketPaySuccess")
+	@GetMapping(value = "marketPaySuccess")
 	public ModelAndView marketPayGet(HttpServletRequest request) throws Exception {
 		
 		PayInfoVO payInfoVO = new PayInfoVO();
@@ -56,7 +56,7 @@ public class PayController {
 		mv.addObject("pay", payInfoVO);
 		
 		return mv;
-	}*/
+	}
 	@GetMapping(value = "marketSuccess")
 	public void marketPaySuccess(HttpServletRequest request, HttpSession session) throws Exception {
 		
