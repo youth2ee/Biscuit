@@ -46,7 +46,7 @@
 <div style="font-size: 20px; font-weight: bolder;">${member.name}님</div>
 <div>고객님의 등급은 <span style="color: blue; font-weight: bold;">${member.grade}</span>입니다.</div>
 </div>
-<div id="binfocgv">자주가는 cgv</div>
+<span style="position: absolute; margin-left: 40px; margin-top: 20px;">현재 포인트는 <span style="color: blue; font-weight: bold;">${member.grade_point}</span>점 입니다.</span>
 </div>
 
 <div style="float: left;">
