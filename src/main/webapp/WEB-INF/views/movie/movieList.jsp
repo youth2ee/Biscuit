@@ -376,16 +376,13 @@ $('.starlab').click(function() {
 	
 	var mstar =$(this).attr('title');
 	mstar = mstar*2;
-	console.log(mstar); 
 	
 	$(this).closest('.infos').addClass('.tact');
 	
 	mnum = $(this).closest('.star-rating').find('.movienum').val();
-	console.log(mnum);
-	
-	//로그인 되어 있을때
+
+
 	if (id != '') {
-		//받은 정보 ajax로 보내기
 		 $.ajax({
 			data : {
 				id:id,
@@ -396,11 +393,11 @@ $('.starlab').click(function() {
 			url : "./movieListStar",
 			success : function(data) {
 				
-		/* 		if (data == 1) {
-					alert("성공");
+		 		if (data == 1) {
+					alert("별점 추가 성공");
 				} else {
-					alert("실패");
-				} */
+					alert("별점 추가 실패");
+				} 
 				
 			}
 		}); 
@@ -457,7 +454,6 @@ $('.checkboxes-container').click(function() {
 			}
 		}); 
 
-		
 	} else {
 		alert('로그인 해주세요')
 	}
@@ -469,7 +465,6 @@ $(".myBtn2").on("click", function(){
 	$(this).submit(); 
 	 /* $(this).siblings('.frm').submit();  */
 });
-
 
 
 

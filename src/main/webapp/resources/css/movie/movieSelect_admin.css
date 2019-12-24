@@ -51,7 +51,7 @@ body{
 #sec6 {
     position: absolute;
     left: 1221px;
-    top: 177px;
+    top: 219px;
 }
 
 
@@ -174,6 +174,15 @@ table {
   cursor:pointer;
   position: absolute;
   top: 221px;
+  left: 858px;
+}
+
+#myTable{
+  border-collapse: collapse;
+  font-size: 12px;
+  cursor:pointer;
+  position: absolute;
+  top: 269px;
   left: 858px;
 }
 

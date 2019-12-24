@@ -168,11 +168,7 @@
     order by B.theater_num asc, B.timeinfo_start asc
   	</select>
   	
-  	
-  	
 
-  	
-  	
   	
   	<select id="movieList" resultType="MovieInfoVO">
 <!-- select * from movieinfo
