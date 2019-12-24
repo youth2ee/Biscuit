@@ -188,8 +188,7 @@
 				if (list[i] == $("input:checkbox[id='seat" + j + "']").val()) {
 					$("input:checkbox[id='seat" + j + "']").parents("td").attr(
 							"class", "booked");
-					$("input:checkbox[id='seat" + j + "']").attr('disabled',
-							true);
+					$("input:checkbox[id='seat" + j + "']").attr('disabled',true);
 				}
 			}
 		}
@@ -204,16 +203,12 @@
 		});
 
 		$("input:checkbox[class='seat']")
-				.change(
-						function() { // 선택 좌석 취소 시 경고창
+				.change(function() { // 선택 좌석 취소 시 경고창
 							var seat_name = "";
 							for (var i = 0; i < $("input:checkbox[class='seat']").length + 1; i++) {
 								if ($("input:checkbox[id=seat" + i + "]").is(
 										":checked") == true) {
-									seat_name = seat_name
-											+ $(
-													"input:checkbox[id=seat"
-															+ i + "]").val();
+									seat_name = seat_name+ $("input:checkbox[id=seat"+ i + "]").val();
 									$("#seat_name").val(seat_name);
 									if ($("input:checkbox[class='seat']:checked").length > 1) { // 복수 선택시 , 추가 (Controller에서 ,기준으로 자름)
 										seat_name = seat_name + ",";
@@ -222,16 +217,10 @@
 										var adultCount = 0; // 성인 관객 수
 										var teenCount = 0; // 아이 관객 수
 										for (var j = 0; j < 6; j++) {
-											if ($(
-													"input:radio[id=adult" + j
-															+ "]").is(
-													":checked") == true) {
+											if ($("input:radio[id=adult" + j+ "]").is(":checked") == true) {
 												adultCount = j; // 성인 관객 수 계산
 											}
-											if ($(
-													"input:radio[id=teen" + j
-															+ "]").is(
-													":checked") == true) {
+											if ($("input:radio[id=teen" + j+ "]").is(":checked") == true) {
 												teenCount = j; // 아이 관객 수 계산
 											}
 										}
@@ -256,34 +245,22 @@
 							if (this.checked == false) { // 체크 해제 했을 경우
 								var cancel = confirm(this.value + "의 좌석 취소");
 								if (cancel == true) {// 예 선택시 체크 해제
-									$(this).parents("td").attr('class',
-											'bookable');
+									$(this).parents("td").attr('class','bookable');
 								} else { // 아니오 선택시 체크박스에 다시 체크
 									this.checked = true;
-									$(this).parents("td").attr('class',
-											'booking');
+									$(this).parents("td").attr('class','booking');
 								}
 							} else { // 체크했을경우
 								$(this).parents("td").attr('class', 'booking');
 							}
 							if ($("input:checkbox[class='seat']:checked").length == countAdult
 									+ countteen) {
-								$("input:checkbox[class='seat']").not(
-										":checked").parents("td").attr('class',
-										'bookend');
-								$("input:checkbox[class='seat']").not(
-										":enabled").parents("td").attr('class',
-										'booked');
-							} else if ($("input:checkbox[class='seat']:checked").length < countAdult
-									+ countteen) {
-								$("input:checkbox[class='seat']").not(
-										":checked").parents("td").attr('class',
-										'bookable');
-								$("input:checkbox[class='seat']").not(
-										":enabled").parents("td").attr('class',
-										'booked');
-							} else if (countAdult + countteen != 0
-									&& $("input:checkbox[class='seat']:checked").length > countAdult
+								$("input:checkbox[class='seat']").not(":checked").parents("td").attr('class','bookend');
+								$("input:checkbox[class='seat']").not(":enabled").parents("td").attr('class','booked');
+							} else if ($("input:checkbox[class='seat']:checked").length < countAdult+ countteen) {
+								$("input:checkbox[class='seat']").not(":checked").parents("td").attr('class','bookable');
+								$("input:checkbox[class='seat']").not(":enabled").parents("td").attr('class','booked');
+							} else if (countAdult + countteen != 0 && $("input:checkbox[class='seat']:checked").length > countAdult
 											+ countteen) {
 								// 인원수 보다 많은 좌석 선택시 좌석 취소 요청
 								alert('이미 선택하신 좌석을 취소하고 선택해주십시오.');
@@ -294,9 +271,7 @@
 								$(this).parents("td").attr('class', 'bookable');
 								this.checked = false;
 							}
-							$("#seatCount")
-									.val(
-											$("input:checkbox[class='seat']:checked").length);
+							$("#seatCount").val($("input:checkbox[class='seat']:checked").length);
 						});
 		function setDisplay() { // 인원 수 변경시
 			if ($('input:radio[name=adult]').is(':checked')
@@ -320,9 +295,7 @@
 						.prop("checked", false);
 			}
 		}
-		$("#btn")
-				.click(
-						function() {
+		$("#btn").click(function() {
 							var adultCount = 0; // 성인 관객 수
 							var teenCount = 0; // 아이 관객 수
 							var peopleCount = 0 // 성인 + 아이 관객 수
@@ -331,38 +304,31 @@
 							var seatLength = $("input:checkbox[class='seat']:checked").length // 선택된 좌석의 개수
 							$("#seatCount").val(seatLength);
 							for (var i = 1; i < 6; i++) {
-								if ($("input:radio[id=adult" + i + "]").is(
-										":checked") == true) {
+								if ($("input:radio[id=adult" + i + "]").is(":checked") == true) {
 									adultCount = i; // 성인 관객 수 계산
 									//alert("성인 관객 수 : " + adultCount);
 								}
-								if ($("input:radio[id=teen" + i + "]").is(
-										":checked") == true) {
+								if ($("input:radio[id=teen" + i + "]").is(":checked") == true) {
 									teenCount = i; // 아이 관객 수 계산
 									//alert("아이 관객 수 : " + teenCount);
 								}
 							}
 							peopleCount = adultCount + teenCount; // 관객 수 계산
 							for (var i = 1; i < $("input:checkbox[class='seat']").length + 1; i++) {
-								if ($("input:checkbox[id=seat" + i + "]").is(
-										":checked") == true) {
+								if ($("input:checkbox[id=seat" + i + "]").is(":checked") == true) {
 									seatNum[seatCount] = i; // 선택된 좌석의 번호를 넣음  
 									seatCount++;// 좌석이 선택 되어 있을 경우 seatCount 수 증가
 								}
 							}
 							if (seatLength == peopleCount && peopleCount != 0) { // 관객 수와 선택 좌석 수가 같을 경우 (예매 가능)
 								for (var i = 0; i < seatCount; i++) {
-									$(
-											"input:checkbox[id=seat"
-													+ seatNum[i] + "]").attr(
-											'disabled', true);
+									$("input:checkbox[id=seat"+ seatNum[i] + "]").attr('disabled', true);
 								}
 								var pay = teenCount * 8000 + adultCount * 10000;
 								$("#adultCount").val(adultCount);
 								$("#kidCount").val(teenCount);
 								$("#price").val(pay);
 								alert("금액 : " + pay + "원");
-								//alert("좌석 선택 완료");
 								$("#frm").submit();
 							} else if (seatLength > peopleCount) { // 선택 좌석 수가 관객 수 보다 많을 경우
 								alert("인원 수 보다 좌석 수가 더 많습니다.");

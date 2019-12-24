@@ -248,27 +248,31 @@ $(function(){
 
  
  
- /* 뭐라도 해보자 */
- 
+ /* 저장 된 별점 가져오기 */
  var gradeList = [];
  var numList = [] ;
-<c:forEach items="${myGrade}" var="grade"> 
-	gradeList.push("${grade.movieGrade_star}"); 
+<c:forEach items="${myGrade}" var="grade">
+	// 별점을 준 영화 번호
 	numList.push("${grade.movieInfo_num}");
+	// 내가 준 별점
+	gradeList.push("${grade.movieGrade_star}"); 
 </c:forEach> 
 
  for (var i = 0; i <gradeList.length; i++){
+	 // myGrade + 영화번호를 아이디로 가지는 항목에 그에 해당하는 별점 넣어주기
 	 $("#myGrade"+numList[i]).val(gradeList[i]);
  }
  
 
 
 /* 저장 된 하트 값 져오기  */
-	var heartlist = [];
-		<c:forEach items="${hearts}" var="heart"> 
-			heartlist.push("${heart.movieInfo_num}"); // 컨트롤러에서 해당 아이디가 좋아요한 영화 번호 가져와서 배열에 넣음
-		</c:forEach> 
-for (var i = 0; i < heartlist.length; i++) { // 하트 체크 해놓기
+var heartlist = [];
+	<c:forEach items="${hearts}" var="heart"> 
+		// DB에서 해당 아이디가 좋아요한 영화 번호를 가져와서 배열에 넣음
+		heartlist.push("${heart.movieInfo_num}"); 
+	</c:forEach> 
+for (var i = 0; i < heartlist.length; i++) {
+	// red-check + 영화번호를 아이디로 가지는 항목에 하트 체크 여부 값 넣어주기
  	$("input:checkbox[id='red-check" + heartlist[i] + "']").attr('checked', true);
 }
 

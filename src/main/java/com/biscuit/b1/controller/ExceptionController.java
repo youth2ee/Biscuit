@@ -15,18 +15,16 @@ public class ExceptionController {
 	 */
 	 
 	
-	/*
-	 * @ExceptionHandler(NullPointerException.class) public ModelAndView getNull() {
-	 * ModelAndView mv = new ModelAndView();
-	 * mv.setViewName("common/common_500_error"); return mv; }
-	 * 
-	 * @ExceptionHandler(NumberFormatException.class) public ModelAndView
-	 * getNumberFormat() { ModelAndView mv = new ModelAndView();
-	 * mv.setViewName("common/common_500_error"); return mv; }
-	 * 
-	 * @ExceptionHandler(Exception.class) public ModelAndView getException() {
-	 * ModelAndView mv = new ModelAndView();
-	 * mv.setViewName("common/common_500_error"); return mv; }
-	 */
+	  @ExceptionHandler(NullPointerException.class) public ModelAndView getNull() {
+	  ModelAndView mv = new ModelAndView();
+	  mv.setViewName("common/common_500_error"); return mv; }
+	  
+	  @ExceptionHandler(NumberFormatException.class) public ModelAndView
+	  getNumberFormat() { ModelAndView mv = new ModelAndView();
+	  mv.setViewName("common/common_500_error"); return mv; }
+	  
+	  @ExceptionHandler(Exception.class) public ModelAndView getException() {
+	  ModelAndView mv = new ModelAndView();
+	  mv.setViewName("common/common_500_error"); return mv; }
 
 }
