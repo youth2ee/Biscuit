@@ -84,12 +84,12 @@ public class MovieController {
 		List<MovieInfoVO> movieTitle = movieSelectService.movieTitleSelect();
 		List<CinemaVO> movieLoc = movieSelectService.movieLocSelect();
 
-		/* System.out.println(choiceVO.getMovieInfo_name()); */
-
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("movieTitle", movieTitle);
 		mv.addObject("movieLoc", movieLoc);
+		
 		mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
+		
 		mv.setViewName("movie/movieSelect");
 
 		return mv;

@@ -27,16 +27,12 @@ public class PayController {
 		ModelAndView mv = new ModelAndView();
 		payInfoVO = payService.KakaoPayApprove(pg_token);
 		mv.addObject("pay", payInfoVO);
+		
 		return mv;
 	}
 	@GetMapping(value = "marketSuccess")
 	public void marketPaySuccess(HttpServletRequest request, HttpSession session) throws Exception {
 		
-	}
-	
-	@GetMapping(value = "marketPay")
-	public void marketPayGet() throws Exception {
-
 	}
 	
 	@PostMapping(value = "marketPay")

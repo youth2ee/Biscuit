@@ -32,13 +32,13 @@
 <!-- ************************************************* -->
 <tr class="mtd">
 <td class="mtd1">
+
 <c:forEach items="${result}" var="time" varStatus="status"> 
 <c:if test="${status.count % 5 == 1}"> 
 <div style="clear: both; color:rgba(21, 37, 54, 0.7); font-weight:bolder; padding: 5px;">${time.theater_name}관</div>
 </c:if>
 
 <table class="ttable" style="float: left;"> 
-
 <tr class="tstr" id="${time.theater_num}"><td class="timeSelect" id="${time.theater_name}"  title="${time.timeInfo_end}" >${time.timeInfo_start}</td></tr>
 
 
@@ -58,6 +58,8 @@
 </c:forEach>
 </table>
 </c:forEach> 
+
+
 </td>
 </tr>
 

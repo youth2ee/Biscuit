@@ -18,9 +18,6 @@
   
   	<!-- 영화선택 -->
   	<select id="movieTitleSelect" resultType="MovieInfoVO">
-<!--   	select movieinfo_num, movieinfo_title, movieinfo_grade
-    from movieinfo
-    order by movieinfo_rating asc -->
     <![CDATA[
     select movieinfo_num, movieinfo_title, movieinfo_grade, movieinfo_date
     from
@@ -170,6 +167,8 @@
     where B.movieinfo_num = #{movieInfo_num}  and B.timeinfo_date = #{timeInfo_date} and cinema_num=#{cinema_num}
     order by B.theater_num asc, B.timeinfo_start asc
   	</select>
+  	
+
   	
   	<select id="movieList" resultType="MovieInfoVO">
 <!-- select * from movieinfo

@@ -21,11 +21,11 @@
 			<div class="himg"><a href="./member/memberLogout"><img alt="" src="./resources/images/home/7_2.png"></a></div>
 		
 		<c:if test="${member.grade eq 6}">
-			<div class="himg"><a href="./member/mypage/myPage"><img alt="" src="./resources/images/home/8_2.png"></a></div>	
+		<div class="himg"><a href="./admin/adminmain"><img alt="" src="./resources/images/home/8_2.png"></a></div>	
 		</c:if>
 		
 		<c:if test="${member.grade ne 6}">
-			<div class="himg"><a href="./admin/adminmain"><img alt="" src="./resources/images/home/8_2.png"></a></div>	
+			<div class="himg"><a href="./member/mypage/myPage"><img alt="" src="./resources/images/home/8_2.png"></a></div>	
 		</c:if>
 			
 		</c:if>

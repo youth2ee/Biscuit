@@ -169,26 +169,15 @@
 	var date = $("#movieDateSelect");
  	var time = $("#movieTimeSelect");
  	
- 	
  	$(document).ready(function() {
  		
  		$.each($('.mtitle'), function(i,e){
-			/* console.log($(this).text()); */
-			
+ 			
 			if($(this).text().trim() == sname){
 				
 				var position = $(this).position();
-	/* 			console.log("position");
-				console.log(position.top);
-				console.log(position.left); */
-				
 				var offset = $(this).offset();
-				/* console.log("offset");
-				console.log(offset.top);
-				console.log(offset.left);
-				 */
 
-				/* alert($(this).closest('.movietitle').html()); */
  	 	 		$(this).closest('.movietitle').addClass('act');
 				
  	 	 		mnum = $(this).attr('title');
@@ -208,6 +197,7 @@
 
  	 	
  	});
+ 	
 
  
  	/* 클릭한 영화명 기억하기 */
@@ -316,25 +306,21 @@
  		
   		$.ajax({
 			data : {
-				timeInfo_date:cdate,
 				movieInfo_num:mnum,
-				cinema_num:cnum
+				cinema_num:cnum,
+				timeInfo_date:cdate
 			},
 			type : "GET",
 			url : "./timeSelect",
 			success : function(data) {
 				
-		
 				data = data.trim();
 				$('#movieTimeSelect').html(data);	
 
 		 		$.each($('.mtime2'), function(i,e){
-					
 					if($(this).text() == '매진'){
-						/* $(this).closest('.timeSelect').addClass('soldout'); */
 						$(this).parent().siblings('.tstr').find('.timeSelect').addClass('soldout'); 
 					}
-
 		 		});
 
 			}

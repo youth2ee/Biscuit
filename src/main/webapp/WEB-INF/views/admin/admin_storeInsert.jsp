@@ -22,7 +22,8 @@
 
   <!-- Custom styles for this page -->
   <link href="${pageContext.request.contextPath}/resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+	
+	<c:import url="../layout/jquery.jsp" />
 </head>
 <body id="page-top">
 
@@ -240,15 +241,76 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">store insert</h1>
+          <!-- <h1 class="h3 mb-2 text-gray-800">store insert</h1> -->
 
 		<!-- ******************* 데이터 넣는 곳 *************************** -->
-         
-         
-         
-  
-
-
+		<div class="container">
+			<h2>Store Menu Register</h2>
+			<form class="form-horizontal" action="../store/storeWrite" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="store_name">상품명:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="store_name" placeholder="상품명을 입력하세요" name="store_name">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="store_price">상품가격:</label>
+					<div class="col-sm-10">
+						<input type="number" class="form-control" id="store_price" style="IME-MODE:disabled;" placeholder="상품가격을 입력하세요" name="store_price">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="store_note">상품구성:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="store_note" placeholder="상품구성을 입력하세요" name="store_note">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="store_package">패키지번호:</label>
+					<div class="col-sm-10">
+						<select class="form-control" id="store_package" name="store_package">
+							<option value="1">1.패키지</option>
+							<option value="2">2.영화관람권</option>
+							<option value="3">3.콤보</option>
+							<option value="4">4.팝콘</option>
+							<option value="5">5.음료</option>
+							<option value="6">6.스낵</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="store_img">상품이미지:</label>
+					<div class="col-sm-10">
+						<input type="file" class="form-control" id="store_img" name="file"> <!-- controller에서 MultipartFile file로 받으니까 name도 file로 해줘야함 -->
+					</div>
+					
+					<div class="select_img"><img alt="" src=""></div>	
+					
+					<script type="text/javascript">
+					$('#store_img').change(function() {
+						if(this.files && this.files[0]){
+							var reader = new FileReader;
+							reader.onload = function(data) {
+								$('.select_img img').attr("src", data.target.result).width(300);
+							}
+							reader.readAsDataURL(this.files[0]);
+						}
+					});
+					</script>
+					
+				</div>
+				
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<input type="submit" class="btn" value="등록" style="position: absolute; right: 13px; background-color: #4e73df; color: #fff;">
+					</div>
+				</div>
+			</form>
+		</div>
 		<!-- ********************** 데이터 끝  *************************** -->
 
 

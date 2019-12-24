@@ -495,27 +495,13 @@ $(document).ready(function(){
     if(value == ""){
     	 $(".tab").css("display", "none");
     }else{
-    $(".tab").css("display", "inline");
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    	$(".tab").css("display", "inline");
+    	$("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
     }
     
   });
-  
-/*   var v = "1";
-  var i = 0;
-  
-  $('#total').html('<div id="a'+i+'">'+v+'</div>');
-  i++;
-  
-  for (var j = 0; j < i; j++) {
-  if( $('#a'+j).text() == v){
-	  $('#a'+j).text("");
-  }
-	 */
-//}
-  
 
 });
     

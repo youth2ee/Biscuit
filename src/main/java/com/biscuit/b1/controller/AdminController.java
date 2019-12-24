@@ -3,6 +3,9 @@ package com.biscuit.b1.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -10,22 +13,30 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.biscuit.b1.model.AdminVO;
+import com.biscuit.b1.model.CartVO;
 import com.biscuit.b1.model.ChoiceVO;
 import com.biscuit.b1.model.CinemaVO;
 import com.biscuit.b1.model.MemberVO;
 import com.biscuit.b1.model.MovieDataVO;
+
 import com.biscuit.b1.model.MovieInfoVO;
+import com.biscuit.b1.model.StoreVO;
 import com.biscuit.b1.model.TheaterVO;
 import com.biscuit.b1.model.TimeInfoVO;
 import com.biscuit.b1.service.AdminService;
 import com.biscuit.b1.service.CinemaService;
+
 import com.biscuit.b1.service.MemberService;
 import com.biscuit.b1.service.MovieService;
 import com.biscuit.b1.util.Pager;
+
+import com.biscuit.b1.service.StoreService;
+
 
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -40,7 +51,10 @@ public class AdminController {
 	 private MovieService movieService;
 	 @Inject
 	 private MemberService memberService;
-	 
+	 @Inject
+	 private StoreService storeService;
+
+
 	@GetMapping("admin_cinema")
 	public void movieSelect_admin_cinema() {
 	}
@@ -239,6 +253,7 @@ public class AdminController {
 		return mv;
 	}
 
+
 	@GetMapping("admin_memberList")
 	public ModelAndView memberManagement(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -280,15 +295,54 @@ public class AdminController {
 	}
 
 
+////////////////////////////////스토어/////////////////////////////////////////////	
+	//관리자 : 상품 삭제
+	@ResponseBody
+	@PostMapping("admin_storeDelete")
+	public int admin_storeDelete(@RequestParam(value="list[]") List<String> list, StoreVO storeVO, HttpServletRequest request) throws Exception {
+		//MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+		int result = 0;
+		int store_num = 0;
+		
+		//if(memberVO != null) {
+			//cartVO.setMember_id("a");
+			
+			for(String i : list) {
+				store_num = Integer.parseInt(i);
+				
+				storeVO.setStore_num(store_num);
+				
+				result = storeService.storeDelete(storeVO, request);
+			}
+		//}
+		return result;
+
+	}
+	
+	// 상품 수정 폼
+	@GetMapping("admin_storeUpdate")
+	public void storeUpdate(StoreVO storeVO, Model model) throws Exception {
+		storeVO = storeService.storeSelect(storeVO);
+		
+		model.addAttribute("update", storeVO);
+	}
+
+	@RequestMapping("admin_storeInsert")
+	public void admin_storeInsert() throws Exception {
+	}
+	
 	//관리자  : 스토어관리
 	@RequestMapping("admin_storeList")
-	public void admin_storeList() {	
+	public void admin_storeList(StoreVO storeVO, Model model) throws Exception {
+		if(storeVO.getStore_package() == 0) {
+			storeVO.setStore_package(1);
+		}
+		List<StoreVO> list = storeService.storeList(storeVO);
+		
+		model.addAttribute("storeList", list);
 	}
-	
-	@RequestMapping("admin_storeInsert")
-	public void admin_storeInsert() {	
-	}
-	
+////////////////////////////////스토어/////////////////////////////////////////////	
 	//cinemaselect
 	@RequestMapping("admin_cinemaSelect")
 	public CinemaVO admin_cinemaSelect(CinemaVO cinemaVO) {
