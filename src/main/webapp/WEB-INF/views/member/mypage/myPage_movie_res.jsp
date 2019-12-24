@@ -36,7 +36,6 @@ a{
 
 <div class="menumain"> 
 <div class="mmain" style="color: white; background-color: #3b3b3b; padding-top: 10px; padding-bottom: 10px; color: black; padding-left: 10px;"><a href="./myPage_movie_res" style="color: white;" >예매내역</a></div>
-<div class="mmain"><a href="./myPage_store_res">스토어구매내역</a></div>
 <div class="mmain"><a href="./myPage_movie_heart">내가 찜한 영화</a></div>
 <div class="mmain"><a href="./myPage_movie_star">내가 준 평점</a></div>
 <div class="mmain"><a href="./myPage_member_update">회원정보수정</a></div>
