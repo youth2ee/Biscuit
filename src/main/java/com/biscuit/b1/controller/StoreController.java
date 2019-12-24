@@ -22,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.biscuit.b1.model.CartListVO;
 import com.biscuit.b1.model.CartVO;
 import com.biscuit.b1.model.MemberVO;
+import com.biscuit.b1.model.MyOrderVO;
+import com.biscuit.b1.model.OrderDetailVO;
 import com.biscuit.b1.model.StoreVO;
 import com.biscuit.b1.service.StoreService;
 
@@ -33,9 +35,15 @@ public class StoreController {
 	private StoreService storeService;
 	
 	//주문 정보
-	
-	//주문 상세 정보
-	
+	@PostMapping("myOrder")
+	public void myOrder(HttpSession session, MyOrderVO myOrderVO, OrderDetailVO orderDetailVO) throws Exception {
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		String memberId = memberVO.getId();
+		
+		storeService.orderInsert(myOrderVO);
+		storeService.detailInsert(orderDetailVO);
+		
+	}
 	
 	//카트 진입시 로그인 여부
 	@ResponseBody
