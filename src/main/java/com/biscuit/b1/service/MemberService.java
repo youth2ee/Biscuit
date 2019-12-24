@@ -75,6 +75,10 @@ public class MemberService {
 		return memberDAO.newest(memberVO);
 	}
 	
+	public List<NewestVO> newestThree(MemberVO memberVO) {
+		return memberDAO.newestThree(memberVO);
+	}
+	
 	public Movie_TicketingVO getMovieTicketingVO(NewestVO newestVO) {
 		return memberDAO.getMovieTicketingVO(newestVO);
 	}

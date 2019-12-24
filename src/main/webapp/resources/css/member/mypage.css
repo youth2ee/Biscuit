@@ -44,7 +44,7 @@ header{
 
 .menumain{
 	width: 50%;
-	padding-top: 100px;
+	padding-top: 50px;
 	margin: 0 auto;
 }
 
@@ -90,7 +90,6 @@ header{
 
 #tboxmain{
 	width: 1052px;
-	background-color: #f4f3ea;
 	height: 830px;	
 }
 
@@ -99,9 +98,19 @@ header{
 	width: 29%;
 	height: 250px;
 	margin: 26px 26px;
-	border: 0.3px solid black;
+	/*border: 0.3px solid black;*/
+	background: linear-gradient(90deg, #ffffff 52%, #e42313 48%);
+    box-shadow: 5px 6px 8px #c4c4c4;
+    padding: 0 0 010px;
 }
 
+.tbox_text{
+	background: black;
+    color: white;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 
 
 .starbox{
@@ -146,10 +155,12 @@ header{
 	float: left;
     width: 125px;
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 18px;
 }
 .newestBookInfo{
 	display: -webkit-inline-box;
-    margin-left: 20px;
+    margin-left: 22px;
     margin-top: 50px;
+    color: white;
+    text-align: center;
 }

@@ -310,7 +310,7 @@ $.ajax({
 </script>
 
 
-<footer style="margin-top: 1510px;">
+<footer style="margin-top: 1300px;">
 	<c:import url="../layout/footer.jsp" />
 </footer>
 </body>

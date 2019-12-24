@@ -338,11 +338,35 @@ public class MemberController {
 
 	@GetMapping("/mypage/myPage_store_res")
 	public void myPage_store_res() {
+		
+		
+		
 	}
 
 	@GetMapping("/mypage/myPage_movie_res")
-	public void myPage_movie_res(HttpSession session) {
-
+	public void myPage_movie_res(HttpSession session, Model model,HttpServletRequest request) {
+		String bookCheck = request.getParameter("bookCheck");
+		MemberVO memberVO = new MemberVO();
+		memberVO = (MemberVO) session.getAttribute("member");
+		System.out.println(memberVO.getId());
+		List<NewestVO> newestVOs = memberService.newestThree(memberVO);
+		for(int i = 0; i < newestVOs.size();i++) {
+			NewestVO newestVO = newestVOs.get(i);
+			System.out.println(newestVO.getMovieInfo_title());
+			String book_date = newestVO.getBook_date().substring(0, 10); 
+			String book_date_str =  book_date.substring(0,4) +"년 "+ book_date.substring(5,7) +"월 "+ book_date.substring(8)+"일 "; // 예매내역 출력용
+			newestVO.setBook_date(book_date_str);
+			if(newestVO.getMovieInfo_title().equals("신비아파트 극장판 하늘도깨비 대 요르문간드"))
+				newestVO.setMovieInfo_title("신비아파트");
+			String timeInfo_start_str = newestVO.getTimeInfo_start();
+			timeInfo_start_str = timeInfo_start_str.substring(0,2) + "시 "+timeInfo_start_str.substring(3) +"분";
+			newestVO.setTimeInfo_start(timeInfo_start_str);
+			
+		}
+		model.addAttribute("newestVOs", newestVOs);
+		//model.addAttribute("member", memberVO);
+		
+		
 	}
 
 	@GetMapping("/mypage/myPage_movie_star")
@@ -368,6 +392,23 @@ public class MemberController {
 
 	@GetMapping("/mypage/myPage_cinema")
 	public void myPage_cinema() {
+	}
+	
+	@PostMapping("mypage/myPage_member_update")
+	public ModelAndView memberUpdate2(MemberVO memberVO,HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.memberUpdate(memberVO);
+		String msg = "업데이트 실패";
+		String path = "./myPage_member_update";
+		if (result > 0) {
+			session.setAttribute("member", memberVO);
+			msg = "업데이트 완료";
+			path = "./myPage_member_update";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("path", path);
+		mv.setViewName("common/common_result");
+		return mv;
 	}
 
 }

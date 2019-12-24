@@ -27,7 +27,7 @@
 	<!-- <select id="myPageSelect" parameterType="MemberVO" resultType="MemberVO"> 
 		select * from member where id = #{id} </select> -->
 	<update id="memberUpdate" parameterType="MemberVO">
-		update member set pw = #{pw}, email = #{email},address = #{address}, post = #{post}, phone = #{phone} 
+		update member set pw = #{pw}, email = #{email},address = #{address}, post = #{post}, phone = #{phone}, name = #{name} 
 		where id = #{id}
 	</update>
  	
@@ -96,6 +96,20 @@
 	order by book_date desc
 	</select>
 	
+	<select id="newestThree" parameterType="MemberVO" resultType="NewestVO">
+	 <![CDATA[
+		select *
+		from (select *
+		from (select C.movieinfo_title, c.movieinfo_poster,c.movieinfo_num, c.cinema_num, c.timeinfo_start ,D.cinema_name, C.theater_num, C.book_date
+		from (select B.movieinfo_title, B.movieinfo_poster, A.movieinfo_num, A.cinema_num, A.timeinfo_start, A.theater_num, A.book_date
+		from movie_ticketing A left outer join movieinfo B on A.movieinfo_num = B.movieinfo_num
+		where id = #{id}
+		) c left outer join cinema D on C.cinema_num = D.cinema_num) E left outer join theater F
+		on E.theater_num = F.theater_num)
+		where rownum < 4
+		order by book_date desc
+		 ]]>
+	</select>
 	<!-- 등급 -->
 	<select id="memberGrade" parameterType="MemberVO" resultType="MemberVO">
 	select grade_name from member_grade

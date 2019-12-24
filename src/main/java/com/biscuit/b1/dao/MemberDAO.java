@@ -71,6 +71,10 @@ public class MemberDAO {
 	public NewestVO newest(MemberVO memberVO) {
 		return sqlSession.selectOne(NAMESPACE + "newest", memberVO);
 	}
+	
+	public List<NewestVO> newestThree(MemberVO memberVO){
+		return sqlSession.selectList(NAMESPACE + "newestThree",memberVO);
+	}
 
 	// grade_name
 	public MemberVO memberGrade(MemberVO memberVO) {
