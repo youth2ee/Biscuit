@@ -232,7 +232,9 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 </section>
 
 <!-- footer -->
-<footer>
+<footer style="color: black;
+    text-shadow: none;
+    font-weight: normal;">
 		<c:import url="../layout/footer.jsp" />
 </footer>
 
