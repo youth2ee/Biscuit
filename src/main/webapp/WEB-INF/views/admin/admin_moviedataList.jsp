@@ -26,7 +26,7 @@ button:hover {
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Tables</title>
+<title>CGV ADMIN</title>
 
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -81,7 +81,7 @@ button:hover {
         <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">MOVIE</h6>
-            <a class="collapse-item" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
+            <a class="collapse-item active" href="${pageContext.request.contextPath}/admin/admin_moviedataList">영화 데이터 관리</a>
           </div>
         </div>
       </li>

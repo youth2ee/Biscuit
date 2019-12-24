@@ -78,12 +78,6 @@ public class AdminController {
 	@PostMapping("adminTimeInsert")
 	public ModelAndView adminTimeInsert(ChoiceVO choiceVO) {
 		
-		System.out.println(choiceVO.getTimeInfo_date());
-		System.out.println(choiceVO.getMovieInfo_name());
-		System.out.println(choiceVO.getCinema_name());
-		System.out.println(choiceVO.getTheater_name());
-		System.out.println(choiceVO.getCinema_num());
-		
 		MovieInfoVO movieInfoVO = new MovieInfoVO();
 		TheaterVO theaterVO = new TheaterVO();
 		
@@ -131,11 +125,6 @@ public class AdminController {
 	
 	@PostMapping("adminCinemaInsert")
 	public ModelAndView adminCinemaInsert(CinemaVO cinemaVO) {
-		System.out.println(cinemaVO.getCinema_loc());
-		System.out.println(cinemaVO.getCinema_name());
-		System.out.println(cinemaVO.getCinema_add());
-		System.out.println(cinemaVO.getCinema_tel());
-		
 		int result = adminService.cinemaInsert(cinemaVO);
 		int result2 = 0;
 		String msg = "영화관 추가 실패";
@@ -194,6 +183,7 @@ public class AdminController {
 			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
 			a.setTimeInfo_end(a.getTimeInfo_end().substring(11, 16));
 		}
+		
 		model.addAttribute("movieTimeList", movieTimeList);
 		return model;
 	}
@@ -201,9 +191,6 @@ public class AdminController {
 	@RequestMapping("admin_movieTimeInsert")
 	public Model admin_movieTimeInsert(Model model) {
 		List<MovieInfoVO> movieList = adminService.movieList();
-		for(MovieInfoVO a : movieList) {
-			System.out.println(a.getMovieInfo_title());
-		}
 		model.addAttribute("movieList", movieList);
 		return model;
 	}
@@ -312,11 +299,7 @@ public class AdminController {
 	
 	@RequestMapping("admin_cinemaUpdate")
 	public ModelAndView admin_cinemaUpdate(CinemaVO cinemaVO) {
-		System.out.println("들어오니");
-		System.out.println(cinemaVO.getCinema_num());
 		int result = adminService.cinemalistUpdate(cinemaVO);
-		
-		System.out.println(result);
 		
 		String msg = "수정 실패";
 		
@@ -330,14 +313,64 @@ public class AdminController {
 		mv.setViewName("common/common_result");
 		
 		return mv;
-		
 	}
 	
 	@RequestMapping("admin_cinemaDelete")
 	public ModelAndView admin_cinemaDelete(CinemaVO cinemaVO) {
-		int result = adminService.cinemalistDelete(cinemaVO);
+		int tresult = adminService.theaterDelete(cinemaVO);
+		String msg = "삭제 실패";
+		int result = 0;
 		
+		if(tresult > 0) {
+		result = adminService.cinemalistDelete(cinemaVO);
+		
+		if (result > 0) {
+			msg = "삭제 성공";
+		}
+		}
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./admin_cinemaList");
+		mv.setViewName("common/common_result");
+		
+		return mv;
+	}
+	
+//
+	@RequestMapping("admin_movieTimeSelect")
+	public ChoiceVO admin_movieTimeSelect (ChoiceVO choiceVO) {
+		choiceVO = adminService.movietimeSelect(choiceVO);
+		
+		choiceVO.setTimeInfo_date(choiceVO.getTimeInfo_date().substring(0,10));
+		choiceVO.setTimeInfo_start(choiceVO.getTimeInfo_start().substring(11, 16));
+		choiceVO.setTimeInfo_end(choiceVO.getTimeInfo_end().substring(11, 16));
 
+		return choiceVO;
+	}
+	
+	@RequestMapping("admin_movieTimeUpdate")
+	public ModelAndView movietimeUpdate(ChoiceVO choiceVO) {
+		List<MovieInfoVO> movieList = adminService.movieList();
+	
+		int result = adminService.movietimeUpdate(choiceVO);
+		String msg = "수정 실패";
+		
+		if (result > 0) {
+			msg = "수정 성공";
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("movieList", movieList);
+		mv.addObject("msg", msg);
+		mv.addObject("path", "./admin_movieTimeList");
+		mv.setViewName("common/common_result");
+		
+		return mv;
+	}
+	
+	@RequestMapping("admin_movieTimeDelete")
+	public ModelAndView movietimeDelete(ChoiceVO choiceVO) {
+		int result = adminService.movietimeDelete(choiceVO);
 		String msg = "삭제 실패";
 		
 		if (result > 0) {
@@ -346,13 +379,10 @@ public class AdminController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("msg", msg);
-		mv.addObject("path", "./admin_cinemaList");
+		mv.addObject("path", "./admin_movieTimeList");
 		mv.setViewName("common/common_result");
 		
 		return mv;
-		
 	}
-	
-
 	
 }

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>영화 그 이상의 감동 CGV</title>
 	
 <c:import url="./layout/jquery.jsp" />
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
@@ -120,7 +120,10 @@
 
  <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/1.jpg"></div>
+    <c:forEach items="${plist}" var="list">
+    <div class="swiper-slide"><img alt="" src="${list.movieInfo_poster}" title="${list.movieInfo_title}"></div>
+    </c:forEach>
+<!--       <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/1.jpg"></div>
       <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/2.jpg"></div>
       <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/3.jpg"></div>
       <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/4.jpg"></div>
@@ -139,7 +142,7 @@
       <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/17.jpg"></div>
       <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/18.jpg"></div>
       <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/19.jpg"></div>
-      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/20.jpg"></div>
+      <div class="swiper-slide"><img alt="" src="./resources/images/home/poster/20.jpg"></div> -->
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
@@ -175,7 +178,7 @@
 	  var swiper = new Swiper('.swiper-container', {
 		  loop : true,
 	      slidesPerView: 5,
-	      spaceBetween: 80,
+	      spaceBetween: 20,
 	      freeMode: true,
 	      autoplay: {
 	    	    delay: 900,

@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin 2 - Blank</title>
+<title>CGV ADMIN</title>
 <c:import url="../layout/jquery.jsp" />
 
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
@@ -264,8 +264,8 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
-           <h1 class="h3 mb-3 text-gray-800">관리자 모드 (새로 개관한 극장을 추가하기)</h1>
+           <h1 class="h3 mb-3 text-gray-800">상영시간표 추가</h1>
+            <p class="mb-4">영화관의 상영시간표를 추가합니다.</p>
   
  
 <!--  -->
@@ -518,6 +518,8 @@ $(document).ready(function(){
   
 
 });
+    
+    
     /* 영화검색끝 */
     $(".tab").css("display", "none");
     

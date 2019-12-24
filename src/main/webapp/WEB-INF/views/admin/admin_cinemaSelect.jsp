@@ -11,8 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Tables</title>
-
+  <title>CGV ADMIN</title>
   <!-- Custom fonts for this template -->
   <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -278,6 +277,7 @@
 
                 </table>
                 <button class="btn btn-warning btn-icon-split">영화관정보 수정</button>
+                <a href="./admin_cinemaDelete?cinema_num=${cinemaVO.cinema_num}"><input type="button" class="btn btn-danger btn-icon-split" value="영화관정보 삭제"></a> 
                 <!-- <button class="btn btn-danger btn-icon-split">영화관정보 삭제</button> -->
                 </form>
               </div>

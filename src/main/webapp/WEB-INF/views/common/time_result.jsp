@@ -47,11 +47,11 @@
 <c:if test="${time.timeInfo_start eq seat.timeInfo_start && time.theater_num eq seat.theater_num}">
 
 <c:if test="${seat.seatCount ge 195}">
-<tr><td style="width: 40px; text-align: center; color:green;">매진</td></tr>
+<tr><td class="mtime2" style="width: 40px; text-align: center; color:red;">매진</td></tr>
 </c:if>
 
-<c:if test="${seat.seatCount ne 195}">
-<tr><td style="width: 40px; text-align: center; color:green;">${seat.seatCount} / 195</td></tr>
+<c:if test="${seat.seatCount lt 195}">
+<tr><td class="mtime2" style="width: 40px; text-align: center; color:green;">${seat.seatCount} / 195</td></tr>
 </c:if>
 
 </c:if>

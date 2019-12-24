@@ -17,7 +17,14 @@ public class MovieDAO {
 	private static final String NAMESPACE = "movieMapper.";
 	@Inject
 	private SqlSession sqlSession;
-
+	
+	//home
+	public List<MovieInfoVO> homeposter() {
+		return sqlSession.selectList(NAMESPACE+"homeposter");
+	}
+	
+	
+	//
 	public int movieInsert(MovieDataVO movieDataVO) {
 		return sqlSession.insert(NAMESPACE + "movieInsert", movieDataVO);
 	}

@@ -109,6 +109,11 @@ public class AdminDAO {
 		return sqlSession.delete(NAMESPACE+"cinemalistDelete", cinemaVO);
 	}
 	
+
+	public int theaterDelete(CinemaVO cinemaVO) {
+		return sqlSession.delete(NAMESPACE+"theaterDelete", cinemaVO);
+	}
+
 	//movieInsert
 	public int movieInsert(MovieDataVO movieDataVO) {
 		return sqlSession.insert(NAMESPACE + "movieInsert", movieDataVO);
@@ -128,6 +133,21 @@ public class AdminDAO {
 	
 	public int insertPlot (MovieInfoVO movieInfoVO) {
 		return sqlSession.update(NAMESPACE+"insertPlot",movieInfoVO);
+
 	}
 
+	//timelist
+	public ChoiceVO movietimeSelect(ChoiceVO choiceVO) {
+		return sqlSession.selectOne(NAMESPACE+"movietimeSelect", choiceVO);
+	}
+	
+	public int movietimeUpdate(ChoiceVO choiceVO) {
+		return sqlSession.update(NAMESPACE+"movietimeUpdate", choiceVO);
+	}
+	
+	public int movietimeDelete(ChoiceVO choiceVO) {
+		return sqlSession.delete(NAMESPACE+"movietimeDelete", choiceVO);
+	}
+	
+	
 }

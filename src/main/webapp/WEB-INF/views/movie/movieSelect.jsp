@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화 그 이상의 감동 CGV</title>
 <c:import url="../layout/jquery.jsp" />
 
 <link href="${pageContext.request.contextPath}/resources/css/reset.css"
@@ -35,18 +35,6 @@
 				<div>
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-<!-- 						<div class="swiper-slide sbox">1</div>
-							<div class="swiper-slide sbox">2</div>
-							<div class="swiper-slide sbox">3</div>
-							<div class="swiper-slide sbox">4</div>
-							<div class="swiper-slide sbox">5</div>
-							<div class="swiper-slide sbox">6</div>
-							<div class="swiper-slide sbox">1</div>
-							<div class="swiper-slide sbox">2</div>
-							<div class="swiper-slide sbox">3</div>
-							<div class="swiper-slide sbox">4</div>
-							<div class="swiper-slide sbox">5</div>
-							<div class="swiper-slide sbox">6</div> -->
 						</div>
 						<!-- Add Pagination -->
 						<div class="swiper-pagination"></div>
@@ -54,10 +42,6 @@
 				</div>
 				<!-- date 끝 -->
 
-
-				<!-- <div id="secTitle">
-<h1>Movie Select</h1>
-</div> -->
 
 				<div id="secMidTitle">
 					<div class="dname">
@@ -150,14 +134,8 @@
 						</table>
 					</div>
 
-
-
-
 					<form action="../member/movieLogin" id="frm" method="post">
-						
-							 <img id="btn" alt="" src="../resources/images/movieSelect/seat.png"> 
-						
-						<!-- <div id="btn"><a href="#"><img alt="" src="../resources/images/movieSelect/seat.png"></a></div> -->
+						 <img id="btn" alt="" src="../resources/images/movieSelect/seat.png"> 
 					</form>
 
 
@@ -195,22 +173,23 @@
  	$(document).ready(function() {
  		
  		$.each($('.mtitle'), function(i,e){
-			console.log($(this).text());
+			/* console.log($(this).text()); */
 			
 			if($(this).text().trim() == sname){
 				
 				var position = $(this).position();
-				console.log("position");
+	/* 			console.log("position");
 				console.log(position.top);
-				console.log(position.left);
+				console.log(position.left); */
 				
 				var offset = $(this).offset();
-				console.log("offset");
+				/* console.log("offset");
 				console.log(offset.top);
 				console.log(offset.left);
-				
+				 */
 
- 	 	 		$(this).addClass('act');
+				/* alert($(this).closest('.movietitle').html()); */
+ 	 	 		$(this).closest('.movietitle').addClass('act');
 				
  	 	 		mnum = $(this).attr('title');
  	 	 		mname = $(this).text();
@@ -220,7 +199,7 @@
  	 	 		
  	 	 		var pos = 0;
  	 	 		pos = Number(position.top);
-				pos = pos + 11
+				pos = pos + 14
 				
 				$(this).closest('.sname').scrollTop(pos);
 
@@ -280,8 +259,6 @@
 			success : function(data) {
 				data = data.trim();
 				$('#cinemaNameSelect').html(data);
-				
-				/* $('.check').addClass('act'); */
 				$('.noncheck').addClass('noncheck').addClass('soldout');
 		}
  		});
@@ -320,9 +297,6 @@
 			success : function(data) {
 				data = data.trim();
 				$('#movieDateSelect').html(data);
-				/* $('.swiper-wrapper').html(data); */
-				
-
 			}
 		}); 
  		});
@@ -334,35 +308,17 @@
  		 cdate = $(this).attr('id');
  		 cdate = cdate.trim();
  		 
- 		 console.log(cdate);
- 		 
- 	/* 	$(this).addClass('act').siblings().removeClass('act');
- 		
-  		cdate = $(this).find('.mtd').attr("title");
- 		cdate = cdate.trim(); */
- 		
-/*  	tnum = $(this).children().find('.tnum').text();
- 	 	tnum = tnum.trim(); 
- 	 	
- 	 	tname = $(this).children().find('.tname').text();
- 	 	tname = tname.trim();  */
- 	 	
- 	 	
- 	 	
- 		
- 	 	console.log("aa");
+ 		console.log(cdate);
  	 	console.log(cdate);
  		console.log(mnum);
  		console.log(cnum);
- 	/* 	console.log(tnum);
- 		console.log(tname); */
+
  		
   		$.ajax({
 			data : {
 				timeInfo_date:cdate,
 				movieInfo_num:mnum,
 				cinema_num:cnum
-				/* theater_num:tnum */
 			},
 			type : "GET",
 			url : "./timeSelect",
@@ -373,11 +329,10 @@
 				$('#movieTimeSelect').html(data);	
 
 		 		$.each($('.mtime2'), function(i,e){
-			
-					console.log($(this).text());
 					
 					if($(this).text() == '매진'){
-						$(this).closest('.timeSelect').addClass('soldout');
+						/* $(this).closest('.timeSelect').addClass('soldout'); */
+						$(this).parent().siblings('.tstr').find('.timeSelect').addClass('soldout'); 
 					}
 
 		 		});
@@ -388,14 +343,7 @@
  	
  	/* 시간을 선택해 볼까요 */
  	 	$(document).on("click",".timeSelect",function(){
- 	 		$(this).addClass('act').closest('.ttable').siblings().find('.timeSelect').removeClass('act');
- 	 		
- 	 		
-/*  	 		$(this).find('.mtd1').addClass('act');
- 	 		$(this).siblings().find('.mtd1').removeClass('act');
- 	 		$(this).find('.mtime2').removeClass('act');*/
- 	 	
- 	 	
+ 	 	$(this).addClass('act').closest('.ttable').siblings().find('.timeSelect').removeClass('act');
  	 		
   		ctime = $(this).text(); 
  		ctime = ctime.trim();
@@ -416,34 +364,7 @@
  		
  		}); 
  	
-/*  	
- 	 	$(document).on("click",".timeSelect",function(){
- 	 	 	 $(this).find(".mtd1").addClass('act').siblings().removeClass('act');
- 	 	 	$(this).find(".mtd1").addClass('act');
- 	 	 	$(this).find(".mtd1").siblings().removeClass('act');
- 	 	 	
- 	  		ctime = $(this).find('.mtdtxt').text(); 
- 	 		ctime = ctime.trim();
- 	 		
- 	 		console.log(ctime);
- 	 		 
- 	 		});  */
- 	 		
 
- 		
-/*  	 	$(document).on("click",".mtd1",function(){
- 	 	/* $(this).addClass('act').siblings().removeClass('act'); */
- 	 	/* $(this).find('.mtd1').addClass('act').find('.mtd1').removeClass('act'); */
-/*  		$(this).addClass('act').siblings().removeClass('act');
- 	 	
-  		ctime = $(this).text(); 
- 		ctime = ctime.trim();
- 		 
- 		});  */ 
- 		
- 		
- 		
- 	
 
  	/* 다 선택했으면 seat 컨트롤러로 가볼까요 */
  	$(document).on("click","#btn",function(){

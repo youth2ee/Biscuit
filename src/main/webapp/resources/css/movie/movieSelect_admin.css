@@ -48,10 +48,10 @@ body{
 	padding-left: 15px;
 }
 
-#sec6{
-position: absolute;
-    left: 965px;
-    top: 231px;
+#sec6 {
+    position: absolute;
+    left: 1221px;
+    top: 177px;
 }
 
 
@@ -173,8 +173,8 @@ table {
   font-size: 12px;
   cursor:pointer;
   position: absolute;
-  top: 278px;
-  left: 610px;
+  top: 221px;
+  left: 858px;
 }
 
 /* td {

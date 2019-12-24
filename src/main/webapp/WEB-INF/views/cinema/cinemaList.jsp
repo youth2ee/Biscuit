@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>주소로 장소 표시하기</title>
+   <title>영화 그 이상의 감동 CGV</title>
 <c:import url="../layout/jquery.jsp" />
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
@@ -105,19 +105,12 @@
 <div id="mtime">
 </div>
 
-<form action="" method="post">
-<input type="hidden" name="">
-<input type="hidden" name="">
-<input type="hidden" name="">
-<input type="hidden" name="">
-<input type="hidden" name="">
-</form>
 
 </section>
 
 
 <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c385975a519fabb671122b6c7f825767&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=c385975a519fabb671122b6c7f825767&libraries=services,clusterer,drawing"></script>
 <script>
 
 /* 어디 영화관 선택할건지 값 보내주기 */
@@ -154,11 +147,11 @@ $.ajax({
 		
 		cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
 		
-		alert(time);
+	/* 	alert(time);
 		alert(date);
 		alert(mname);
 		alert(cname);
-		alert(tname);
+		alert(tname); */
 		
 	});
 	
@@ -258,11 +251,11 @@ $.ajax({
 				
 				cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
 				
-				alert(time);
+		/* 		alert(time);
 				alert(date);
 				alert(mname);
 				alert(cname);
-				alert(tname);
+				alert(tname); */
 
 			});
 			

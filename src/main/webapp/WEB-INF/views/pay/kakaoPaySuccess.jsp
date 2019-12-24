@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Order confirmation</title>
+<title>영화 그 이상의 감동 CGV</title>
 <meta name="robots" content="noindex,nofollow" />
 <!-- <meta name="viewport" content="width=device-width; initial-scale=1.0;" /> -->
 
@@ -28,7 +28,7 @@
 	
 	
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 		<tr>
 			<td height="20"></td>
 		</tr>
@@ -114,7 +114,7 @@
 	<!-- /Header -->
 	<!-- Order Details -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 		<tbody>
 			<tr>
 				<td>
@@ -199,7 +199,7 @@
 	<!-- /Order Details -->
 	<!-- Total -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 		<tbody>
 			<tr>
 				<td>
@@ -236,7 +236,7 @@
 	<!-- /Total -->
 	<!-- Information -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 		<tbody>
 			<tr>
 				<td>
@@ -391,7 +391,7 @@
 	</table>
 	<!-- /Information -->
 	<table width="100%" border="0" cellpadding="0" cellspacing="0"
-		align="center" class="fullTable" bgcolor="#e1e1e1">
+		align="center" class="fullTable">
 
 		<tr>
 			<td>

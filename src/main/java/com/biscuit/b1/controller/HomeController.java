@@ -2,6 +2,7 @@ package com.biscuit.b1.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -21,6 +22,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.biscuit.b1.model.MovieInfoVO;
+import com.biscuit.b1.service.MovieService;
+
 /**
  * Handles requests for the application home page.
  */
@@ -34,6 +38,10 @@ public class HomeController {
 	private Environment env;
 	private String key;
 	
+
+	@Inject
+	private MovieService movieService;
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -42,7 +50,6 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		String key=env.getProperty("movie.key");
-		//System.out.println(key);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -51,6 +58,11 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		model.addAttribute("key", key);
+		
+		
+		//포스터 url 가져오기
+		List<MovieInfoVO> posters = movieService.homeposter();
+		model.addAttribute("plist", posters);
 		
 		return "home";
 	}

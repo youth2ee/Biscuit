@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@font-face {
+/* @font-face {
   font-family: "Grotesque";
   src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Regular.eot"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Regular.ttf"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Regular.woff");
   font-weight: normal;
@@ -9,7 +9,7 @@
   font-family: "Grotesque Black";
   src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.eot"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.ttf"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/397014/BrandonGrotesque-Black.woff");
   font-weight: bold;
-}
+} */
 
 .loctd{
 	width: 100%;
@@ -60,8 +60,8 @@
 
 #bricks{
 	margin-bottom: 50px;
-	padding-top:50px;
-	height: 363px;
+	padding-top:36px;
+	height: 423px;
 }
 
 #map{
@@ -124,19 +124,21 @@
     padding-left: 50px;
 }
 
-.wrap2{
-	border-bottom: dotted 1.5px;
+.wrap2 {
+    border-bottom: dotted 1.5px;
     padding: 20px 0;
-    padding-left: 16px;
-    margin-bottom: 20px;
+/*     padding-left: 16px; */
+    margin-bottom: 14px;
+    padding-bottom: 35px;
 }
 .showTime {
-	font-weight:bolder;
+	font-weight:bold;
     font-size: 14px;
     margin-right: 5px;
     border: 0.5px solid black;
     PADDING: 5PX 7px;
     cursor: pointer;
+    color: gray;
 }
 
 .showTime:hover {
@@ -156,12 +158,23 @@ font-weight:bolder;
 }
 
 .mitname{
-/* 	float: left; */
+color: #ee3224;
+font-size: 20px;
+font-weight: bold;
 }
 
-.mittitle{
-	float: left;
-		font-size: 23px;
-	font-weight: bolder;
-	margin-left: 18px;
+.mittitle {
+    float: left;
+    font-size: 23px;
+    font-weight: bolder;
+    /* margin-left: 18px; */
+    padding-top: 5px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.mitdate{
+	color: green;
+	font-size:14px;
+	font-weight: bold;
 }

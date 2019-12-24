@@ -224,7 +224,8 @@ public class MemberController {
 			memberVO2.setBirth(memberVO2.getBirth().substring(0, 10));
 			memberVO2.setSignIn_date(memberVO2.getSignIn_date().substring(0, 10));
 		}
-		mv.addObject("members", memberVOs);
+		System.out.println(memberVOs.size());
+		mv.addObject("members", memberVOs); // 77나오는데 jsp에선 10으로 찍힘 (해결하기)
 		mv.addObject("pager", pager);
 		return mv;
 	}

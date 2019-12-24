@@ -1,0 +1,374 @@
+/*!
+ * VueJS/VeeValidate Signup form Built with Bulma CSS
+ * Author: Mauritius DSilva
+ * Website: www.mauritiusdsilva.com
+ * 
+ */
+
+
+/* Root vars
+/* ---------------------------------------------- */
+
+:root {
+    --debug-color: #f00;
+    --brand-color: #e71a0f;
+    --label-color: #7C7C7C;
+    --input-field: #F2F2F2;
+}
+
+
+/* Default
+/* ---------------------------------------------- */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    color: #111;
+    /* background: #F4F5FC; */
+}
+
+
+/* body:before {
+    content: "";
+    position: absolute;
+    background: transparent;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    top: 0;
+    right: -1000px;
+    border-style: solid;
+    border-width: 0 1000px 1000px 1000px;
+    border-color: transparent transparent #FFEC47 transparent;
+} */
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: bold
+}
+
+b{
+	color: red;
+}
+/* Application classes 
+/* ---------------------------------------------- */
+
+.skewed-bg {
+    color: #FFF;
+    padding: .5em;
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+.skewed-bg:after {
+    content: "";
+    position: absolute;
+    background: transparent;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    top: 0;
+    right: -1000px;
+    border-style: solid;
+    border-width: 0 1000px 1000px 1000px;
+}
+
+.is-cursive {
+    font-style: italic;
+}
+
+.form-wrapper {
+    min-height: 800px;
+    box-shadow: 0 12px 82px 0 rgba(0, 0, 0, 0.20);
+    background: #fff;
+    position: relative;
+    z-index: 9;
+    overflow: hidden;
+}
+
+.form-container:after {
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    right: -90px;
+    width: 650px;
+    height: 650px;
+    z-index: -1;
+}
+
+.form-header {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.form-footer {
+    padding-top: 20px;
+}
+
+.form-heading-container {
+    position: relative;
+    display: block;
+    min-height: 100%;
+}
+
+.form-heading {
+    position: absolute;
+    display: inline-block;
+    bottom: 25px;
+    right: -15px;
+    letter-spacing: 2.5px;
+}
+
+.gender-container {
+    padding-top: .35rem;
+}
+
+.main-wrapper {
+    /* overflow: hidden; */
+    padding: 80px 0;
+}
+
+.login-link {
+    padding-top: 20px;
+}
+
+.btn-signup {
+    float: right;
+}
+
+
+/* Custom input styles
+/* ---------------------------------------------- */
+
+.custom-radio {
+    display: inline-block;
+    position: relative;
+    padding: 0 15px 0 0;
+    margin-bottom: 0px;
+    font-size: 18px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.custom-radio input {
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #fff;
+    border: .05em solid var(--brand-color);
+    border-radius: 50%;
+}
+
+.custom-radio:hover input~.checkmark {
+    background-color: #fff;
+}
+
+.custom-radio input:checked~.checkmark {
+    border: .05em solid var(--brand-color);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-radio input:checked~.checkmark:after {
+    display: block;
+}
+
+.custom-radio .checkmark:after {
+    top: 5px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand-color)
+}
+
+
+/* Overrides
+/* ---------------------------------------------- */
+
+.control {
+    min-height: 42px;
+}
+
+.help.is-danger {
+    position: absolute;
+}
+
+.select select.is-danger {
+    border-color: #ff3860;
+}
+
+.label {
+    font: inherit;
+    color: var(--label-color);
+}
+
+.control input,
+.select select {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid var(--input-field);
+    font-family: inherit;
+    font-size: 18px;
+    letter-spacing: 0;
+    padding: 0;
+}
+
+.select,
+.select select {
+    min-width: 100%;
+}
+
+.select select:not([multiple]) {
+    padding-right: 0;
+}
+
+.input:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: var(--brand-color);
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+    right: 0;
+}
+
+.field:not(:last-child),
+.dob-container {
+    margin-bottom: 2.0rem;
+}
+
+textarea,
+select,
+input,
+button,
+.select select,
+.select select:focus,
+.input.is-danger:focus {
+    box-shadow: none;
+    outline: none;
+    border-color: none;
+}
+#signIn {
+    font: icon;
+}
+.input,
+.textarea,
+.select select {
+    background: transparent;
+}
+#corn {
+	height: 250px;
+    float: right;
+   margin-right: 200px;
+    margin-top: -20px;
+}
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: #111;
+}
+
+.navbar-link::after,
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-width: 1px;
+}
+
+.has-text-weight-bold {
+    font-weight: 500 !important;
+}
+
+
+/* Custom helper classes 
+/* ---------------------------------------------- */
+
+.has-background-brand {
+    background: var(--brand-color);
+    border: 0;
+}
+
+.has-text-brand {
+    position: relative;
+    color: var(--brand-color);
+}
+
+.has-text-brand:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: .1em;
+    background: var(--brand-color);
+}
+
+.is-rotated-minus-ninty {
+    transform-origin: 50% 0%;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.is-size-large {
+    font-size: 4rem;
+}
+
+
+/* Media Queries
+/* ---------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+    .form-heading-container {
+        height: 70px;
+    }
+    .form-heading {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        transform: rotate(0deg);
+        left: 15px;
+        top: 2px;
+        font-size: 50px;
+        letter-spacing: 0;
+    }
+    h2.title {
+        font-size: 22px;
+        margin: 0;
+        padding: 0;
+    }
+    p.caption {
+        font-size: 16px;
+    }
+    .btn-signup {
+        float: left;
+        width: 100%;
+    }
+}
+
+
+/* Debug
+/* ---------------------------------------------- */
+
+.debug {
+    border: 1px solid var(--debug-color);
+}
