@@ -34,6 +34,7 @@ public class PayController {
 		payInfoVO = payService.KakaoPayApprove(pg_token);
 		mv.addObject("pay", payInfoVO);
 		
+		////////////
 		MyOrderVO myOrderVO = new MyOrderVO();
 		MemberVO memberVO = (MemberVO)request.getSession().getAttribute("member");
 		
