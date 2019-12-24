@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.biscuit.b1.dao.StoreDAO;
 import com.biscuit.b1.model.CartListVO;
 import com.biscuit.b1.model.CartVO;
+import com.biscuit.b1.model.MyOrderVO;
+import com.biscuit.b1.model.OrderDetailVO;
 import com.biscuit.b1.model.StoreVO;
 import com.biscuit.b1.util.FileSaver;
 
@@ -26,13 +28,13 @@ public class StoreService {
 	private FileSaver fileSaver;
 	
 	/* 주문 정보 */
-	public int orderInsert() throws Exception {
-		return storeDAO.orderInsert();
+	public int orderInsert(MyOrderVO myOrderVO) throws Exception {
+		return storeDAO.orderInsert(myOrderVO);
 	}
 	
 	/* 주문 상세 정보 */
-	public int detailInsert() throws Exception {
-		return storeDAO.detailInsert();
+	public int detailInsert(OrderDetailVO orderDetailVO) throws Exception {
+		return storeDAO.detailInsert(orderDetailVO);
 	}
 	
 	/* 카트 삭제 */
