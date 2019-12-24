@@ -120,7 +120,6 @@
 					});
 				</script>
 					
-					<a href="storeWrite" id="btn_register">등록</a>
 				</div>
 			</div>
 		</div>
@@ -381,11 +380,6 @@
 $('.btn_category_product_buy').click(function name() {
 	$('#frm').submit();
 });
-
-
-
-
-
 </script>
 </body>
 </html>

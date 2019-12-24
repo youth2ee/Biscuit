@@ -192,8 +192,8 @@
 									
 									$.ajax({
 										url: "cartDelete",
-										type: "post",
-										data: { list: array_check},
+										type: "POST",
+										data: { list : array_check},
 										success: function(result) {
 											if(result == 1){
 												alert("삭제되었습니다.");
