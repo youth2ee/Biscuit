@@ -31,6 +31,11 @@ Insert into BISCUIT.CINEMA (CINEMA_NUM,CINEMA_LOC,CINEMA_NAME,CINEMA_ADD,CINEMA_
 Insert into BISCUIT.CINEMA (CINEMA_NUM,CINEMA_LOC,CINEMA_NAME,CINEMA_ADD,CINEMA_TEL,CINEMA_LOCNUM,CINEMA_IMAGE) values (3,'서울','대학로','서울특별시 종로구 대명길','1544-1122',1,'http://img.cgv.co.kr/Theater/Theater/2015/1027/%EB%8C%80%ED%95%99%EB%A1%9C%EB%AC%B8%ED%99%94%EA%B7%B9%EC%9E%A501.jpg');
 Insert into BISCUIT.CINEMA (CINEMA_NUM,CINEMA_LOC,CINEMA_NAME,CINEMA_ADD,CINEMA_TEL,CINEMA_LOCNUM,CINEMA_IMAGE) values (4,'서울','동대문','서울특별시 중구 장충단로 13길 20 현대시티아울렛 11층','1544-1122',1,'http://img.cgv.co.kr/Theater/Theater/2017/1218/15135627350570.jpg');
 Insert into BISCUIT.CINEMA (CINEMA_NUM,CINEMA_LOC,CINEMA_NAME,CINEMA_ADD,CINEMA_TEL,CINEMA_LOCNUM,CINEMA_IMAGE) values (5,'서울','등촌','서울특별시 강서구 공항대로45길 63','1544-1122',1,'http://img.cgv.co.kr/Theater/Theater/2019/0411/15549505447290.jpg');
+Insert into BISCUIT.CINEMA (CINEMA_NUM,CINEMA_LOC,CINEMA_NAME,CINEMA_ADD,CINEMA_TEL,CINEMA_LOCNUM,CINEMA_IMAGE) values (15,'경기','경기광주','경기도 광주시 중앙로 89','1544-1122',2,'http://img.cgv.co.kr/Theater/Theater/2018/0309/15205836456080.jpg');
+Insert into BISCUIT.CINEMA (CINEMA_NUM,CINEMA_LOC,CINEMA_NAME,CINEMA_ADD,CINEMA_TEL,CINEMA_LOCNUM,CINEMA_IMAGE) values (16,'경기','광교상현','경기도 용인시 수지구 상현동 1116-4 W스퀘어','1544-1122',2,'http://img.cgv.co.kr/Theater/Theater/2018/0817/15344706880530.jpg');
+Insert into BISCUIT.CINEMA (CINEMA_NUM,CINEMA_LOC,CINEMA_NAME,CINEMA_ADD,CINEMA_TEL,CINEMA_LOCNUM,CINEMA_IMAGE) values (17,'경기','구리','경기도 구리시 경춘로 243','1544-1122',2,'http://img.cgv.co.kr/Theater/Theater/2017/0413/14920645701080.jpg');
+Insert into BISCUIT.CINEMA (CINEMA_NUM,CINEMA_LOC,CINEMA_NAME,CINEMA_ADD,CINEMA_TEL,CINEMA_LOCNUM,CINEMA_IMAGE) values (18,'경기','김포','경기도 김포시 사우중로 52','1544-1122',2,'http://img.cgv.co.kr/Theater/Theater/2016/0411/gimpo.jpg');
+Insert into BISCUIT.CINEMA (CINEMA_NUM,CINEMA_LOC,CINEMA_NAME,CINEMA_ADD,CINEMA_TEL,CINEMA_LOCNUM,CINEMA_IMAGE) values (19,'경기','동탄','경기도 화성시 동탄중앙로 220','1544-1122',2,'http://img.cgv.co.kr/Theater/Theater/2014/1211/cgvdongtan.jpg');
 
 --------------------------------------------------------
 --  DDL for Index CINEMA_CINEMANUM_PK
