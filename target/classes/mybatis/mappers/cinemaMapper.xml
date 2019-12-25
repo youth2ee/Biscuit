@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="cinemaMapper">
+	<select id="cinema_loc" parameterType="CinemaVO" resultType="CinemaVO">
+	select cinema_name, cinema_add, cinema_tel, cinema_image
+	from cinema 
+  	where cinema_name = #{cinema_name}
+	</select>
+	
+	<select id="cinemaList_loc" resultType="CinemaVO">
+	select distinct cinema_loc, cinema_locnum
+	from cinema
+	order by cinema_locnum asc
+	</select>
+	
+	<select id="cinemaList_cinema" resultType="CinemaVO">
+	select distinct cinema_name, cinema_num, cinema_loc
+	from cinema
+	order by cinema_num asc
+	</select>
+	
+	<select id="cinemaInfo" parameterType="CinemaVO" resultType="CinemaVO">
+	select * 
+	from cinema
+	where cinema_name = #{cinema_name}
+	</select>
+
+	<select id="cinemaTime" parameterType="ChoiceVO" resultType="ChoiceVO">
+	select A.cinema_num, A.cinema_name, B.timeinfo_date, 
+	(select theater_name from theater where theater_num = B.theater_num) theater_name,
+	B.timeinfo_start, B.timeinfo_end, B.movieinfo_num, (select movieinfo_title from movieinfo where movieinfo_num = B.movieinfo_num) movieinfo_title
+	from cinema A full join timeinfo B
+	on A.cinema_num = B.cinema_num
+	where cinema_name = #{cinema_name}
+	order by timeinfo_date asc, theater_num asc, timeinfo_start asc
+	</select>
+	
+
+  </mapper>
