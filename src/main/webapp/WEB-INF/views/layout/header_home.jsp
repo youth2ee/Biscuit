@@ -16,7 +16,7 @@
 			<div class="himg"><a href="./member/memberJoin"><img alt="" src="./resources/images/home/6_2.png"></a></div>
 		</c:if>
 		
-		<c:if test="${member ne null }">
+		<c:if test="${member ne null}">
 		    <div class="himg hname">${member.name}님</div>
 			<div class="himg"><a href="./member/memberLogout"><img alt="" src="./resources/images/home/7_2.png"></a></div>
 		

@@ -25,7 +25,7 @@ import com.biscuit.b1.model.SeatVO;
 import com.biscuit.b1.service.SeatService;
 
 @Controller
-@RequestMapping("/seat/")
+@RequestMapping("/seat/**")
 public class SeatController {
 	@Inject
 	private SeatService seatService;
@@ -33,7 +33,7 @@ public class SeatController {
 	@RequestMapping(value = "seatSelect")
 	public ModelAndView seatSelect(ChoiceVO choiceVO, HttpServletRequest request, HttpSession session)
 			throws Exception {
-		choiceVO = (ChoiceVO) session.getAttribute("ChoiceVO");
+		choiceVO = (ChoiceVO)session.getAttribute("ChoiceVO");
 
 		ModelAndView mv = new ModelAndView();
 

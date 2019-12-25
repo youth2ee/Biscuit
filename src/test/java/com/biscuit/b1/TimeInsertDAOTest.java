@@ -21,17 +21,17 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	@Inject
 	private AdminDAO adminDAO;
 	private int num = 1;
-	private String date = "19/12/26";
+	private String date = "19/12/31";
 	
-	private int mnum1_1 = 270;
+	private int mnum1_1 = 1;
 	private int mnum1_2 = 272;
 	private int mnum1_3 = 1;
 	
-	private int mnum2_1 = 7;
+	private int mnum2_1 = 2;
 	private int mnum2_2 = 272;
 	private int mnum2_3 = 181;
 	
-	private int mnum3_1 = 7;
+	private int mnum3_1 = 3;
 	private int mnum3_2 = 272;
 	private int mnum3_3 = 181;
 	
@@ -79,11 +79,11 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum14_2 = 7;
 	private int mnum14_3 = 181;
 	
-	private int mnum15_1 = 270;
+	private int mnum15_1 = 4;
 	private int mnum15_2 = 282;
 	private int mnum15_3 = 1;
 	
-	private int mnum16_1 = 270;
+	private int mnum16_1 = 5;
 	private int mnum16_2 = 282;
 	private int mnum16_3 = 181;
 	
@@ -135,7 +135,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum28_2 = 282;
 	private int mnum28_3 = 1;
 	
-	private int mnum29_1 = 270;
+	private int mnum29_1 =1;
 	private int mnum29_2 = 282;
 	private int mnum29_3 = 192;
 	
@@ -155,7 +155,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum33_2 = 1;
 	private int mnum33_3 = 181;
 	
-	private int mnum34_1 = 270;
+	private int mnum34_1 = 2;
 	private int mnum34_2 = 282;
 	private int mnum34_3 = 102;
 	
@@ -167,7 +167,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum36_2 = 270;
 	private int mnum36_3 = 181;
 	
-	private int mnum37_1 = 1;
+	private int mnum37_1 = 3;
 	private int mnum37_2 = 181;
 	private int mnum37_3 = 102;
 	
@@ -187,7 +187,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum41_2 = 181;
 	private int mnum41_3 = 7;
 	
-	private int mnum42_1 = 270;
+	private int mnum42_1 =4;
 	private int mnum42_2 = 282;
 	private int mnum42_3 = 181;
 	
@@ -195,7 +195,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum43_2 = 272;
 	private int mnum43_3 = 63;
 	
-	private int mnum44_1 = 1;
+	private int mnum44_1 = 5;
 	private int mnum44_2 = 282;
 	private int mnum44_3 = 102;
 	
@@ -215,7 +215,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum48_2 = 272;
 	private int mnum48_3 = 2;
 	
-	private int mnum49_1 = 181;
+	private int mnum49_1 = 1;
 	private int mnum49_2 = 1;
 	private int mnum49_3 = 63;
 	
@@ -231,7 +231,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	private int mnum52_2 = 63;
 	private int mnum52_3 = 181;
 	
-	private int mnum53_1 = 282;
+	private int mnum53_1 = 2;
 	private int mnum53_2 = 272;
 	private int mnum53_3 = 181;
 	
@@ -271,23 +271,20 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+1);
-			choiceVO.setMovieInfo_num(mnum1_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+2);
-				choiceVO.setMovieInfo_num(mnum1_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+1);
+		 * choiceVO.setMovieInfo_num(mnum1_2); choiceVO.setTimeInfo_date(date); result =
+		 * adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+2);
+		 * choiceVO.setMovieInfo_num(mnum1_3); choiceVO.setTimeInfo_date(date); result =
+		 * adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * } }
+		 */
+		 
+		  assertEquals(result, 5);
 	}
 	
 	@Test
@@ -301,23 +298,19 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+4);
-			choiceVO.setMovieInfo_num(mnum2_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+5);
-				choiceVO.setMovieInfo_num(mnum2_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+4);
+		 * choiceVO.setMovieInfo_num(mnum2_2); choiceVO.setTimeInfo_date(date); result =
+		 * adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+5);
+		 * choiceVO.setMovieInfo_num(mnum2_3); choiceVO.setTimeInfo_date(date); result =
+		 * adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		
+		assertEquals(result, 5);
 	}
 	
 	
@@ -331,27 +324,23 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+7);
-			choiceVO.setMovieInfo_num(mnum3_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+8);
-				choiceVO.setMovieInfo_num(mnum3_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+7);
+		 * choiceVO.setMovieInfo_num(mnum3_2); choiceVO.setTimeInfo_date(date); result =
+		 * adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+8);
+		 * choiceVO.setMovieInfo_num(mnum3_3); choiceVO.setTimeInfo_date(date); result =
+		 * adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		
+		assertEquals(result, 5);
 	}
 	
 	
-	@Test
+	//@Test
 	public void timeInfoInsert4() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -380,7 +369,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert5() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -409,7 +398,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert6() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -439,7 +428,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	}
 
 
-	@Test
+	//@Test
 	public void timeInfoInsert7() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -468,7 +457,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert8() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -497,7 +486,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert9() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -527,7 +516,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert10() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -556,7 +545,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert11() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -586,7 +575,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	}
 	
 	
-	@Test
+	//@Test
 	public void timeInfoInsert12() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -616,7 +605,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	}
 	
 	
-	@Test
+	//@Test
 	public void timeInfoInsert13() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -646,7 +635,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	}
 	
 	
-	@Test
+	//@Test
 	public void timeInfoInsert14() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -686,23 +675,19 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+43);
-			choiceVO.setMovieInfo_num(mnum15_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+44);
-				choiceVO.setMovieInfo_num(mnum15_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+43);
+		 * choiceVO.setMovieInfo_num(mnum15_2); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+44);
+		 * choiceVO.setMovieInfo_num(mnum15_3); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		
+		assertEquals(result, 5);
 	}
 	
 	
@@ -716,27 +701,22 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+46);
-			choiceVO.setMovieInfo_num(mnum16_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+47);
-				choiceVO.setMovieInfo_num(mnum16_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+46);
+		 * choiceVO.setMovieInfo_num(mnum16_2); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+47);
+		 * choiceVO.setMovieInfo_num(mnum16_3); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		assertEquals(result, 5);
 	}
 	
 	
-	@Test
+	//@Test
 	public void timeInfoInsert17() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -766,7 +746,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	}
 	
 	
-	@Test
+	//@Test
 	public void timeInfoInsert18() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -796,7 +776,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	}
 	
 	
-	@Test
+	//@Test
 	public void timeInfoInsert19() {
 		adminDAO.seq_plus();
 		ChoiceVO choiceVO = new ChoiceVO();
@@ -825,7 +805,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert20() throws Exception {
 		
 		Thread.sleep(1000);
@@ -857,8 +837,8 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	//
-	@Test
+	
+	//@Test
 	public void timeInfoInsert21() throws Exception {
 		
 		Thread.sleep(1000);
@@ -890,7 +870,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert22() throws Exception {
 		
 		Thread.sleep(1000);
@@ -922,7 +902,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert23() throws Exception {
 		
 		Thread.sleep(1000);
@@ -954,7 +934,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert24() throws Exception {
 		
 		Thread.sleep(1000);
@@ -985,7 +965,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert25() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1015,7 +995,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert26() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1045,7 +1025,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert27() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1075,7 +1055,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert28() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1116,26 +1096,22 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+85);
-			choiceVO.setMovieInfo_num(mnum29_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+86);
-				choiceVO.setMovieInfo_num(mnum29_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+85);
+		 * choiceVO.setMovieInfo_num(mnum29_2); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+86);
+		 * choiceVO.setMovieInfo_num(mnum29_3); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		
+		assertEquals(result, 5);
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert30() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1165,7 +1141,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert31() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1194,8 +1170,8 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	//
-	@Test
+
+	//@Test
 	public void timeInfoInsert32() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1224,7 +1200,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert33() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1264,25 +1240,21 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+100);
-			choiceVO.setMovieInfo_num(mnum34_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+101);
-				choiceVO.setMovieInfo_num(mnum34_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+100);
+		 * choiceVO.setMovieInfo_num(mnum34_2); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+101);
+		 * choiceVO.setMovieInfo_num(mnum34_3); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		
+		assertEquals(result, 5);
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert35() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1311,7 +1283,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert36() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1351,25 +1323,20 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+109);
-			choiceVO.setMovieInfo_num(mnum37_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+110);
-				choiceVO.setMovieInfo_num(mnum37_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+109);
+		 * choiceVO.setMovieInfo_num(mnum37_2); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+110);
+		 * choiceVO.setMovieInfo_num(mnum37_3); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		assertEquals(result, 5);
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert38() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1398,7 +1365,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert39() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1427,7 +1394,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert40() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1456,7 +1423,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert41() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1498,26 +1465,22 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+124);
-			choiceVO.setMovieInfo_num(mnum42_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+125);
-				choiceVO.setMovieInfo_num(mnum42_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+124);
+		 * choiceVO.setMovieInfo_num(mnum42_2); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+125);
+		 * choiceVO.setMovieInfo_num(mnum42_3); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		
+		assertEquals(result, 5);
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert43() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1558,26 +1521,22 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+130);
-			choiceVO.setMovieInfo_num(mnum44_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+131);
-				choiceVO.setMovieInfo_num(mnum44_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+130);
+		 * choiceVO.setMovieInfo_num(mnum44_2); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+131);
+		 * choiceVO.setMovieInfo_num(mnum44_3); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		
+		assertEquals(result, 5);
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert45() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1607,7 +1566,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert46() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1637,7 +1596,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert47() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1667,7 +1626,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert48() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1708,26 +1667,21 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+145);
-			choiceVO.setMovieInfo_num(mnum49_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+146);
-				choiceVO.setMovieInfo_num(mnum49_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+145);
+		 * choiceVO.setMovieInfo_num(mnum49_2); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+146);
+		 * choiceVO.setMovieInfo_num(mnum49_3); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		assertEquals(result, 5);
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert50() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1757,7 +1711,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		}
 	}
 	
-	@Test
+	//@Test
 	public void timeInfoInsert51() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1788,7 +1742,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 	}
 	
 	//
-	@Test
+	//@Test
 	public void timeInfoInsert52() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1828,25 +1782,21 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 		choiceVO.setTimeInfo_date(date);
 		int result =  adminDAO.timeInfoInsertA(choiceVO);
 	
-		if(result == 5) {
-			adminDAO.seq_plus();
-			choiceVO.setTheater_num(num+157);
-			choiceVO.setMovieInfo_num(mnum53_2);
-			choiceVO.setTimeInfo_date(date);
-			result =  adminDAO.timeInfoInsertB(choiceVO);
-			
-			if(result == 5) {
-				adminDAO.seq_plus();
-				choiceVO.setTheater_num(num+158);
-				choiceVO.setMovieInfo_num(mnum53_3);
-				choiceVO.setTimeInfo_date(date);
-				result =  adminDAO.timeInfoInsertC(choiceVO);
-				
-				assertEquals(result, 5);
-			}
-		}
+		/*
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+157);
+		 * choiceVO.setMovieInfo_num(mnum53_2); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertB(choiceVO);
+		 * 
+		 * if(result == 5) { adminDAO.seq_plus(); choiceVO.setTheater_num(num+158);
+		 * choiceVO.setMovieInfo_num(mnum53_3); choiceVO.setTimeInfo_date(date); result
+		 * = adminDAO.timeInfoInsertC(choiceVO);
+		 * 
+		 * assertEquals(result, 5); } }
+		 */
+		
+		assertEquals(result, 5);
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert54() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1875,7 +1825,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert55() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1904,7 +1854,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert56() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1933,7 +1883,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert57() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1962,7 +1912,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert58() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();
@@ -1991,7 +1941,7 @@ public class TimeInsertDAOTest extends TestAbstractCase {
 			}
 		}
 	}
-	@Test
+	//@Test
 	public void timeInfoInsert59() throws Exception {
 		Thread.sleep(1000);
 		adminDAO.seq_plus();

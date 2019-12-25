@@ -21,8 +21,6 @@
 <link href="${pageContext.request.contextPath}/resources/css/design/ribbon.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/heart.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/modal.css" rel="stylesheet">
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
-<!-- <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:100'> -->
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 </head>
@@ -37,7 +35,9 @@
 <section>
 
 <!-- 로그인  정보 -->
+<%-- <c:if test="${member ne null}">
 <input type="hidden" id="memberid" value="${member.id}">
+</c:if> --%>
 <!-- 로그인 정보 끝  -->
 
 <!-- top ten -->
@@ -67,9 +67,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 
 
 
-<div class="thumb" style="background-image: url('${mlist.movieInfo_poster}');">
-<%-- <img class="pimg" alt="" src="${mlist.movieInfo_poster}"> --%>
-</div>
+<div class="thumb" style="background-image: url('${mlist.movieInfo_poster}');"></div>
 
 <div class="infos">
 <div>
@@ -218,7 +216,6 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 	</div> 
 	
 	</div>
-	<!-- <button class="content-button-close">CLOSE</button> -->
 	
 </div> 
 
@@ -345,24 +342,17 @@ var id = $('#memberid').val().trim(); //로그인되어있는지 확인
  $('.card').on('mouseover',function() {
 	var ostar = $(this).find('.myGrade').val();
 	mnum = $(this).find('.movienum').val();
-/* 	console.log(ostar);*/
-	console.log("aa"+mnum); 
+	console.log(mnum); 
 	
-
 	 if (ostar > 8 && ostar <= 10) {
-		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star5').attr('checked','checked');
 	}else if (ostar > 6 && ostar <= 8) {
-		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star4').attr('checked','checked');
 	}else if (ostar > 4 && ostar <= 6) {
-		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star3').attr('checked','checked');
 	}else if (ostar > 2 && ostar <= 4) {
-		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star2').attr('checked','checked');
 	}else if (ostar > 0 && ostar <= 2) {
-		console.log("ostar"+ostar);
 		$(this).find('#'+mnum+'star1').attr('checked','checked');
 	} else{
 		$(this).find('#'+mnum+'star1').attr('checked',false);
@@ -384,7 +374,6 @@ $('.starlab').click(function() {
 	mstar = mstar*2;
 	
 	$(this).closest('.infos').addClass('.tact');
-	
 	mnum = $(this).closest('.star-rating').find('.movienum').val();
 
 
@@ -417,7 +406,6 @@ $('.starlab').click(function() {
  
 //하트
 $('.checkboxes-container').click(function() {
-	/* var mname = $(this).closest('.ribbon-2').siblings('.infos').find('.title').text(); */
 	mnum = $(this).closest('.ribbon-2').siblings('.infos').find('.title').attr('id').trim();
 	var mheart = 0;
 	if (id != '') {
@@ -428,15 +416,9 @@ $('.checkboxes-container').click(function() {
 		if($(this).find('.heart').prop("checked") == true){
 			mheart = 0;
 			$(this).find('.heart').prop("checked", false);
-			console.log(id);
-			console.log(mnum);
-			console.log(mheart);
 		} else if ($(this).find('.heart').prop("checked") == false) {
 			mheart = 1;
 			$(this).find('.heart').prop("checked",true);	
-			console.log(id);
-			console.log(mnum);
-			console.log(mheart);
 		}
 		
 		
@@ -451,11 +433,11 @@ $('.checkboxes-container').click(function() {
 			url : "./movieListHeart",
 			success : function(data) {
 				
-	/* 	 		if (data == 1) {
-					alert("성공");
+		 		if (data == 1) {
+					alert("찜하기 성공");
 				} else {
-					alert("실패");
-				} */
+					alert("찜하기 실패");
+				} 
 				
 			}
 		}); 
@@ -467,22 +449,14 @@ $('.checkboxes-container').click(function() {
 });
 
 //예약
-$(".myBtn2").on("click", function(){
+/* $(".myBtn2").on("click", function(){
 	$(this).submit(); 
-	 /* $(this).siblings('.frm').submit();  */
 });
-
+ */
 
 
 //모달
-// Elegant Modal
 
-// Function to open Modal when the page finishes loading (with time to display animation)
-/* setTimeout(function(){
-	$(".mask").addClass("active");
-}, 500); */
-
-// Click event function to open modal (active)
 $(".myBtn").on("click", function(event){
 	var t = $(this).attr('title');
 	$('#'+t+'modal').addClass('active');
@@ -494,25 +468,18 @@ $(".elegant-modal").on("mouseenter", function(event){
 });
 
 
-// Função para fechar o modal.
  function closeModal(){
-	 $(".mask").removeClass("active");  //Remove the active class
+	 $(".mask").removeClass("active"); 
 } 
-
-
-// Function to close the modal screen
-//$(this).closest('.infos').siblings('.newmodal').find(".close")
 
  $(".close, .mask").on("click", function(){
   closeModal();
 }); 
 
-// Closes the modal with the button within the content
  $(".content-button-close").click(function(){
 	closeModal();
 }); 
 
-// or the keyboard (esc)
  $(document).keyup(function(e) {
   if (e.keyCode == 27) {
     closeModal();

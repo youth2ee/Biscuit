@@ -87,23 +87,20 @@ public class MovieController {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("movieTitle", movieTitle);
 		mv.addObject("movieLoc", movieLoc);
-		
 		mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
-		
 		mv.setViewName("movie/movieSelect");
 
 		return mv;
 	}
 
 	@GetMapping("locSelect")
-	// @ResponseBody
 	public ModelAndView locSelect(ChoiceVO choiceVO) throws Exception {
 		// 영화선택후 지역선택값 받아서 모든 영화관
 		List<CinemaVO> ar = movieSelectService.movieCinemaSelect(choiceVO);
 
 		// 선택한 영화에 따른 영화관
 		List<ChoiceVO> cr = movieSelectService.movieChoice(choiceVO);
-		// List<Integer> check = new ArrayList<Integer>();
+		
 		Integer[] check = new Integer[ar.size()];
 		for (int i = 0; i < check.length; i++) {
 			check[i] = 0;
@@ -130,8 +127,6 @@ public class MovieController {
 		List<TimeInfoVO> movieDateSelect = movieSelectService.movieDateSelect(choiceVO);
 
 		for (TimeInfoVO a : movieDateSelect) {
-			System.out.println("durl");
-			System.out.println(a.getTimeInfo_date());
 			
 			//요일 구하기
 			 SimpleDateFormat dateFormat = new SimpleDateFormat("yy/MM/dd") ;
@@ -141,7 +136,6 @@ public class MovieController {
 			 cal.setTime(nDate);
 			     
 			 int dayNum = cal.get(Calendar.DAY_OF_WEEK) ;
-			 System.out.println(dayNum);
 			     
 			 String week = "";    
 			 
@@ -184,34 +178,16 @@ public class MovieController {
 		return mv;
 	}
 	
-	
-	
-	
+
 	
 
 	@GetMapping("timeSelect")
 	public ModelAndView timeSelect(ChoiceVO choiceVO) throws Exception {
-		/*
-		 * System.out.println(choiceVO.getMovieInfo_num());
-		 * System.out.println(choiceVO.getCinema_num());
-		 * System.out.println(choiceVO.getTimeInfo_date());
-		 * System.out.println(choiceVO.getCinema_num());
-		 */
-
 		List<ChoiceVO> timeSelect = movieSelectService.movieTimeSelect(choiceVO);
 
 		for (ChoiceVO a : timeSelect) {
-			/* a.setTimeInfo_date(a.getTimeInfo_date().substring(2, 10)); */
 			a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
 			a.setTimeInfo_end(a.getTimeInfo_end().substring(11, 16));
-
-			/*
-			 * System.out.println(a.getTimeInfo_date());
-			 * System.out.println(a.getTimeInfo_start());
-			 * System.out.println(a.getTimeInfo_end());
-			 * System.out.println(a.getTheater_name());
-			 * System.out.println(a.getTheater_num());
-			 */
 		}
 
 		// 여기서 좌석수를 보내조야 해
@@ -219,7 +195,6 @@ public class MovieController {
 
 		for (ChoiceVO b : seatList) {
 			b.setTimeInfo_start(b.getTimeInfo_start().substring(11, 16));
-			/* System.out.println(b.getTimeInfo_start()); */
 		}
 
 		ModelAndView mv = new ModelAndView();
@@ -232,14 +207,7 @@ public class MovieController {
 
 	// movieList
 	@GetMapping("movieList")
-	public void movieList(Locale locale, Model model, HttpSession session) {
-
-		// api
-		/*
-		 * String key = env.getProperty("movie.key"); Date date = new Date(); DateFormat
-		 * dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG,
-		 * locale); String formattedDate = dateFormat.format(date);
-		 */
+	public void movieList(Model model, HttpSession session) {
 
 		// 영화 db
 		List<MovieInfoVO> ar = movieSelectService.movieList();
@@ -249,7 +217,7 @@ public class MovieController {
 		}
 
 		// 로그인정보 : 세션에서 member 찾기
-		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 
 		List<MovieGradeVO> br = new ArrayList<MovieGradeVO>();
 
@@ -263,35 +231,21 @@ public class MovieController {
 			model.addAttribute("hearts", hearts);
 			model.addAttribute("myGrade", myGrade);
 		}
+		
 		model.addAttribute("grade", br);
 		model.addAttribute("movieList", ar);
-		// model.addAttribute("serverTime", formattedDate);
-		/* model.addAttribute("key", key); */
 		model.addAttribute("member", memberVO);
 	}
 
-	@GetMapping("movieapi")
-	@ResponseBody
-	public String movieapi(String rank1) {
-		/* System.out.println(rank1); */
 
-		return rank1;
-	}
 
 	// movieList : 하트
 	@PostMapping("movieListHeart")
 	@ResponseBody
 	public int movieListHeart(MovieGradeVO movieGradeVO) {
-		System.out.println("moviegrade !!");
-		System.out.println(movieGradeVO.getId());
-		System.out.println(movieGradeVO.getMovieInfo_num());
-		System.out.println(movieGradeVO.getMovieGrade_heart());
-
 		int result = 0;
 
 		MovieGradeVO movieGradeVO2 = movieService.movieGradeSelect(movieGradeVO);
-
-		System.out.println(movieGradeVO);
 
 		if (movieGradeVO2 == null) {
 			// 널이면 insert
@@ -309,27 +263,21 @@ public class MovieController {
 	@PostMapping("movieListStar")
 	@ResponseBody
 	public int movieListStar(MovieGradeVO movieGradeVO) {
-		System.out.println("moviegrade !!");
-		System.out.println(movieGradeVO.getId());
-		System.out.println(movieGradeVO.getMovieInfo_num());
-		System.out.println(movieGradeVO.getMovieGrade_heart());
 		
 		int result = 0;
 		
 		MovieGradeVO movieGradeVO2 = movieService.movieGradeSelect(movieGradeVO);
-		
-		System.out.println(movieGradeVO);
 		
 		if(movieGradeVO2 == null) {
 			//널이면 insert
 			result = movieService.movieGradeInsert(movieGradeVO);
 			if(result > 0) {				
 				result = movieService.movieStarUpdate(movieGradeVO);
+				
 				if (result > 0 ) {
 					result = movieService.movieInfoStarUpdate(movieGradeVO);
 				}
 			}
-			
 			
 		}else {
 			//낫널이면 update

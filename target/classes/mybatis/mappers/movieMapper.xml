@@ -18,7 +18,7 @@
   
   	<!-- 영화선택 -->
   	<select id="movieTitleSelect" resultType="MovieInfoVO">
-    <![CDATA[
+<!--     <![CDATA[
     select movieinfo_num, movieinfo_title, movieinfo_grade, movieinfo_date
     from
     (select movieinfo_num, movieinfo_title, movieinfo_grade, movieinfo_date
@@ -26,7 +26,13 @@
     where movieinfo_date >= (select to_char(add_months(sysdate-15,-1),'yy/mm/dd')from dual)
     order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
     WHERE ROWNUM <= 50
-    ]]>
+    ]]> -->
+    select * from (
+select distinct B.movieinfo_title
+from timeinfo A left outer join movieinfo B
+on A.movieinfo_num = B.movieinfo_num) C left outer join movieinfo D
+on C.movieinfo_title = D.movieinfo_title
+order by movieinfo_rating desc
   	</select>
   
   	<!-- 영화지역 선택 -->
@@ -171,9 +177,7 @@
 
   	
   	<select id="movieList" resultType="MovieInfoVO">
-<!-- select * from movieinfo
-	order by movieinfo_star desc -->
-<![CDATA[
+<!--   <![CDATA[
 	select *
     from
     (select *
@@ -181,14 +185,13 @@
     where movieinfo_date >= (select to_char(add_months(sysdate-15,-1),'yy/mm/dd')from dual)
     order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
     WHERE ROWNUM <= 50
-    ]]>
-<!--     <![CDATA[
-    select *
-    from (select * from movieinfo where movieinfo_date >= (select to_char(add_months(sysdate-15,-1),'yy/mm/dd')from dual) order by movieinfo_rating desc, movieinfo_star desc, movieinfo_date desc, movieinfo_title asc)
-    A full outer join movie_grade B
-    on A.movieinfo_num = B.movieinfo_num
-    WHERE ROWNUM <= 50
     ]]> -->
+    select * from (
+select distinct B.movieinfo_title
+from timeinfo A left outer join movieinfo B
+on A.movieinfo_num = B.movieinfo_num  ) C left outer join movieinfo D
+on C.movieinfo_title = D.movieinfo_title
+order by movieinfo_rating desc
   	</select>
 
   	<insert id="movieInsert" parameterType="MovieDataVO">
