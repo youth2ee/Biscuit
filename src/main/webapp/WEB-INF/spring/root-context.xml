@@ -31,11 +31,11 @@
 	</bean> 
 	
 	<!-- transaction Manager 설정 -->
-	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager">
+<!-- 	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="txManager">
 		<property name="dataSource" ref="dataSource" />
-	</bean>
+	</bean> -->
 	
 	<!-- annotation 연결  -->
-	<tx:annotation-driven/>
+	<!-- <tx:annotation-driven/> -->
 		
 </beans>
