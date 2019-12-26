@@ -292,8 +292,14 @@
 	</select>
 	
 	<select id="todayMovieRate" resultType="AdminVO">
-	select TRUNC((((select count(seat_num) selectseat from seat where timeinfo_date = to_char(sysdate,'yy/mm/dd'))/
+<!-- 	select TRUNC((((select count(seat_num) selectseat from seat where timeinfo_date = to_char(sysdate,'yy/mm/dd'))/
     (select count(timeinfo_num)*195 totalseat from timeinfo where timeinfo_date = to_date(sysdate,'yy/mm/dd'))
+    )*100),2) todayrate from dual -->
+    select TRUNC(
+    (((select count(seat_num) selectseat from seat where timeinfo_date = to_char(to_date('19/12/31','yy/mm/dd'),'yy/mm/dd'))/
+    (select count(timeinfo_num)*195 totalseat 
+    from timeinfo 
+    where timeinfo_date = to_date('19/12/31','yy/mm/dd'))
     )*100),2) todayrate from dual
 	</select>
 	
