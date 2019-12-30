@@ -4,10 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div id = "timeTable"><H1>상영시간표</H1></div>
 
-<c:if test="${not empty timelist}">
 
 <div> 
 <c:forEach items="${timelist}" var="time" varStatus="status">
+
+<c:if test="${time.movieInfo_title != null}">
 
 
 <c:if test="${status.count % 5 == 1}">
@@ -30,15 +31,15 @@
 </div>
 </c:if>
 
+
+</c:if>
+
+<!--  -->
+<c:if test="${time.movieInfo_title == null}">
+<div>상영정보가 없습니다.</div>
+</c:if>
+<!--  -->
 </c:forEach>
 </div>
-
-</c:if>
-
-<c:if test="${empty timelist}">
-<div> 
-상영시간이 없습니다.
-</div>
-</c:if>
 
 

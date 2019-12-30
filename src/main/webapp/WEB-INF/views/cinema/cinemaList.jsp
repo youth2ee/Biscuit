@@ -227,6 +227,7 @@ $.ajax({
 			type : "GET",
 			url : "./cinemaTime",
 			success : function(data) {
+				
 			data = data.trim();
 			$('#mtime').html(data);
 
