@@ -84,20 +84,10 @@ public class CinemaController {
 	  
 	  List<ChoiceVO> timelist = cinemaService.cinemaTime(choiceVO);
 	  
-	  for(ChoiceVO a : timelist) {
-		  System.out.println(a.getCinema_name());
-		  System.out.println(a.getCinema_num());
-		  System.out.println(a.getTimeInfo_date());
-		  System.out.println(a.getTimeInfo_start());
-		  System.out.println(a.getTimeInfo_end());
-		  System.out.println(a.getTheater_num());
-		  System.out.println(a.getMovieInfo_num());
-		  
-		  
+	  for(ChoiceVO a : timelist) {		  
 		  a.setTimeInfo_start(a.getTimeInfo_start().substring(11, 16));
 		  a.setTimeInfo_date(a.getTimeInfo_date().substring(0, 10));
 	  }
-	  
 	  
 	  
 	  ModelAndView mv = new ModelAndView();

@@ -41,7 +41,7 @@ public class SeatController {
 		MovieDataVO movieDataVO = seatService.getPoster(choiceVO); // 포스터 url을 가져와서 넣어줌
 		String grade = seatService.getGrade(choiceVO);
 
-		mv.addObject("poster", movieDataVO.getPoster());
+		//mv.addObject("poster", movieDataVO.getPoster());
 		mv.addObject("seats", seatVOs);
 		mv.addObject("movieInfo_name", choiceVO.getMovieInfo_name());
 		System.out.println(choiceVO.getMovieInfo_name());

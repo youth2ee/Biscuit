@@ -147,27 +147,14 @@ $.ajax({
 		
 		cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
 		
-	/* 	alert(time);
-		alert(date);
-		alert(mname);
-		alert(cname);
-		alert(tname); */
-		
 	});
 	
 	}
 }); 
 
-	$(document).on("click", ".cinematd", function() {
- 		/* $(this).addClass('act').siblings().removeClass('act'); */
-		
- 		console.log(cname);
- 		console.log(cadd);
- 		
+	$(document).on("click", ".cinematd", function() { 		
 		cname = $(this).text();
 		cname = cname.trim();
-		
-		console.log(cname);
 		
  		$.ajax({
 			data : {
@@ -250,12 +237,6 @@ $.ajax({
 				tname = $(this).closest('.wrap2').prev('.movieInfo').find('.mitname').text();
 				
 				cname = $(this).closest('#mtime').prev('#mid').find('.ct').text();
-				
-		/* 		alert(time);
-				alert(date);
-				alert(mname);
-				alert(cname);
-				alert(tname); */
 
 			});
 			
