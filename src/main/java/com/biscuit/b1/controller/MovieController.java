@@ -259,14 +259,11 @@ public class MovieController {
 			String id = memberVO.getId();
 			List<MovieGradeVO> hearts = movieService.searchForHeart(id);
 			List<MovieGradeVO> myGrade = movieService.myGrade(id);
-			System.out.println(myGrade);
 			model.addAttribute("hearts", hearts);
 			model.addAttribute("myGrade", myGrade);
 		}
 		model.addAttribute("grade", br);
 		model.addAttribute("movieList", ar);
-		// model.addAttribute("serverTime", formattedDate);
-		/* model.addAttribute("key", key); */
 		model.addAttribute("member", memberVO);
 	}
 
