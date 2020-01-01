@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
 
 .clearfix:after {
   /* visibility: hidden; */
@@ -10,15 +13,6 @@
   height: 0;
 } 
 
-
-body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-}
-
-/* .container {
-  width: 1200px;
-  margin: 150px auto 40px;
-} */
 
 h1 {
   text-align: center;
@@ -32,24 +26,6 @@ h2 {
   font-size: 22px;
   color: #999;
 }
-
-/* img {
-  display: block;
-} */
-
-/* .container ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.container li {
-  float: left;
-  margin: 0 20px 30px;
-  display: none;
-} */
-
-
 
 .btn {
   font-size: 18px;

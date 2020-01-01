@@ -178,8 +178,7 @@ a[href]:hover::after {
 	z-index: 10;
 }
 
-.card:hover .infos .seats, .card:hover .infos .txt, .card:hover .infos .details
-	{
+.card:hover .infos .seats, .card:hover .infos .txt, .card:hover .infos .details{
 	opacity: 1;
 }
 

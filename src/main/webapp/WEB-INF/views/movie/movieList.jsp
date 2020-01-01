@@ -11,39 +11,16 @@
 <title>영화 그 이상의 감동 CGV</title>
 
 <c:import url="../layout/jquery.jsp" />
-<link href="${pageContext.request.contextPath}/resources/css/reset.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/css/layout/header.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/css/layout/footer.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/css/movie/movieList.css"
-	rel="stylesheet">
+<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet'>
 
-<link
-	href="${pageContext.request.contextPath}/resources/css/design/card.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/css/design/read_more.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/css/design/rating.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/css/design/ribbon.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/css/design/heart.css"
-	rel="stylesheet">
-<link
-	href="${pageContext.request.contextPath}/resources/css/design/modal.css"
-	rel="stylesheet">
-<!-- <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'> -->
-<link rel='stylesheet'
-	href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+<link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/layout/footer.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/movie/movieList.css" rel="stylesheet">
+
+<link href="${pageContext.request.contextPath}/resources/css/design/card.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/rating.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -64,10 +41,7 @@
 			<c:forEach items="${movieList}" var="mlist" varStatus="status">
 				<div class="card">
 
-					<!-- 랭킹 순위 표시하기 
-varstatus가 1이면 varstatus index로 랭킹 1 표시하기
-10까지만 표시하기
--->
+					<!-- 랭킹 순위 표시하기  varstatus가 1이면 varstatus index로 랭킹 1 표시하기 10까지만 표시하기 -->
 					<%-- ${status.index} --%>
 
 					<div class="ribbon-2">
@@ -136,50 +110,32 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 								<input type="hidden" class="realstar" value="${mlist.movieInfo_star}"> 
 								<input type="hidden" class="movienum" value="${mlist.movieInfo_num}"> 
 								<input type="hidden" id="myGrade${mlist.movieInfo_num}" class="myGrade"> 
+								
 								<input type="radio" id="${mlist.movieInfo_num}star5" class="star star5" name="rating${mlist.movieInfo_num}" value="5" /> 
-								<label
-									for="${mlist.movieInfo_num}star5" class="starlab starl5"
-									title="5"></label> 
+								<label for="${mlist.movieInfo_num}star5" class="starlab starl5" title="5"></label> 
 									
-									<input type="radio"
-									id="${mlist.movieInfo_num}star4" class="star star4"
-									name="rating${mlist.movieInfo_num}" value="4" /> 
+								<input type="radio" id="${mlist.movieInfo_num}star4" class="star star4" name="rating${mlist.movieInfo_num}" value="4" /> 
+								<label for="${mlist.movieInfo_num}star4" class="starlab starl4" title="4"></label> 
 									
-									<label
-									for="${mlist.movieInfo_num}star4" class="starlab starl4"
-									title="4"></label> 
+								<input type="radio" id="${mlist.movieInfo_num}star3" class="star star3" name="rating${mlist.movieInfo_num}" value="3" /> 
+								<label for="${mlist.movieInfo_num}star3" class="starlab starl3" title="3"></label> 
+								
+								<input type="radio" id="${mlist.movieInfo_num}star2" class="star star2" name="rating${mlist.movieInfo_num}" value="2" /> 
+								<label for="${mlist.movieInfo_num}star2" class="starlab starl2" title="2"></label> 
 									
-									<input type="radio"
-									id="${mlist.movieInfo_num}star3" class="star star3"
-									name="rating${mlist.movieInfo_num}" value="3" /> 
-									
-									<label
-									for="${mlist.movieInfo_num}star3" class="starlab starl3"
-									title="3"></label> <input type="radio"
-									id="${mlist.movieInfo_num}star2" class="star star2"
-									name="rating${mlist.movieInfo_num}" value="2" /> <label
-									for="${mlist.movieInfo_num}star2" class="starlab starl2"
-									title="2"></label> <input type="radio"
-									id="${mlist.movieInfo_num}star1" class="star star1"
-									name="rating${mlist.movieInfo_num}" value="1" /> <label
-									for="${mlist.movieInfo_num}star1" class="starlab starl1"
-									title="1"></label>
+								<input type="radio" id="${mlist.movieInfo_num}star1" class="star star1" name="rating${mlist.movieInfo_num}" value="1" /> 
+								<label for="${mlist.movieInfo_num}star1" class="starlab starl1" title="1"></label>
 							</fieldset>
 						</div>
 						<!-- 별점 테스트 끝 -->
 
 						<!-- modal : 영화 상세정보 -->
-						<h3 class="details myBtn" style="float: left;"
-							title="${mlist.movieInfo_num}">상세보기</h3>
+						<h3 class="details myBtn" style="float: left;" title="${mlist.movieInfo_num}">상세보기</h3>
 						<h3 class="under" style="float: left;">/</h3>
 
 						<form action="./movieSelect" method="get" class="frm">
-							<input type="hidden" name="movieInfo_name"
-								value="${mlist.movieInfo_title}">
-							<button class="myBtn2">
-								<h3 class="details" style="float: left;"
-									title="${mlist.movieInfo_title}">예매하기</h3>
-							</button>
+							<input type="hidden" name="movieInfo_name" value="${mlist.movieInfo_title}">
+							<button class="myBtn2"><h3 class="details" style="float: left;" title="${mlist.movieInfo_title}">예매하기</h3></button>
 						</form>
 
 					</div><!-- infos -->
@@ -191,6 +147,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 
 			</c:forEach>
 
+			<!-- Modal : 영화정보 상세보기 -->
 			<c:forEach items="${movieList}" var="mlist">
 				<div class="newmodal">
 					<div class="mask" role="dialog" id="${mlist.movieInfo_num}modal"></div>
@@ -200,7 +157,6 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 
 						<table style="margin: 0 auto;">
 							<tr class="trm" style="width: 390px;">
-
 								<td class="tdm1" style="text-align: right;">
 									<h1 class="title-modal">${mlist.movieInfo_title}</h1>
 								</td>
@@ -312,8 +268,7 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 		</c:forEach>
 		for (var i = 0; i < heartlist.length; i++) {
 			// red-check + 영화번호를 아이디로 가지는 항목에 하트 체크 여부 값 넣어주기
-			$("input:checkbox[id='red-check" + heartlist[i] + "']").attr(
-					'checked', true);
+			$("input:checkbox[id='red-check" + heartlist[i] + "']").attr('checked', true);
 		}
 
 		/* read more */
@@ -324,8 +279,12 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 		(function($) {
 			$.fn.showMoreItems = function(options) {
 
-				var $totalItems = $('.card').length, $visibleItems = $('.card:visible').length, settings = $
-						.extend({}, $.fn.showMoreItems.defaults, options), i = settings.count, countLess = settings.count - 1;
+				var $totalItems = $('.card').length, 
+				$visibleItems = $('.card:visible').length, 
+				settings = $.extend({}, $.fn.showMoreItems.defaults, options), 
+				i = settings.count, 
+				countLess = settings.count - 1;
+				
 				$('.card:lt(' + settings.count + ')').show();
 
 				$('.more-trigger').click(function(el) {
@@ -385,19 +344,14 @@ varstatus가 1이면 varstatus index로 랭킹 1 표시하기
 			mnum = $(this).find('.movienum').val();
 			
 			if (ostar > 8 && ostar <= 10) {
-				console.log("ostar" + ostar);
 				$(this).find('#' + mnum + 'star5').attr('checked', 'checked');
 			} else if (ostar > 6 && ostar <= 8) {
-				console.log("ostar" + ostar);
 				$(this).find('#' + mnum + 'star4').attr('checked', 'checked');
 			} else if (ostar > 4 && ostar <= 6) {
-				console.log("ostar" + ostar);
 				$(this).find('#' + mnum + 'star3').attr('checked', 'checked');
 			} else if (ostar > 2 && ostar <= 4) {
-				console.log("ostar" + ostar);
 				$(this).find('#' + mnum + 'star2').attr('checked', 'checked');
 			} else if (ostar > 0 && ostar <= 2) {
-				console.log("ostar" + ostar);
 				$(this).find('#' + mnum + 'star1').attr('checked', 'checked');
 			} else {
 				$(this).find('#' + mnum + 'star1').attr('checked', false);
