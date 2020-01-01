@@ -5,38 +5,34 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  
   <title>CGV ADMIN</title>
 <c:import url="../layout/jquery.jsp" />
 
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movie/movieSelect_admin.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/admin/admin_cinemaInsert.css" rel="stylesheet">
 
-<link href="${pageContext.request.contextPath}/resources/css/design/set2.css" rel="stylesheet" >
-<link href="${pageContext.request.contextPath}/resources/css/design/demo.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath}/resources/css/design/set2.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/demo.css" rel="stylesheet">
 
 <link href="${pageContext.request.contextPath}/resources/css/select/selectList.css" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/select/style.css">
-  
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> 
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js" ></script>
+<link href="${pageContext.request.contextPath}/resources/css/select/style.css" rel="stylesheet">
 
-	<link href="${pageContext.request.contextPath}/resources/css/admin/admin_cinemaInsert.css" rel="stylesheet">
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css"> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> -->
 
-<script type="text/javascript" ></script>
-  <!-- Custom fonts for this template-->
-  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-  <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
+
+<link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
 
 
 <style>
@@ -341,69 +337,13 @@
 </div>
 </div> <!-- d2 -->
 
-
-<!--   
-  <label>
-    <input data-provide="datepicker" required="required">
-    <input type="text" class="dateselect" required="required"/>
-    <span>Date1</span>
-  </label>
-  
-  <label>
-    <input type="text" class="dateselect2" required="required"/>
-    <span>Date2</span>
-  </label> -->
-
 </div>
-
-
-
-
-
-
 
 
 
 </div><!-- sec -->
      
-          
-          
-
-
-
-
-<!--  -->
-<!-- <div class="wrapper">
-
-<form action="./adminCinemaInsert" id="frm" method="post">
-
-  <label>
-    <input type="text" required="required" name="cinema_loc"/>
-    <span>Name</span>
-  </label>
   
-  <label>
-    <input data-provide="datepicker" required="required">
-    <input type="text" class="dateselect" required="required"/>
-    <span>Date1</span>
-  </label>
-  
-  <label>
-    <input type="text" class="dateselect2" required="required"/>
-    <span>Date2</span>
-  </label>
-  
-  <button>click</button>
-  
-  </form>
-  
-  
-  
-</div> -->
-
-
-<!--  -->
-          
 
         </div>
         <!-- /.container-fluid -->
@@ -442,6 +382,8 @@
     </div>
   </div>
 
+
+
   <!-- Bootstrap core JavaScript-->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -453,27 +395,11 @@
   <script src="${pageContext.request.contextPath}/resources/vendor/js/sb-admin-2.min.js"></script>
 
 
-
-
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c385975a519fabb671122b6c7f825767&libraries=services"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
 <script type="text/javascript">
 
-//https://github.com/uxsolutions/bootstrap-datepicker
-
-/* $('.dateselect').datepicker({
-    format: 'mm/dd/yyyy',
-    startDate: '-3d'
-});
- */
-// $('.dateselect2').datepicker({
-//     format: 'mm/dd/yyyy',
-//     autoclose:true,
-//     todayHighlidht: true,
-// }).on("hide", function(){
-//   if ($)
-// }
 
 	function openNav() {
   	  document.getElementById("mySidenav").style.width = "250px";
@@ -605,8 +531,6 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
   
 
 </script>
-
-
 
 
 </body>

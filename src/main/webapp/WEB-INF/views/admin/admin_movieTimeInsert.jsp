@@ -5,33 +5,32 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  
 <title>CGV ADMIN</title>
 <c:import url="../layout/jquery.jsp" />
 
 <link href="${pageContext.request.contextPath}/resources/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/movie/movieSelect_admin.css" rel="stylesheet">
 
-<link href="${pageContext.request.contextPath}/resources/css/design/set2.css" rel="stylesheet" >
-<link href="${pageContext.request.contextPath}/resources/css/design/demo.css" rel="stylesheet" >
+<link href="${pageContext.request.contextPath}/resources/css/design/set2.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/design/demo.css" rel="stylesheet">
 
 <link href="${pageContext.request.contextPath}/resources/css/select/selectList.css" rel="stylesheet">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/select/style.css">
+<link href="${pageContext.request.contextPath}/resources/css/select/style.css" rel="stylesheet">
 
-	<link href="${pageContext.request.contextPath}/resources/css/admin/admin_cinemaInsert.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/admin/admin_cinemaInsert.css" rel="stylesheet">
 
-<script type="text/javascript" ></script>
-  <!-- Custom fonts for this template-->
-  <link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template-->
-  <link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+<link href="${pageContext.request.contextPath}/resources/vendor/css/sb-admin-2.min.css" rel="stylesheet">
 
 
 <style>
@@ -425,21 +424,18 @@
     </div>
   </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap core JavaScript-->
+<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="${pageContext.request.contextPath}/resources/vendor/js/sb-admin-2.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="${pageContext.request.contextPath}/resources/vendor/js/sb-admin-2.min.js"></script>
 
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+<!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script> -->
 <script type="text/javascript">
-
-
 
   		function openNav() {
     	  document.getElementById("mySidenav").style.width = "250px";
@@ -453,7 +449,7 @@
     	var theater = "";
     	var mname = "";
     	var cnum = "";
-    console.clear();
+        console.clear();
     
     /* 1 상영일 불러오기 */
     $('#input-14').blur(function() {
@@ -485,48 +481,36 @@
     });
     
     
-    /* 영화검색 */
+/* 영화검색 */
 $(document).ready(function(){
-	
   $("#myInput").on("keyup", function() {
-	  
     var value = $(this).val().toLowerCase();
-    
     if(value == ""){
     	 $(".tab").css("display", "none");
     }else{
     	$(".tab").css("display", "inline");
     	$("#myTable tr").filter(function() {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
+    	});
     }
-    
   });
-
 });
-    
-    
-    /* 영화검색끝 */
+/* 영화검색끝 */
+ 
+ 
+
     $(".tab").css("display", "none");
-    
     var moviename = "";
-    
     $('.mltd').on("click", function() {
-    	
     	if($('#t2').val(moviename) != ""){
     		$('#t2').val("");
     	}
-    	
-    	
+   
     	moviename = $(this).text();
     	$('#t2').val(moviename);
     	$('.input-13').val(moviename);
-/*     	alert(moviename); */
     	$(".tab").css("display", "none");
 	});
-    
-    
-    
     
     
     /*  */
@@ -549,7 +533,6 @@ $(document).ready(function(){
        $('#t5').val("");
        $('.placeholder3').text("select");
        
-  /*      $('.list__ul').find('li').eq(index).prependTo('.list__ul'); */
        $('.list__ul').toggle();   
        
        
@@ -580,13 +563,6 @@ $(document).ready(function(){
 			}
 		});
      });
-     
-/* 
-		$('select').on('change', function (e) {
-		      $('.placeholder').text(this.value);
-		      $(this).animate({width: $('.placeholder').width() + 'px' });
-		    });  */
-     
 		
      
 	    /* 3 */
@@ -604,7 +580,6 @@ $(document).ready(function(){
 	      theater = $('.list__ul3').find('a').eq(index).html();
 	      $('#t5').val(theater);
 	      
-	     /*  $('.list__ul3').find('li').eq(index).prependTo('.list__ul3'); */
 	      $('.list__ul3').toggle();   
 	    });
 	   $('select').on('change', function (e) {
@@ -625,10 +600,6 @@ $(document).ready(function(){
 	  
 	 
     </script>
-
-
-
-
 
 </body>
 
