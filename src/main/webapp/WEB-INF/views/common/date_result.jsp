@@ -15,7 +15,7 @@
 		</div> 
 		<c:forEach items="${result}" var="date" varStatus="status">
 		
-		<c:if test="${date.week eq '일' || date.week eq '수'}">
+		<c:if test="${date.week eq '일'}">
 		<div class="dateSelect" id="${date.timeInfo_date}" style="color: red;">${date.day} ${date.week}</div>
 		</c:if>
 		
@@ -23,7 +23,7 @@
 		<div class="dateSelect" id="${date.timeInfo_date}" style="color: blue;">${date.day} ${date.week}</div>
 		</c:if>
 		
-		<c:if test="${date.week eq '월' || date.week eq '화' || date.week eq '목' || date.week eq '금'}">
+		<c:if test="${date.week eq '월' || date.week eq '화' || date.week eq '수' || date.week eq '목' || date.week eq '금'}">
 		<div class="dateSelect" id="${date.timeInfo_date}">${date.day} ${date.week}</div>
 		</c:if>
 		
@@ -33,22 +33,3 @@
 </tr>
 
 
-
-<%-- <c:forEach items="${result}" var="date" varStatus="status">
-<div class="swiper-slide sbox">${date.day}</div>
-</c:forEach>  --%>
-
-
-
-
-
-<%-- <c:forEach items="${result}" var="date" varStatus="status">
-<tr class="dateSelect">
-<td class="mtd" title="${date.timeInfo_date}">
-${date.timeInfo_date}
-<%-- ${date.day} --%>
-<%-- <div class="tnum" style="display: none;">${theater_num}</div>
-<div class="tname" style="display: none;">${theater_name}</div> --%>
-<%--</td>
-</tr>
-</c:forEach>  --%>
