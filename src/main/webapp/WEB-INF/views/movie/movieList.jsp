@@ -21,6 +21,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/design/card.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/design/rating.css" rel="stylesheet">
 
+
 </head>
 <body>
 
@@ -260,6 +261,7 @@
 			$("#myGrade" + numList[i]).val(gradeList[i]);
 		}
 
+
 		/* 저장 된 하트 값 져오기  */
 		var heartlist = [];
 		<c:forEach items="${hearts}" var="heart">
@@ -270,6 +272,7 @@
 			// red-check + 영화번호를 아이디로 가지는 항목에 하트 체크 여부 값 넣어주기
 			$("input:checkbox[id='red-check" + heartlist[i] + "']").attr('checked', true);
 		}
+
 
 		/* read more */
 		$(document).ready(function() {
@@ -460,6 +463,7 @@
 		$(".content-button-close").click(function() {
 			closeModal();
 		});
+
 
 		$(document).keyup(function(e) {
 			if (e.keyCode == 27) {

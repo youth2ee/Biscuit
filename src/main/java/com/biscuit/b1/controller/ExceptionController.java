@@ -9,13 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class ExceptionController {
 	
 	/*
-	 * @ResponseStatus(HttpStatus.NOT_FOUND) public ModelAndView getClient() {
-	 * ModelAndView mv = new ModelAndView();
-	 * mv.setViewName("common/common_400_error"); return mv; }
-	 */
-	 
-	
-	/*
 	 * @ExceptionHandler(NullPointerException.class) public ModelAndView getNull() {
 	 * ModelAndView mv = new ModelAndView();
 	 * mv.setViewName("common/common_500_error"); return mv; }
@@ -28,5 +21,6 @@ public class ExceptionController {
 	 * ModelAndView mv = new ModelAndView();
 	 * mv.setViewName("common/common_500_error"); return mv; }
 	 */
+	 
 
 }

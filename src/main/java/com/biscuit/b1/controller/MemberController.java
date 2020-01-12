@@ -121,8 +121,10 @@ public class MemberController {
 	@GetMapping("memberLogin")
 	public void memberLogin(HttpServletRequest request) {
 		//System.out.println(request.getHeader("Referer"));
-		String referer = request.getHeader("Referer");
-		request.getSession().setAttribute("redirectURI", referer);
+		/*
+		 * String referer = request.getHeader("Referer");
+		 * request.getSession().setAttribute("redirectURI", referer);
+		 */
 	}
 
 	@GetMapping("memberJoin2")
